@@ -1,0 +1,18 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_idle@1
+
+
+[ph_idle@1]
+on_use = %=destroy_object =give_item(wpn_knife:actor)%
+on_info = {=master_difficulty} %=destroy_object%
+
+
+
+
+
+
+ 

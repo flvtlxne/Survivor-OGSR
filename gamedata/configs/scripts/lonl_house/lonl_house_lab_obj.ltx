@@ -1,0 +1,17 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_lab_obj_tip
+on_use = {+lab_balon_charged} ph_idle@2 %=start_laboratory_interface%
+on_info = {=master_difficulty} ph_idle@nil
+
+[ph_idle@2]
+on_game_timer = 3|ph_idle@1
+
+
+[ph_idle@nil]
+
+
+
+ 

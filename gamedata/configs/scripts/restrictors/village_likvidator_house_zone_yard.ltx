@@ -1,0 +1,21 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_actor_inside = {+likvidator_info1} sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_village_likvidator_house_npc%
+
+[sr_idle@2]
+on_game_timer = 40|sr_cutscene@1 %=village_likvidator_house_think%
+
+[sr_cutscene@1]
+point = village_likvidator_house_point2
+look = village_likvidator_house_point0
+cam_effector = scenario_cam\village_script_cam1
+on_signal = cameff_end | sr_idle@nil %+likvidator_house_finded%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@nil]
+

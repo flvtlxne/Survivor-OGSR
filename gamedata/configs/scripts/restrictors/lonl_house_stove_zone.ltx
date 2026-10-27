@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+lonl_house_stove_works} sr_idle@2 %=disable_ui =run_postprocess(fade_in_out) =play_sound(matches_use)%
+
+[sr_idle@2]
+on_game_timer = 40|sr_particle@fire %=enable_ui =play_sound_looped(fireplace_snd)%
+
+[sr_particle@fire]
+name = explosions\campfire_00
+path = lonl_house_stove_point
+mode = 2
+looped = false
+on_signal = particle_end|sr_idle@1 %-lonl_house_stove_works =clear_box(lonl_house_stove) =stop_sound_looped(fireplace_snd)%
+
+
+
+[sr_idle@nil]

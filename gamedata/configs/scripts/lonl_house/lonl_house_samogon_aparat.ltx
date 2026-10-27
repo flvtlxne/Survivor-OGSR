@@ -1,0 +1,31 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_samogon_aparat_use1
+on_use = {=actor_has_item(braga) =actor_has_item(vedro_full) +lab_balon_charged} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+on_info = {=master_difficulty} %=destroy_object%
+
+
+; Заправляем аппарат:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(barrel_kanistra_use)%
+
+[ph_idle@3]
+on_game_timer = 15|ph_idle@4 %=start_samogon_aparat_timer +samogon_aparat_work =remove_item(braga) =remove_item(vedro_full) =give_item(vedro_empty:actor) =enable_ui%
+
+
+; Идёт варка:
+[ph_idle@4]
+tips      = lonl_house_samogon_aparat_use2
+on_info = {-samogon_aparat_work} ph_idle@5 %=stop_sound_looped(samogn_aparat_works)%
+on_info2 =  {+game_start} %=play_sound_looped(samogn_aparat_works)%
+
+[ph_idle@5]
+tips      = lonl_house_samogon_aparat_use3
+on_use = ph_idle@1 %=samogon_aparat_result%
+
+
+
+
+ 

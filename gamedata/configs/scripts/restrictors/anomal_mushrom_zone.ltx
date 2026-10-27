@@ -1,0 +1,33 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+map_finded} sr_idle@2 %=add_self_spot(red_location:usefull_place_mark)%
+
+[sr_idle@2]
+on_info = {=actor_has_item(mushrom)} sr_idle@nil %=remowe_self_spot(red_location:usefull_place_mark)%
+on_actor_inside = {!zat_b7_is_night} sr_idle@3 %=run_postprocess(fade_in) =disable_ui =spawn_anom_mushrom_npc%
+
+[sr_idle@3]
+on_game_timer = 40|sr_cutscene@1 %=anom_mushrom_think%
+
+[sr_cutscene@1]
+point = anom_mushrom_script_npc_point1
+look = anom_mushrom_script_npc_point2
+cam_effector = scenario_cam\anom_mushrom_script_cam
+on_signal = cameff_end | sr_idle@4 %+af_mushrom_finded%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+[sr_idle@4]
+on_info = {=actor_has_item(mushrom)} sr_idle@nil %=remowe_self_spot(red_location:usefull_place_mark)%
+on_info2 = {+narkoman_note1_info} sr_idle@nil %=remowe_self_spot(red_location:usefull_place_mark)%
+
+[sr_idle@nil]
+
+
+
+

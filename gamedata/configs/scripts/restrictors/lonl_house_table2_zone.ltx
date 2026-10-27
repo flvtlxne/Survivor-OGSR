@@ -1,0 +1,34 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_actor_inside = sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_lonl_house_table2_npc%
+
+[sr_idle@2]
+on_game_timer = 40|sr_cutscene@1 %=lonl_house_table2_think%
+
+[sr_cutscene@1]
+point = lonl_house_script_npc_point3
+look = lonl_house_script_npc_point4
+cam_effector = scenario_cam\lonl_house_script_cam3
+on_signal = cameff_end | sr_idle@nil %+laboratory_finded%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+
+
+
+
+
+
+

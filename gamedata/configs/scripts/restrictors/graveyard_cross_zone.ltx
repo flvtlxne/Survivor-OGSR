@@ -1,0 +1,173 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+suicider_cross_use} sr_idle@2 %=disable_ui =run_postprocess(fade_in) =spawn_graveyard_cross_script_npc%
+on_info3 = {+suicider_note3_info} sr_particle@fire1
+
+
+; Осматриваем крест:
+[sr_idle@2]
+on_game_timer = 40|sr_cutscene@1 %=graveyard_cross_think%
+
+[sr_cutscene@1]
+point = graveyard_cross_point1
+look = graveyard_cross_point2
+cam_effector = scenario_cam\graveyard_arouncross_fly
+on_signal = cameff_end | sr_idle@3 %+suicider_grave_check =spawn_willage_suicider_mobs =spawn_mad_npc_graveyard =run_postprocess(fade_in)%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+; Первый разговор с психом:
+[sr_idle@3]
+on_info = {+mad_npc_info1} sr_idle@4 %=give_task(addtask_suicider)%
+
+
+; Видим карлика из окна:
+[sr_idle@4]
+on_info = {+suicider_note1_info =actor_in_zone(karlik_quest_zone1)} sr_cutscene@2 %=spawn_willage_magaz_karlik%
+
+[sr_cutscene@2]
+point = magazin_window_point1
+look = magazin_window_point2
+cam_effector = scenario_cam\magazin_window_fly
+on_signal = cameff_end | sr_sound_act@1 %+willage_magaz_check%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_sound_act@1]
+snd = scenario\karlik_quest_music1
+delay = 0
+delay_max = 100
+stereo = false
+on_signal = sound_end|sr_idle@5_2
+on_info = {+willage_magaz_check =actor_in_zone(karlik_quest_zone2)} sr_idle@5_1 %+willage_hill_check%
+
+[sr_idle@5_1]
+on_info = {+suicider_note2_info} sr_idle@6 %+field_tree_check%
+
+[sr_idle@5_2]
+on_info = {+willage_magaz_check =actor_in_zone(karlik_quest_zone2)} sr_idle@5_1 %+willage_hill_check%
+
+; “ дерева за селом:
+[sr_idle@6]
+on_info = {+suicider_note2_info =actor_in_zone(karlik_quest_zone3)} sr_idle@7 %=disable_ui =run_postprocess(fade_in) =spawn_field_tree_script_npc%
+
+[sr_idle@7]
+on_game_timer = 40|sr_cutscene@3 %=field_tree_think%
+
+[sr_cutscene@3]
+point = field_tree_quest_point2
+look = field_tree_quest_point1
+cam_effector = scenario_cam\field_tree_fly
+on_signal = cameff_end | sr_idle@8 %+field_plita_check%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@8]
+on_info = {=actor_has_item(suicider_key)} sr_idle@9 %+suicider_key_finded =disable_ui =run_postprocess(fade_in) =spawn_field_tree_script_npc2%
+
+[sr_idle@9]
+on_game_timer = 40|sr_cutscene@4 %=spawn_tree_elka_karlik%
+
+[sr_cutscene@4]
+point = field_tree_quest_point2
+look = field_tree_quest_point1
+cam_effector = scenario_cam\field_tree_fly2
+on_signal = cameff_end | sr_idle@10 %+karlik_vizit_2%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@10]
+on_info = {+suicider_note3_info} sr_particle@fire1 %+field_stones_check +lw_smart1_work =spawn_lw_scientist =clear_smart_terrain(lw_mobs_smart1)%
+
+[sr_particle@fire1]
+name = explosions\campfire_00
+path = karlik_field_zone_point0_1
+mode = 2
+looped = true
+;on_info = {+222} sr_idle@11 %-lw_smart1_work%
+on_info2 = {+actor_teleport_to_karlik_trap =actor_in_zone(karlik_quest_zone7)} sr_cutscene@5 %=spawn_karlik_psyzone_script_npc =karlik_psyzone_think%
+
+
+[sr_cutscene@5]
+point = karlik_trap_psyzone_point_0
+look = karlik_trap_psyzone_point_1
+cam_effector = scenario_cam\field_psyzone_fly1
+on_signal = cameff_end | sr_idle@11 %+actor_in_karlik_psyzone%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@11]
+on_info = {!actor_in_zone(karlik_quest_zone7)} sr_sound_act@2 %=spawn_karlik_psyzone_zombies%
+
+[sr_sound_act@2]
+snd = scenario\karlik_quest_music2
+delay = 0
+delay_max = 100
+stereo = false
+on_info = {+karlik_fake_death} sr_idle@13
+on_info2 = {!actor_behind_karlik_quest_zone7} %=actor_teleport_to_karlik_trap%
+
+[sr_idle@13]
+on_info = {+scientist_shield_off} sr_idle@14 %=delete_karlik_body =run_postprocess(fade_in) =disable_ui%
+
+[sr_idle@14]
+on_game_timer = 37|sr_cutscene@6 %=spawn_karlik_in_psyzone%
+
+[sr_cutscene@6]
+point = karlik_field_zone_point0
+look = karlik_field_zone_point0_1
+cam_effector = scenario_cam\field_psyzone_fly2
+on_signal = cameff_end | sr_idle@15 %+karlik_resurrect%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@15]
+on_info = {+karlik_kill_scientist} sr_idle@16
+on_info2 = {+karlik_first_talk =story_obj_in_zone_by_name(lw_scientist:lonl_house_surge_hide_zone1)} sr_idle@17 %=spawn_karlik_house_zombies +karlik_house_atack -lw_smart1_work +lonl_house_zomb_atack%
+
+[sr_idle@16]
+on_info = {+lw_scientist_dead =actor_in_zone(karlik_quest_zone8)} sr_idle@18 %=disable_ui =run_postprocess(fade_in) =spawn_field_koryaga_script_npc%
+
+[sr_idle@18]
+on_game_timer = 40|sr_cutscene@7 %=spawn_tree_koryaga_karlik =release_lw_scientist =tree_koryaga_karlik_timer%
+
+[sr_cutscene@7]
+point = karlik_field_zone_point3
+look = karlik_field_zone_point4
+cam_effector = scenario_cam\field_koryaga_fly1
+on_signal = cameff_end | sr_idle@nil %+karlik_reward -lw_smart1_work +karlik_task_end%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+[sr_idle@17]
+on_info = {+lw_scientist_dead +karlik_house_atack} sr_idle@nil
+on_info2 = {+karlik_real_death +karlik_house_atack} sr_idle@19 %+karlik_task_end -lonl_house_zomb_atack%
+
+[sr_sound_act@3]
+snd = scenario\karlik_quest_music3
+delay = 0
+delay_max = 100
+stereo = false
+on_info = {+lw_scientist_dead +karlik_house_atack} sr_idle@nil
+on_info2 = {+karlik_real_death +karlik_house_atack} sr_idle@19 %+karlik_task_end -lonl_house_zomb_atack%
+
+
+[sr_idle@19]
+on_info = {+scientist_komp_task} sr_idle@nil %=give_task(addtask_comp)%
+
+
+[sr_idle@nil]
+
+

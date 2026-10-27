@@ -20,11 +20,12 @@ player_hud_section      = actor_hud
 terrain                                        = actor_terrain
 
 max_item_mass           = 35 ;50.0
-jump_speed              = 6.
-crouch_coef             = 0.30 ;0.45
+jump_speed              = 6.5
+;jump_speed              = 8.5
+crouch_coef             = 0.30
 climb_coef              = 0.7
-run_coef                = 2.0 ;2.1
-sprint_koef             = 2.5 ;1.9 ;2.6
+run_coef                = 1.8
+sprint_koef             = 2.0
 run_back_coef           = 1.8
 walk_back_coef          = 0.5
 air_control_param       = 0.1
@@ -41,11 +42,20 @@ ef_creature_type                = 17                                            
 attachable_items                = device_torch,attachable_item,hand_radio
 
 ph_box0_center                                                 = 0.0,  0.9,  0.0
-ph_box0_size                                                 = 0.35, 0.9,  0.35
+ph_box0_size                                                 = 0.30, 0.8,  0.30
 ph_box1_center                                                 = 0.0,  0.75,  0.0
-ph_box1_size                                                 = 0.35, 0.75,  0.35
+ph_box1_size                                                 = 0.30, 0.65,  0.30
 ph_box2_center                                                 = 0.0,  0.6,  0.0
-ph_box2_size                                                 = 0.35, 0.6,  0.35
+ph_box2_size                                                 = 0.30, 0.5,  0.30
+
+;ph_box0_center                                                 = 0.0,  0.2,  0.0
+;ph_box0_size                                                 = 0.10, 0.2,  0.10
+;ph_box1_center                                                 = 0.0,  0.25,  0.0
+;ph_box1_size                                                 = 0.10, 0.25,  0.10
+;ph_box2_center                                                 = 0.0,  0.2,  0.0
+;ph_box2_size                                                 = 0.10, 0.2,  0.10
+
+
 stalker_restrictor_radius                        = 0.1;0.75;0.55;0.75;0.9
 stalker_small_restrictor_radius                = .1;
 medium_monster_restrictor_radius        = 0.1
@@ -60,10 +70,15 @@ weapon_bone2                                = bip01_r_finger11
 
 damage                                                = actor_damage
 
-hit_probability_gd_novice	= 1 ;0.20
-hit_probability_gd_stalker	= 1 ;0.30
-hit_probability_gd_veteran	= 1 ;0.40
-hit_probability_gd_master	= 1 ;0.50
+;hit_probability_gd_novice	= 1 ;0.20
+;hit_probability_gd_stalker	= 1 ;0.30
+;hit_probability_gd_veteran	= 1 ;0.40
+;hit_probability_gd_master	= 1 ;0.50
+
+hit_probability_gd_novice	= 0.4
+hit_probability_gd_stalker	= 0.5
+hit_probability_gd_veteran	= 0.6
+hit_probability_gd_master	= 0.5
 
 hit_sounds                                        = actor_hit_snds
 ;actor condition
@@ -125,29 +140,29 @@ quick_item_4 = conserva
 burn_immunity           = 0.3 ;0.45                                ;коэффициенты иммунитета
 strike_immunity         = 0.3 ;0.45
 shock_immunity          = 0.3 ;0.45
-wound_immunity          = 0.05 ;0.45
+wound_immunity          = 0.1
 radiation_immunity      = 0.3 ;0.45
 telepatic_immunity      = 0.3 ;0.45
 chemical_burn_immunity  = 0.3 ;0.45
-explosion_immunity      = 0.05 ;0.45
-fire_wound_immunity 	= 0.15
+explosion_immunity      = 0.2 ;0.45
+fire_wound_immunity 	= 0.2
 
 [actor_immunities_gd_stalker]
 burn_immunity           = 0.7                               ;коэффициенты иммунитета
-strike_immunity         = 0.5
+strike_immunity         = 0.55
 shock_immunity          = 0.7
-wound_immunity          = 0.15
+wound_immunity          = 0.2
 radiation_immunity      = 0.7
 telepatic_immunity      = 0.7
 chemical_burn_immunity  = 0.7
-explosion_immunity      = 0.15
-fire_wound_immunity 	= 0.5 ;0.65
+explosion_immunity      = 0.3
+fire_wound_immunity 	= 0.5 ;0.5
 
 [actor_immunities_gd_veteran]
 burn_immunity           = 0.85                                ;коэффициенты иммунитета
 strike_immunity         = 0.75
 shock_immunity          = 0.85
-wound_immunity          = 0.5
+wound_immunity          = 0.6
 radiation_immunity      = 0.85
 telepatic_immunity      = 0.85	
 chemical_burn_immunity  = 0.85
@@ -155,18 +170,29 @@ explosion_immunity      = 0.5
 fire_wound_immunity     = 0.75		
 
 [actor_immunities_gd_master]
-burn_immunity           = 1.0                                ;коэффициенты иммунитета
-strike_immunity         = 1.0
-shock_immunity          = 1.0
-wound_immunity          = 0.75
-radiation_immunity		= 1.0
-telepatic_immunity 		= 1.0
-chemical_burn_immunity 	= 1.0
-explosion_immunity 		= 1.0
-fire_wound_immunity 	= 1.0
+;burn_immunity           = 1.0                                ;коэффициенты иммунитета
+;strike_immunity         = 1.0
+;shock_immunity          = 1.0
+;wound_immunity          = 0.75
+;radiation_immunity		= 1.0
+;telepatic_immunity 		= 1.0
+;chemical_burn_immunity 	= 1.0
+;explosion_immunity 		= 0.85
+;fire_wound_immunity 	= 0.85
+
+burn_immunity           = 0.45                               ;коэффициенты иммунитета
+strike_immunity         = 0.45
+shock_immunity          = 0.45
+wound_immunity          = 0.25
+radiation_immunity      = 0.45
+telepatic_immunity      = 0.45
+chemical_burn_immunity  = 0.45
+explosion_immunity      = 0.25
+fire_wound_immunity 	= 0.45
+
 
 [actor_condition]
-satiety_v				= 0.0000162 	;скорость уменьшения сытости со временем
+satiety_v				= 0.0000165 	;скорость уменьшения сытости со временем
 radiation_v				= 0.0	;скорость уменьшения радиации
 satiety_power_v			= 0.005		;увеличение силы при уменьшении сытости
 satiety_health_v		= 0.0001    ;увеличение здоровья при уменьшении сытости
@@ -331,7 +357,7 @@ r_strafe_yaw                = 0
 
 [actor_hit_snds]
 burn                 =actor\pain1,actor\pain2,actor\pain3;  ,actor\hurt4
-shock                =actor\pain1,actor\pain2,actor\pain3; ,actor\hurt4
+shock                =silence; =actor\pain1,actor\pain2,actor\pain3; ,actor\hurt4
 strike               =actor\pain1,actor\pain2,actor\pain3; ,actor\hurt4
 wound                =actor\pain1,actor\pain2,actor\pain3; ,actor\hurt4
 radiation            =monsters\biting\def_0; actor\hurt1,actor\hurt2,actor\hurt3,actor\hurt4

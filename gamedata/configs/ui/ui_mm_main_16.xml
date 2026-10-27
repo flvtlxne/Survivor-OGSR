@@ -17,7 +17,7 @@
 	    </auto_static>
   </background>
 
-	<shniaga_wnd x="134" y="320" width="216" height="380">
+	<shniaga_wnd x="200" y="380" width="216" height="380">
 		<buttons_region x="8" y="0" width="220" height="380" always_show_scroll="false" vert_interval="12"/>
 		<shniaga x="7" y="-20" width="219" height="61" stretch="1">
 			<texture>ui_inGame2_slider</texture>
@@ -44,11 +44,11 @@
     <btn name="btn_localnet"		caption="ui_mp_localnet" />
     <btn name="btn_new_back"    caption="ui_mm_back" />
   </menu_network_game>
-
+  
   <menu_main_logout btn_height="34" font="graffiti22">
   	<btn name="btn_new_game"	  caption="ui_mm_newgame" />
 		<btn name="btn_load"		  caption="ui_mm_load_game" />
-		<btn name="btn_multiplayer"	  caption="ui_mm_network_game" />
+		<!--btn name="btn_multiplayer"	  caption="ui_mm_network_game" /-->
 		<btn name="btn_logout"		  caption="ui_mm_logout" />
 		<btn name="btn_options"		  caption="ui_mm_options_n" />
 		<btn name="btn_credits"		  caption="ui_mm_credits" />
@@ -67,13 +67,16 @@
 		<btn name="btn_quit"		caption="ui_mm_quit2windows" />
 	</menu_main_last_save>
 
-	<menu_new_game btn_height="34" font="graffiti22">
+	<!--menu_new_game btn_height="34" font="graffiti22"-->
+	<menu_new_game btn_height="34" font="graffiti22" a="255" r="235" g="235" b="118">
 	    <btn name="btn_novice"		caption="ui_mm_novice" />
 		<btn name="btn_stalker"		caption="ui_mm_stalker" />
 		<btn name="btn_veteran"		caption="ui_mm_veteran" />
-		<btn name="btn_master"		caption="ui_mm_master" />
+		<btn name="btn_master"		caption="ui_mm_master" />	
 		<btn name="btn_new_back"	caption="ui_mm_back" />
 	</menu_new_game>
+	
+
 
 	<menu_main_single btn_height="34" font="graffiti22">
     	<btn name="btn_ret"			caption="ui_mm_return_game" />
@@ -107,7 +110,25 @@
 		<menu_music>music\menu</menu_music>
     </menu_sound>
 
-	<static_version x="14" y="740" width="80" height="30">
-		<text align="l" font="graffiti19" r="135" g="123" b="116" complex_mode="0"/>
+	<static_version x="14" y="710" width="80" height="30">
+		<!--text align="l" font="graffiti19" r="135" g="123" b="116" complex_mode="0"/-->
+		<text align="l" font="graffiti19" r="255" g="255" b="255" complex_mode="0"/>
 	</static_version>
+
+	<mod_name x="200" y="40" width="100" height="30" light_anim="ui_slow_blinking_alpha" la_cyclic="1" la_texture="1" la_text="1" la_alpha="1">
+		<text x="0" y="0" r="235" g="10" b="10" a="250" font="graffiti32">Выживший: Побег из Зоны</text>
+	</mod_name>
+	
+	
+	<mod_ver1 x="15" y="725" width="100" height="30">
+		<text x="0" y="0" r="255" g="255" b="255" a="250" font="letterica16">+ "Additional quests" DLC</text>
+	</mod_ver1>
+	<mod_ver2 x="15" y="740" width="100" height="30">
+		<text x="0" y="0" r="255" g="255" b="255" a="250" font="letterica16">+ "The Competition" DLC</text>
+	</mod_ver2>
+
+
+
+
+
 </w>

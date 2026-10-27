@@ -238,6 +238,7 @@ morale_v					= 0.0001				;скорость восстановления морали
 health_hit_part				= 1.0					;процент хита, уходящий на отнимание здоровья
 power_hit_part				= 0.0					;процент хита, уходящий на отнимание силы
 psy_health_v				= 0.01					; скорость восстановления psy-здоровья
+health_restore_v          		= 0.00005
 
 sleep_health				= 1.0					;коэффициенты скоростей изменения параметров во время сна
 sleep_power					= 1.0
@@ -250,7 +251,7 @@ use_limping_state			= off
 limping_threshold			= 0.5
 
 ;открытые раны
-bleeding_v					= 0.0						;потеря крови при номинальной ране в секунду
+bleeding_v				= 0.001	;0.0				;потеря крови при номинальной ране в секунду
 wound_incarnation_v			= 0.001					;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
 min_wound_size				= 0.01
 
@@ -313,7 +314,7 @@ min_wound_size				= 0.01
 	;; stand
 	;;; forward
 	free_stand_walk_forward		= 1.1
-	free_stand_run_forward		= 3.0
+	free_stand_run_forward		= 3.5
 	; panic
 	;; stand
 	;;; run
@@ -355,7 +356,7 @@ script_binding					= bind_stalker.init
 ;---GROUP SECTIONS----------------------------------------------------
 GroupControlSection				= spawn_group
 SpaceRestrictionSection 		= space_restrictor,zone_mine_field
-attachable_items				= device_torch,attachable_item,hand_radio,hand_radio_r,bread, vodka, energy_drink, kolbasa, guitar_a, harmonica_a, wpn_binoc, detector_simple, pri_a15_wpn_svu, pri_a15_wpn_wincheaster1300, wpn_binoc1, pri_a15_wpn_ak74u, pri_a15_wpn_ak74, pri_a15_documents, af_quest_b14_twisted, detector_advanced, detector_elite, device_pda, anomaly_scaner
+attachable_items				= device_torch,attachable_item,hand_radio,hand_radio_r,bread, vodka, energy_drink, kolbasa, guitar_a, harmonica_a, wpn_binoc, detector_simple, pri_a15_wpn_svu, pri_a15_wpn_wincheaster1300, wpn_binoc1, pri_a15_wpn_ak74u, pri_a15_wpn_ak74, pri_a15_documents, af_quest_b14_twisted, detector_advanced, detector_elite, device_pda, anomaly_scaner, rx_attach_bandage
 
 ;---SECTIONS----------------------------------------------------------
 damage							= stalker_damage
@@ -394,8 +395,8 @@ sound_perceive_section			= stalker_sound_perceive
 ;---VISIBILITY--------------------------------------------------------
 vision_danger_section			= stalker_vision_danger
 vision_free_section				= stalker_vision_free
-eye_fov							= 160 ;110;120
-eye_range						= 100
+eye_fov					= 120
+eye_range					= 100
 far_plane_factor				= 1.0				; фактор дальности тумана
 fog_density_factor				= 0.05				; фактор плотности тумана
 
@@ -405,7 +406,7 @@ DynamicSoundsCount				= 32
 DynamicHitCount					= 32
 
 ;---ENEMY------------------------------------------------------------
-ignore_monster_threshold		= 0.0	;0.6	;0.8
+ignore_monster_threshold			= 0.5	;0	;0.6
 max_ignore_distance				= 15.0
 panic_threshold					= 0.0
 
@@ -597,7 +598,7 @@ use_limping_state			= off
 limping_threshold			= 0.5
 
 ;открытые раны
-bleeding_v					= 0.0						;потеря крови при номинальной ране в секунду
+bleeding_v				= 0.0						;потеря крови при номинальной ране в секунду
 wound_incarnation_v			= 0.001					;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
 min_wound_size				= 0.01
 
@@ -707,83 +708,83 @@ bip01_r_toe0	 	 		= 10000.0, 1000, 0.2
 [fire_queue_params]  ; min < 15 < medium < 30 < max
 pstl_min_queue_size_far			= 1
 pstl_max_queue_size_far			= 1
-pstl_min_queue_interval_far		= 3000
-pstl_max_queue_interval_far		= 5000
+pstl_min_queue_interval_far		= 800
+pstl_max_queue_interval_far		= 2100
 
 pstl_min_queue_size_medium		= 1
-pstl_max_queue_size_medium		= 1
-pstl_min_queue_interval_medium	= 1000
-pstl_max_queue_interval_medium	= 3000
+pstl_max_queue_size_medium		= 2
+pstl_min_queue_interval_medium	= 300
+pstl_max_queue_interval_medium	= 1000
 
 pstl_min_queue_size_close		= 1
-pstl_max_queue_size_close		= 1
-pstl_min_queue_interval_close	= 500
-pstl_max_queue_interval_close	= 1000
+pstl_max_queue_size_close		= 3
+pstl_min_queue_interval_close	= 200
+pstl_max_queue_interval_close	= 500
 
 
 
 shtg_min_queue_size_far			= 1
 shtg_max_queue_size_far			= 1
-shtg_min_queue_interval_far		= 1500
-shtg_max_queue_interval_far		= 2000
+shtg_min_queue_interval_far		= 1000
+shtg_max_queue_interval_far		= 1500
 
 shtg_min_queue_size_medium		= 1
-shtg_max_queue_size_medium		= 1
-shtg_min_queue_interval_medium	= 1000
-shtg_max_queue_interval_medium	= 1500
+shtg_max_queue_size_medium		= 2
+shtg_min_queue_interval_medium	= 700
+shtg_max_queue_interval_medium	= 1200
 
-shtg_min_queue_size_close		= 2
-shtg_max_queue_size_close		= 2
-shtg_min_queue_interval_close	= 500
-shtg_max_queue_interval_close	= 1000
+shtg_min_queue_size_close		= 1
+shtg_max_queue_size_close		= 1
+shtg_min_queue_interval_close	= 300
+shtg_max_queue_interval_close	= 700
 
 
 
 snp_min_queue_size_far			= 1
 snp_max_queue_size_far			= 1
-snp_min_queue_interval_far		= 2000
-snp_max_queue_interval_far		= 3000
+snp_min_queue_interval_far		= 1200
+snp_max_queue_interval_far		= 2400
 
 snp_min_queue_size_medium		= 1
 snp_max_queue_size_medium		= 1
-snp_min_queue_interval_medium	= 1500
-snp_max_queue_interval_medium	= 2000
+snp_min_queue_interval_medium	= 800
+snp_max_queue_interval_medium	= 1600
 
 snp_min_queue_size_close		= 1
 snp_max_queue_size_close		= 1
-snp_min_queue_interval_close	= 1000
-snp_max_queue_interval_close	= 1500
+snp_min_queue_interval_close	= 600
+snp_max_queue_interval_close	= 1200
 
 
 
 auto_min_queue_size_far			= 1
-auto_max_queue_size_far			= 2
-auto_min_queue_interval_far		= 1500
-auto_max_queue_interval_far		= 2000
+auto_max_queue_size_far			= 3
+auto_min_queue_interval_far		= 600
+auto_max_queue_interval_far		= 1200
 
 auto_min_queue_size_medium		= 2
-auto_max_queue_size_medium		= 3
-auto_min_queue_interval_medium	= 1000
-auto_max_queue_interval_medium	= 1500
+auto_max_queue_size_medium		= 4
+auto_min_queue_interval_medium	= 500
+auto_max_queue_interval_medium	= 1200
 
 auto_min_queue_size_close		= 3
-auto_max_queue_size_close		= 5
-auto_min_queue_interval_close	= 500
+auto_max_queue_size_close		= 6
+auto_min_queue_interval_close	= 300
 auto_max_queue_interval_close	= 1000
 
 
 
-mchg_min_queue_size_far			= 10
-mchg_max_queue_size_far			= 15
-mchg_min_queue_interval_far		= 3000
-mchg_max_queue_interval_far		= 4000
+mchg_min_queue_size_far			= 3
+mchg_max_queue_size_far			= 10
+mchg_min_queue_interval_far		= 1000
+mchg_max_queue_interval_far		= 2000
 
-mchg_min_queue_size_medium		= 10
+mchg_min_queue_size_medium		= 5
 mchg_max_queue_size_medium		= 15
-mchg_min_queue_interval_medium	= 2000
-mchg_max_queue_interval_medium	= 3000
+mchg_min_queue_interval_medium	= 1000
+mchg_max_queue_interval_medium	= 2000
 
-mchg_min_queue_size_close		= 10
-mchg_max_queue_size_close		= 15
+mchg_min_queue_size_close		= 8
+mchg_max_queue_size_close		= 25
 mchg_min_queue_interval_close	= 1000
 mchg_max_queue_interval_close	= 2000

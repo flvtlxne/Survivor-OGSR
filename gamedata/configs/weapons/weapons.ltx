@@ -78,6 +78,14 @@
 #include "w_g36.ltx"
 #include "w_pkm.ltx"
 
+#include "w_bizon.ltx"
+#include "w_saiga.ltx"
+#include "w_m1891.ltx"
+#include "w_fort500.ltx"
+#include "w_vityaz.ltx"
+
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Огнестрельное оружие
@@ -722,7 +730,7 @@ inv_grid_y		= 9
 
 k_dist			= 0.5
 k_disp			= 15
-k_hit			= 0.3
+k_hit			= 0.5
 k_impulse		= 0.5
 k_pierce		= 0.0
 k_ap			= 0.0
@@ -757,7 +765,7 @@ inv_grid_y			= 10
 
 k_dist			= 1
 k_disp			= 1
-k_hit			= 1
+k_hit			= 2.0
 k_impulse		= 1
 k_pierce		= 0.55
 k_ap			= 0.55
@@ -794,8 +802,8 @@ inv_weight		= 2.0
 
 inv_grid_width		= 3
 inv_grid_height		= 1
-inv_grid_x			= 15
-inv_grid_y			= 19
+inv_grid_x			= 16
+inv_grid_y			= 7
 
 
 k_dist			= 1
@@ -1001,15 +1009,15 @@ inv_weight			= 0
 cost				= 150
 
 blast				= 2.00;150
-blast_r				= 4
+blast_r				= 8
 blast_impulse		= 350
 ;delete
 blast_impulse_factor = 1
 
 
 frags				= 15
-frags_r				= 10
-frag_hit			= 0.50
+frags_r				= 15
+frag_hit			= 0.80
 frag_hit_impulse	= 50
 
 hit_type_blast		= explosion
@@ -1081,15 +1089,15 @@ inv_weight			= 0
 cost				= 150
 
 blast				= 3.0;150
-blast_r				= 4
-blast_impulse		= 100
+blast_r				= 8
+blast_impulse		= 120
 ;delete
 blast_impulse_factor = 1
 
 
 frags				= 10
-frags_r				= 10
-frag_hit			= 0.50
+frags_r				= 17
+frag_hit			= 0.80
 frag_hit_impulse	= 50
 
 hit_type_blast		= explosion
@@ -1833,7 +1841,7 @@ inv_grid_height		= 1
 inv_grid_x			= 10
 inv_grid_y			= 17
 scope_texture		= wpn_crosshair
-scope_zoom_factor	= 25		;ПСО-1 2X
+scope_zoom_factor	= 22		;ПСО-1 2X
 
 [wpn_addon_scope_x2.7]:identity_immunities
 GroupControlSection	= spawn_group
@@ -1858,7 +1866,7 @@ inv_grid_height		= 1
 inv_grid_x			= 10
 inv_grid_y			= 16
 scope_texture		= wpn_crosshair
-scope_zoom_factor	= 40		;ПСО-1 2X
+scope_zoom_factor	= 17		;ПСО-1 2X
 
 [wpn_addon_scope_detector]:identity_immunities
 GroupControlSection	= spawn_group
@@ -1884,7 +1892,7 @@ inv_grid_x			= 4
 inv_grid_y			= 16
 scope_texture		= wpn_crosshair
 scope_alive_detector = scope_detector
-scope_zoom_factor	= 30		;ПСО-1 2X
+scope_zoom_factor	= 20		;ПСО-1 2X
 
 [wpn_addon_scope_night]:identity_immunities
 GroupControlSection	= spawn_group
@@ -1910,7 +1918,7 @@ inv_grid_x			= 4
 inv_grid_y			= 17
 scope_texture		= wpn_crosshair
 scope_nightvision = scope_nightvision
-scope_zoom_factor	= 30		;ПСО-1 2X
+scope_zoom_factor	= 20		;ПСО-1 2X
 
 [wpn_addon_scope_susat]:identity_immunities
 GroupControlSection	= spawn_group
@@ -1937,7 +1945,7 @@ inv_grid_height		= 1
 inv_grid_x			= 11
 inv_grid_y			= 18
 scope_texture		= wpn_crosshair_l85
-scope_zoom_factor	= 30		;SUSAT 2X
+scope_zoom_factor	= 25		;SUSAT 2X
 
 [wpn_addon_scope_susat_x1.6]:identity_immunities
 GroupControlSection	= spawn_group
@@ -1961,10 +1969,38 @@ inv_weight		= .2
 
 inv_grid_width		= 1
 inv_grid_height		= 1
+inv_grid_x			= 15
+inv_grid_y			= 22
+scope_texture		= wpn_crosshair_l85
+scope_zoom_factor	= 30		;SUSAT 1.6X
+
+[wpn_addon_scope_susat_x3.0]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn			= "weapons\addons\scope_susat_x1.6" ; option for Level Editor
+class			= WP_SCOPE
+cform           = skeleton
+visual          = dynamics\weapons\wpn_upgrade\wpn_scope_susat.ogf
+description		= wpn_addon_scope_susat_x3.0_descr
+slot = -1
+;$prefetch 		= 64
+
+cost			= 1000
+
+holder_range_modifier	= 1.3
+holder_fov_modifier		= 1.0
+
+inv_name		= wpn_addon_scope_susat_x3.0_name
+inv_name_short	= wpn_addon_scope_susat_x3.0_name
+inv_weight		= .2
+
+inv_grid_width		= 1
+inv_grid_height		= 1
 inv_grid_x			= 10
 inv_grid_y			= 18
 scope_texture		= wpn_crosshair_l85
-scope_zoom_factor	= 50		;SUSAT 1.6X
+scope_zoom_factor	= 16		;SUSAT 3.0X
+
 
 [wpn_addon_scope_susat_custom]:identity_immunities
 GroupControlSection	= spawn_group
@@ -1992,7 +2028,7 @@ inv_grid_x			= 15
 inv_grid_y			= 22
 scope_texture		= wpn_crosshair_l85
 scope_dynamic_zoom = on
-scope_zoom_factor	= 30		;SUSAT 2X
+scope_zoom_factor	= 21		;SUSAT 2X
 
 [wpn_addon_scope_susat_dusk]:identity_immunities
 GroupControlSection	= spawn_group
@@ -2020,7 +2056,7 @@ inv_grid_x			= 5
 inv_grid_y			= 15
 scope_texture		= wpn_crosshair_l85
 scope_nightvision = scope_contrast
-scope_zoom_factor	= 50		;SUSAT 2X
+scope_zoom_factor	= 20		;SUSAT 2X
 
 [wpn_addon_scope_susat_night]:identity_immunities
 GroupControlSection	= spawn_group
@@ -2048,7 +2084,7 @@ inv_grid_x			= 14
 inv_grid_y			= 22
 scope_texture		= wpn_crosshair_l85
 scope_nightvision = scope_nightvision
-scope_zoom_factor	= 30		;SUSAT 2X
+scope_zoom_factor	= 20		;SUSAT 2X
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -2143,3 +2179,130 @@ pp_eff_overlap = false
 pp_eff_name = contrast.ppe
 pp_eff_cyclic = 1
 pp_eff_overlap = false
+
+
+
+
+
+
+[script_bomb]:explosive_fuelcan
+visual          = dynamics\balon\gaz_balon.ogf
+inv_name			= "Взрывчатка"
+inv_name_short		= "Взрывчатка"
+description		= "Взрывчатка"
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 29
+can_take			= false
+cost				= 0
+blast					= 25
+blast_r					= 30
+blast_impulse			= 650
+frags					= 50
+frags_r					= 35
+frag_hit				= 1.50
+frag_hit_impulse		= 100
+hit_type 					= strike
+hit_type_blast			= explosion
+hit_type_frag			= strike
+up_throw_factor		= 0.2
+explode_particles		 = explosions\explosion_fuelcan
+light_color		         = 1.9,1.3,0.5
+light_range		         = 30.0
+light_time 		         = 1.5
+snd_explode = weapons\f1_explode
+wm_size                  = 0.1
+fragment_speed			= 100
+explode_duration		 = 5
+wallmark_section		= explosion_marks
+immunities_sect			= bomba_babah
+
+
+[bomba_babah]
+burn_immunity			= 1.0
+strike_immunity			= 1.0
+shock_immunity			= 1.0
+wound_immunity			= 1.0
+radiation_immunity			= 0
+telepatic_immunity			= 0
+chemical_burn_immunity		= 0
+explosion_immunity			= 1.0
+fire_wound_immunity		= 1.0
+
+
+
+; Для нпс-камикадзе:
+
+[npc_bomb]:explosive_fuelcan
+visual          = dynamics\weapons\wpn_grenades\wpn_f1.ogf
+inv_name			= "Граната"
+inv_name_short		= "Граната"
+description		= "Граната"
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 29
+can_take			= false
+cost				= 0
+blast					= 4
+blast_r					= 6
+blast_impulse			= 250
+frags					= 10
+frags_r					= 11
+frag_hit				= 0.4
+frag_hit_impulse		= 100
+hit_type 				= strike
+hit_type_blast			= explosion
+hit_type_frag			= strike
+up_throw_factor			= 0.2
+explode_particles		 = explosions\explosion_01
+light_color		         = 1.9,1.3,0.5
+light_range		         = 30.0
+light_time 		         = 1.5
+snd_explode 			= weapons\t_rgd5_explosion
+wm_size                  = 0.1
+fragment_speed			= 100
+explode_duration		 = 5
+wallmark_section		= explosion_marks
+immunities_sect			= bomba_babah
+
+
+
+[npc_bomb_smoke]:explosive_fuelcan
+visual          = dynamics\weapons\wpn_grenades\wpn_gd5.ogf
+inv_name			= "Граната"
+inv_name_short		= "Граната"
+description		= "Граната"
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 29
+can_take			= false
+cost				= 0
+blast					= 0
+blast_r					= 0
+blast_impulse			= 0
+frags					= 0
+frags_r					= 0
+frag_hit				= 0.0
+frag_hit_impulse		= 0
+hit_type 				= strike
+hit_type_blast			= explosion
+hit_type_frag			= strike
+up_throw_factor			= 0.2
+explode_particles		 = explosions\explosion_dym
+light_color		         = 1.9,1.3,0.5
+light_range		         = 30.0
+light_time 		         = 1.5
+snd_explode 			= weapons\grenade_gd05
+wm_size                  = 0.1
+fragment_speed			= 50
+explode_duration		 = 12
+wallmark_section		= explosion_marks
+immunities_sect			= bomba_babah
+
+

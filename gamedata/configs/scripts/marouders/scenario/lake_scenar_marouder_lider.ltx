@@ -1,0 +1,75 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = companion@1
+known_info = known_info
+on_death = death
+
+[known_info]
+scenar_maroder_lider2_info
+
+
+[companion@1]
+meet = no_meet
+invulnerable = false
+combat_ignore_keep_when_attacked = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+wounded = wounded@no_wound
+on_info = {=health_le(0.35)} companion@2 %=give_items(wpn_pm)%
+on_actor_dist_le_nvis = 6|companion@2
+
+[companion@2]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+wounded = wounded@no_wound
+on_info = {=actor_dead} companion@4 %=play_sound(marodr_lider2_aktor_kill)%
+on_info2 = {=health_le(0.25) !npc_has_item(wpn_pm)} companion@3 %=give_items(wpn_pm)%
+on_info3 = {!actor_on_ai_net !npc_has_item(wpn_pm)} companion@3 %=give_items(wpn_pm)%
+
+[companion@3]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+can_use_knife = false
+wounded = wounded@no_wound
+on_info = {=actor_dead} companion@4 %=play_sound(marodr_lider2_aktor_kill)%
+
+[companion@4]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+wounded = wounded@no_wound
+
+
+
+[wounded@no_wound]
+hp_state = 0 | wounded_heavy@help_heavy
+hp_state_see = 0 | wounded_heavy@help_heavy
+hp_victim = 0 | nil
+hp_cover = 0 | false
+hp_fight = 0 | false
+
+[death]
+on_info = %+lake_scenar_marod_lider_dead =spawn_lake_marodr_lider_ambush =give_items(aksu_part1:aksu_part2:aksu_part3:aksu_part4:aksu_part5) =lake_marodr_lider_wpn_remove =knife_achivement_check  =actor_kill_quest_npc_replic%
+
+
+
+
+
+
+
+
+
+
+

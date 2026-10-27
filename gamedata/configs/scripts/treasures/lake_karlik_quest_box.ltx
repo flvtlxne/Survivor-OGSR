@@ -1,0 +1,13 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+;on_info = {=master_difficulty} ph_idle@open
+on_info2 = {+lake_house_check} ph_idle@1
+
+[ph_idle@1]
+on_actor_dist_le_nvis = 20|ph_idle@open %=spawn_lake_karlik_quest_mob%
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure

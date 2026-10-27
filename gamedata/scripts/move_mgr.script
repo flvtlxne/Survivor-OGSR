@@ -225,16 +225,16 @@ end
 --' состояние move manager-a не сбрасывается.
 function move_mgr:continue()
 	printf("_bp: object '%s': continue moving", self.object:name())
-	self:setup_movement_by_patrol_path()
+	self:setup_movement_by_patrol_path(true)
 end
 
-function move_mgr:setup_movement_by_patrol_path()
+function move_mgr:setup_movement_by_patrol_path(continue)
 	self.object:set_path_type(game_object.patrol_path)
 	self.object:set_detail_path_type(move.line)
 
 	if self.current_point_index then
 		self.object:set_start_point(self.current_point_index)
-		self.object:set_patrol_path(self.path_walk, patrol.next,    patrol.continue, true)
+		self.object:set_patrol_path(self.path_walk, continue and patrol.next or patrol.custom,    patrol.continue, true)
 	else
 		self.object:set_patrol_path(self.path_walk, patrol.nearest, patrol.continue, true)
 	end

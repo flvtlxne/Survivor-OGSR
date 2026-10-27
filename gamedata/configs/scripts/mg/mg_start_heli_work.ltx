@@ -1,0 +1,1360 @@
+[logic]
+active = heli_move@start
+
+
+; Стартовая секция:
+[heli_move@start]
+path_move = mg_start_heli_point1_walk
+path_look = mg_start_heli_point1_look
+engine_sound = true
+combat_ignore = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 90
+on_info = {!master_difficulty} %=destroy_object%
+on_info2 = {=master_difficulty +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+
+[heli_move@fly0]
+path_move = mg_start_heli_point2_walk
+path_look = mg_start_heli_point2_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 50
+;on_game_timer = 21|{~5} heli_move@fly2 %=send_mg_start_heli_tip1%, {~10} heli_move@fly3 %=send_mg_start_heli_tip1%, {~20} heli_move@fly4 %=send_mg_start_heli_tip1%, {~30} heli_move@fly5 %=send_mg_start_heli_tip1%, {~40} heli_move@fly6 %=send_mg_start_heli_tip1%, {~50} heli_move@fly7 %=send_mg_start_heli_tip1%, {~60} heli_move@fly8 %=send_mg_start_heli_tip1%, {~70} heli_move@fly9 %=send_mg_start_heli_tip1%, {~80} heli_move@fly10, heli_move@fly11 %=send_mg_start_heli_tip1%
+on_game_timer = 21|heli_move@fly1 %=send_mg_start_heli_tip1 =give_task(mg_task_evacuation)%
+
+
+
+; Летаем над актором и ждем, пока пробъет час:
+[heli_move@fly1]
+path_move = mg_start_heli_evac_point_razlom
+path_look = mg_start_heli_evac_point_razlom_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1 %+mg_heli_goto_evac%
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1 %+mg_heli_goto_evac%
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1 %+mg_heli_goto_evac%
+on_info14 = {+mg_zone_forest} heli_move@evac4_1 %+mg_heli_goto_evac%
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1 %+mg_heli_goto_evac%
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1 %+mg_heli_goto_evac%
+on_info17 = {+mg_zone_island} heli_move@evac7_1 %+mg_heli_goto_evac%
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1 %+mg_heli_goto_evac%
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1 %+mg_heli_goto_evac%
+on_info20 = {+mg_zone_willage} heli_move@evac10_1 %+mg_heli_goto_evac%
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1 %+mg_heli_goto_evac%
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info25 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info26 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info27 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info28 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info29 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+
+[heli_move@fly2]
+path_move = mg_start_heli_evac_point_helicrash
+path_look = mg_start_heli_evac_point_helicrash_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info25 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info26 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info27 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info28 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info29 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+[heli_move@fly3]
+path_move = mg_start_heli_evac_point_lonl_house
+path_look = mg_start_heli_evac_point_lonl_house_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info25 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info26 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info27 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info28 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info29 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+[heli_move@fly4]
+path_move = mg_start_heli_evac_point_willage
+path_look = mg_start_heli_evac_point_willage_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info25 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info26 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info27 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info28 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info29 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+[heli_move@fly5]
+path_move = mg_start_heli_evac_point_graveyard
+path_look = mg_start_heli_evac_point_graveyard_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info25 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info26 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info27 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info28 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info29 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+[heli_move@fly6]
+path_move = mg_start_heli_evac_point_workshop
+path_look = mg_start_heli_evac_point_workshop_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info25 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info26 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info27 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info28 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info29 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info30 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info31 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+
+
+[heli_move@fly7]
+path_move = mg_start_heli_evac_point_forest_camp
+path_look = mg_start_heli_evac_point_forest_camp_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info24 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info25 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info26 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info27 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info28 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info29 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+[heli_move@fly8]
+path_move = mg_start_heli_evac_point_radhill
+path_look = mg_start_heli_evac_point_radhill_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info25 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info26 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info27 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info28 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info29 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+[heli_move@fly9]
+path_move = mg_start_heli_evac_point_island
+path_look = mg_start_heli_evac_point_island_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info25 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info26 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info27 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info28 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info29 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+[heli_move@fly10]
+path_move = mg_start_heli_evac_point_forest
+path_look = mg_start_heli_evac_point_forest_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1
+on_info14 = {+mg_zone_forest} heli_move@evac4_1
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1
+on_info17 = {+mg_zone_island} heli_move@evac7_1
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1
+on_info20 = {+mg_zone_willage} heli_move@evac10_1
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1
+
+on_info22 = {=actor_in_zone(script_zone_blokpost)} heli_move@fly11
+on_info23 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info24 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info25 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info26 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info27 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info28 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info29 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info30 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+[heli_move@fly11]
+path_move = mg_start_heli_evac_point_kpp
+path_look = mg_start_heli_evac_point_kpp_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+
+on_info2 = {+mg_heli_airdrop_start +airdrop_pnt1} heli_move@drop1 %=send_mg_heli_airdrop_tip%
+on_info3 = {+mg_heli_airdrop_start +airdrop_pnt2} heli_move@drop2 %=send_mg_heli_airdrop_tip%
+on_info4 = {+mg_heli_airdrop_start +airdrop_pnt3} heli_move@drop3 %=send_mg_heli_airdrop_tip%
+on_info5 = {+mg_heli_airdrop_start +airdrop_pnt4} heli_move@drop4 %=send_mg_heli_airdrop_tip%
+on_info6 = {+mg_heli_airdrop_start +airdrop_pnt5} heli_move@drop5 %=send_mg_heli_airdrop_tip%
+on_info7 = {+mg_heli_airdrop_start +airdrop_pnt6} heli_move@drop6 %=send_mg_heli_airdrop_tip%
+on_info8 = {+mg_heli_airdrop_start +airdrop_pnt7} heli_move@drop7 %=send_mg_heli_airdrop_tip%
+on_info9 = {+mg_heli_airdrop_start +airdrop_pnt8} heli_move@drop8 %=send_mg_heli_airdrop_tip%
+on_info10 = {+mg_heli_airdrop_start +airdrop_pnt9} heli_move@drop9 %=send_mg_heli_airdrop_tip%
+
+on_info11 = {+mg_zone_razlom} heli_move@evac1_1 %=send_mg_start_heli_tip2%
+on_info12 = {+mg_zone_helicrash} heli_move@evac2_1 %=send_mg_start_heli_tip2%
+on_info13 = {+mg_zone_kpp} heli_move@evac3_1 %=send_mg_start_heli_tip2%
+on_info14 = {+mg_zone_forest} heli_move@evac4_1 %=send_mg_start_heli_tip2%
+on_info15 = {+mg_zone_forest_camp} heli_move@evac5_1 %=send_mg_start_heli_tip2%
+on_info16 = {+mg_zone_graveyard} heli_move@evac6_1 %=send_mg_start_heli_tip2%
+on_info17 = {+mg_zone_island} heli_move@evac7_1 %=send_mg_start_heli_tip2%
+on_info18 = {+mg_zone_lonl_house} heli_move@evac8_1 %=send_mg_start_heli_tip2%
+on_info19 = {+mg_zone_radhill} heli_move@evac9_1 %=send_mg_start_heli_tip2%
+on_info20 = {+mg_zone_willage} heli_move@evac10_1 %=send_mg_start_heli_tip2%
+on_info21 = {+mg_zone_workshop} heli_move@evac11_1 %=send_mg_start_heli_tip2%
+
+on_info22 = {=actor_in_zone(script_zone_forest_camp)} heli_move@fly7
+on_info23 = {=actor_in_zone(script_zone_graveyard)} heli_move@fly5
+on_info24 = {=actor_in_zone(script_zone_ground_anomaly)} heli_move@fly1
+on_info25 = {=actor_in_zone(script_zone_helicrash)} heli_move@fly2
+on_info26 = {=actor_in_zone(script_zone_island)} heli_move@fly9
+on_info27 = {=actor_in_zone(script_zone_lonl_house)} heli_move@fly3
+on_info28 = {=actor_in_zone(script_zone_rad_hill)} heli_move@fly8
+on_info29 = {=actor_in_zone(script_zone_willage)} heli_move@fly4
+on_info30 = {=actor_in_zone(script_zone_forest)} heli_move@fly10
+on_info31 = {=actor_in_zone(script_zone_workshop)} heli_move@fly6
+
+
+
+
+; Теперь летим к точке эвакуации:
+
+[heli_move@evac1_1]
+path_move = mg_start_heli_evac_point_razlom
+path_look = mg_start_heli_evac_point_razlom_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac1_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac1_2]
+path_move = mg_start_heli_evac_point_razlom_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac1_3 %+mg_heli_evac_start%
+
+[heli_move@evac1_3]
+path_move = mg_start_heli_evac_point_razlom_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 10
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac1_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac1_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac1_4]
+path_move = mg_start_heli_evac_point_razlom
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac2_1]
+path_move = mg_start_heli_evac_point_helicrash
+path_look = mg_start_heli_evac_point_helicrash_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac2_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac2_2]
+path_move = mg_start_heli_evac_point_helicrash_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac2_3 %+mg_heli_evac_start%
+
+[heli_move@evac2_3]
+path_move = mg_start_heli_evac_point_helicrash_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 10
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac2_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac2_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac2_4]
+path_move = mg_start_heli_evac_point_helicrash
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac3_1]
+path_move = mg_start_heli_evac_point_kpp
+path_look = mg_start_heli_evac_point_kpp_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac3_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac3_2]
+path_move = mg_start_heli_evac_point_kpp_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac3_3 %+mg_heli_evac_start%
+
+[heli_move@evac3_3]
+path_move = mg_start_heli_evac_point_kpp_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 10
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac3_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac3_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac3_4]
+path_move = mg_start_heli_evac_point_kpp
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac4_1]
+path_move = mg_start_heli_evac_point_forest
+path_look = mg_start_heli_evac_point_forest_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac4_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac4_2]
+path_move = mg_start_heli_evac_point_forest_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac4_3 %+mg_heli_evac_start%
+
+[heli_move@evac4_3]
+path_move = mg_start_heli_evac_point_forest_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 10
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac4_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac4_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac4_4]
+path_move = mg_start_heli_evac_point_forest
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac5_1]
+path_move = mg_start_heli_evac_point_forest_camp
+path_look = mg_start_heli_evac_point_forest_camp_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac5_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac5_2]
+path_move = mg_start_heli_evac_point_forest_camp_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac5_3 %+mg_heli_evac_start%
+
+[heli_move@evac5_3]
+path_move = mg_start_heli_evac_point_forest_camp_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 10
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac5_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac5_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac5_4]
+path_move = mg_start_heli_evac_point_forest_camp
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac6_1]
+path_move = mg_start_heli_evac_point_graveyard
+path_look = mg_start_heli_evac_point_graveyard_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac6_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac6_2]
+path_move = mg_start_heli_evac_point_graveyard_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac6_3 %+mg_heli_evac_start%
+
+[heli_move@evac6_3]
+path_move = mg_start_heli_evac_point_graveyard_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 20
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac6_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac6_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac6_4]
+path_move = mg_start_heli_evac_point_graveyard
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac7_1]
+path_move = mg_start_heli_evac_point_island
+path_look = mg_start_heli_evac_point_island_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac7_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac7_2]
+path_move = mg_start_heli_evac_point_island_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac7_3 %+mg_heli_evac_start%
+
+[heli_move@evac7_3]
+path_move = mg_start_heli_evac_point_island_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 20
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac7_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac7_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac7_4]
+path_move = mg_start_heli_evac_point_island
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac8_1]
+path_move = mg_start_heli_evac_point_lonl_house
+path_look = mg_start_heli_evac_point_lonl_house_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac8_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac8_2]
+path_move = mg_start_heli_evac_point_lonl_house_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac8_3 %+mg_heli_evac_start%
+
+[heli_move@evac8_3]
+path_move = mg_start_heli_evac_point_lonl_house_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 20
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac8_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac8_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac8_4]
+path_move = mg_start_heli_evac_point_lonl_house
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac9_1]
+path_move = mg_start_heli_evac_point_radhill
+path_look = mg_start_heli_evac_point_radhill_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac9_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac9_2]
+path_move = mg_start_heli_evac_point_radhill_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac9_3 %+mg_heli_evac_start%
+
+[heli_move@evac9_3]
+path_move = mg_start_heli_evac_point_radhill_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 20
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac9_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac9_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac9_4]
+path_move = mg_start_heli_evac_point_radhill
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac10_1]
+path_move = mg_start_heli_evac_point_willage
+path_look = mg_start_heli_evac_point_willage_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac10_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac10_2]
+path_move = mg_start_heli_evac_point_willage_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac10_3 %+mg_heli_evac_start%
+
+[heli_move@evac10_3]
+path_move = mg_start_heli_evac_point_willage_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 20
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac10_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac10_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac10_4]
+path_move = mg_start_heli_evac_point_willage
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+[heli_move@evac11_1]
+path_move = mg_start_heli_evac_point_workshop
+path_look = mg_start_heli_evac_point_workshop_land
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed | heli_move@evac11_2 %=send_mg_start_heli_tip3%
+
+[heli_move@evac11_2]
+path_move = mg_start_heli_evac_point_workshop_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 5
+on_signal = arriwed | heli_move@evac11_3 %+mg_heli_evac_start%
+
+[heli_move@evac11_3]
+path_move = mg_start_heli_evac_point_workshop_land
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 20
+on_info = {+mg_heli_evacuation_result =dist_to_actor_le(11)} heli_move@evac11_4 %+mg_heli_evac_sucess%, {+mg_heli_evacuation_result !dist_to_actor_le(11)} heli_move@evac11_4 %+mg_heli_evac_fail =send_mg_start_heli_tip4%
+
+[heli_move@evac11_4]
+path_move = mg_start_heli_evac_point_workshop
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = true
+;enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 60
+on_signal = arriwed | heli_move@away %=remowe_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+
+
+; Улетаем в точку ожидания:
+
+[heli_move@away]
+path_move = mg_start_heli_evac_point_centr
+path_look = mg_start_heli_evac_point_centr_look
+engine_sound = false
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 200
+on_info = {+village_seif1_opened} heli_move@fight1 %=send_mg_heli_start_fight_tip%
+on_info2 = {=actor_in_zone(script_zone_blokpost) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info3 = {=actor_in_zone(script_zone_forest_camp) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info4 = {=actor_in_zone(script_zone_graveyard) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info5 = {=actor_in_zone(script_zone_ground_anomaly) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info6 = {=actor_in_zone(script_zone_helicrash) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info7 = {=actor_in_zone(script_zone_island) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info8 = {=actor_in_zone(script_zone_lonl_house) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info9 = {=actor_in_zone(script_zone_rad_hill) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info10 = {=actor_in_zone(script_zone_willage) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info11 = {=actor_in_zone(script_zone_forest) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+on_info12 = {=actor_in_zone(script_zone_workshop) +actor_start_move} heli_move@fly0 %=add_self_spot(mg_heli_mark:mg_heli_mark_text)%
+
+
+
+; Сбрасываем посылку:
+[heli_move@drop1]
+path_move = mg_start_heli_airdrop_pnt1
+path_look = mg_start_heli_airdrop_pnt1_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop1_1 %=mg_heli_spawn_airdrop1%
+
+[heli_move@drop1_1]
+path_move = mg_start_heli_airdrop_pnt1
+path_look = mg_start_heli_airdrop_pnt1_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+[heli_move@drop2]
+path_move = mg_start_heli_airdrop_pnt2
+path_look = mg_start_heli_airdrop_pnt2_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop2_1 %=mg_heli_spawn_airdrop2%
+
+[heli_move@drop2_1]
+path_move = mg_start_heli_airdrop_pnt2
+path_look = mg_start_heli_airdrop_pnt2_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+[heli_move@drop3]
+path_move = mg_start_heli_airdrop_pnt3
+path_look = mg_start_heli_airdrop_pnt3_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop3_1 %=mg_heli_spawn_airdrop3%
+
+[heli_move@drop3_1]
+path_move = mg_start_heli_airdrop_pnt3
+path_look = mg_start_heli_airdrop_pnt3_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+[heli_move@drop4]
+path_move = mg_start_heli_airdrop_pnt4
+path_look = mg_start_heli_airdrop_pnt4_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop4_1 %=mg_heli_spawn_airdrop4%
+
+[heli_move@drop4_1]
+path_move = mg_start_heli_airdrop_pnt4
+path_look = mg_start_heli_airdrop_pnt4_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+[heli_move@drop5]
+path_move = mg_start_heli_airdrop_pnt5
+path_look = mg_start_heli_airdrop_pnt5_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop5_1 %=mg_heli_spawn_airdrop5%
+
+[heli_move@drop5_1]
+path_move = mg_start_heli_airdrop_pnt5
+path_look = mg_start_heli_airdrop_pnt5_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+[heli_move@drop6]
+path_move = mg_start_heli_airdrop_pnt6
+path_look = mg_start_heli_airdrop_pnt6_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop6_1 %=mg_heli_spawn_airdrop6%
+
+[heli_move@drop6_1]
+path_move = mg_start_heli_airdrop_pnt6
+path_look = mg_start_heli_airdrop_pnt6_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+[heli_move@drop7]
+path_move = mg_start_heli_airdrop_pnt7
+path_look = mg_start_heli_airdrop_pnt7_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop7_1 %=mg_heli_spawn_airdrop7%
+
+[heli_move@drop7_1]
+path_move = mg_start_heli_airdrop_pnt7
+path_look = mg_start_heli_airdrop_pnt7_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+[heli_move@drop8]
+path_move = mg_start_heli_airdrop_pnt8
+path_look = mg_start_heli_airdrop_pnt8_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop8_1 %=mg_heli_spawn_airdrop8%
+
+[heli_move@drop8_1]
+path_move = mg_start_heli_airdrop_pnt8
+path_look = mg_start_heli_airdrop_pnt8_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+[heli_move@drop9]
+path_move = mg_start_heli_airdrop_pnt9
+path_look = mg_start_heli_airdrop_pnt9_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_signal = arriwed | heli_move@drop9_1 %=mg_heli_spawn_airdrop9%
+
+[heli_move@drop9_1]
+path_move = mg_start_heli_airdrop_pnt9
+path_look = mg_start_heli_airdrop_pnt9_land
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 70
+on_game_timer = 17|heli_move@fly1 %-mg_heli_airdrop_start =mg_scav1_mark =hit_obj(mg_airdrop:link:10:10:mg_start_heli_airdrop_pnt1)%
+
+
+
+
+
+; Мочим актора:
+[heli_move@fight1]
+path_move = mg_start_heli_evac_point_willage_fight1
+path_look = mg_start_heli_evac_point_willage_land
+engine_sound = true
+enemy = actor
+use_rocket = false
+invulnerable = false
+immortal = false
+max_velocity = 120
+show_health = true
+;upd_vis = 8
+on_info = {=heli_health_le(0.2)} heli_move@crash1 %=heli_start_flame =send_mg_start_heli_tip5%
+on_signal = arriwed|heli_move@fight2
+
+[heli_move@fight2]
+path_move = mg_start_heli_evac_point_willage_fight2
+path_look = mg_start_heli_evac_point_willage_land
+engine_sound = true
+enemy = actor
+use_rocket = false
+invulnerable = false
+immortal = false
+max_velocity = 120
+show_health = true
+;upd_vis = 8
+on_info = {=heli_health_le(0.2)} heli_move@crash1 %=heli_start_flame =send_mg_start_heli_tip5%
+on_signal = arriwed|heli_move@fight3
+
+[heli_move@fight3]
+path_move = mg_start_heli_evac_point_willage_fight3
+path_look = mg_start_heli_evac_point_willage_land
+engine_sound = true
+enemy = actor
+use_rocket = false
+invulnerable = false
+immortal = false
+max_velocity = 120
+show_health = true
+;upd_vis = 8
+on_info = {=heli_health_le(0.2)} heli_move@crash1 %=heli_start_flame =send_mg_start_heli_tip5%
+on_signal = arriwed|heli_move@fight4
+
+[heli_move@fight4]
+path_move = mg_start_heli_evac_point_willage_fight4
+path_look = mg_start_heli_evac_point_willage_land
+engine_sound = true
+enemy = actor
+use_rocket = false
+invulnerable = false
+immortal = false
+max_velocity = 120
+show_health = true
+;upd_vis = 8
+on_info = {=heli_health_le(0.2)} heli_move@crash1 %=heli_start_flame =send_mg_start_heli_tip5%
+on_signal = arriwed|heli_move@fight1
+
+
+
+; Падаем:
+[heli_move@crash1]
+path_move = mg_start_heli_evac_point_willage_crash
+path_look = mg_start_heli_evac_point_willage_land
+engine_sound = true
+;enemy = actor
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 80
+on_signal = arriwed|heli_move@crash2 %=spawn_mg_kpp_boss2 +mg_heli_die%
+
+[heli_move@crash2]
+path_move = mg_start_heli_evac_point_willage_crash
+path_look = mg_start_heli_evac_point_willage_land
+engine_sound = true
+;enemy = actor
+combat_use_rocket = false
+invulnerable = true
+immortal = false
+max_velocity = 80
+on_game_timer = 27|%=heli_die%
+
+

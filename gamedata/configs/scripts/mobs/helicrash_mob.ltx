@@ -1,0 +1,18 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = mob_home
+on_death = mob_death
+
+[mob_home]
+path_home = travel_point_helicrash
+home_min_radius  = 5
+home_max_radius = 25
+aggressive = true
+combat_ignore_cond = false
+
+[mob_death]
+on_info = %=inc_counter(mb_hl)%
+
+

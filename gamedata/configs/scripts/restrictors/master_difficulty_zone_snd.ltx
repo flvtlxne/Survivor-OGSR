@@ -1,0 +1,61 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {!master_difficulty} sr_idle@nil
+on_info2 = {=master_difficulty} sr_idle@2
+
+[sr_idle@2]
+on_info = {+mg_deathzone_phase9} sr_idle@2_1
+
+[sr_idle@2_1]
+on_game_timer = 1|{~30} sr_sound_act@1, {~60} sr_sound_act@2, sr_sound_act@3
+
+
+[sr_sound_act@1]
+snd = music\mg_evac_music_1
+delay = 0
+delay_max = 100
+stereo = false
+on_info = {+mg_heli_evac_sucess} sr_idle@3
+on_info2 = {=actor_has_item(af_compass) +mg_kpp_boss_dead} sr_idle@3
+on_signal = sound_end|sr_idle@3
+
+[sr_sound_act@2]
+snd = music\mg_evac_music_2
+delay = 0
+delay_max = 100
+stereo = false
+on_info = {+mg_heli_evac_sucess} sr_idle@3
+on_info2 = {=actor_has_item(af_compass) +mg_kpp_boss_dead} sr_idle@3
+on_signal = sound_end|sr_idle@3
+
+[sr_sound_act@3]
+snd = music\mg_evac_music_3
+delay = 0
+delay_max = 100
+stereo = false
+on_info = {+mg_heli_evac_sucess} sr_idle@3
+on_info2 = {=actor_has_item(af_compass) +mg_kpp_boss_dead} sr_idle@3
+on_signal = sound_end|sr_idle@3
+
+
+
+
+[sr_idle@3]
+on_info = {-mg_deathzone_phase9} sr_idle@2
+
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+
+
+
+
+

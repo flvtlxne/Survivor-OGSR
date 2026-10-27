@@ -1,0 +1,11 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_pogreb_scelet_tip
+on_use = {=actor_has_item(showel)} ph_idle@2 %+lonl_house_pogreb_scelet_off%
+on_info = {=master_difficulty} %=destroy_object%
+
+[ph_idle@2]
+
+ 

@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {=counter_equal(stress:0)} %=stress_effect0%
+on_info3 = {=counter_greater(stress:4) !counter_greater(stress:9)} %=stress_effect1%
+on_info4 = {=counter_greater(stress:9) !counter_greater(stress:14)} %=stress_effect2%
+on_info5 = {=counter_greater(stress:14)} %=stress_effect3%
+
+
+[sr_idle@nil]
+
+

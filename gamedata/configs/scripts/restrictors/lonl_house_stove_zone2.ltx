@@ -1,0 +1,18 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+lonl_house_stove_works} sr_particle@smoke
+
+[sr_particle@smoke]
+name = explosions\effects\expl_car_smoke_big_smoke
+path = lonl_house_stove_point2
+mode = 2
+looped = false
+on_info = {-lonl_house_stove_works} sr_idle@1
+
+
+[sr_idle@nil]
+
+

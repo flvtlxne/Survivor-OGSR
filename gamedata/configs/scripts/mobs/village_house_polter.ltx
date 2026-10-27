@@ -1,0 +1,17 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = mob_home
+on_death = mob_death
+
+[mob_home]
+path_home = village_house_polter_pnt
+home_min_radius = 8
+home_max_radius = 25
+;in_restr = village_house_polter_zone
+out_restr = village_house_polter_zone
+
+
+[mob_death]
+on_info = %+village_house_polter_dead%

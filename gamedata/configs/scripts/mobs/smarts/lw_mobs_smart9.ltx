@@ -1,0 +1,13 @@
+[smart_terrain]
+squad_id = 108
+max_population = 1
+respawn_params = respawn@lw_sim9
+respawn_radius = 50
+
+[respawn@lw_sim9]
+spawn_lw_sim9
+
+[spawn_lw_sim9]
+spawn_squads = lw_mobs_team9, lw_mobs_team9_1, lw_mobs_team9_2, lw_mobs_team9_3
+spawn_num = {+global_respawn} 1, 0
+;spawn_num = {=surge_complete} 1, 0

@@ -1,0 +1,12 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips = mg_airdrop_use
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_lost} %=destroy_object%
+on_use = %=mg_airdrop_use =destroy_object =actor_finds_goodloot_snd +mg_airdrop_gathered%

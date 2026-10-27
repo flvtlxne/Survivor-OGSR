@@ -1,0 +1,73 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+
+[walker@start]
+path_walk = chimera_hunter_walk1
+path_look = chimera_hunter_look1
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} walker@1 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_sayga} walker@1 %=give_items(wpn_sayga)%
+on_info6 = {+actor_has_mosin} walker@1 %=give_items(wpn_m1891)%
+on_info7 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_sayga -actor_has_mosin} walker@1
+
+[walker@1]
+path_walk = chimera_hunter_walk1
+path_look = chimera_hunter_look1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+maroder_chimera_bad} remark@punch %=disable_ui%
+on_info2 = {+maroder_chimera_good} walker@2
+
+[remark@punch]
+snd = chimera_hunter_say
+anim = punch
+target = story | actor
+combat_ignore_cond = true
+invulnerable = true
+on_signal = anim_end | walker@2 %=enable_ui =run_postprocess(fade_in) =actor_goto_lonl_house +critical_health%
+
+
+[walker@2]
+path_walk = chimera_hunter_walk1
+path_look = chimera_hunter_look1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+meet = no_meet
+on_actor_dist_ge_nvis = 40|%=destroy_object%
+
+
+
+
+
+
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+
+
+
+

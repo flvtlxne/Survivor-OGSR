@@ -178,7 +178,7 @@ break_sound			= material\bottle\collide\bottle_break_1
 boost_time				= 5.0
 boost_radiation_restore	= 0.005
 eat_alcohol				= 0.1
-eat_satiety				= -0.2
+eat_satiety				= -0.1
 
 use_sound			= interface\inv_vodka
 
@@ -426,8 +426,8 @@ description			= st_drug_booster_descr
 
 inv_grid_width		= 1
 inv_grid_height		= 1
-inv_grid_x			= 18
-inv_grid_y			= 7
+inv_grid_x			= 19
+inv_grid_y			= 5
 cost				= 200
 
 boost_time			= 300.0
@@ -741,3 +741,2965 @@ anim_hide			= vodka_4
 anim_play			= vodka_5
 anim_prepare		= vodka_5
 anim_eat			= vodka_3
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;	LOST_WILLAGE_MOD
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[helicras_radio]:antirad
+$spawn 				= "food and drugs\helicras_radio"
+visual				= dynamics\devices\dev_datchik_2\dev_datchik_2.ogf
+inv_name			= helicras_radio_name
+inv_name_short		= helicras_radio_name
+description			= helicras_radio_descr
+inv_weight			= 0.8
+
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 19
+inv_grid_y			= 22
+cost				= 500
+boost_time			= 0.0
+boost_radiation_restore	= 0.0
+use_sound			= interface\inv_equipment
+eat_portions_num	= 10000000
+
+
+[helicrash_box_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\helicrash_box_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\key.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 4
+inv_grid_y			= 15
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= helicrash_box_key_name
+inv_name_short		= helicrash_box_key_name
+description			= helicrash_box_key_descr
+cost				= 10
+can_trade			= false
+quest_item     		= false
+
+
+[lonl_house_pogreb_door_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_pogreb_door_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\key.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 4
+inv_grid_y			= 15
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= lonl_house_pogreb_door_key_name
+inv_name_short		= lonl_house_pogreb_door_key_name
+description			= lonl_house_pogreb_door_key_descr
+cost				= 10
+can_trade			= false
+quest_item     		= false
+
+
+[kpp_bunker_door_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\kpp_bunker_door_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\key.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 4
+inv_grid_y			= 15
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= kpp_bunker_door_key_name
+inv_name_short		= kpp_bunker_door_key_name
+description			= kpp_bunker_door_key_descr
+cost				= 10
+can_trade			= false
+quest_item     		= false
+
+
+[workshop_budka1_door_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\workshop_budka1_door_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\key.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 4
+inv_grid_y			= 15
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= workshop_budka1_door_key_name
+inv_name_short		= workshop_budka1_door_key_name
+description			= workshop_budka1_door_key_descr
+cost				= 10
+can_trade			= false
+quest_item     		= false
+
+
+
+
+[weapon_remkit]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\weapon_remkit"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 14
+inv_grid_y			= 23
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.0
+
+inv_name			= weapon_remkit_name
+inv_name_short		= weapon_remkit_name
+description			= weapon_remkit_descr
+cost				= 450
+can_trade			= true
+quest_item     		= false
+
+
+[armor_remkit]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\armor_remkit"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 2
+inv_grid_y			= 28
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.0
+
+inv_name			= armor_remkit_name
+inv_name_short		= armor_remkit_name
+description			= armor_remkit_descr
+cost				= 500
+can_trade			= true
+quest_item     		= false
+
+
+[bolts]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\bolts"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 14
+inv_grid_y			= 25
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.0
+
+inv_name			= bolts_name
+inv_name_short		= bolts_name
+description			= bolts_descr
+cost				= 1
+can_trade			= true
+quest_item     		= false
+
+
+[actors_note]:antirad
+$spawn 				= "food and drugs\actors_note"
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+inv_name			= actors_note_name
+inv_name_short		= actors_note_name
+description			= actors_note_descr
+inv_weight			= 0.01
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 16
+inv_grid_y			= 24
+cost				= 10
+boost_time			= 0.0
+boost_radiation_restore	= 0.0
+use_sound			= interface\inv_papers
+eat_portions_num	= 10000000
+quest_item     		= true
+
+
+[firewood]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\firewood"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 13
+inv_grid_y			= 26
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 2.5
+
+inv_name			= firewood_name
+inv_name_short		= firewood_name
+description			= firewood_descr
+cost				= 10
+can_trade			= true
+quest_item     		= false
+
+
+
+[kanistra_empty]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\kanistra_empty"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\balon\kanistra.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 6
+inv_grid_y			= 27
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.0
+
+inv_name			= kanistra_empty_name
+inv_name_short		= kanistra_empty_name
+description			= kanistra_empty_descr
+cost				= 100
+can_trade			= true
+quest_item     		= false
+
+
+[kanistra_full]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\kanistra_full"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\balon\kanistra.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 6
+inv_grid_y			= 27
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 3.0
+
+inv_name			= kanistra_full_name
+inv_name_short		= kanistra_full_name
+description			= kanistra_full_descr
+cost				= 150
+can_trade			= true
+quest_item     		= false
+
+
+[vedro_empty]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\vedro_empty"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\workshop_room\vedro_01.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 27
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.0
+
+inv_name			= vedro_empty_name
+inv_name_short		= vedro_empty_name
+description			= vedro_empty_descr
+cost				= 20
+can_trade			= true
+quest_item     		= false
+
+
+[vedro_full]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\vedro_full"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\workshop_room\vedro_01.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 27
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 8.0
+
+inv_name			= vedro_full_name
+inv_name_short		= vedro_full_name
+description			= vedro_full_descr
+cost				= 30
+can_trade			= true
+quest_item     		= false
+
+
+[wood_log]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\wood_log"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 3
+inv_grid_height		= 1
+inv_grid_x			= 0
+inv_grid_y			= 27
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 5.0
+
+inv_name			= wood_log_name
+inv_name_short		= wood_log_name
+description			= wood_log_descr
+cost				= 10
+can_trade			= true
+quest_item     		= false
+
+
+[village_seif1_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\village_seif1_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\key.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 4
+inv_grid_y			= 15
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= village_seif1_key_name
+inv_name_short		= village_seif1_key_name
+description			= village_seif1_key_descr
+cost				= 10
+can_trade			= false
+quest_item     		= true
+
+
+
+[rnd_task_kpp_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_kpp_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			=  0
+inv_grid_y			= 30
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 2.0
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_willage_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_willage_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			=  0
+inv_grid_y			= 28
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_workshop_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_workshop_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			=  0
+inv_grid_y			= 29
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_graveyard_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_graveyard_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			=  0
+inv_grid_y			= 32
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_rad_hill_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_rad_hill_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			=  4
+inv_grid_y			= 31
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_razlom_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_razlom_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			=  2
+inv_grid_y			= 32
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_island_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_island_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			=  4
+inv_grid_y			= 32
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_forest_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_forest_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			=  2
+inv_grid_y			= 29
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_forest_camp_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_forest_camp_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			=  0
+inv_grid_y			= 35
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 2.0
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+[rnd_task_helicrash_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\rnd_task_forest_camp_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 17
+inv_grid_y			= 26
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 2.0
+
+inv_name			= rnd_task_item_name
+inv_name_short		= rnd_task_item_name
+description			= rnd_task_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+
+
+[aksu_wrecked]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\aksu_wrecked"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\weapons\wpn_ak74u\wpn_ak74u.ogf
+
+inv_grid_width		= 4
+inv_grid_height		= 2
+inv_grid_x			=  0
+inv_grid_y			= 33
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 2.5
+
+inv_name			= aksu_wrecked_name
+inv_name_short		= aksu_wrecked_name
+description			= aksu_wrecked_descr
+cost				= 300
+can_trade			= true
+quest_item     		= false
+
+
+[pm_wrecked]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\pm_wrecked"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\weapons\wpn_pm\wpn_pm.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			=  4
+inv_grid_y			= 33
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.5
+
+inv_name			= pm_wrecked_name
+inv_name_short		= pm_wrecked_name
+description			= pm_wrecked_descr
+cost				= 10
+can_trade			= true
+quest_item     		= false
+
+
+
+[weapon_parts]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\weapon_parts"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_transistors.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 3
+inv_grid_y			= 27
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.3
+
+inv_name			= weapon_parts_name
+inv_name_short		= weapon_parts_name
+description			= weapon_parts_descr
+cost				= 500
+can_trade			= true
+quest_item     		= false
+
+
+
+[gas_balon]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\gas_balon"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\balon\gaz_balon.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 29
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 4.5
+
+inv_name			= gas_balon_name
+inv_name_short		= gas_balon_name
+description			= gas_balon_descr
+cost				= 1000
+can_trade			= true
+quest_item     		= false
+
+
+[gas_balon_big]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\gas_balon_big"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\balon\balon_01.ogf
+
+inv_grid_width		= 5
+inv_grid_height		= 2
+inv_grid_x			= 15
+inv_grid_y			= 35
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 10.0
+
+inv_name			= gas_balon_big_name
+inv_name_short		= gas_balon_big_name
+description			= gas_balon_big_descr
+cost				= 3000
+can_trade			= true
+quest_item     		= false
+
+
+
+[showel]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\showel"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\workshop_room\lopata.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 4
+inv_grid_x			= 10
+inv_grid_y			= 30
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= showel_name
+inv_name_short		= showel_name
+description			= showel_descr
+cost				= 10
+can_trade			= true
+quest_item     		= false
+
+
+
+[lonl_house_deadman_diary1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary1"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary2"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary3]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary3"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary4]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary4"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary5]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary5"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary6]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary6"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary7]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary7"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary8]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary8"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary9]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary9"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lonl_house_deadman_diary10]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lonl_house_deadman_diary10"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 19
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lonl_house_deadman_diary_name
+inv_name_short		= lonl_house_deadman_diary_name
+description			= lonl_house_deadman_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+
+[lost_soldier_diary1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lost_soldier_diary1"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lost_soldier_diary_name
+inv_name_short		= lost_soldier_diary_name
+description			= lost_soldier_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lost_soldier_diary2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lost_soldier_diary2"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lost_soldier_diary_name
+inv_name_short		= lost_soldier_diary_name
+description			= lost_soldier_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lost_soldier_diary3]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lost_soldier_diary3"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lost_soldier_diary_name
+inv_name_short		= lost_soldier_diary_name
+description			= lost_soldier_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lost_soldier_diary4]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lost_soldier_diary4"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lost_soldier_diary_name
+inv_name_short		= lost_soldier_diary_name
+description			= lost_soldier_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[lost_soldier_diary5]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lost_soldier_diary5"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= lost_soldier_diary_name
+inv_name_short		= lost_soldier_diary_name
+description			= lost_soldier_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[likvidator_diary1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\likvidator_diary1"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= likvidator_diary_name
+inv_name_short		= likvidator_diary_name
+description			= likvidator_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[likvidator_diary2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\likvidator_diary2"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= likvidator_diary_name
+inv_name_short		= likvidator_diary_name
+description			= likvidator_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[likvidator_diary3]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\likvidator_diary3"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0
+
+inv_name			= likvidator_diary_name
+inv_name_short		= likvidator_diary_name
+description			= likvidator_diary_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+
+
+[village_ambush_door_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\village_ambush_door_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\key.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 4
+inv_grid_y			= 15
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= village_ambush_door_key_name
+inv_name_short		= village_ambush_door_key_name
+description			= village_ambush_door_key_descr
+cost				= 10
+can_trade			= false
+quest_item     		= true
+
+
+[marouder_lider_3pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\marouder_lider_3pda"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= marouder_lider_3pda_name
+inv_name_short		= marouder_lider_3pda_name
+description			= marouder_lider_3pda_descr
+cost				= 100
+can_trade			= false
+quest_item     		= true
+
+
+[lw_stranger_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\lw_stranger_pda"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= lw_stranger_pda_name
+inv_name_short		= lw_stranger_pda_name
+description			= lw_stranger_pda_descr
+cost				= 100
+can_trade			= false
+quest_item     		= false
+
+
+[satellite_memory_block]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\satellite_memory_block"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 21
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.5
+
+inv_name			= satellite_memory_block_name
+inv_name_short		= satellite_memory_block_name
+description			= satellite_memory_block_descr
+cost				= 1000
+can_trade			= false
+quest_item     		= true
+
+
+[shron_merc_lider_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\shron_merc_lider_pda"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= shron_merc_lider_pda_name
+inv_name_short		= shron_merc_lider_pda_name
+description			= shron_merc_lider_pda_descr
+cost				= 100
+can_trade			= false
+quest_item     		= true
+
+
+[artefact_scaner]:device_pda
+$spawn 				= "quest_items\artefact_scaner"
+description			= artefact_scaner_descr
+inv_name			= artefact_scaner_name
+visual				= dynamics\equipments\quest\scanner_anomaly.ogf
+inv_weight			= 2
+;story_id 			= jup_b209_monster_scanner
+can_trade			= false
+quest_item     		= true
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 10
+inv_grid_y			= 23
+
+
+[scaner_maroder1_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\scaner_maroder1_pda"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= scaner_maroder1_pda_name
+inv_name_short		= scaner_maroder1_pda_name
+description			= scaner_maroder1_pda_descr
+cost				= 100
+can_trade			= false
+quest_item     		= true
+
+
+
+[item_komp_monitor]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\item_komp_monitor"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\el_tehnika\komp_monitor.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 6
+inv_grid_y			= 37
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 4.0
+
+inv_name			= workshop_komp_monitor_use
+inv_name_short		= workshop_komp_monitor_use
+description			= komp_monitor_descr
+cost				= 1000
+can_trade			= true
+quest_item     		= false
+
+
+[item_komp_block]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\item_komp_block"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\el_tehnika\komp_blok.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 6
+inv_grid_y			= 35
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 3.0
+
+inv_name			= village_komp_block_use
+inv_name_short		= village_komp_block_use
+description			= komp_block_descr
+cost				= 2000
+can_trade			= true
+quest_item     		= false
+
+
+[item_komp_klava]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\item_komp_klava"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\el_tehnika\komp_klava.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 8
+inv_grid_y			= 36
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.5
+
+inv_name			= village_komp_klava_use
+inv_name_short		= village_komp_klava_use
+description			= komp_klava_descr
+cost				= 500
+can_trade			= true
+quest_item     		= false
+
+
+
+
+[medkit_amateur1]:booster
+$spawn 				= "food and drugs\medkit_amateur1"
+visual				= dynamics\devices\dev_aptechka\dev_aptechka_low.ogf
+inv_name			= medkit_amateur1_name
+inv_name_short		= medkit_amateur1_name
+description			= medkit_amateur1_descr
+inv_weight			= 0.1
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 8
+inv_grid_y			= 35
+cost			= 100
+
+boost_time		= 7.0
+boost_health_restore		= 0.005
+boost_radiation_restore	= 0.0
+boost_bleeding_restore	= 0.005
+
+use_sound			= interface\inv_medkit
+
+
+[medkit_amateur2]:booster
+$spawn 				= "food and drugs\medkit_amateur2"
+visual				= dynamics\devices\dev_aptechka\dev_aptechka_low.ogf
+inv_name			= medkit_amateur2_name
+inv_name_short		= medkit_amateur2_name
+description			= medkit_amateur2_descr
+inv_weight			= 0.15
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 9
+inv_grid_y			= 35
+cost			= 160
+
+boost_time		= 7.0
+boost_health_restore		= 0.01
+boost_radiation_restore	= 0.01
+boost_bleeding_restore	= 0.006
+
+use_sound			= interface\inv_medkit
+
+
+[drug_serum]:booster
+$spawn 				= "food and drugs\drug_serum"
+visual				= dynamics\equipments\medical\drug_coagulant.ogf
+inv_name			= drug_serum_name
+inv_name_short		= drug_serum_name
+description			= drug_serum_descr
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 9
+inv_grid_y			= 34
+cost				= 100
+
+boost_time				= 20.0
+boost_wound_immunity	= 1
+boost_bleeding_restore	= 0.03
+
+use_sound			= interface\inv_pills
+
+
+[drug_steampack]:booster
+$spawn 				= "food and drugs\drug_steampack"
+visual				= dynamics\equipments\medical\drug_booster.ogf
+inv_name			= drug_steampack_name
+inv_name_short		= drug_steampack_name
+description			= drug_steampack_descr
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 7
+inv_grid_y			= 31
+cost				= 200
+
+boost_time			= 300.0
+boost_max_weight	= 20.0
+boost_power_restore		= 0.005
+
+use_sound			= interface\inv_steampack
+
+
+[drug_antitoxin]:booster
+$spawn 				= "food and drugs\drug_antitoxin"
+visual				= dynamics\equipments\medical\drug_antidot.ogf
+inv_name			= drug_antitoxin_name
+inv_name_short		= drug_antitoxin_name
+description			= drug_antitoxin_descr
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 34
+cost				= 250
+
+boost_time				= 60.0
+;boost_chemburn_immunity	= 0.1
+boost_chemburn_protection 	= 0.1
+
+use_sound			= interface\inv_pills
+
+
+[braga]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\braga"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\kitchen_room\butil_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 35
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.0
+
+inv_name			= braga_name
+inv_name_short		= braga_name
+description			= braga_descr
+cost				= 50
+can_trade			= true
+quest_item     		= false
+
+
+
+
+
+; Ветрогенератор(лопасти)
+[wind_generator_wing]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\wind_generator_wing"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_transistors.ogf
+
+inv_grid_width		= 5
+inv_grid_height		= 2
+inv_grid_x			= 8
+inv_grid_y			= 37
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 5.0
+
+inv_name			= wind_generator_wing_name
+inv_name_short		= wind_generator_wing_name
+description			= wind_generator_wing_descr
+cost				= 1000
+can_trade			= true
+quest_item     		= false
+
+
+; Ветрогенератор(редуктор)
+[wind_generator_reductor]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\wind_generator_reductor"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_transistors.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 2
+inv_grid_y			= 35
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 7.0
+
+inv_name			= wind_generator_reductor_name
+inv_name_short		= wind_generator_reductor_name
+description			= wind_generator_reductor_descr
+cost				= 2000
+can_trade			= true
+quest_item     		= false
+
+
+[personal_dog_note1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\personal_dog_note1"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= personal_dog_note1_name
+inv_name_short		= personal_dog_note1_name
+description			= personal_dog_note1_descr
+cost				= 0
+can_trade			= false
+quest_item     		= false
+
+
+[personal_dog_note2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\personal_dog_note2"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= personal_dog_note1_name
+inv_name_short		= personal_dog_note1_name
+description			= personal_dog_note1_descr
+cost				= 0
+can_trade			= false
+quest_item     		= false
+
+
+
+[likvidator_treasure]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\likvidator_treasure"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\box\box_lab_01.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 39
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 1.0
+
+inv_name			= likvidator_treasure_name
+inv_name_short		= likvidator_treasure_name
+description			= likvidator_treasure_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+
+[item_napilnik]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\item_napilnik"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\box\box_lab_01.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 11
+inv_grid_y			= 31
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.5
+
+inv_name			= item_napilnik_name
+inv_name_short		= item_napilnik_name
+description			= item_napilnik_descr
+cost				= 0
+can_trade			= true
+quest_item     		= false
+
+
+[anomaly_maroder1_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\anomaly_maroder1_pda"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= anomaly_maroder1_pda_name
+inv_name_short		= anomaly_maroder1_pda_name
+description			= anomaly_maroder1_pda_descr
+cost				= 100
+can_trade			= false
+quest_item     		= true
+
+
+
+[item_bomb]:antirad
+$spawn 				= "food and drugs\item_bomb"
+visual				= dynamics\balon\gaz_balon.ogf
+inv_name			= item_bomb_name
+inv_name_short		= item_bomb_name
+description			= item_bomb_descr
+inv_weight			= 5.5
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 34
+cost				= 1500
+boost_time			= 0.0
+boost_radiation_restore	= 0.0
+use_sound			= remkit\ui_repairweapon_01
+quest_item     		= false
+
+
+[detonator]:antirad
+$spawn 				= "food and drugs\detonator"
+visual				= dynamics\devices\dev_datchik_2\dev_datchik_2.ogf
+inv_name			= detonator_name
+inv_name_short		= detonator_name
+description			= detonator_descr
+inv_weight			= 0.5
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 31
+cost				= 1500
+boost_time			= 0.0
+boost_radiation_restore	= 0.0
+use_sound			= interface\inv_equipment
+quest_item     		= false
+eat_portions_num	= 10000000
+
+
+
+[narkoman_note1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\narkoman_note1"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= narkoman_note_name
+inv_name_short		= narkoman_note_name
+description			= narkoman_note_descr
+cost				= 0
+can_trade			= false
+quest_item     		= false
+
+
+[narkoman_note2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\narkoman_note2"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= narkoman_note_name
+inv_name_short		= narkoman_note_name
+description			= narkoman_note_descr
+cost				= 0
+can_trade			= false
+quest_item     		= false
+
+
+[narkoman_note3]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\narkoman_note3"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= narkoman_note_name
+inv_name_short		= narkoman_note_name
+description			= narkoman_note_descr
+cost				= 0
+can_trade			= false
+quest_item     		= false
+
+
+[narkoman_note4]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\narkoman_note4"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= narkoman_note_name
+inv_name_short		= narkoman_note_name
+description			= narkoman_note_descr
+cost				= 0
+can_trade			= false
+quest_item     		= false
+
+
+
+[narkoman_door_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\narkoman_door_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\key.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 4
+inv_grid_y			= 15
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= narkoman_door_key_name
+inv_name_short		= narkoman_door_key_name
+description			= narkoman_door_key_descr
+cost				= 10
+can_trade			= false
+quest_item     		= false
+
+
+
+[mushrom]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\mushrom"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\artefacts\af_blood.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 1
+inv_grid_y			= 39
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.3
+
+inv_name			= mushrom_name
+inv_name_short		= mushrom_name
+description			= mushrom_descr
+cost				= 10
+can_trade			= false
+quest_item     		= true
+
+
+
+[narkoman_pribor_instruction]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\narkoman_pribor_instruction"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 3
+inv_grid_y			= 22
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= narkoman_pribor_instruction_name
+inv_name_short		= narkoman_pribor_instruction_name
+description			= narkoman_pribor_instruction_descr
+cost				= 10
+can_trade			= true
+quest_item     		= false
+
+
+[maroder_zavhoz_note]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\maroder_zavhoz_note"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= maroder_zavhoz_note_name
+inv_name_short		= maroder_zavhoz_note_name
+description			= maroder_zavhoz_note_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+
+[arthunter_note1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\arthunter_note1"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= arthunter_note1_name
+inv_name_short		= arthunter_note1_name
+description			= arthunter_note1_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+[arthunter_note2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\arthunter_note2"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= arthunter_note1_name
+inv_name_short		= arthunter_note1_name
+description			= arthunter_note1_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+[arthunter_note3]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\arthunter_note3"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= arthunter_note1_name
+inv_name_short		= arthunter_note1_name
+description			= arthunter_note1_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+
+[af_teleport_item]:antirad
+$spawn 				= "food and drugs\af_teleport_item"
+visual				= dynamics\artefacts\af_electra_flash.ogf
+inv_name			= af_teleport_name
+inv_name_short		= af_teleport_name
+description			= af_teleport_descr
+inv_weight			= 0.5
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 2
+inv_grid_y			= 39
+cost				= 8000
+boost_time			= 0.0
+boost_radiation_restore	= 0.0
+use_sound		= anomaly\gravity_entrance
+quest_item     		= false
+eat_portions_num	= 10000000
+
+
+
+[btr_maroder_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\btr_maroder_pda"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= btr_maroder_pda_name
+inv_name_short		= btr_maroder_pda_name
+description			= btr_maroder_pda_descr
+cost				= 100
+can_trade			= false
+quest_item     		= true
+
+
+[village_roof_maroder_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\village_roof_maroder_pda"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= village_roof_maroder_pda_name
+inv_name_short		= village_roof_maroder_pda_name
+description			= village_roof_maroder_pda_descr
+cost				= 100
+can_trade			= false
+quest_item     		= true
+
+
+
+[maroder_courier_item]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\maroder_courier_item"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			=  2
+inv_grid_y			= 30
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 4.0
+
+inv_name			= maroder_courier_item_name
+inv_name_short		= maroder_courier_item_name
+description			= maroder_courier_item_descr
+cost				= 5000
+can_trade			= false
+quest_item     		= true
+
+
+
+[suicider_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_transistors.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 3
+inv_grid_y			= 39
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= suicider_key_name
+inv_name_short		= suicider_key_name
+description			= suicider_key_descr
+cost				= 10
+can_trade			= false
+quest_item     		= true
+
+
+[willage_suicider_diary1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_note"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			=  17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.1
+
+inv_name			= willage_suicider_diary_name
+inv_name_short		= willage_suicider_diary_name
+description			= willage_suicider_diary_descr
+cost				= 1
+can_trade			= false
+quest_item     		= true
+
+
+[willage_suicider_diary2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_note"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			=  17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.1
+
+inv_name			= willage_suicider_diary_name
+inv_name_short		= willage_suicider_diary_name
+description			= willage_suicider_diary_descr
+cost				= 1
+can_trade			= false
+quest_item     		= true
+
+
+[willage_suicider_diary3]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_note"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			=  17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.1
+
+inv_name			= willage_suicider_diary_name
+inv_name_short		= willage_suicider_diary_name
+description			= willage_suicider_diary_descr
+cost				= 1
+can_trade			= false
+quest_item     		= true
+
+
+[willage_suicider_diary4]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_note"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			=  17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.1
+
+inv_name			= willage_suicider_diary_name
+inv_name_short		= willage_suicider_diary_name
+description			= willage_suicider_diary_descr
+cost				= 1
+can_trade			= false
+quest_item     		= true
+
+
+
+[anomal_claw]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= additions\chimera_kogot.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 5
+inv_grid_y			= 39
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.1
+
+inv_name			= anomal_claw_name
+inv_name_short		= anomal_claw_name
+description			= anomal_claw_descr
+cost				= 100
+can_trade			= false
+quest_item     		= true
+story_id 			= anomal_claw
+
+
+[wire_roll]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\materials_wire.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 26
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.2
+
+inv_name			= wire_roll_name
+inv_name_short		= wire_roll_name
+description			= wire_roll_descr
+cost				= 10
+can_trade			= false
+quest_item     		= true
+
+
+[workshop_instrum_box_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_key"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\box_transistors.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 16
+inv_grid_y			= 23
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.01
+
+inv_name			= workshop_instrum_box_key_name
+inv_name_short		= workshop_instrum_box_key_name
+description			= workshop_instrum_box_key_descr
+cost				= 1
+can_trade			= false
+quest_item     		= true
+
+
+
+[af_armadeus]:antirad
+$spawn 				= "food and drugs\af_teleport_item"
+visual				= dynamics\artefacts\af_electra_flash.ogf
+inv_name			= af_armadeus_name
+inv_name_short		= af_armadeus_name
+description			= af_armadeus_descr
+inv_weight			= 0.5
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 5
+inv_grid_y			= 40
+cost				= 10000
+boost_time			= 0.0
+boost_radiation_restore	= 0.0
+use_sound		= ambient\organic_moan1
+quest_item     		= false
+eat_portions_num	= 10000000
+
+
+
+
+[wound_immunity_booster]:booster
+$spawn 					= "food and drugs\wound_immunity_booster"
+boost_time				= 20.0
+boost_wound_immunity	= 1
+
+[shock_immunity_booster]:booster
+$spawn 					= "food and drugs\shock_immunity_booster"
+boost_time				= 20.0
+boost_shock_immunity	= 1
+
+[burn_immunity_booster]:booster
+$spawn 				= "food and drugs\burn_immunity_booster"
+boost_time			= 20.0
+boost_burn_immunity	= 1
+
+[explosion_immunity_booster]:booster
+$spawn 						= "food and drugs\explosion_immunity_booster"
+boost_time					= 20.0
+boost_explosion_immunity	= 1
+
+[fire_wound_immunity_booster]:booster
+$spawn 						= "food and drugs\fire_wound_immunity_booster"
+boost_time					= 20.0
+boost_fire_wound_immunity	= 1
+
+[strike_immunity_booster]:booster
+$spawn 					= "food and drugs\strike_immunity_booster"
+boost_time				= 20.0
+boost_strike_immunity	= 1
+
+
+
+
+
+[quest_sniper_note1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_note"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.1
+
+inv_name			= quest_sniper_note1_name
+inv_name_short		= quest_sniper_note1_name
+description			= quest_sniper_note1_descr
+cost				= 1
+can_trade			= false
+quest_item     		= true
+
+
+[quest_sniper_note2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_note"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.1
+
+inv_name			= quest_sniper_note2_name
+inv_name_short		= quest_sniper_note2_name
+description			= quest_sniper_note2_descr
+cost				= 1
+can_trade			= false
+quest_item     		= true
+
+
+[quest_sniper_note3]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$spawn 				= "devices\suicider_note"
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.1
+
+inv_name			= quest_sniper_note_name
+inv_name_short		= quest_sniper_note_name
+description			= quest_sniper_note_descr
+cost				= 1
+can_trade			= false
+quest_item     		= true
+
+
+[mg_repair_kit]:antirad
+$spawn 				= "food and drugs\actors_note"
+visual				= dynamics\equipments\quest\box_kanifol.ogf
+inv_name			= mg_repair_kit_name
+inv_name_short		= mg_repair_kit_name
+description			= mg_repair_kit_descr
+inv_weight			= 1.0
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 14
+inv_grid_y			= 23
+cost				= 10
+boost_time			= 0.0
+boost_radiation_restore	= 0.0
+use_sound			= remkit\ui_repairweapon_05
+eat_portions_num	= 1
+quest_item     		= false
+
+
+
+
+[mg_friend_zapiska1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= mg_friend_zapiska1_name
+inv_name_short		= mg_friend_zapiska1_name
+description			= mg_friend_zapiska1_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+[mg_robber_zapiska]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\equipments\quest\notes_writing_book_2.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 24
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= mg_robber_zapiska_name
+inv_name_short		= mg_robber_zapiska_name
+description			= mg_robber_zapiska_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+[mg_art_robber_npc_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= mg_art_robber_npc_pda_name
+inv_name_short		= mg_art_robber_npc_pda_name
+description			= mg_art_robber_npc_pda_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+[mg_courier_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 16
+inv_grid_y			= 25
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= mg_courier_pda_name
+inv_name_short		= mg_courier_pda_name
+description			= mg_courier_pda_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+[mg_wolf_planshet]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 15
+inv_grid_y			= 26
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.3
+
+inv_name			= mg_wolf_planshet_name
+inv_name_short		= mg_wolf_planshet_name
+description			= mg_wolf_planshet_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+[mg_wolf_map]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 22
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= mg_wolf_map_name
+inv_name_short		= mg_wolf_map_name
+description			= mg_wolf_map_descr
+cost				= 0
+can_trade			= false
+quest_item     		= true
+
+
+
+[maroder_random_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency=
+$prefetch 			= 16
+class				= D_PDA
+cform				= skeleton
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 9
+inv_grid_y			= 26
+
+slot				= 7
+radius				= 50
+default_to_ruck		= false
+inv_weight			= 0.0
+
+inv_name			= maroder_random_pda_name
+inv_name_short		= maroder_random_pda_name
+description			= maroder_random_pda_descr
+cost				= 10
+can_trade			= true
+quest_item     		= false
+
+
+
+
+
+
+
+
+
+
+

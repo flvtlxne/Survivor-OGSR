@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <mg_start_interface>
+
+	<table x="190" y="100" width="900" height="450" stretch="1">
+		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+	</table>
+
+	<name x="250" y="115" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Выбор точки высадки</text>
+	</name>
+
+	<text1 x="350" y="140" width="380" height="230">
+		<text x="0" y="0" r="135" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Самое увлекательное соревнование, награда за которое - ваша жизнь!</text>
+	</text1>
+	
+	<logo x="380" y="190" width="300" height="270" stretch="1">
+		<texture x="0" y="0" width="567" height="365">ui\ui_ng_master_logo2</texture>
+	</logo>
+
+	
+
+	<btn_1 x="260" y="180" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Вертолёт</text>
+	</btn_1>
+
+	<btn_2 x="260" y="210" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Дом отшельника</text>
+	</btn_2>
+
+	<btn_3 x="260" y="240" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Деревня Грачи</text>
+	</btn_3>
+
+	<btn_4 x="260" y="270" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Кладбище</text>
+	</btn_4>
+
+	<btn_5 x="260" y="300" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Блокпост</text>
+	</btn_5>
+
+	<btn_6 x="260" y="330" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Овраг</text>
+	</btn_6>
+
+	<btn_7 x="260" y="360" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Рембаза</text>
+	</btn_7>
+
+	<btn_8 x="260" y="390" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Лагерь в лесу</text>
+	</btn_8>
+
+	<btn_9 x="260" y="420" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Очаг радиации</text>
+	</btn_9>
+
+	<btn_10 x="260" y="450" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Островок</text>
+	</btn_10>
+
+	<btn_11 x="260" y="480" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Роща на холме</text>
+	</btn_11>
+	
+	<btn_12 x="460" y="480" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Случайное место</text>
+	</btn_12>
+	
+	
+	<btn_13 x="600" y="480" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Отмена</text>
+	</btn_13>
+	
+	
+
+	
+
+    </mg_start_interface>
+
+

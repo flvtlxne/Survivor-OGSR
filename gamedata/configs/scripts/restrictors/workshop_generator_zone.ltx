@@ -1,0 +1,21 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+worksop_vintil_repared +workshop_electricity} sr_particle@1 %=play_sound_looped(steam_sound)%
+
+[sr_particle@1]
+name = industrial_particles\exhaust_isparenie
+path = workshop_boiler_point2
+mode = 2
+looped = false
+on_game_timer = 600|sr_idle@2 %=stop_sound_looped(steam_sound)%
+
+[sr_idle@2]
+on_info = {=actor_has_item(likvidator_treasure)} sr_idle@nil %+likvidator_treasure_finded%
+
+[sr_idle@nil]
+
+
+

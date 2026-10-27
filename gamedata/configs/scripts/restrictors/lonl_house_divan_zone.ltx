@@ -1,0 +1,22 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+lonl_house_sofa_rest} sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_lonl_house_divan_npc%
+
+[sr_idle@2]
+on_game_timer = 10|sr_cutscene@1 %=lonl_house_divan_think%
+
+[sr_cutscene@1]
+point = lonl_house_script_npc_point9
+look = lonl_house_script_npc_point9
+cam_effector = scenario_cam\lonl_house_script_cam6
+on_signal = cameff_end | sr_idle@1 %-lonl_house_sofa_rest =use_vodka =actor_after_vodka_rest_action =set_counter(stress:0) -stress_effect1 -stress_effect2 -stress_effect3%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+
+[sr_idle@nil]

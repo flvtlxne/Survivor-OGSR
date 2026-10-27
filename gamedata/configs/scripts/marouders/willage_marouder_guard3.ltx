@@ -1,0 +1,46 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+on_hit = hit
+on_death = death
+
+[walker@start]
+path_walk = willage_pnt4_walk
+path_look = willage_pnt4_look
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} walker@1 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_bizon} walker@1 %=give_items(wpn_bizon)%
+on_info6 = {+actor_has_sayga} walker@1 %=give_items(wpn_sayga)%
+on_info7 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_sayga} walker@1
+
+
+[walker@1]
+path_walk = willage_pnt4_walk
+path_look = willage_pnt4_look
+def_state_moving1 = assault
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+out_restr = script_zone_willage
+combat_ignore_cond = {-willage_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_willage_item) !actor_has_item(willage_rnd_artefact)} true
+on_info = {=dist_to_actor_le(3) -willage_marod_hit} %+willage_marod_hit%
+
+[hit]
+on_info = {=hit_by_actor} %+willage_marod_hit%
+
+[death]
+on_info = %=inc_counter(mr_wl)%
+
+
+
+
+
+
+
+
+

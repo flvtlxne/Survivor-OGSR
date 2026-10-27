@@ -1,0 +1,24 @@
+;--------------------------------------
+; Rulix aka Bak
+; Настройки помощи раненым
+;--------------------------------------
+
+[main]
+help_distance		= 45	; максимальное расстояние помощи
+help_distance_story	= 20	; если есть story_id
+excluded_communities	= zombied ;названия группировок, которым будет запрещено помогать раненым (character_community)
+
+
+[forbidden_patients];имена НПС, запрещённых к лечению (name)
+mechanical_npc1
+;empty
+
+
+[excluded_npcs];имена, профили НПС, которым будет запрещено помогать раненым (name,profile_name)
+mechanical_npc1
+;empty
+
+
+; управление из логики:
+; not_for_help = true в секции wounded
+; help_wounded_enabled = false в секции схемы или в секции логики

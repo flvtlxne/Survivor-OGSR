@@ -1,0 +1,452 @@
+
+
+
+
+function spawn_some()
+--xr_effects.forest_camp_maroders_spawn()
+--xr_effects.workshop_maroders_spawn()
+--xr_effects.razlom_maroders_spawn()
+--xr_effects.kpp_maroders_spawn()
+--xr_effects.island_maroders_spawn()
+--xr_effects.forest_maroders_spawn()
+--xr_effects.radhill_maroders_spawn()
+--xr_effects.graveyard_maroders_spawn()
+--xr_effects.willage_maroders_spawn()
+
+--xr_effects.spawn_object(actor, nil, {"veh_uaz_buhanka","travel_point_lonl_house","0","45"})
+
+--alife():create('wpn_ak74', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_5.45x39_fmj', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_5.45x39_fmj', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_5.45x39_fmj', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wpn_ak74u', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_bm16', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('grenade_f1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_hpsa', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wpn_lr300', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_5.56x45_ss190', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_5.56x45_ss190', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_5.56x45_ss190', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wpn_pm', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_pb', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('grenade_rgd5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_toz34', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_usp', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_vintorez', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wpn_sayga', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_12x70_buck', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_12x70_buck', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_12x70_buck', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_12x76_zhekan', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('ammo_12x70_buck', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_12x70_buck', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_12x76_zhekan', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('novice_outfit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wpn_addon_silencer', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('usp_part1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('usp_part2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('usp_part3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('usp_part4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('hpsa_part1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('hpsa_part2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('hpsa_part3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('hpsa_part4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('toz_part1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('toz_part2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('toz_part3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('aksu_part1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('aksu_part2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('aksu_part3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('aksu_part4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('aksu_part4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('aksu_part5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ak_part1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ak_part2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ak_part3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ak_part4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('trs_part1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('trs_part2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('trs_part3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('trs_part4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('trs_part5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('vintorez_part1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('vintorez_part2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('vintorez_part3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('vintorez_part4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('sayga_part_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('sayga_part_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('sayga_part_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('sayga_part_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('vodka', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('detector_advanced', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--xr_effects.spawn_object(actor, nil, {"lonl_house_komp_monitor","lonl_house_komp_spawn_pnt1"})
+--xr_effects.spawn_object(actor, nil, {"lonl_house_komp_block","lonl_house_komp_spawn_pnt2"})
+--xr_effects.spawn_object(actor, nil, {"lonl_house_komp_klava","lonl_house_komp_spawn_pnt3"})
+
+--alife():create('chem_item_injector', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_injector', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_injector', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_harness', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_liquor', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_liquor', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_liquor', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_liquor', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_liquor', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_antiseptic', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_antiseptic', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_rags', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_yod', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_meldoniy', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_cofeine', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_sugar', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_yeast', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_gematogen', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('chem_item_coal', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('bandage', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('bandage', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('bandage', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('bandage', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wind_generator_reductor', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wind_generator_wing', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('car_item_litol', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('car_item_wiring', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('novice_outfit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('stalker_outfit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('scientific_outfit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('specops_outfit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('helm_hardhat', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('bandage', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('af_treasure', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--xr_effects.inc_counter(db.actor, nil, {"stress",tostring(15)})
+
+--mod_functions.script_spawn("personal_dog", "derevnya", vector():set(457.20,44.85,-32.60) )
+
+--xr_effects.turn_off_lonl_house_lamps()
+
+--db.actor:kill(db.actor)
+
+--alife():create('gas_balon', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('car_item_wiring', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('car_item_akumulator', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wpn_addon_scope', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_scope_x2.7', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_scope_detector', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_scope_night', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_silencer', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_grenade_launcher', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_scope_susat', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_scope_susat_x1.6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_scope_susat_x3.0', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_scope_susat_dusk', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_scope_susat_night', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_grenade_launcher_m203', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('detector_simple', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('detector_advanced', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('detector_elite', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('vodka', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('vodka', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('vodka', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('vodka', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('vodka', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--xr_effects.workshop_artefact_spawn()
+
+--alife():create('af_teleport_item', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_bizon', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('item_komp_monitor', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('item_komp_block', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('item_komp_klava', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('showel', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--xr_effects.spawn_object(actor, nil, {"m_controller_rapid_old","lonl_house_pnt3_walk"})
+
+--xr_effects.spawn_object(actor, nil, {"m_cat_e","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"fracture_weak","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"m_karlik_old","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_weak","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_normal","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_strong","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_immortal","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_sprint","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_normal_3","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_normal_4","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_normal_5","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_normal_6","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_normal_7","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_drisch_1","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_drisch_b","lonl_house_pnt3_walk"})
+--xr_effects.spawn_object(actor, nil, {"zombie_drisch_l","lonl_house_pnt3_walk"})
+
+--alife():create('m_cat_e', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+
+--xr_effects.spawn_object_in(actor, npc, {"wpn_sayga","lonl_house_invbox_3"})
+
+--xr_effects.spawn_object(actor, nil, {"static_bloodsucker","lonl_house_pnt3_walk"})
+
+--xr_effects.spawn_object(actor, nil, {"static_bloodsucker","lonl_house_pnt3_walk", "0","180"})
+
+--mod_functions.script_spawn("maroder_killer1", "derevnya", vector():set(116.76,4.05,655.49) )
+--mod_functions.script_spawn("maroder_killer2", "derevnya", vector():set(116.76,4.05,655.49) )
+--mod_functions.script_spawn("maroder_killer3", "derevnya", vector():set(116.76,4.05,655.49) )
+
+--alife():create('m_karlik_strong', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+--alife():create('polter_friend', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+
+--alife():create('anomal_claw', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+--alife():create('car_item_wd40', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('drug_psy_blockade', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('medkit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('bandage', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wpn_m1891', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('scope_pu', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('ammo_7.62x54_7h1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_mosin_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_mosin_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_mosin_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_mosin_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_mosin_5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_pm_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_aksu_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_toz_9', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_hpsa_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_lr300_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_toz_6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_vintorez_5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_vintorez_6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_vintorez_7', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('upgr_item_vintorez_8', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('willage_marouder_guard6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+
+--xr_effects.spawn_object(actor, nil, {"test_car_obj","test_car_point1", "0","-90"})
+
+--alife():create('helicrash_box_key', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--xr_effects.delete_all_cars()
+
+--alife():create('mg_legend_npc9', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+
+--alife():create('wpn_fort500', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_m1891', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--xr_effects.spawn_object(actor, nil, {"veh_hl2baggi","test_car_point1", "0","-90"})
+
+--alife():create('af_medusa_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_electra_sparkler_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_night_star_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_ice_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_gravi_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_gold_fish_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_cristall_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_dummy_battery_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_dummy_glassbeads_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_eye_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_fire_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_blood_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_fuzz_kolobok_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('af_soul_mg', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('af_compass', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--mod_functions.spawn_lw_scientist_chair()
+--mod_functions.script_spawn("lw_scientist", "derevnya", vector():set(287.42807006836, 20.101028442383, -188.61161193848) )
+--db.actor:give_info_portion ("lw_scientist_to_komp")
+--xr_effects.spawn_lonl_house_komp()
+
+--xr_effects.island_artefact_spawn()
+--alife():create('detector_simple', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('detector_scientific', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--mod_functions.mark_helicrash_rnd_artefact()
+--xr_effects.spawn_object(actor, nil, {"helicrash_rnd_artefact","helicrash_anomaly_spawn_point3"})
+
+--alife():create('novice_outfit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+
+--alife():create('wpn_fn2000', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+--alife():create('wpn_addon_silencer', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	
+end
+
+
+
+
+
+function give_some_info()
+--db.actor:give_info_portion("stranger_talk5")	-- условия спавна главаря Хирурга у озера;
+--db.actor:set_actor_position(patrol("lake_hutor_lider2_spawn_point2"):point(0))
+
+--xr_effects.spawn_scenar_workshop_marodrs()	-- спавн Башки и Дерзкого на рембазе;
+
+--db.actor:give_info_portion("lw_stranger_after_workshop_call")	-- условия попадания в плен к мародёрам;
+
+--db.actor:give_info_portion("lw_stranger_pda_info")	-- можно идти обыскивать схрон Незнакомца;
+
+--db.actor:give_info_portion("shron_merc_lider_pda_info")	-- можно идти на стрелку с наёмниками на КПП;
+
+db.actor:give_info_portion("knife_finded")
+db.actor:give_info_portion("map_finded")
+db.actor:give_info_portion("car_finded")
+db.actor:give_info_portion("laboratory_finded")
+db.actor:give_info_portion("bolt_finded")
+db.actor:give_info_portion("well_finded")	-- условия для выходи из зоны убежища;
+
+--mod_functions.hostage_maroder_task_give()	-- квест на убийство Химеры;
+--db.actor:give_info_portion("kill_himera_task")
+
+--xr_effects.spawn_scenar_secret_camp_maroders()	-- квест "Взять языка";
+--db.actor:give_info_portion("stranger_talk6")
+
+--db.actor:give_info_portion("lw_mercs_escape")
+
+--db.actor:give_info_portion("arthunter_note3_info")
+
+--db.actor:give_info_portion("stranger_talk1")
+
+--db.actor:give_info_portion("kpp_mercs_ambush_atack")
+--db.actor:give_info_portion("lw_freeplay")
+
+--db.actor:give_info_portion("scenar_maroder_lider1_info")
+--db.actor:give_info_portion("scenar_maroder_lider2_info")
+--db.actor:give_info_portion("scenar_maroder_lider3_info")
+--db.actor:give_info_portion("scenar_maroder_lider4_info")
+--db.actor:give_info_portion("scenar_maroder_lider5_info")
+
+--db.actor:give_info_portion("achivement_3_info")
+
+--db.actor:give_info_portion("field_tree_check")
+
+--db.actor:give_info_portion("kpp_heli_start")
+--db.actor:give_info_portion("kpp_mercs_ambush_atack")
+
+--db.actor:give_info_portion("mg_kpp_boss_dead")
+
+--db.actor:give_info_portion ("global_respawn")
+
+--db.actor:give_info_portion("achivement_2_info")
+
+end
+
+
+function start_test_interface()
+run_gui(mod_devices.secret_interface())
+end
+
+
+
+
+function spawn_details()
+alife():create('wpn_ak74', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_ak74u', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_bizon', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_bm16', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_pm', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_pb', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_hpsa', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_lr300', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_toz34', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_usp', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('wpn_vintorez', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_7', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_8', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_9', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_10', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_11', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_12', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_13', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_14', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_15', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_16', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_ak74_17', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_7', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_8', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_9', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_aksu_10', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_bm16_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_bm16_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_bm16_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_7', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_8', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_9', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_toz_10', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pm_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pm_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pm_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pm_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pm_5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pm_6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_7', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_8', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_9', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_usp_10', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_hpsa_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_hpsa_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_hpsa_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_lr300_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_lr300_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_lr300_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_lr300_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_vintorez_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_vintorez_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_vintorez_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_vintorez_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_vintorez_5', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_vintorez_6', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_vintorez_7', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_vintorez_8', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pb_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pb_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pb_3', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_pb_4', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_bizon_1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+alife():create('upgr_item_bizon_2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+end
+
+
+
+
+
+

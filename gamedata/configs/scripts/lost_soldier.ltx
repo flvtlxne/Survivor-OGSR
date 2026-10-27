@@ -1,0 +1,69 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@1
+known_info = known_info
+on_death = death
+
+[known_info]
+lost_soldier_info
+
+
+; Стоим перед телепортом:
+[walker@1]
+path_walk = lost_soldier_end_pnt1
+path_look = lost_soldier_end_pnt2
+meet = meet@2
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+lost_sold_talk} walker@2
+
+
+; Прыгаем в телепорт:
+[walker@2]
+path_walk = lost_soldier_end_pnt2
+path_look = lost_soldier_end_pnt1
+meet = no_meet
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_signal       = arriwed|%=destroy_object%
+
+
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[death] 
+on_info = %+lost_soldier_dead%
+
+
+
+

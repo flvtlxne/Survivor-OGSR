@@ -1,7 +1,16 @@
 --[[------------------------------------------------------------------------------------------------------------------
 »гнорирование врагов
 „угай јлександр
+AI Additions
+Rulix aka Bak
 --------------------------------------------------------------------------------------------------------------------]]
+local no_assault_zone_inertion_time = 90*1000	-- врем€ игнора врагов после выхода из безопасной зоны
+local min_ignore_distance = 10*10				-- минимальное рассто€ние игнорировани€
+local max_ignore_distance = 150*150				-- максимальное рассто€ние реагировани€ на врага
+local min_search_time = 15*1000					-- врем€ поиска на максимальном рассто€нии
+local max_search_time = 150*1000				-- врем€ поиска на минимальном рассто€нии
+local forget_enemy_time = 12*1000				-- врем€ от окончани€ поиска до забывани€ врага
+
 local ignored_smart = {
 	zat_stalker_base_smart	= true,
 	jup_b41					= true,
@@ -18,8 +27,180 @@ local smarts_by_no_assault_zones = {
 									["jup_b41_sr_no_assault"] 	= "jup_b41"
 }
 
+-- bak  - информаци€ дл€ скриптов: включено ли игнорирование врага
+function is_ignored(obj,enemy)
+	local st = db.storage[obj:id()].combat_ignore
+	if st and st.enabled then
+		if st.ignore.timer < time_global() then
+			st.ignore = {timer = time_global()+5800}
+		end
+		local ignored = st.ignore[enemy:id()]
+		if ignored == nil then
+			ignored = not is_enemy(obj,enemy,st)
+			st.ignore[enemy:id()] = ignored
+		end
+		return ignored == true
+	end
+	return false
+end
 
-function is_enemy(obj, enemy, st, not_check_sim)
+local function reset_zone_itertion(st,obj)
+	if st and st.safe_zone_inertion then
+		st.safe_zone_dtimer = 0
+		st.safe_zone_inertion = 0
+		xr_logic.pstor_store(obj or st.object,"leave_sz",nil)
+	end
+end
+
+function reset_zone_itertion_squad(squad)
+	for member in squad:squad_members() do
+		local st = db.storage[member.id]
+		if st and st.object then
+			reset_zone_itertion(st)
+		end
+	end
+end
+
+function npc_update(npc)
+	local id = npc:id()
+	if fighting_with_actor_npcs[id] and npc:best_enemy() == nil then	-- moved from xr_motivator
+		fighting_with_actor_npcs[id] = nil
+	end
+	local tg,st = time_global(),db.storage[id]
+	if not st or tg < (st.safe_zone_dtimer or 0) then
+		return
+	end
+	local last = st.in_safe_zone
+	st.in_safe_zone = nil
+	st.safe_zone_dtimer = tg + 5200
+	if character_community(npc) == "zombied" then
+		return
+	end
+	-- check leaving inertion
+	local leave = xr_logic.pstor_retrieve(npc,"leave_sz")
+	if leave or st.safe_zone_inertion then
+		st.in_safe_zone = true
+		if not leave then
+			leave = true
+		end
+		if not st.safe_zone_inertion then
+			st.safe_zone_inertion = leave+tg
+		elseif st.safe_zone_inertion - tg > 2000 and not st.active_scheme then
+			xr_logic.pstor_store(npc,"leave_sz",st.safe_zone_inertion-tg)
+		else
+			xr_logic.pstor_store(npc,"leave_sz",nil)
+			st.safe_zone_inertion = nil
+			st.in_safe_zone = nil
+			last = nil
+			leave = nil
+		end
+	end
+	-- process safe zones:
+	if not leave then
+		local my_pos = npc:position()
+		-- No assault zones
+		for k,v in pairs(smarts_by_no_assault_zones) do
+			local zone = db.zone_by_name[k]
+			if zone and zone:inside(my_pos) then
+--				local smart = sim_board.get_sim_board():get_smart_by_name(v)
+--				if smart and smart.base_on_actor_control and smart.base_on_actor_control.status ~= smart_terrain_control.ALARM then
+					st.in_safe_zone = true
+					break
+--				end
+			end
+		end
+		-- Ignored smarts
+		if not st.in_safe_zone then
+			local se_npc = alife():object(id)
+			if se_npc ~= nil and se_npc.m_smart_terrain_id ~= nil and se_npc.m_smart_terrain_id ~= 65535 then
+				local smart = alife():object(se_npc.m_smart_terrain_id)
+				if ignored_smart[smart:name()] and smart.position:distance_to_sqr(se_npc.position) < 100*100 then
+					st.in_safe_zone = true
+				end
+			end
+		end
+	end
+	-- set leaving inertion
+	if last and not st.in_safe_zone then
+		st.in_safe_zone = true
+		st.safe_zone_inertion = tg + no_assault_zone_inertion_time
+		xr_logic.pstor_store(npc,"leave_sz",no_assault_zone_inertion_time)
+	end
+	-- set flag for squad members
+	local squad = get_object_squad(npc)
+	if squad and id == squad:commander_id() then
+		local my_pos = npc:position()
+		for member in squad:squad_members() do
+			if member.id ~= id and db.storage[member.id] and member.object.position:distance_to_sqr(my_pos) <= 20*20 then
+				db.storage[member.id].in_safe_zone = st.in_safe_zone
+				db.storage[member.id].safe_zone_dtimer = st.safe_zone_dtimer+500
+				db.storage[member.id].safe_zone_inertion = st.safe_zone_inertion
+			end
+		end
+	end
+end
+
+function reset_memory_time(npc,enemy,st)
+	st = (st or db.storage[npc:id()]).combat_ignore
+	if st and enemy and st.memory_time[enemy:id()] then
+		local tg = time_global()
+		if tg < npc:memory_time(enemy) then
+			st.memory_time[enemy:id()] = tg
+		else
+			st.memory_time[enemy:id()] = nil
+		end
+	end
+end
+
+-- bak  - игнорирование врага по рассто€нию и времени
+-- борьба с движковым багом неправильного сохранени€ level_time
+function ignore_by_dist(npc,enemy,st)
+	local tg,mt = time_global(),st.memory_time[enemy:id()]
+	if mt then
+		if npc:see(enemy) then		-- actually see enemy, reset memory_time
+			if tg < npc:memory_time(enemy) then
+				st.memory_time[enemy:id()] = tg
+			else
+				st.memory_time[enemy:id()] = nil
+			end
+			mt = nil
+			return false
+		end
+	else
+		mt = npc:memory_time(enemy)
+		if tg < mt then							-- detect corrupted memory_time
+			mt = 2*tg-mt
+			st.memory_time[enemy:id()] = mt		-- save proper memory_time
+		end
+	end
+	local time_in_memory = tg - mt
+	if time_in_memory < min_search_time then
+		return false
+	end
+	if time_in_memory < max_search_time then
+		local dist = npc:position():distance_to_sqr(enemy:position())
+		if dist < min_ignore_distance then
+			return false
+		end
+		if dist < max_ignore_distance then
+			local c = (max_ignore_distance-dist)/(max_ignore_distance-min_ignore_distance)
+			if time_in_memory < max_search_time*c then
+				return false
+			end
+		end
+	end
+	-- после забывани€ врага колбэк не вызаваетс€. ≈сли колбек вызван но врем€ вышло - кто-то врага заспотил, попытаемс€ забыть снова через промежуток времени
+	local fm = st.forget[enemy:id()]
+	if fm == nil then
+		st.forget[enemy:id()] = tg+forget_enemy_time
+	elseif fm < tg then
+		npc:enable_memory_object(enemy,false)
+		st.forget[enemy:id()] = nil
+	end
+	return true
+end
+
+function is_enemy(obj, enemy, st)
 	if not obj:alive() then
 		return false
 	end
@@ -32,62 +213,75 @@ function is_enemy(obj, enemy, st, not_check_sim)
 		return true
 	end
 
-	local overrides = st.overrides
 	local obj_id = obj:id()
+	local enemy_id = enemy:id()
 	local storage = db.storage[obj_id]
 	if storage == nil then
 		return true
 	end
-	storage.enemy_id = enemy:id()
+	storage.enemy_id = enemy_id
 
-	--' ќтсеиваем по зоне
-	local active_sector = storage.active_sector
-	if active_sector ~= nil then
-		if sr_danger.check_danger_position(enemy:position(), active_sector) == false then
+	--' ≈сли есть оверрайды, то работаем по ним.
+	local overrides = st.overrides
+	if overrides and overrides.combat_ignore then
+		if xr_logic.pick_section_from_condlist( enemy, obj, overrides.combat_ignore.condlist ) == "true" then
 --			obj:enable_memory_object( enemy, false )
 			return false
 		end
 	end
 
+	if enemy_id == db.actor:id() then
+		return true
+	end
+	local comm = st.community or character_community(obj)
+	if comm == "zombied" or comm == "monster" then
+		return true
+	end
+
+	local enemy_comm = character_community(enemy)
+	-- чтобы не гон€лись за убежавшими монстрами
+	if enemy_comm == "monster" then
+		local mt = time_global()-obj:memory_time(enemy)
+		if (mt > 50000 or mt < 0) and enemy:position():distance_to_sqr(obj:position()) > 40*40 then
+			obj:enable_memory_object( enemy, false )
+			return false
+		end
 	-- ѕроверка на зоны комбат игнора возле баз:
 		-- игнорировать если:
 		-- враг не актер.
 		-- сталкер находитс€ в зоне.
 		-- смарт в котором находитс€ сталкер не в состо€нии тревоги.
-	if enemy:id() ~= db.actor:id() then
-		for k,v in pairs (smarts_by_no_assault_zones) do
-			local zone = db.zone_by_name[k]
-			if zone and (utils.npc_in_zone(obj, zone) or utils.npc_in_zone(enemy, zone)) then
-				local smart = sim_board.get_sim_board():get_smart_by_name(v)
-				if smart and smart.base_on_actor_control ~= nil and smart.base_on_actor_control.status ~= smart_terrain_control.ALARM then
-					return false
-				end
+	elseif enemy_comm ~= "zombied" then
+		if db.storage[enemy_id].in_safe_zone then
+			obj:enable_memory_object(enemy,false)
+			return false
+		elseif storage.in_safe_zone then
+			if (character_community(enemy:best_enemy()) == comm or obj:who_hit_name() == enemy:name()) and obj:position():distance_to_sqr(enemy:position()) < 400 then
+				reset_zone_itertion(storage,obj)
+			else
+				obj:enable_memory_object(enemy,false)
+				return false
 			end
 		end
 	end
 
-	local se_enemy = alife():object(enemy:id())
-	if se_enemy ~= nil and se_enemy.m_smart_terrain_id ~= nil and se_enemy.m_smart_terrain_id ~= 65535 then
-		local enemy_smart = alife():object(se_enemy.m_smart_terrain_id)
-		local smart_name = enemy_smart:name()
-		if ignored_smart[smart_name] == true then
---			obj:enable_memory_object( enemy, false )
+	-- ингнор всех врагов пока идЄм до укрыти€
+	if surge_manager.is_started() then
+		if enemy:wounded() then
 			return false
 		end
-	end
-	--printf("checking combat_ignore for stalker[%s] enemy name [%s] in section[%s]",obj:name(), enemy:name(),storage.active_section)
-	--' ≈сли есть оверрайды, то работаем по ним.
-	if overrides and
-		 overrides.combat_ignore
-	then
-		local ret_value = xr_logic.pick_section_from_condlist( enemy, obj, overrides.combat_ignore.condlist )
-		if ret_value == "true" then
-			--printf("pl:Disabling_memory_object[1] for stalker[%s] enemy name [%s] in section[%s]",obj:name(), enemy:name(),storage.active_section)
---			obj:enable_memory_object( enemy, false )
-			return false
+		if storage.active_scheme == nil then	-- and get_object_squad(obj)
+			-- чуваки из сквадов должны нестись до своих смартов не обраща€ внимани€ на врагов
+			-- одиночки пусть отстреливаютс€
+			if storage.under_reach_task then
+				return false
+			end
+			if not (enemy_comm == "monster" or obj:who_hit_name() == enemy:name()) then
+				return false
+			end
 		end
-		return true
 	end
+
 	return true
 end
 ----------------------------------------------------------------------------------------------------------------------
@@ -97,40 +291,40 @@ class "action_process_enemy"
 function action_process_enemy:__init( obj, storage )
 	self.object = obj
 	self.st     = storage
+	storage.forget = {}
+	storage.memory_time = {}
 end
 
 function action_process_enemy:enemy_callback( obj, enemy )
---'	local obj_pos = self.object:position()
---'	local ene_pos = enemy:position()
---'	printf("FOUND ENEMY [%s](%s,%s,%s) -> [%s](%s,%s,%s)", self.object:name(), obj_pos.x, obj_pos.y, obj_pos.z,
---'														   enemy:name(), ene_pos.x, ene_pos.y, ene_pos.z)
-	if enemy:id() == db.actor:id() then
+
+	if device().precache_frame > 1 then
+		return false
+	end
+
+	local enemy_id = enemy:id()
+	local is_obj_enemy = is_enemy(obj,enemy,self.st)
+	self.st.ignore[enemy_id] = not is_obj_enemy or nil	-- сохранение результата проверки врага на игнор
+
+	if is_obj_enemy ~= true or self.st.community ~= "monster" and IsStalker(enemy) and ignore_by_dist(obj,enemy,self.st) then
+		return false
+	end
+
+	self.st.forget[enemy_id] = nil
+	if enemy_id == db.actor:id() then
 		fighting_with_actor_npcs[obj:id()] = true
 	end
 
-	local is_obj_enemy = is_enemy( obj, enemy, self.st, false )
-	if is_obj_enemy == true then
-		local se_obj = alife():object(obj:id())
-		if se_obj and se_obj.m_smart_terrain_id ~= 65535 then
-			local smart_obj = alife():object(se_obj.m_smart_terrain_id)
+	local se_obj = alife():object(obj:id())
+	if se_obj and se_obj.m_smart_terrain_id ~= 65535 then
+		local smart_obj = alife():object(se_obj.m_smart_terrain_id)
+		if smart_obj.position:distance_to_sqr(se_obj.position) < 6400 then
 			smart_obj:set_alarm()
-
-			if enemy:id() == db.actor:id() and smart_obj.base_on_actor_control ~= nil then
+			if enemy_id == db.actor:id() and smart_obj.base_on_actor_control ~= nil then
 				smart_obj.base_on_actor_control:actor_attack()
 			end
 		end
-		local se_enemy			= alife():object(enemy:id())
-		if se_obj and se_enemy then
-			local sim_obj_registry 	= simulation_objects.get_sim_obj_registry()
-			if 	se_obj.group_id ~= 65535 	and sim_obj_registry.objects[se_obj.group_id] ~= nil and
-				se_enemy.group_id ~= 65535 	and sim_obj_registry.objects[se_enemy.group_id] == nil and
-				se_obj.position:distance_to_sqr(se_enemy.position) > 900 then
-				return false
-			end
-		end
 	end
-
-	return is_obj_enemy
+	return true
 end
 
 function action_process_enemy:hit_callback(obj, amount, local_direction, who, bone_index)
@@ -149,6 +343,19 @@ function action_process_enemy:hit_callback(obj, amount, local_direction, who, bo
 		if not overrides or not overrides.combat_ignore_keep_when_attacked then
 			--printf("_bp: action_process_enemy: hit_callback(): obj='%s': SCHEME DISABLED", obj:name())
 			self.st.enabled = false
+		end
+	else
+		local st = db.storage[who:id()]
+		if st and st.stype == modules.stype_stalker then
+			reset_zone_itertion(st,who)
+			st = db.storage[obj:id()]
+			if st.safe_zone_inertion then
+				local squad = get_object_squad(obj)
+				if squad then
+					st = db.storage[squad:commander_id()]
+				end
+				reset_zone_itertion(st)
+			end
 		end
 	end
 end
@@ -175,7 +382,9 @@ function reset_combat_ignore_checker(npc, scheme, st, section)
 
 	storage.overrides = xr_logic.generic_scheme_overrides(npc)
 
+	storage.ignore = {timer = time_global()+math.random(8000,9000)}
 	storage.enabled = true
+	storage.community = character_community(npc)
 end
 
 
@@ -187,6 +396,8 @@ function disable_scheme( npc, scheme )
 	-- схем, в котором нет перехвата бо€, продолжитс€ вызыватьс€ callback в старом подписанном action-е.
 	local st = db.storage[npc:id()][scheme]
 	if st then
+		st.enabled = false		-- нужно убирать за собой
+		st.ignore = nil
 		xr_logic.unsubscribe_action_from_events(npc, st, st.action)
 	end
 end

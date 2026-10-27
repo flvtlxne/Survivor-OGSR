@@ -30,6 +30,11 @@ function main_menu:InitControls()
     self.message_box = CUIMessageBoxEx()
     self:Register(self.message_box, "msg_box")
 
+    -- Survivor: надписи с названием и версией мода
+    xml:InitStatic("mod_name", self)
+    xml:InitStatic("mod_ver1", self)
+    xml:InitStatic("mod_ver2", self)
+
     local _ver = xml:InitStatic("static_version", self)
     local mm = _G.main_menu.get_main_menu()
 
@@ -161,10 +166,15 @@ function main_menu:OnButton_new_veteran_game()
     self:StartGame()
 end
 
+--function main_menu:OnButton_new_master_game()
+--	local console = get_console()
+--	console:execute("g_game_difficulty gd_master")
+--	self:StartGame()
+--end
+
 function main_menu:OnButton_new_master_game()
-    local console = get_console()
-    console:execute("g_game_difficulty gd_master")
-    self:StartGame()
+    run_gui(mod_devices.ng_master_interface())
+    soundtrack.mg_menu_start_snd()
 end
 
 function main_menu:StartGame()
@@ -238,6 +248,17 @@ function main_menu:OnKeyboard(dik, keyboard_action)
 
     return true
 end
+
+function main_menu:show_position_informer_window()
+	if self.cheat_dlg == nil then
+	    --dbglog("M1") 
+		self.cheat_dlg = positioninformer.pi()
+		self.cheat_dlg.owner = self
+	end
+	self.cheat_dlg:ShowDialog(true)
+	self:HideDialog()
+	self:Show(true)
+ end
 
 function main_menu:OnMenuReloaded()
     self:OnButton_options_clicked()

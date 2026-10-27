@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <likvidator_note1>
+
+	<table x="350" y="100" width="270" height="500" stretch="1">
+		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_list_1</texture>
+	</table>
+
+	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Запись ликвидатора 1 (1987г.)</text>
+	</name>
+
+	<text1 x="380" y="140" width="240" height="300">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">После отсидки три месяца отработал на автобазе, как вдруг направили в Зону. Вместе с такими же бродягами буду ликвидировать радиационное заражение, очищать площади, короче, разгребать всё это дерьмо. Хорошо хоть заплатить обещали. Третьего дня нас доставили в ту заброшенную деревеньку на окраине и дали задание снести несколько домов, которые сильно фонили. Я ковырялся в развалинах, как вдруг среди кирпичей заметил ящичек. Поднял, открыл - там было полно золотых червонцев! Клад... Теперь главное - утаить находку от бригадира. Перепрячу золото в более надёжном месте и вернусь за ним позже.</text>
+	</text1>
+
+
+
+	<btn_1 x="360" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> {{{ </text>
+	</btn_1>
+
+	<btn_2 x="460" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> }}} </text>
+	</btn_2>
+
+
+
+
+	<btn_exit x="570" y="560" width="25" height="25">
+	      	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
+	</btn_exit>
+
+    </likvidator_note1>
+
+

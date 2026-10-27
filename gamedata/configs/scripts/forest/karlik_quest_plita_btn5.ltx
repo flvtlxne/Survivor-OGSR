@@ -1,0 +1,26 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+on_info = {+field_tree_check} ph_idle@1
+
+
+[ph_idle@1]
+tips = karlik_quest_plita_btn5_use1
+on_info = {=counter_greater(plita:3)} ph_idle@3
+on_use = ph_idle@4 %=play_sound(pribor_switch) =set_counter(plita:0) =spawn_karlik_plita_anomalies%
+
+[ph_idle@2]
+tips = karlik_quest_plita_btn5_use2
+on_info = {=counter_greater(plita:3)} ph_idle@3
+on_use = ph_idle@4 %=play_sound(pribor_switch) =set_counter(plita:0) =spawn_karlik_plita_anomalies%
+
+
+[ph_idle@3]
+tips = karlik_quest_plita_btn5_use1
+on_use = ph_idle@nil %+karlik_plita_open%
+
+[ph_idle@4]
+on_game_timer = 250|ph_idle@1 %=del_karlik_plita_anomalies%
+
+[ph_idle@nil]

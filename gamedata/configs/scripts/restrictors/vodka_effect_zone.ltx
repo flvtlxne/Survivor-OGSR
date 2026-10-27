@@ -1,0 +1,90 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_not_in_zone = script_zone_lonl_house|sr_idle@1_1 %=set_counter(vodka:0)%
+on_info = {+vodka_peredoz} sr_idle@2
+on_info2 = {=master_difficulty} sr_idle@nil
+
+[sr_idle@1_1]
+on_actor_in_zone = lonl_house_divan_zone|sr_idle@1
+
+
+; Отрубаемся:
+[sr_idle@2]
+on_info = {+game_start} sr_idle@3 %=disable_ui =run_cam_effector(dream) =play_sound_by_story(actor:actor_vodka_overdose) =actor_vodka_overdose_think =remove_item(actors_note)%
+
+[sr_idle@3]
+on_game_timer = 30|sr_idle@4 %=enable_ui =actor_set_maroder_action +actor_set_maroder%
+
+
+; Очнулись на точке:
+[sr_idle@4]
+on_info = {=actor_in_zone(script_zone_willage)} sr_idle@willage, {=actor_in_zone(script_zone_blokpost)} sr_idle@blokpost, {=actor_in_zone(script_zone_forest)} sr_idle@forest, {=actor_in_zone(script_zone_forest_camp)} sr_idle@forest_camp, {=actor_in_zone(script_zone_graveyard)} sr_idle@graveyard, {=actor_in_zone(script_zone_ground_anomaly)} sr_idle@ground_anomaly, {=actor_in_zone(script_zone_island)} sr_idle@island, {=actor_in_zone(script_zone_rad_hill)} sr_idle@rad_hill, {=actor_in_zone(script_zone_workshop)} sr_idle@workshop
+
+
+; Валим ГГ(деревня):
+[sr_idle@willage]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone1%
+
+; Валим ГГ(блокпост):
+[sr_idle@blokpost]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone2%
+
+; Валим ГГ(роща):
+[sr_idle@forest]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone3%
+
+; Валим ГГ(лагерь):
+[sr_idle@forest_camp]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone4%
+
+; Валим ГГ(кладбище):
+[sr_idle@graveyard]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone5%
+
+; Валим ГГ(разлом):
+[sr_idle@ground_anomaly]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone6%
+
+; Валим ГГ(остров):
+[sr_idle@island]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone7%
+
+; Валим ГГ(очаг радиации):
+[sr_idle@rad_hill]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone8%
+
+; Валим ГГ(рембаза):
+[sr_idle@workshop]
+on_info = {=is_dead(actor_enemy) =story_object_exist(actor_enemy) =actor_alive} sr_idle@5 %=disable_ui =run_cam_effector(dream) =run_postprocess(fade_in_out) =actor_after_maroder_replic =forward_game_time(5)%
+on_info2 = {!actor_in_maroders_zone +actor_set_maroder} %=actor_go_back_to_maroders_zone9%
+
+
+
+[sr_idle@5]
+on_game_timer = 30|sr_idle@6 %=enable_ui =delete_actor_enemy =relocate_actor_inventory_to_box(location_box_utilizator) =actor_go_to_lonl_house =give_item(actors_note:actor)%
+
+[sr_idle@6]
+on_game_timer = 5|sr_idle@1 %=clear_box(location_box_utilizator) -actor_set_maroder -vodka_peredoz%
+
+
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+
+

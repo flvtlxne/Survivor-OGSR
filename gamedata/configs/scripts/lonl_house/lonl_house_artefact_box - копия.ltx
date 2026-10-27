@@ -1,0 +1,119 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_artefact_box_use1
+on_use = ph_idle@2
+
+[ph_idle@2]
+; нет ничего:
+on_timer = 2|ph_idle@1
+
+; выкрасть груз(блокпост):
+on_info = {=actor_has_item(rnd_task_kpp_item)} ph_idle@1_1 %=run_postprocess(fade_in) =disable_ui%
+; выкрасть груз(деревн€):
+on_info2 = {=actor_has_item(rnd_task_willage_item)} ph_idle@1_2 %=run_postprocess(fade_in) =disable_ui%
+; выкрасть груз(рембаза):
+on_info3 = {=actor_has_item(rnd_task_workshop_item)} ph_idle@1_5 %=run_postprocess(fade_in) =disable_ui%
+; выкрасть груз(кладбище):
+on_info4 = {=actor_has_item(rnd_task_graveyard_item)} ph_idle@1_7 %=run_postprocess(fade_in) =disable_ui%
+; выкрасть груз(очаг радиации):
+on_info5 = {=actor_has_item(rnd_task_rad_hill_item)} ph_idle@1_9 %=run_postprocess(fade_in) =disable_ui%
+; выкрасть груз(разлом):
+on_info6 = {=actor_has_item(rnd_task_razlom_item)} ph_idle@1_11 %=run_postprocess(fade_in) =disable_ui%
+; выкрасть груз(островок):
+on_info7 = {=actor_has_item(rnd_task_island_item)} ph_idle@1_13 %=run_postprocess(fade_in) =disable_ui%
+; выкрасть груз(роща):
+on_info8 = {=actor_has_item(rnd_task_forest_item)} ph_idle@1_15 %=run_postprocess(fade_in) =disable_ui%
+; выкрасть груз(лагерь в лесу):
+on_info9 = {=actor_has_item(rnd_task_forest_camp_item)} ph_idle@1_19 %=run_postprocess(fade_in) =disable_ui%
+
+; пр€чем блок пам€ти:
+on_info10 = {=actor_has_item(satellite_memory_block)} ph_idle@1_17 %=run_postprocess(fade_in) =disable_ui%
+
+; доставить артефакт(блокпост):
+on_info11 = {=actor_has_item(kpp_rnd_artefact)} ph_idle@1_3 %=run_postprocess(fade_in) =disable_ui%
+; доставить артефакт(деревн€):
+on_info12 = {=actor_has_item(willage_rnd_artefact)} ph_idle@1_4 %=run_postprocess(fade_in) =disable_ui%
+; доставить артефакт(рембаза):
+on_info13 = {=actor_has_item(workshop_rnd_artefact)} ph_idle@1_6 %=run_postprocess(fade_in) =disable_ui%
+; доставить артефакт(кладбище):
+on_info14 = {=actor_has_item(graveyard_rnd_artefact)} ph_idle@1_8 %=run_postprocess(fade_in) =disable_ui%
+; доставить артефакт(очаг радиации):
+on_info15 = {=actor_has_item(rad_hill_rnd_artefact)} ph_idle@1_10 %=run_postprocess(fade_in) =disable_ui%
+; доставить артефакт(разлом):
+on_info16 = {=actor_has_item(razlom_rnd_artefact)} ph_idle@1_12 %=run_postprocess(fade_in) =disable_ui%
+; доставить артефакт(разлом):
+on_info17 = {=actor_has_item(island_rnd_artefact)} ph_idle@1_14 %=run_postprocess(fade_in) =disable_ui%
+; доставить артефакт(роща):
+on_info18 = {=actor_has_item(forest_rnd_artefact)} ph_idle@1_16 %=run_postprocess(fade_in) =disable_ui%
+; доставить артефакт(лагерь в лесу):
+on_info19 = {=actor_has_item(forest_camp_rnd_artefact)} ph_idle@1_18 %=run_postprocess(fade_in) =disable_ui%
+
+
+
+[ph_idle@1_1]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_kpp_item) =delete_kpp_maroders -random_event_blokpost =enable_ui =play_sound(metal_small_open) +rnd_task_kpp_item_in_box =start_rnd_task_item_reward%
+
+[ph_idle@1_2]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_willage_item) =delete_willage_maroders -random_event_willage =enable_ui =play_sound(metal_small_open) +rnd_task_willage_item_in_box =start_rnd_task_item_reward%
+
+[ph_idle@1_3]
+on_game_timer = 10|ph_idle@1 %=remove_item(kpp_rnd_artefact) -random_event_blokpost =enable_ui =play_sound(metal_small_open) +rnd_task_kpp_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_4]
+on_game_timer = 10|ph_idle@1 %=remove_item(willage_rnd_artefact) =delete_willage_maroders -random_event_willage =enable_ui =play_sound(metal_small_open) +rnd_task_willage_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_5]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_workshop_item) =delete_workshop_maroders -random_event_workshop =enable_ui =play_sound(metal_small_open) +rnd_task_workshop_item_in_box =start_rnd_task_item_reward%
+
+[ph_idle@1_6]
+on_game_timer = 10|ph_idle@1 %=remove_item(workshop_rnd_artefact) =delete_workshop_maroders -random_event_workshop =enable_ui =play_sound(metal_small_open) +rnd_task_workshop_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_7]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_graveyard_item) =delete_graveyard_maroders -random_event_graveyard =enable_ui =play_sound(metal_small_open) +rnd_task_graveyard_item_in_box =start_rnd_task_item_reward%
+
+[ph_idle@1_8]
+on_game_timer = 10|ph_idle@1 %=remove_item(graveyard_rnd_artefact) =delete_graveyard_maroders -random_event_graveyard =enable_ui =play_sound(metal_small_open) +rnd_task_graveyard_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_9]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_rad_hill_item) =delete_rad_hill_maroders -random_event_rad_hill =enable_ui =play_sound(metal_small_open) +rnd_task_rad_hill_item_in_box =start_rnd_task_item_reward%
+
+[ph_idle@1_10]
+on_game_timer = 10|ph_idle@1 %=remove_item(rad_hill_rnd_artefact) =delete_rad_hill_maroders -random_event_rad_hill =enable_ui =play_sound(metal_small_open) +rnd_task_rad_hill_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_11]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_razlom_item) =delete_razlom_maroders -random_event_razlom =enable_ui =play_sound(metal_small_open) +rnd_task_razlom_item_in_box =start_rnd_task_item_reward%
+
+[ph_idle@1_12]
+on_game_timer = 10|ph_idle@1 %=remove_item(razlom_rnd_artefact) =delete_razlom_maroders -random_event_razlom =enable_ui =play_sound(metal_small_open) +rnd_task_razlom_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_13]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_island_item) =delete_island_maroders -random_event_island =enable_ui =play_sound(metal_small_open) +rnd_task_island_item_in_box =start_rnd_task_item_reward%
+
+[ph_idle@1_14]
+on_game_timer = 10|ph_idle@1 %=remove_item(island_rnd_artefact) =delete_island_maroders -random_event_island =enable_ui =play_sound(metal_small_open) +rnd_task_island_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_15]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_forest_item) =delete_forest_maroders -random_event_forest =enable_ui =play_sound(metal_small_open) +rnd_task_forest_item_in_box =start_rnd_task_item_reward%
+
+[ph_idle@1_16]
+on_game_timer = 10|ph_idle@1 %=remove_item(forest_rnd_artefact) =delete_forest_maroders -random_event_forest =enable_ui =play_sound(metal_small_open) +rnd_task_forest_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_18]
+on_game_timer = 10|ph_idle@1 %=remove_item(forest_camp_rnd_artefact) =delete_forest_camp_maroders -random_event_forest_camp =enable_ui =play_sound(metal_small_open) +rnd_task_forest_camp_artefact_in_box =start_rnd_task_art_reward%
+
+[ph_idle@1_19]
+on_game_timer = 10|ph_idle@1 %=remove_item(rnd_task_forest_camp_item) =delete_forest_camp_maroders -random_event_forest_camp =enable_ui =play_sound(metal_small_open) +rnd_task_forest_camp_item_in_box =start_rnd_task_item_reward%
+
+
+
+[ph_idle@1_17]
+on_game_timer = 10|ph_idle@1 %=remove_item(satellite_memory_block) =enable_ui =play_sound(metal_small_open) +memory_block_hided%
+
+
+
+
+
+
+ 

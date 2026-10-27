@@ -1,0 +1,15 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = kpp_mercs_radio_use
+on_info = {-kpp_mercs_radio_use} %=play_sound_looped(merc_radio_snd)%
+on_use = {+shron_merc_lider_pda_info -kpp_mercs_radio_use +memory_block_hided} ph_idle@2 %+kpp_mercs_radio_use =stop_sound_looped(merc_radio_snd) =destroy_object =run_postprocess(fade_in)%
+
+[ph_idle@2]
+
+
+
+
+
+ 

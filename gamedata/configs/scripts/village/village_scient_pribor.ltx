@@ -1,0 +1,15 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = village_scient_pribor_use
+on_use = {=actor_has_item(narkoman_pribor_instruction)} ph_idle@nil %+narkoman_pribor_on =play_sound(pribor_switch) =remove_item(narkoman_pribor_instruction)%
+on_info = {=master_difficulty} %=destroy_object%
+
+[ph_idle@nil]
+
+
+
+
+
+ 

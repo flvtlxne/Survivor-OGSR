@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+stranger_talk2} sr_idle@2
+
+[sr_idle@2]
+on_info = {+random_event_blokpost +random_event_graveyard +random_event_rad_hill +random_event_willage +random_event_razlom +random_event_island +random_event_forest +random_event_forest_camp +random_event_workshop +random_event_helicrash +courier_task} sr_idle@3
+
+[sr_idle@3]
+on_info = {-random_event_blokpost -random_event_graveyard -random_event_rad_hill -random_event_willage -random_event_razlom -random_event_island -random_event_forest -random_event_forest_camp -random_event_workshop -random_event_helicrash -courier_task} sr_idle@2 %=start_rnd_tasks_recharge_timer%
+
+
+
+[sr_idle@nil]

@@ -41,24 +41,31 @@ function evaluator_state_mgr_idle:evaluate()
 		end
 	end
 
+	if self.st.fix_strap then
+		if self.object:weapon_unstrapped() then
+			self.st.fix_strap = nil
+		else
+			return false
+		end
+	end
+	
 	if self.st.combat == true then return true end
 
 	--' Если у нас пост комбат вейт - вернуть ТРУ.  Делалось, чтобы когда чувак выполняет пост комбат, он считал что стейт менеджер находится в безразличном состоянии.
-
 	--  Заремленно, потому что был баг, когда чувак уже выполняет планнер комбата, а еще не вышел из анимации посткомбата
 	-- UPD: Отремлено, потому что стейт менеджер не имеет права работать во время пост комбата.
-	if self.combat_planner == nil then
-		self.combat_planner = cast_planner(self.mgr:action(stalker_ids.action_combat_planner))
-	end
-	if not self.combat_planner:initialized() then
-		return false
-	end
+--	if self.combat_planner == nil then
+--		self.combat_planner = cast_planner(self.mgr:action(stalker_ids.action_combat_planner))
+--	end
+--	if not self.combat_planner:initialized() then
+--		return false
+--	end
 	--if self.combat_planner:current_action_id() == stalker_ids.action_post_combat_wait then
 	--	return true
 	--end
 
-
-
+	
+	
 	return false
 end
 
@@ -117,7 +124,7 @@ function evaluator_state_mgr_idle_alife:evaluate()
 --	return true
 end
 
---' Мы уже в безраличном состоянии idle или нет ()учет с проверкой alife
+--' Мы уже в безраличном состоянии idle или нет () для собирательства и других схем
 class "evaluator_state_mgr_idle_items" (property_evaluator)
 function evaluator_state_mgr_idle_items:__init(name, state_manager) super (nil, name)
 	self.st = state_manager
@@ -127,48 +134,17 @@ function evaluator_state_mgr_idle_items:evaluate()
 	if not self.object:alive() then
 		return true
 	end
-	-- апдейт менеджера анимаций
-	-- раньше он был тут, сейчас он вынесен из эвалуатора
+	local t = self.st.target_state == "idle" and
+--		not self.st.planner:evaluator(self.st.properties["locked"]):evaluate() and
+		not self.st.planner:evaluator(self.st.properties["animstate_locked"]):evaluate() and
+		not self.st.planner:evaluator(self.st.properties["animation_locked"]):evaluate() and
 
---	printf("SECTION %s", utils.to_str(db.storage[self.st.npc:id()].active_section))
---	mgr = self.object:motivation_action_manager()
---	self.t = nil
---	if mgr:initialized() then
---		self.t = mgr:current_action_id()
---		--printf("ACTION %s", utils.to_str(self.t))
---		if self.t ~= xr_actions_id.alife then
---			self.st.alife = false
---		end
---	end
+		self.st.planner:evaluator(self.st.properties["movement"]):evaluate()	and
+		self.st.planner:evaluator(self.st.properties["animstate"]):evaluate() and
+		self.st.planner:evaluator(self.st.properties["animation"]):evaluate() and
+		self.st.planner:evaluator(self.st.properties["smartcover"]):evaluate()
 
---	if db.storage[self.st.npc:id()].active_section == nil then  --Заремил, потому что чуваки пока у них есть активная секция срывались в алайф без корректного завершения анимаций
-		if xr_meet.is_meet(self.object) == false then
-			local t = self.st.target_state == "idle" and
---				not self.st.planner:evaluator(self.st.properties["locked"]):evaluate() and
-				not self.st.planner:evaluator(self.st.properties["animstate_locked"]):evaluate() and
-				not self.st.planner:evaluator(self.st.properties["animation_locked"]):evaluate() and
-
-				self.st.planner:evaluator(self.st.properties["movement"]):evaluate()	and
-				self.st.planner:evaluator(self.st.properties["animstate"]):evaluate() and
-				self.st.planner:evaluator(self.st.properties["animation"]):evaluate() and
-				self.st.planner:evaluator(self.st.properties["smartcover"]):evaluate()
-
-	--		printf("[%s] %s", self.object:name(), utils.to_str(self.st.target_state))
-	--		printf("%s", utils.to_str(self.st.planner:evaluator(self.st.properties["locked"]):evaluate()))
-	--		printf("%s", utils.to_str(self.st.planner:evaluator(self.st.properties["movement"]):evaluate()))
-	--		printf("%s", utils.to_str(self.st.planner:evaluator(self.st.properties["animstate"]):evaluate()))
-	--		printf("%s", utils.to_str(self.st.planner:evaluator(self.st.properties["animation"]):evaluate()))
-
---			if t == true then self.st.alife = true end
---			if self.st.alife == true then
---				return true
---			end
-			return t
-		else
-			return false
-		end
---	end
---	return true
+	return t
 end
 
 
@@ -197,11 +173,29 @@ function act_state_mgr_to_idle:initialize()
 	self.object:inactualize_patrol_path		()
 
 	if self.object:best_enemy() then
-		self.st:set_state("idle", nil, nil, nil, {fast_set = true})
+		if string.find(self.st.target_state,"wounded") then	-- раненый не должен вскакивать огурчиком
+			self.st:set_state("idle")
+		else
+			self.st:set_state("idle", nil, nil, nil, {fast_set = true})
+			self.st.animation:set_state(nil, true)
+			self.st.animstate:set_state(nil, true)
+		end
+		if self.object:weapon_strapped() then
+			local actit = self.object:active_item()
+			local weap = self.object:best_weapon()
+			if actit and weap and weap:id() ~= actit:id() then
+				self.object:set_item(object.idle, actit)
+				self.st.fix_strap = true
+			end
+		end
 		return
 	end
-	if self.object:best_danger() then
+	if self.object:best_danger() and db.storage[self.object:id()].danger_flag then
 		self.st:set_state("idle", nil, nil, nil, {fast_set = true})
+		if self.object:best_danger():type() == danger_object.grenade then
+			self.st.animation:set_state(nil, true)
+			self.st.animstate:set_state(nil, true)
+		end
 		return
 	end
 	self.st:set_state("idle")
@@ -216,7 +210,7 @@ function act_state_mgr_to_idle:execute()
 		action_base.execute(self)
 		return
 	end
-	if self.object:best_danger() then
+	if self.object:best_danger() and db.storage[self.object:id()].danger_flag then
 		self.st:set_state("idle", nil, nil, nil, {fast_set = true})
 		action_base.execute(self)
 		return
@@ -230,6 +224,10 @@ function act_state_mgr_to_idle:finalize()
 
 	self.st.current_object = -1
 
+	if self.block_sound then
+		rx_sound.block_alarm_sound(self.object)
+		self.block_sound = nil
+	end
 	action_base.finalize(self)
 end
 
@@ -255,6 +253,10 @@ function eva_state_mgr_end:evaluate()
 		return false
 	end
 
+	if self.st.locked then
+		return false
+	end
+	
 	local current_action_id = self.mgr:current_action_id()
 
 	if current_action_id == stalker_ids.action_combat_planner then
@@ -638,8 +640,8 @@ function bind_manager(object)
 
 	action = this.act_state_mgr_to_idle("state_mgr_to_idle_items", state_manager)
 	action:add_precondition		(world_property(properties["state_mgr_idle_items"],	false))
-	action:add_precondition		(world_property(stalker_ids.property_items, true))
-	action:add_precondition		(world_property(stalker_ids.property_enemy, false))
+--	action:add_precondition		(world_property(stalker_ids.property_items, true))
+--	action:add_precondition		(world_property(stalker_ids.property_enemy, false))
 	action:add_effect 			(world_property(properties["state_mgr_idle_items"],	true))
 	manager:add_action(operators["state_mgr_to_idle_items"], action)
 
@@ -685,4 +687,32 @@ function is_npc_in_combat(npc)
 	local current_action_id = mgr:current_action_id()
 	return  current_action_id == stalker_ids.action_combat_planner or
 			current_action_id == stalker_ids.action_post_combat_wait
+end
+
+function lock(npc,enable)
+	local stmgr = db.storage[npc:id()].state_mgr
+	if stmgr then
+--		stmgr.animation:set_state(nil,true)--
+--		stmgr.animation:set_control()
+		stmgr.animation.states.anim_marker = nil
+		stmgr.animstate.states.anim_marker = nil
+		stmgr.locked = enable
+		if enable then
+			stmgr.combat = true
+		end
+	end
+end
+
+function is_idle(npc)
+	local stmgr = db.storage[npc:id()].state_mgr
+	local t = stmgr and stmgr.target_state == "idle" and
+--		not stmgr.planner:evaluator(stmgr.properties["locked"]):evaluate() and
+		not stmgr.planner:evaluator(stmgr.properties["animstate_locked"]):evaluate() and
+		not stmgr.planner:evaluator(stmgr.properties["animation_locked"]):evaluate() and
+
+		stmgr.planner:evaluator(stmgr.properties["movement"]):evaluate()	and
+		stmgr.planner:evaluator(stmgr.properties["animstate"]):evaluate() and
+		stmgr.planner:evaluator(stmgr.properties["animation"]):evaluate() and
+		stmgr.planner:evaluator(stmgr.properties["smartcover"]):evaluate()
+	return t == true
 end

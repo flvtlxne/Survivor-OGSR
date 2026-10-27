@@ -28,6 +28,13 @@
 	    <texture id="ui_inGame2_button_h" x="429" y="562" width="108" height="24" />
 	    <texture id="ui_inGame2_button_d" x="209" y="562" width="108" height="24" />
 
+
+	    <texture id="ui_inGame3_button_t" x="209" y="562" width="108" height="24" />
+	    <texture id="ui_inGame3_button_e" x="319" y="562" width="108" height="24" />
+	    <texture id="ui_inGame3_button_h" x="429" y="562" width="108" height="24" />
+	    <texture id="ui_inGame3_button_d" x="209" y="562" width="108" height="24" />
+
+
 	    <texture id="ui_inGame2_checkbox_e" x="832" y="160" width="44" height="29" />
 	    <texture id="ui_inGame2_checkbox_h" x="904" y="250" width="44" height="29" />
 	    <texture id="ui_inGame2_checkbox_t" x="832" y="188" width="44" height="29" />

@@ -11,6 +11,7 @@
 class "evaluator_contact" (property_evaluator)
 function evaluator_contact:__init(name, storage) super (nil, name)
 	self.a = storage
+	self.updcnt = -1
 end
 function evaluator_contact:evaluate()
 	if self.a.meet_set ~= true then return false end
@@ -23,14 +24,18 @@ function evaluator_contact:evaluate()
 		if not db.actor:alive() then
 			return false
 		end
-
-		self.a.meet_manager:update()
-
-		if xr_wounded.is_wounded(self.object) then
+		
+		self.updcnt = self.updcnt-1
+		if self.updcnt < 0 then
+			self.updcnt = 6
+			self.a.meet_manager:update()
+		end
+		
+		if self.object:best_enemy() ~= nil then	-- and self.a.meet_manager.startdialog ~= nil
 			return false
 		end
 
-		if self.object:best_enemy() ~= nil then
+		if xr_wounded.is_wounded(self.object) then
 			return false
 		end
 
@@ -42,7 +47,6 @@ function evaluator_contact:evaluate()
 			self.object:disable_talk()
 			return false
 		end
-
 		return self.a.meet_manager.current_distance ~= nil
 	else
 		return false
@@ -191,7 +195,7 @@ function Cmeet_manager:update()
 		if distance <= tonumber(xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.close_snd_distance)) then
 			-- Коллбек на приближение
 			-- звук при приближении
-			if self.hello_passed == false then
+			if self.hello_passed == false and not rx_ai.cant_talk(self.npc) then
 				local snd = xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.close_snd_hello)
 				if tostring(snd) ~= "nil" and not state_mgr.is_npc_in_combat(self.npc) then
 					xr_sound.set_sound_play(self.npc:id(), snd)
@@ -206,7 +210,7 @@ function Cmeet_manager:update()
 				-- звук при отдалении
 				if self.bye_passed == false then
 					local snd = xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.close_snd_bye)
-					if tostring(snd) ~= "nil" and not state_mgr.is_npc_in_combat(self.npc) then
+					if tostring(snd) ~= "nil" and not state_mgr.is_npc_in_combat(self.npc) and not rx_ai.cant_talk(self.npc) then
 						xr_sound.set_sound_play(self.npc:id(), snd)
 					end
 	
@@ -217,7 +221,7 @@ function Cmeet_manager:update()
 	end
 	
 	local is_object_far = actor_visible and distance <= tonumber(xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.far_distance))
-	local is_object_close = (actor_visible and distance <= tonumber(xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.close_distance))) or (self.npc:is_talking() and self.a.meet_on_talking)
+	local is_object_close = (actor_visible and distance <= tonumber(xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.close_distance))) or (self.npc:is_talking() and xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.meet_on_talking) == "true")
 
 	--printf("!!! %s %s %s", self.npc:name(), tostring(is_object_far), tostring(is_object_close))
 	--printf("%s",  xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.close_distance))
@@ -510,14 +514,14 @@ reset_distance	= 30
 		def.use_text			= "nil"
 		
 	else
-		def.close_distance 		= "{=is_wounded} 0, {!is_squad_commander} 0, 3"
+		def.close_distance 		= "{=surge_started} 0, {=is_wounded} 0, {!is_squad_commander} 0, 3"
 		def.close_anim 			= "{=is_wounded} nil, {!is_squad_commander} nil, {=actor_has_weapon} threat_na, talk_default"
 		def.close_snd_distance 	= "{=is_wounded} 0, {!is_squad_commander} 0, 3"
 		def.close_snd_hello		= "{=is_wounded} nil, {!is_squad_commander} nil, {=actor_enemy} nil, {=actor_has_weapon} meet_hide_weapon, meet_hello"
-		def.close_snd_bye		= "{=is_wounded} nil, {!is_squad_commander} nil, {=actor_enemy} nil, {=actor_has_weapon} nil, meet_hello"
+		def.close_snd_bye		= "nil"
 		def.close_victim		= "{=is_wounded} nil, {!is_squad_commander} nil, actor"
-		def.far_distance		= "{=is_wounded} 0, {!is_squad_commander} 0, 5"
-		def.far_anim			= "nil"
+		def.far_distance		= "{=surge_started} 0, {=is_wounded} 0, {!is_squad_commander} 0, 4"
+		def.far_anim			= "talk_wait"
 		def.far_snd_distance	= "{=is_wounded} 0, {!is_squad_commander} 0, 5"
 		def.far_snd				= "nil"
 		def.far_victim			= "nil"
@@ -630,7 +634,11 @@ function process_npc_usability(npc)
 	local use = meet.meet_manager.use
 
 	if use == "true" then
-		if xr_corpse_detection.is_under_corpse_detection(npc) or xr_help_wounded.is_under_help_wounded(npc) then
+		if rx_ai.cant_talk(npc)
+--		or xr_help_wounded.is_under_help_wounded(npc) 
+--		or xr_corpse_detection.is_under_corpse_detection(npc)
+--		or not npc:path_completed() and surge_manager.is_started()
+		then
 			npc:disable_talk()
 		else
 			npc:enable_talk()

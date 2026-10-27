@@ -1,0 +1,165 @@
+local t={}
+
+function on_use_object(obj)
+	(t[obj:section()] or function()end)()
+end
+
+
+t['actors_note'] = function()
+run_gui(mod_devices.actors_note_start())
+end
+
+t['vodka'] = function()
+stress_counter()	-- понижаем стресс;
+vodka_counter()		-- повышаем опъ€нение;
+if xr_conditions.master_difficulty() == true then
+	if xr_conditions.actor_in_kpp_surge_hide_zone() == false then
+		if db.actor:object("af_fuzz_kolobok_mg") ~= nil then
+			start_real_timer(20, "mod_timer_functions.af_fuzz_kolobok_mg_action")
+			db.actor:give_info_portion("invulnerability")
+			soundtrack.actor_go_on_fight()
+		end
+		if db.actor:object("af_medusa_mg") ~= nil then
+			db.actor.health = 1.0
+			db.actor.radiation = -1.0
+			db.actor.bleeding = 1.0
+		end
+	elseif xr_conditions.actor_in_kpp_surge_hide_zone() == true then
+		db.actor:give_info_portion("kpp_bunker_chair_rest")
+	end
+end
+end
+
+function stress_counter()
+local counter_name = "stress"
+	local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
+	if cnt_value > 1 then
+		xr_effects.dec_counter(db.actor, nil, {"stress",2})
+	end
+end	
+
+function vodka_counter()
+if xr_conditions.master_difficulty() == false then
+local counter_name = "vodka"
+	local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
+	if cnt_value < 6 then
+		xr_effects.inc_counter(db.actor, nil, {"vodka",1})
+	end
+elseif xr_conditions.master_difficulty() == true then
+	if db.actor:object("af_night_star_mg") ~= nil then
+		db.actor.health = 1.0
+		db.actor.radiation = -1.0
+		db.actor.bleeding = 1.0
+		mod_functions.repair_both_actor_weapons()
+	end
+end
+end	
+
+
+t['bread'] = function()
+if xr_conditions.master_difficulty() == true and db.actor:object("af_medusa_mg") ~= nil then
+	db.actor.health = 1.0
+	db.actor.radiation = -1.0
+	db.actor.bleeding = 1.0
+end
+end
+
+t['kolbasa'] = function()
+if xr_conditions.master_difficulty() == true and db.actor:object("af_medusa_mg") ~= nil then
+	db.actor.health = 1.0
+	db.actor.radiation = -1.0
+	db.actor.bleeding = 1.0
+end
+end
+
+t['conserva'] = function()
+if xr_conditions.master_difficulty() == true and db.actor:object("af_medusa_mg") ~= nil then
+	db.actor.health = 1.0
+	db.actor.radiation = -1.0
+	db.actor.bleeding = 1.0
+end
+end
+
+t['energy_drink'] = function()
+if xr_conditions.master_difficulty() == true and db.actor:object("af_medusa_mg") ~= nil then
+	db.actor.health = 1.0
+	db.actor.radiation = -1.0
+	db.actor.bleeding = 1.0
+end
+end
+
+
+
+t['item_bomb'] = function()
+local pos = db.actor:position()
+alife():create("script_bomb", vector():set(pos.x+1, pos.y, pos.z), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+end
+
+t['detonator'] = function()
+for i=1,65534 do
+local bomb = level.object_by_id(i)
+local pos = db.actor:position()
+	if bomb and bomb:section() == "script_bomb" and bomb:position():distance_to(pos)<50 then
+			local h=hit()
+			h.type = hit.fire_wound
+			h.power = 10.0
+			h.impulse = 0
+			h.draftsman = db.actor
+			h.direction = vector():set(0,0,0)
+			bomb:hit(h)
+			mod_functions.remove_items("detonator", 1)
+	end
+end
+end
+
+t['af_teleport_item'] = function()
+if not xr_conditions.actor_in_zone(nil,nil,{"village_trap_house_room_zone"}) and xr_conditions.actor_in_car1() ~= true then
+if db.actor:dont_has_info("af_teleport_idle") then
+	level.add_pp_effector("fade_in.ppe", 1114, false)
+	xr_effects.disable_ui()
+	start_real_timer(3, "mod_timer_functions.af_teleport_item_action1")
+	--start_game_timer(720*60, "mod_timer_functions.af_teleport_item_action2")
+	db.actor:give_info_portion("af_teleport_idle")
+elseif has_alife_info("af_teleport_idle") then
+	soundtrack.no_replics()
+end
+end
+end
+
+
+t['af_armadeus'] = function()
+if not xr_conditions.actor_in_zone(nil,nil,{"village_trap_house_room_zone"}) then
+if db.actor:dont_has_info("af_armadeus_idle") then
+	level.add_pp_effector("fade_in.ppe", 1114, false)
+	xr_effects.disable_ui()
+	start_real_timer(1, "mod_timer_functions.enable_ui")
+	alife():create('karlik_friend', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+	db.actor:give_info_portion("af_armadeus_idle")
+	stress_counter_up()
+elseif has_alife_info("af_armadeus_idle") then
+	soundtrack.no_replics()
+end
+end
+end
+
+function stress_counter_up()
+local counter_name = "stress"
+	local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
+	if cnt_value > 1 then
+		xr_effects.inc_counter(db.actor, nil, {"stress",2})
+	end
+end
+
+t['mg_repair_kit'] = function()
+if xr_conditions.master_difficulty() == true then
+	mod_functions.repair_both_actor_weapons()
+end
+end
+
+
+
+
+
+
+
+

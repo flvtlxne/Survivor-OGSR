@@ -1,0 +1,62 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@1
+combat_ignore = combat_ignore
+;on_death = death
+
+[walker@1]
+path_walk = traktor_npc_pnt1
+path_look = traktor_npc_pnt2
+meet = meet@2
+invulnerable = true
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+traktor_npc_speech} remark@1 %=disable_ui =play_sound(traktor_npc_speech)%
+on_info2 = {=master_difficulty} %=destroy_object%
+
+[remark@1]
+anim = fold_arms
+;anim = claim
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_game_timer = 280|%=enable_ui =destroy_object =spawn_traktor_controler =run_postprocess(fade_in_out)%
+
+
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[combat_ignore]
+combat_ignore = always
+ 
+[death] 
+on_info = %+222%
+
+
+
+

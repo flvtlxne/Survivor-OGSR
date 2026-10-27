@@ -1,0 +1,227 @@
+--[[ ----------------------------------------------------------------------------------------------
+ File       : module_dynamic_update.script
+ Description: "Модуль динамического апдейта"
+ Copyright  : 2015 © Neof-One
+ Author     : Vampirnik77
+ Editors    : Vampirnik77
+ Last edit  : 02.07.2017 (by Vampirnik77)
+--]] ----------------------------------------------------------------------------------------------
+local static_funcrion_tbl = {
+							[1] = module_key_binding.update,						
+							[2] = mod_update.critical_health_effect,
+							[3] = mod_update.note_using_indication,
+							[4] = mod_update.autousable_items,
+							[5] = mod_update.invulnerability,
+							[6] = mod_update.knife_count_control,
+							[7] = mod_update.check_inventory_opened,
+							[8] = mod_update.mg_game_functions
+							
+							} --/Статичные данные, ЗДЕСЬ ССЫЛКИ ФУНКЦИЙ, КОТОРЫЕ ВСЕГДА НА АПДЕЙТЕ(!), 
+							  --- если хотите повесить на постоянный апдейт, то вписывайте в таблицу ручками.
+---------------------------------------------------------------------------------------------
+local function_tbl = {		} --\Таблица ссылок для обычного апдейта ~40мс (mode "a")
+
+local function_name_tbl = {}--\Таблица имен для обычного апдейта ~40мс
+---------------------------------------------------------------------------------------------
+local function_tbl_100 = {} --\Таблица ссылок для обычного апдейта ~100мс (mode "b")
+
+local function_name_tbl_100 = {}--\Таблица имен для обычного апдейта ~100мс
+---------------------------------------------------------------------------------------------
+local function_tbl_1000 = {} --\Таблица ссылок для обычного апдейта ~1с (mode "c")
+
+local function_name_tbl_1000 = {}--\Таблица имен для обычного апдейта ~1с
+---------------------------------------------------------------------------------------------
+local function_tbl_5000 = {} --\Таблица ссылок для обычного апдейта ~5с (mode "d")
+
+local function_name_tbl_5000 = {}--\Таблица имен для обычного апдейта ~5с
+---------------------------------------------------------------------------------------------
+local t1, t2, t3 = 0, 0, 0
+
+function update_fps(delta) --- вызывается из апдейта актора, частота вызовов которого равна частоте фпс игры 
+						   --- дельту надо передать оттуда же - это время прошедшее с прошлого такого же апдейта в миллисекундах.
+	 for _, func in ipairs(function_tbl) do
+		func() -- Апдейт ф-ций ~40мс
+	 end
+	 for _, func_s in ipairs(static_funcrion_tbl) do
+		func_s() -- Апдейт ф-ций ~40мс(статичные данные)
+     end
+	t1 = t1 + delta
+	if t1 > 100 then 
+		module_dynamic_update.update_100(t1) --- сколько на самом деле насчитали - лучше передавать, 
+											 --- потому что скорее всего будет не ровно сто.
+		t1 = 0
+	end
+        t2 = t2 + delta
+	if t2 > 1000 then 
+		module_dynamic_update.update_1000(t2) --- сколько на самом деле насчитали - лучше передавать, 
+											  --- потому что скорее всего будет не ровно секунда.
+		t2 = 0
+	end
+        t3 = t3 + delta
+	if t3 > 5000 then 
+		module_dynamic_update.update_5000(t3) --- сколько на самом деле насчитали - лучше передавать, 
+											  --- потому что скорее всего будет не ровно 5 секунд.
+		t3 = 0
+	end
+end
+-----------------------------------------------------------------------------------------------
+function update_100(t1_time) --/ Апдейт ~100мс
+	for _, func in ipairs(function_tbl_100) do
+		func()
+	 end
+end
+
+function update_1000(t2_time) --/ Апдейт ~1000мс(1с)
+	for _, func in ipairs(function_tbl_1000) do
+		func()
+	 end
+end
+
+function update_5000(t2_time) --/ Апдейт ~5000мс(5с)
+	for _, func in ipairs(function_tbl_5000) do
+		func()
+	 end
+end
+---------------------------------------------------------------------------------------------------
+local mode_tbl = {["a"] = function_tbl,
+				  ["an"] = function_name_tbl,
+				  ["b"] = function_tbl_100,
+				  ["bn"] = function_name_tbl_100,
+				  ["c"] = function_tbl_1000,
+				  ["cn"] = function_name_tbl_1000,
+				  ["d"] = function_tbl_5000,
+				  ["dn"] = function_name_tbl_5000
+				 }
+				  
+				  
+function addTable(func_name, mode) --\Вешаем функцию(func_name - строка с именем ссылки "scr.func", mode частота апдейта) на апдейт
+local func = Get_CheckedFunc(func_name) -- определяем функцию по её имени
+	if not mode then
+		mode = "a"
+	end
+	if func and not existFunc(func_name)  then -- если функция существует и её еще нет на апдейте, тогда вставляем в обе таблицы
+		table.insert(mode_tbl[mode], func)
+		table.insert(mode_tbl[mode.."n"], func_name)
+	end
+end
+
+function delTable(func_name, mode) --\\Снимаем функцию(func_name - строка с именем ссылки "scr.func", mode частота апдейта) с апдейта
+local func = Get_CheckedFunc(func_name) -- определяем функцию по её имени
+	if not mode then
+		mode = "a"
+	end
+	if func then
+		for index, stored_func in ipairs(mode_tbl[mode]) do
+			if stored_func == func then -- если функция в таблице равна функции, которую хотим удалить
+				table.remove(mode_tbl[mode], index) -- удаляем по текущему индексу
+				table.remove(mode_tbl[mode.."n"], index) -- удаляем по тому же индексу (для одной функции индексы равны в обеих таблицах, так как добавляем/удаляем их синхронно)
+			end
+		end
+	end
+end
+
+function saveTbl() --\Пишем в универсальное хранилище таблицы с именами ссылок(!) ибо так нужно se_stor'y 
+se_stor.set("fnt", function_name_tbl)
+se_stor.set("fnt_1", function_name_tbl_100)
+se_stor.set("fnt_2", function_name_tbl_1000)
+se_stor.set("fnt_3", function_name_tbl_5000)
+end
+
+function loadTbl() --\Читаем и удаляем из универсального хранилища таблицы с именами ссылок(!) ибо так нужно se_stor'y
+function_name_tbl = se_stor.get("fnt", {})
+se_stor.set("fnt", nil)
+
+function_name_tbl_100 = se_stor.get("fnt_1", {})
+se_stor.set("fnt_1", nil)
+
+function_name_tbl_1000 = se_stor.get("fnt_2", {})
+se_stor.set("fnt_2", nil)
+
+function_name_tbl_5000 = se_stor.get("fnt_3", {})
+se_stor.set("fnt_3", nil)
+module_dynamic_update.transTbl()
+end
+
+function transTbl() --\Трансформируем таблицы с именами ссылок в таблицы c ссылками
+	for key, _ in ipairs(function_name_tbl) do
+		if function_name_tbl[key] then
+			function_tbl[key] = Get_CheckedFunc(function_name_tbl[key])
+		end
+	end
+	for key, _ in ipairs(function_name_tbl_100) do
+		if function_name_tbl_100[key] then
+			function_tbl_100[key] = Get_CheckedFunc(function_name_tbl_100[key])
+		end
+	end
+	
+	for key, _ in ipairs(function_name_tbl_1000) do
+		if function_name_tbl_1000[key] then
+			function_tbl_1000[key] = Get_CheckedFunc(function_name_tbl_1000[key])
+		end
+	end
+	
+	for key, _ in ipairs(function_name_tbl_5000) do
+		if function_name_tbl_5000[key] then
+			function_tbl_5000[key] = Get_CheckedFunc(function_name_tbl_5000[key])
+		end
+	end
+end
+
+
+function quantityFunc(mode) --\ Возвращает количество функций на апдейте
+local counter = 0
+	if not mode then
+		mode = "a"
+	end
+	if mode == "a" then
+		counter = counter + #static_funcrion_tbl
+	end
+		for _, val in ipairs(mode_tbl[mode]) do
+			if val then
+				counter = counter + 1
+			end
+		end
+return counter
+end
+
+function existFunc(func_name) --\ Проверям висит ли функция на апдейте boolean
+local bool = false
+	for _, val in ipairs(function_name_tbl) do
+		if val == func_name then
+			bool = true
+		end
+	end
+	
+	for _, val in ipairs(function_name_tbl_100) do
+		if val == func_name then
+			bool = true
+		end
+	end
+	
+	for _, val in ipairs(function_name_tbl_1000) do
+		if val == func_name then
+			bool = true
+		end
+	end
+	
+	for _, val in ipairs(function_name_tbl_5000) do
+		if val == func_name then
+			bool = true
+		end
+	end
+return bool
+end
+
+function forcedRemoveTbl() --\ Принудительная чистка таблиц
+clear_table (function_name_tbl)
+clear_table (function_tbl)
+
+clear_table (function_name_tbl_100)
+clear_table (function_tbl_100)
+
+clear_table (function_name_tbl_1000)
+clear_table (function_tbl_1000)
+
+clear_table (function_name_tbl_5000)
+clear_table (function_tbl_5000)
+end

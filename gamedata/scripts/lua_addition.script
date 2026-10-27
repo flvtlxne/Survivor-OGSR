@@ -1,0 +1,190 @@
+--[[ ----------------------------------------------------------------------------------------------
+ File       : lua_addition.script
+ Description: "Дополнительные полезные функции"
+ Copyright  : 2015 © Neof-One
+ Author     : Stalker Community and Vampirnik77
+ Editors    : Vampirnik77
+ Last edit  : 24.07.2017 (by Vampirnik77)
+--]] ----------------------------------------------------------------------------------------------
+function _G.HaveArtefact() --/ Функция проверки наличия артефактов у ГГ
+local bool = false
+db.actor:inventory_for_each(function(item)
+		if IsArt(item) then
+			bool = true
+		end
+end)
+return bool
+end
+
+function _G.run_gui(gui, close_inv) --/ Запуск Gui
+	if close_inv == true then 
+		gui:ShowDialog(true) 
+		game_hide_menu() 
+		level.show_weapon(false) 
+	else 
+		gui:ShowDialog(true) 
+	end 
+end 
+
+function _G.IsArt(obj) --/ Артефакт ли?
+local section = obj:section()
+	if ReadINI(section,"class","string") == "ARTEFACT" or ReadINI(section,"class","string") == "SCRPTART" then
+		return true
+	else
+		return false
+	end
+end
+
+
+
+function _G.toBool(value) --/ Функция преобразование в булевые значения // Не работала в версии 0.0.3
+	if tostring(value) == "nil" or tosrting(value) == "false" then
+		return false
+	else
+		return true
+end
+end
+
+function _G.isBool(value) --/ Автор Desertir
+    if type(value) == 'boolean' then
+		return true
+	else
+		return false
+	end
+end
+
+function _G.IsAnom (obj) --/ Аномалия ли? Кто автор не знаю.
+local s = obj:section() 
+return string.find(s, "zone_mine_electric_dinamic") 
+end
+
+function _G.give_object_to_actor(obj,count) --/Функция выдачи предмета актору. Автор FantomICW
+     if count == nil then count = 1 end 
+     for i=1, count do 
+     alife():create(obj,db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),db.actor:id()) 
+     end 
+end
+
+function _G.str_split (str) --/ Разбивает строку на 4 части, ориентируясь по разделителю "_"
+
+    local strlen = string.len (str)
+
+    local parts = {{}, {}, {}, {}}
+    local cpart = 1
+
+    for a = 1, strlen, 1 do
+        local char = string.byte (str, a)
+        if char ~= 95 then
+           table.insert (parts[cpart], char)
+        else
+           cpart = cpart + 1
+           if cpart > 4 then break end
+        end
+    end
+
+    if cpart ~= 4 then return "unknown", "stalker", 0, 0 end
+
+    local str1 = string.char ()
+    local str2 = string.char ()
+    local str3 = string.char ()
+    local str4 = string.char ()
+
+    local ref = parts[1]
+    for a = 1, table.getn (ref), 1 do
+        str1 = string.format ("%s%c", str1, ref[a])
+    end
+
+    ref = parts[2]
+    for a = 1, table.getn (ref), 1 do
+        str2 = string.format ("%s%c", str2, ref[a])
+    end
+
+    ref = parts[3]
+    for a = 1, table.getn (ref), 1 do
+        str3 = string.format ("%s%c", str3, ref[a])
+    end
+
+    ref = parts[4]
+    for a = 1, table.getn (ref), 1 do
+        str4 = string.format ("%s%c", str4, ref[a])
+    end
+
+    printf ("%s %s %d %d", str1, str2, str3, str4)
+    return str1, str2, str3, str4
+end
+
+
+function _G.release_actor_inventory(object_name, count) --/ Функция удаления предметов из инвентаря ГГ. Автор Samaber13
+ local function release_object_item(item) 
+    if item:section() == object_name and count > 0 then
+	 local s_Item = item
+     alife():release(alife():object(s_Item:id()), true)
+     count = count - 1 
+    end 
+   end 
+     db.actor:inventory_for_each(release_object_item) 
+   end
+
+function _G.WriteToMyLog(info,comment) --/ Функция вывода в отдельный лог файл. info-информация, comment-комментарий
+ if info then
+	info = tostring(info)
+	local file = io.open("gamedata\\LogFile.ltx","a")
+	 if not comment then
+		file:write(info, "\n")
+	 else
+		file:write(comment, " ---> ", info, "\n")
+	 end
+	file:close()
+ end
+end
+
+function _G.ReadINI(section,line,type_key,ini) --/ Функция чтения ini-файлов
+local result = Get_CheckedFunc("module_ini.Read"..string.lower(type_key))(section,line,ini)
+return result
+end
+
+function _G.RegisterCallback(name,func)
+local callbacks = {
+["item_drop"] = "module_callbacks.RegDrop",
+["item_take"] = "module_callbacks.RegTake",
+["item_use"] = "module_callbacks.RegUse"
+}
+Get_CheckedFunc(callbacks[name])(func)
+end
+
+function _G.UnRegisterCallback(name,func)
+local callbacks = {
+["item_drop"] = "module_callbacks.UnRegDrop",
+["item_take"] = "module_callbacks.UnRegTake",
+["item_use"] = "module_callbacks.UnRegUse"
+}
+Get_CheckedFunc(callbacks[name])(func)
+end
+--/Функции для работы с таблицами---------------------------------------------------------------------------------------------------------------
+function _G.ExistFieldTbl(tbl, field) --/ Функция проверяет есть ли в таблице(tbl) определенное поле/элемент(field)
+local bool = false
+	for _, pole in pairs(tbl) do
+		if pole == field then
+			bool = true
+		end
+  end
+return bool
+end
+
+function _G.RndElmTbl(tbl) --/ Функция возвращает рандомный элемент таблицы
+	math.randomseed(device():time_global())
+	local key_tbl = {}
+	for key, val in pairs(tbl) do
+		table.insert(key_tbl, key)
+	end
+	local rnd_key = key_tbl[math.random(1,#key_tbl)]
+return tbl[rnd_key]
+end
+
+function _G.SizeTbl(tbl) --/Функция возвращает размер таблицы
+local size = 0
+	for key, val in pairs(tbl) do
+		size = size + 1
+	end
+return size
+end

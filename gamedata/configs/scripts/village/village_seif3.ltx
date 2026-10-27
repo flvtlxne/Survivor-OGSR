@@ -1,0 +1,18 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips = st_search_treasure
+on_info = {!master_difficulty} ph_idle@open
+on_info2 = {=master_difficulty} ph_idle@2
+
+[ph_idle@2]
+on_info = {+mg_friend_zapiska1_info} ph_idle@open %=add_self_spot(treasure2:mg_art_robber_tresure_mark_text)%
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=remowe_self_spot(treasure2:mg_art_robber_tresure_mark_text)%
+on_info = {+mg_art_robber_pda_info2} ph_idle@3 %=remowe_self_spot(treasure2:mg_art_robber_tresure_mark_text)%
+
+[ph_idle@3]

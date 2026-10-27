@@ -1,0 +1,13 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_artefact_box_use1
+on_use = {=lonl_house_box_items_precondition} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+on_info = {=master_difficulty} %=destroy_object%
+
+[ph_idle@2]
+on_game_timer = 10|ph_idle@1 %=lonl_house_box_items_release =enable_ui =play_sound(metal_small_open)%
+
+
+ 

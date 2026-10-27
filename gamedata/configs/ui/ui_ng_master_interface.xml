@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <ui_ng_master_interface>
+
+	<table x="290" y="100" width="780" height="450" stretch="1">
+		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+	</table>
+
+	<name x="340" y="115" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Режим соревнования</text>
+	</name>
+
+	<text1 x="350" y="160" width="380" height="230">
+		<text x="0" y="0" r="135" g="235" b="118" a="158" font="letterica18"  complex_mode="1">В этом режиме вы сражаетесь со случайными противниками в условиях надвигающегося выброса. Основной сюжет недоступен. Чтобы выиграть, необходимо достичь вертолёта и эвакуироваться.</text>
+	</text1>
+	
+	<logo x="350" y="230" width="330" height="230" stretch="1">
+		<texture x="0" y="0" width="1027" height="515">ui\ui_ng_master_logo</texture>
+	</logo>
+
+	
+
+	<btn_1 x="390" y="490" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Подтвердить</text>
+	</btn_1>
+
+	<btn_2 x="540" y="490" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Отмена</text>
+	</btn_2>
+
+	
+
+    </ui_ng_master_interface>
+
+

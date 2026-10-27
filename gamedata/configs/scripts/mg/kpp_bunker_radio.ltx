@@ -1,0 +1,42 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+;tips      = kpp_bunker_radio_tip0
+on_info = {=actor_in_zone(kpp_surge_hide_zone)} ph_idle@1
+on_info2 = {!master_difficulty} %=destroy_object%
+
+[ph_idle@1]
+;tips      = kpp_bunker_radio_tip1
+on_info = {!actor_in_zone(kpp_surge_hide_zone)} ph_idle@0
+on_game_timer = 1|{~30} ph_idle@2, {~50} ph_idle@3, {~70} ph_idle@4
+
+
+; Музло:
+[ph_idle@2]
+tips      = kpp_bunker_radio_tip2
+on_use = ph_idle@off %=play_sound(pribor_switch) =stop_sound_looped(kpp_bunker_radio_snd1)%
+on_info = {!actor_in_zone(kpp_surge_hide_zone)} ph_idle@0 %=stop_sound_looped(kpp_bunker_radio_snd1)%
+on_info2 =  {+master_game} %=play_sound_looped(kpp_bunker_radio_snd1)%
+
+[ph_idle@3]
+tips      = kpp_bunker_radio_tip2
+on_use = ph_idle@off %=play_sound(pribor_switch) =stop_sound_looped(kpp_bunker_radio_snd2)%
+on_info = {!actor_in_zone(kpp_surge_hide_zone)} ph_idle@0 %=stop_sound_looped(kpp_bunker_radio_snd2)%
+on_info2 =  {+master_game} %=play_sound_looped(kpp_bunker_radio_snd2)%
+
+[ph_idle@4]
+tips      = kpp_bunker_radio_tip2
+on_use = ph_idle@off %=play_sound(pribor_switch) =stop_sound_looped(kpp_bunker_radio_snd3)%
+on_info = {!actor_in_zone(kpp_surge_hide_zone)} ph_idle@0 %=stop_sound_looped(kpp_bunker_radio_snd3)%
+on_info2 =  {+master_game} %=play_sound_looped(kpp_bunker_radio_snd3)%
+
+
+
+
+[ph_idle@off]
+tips      = kpp_bunker_radio_tip1
+on_use = {~30} ph_idle@2 %=play_sound(pribor_switch)%, {~50} ph_idle@3 %=play_sound(pribor_switch)%, {~70} ph_idle@4 %=play_sound(pribor_switch)%
+
+
+ 

@@ -1,0 +1,15 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+tips      = helicrash_box_use
+on_use = {=actor_has_item(helicrash_box_key) -helicr_box_open} ph_idle@open %=play_sound(metal_small_open) +helicr_box_open =helicrash_ambush_spawn1 =lonl_house_stranger_spawn2 =helicr_box_open_think =remove_item(helicrash_box_key)%
+on_info = {=master_difficulty +master_game} ph_idle@open %=add_self_spot(treasure:random_treasure_mark)%
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=remowe_self_spot(treasure:random_treasure_mark)%
+
+
+ 

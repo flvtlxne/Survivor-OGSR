@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_actor_inside = {+stranger_talk5} sr_idle@nil %=spawn_marod_lider2 =kill_mutants_around_actor50 =actor_on_mine_blow =actor_on_mine_blow_think =hit_obj(actor:bip01_spine:0.4:0)%
+
+[sr_idle@nil]
+

@@ -1,0 +1,74 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+;on_info = {=master_difficulty} sr_idle@nil
+on_info = {=master_difficulty} sr_idle@3
+on_info2 = {+stranger_talk1} sr_idle@3 %=restore_weapon +bolt_finded%
+on_info3 = {-stranger_talk1} %=hide_weapon%
+
+[sr_idle@2]
+on_info = {+bolt_finded} %=restore_weapon%
+on_game_timer = 10|sr_idle@3
+
+[sr_idle@nil]
+
+
+; Выдаём инфопоршены за стволы:
+[sr_idle@3]
+on_info = {=actor_has_item(wpn_ak74u) -actor_has_aksu} sr_idle@3_1
+on_info2 = {=actor_has_item(wpn_ak74) -actor_has_ak74} sr_idle@3_2
+on_info3 = {=actor_has_item(wpn_hpsa) -actor_has_hpsa} sr_idle@3_3
+on_info4 = {=actor_has_item(wpn_lr300) -actor_has_lr300} sr_idle@3_4
+on_info5 = {=actor_has_item(wpn_toz34) -actor_has_toz} sr_idle@3_5
+on_info6 = {=actor_has_item(wpn_usp) -actor_has_usp} sr_idle@3_6
+on_info7 = {=actor_has_item(wpn_vintorez) -actor_has_vss} sr_idle@3_7
+on_info8 = {=actor_has_item(wpn_bizon) -actor_has_bizon} sr_idle@3_8
+on_info9 = {=actor_has_item(wpn_sayga) -actor_has_sayga} sr_idle@3_9
+on_info10 = {=actor_has_item(wpn_m1891) -actor_has_mosin} sr_idle@3_10
+; это только для "Мастера":
+on_info11 = {=actor_has_item(wpn_ak74_mg) -actor_has_ak74} sr_idle@3_2
+on_info12 = {=actor_has_item(wpn_fort500) -actor_has_fort500} sr_idle@3_11
+on_info13 = {=actor_has_item(wpn_vityaz) -actor_has_vityaz} sr_idle@3_12
+on_info14 = {=actor_has_item(wpn_groza) -actor_has_groza} sr_idle@3_13
+
+[sr_idle@3_1]
+on_game_timer = 1|sr_idle@3 %+actor_has_aksu%
+
+[sr_idle@3_2]
+on_game_timer = 1|sr_idle@3 %+actor_has_ak74%
+
+[sr_idle@3_3]
+on_game_timer = 1|sr_idle@3 %+actor_has_hpsa%
+
+[sr_idle@3_4]
+on_game_timer = 1|sr_idle@3 %+actor_has_lr300%
+
+[sr_idle@3_5]
+on_game_timer = 1|sr_idle@3 %+actor_has_toz%
+
+[sr_idle@3_6]
+on_game_timer = 1|sr_idle@3 %+actor_has_usp%
+
+[sr_idle@3_7]
+on_game_timer = 1|sr_idle@3 %+actor_has_vss%
+
+[sr_idle@3_8]
+on_game_timer = 1|sr_idle@3 %+actor_has_bizon%
+
+[sr_idle@3_9]
+on_game_timer = 1|sr_idle@3 %+actor_has_sayga%
+
+[sr_idle@3_10]
+on_game_timer = 1|sr_idle@3 %+actor_has_mosin%
+
+[sr_idle@3_11]
+on_game_timer = 1|sr_idle@3 %+actor_has_fort500%
+
+[sr_idle@3_12]
+on_game_timer = 1|sr_idle@3 %+actor_has_vityaz%
+
+[sr_idle@3_13]
+on_game_timer = 1|sr_idle@3 %+actor_has_groza%
+
+

@@ -1,0 +1,11 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = ph_idle@2 %=give_item(mg_wolf_planshet:actor) =send_tip(mg_wolf_planshet_finded_tip:default) +mg_courier_shron4_check =actor_finds_goodloot_snd =destroy_object%
+
+[ph_idle@2]
+nonscript_usable = false
+on_info = {+kpp_lider_shron_spawned} %=destroy_object%

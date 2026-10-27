@@ -1,0 +1,22 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+on_info = {+scaner_maroder1_pda_info} ph_idle@1
+on_info2 = {=master_difficulty} %=destroy_object%
+
+[ph_idle@1]
+tips      = lonl_house_tube_tip
+on_use = {=actor_has_item(artefact_scaner)} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+
+
+; Устанавливаем сканер:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(repare_something)%
+
+[ph_idle@3]
+on_game_timer = 15|%=remove_item(artefact_scaner) =spawn_artefact_scaner =enable_ui =destroy_object%
+
+
+
+ 

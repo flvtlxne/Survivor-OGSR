@@ -1,5 +1,570 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+
+
+
+	<string id="after_sleep_event_tip">
+		<text>Рандомное событие</text>
+	</string>
+
+	<string id="lwtask_find_radio_name1">
+		<text>Спасение: вскрыть ящик</text>
+	</string>
+	<string id="lwtask_find_radio_name2">
+		<text>Спасение: найти передатчик</text>
+	</string>
+	<string id="lwtask_find_radio_name3">
+		<text>Спасение: работа на незнакомца</text>
+	</string>
+	<string id="lwtask_find_radio_name4">
+		<text>Спасение: вернуть свои вещи</text>
+	</string>
+	<string id="lwtask_find_radio_name5">
+		<text>Спасение: найти информацию о незнакомце</text>
+	</string>
+	<string id="lwtask_find_radio_name6">
+		<text>Спасение: разобраться с незнакомцем</text>
+	</string>
+	<string id="lwtask_find_radio_name7">
+		<text>Спасение: убить мутанта</text>
+	</string>
+	<string id="lwtask_find_radio_name8">
+		<text>Спасение: найти схрон незнакомца</text>
+	</string>
+	<string id="lwtask_find_radio_name9">
+		<text>Спасение: устранить наёмников</text>
+	</string>
+	<string id="lwtask_find_radio_name10">
+		<text>Спасение: спрятать блок памяти</text>
+	</string>
+	<string id="lwtask_find_radio_name11">
+		<text>Спасение: выйти на связь с наёмниками</text>
+	</string>
+	<string id="lwtask_find_radio_name12">
+		<text>Спасение: сделать выбор</text>
+	</string>
+	<string id="lwtask_find_radio_name13">
+		<text>Спасение: уничтожить наёмников</text>
+	</string>
+	<string id="lwtask_find_radio_name14">
+		<text>Спасение: уничтожить агентов СБУ</text>
+	</string>
+	<string id="lwtask_find_radio_name15">
+		<text>Спасение: поговорить с офицером СБУ</text>
+	</string>
+	<string id="lwtask_find_radio_name16">
+		<text>Спасение: уничтожить вертолёт</text>
+	</string>
+	<string id="lwtask_find_radio_name17">
+		<text>Спасение: поговорить с лидером наёмников</text>
+	</string>
+
+
+	<string id="lwtask_find_radio_descr1">
+		<text>Необходимо воспользоваться аварийным радиопередатчиком, чтобы вызвать спасательную группу. Передатчик находится в металлическом ящике, ключ от которого у одного из членов экипажа.</text>
+	</string>
+	<string id="lwtask_find_radio_descr2">
+		<text>Передатчика в ящике не оказалось. Нужно выяснить, кто его мог забрать.</text>
+	</string>
+	<string id="lwtask_find_radio_descr3">
+		<text>Странный незнакомец завладел нужным нам аварийным передатчиком. Чтобы получить его обратно, нам придётся выполнить некоторые его поручения.</text>
+	</string>
+	<string id="lwtask_find_radio_descr4">
+		<text>Мародёры отобрали наше снаряжение и спрятали в схроне. Нужно вернуть своё имущество.</text>
+	</string>
+	<string id="lwtask_find_radio_descr5">
+		<text>Странный незнакомец предал меня, сдав мародёрам. Теперь нужно разыскать подлеца и разобраться с ним по-мужски. Для этого нужно обыскать лидера мародёров Ахмета.</text>
+	</string>
+	<string id="lwtask_find_radio_descr6">
+		<text>Местоположение незнакомца нам известно. Теперь я должен разобраться с ним.</text>
+	</string>
+	<string id="lwtask_find_radio_descr7">
+		<text>Разобраться с незнакомцем мне помешал контролёр. Нужно устранить мутанта.</text>
+	</string>
+	<string id="lwtask_find_radio_descr8">
+		<text>Во время схватки с контролёром незнакомец погиб, не успев рассчитаться со мной. Однако ко мне попали данные о его личном схроне. Возможно, в нём лежит что-то полезное.</text>
+	</string>
+	<string id="lwtask_find_radio_descr9">
+		<text>После обыска схрона незнакомца и получения в свои руки модуля памяти, я подвергся нападению наёмников. Нужно выяснить, кто их послал и что делать с модулем.</text>
+	</string>
+	<string id="lwtask_find_radio_descr10">
+		<text>Получив в свои руки блок памяти со спутника-разведчика, я поставил себя под угрозу. Чтобы успешно шантажировать наёмников, необходимо сначала спрятать блок в убежище, а затем уже идти на переговоры с ними.</text>
+	</string>
+	<string id="lwtask_find_radio_descr11">
+		<text>Опираясь на данные из ПДА подосланного к нам наёмника, я должен выйти на его руководство и выяснить, можно ли использовать найденный блок памяти в своих целях. План рискованный, но других зацепок нет.</text>
+	</string>
+	<string id="lwtask_find_radio_descr12">
+		<text>Попав в засаду к наёмникам вместе с агентами СБУ, я должен сделать выбор, кого из них поддержать. От этого будет зависеть моя судьба.</text>
+	</string>
+	<string id="lwtask_find_radio_descr13">
+		<text>Попав в засаду к наёмникам вместе с агентами СБУ, я вынужден защищаться до последнего.</text>
+	</string>
+	<string id="lwtask_find_radio_descr14">
+		<text>Попав в засаду к наёмникам, я принял решение примкнуть к ним взамен на обещание щедрой награды и шанса покинуть Зону. На моём пути - агенты СБУ, которых надо устранить.</text>
+	</string>
+	<string id="lwtask_find_radio_descr15">
+		<text>Уничтожив опасных наёмников, я должен отчитаться перед офицером СБУ.</text>
+	</string>
+	<string id="lwtask_find_radio_descr16">
+		<text>Защитив наёмников от агентов СБУ, я должен устранить последнее препятствие на пути к спасению - военный вертолёт Ми-24.</text>
+	</string>
+	<string id="lwtask_find_radio_descr17">
+		<text>Уничтожив военный вертолёт, угрожающий наёмникам, я должен поговорить с их лидером.</text>
+	</string>
+
+
+	<string id="lwtask_stranger_work_name1">
+		<text>Работа на незнакомца: осмотреть указанное место</text>
+	</string>
+	<string id="lwtask_stranger_work_name2">
+		<text>Работа на незнакомца: рассказать о найденном</text>
+	</string>
+	<string id="lwtask_stranger_work_name3">
+		<text>Работа на незнакомца: спасти "отмычку"</text>
+	</string>
+	<string id="lwtask_stranger_work_name4">
+		<text>Работа на незнакомца: прийти в указанное место</text>
+	</string>
+	<string id="lwtask_stranger_work_name5">
+		<text>Работа на незнакомца: спрятаться в будке</text>
+	</string>
+	<string id="lwtask_stranger_work_name6">
+		<text>Работа на незнакомца: убить главаря Деда</text>
+	</string>
+	<string id="lwtask_stranger_work_name7">
+		<text>Работа на незнакомца: поговорить с незнакомцем</text>
+	</string>
+	<string id="lwtask_stranger_work_name8">
+		<text>Работа на незнакомца: убить главаря Хирурга</text>
+	</string>
+	<string id="lwtask_stranger_work_name9">
+		<text>Работа на незнакомца: поговорить с незнакомцем</text>
+	</string>
+	<string id="lwtask_stranger_work_name10">
+		<text>Работа на незнакомца: взять "языка"</text>
+	</string>
+	<string id="lwtask_stranger_work_name11">
+		<text>Работа на незнакомца: уничтожить Ахмета и Башку</text>
+	</string>
+	<string id="lwtask_stranger_work_name12">
+		<text>Работа на незнакомца: получить передатчик</text>
+	</string>
+
+
+	<string id="lwtask_stranger_work_descr1">
+		<text>Незнакомец попросил меня обыскать лагерь в лесу, чтобы разведать планы мародёров.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr2">
+		<text>Обыскав лагерь, я нашел детектор артефактов и следы присутствия пленных. Теперь надо рассказать об этом незнакомцу.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr3">
+		<text>Мародёры пленили неопытного сталкера-новичка и хотят заставить его добывать артефакты из аномалии. По просьбе незнакомца я должен его спасти и проводить в убежище.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr4">
+		<text>После спасения отмычки, незнакомец прислал мне сообщение, в котором просил явиться в указанное место для разговора.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr5">
+		<text>Я должен спрятаться в будке сторожа и дождаться прихода авторитета и его подельника. Никто из мародёров не должен меня заметить.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr6">
+		<text>Уничтожить главаря мародёров, явившегося на стрелку.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr7">
+		<text>После убийства одного из лидеров мародёров, мне нужно поговорить с незнакомцем снова.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr8">
+		<text>Я должен прийти в указанное место и подождать, пока появится главарь мародёров Хирург, а затем убить его.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr9">
+		<text>После ликвидации очередного лидера мародёров, незнакомец снова хочет меня видеть.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr10">
+		<text>Я должен пленить одного из троих мародёров, расположившихся в указанном месте и выпытать у него информацию о местонахождении главарей Башку и Дерзкого.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr11">
+		<text>Получив от пленного информацию о главарях Башке и Дерзком, я должен застать их врасплох и уничтожить.</text>
+	</string>
+	<string id="lwtask_stranger_work_descr12">
+		<text>После ликвидации лидеров Башки и Дерзкого мародёры, судя по всему, полностью деморализированы. В благодарность незнакомец пообещал вернуть мне аварийный пердатчик, с помощью которого я смогу вызвать спасателей.</text>
+	</string>
+
+
+
+
+	<string id="addtask_murder_name1">
+		<text>Собственное расследование: захоронить останки</text>
+	</string>
+	<string id="addtask_murder_name2">
+		<text>Собственное расследование: обыскать дом</text>
+	</string>
+	<string id="addtask_murder_name3">
+		<text>Собственное расследование: найти секретное место</text>
+	</string>
+	<string id="addtask_murder_name4">
+		<text>Собственное расследование: уничтожить полтергейста</text>
+	</string>
+	<string id="addtask_murder_name5">
+		<text>Собственное расследование: тайник на клабдище</text>
+	</string>
+	<string id="addtask_murder_name6">
+		<text>Собственное расследование: источник странного звука</text>
+	</string>
+	<string id="addtask_murder_name7">
+		<text>Собственное расследование: открыть дверь</text>
+	</string>
+
+
+	<string id="addtask_murder_descr1">
+		<text>Необходимо взять лопату в подвале и похоронить останки бывшего хозяина дома, в котором находится наше убежище.</text>
+	</string>
+	<string id="addtask_murder_descr2">
+		<text>Заинтересовавшись судьбой прошлого хозяина нашего убежища, я решил выяснить причину его гибели. Начать нужно с поиска ключа от погреба, который находится где-то во дворе дома или в самом здании.</text>
+	</string>
+	<string id="addtask_murder_descr3">
+		<text>Ключ от погреба я не нашел, вместо этого мне попалась часть дневника бывшего хозяина дома, в которой была наводка на некое секретное место в деревне Грачи.</text>
+	</string>
+	<string id="addtask_murder_descr4">
+		<text>Пройдя по следу бывшего хозяина дома, я оказался у жилища, дверь которого заблокировал полтергейст. Надо уничтожить мутанта, проникнуть внутрь и найти очередную зацепку.</text>
+	</string>
+	<string id="addtask_murder_descr5">
+		<text>Очередная зацепка в деле бывшего хозяина дома спрятана где-то на старом кладбище. Надо найти её.</text>
+	</string>
+	<string id="addtask_murder_descr6">
+		<text>Идя по следу бывшего хозяина дома, я должен осмотреть место, откуда доносятся странные звуки.</text>
+	</string>
+	<string id="addtask_murder_descr7">
+		<text>В ходе поисков убийцы бывшего хозяина я нашел ключ. Теперь надо отыскать дверь, которую он открывает и посмотреть, что за ней скрыто.</text>
+	</string>
+
+
+
+
+	<string id="addtask_scaner_name1">
+		<text>Полезная штука: найти сканер артефактов</text>
+	</string>
+	<string id="addtask_scaner_name2">
+		<text>Полезная штука: установить сканер на крыше убежища</text>
+	</string>
+	<string id="addtask_scaner_name3">
+		<text>Полезная штука: просканировать диапазон</text>
+	</string>
+
+	<string id="addtask_scaner_descr1">
+		<text>Отмычка Колян рассказал мне о сканнере артефактов, которым завладели мародёры. Я хочу получить данный прибор в собственное распоряжение.</text>
+	</string>
+	<string id="addtask_scaner_descr2">
+		<text>Судя по имеющейся информации, для работы сканера нужно установить его на возвышенности. Для этого подойдёт крыша нашего убежища, как самое безопасное место.</text>
+	</string>
+	<string id="addtask_scaner_descr3">
+		<text>Чтобы получить информацию о находящихся в округе артефактах, надо просканировать диапазон с помощью сканера.</text>
+	</string>
+
+
+	<string id="addtask_soldier_name1">
+		<text>Товарищ по несчастью: осмотр места</text>
+	</string>
+	<string id="addtask_soldier_name2">
+		<text>Товарищ по несчастью: убежище в деревне</text>
+	</string>
+	<string id="addtask_soldier_name3">
+		<text>Товарищ по несчастью: новое убежище</text>
+	</string>
+	<string id="addtask_soldier_name4">
+		<text>Товарищ по несчастью: уничтожить мутантов</text>
+	</string>
+	<string id="addtask_soldier_name5">
+		<text>Товарищ по несчастью: обыскать убежище пилота</text>
+	</string>
+	<string id="addtask_soldier_name6">
+		<text>Товарищ по несчастью: встретится с пилотом</text>
+	</string>
+
+
+	<string id="addtask_soldier_descr1">
+		<text>Возле упавшего Ми-24 я нашел записку пилота, которому удалось спастись. Возможно, он ещё жив. Чтобы найти его, надо осмотреть место, о котором упоминается в его записке.</text>
+	</string>
+	<string id="addtask_soldier_descr2">
+		<text>Продвигаясь по следу выжившего пилота Ми-24, я должен найти и осмотреть убежище, которое он планировал обустроить себе в заброшенной деревне Грачи.</text>
+	</string>
+	<string id="addtask_soldier_descr3">
+		<text>Осмотрев дом в Грачах, я убедился в том, что выживший пилот там не задержался. Ему пришлось выбирать новое убежище - дом у рембазы, куда мне и следует направится.</text>
+	</string>
+	<string id="addtask_soldier_descr4">
+		<text>В доме у рембазы завелись опасные мутанты-бюреры. Необходимо их истребить.</text>
+	</string>
+	<string id="addtask_soldier_descr5">
+		<text>Я определил место, в котором обитал выживший после аварии Ми-24 пилот. Нужно найти в доме свидительства его пребывания.</text>
+	</string>
+	<string id="addtask_soldier_descr6">
+		<text>Обыскав убежище пилота в заброшенном доме, я убедился в том, что он присутствовал здесь недавно. Теперь нужно пойти к той поляне в лесу, о которой он писал в дневнике и встретить его там.</text>
+	</string>
+
+
+
+	<string id="addtask_likvidator_name1">
+		<text>Эхо Чернобыля: обыскать старый дом</text>
+	</string>
+	<string id="addtask_likvidator_name2">
+		<text>Эхо Чернобыля: тайник на рембазе</text>
+	</string>
+	<string id="addtask_likvidator_name3">
+		<text>Эхо Чернобыля: концы в воду</text>
+	</string>
+
+	<string id="addtask_likvidator_descr1">
+		<text>Обнаружив останки человека у озера, я узнал из его дневника о том, что в окрестностях деревни когда-то действовали ликвидаторы. Нужно обыскать дом, где когда-то работал один из них, чтобы выйти на след ценностей, которые ему удалось найти.</text>
+	</string>
+	<string id="addtask_likvidator_descr2">
+		<text>Вторая записка из дневника ликвидатора привела меня на старую рембазу, где бывший владелец перепрятал драгоценности. Необходимо найти его тайник.</text>
+	</string>
+	<string id="addtask_likvidator_descr3">
+		<text>В тайнике на рембазе я нашел очередную записку ликвидатора, в которой он пишет о своём намерении утопить найденный клад в озере. Нужно обыскать местность у этого озера(или само озеро), чтобы найти клад.</text>
+	</string>
+
+
+
+	<string id="addtask_dog_name1">
+		<text>Собачья жизнь: отыскать "Чёрную дыру"</text>
+	</string>
+	<string id="addtask_dog_name2">
+		<text>Собачья жизнь: найти инструмент</text>
+	</string>
+	<string id="addtask_dog_name3">
+		<text>Собачья жизнь: сломать решетку</text>
+	</string>
+	<string id="addtask_dog_name4">
+		<text>Собачья жизнь: выяснить, что произошло</text>
+	</string>
+
+
+	<string id="addtask_dog_descr1">
+		<text>Из дневника сталкера Прощелыги я узнал, что где-то в деревне Грачи расположена аномалия "Чёрная дыра". Нужно найти её и исследовать.</text>
+	</string>
+	<string id="addtask_dog_descr2">
+		<text>От "Чёрной дыры" меня отделяет решетка. Нужно найти на рембазе подходящий инструмент и преодолеть её, если я хочу разгадать секрет этой аномалии.</text>
+	</string>
+	<string id="addtask_dog_descr3">
+		<text>С помощью добытого инструмента я преодолею преграду в виде металлической решетки и смогу обследовать аномалию "Чёрная дыра".</text>
+	</string>
+	<string id="addtask_dog_descr4">
+		<text>Став свидетелем необыкновенного действия "Чёрной дыры" на мародёра, я должен разобраться в произошедшем. Для этого нужно осмотреть тело его напарника и найти какую-нибудь информацию.</text>
+	</string>
+
+
+
+
+	<string id="addtask_mushrom_name1">
+		<text>Пагубное воздействие: найти убежище учёного</text>
+	</string>
+	<string id="addtask_mushrom_name2">
+		<text>Пагубное воздействие: осмотреть место исследований</text>
+	</string>
+	<string id="addtask_mushrom_name3">
+		<text>Пагубное воздействие: осмотреть место исследований</text>
+	</string>
+	<string id="addtask_mushrom_name4">
+		<text>Пагубное воздействие: вскрыть сейф</text>
+	</string>
+
+
+	<string id="addtask_mushrom_descr1">
+		<text>Возле уникального аномального "Гриба" я нашел останки и записку учёного-одиночки, который занимался исследованиями в этом месте. Не помешало бы выяснить причину его гибели, а также характер исследований.</text>
+	</string>
+	<string id="addtask_mushrom_descr2">
+		<text>В каморке, где ютился учёный-отшельник, нашлась информация о том, что он хотел провести исследования в конкретном месте. Я хочу осмотреть это место, чтобы выяснить подробности его гибели.</text>
+	</string>
+	<string id="addtask_mushrom_descr3">
+		<text>В каморке, где ютился учёный-отшельник, нашлась информация о том, что он хотел провести исследования в конкретном месте. Я хочу осмотреть это место, чтобы выяснить подробности его гибели.</text>
+	</string>
+	<string id="addtask_mushrom_descr4">
+		<text>На месте последнего исследования, учёный оставил записку, в которой упоминалось о сейфе, находящемся в его убежище. Не помешало бы осмотреть его содержимое.</text>
+	</string>
+
+
+
+	<string id="addtask_chimera_name1">
+		<text>Сезон охоты: убить химеру</text>
+	</string>
+	<string id="addtask_chimera_name2">
+		<text>Сезон охоты: осмотреть мутанта</text>
+	</string>
+	<string id="addtask_chimera_name3">
+		<text>Сезон охоты: найти логово</text>
+	</string>
+	<string id="addtask_chimera_name4">
+		<text>Сезон охоты: разобраться с конкурентом</text>
+	</string>
+
+	<string id="addtask_chimera_descr1">
+		<text>У меня есть информация о том, что химера загрызла мародёра, владевшего ценным артефактом. Для начала нужно уничтожить этого мутанта.</text>
+	</string>
+	<string id="addtask_chimera_descr2">
+		<text>После уничтожения мутанта я должен осмотреть его тушу.</text>
+	</string>
+	<string id="addtask_chimera_descr3">
+		<text>Осмотрев убитую химеру, я нашел на ней полузажившие раны. Кровь из них приведёт меня в логово зверя.</text>
+	</string>
+	<string id="addtask_chimera_descr4">
+		<text>Какой-то наёмник успел перехватить принадлежащий мне артефакт. Надо поговорить с ним и решить этот вопрос тем или иным путём.</text>
+	</string>
+
+
+
+	<string id="addtask_zavhoz_name1">
+		<text>Добро народное: найти убийцу Завхоза</text>
+	</string>
+	<string id="addtask_zavhoz_name2">
+		<text>Добро народное: обчистить мародёрский общак</text>
+	</string>
+
+	<string id="addtask_zavhoz_descr1">
+		<text>На теле убитого в затылок мародёра-завхоза была обнаружена записка, в которой имелись сведения о мародёрском "общаке". Чтобы заполучить доступ к нему, надо сперва найти убийцу завхоза.</text>
+	</string>
+	<string id="addtask_zavhoz_descr2">
+		<text>Приятель мародёра-завхоза сообщил нам координаты ихнего "общака" и в общих чертах объяснил, как преодолеть аномалию, внутри которой он спрятан(необходимо осматривать близлежащие кусты).</text>
+	</string>
+
+
+	<string id="addtask_arthunter_name1">
+		<text>Лакомый кусок: найти искателя</text>
+	</string>
+	<string id="addtask_arthunter_name2">
+		<text>Лакомый кусок: найти искателя-конкурента</text>
+	</string>
+	<string id="addtask_arthunter_name3">
+		<text>Лакомый кусок: активировать электроаномалию</text>
+	</string>
+	<string id="addtask_arthunter_name4">
+		<text>Лакомый кусок: забрать уникальный артефакт</text>
+	</string>
+
+	<string id="addtask_arthunter_descr1">
+		<text>В покинутом лагере я обнаружил дневник сталкера-искателя, который охотился за уникальным артефактом. Не помешало бы разыскать этого сталкера и выяснить, удалось ли ему достигнуть желаемого.</text>
+	</string>
+	<string id="addtask_arthunter_descr2">
+		<text>Перед смертью искатель упоминал своего конкурента. Возможно, он виноват в его гибели? Нужно найти его, чтобы выяснить судьбу уникального артефакта.</text>
+	</string>
+	<string id="addtask_arthunter_descr3">
+		<text>В дневнике искателя-конкурента нашлась информация о том, что ценный артефакт может образоваться только после активации мощной электрической аномалии в трансформаторной будке. Чтобы активировать её, нужно включить рубильник в электрощитке.</text>
+	</string>
+	<string id="addtask_arthunter_descr4">
+		<text>Теперь можно забрать уникальный артефакт, который образовался на месте гибели искателя под опорой ЛЭП.</text>
+	</string>
+
+
+
+	<string id="addtask_btr_name1">
+		<text>Вокруг пальца: найти Медвежатника в лагере</text>
+	</string>
+	<string id="addtask_btr_name2">
+		<text>Вокруг пальца: найти Медвежатника в овраге</text>
+	</string>
+	<string id="addtask_btr_name3">
+		<text>Вокруг пальца: найти Медвежатника у БТР-а</text>
+	</string>
+	<string id="addtask_btr_name4">
+		<text>Вокруг пальца: не дать Медвежатнику уйти</text>
+	</string>
+
+	<string id="addtask_btr_descr1">
+		<text>Мародёры нашли сейф военных, но мне удалось им завладеть. Поскольку сейф заперт, то не помешало бы его открыть, возможно там хранится ценное снаряжение. Для этого следует найти мародёра по кличке Медвежатник.</text>
+	</string>
+	<string id="addtask_btr_descr2">
+		<text>В лесном лагере Медвежатника не оказалось, но зато нашелся запас антирадов. Это может означать то, что мародёры планировали промышлять в каком-то радиоактивном месте. Ближайшее такое - Чёрный овраг.</text>
+	</string>
+	<string id="addtask_btr_descr3">
+		<text>Оказывается, хитрый мародёр меня опередил: пока я его искал, он отправился к БТР-у, чтобы взломать ящик военных. Теперь я должен помешать ему умыкнуть хабар.</text>
+	</string>
+	<string id="addtask_btr_descr4">
+		<text>Завладев хабаром военных, Медвежатник удирает. Я должен остановить его любой ценой.</text>
+	</string>
+
+
+
+
+
+
+
+
+
+	<string id="rnd_task_maroders_name">
+		<text>Уничтожить мародёров</text>
+	</string>
+	<string id="rnd_task_maroders_desc">
+		<text>В этой области была замечена группа мародёров. Необходимо уничтожить их как конкурентов в наших поисках. В их схроне наверняка найдется что-то ценное.</text>
+	</string>
+
+	<string id="rnd_task_mutants_name">
+		<text>Уничтожить мутантов</text>
+	</string>
+	<string id="rnd_task_mutants_desc">
+		<text>В этой области была замечена стая мутантов. Необходимо уничтожить их как существ, представляющих опасность.</text>
+	</string>
+
+	<string id="rnd_task_artefact_name1">
+		<text>Найти артефакт</text>
+	</string>
+	<string id="rnd_task_artefact_desc1">
+		<text>В наши руки случайно попали сведения о местонахождении ценного артефакта. Нужно успеть найти его раньше конкурентов.</text>
+	</string>
+
+	<string id="rnd_task_artefact_name2">
+		<text>Принести артефакт в убежище</text>
+	</string>
+	<string id="rnd_task_artefact_desc2">
+		<text>Мы должны принести найденный артефакт в наше убежище и положить в специальный металлический контейнер, откуда его заберёт незнакомец, а взамен оставит награду.</text>
+	</string>
+
+
+	<string id="rnd_task_robbery_name1">
+		<text>Выкрасть ценный груз</text>
+	</string>
+	<string id="rnd_task_robbery_desc1">
+		<text>Поступили сведения о ценном грузе, которых спрятан в схроне мародёров. Это контейнер, возможно с артефактом или оборудованием. Мы должны выкрасть его.</text>
+	</string>
+
+	<string id="rnd_task_robbery_name2">
+		<text>Доставить ценный груз в убежище</text>
+	</string>
+	<string id="rnd_task_robbery_desc2">
+		<text>Мы должны принести ценный груз в наше убежище и положить в специальный металлический контейнер, откуда его заберёт незнакомец, а взамен оставит награду.</text>
+	</string>
+
+
+
+
+	<string id="rnd_task_marodr_atack_name">
+		<text>Защита убежища от мародёров</text>
+	</string>
+	<string id="rnd_task_marodr_atack_desc">
+		<text>В отместку за наши атаки, мародёры предприняли вылазку с целью атаки на наше убежище. Необходимо уничтожить наглецов.</text>
+	</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<string id="hide_from_surge_message">
 		<text>Внимание! До выброса осталось</text>
 	</string>

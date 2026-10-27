@@ -1,0 +1,50 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {=counter_greater(treasure:19) -achivement_1_info} sr_idle@2
+on_info3 = {=counter_greater(kill_maroder:49) -achivement_2_info} sr_idle@3
+on_info4 = {=counter_greater(kill_mutant:49) -achivement_3_info} sr_idle@4
+on_info5 = {+actor_has_aksu +actor_has_ak74 +actor_has_toz +actor_has_lr300 +actor_has_vss +actor_has_usp +actor_has_hpsa +actor_has_bizon +actor_has_sayga +actor_has_mosin -achivement_4_info} sr_idle@5
+on_info6 = {+deadman_diary_info6 +artefacts_spawn +lost_soldier_info +likvidator_treasure_finded +anomaly_maroder1_pda_info +scientist_seif_open +maroder_chimera_end +maroders_big_treasure_finded +af_teleport_finded +btr_seif_maroder_dead +lake_art_gathered +karlik_task_end +quest_sniper_end -achivement_5_info} sr_idle@6
+on_info7 = {=counter_greater(low_health:9) -achivement_6_info} sr_idle@7
+on_info8 = {=counter_greater(alco:4) -achivement_7_info} sr_idle@8
+on_info9 = {=counter_greater(knife:0) -achivement_8_info} sr_idle@9
+
+
+[sr_idle@2]
+on_timer = 1|sr_idle@1 %=give_achivement1 +achivement_1_info%
+
+[sr_idle@3]
+on_timer = 1|sr_idle@1 %=give_achivement2 +achivement_2_info%
+
+[sr_idle@4]
+on_timer = 1|sr_idle@1 %=give_achivement3 +achivement_3_info%
+
+[sr_idle@5]
+on_timer = 1|sr_idle@1 %=give_achivement4 +achivement_4_info%
+
+[sr_idle@6]
+on_timer = 1|sr_idle@1 %=give_achivement5 +achivement_5_info%
+
+[sr_idle@7]
+on_timer = 1|sr_idle@1 %=give_achivement6 +achivement_6_info%
+
+[sr_idle@8]
+on_timer = 15|sr_idle@1 %=give_achivement7 +achivement_7_info%
+
+[sr_idle@9]
+on_timer = 15|sr_idle@1 %=give_achivement8 +achivement_8_info%
+
+
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+

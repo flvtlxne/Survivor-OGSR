@@ -272,7 +272,19 @@ local primary_objects_tbl =
 	{target="pri_b35_spot",		hint="st_pri_b35_name"},
 	{target="pri_a21_spot",		hint="st_pri_a21_name"},
 	{target="pri_b304_spot",	hint="st_pri_b304_name"},
-	{target="pri_a18_spot",		hint="st_pri_a18_name"}
+	{target="pri_a18_spot",		hint="st_pri_a18_name"},
+	
+	{target="script_zone_lonl_house",		hint="script_zone_lonl_house_mark"},
+	{target="script_zone_blokpost",		hint="script_zone_blokpost_mark"},
+	{target="script_zone_forest_camp",		hint="script_zone_forest_camp_mark"},
+	{target="script_zone_graveyard",		hint="script_zone_graveyard_mark"},
+	{target="script_zone_ground_anomaly",		hint="script_zone_ground_anomaly_mark"},
+	{target="script_zone_helicrash",		hint="script_zone_helicrash_mark"},
+	{target="script_zone_island",		hint="script_zone_island_mark"},
+	{target="script_zone_rad_hill",		hint="script_zone_rad_hill_mark"},
+	{target="script_zone_willage",		hint="script_zone_willage_mark"},
+	{target="script_zone_workshop",		hint="script_zone_workshop_mark"},
+	{target="script_zone_forest",		hint="script_zone_forest_mark"}
 }
 
 local change_objects_tbl =
@@ -290,6 +302,11 @@ local sleep_zones_tbl =
 	{target = "zat_a2_sr_sleep_id",		hint = "st_ui_pda_sleep_place"},
 	{target = "jup_a6_sr_sleep_id",		hint = "st_ui_pda_sleep_place"},
 	{target = "pri_a16_sr_sleep_id",	hint = "st_ui_pda_sleep_place"},
+	{target = "lonl_house_sleep_zone_id",	hint = "st_ui_pda_sleep_place"},
+	{target = "island_sleep_zone_id",	hint = "st_ui_pda_sleep_place"},
+	{target = "workshop_sleep_zone_id",	hint = "st_ui_pda_sleep_place"},
+	{target = "willage_sleep_zone_id",	hint = "st_ui_pda_sleep_place"},
+	{target = "willage_sleep_zone_2_id",	hint = "st_ui_pda_sleep_place"},
 }
 
 function fill_primary_objects()

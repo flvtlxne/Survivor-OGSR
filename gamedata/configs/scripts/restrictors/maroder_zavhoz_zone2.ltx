@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+maroder_zavhoz_note_info} sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_death_maroder_npc%
+
+[sr_idle@2]
+on_game_timer = 40|sr_cutscene@1 %=death_maroder_think%
+
+[sr_cutscene@1]
+point = death_maroder_point1
+look = maroder_zavhoz_spawn_pnt
+cam_effector = scenario_cam\death_maroder_script_cam
+on_signal = cameff_end | sr_idle@nil %+maroder_zavhoz_finded%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@nil]

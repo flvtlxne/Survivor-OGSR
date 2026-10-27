@@ -1,0 +1,45 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {!master_difficulty} sr_idle@nil
+on_info2 = {=master_difficulty} sr_idle@2
+
+
+[sr_idle@2]
+on_info = {+mg_legend_npc1_saved -mg_legend_npc1_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc1_reward =give_item(af_medusa_mg:actor)%
+on_info2 = {+mg_legend_npc2_saved -mg_legend_npc2_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc2_reward =give_item(af_electra_sparkler_mg:actor)%
+on_info3 = {+mg_legend_npc3_saved -mg_legend_npc3_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc3_reward =give_item(af_night_star_mg:actor)%
+on_info4 = {+mg_legend_npc4_saved -mg_legend_npc4_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc4_reward =give_item(af_ice_mg:actor)%
+on_info5 = {+mg_legend_npc5_saved -mg_legend_npc5_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc5_reward =give_item(af_gravi_mg:actor)%
+on_info6 = {+mg_legend_npc6_saved -mg_legend_npc6_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc6_reward =give_item(af_gold_fish_mg:actor)%
+on_info7 = {+mg_legend_npc7_saved -mg_legend_npc7_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc7_reward =give_item(af_cristall_mg:actor)%
+on_info8 = {+mg_legend_npc8_saved -mg_legend_npc8_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc8_reward =give_item(af_dummy_battery_mg:actor)%
+on_info9 = {+mg_legend_npc9_saved -mg_legend_npc9_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc9_reward =give_item(af_dummy_glassbeads_mg:actor)%
+on_info10 = {+mg_legend_npc10_saved -mg_legend_npc10_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc10_reward =give_item(af_eye_mg:actor)%
+on_info11 = {+mg_legend_npc11_saved -mg_legend_npc11_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc11_reward =give_item(af_fire_mg:actor)%
+on_info12 = {+mg_legend_npc12_saved -mg_legend_npc12_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc12_reward =give_item(af_blood_mg:actor)%
+on_info13 = {+mg_legend_npc13_saved -mg_legend_npc13_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc13_reward =give_item(af_fuzz_kolobok_mg:actor)%
+on_info14 = {+mg_legend_npc14_saved -mg_legend_npc14_reward +mg_heli_evac_sucess} sr_idle@2_1 %+mg_legend_npc14_reward =give_item(af_soul_mg:actor)%
+
+
+
+[sr_idle@2_1]
+on_game_timer = 21|sr_idle@2 %=send_tip(mg_legend_npc_reward_tip:got_artefact)%
+
+
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+
+
+
+
+
+

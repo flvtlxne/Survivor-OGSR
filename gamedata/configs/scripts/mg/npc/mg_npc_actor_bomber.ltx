@@ -1,0 +1,94 @@
+[smart_terrains]
+none = true
+
+[dont_spawn_loot]
+
+[logic]
+active = remark@searching1
+;on_hit = hit
+on_death = death
+
+
+; Чуток ждём:
+[remark@searching1]
+anim = binocular
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_down%
+;on_game_timer = 11|companion@1 %=add_self_spot(mg_npc_bomber_mark:mg_npc_actor_bomber_mark_text)%
+on_info3 = {=actor_has_item(af_eye_mg)} companion@1 %=add_self_spot(mg_npc_bomber_mark:mg_npc_actor_bomber_mark_text)%, {!actor_has_item(af_eye_mg)} companion@1
+
+; Бежим к ГГ:
+[companion@1]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+can_use_knife = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_down%
+on_actor_dist_le = 4|remark@1 %=spawn_grenade_at_pos =play_sound(mg_bomber_speech)%
+
+[remark@1]
+anim = claim
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+;on_game_timer = 11|remark@2 %=hit_bomber_grenade%
+on_game_timer = 11|walker@1 %=hit_bomber_grenade%
+
+[remark@2]
+anim = claim
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+
+
+[walker@1]
+path_walk = maroders_escape_point1
+path_look = mg_start_heli_airdrop_pnt1
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_down%
+on_game_timer = 31|companion@1
+
+
+
+
+[hit]
+on_info = remark@1
+
+[death]
+on_info = {!actor_has_item(af_fire_mg)} %=remowe_self_spot(mg_npc_bomber_mark:mg_npc_actor_bomber_mark_text) =mg_actor_killer_respawn =give_rnd_item_ammo%, {=actor_has_item(af_fire_mg)} %=remowe_self_spot(mg_npc_bomber_mark:mg_npc_actor_bomber_mark_text) =mg_actor_killer_respawn =give_rnd_item_ammo =give_rnd_item_ammo%
+
+
+
+
+
+

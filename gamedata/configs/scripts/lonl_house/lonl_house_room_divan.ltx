@@ -1,0 +1,17 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_room_divan_tip
+on_use = {-lonl_house_marodr_atack -lonl_house_sofa_rest =actor_has_item(vodka)} ph_idle@2 %+lonl_house_sofa_rest%
+on_info = {=master_difficulty} %=destroy_object%
+
+[ph_idle@2]
+on_info = {-lonl_house_sofa_rest} ph_idle@1
+
+
+
+
+
+
+ 

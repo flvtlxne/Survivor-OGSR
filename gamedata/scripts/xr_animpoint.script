@@ -38,22 +38,24 @@ function action_reach_animpoint:initialize()
 	self.st.animpoint:calculate_position()
 end
 function action_reach_animpoint:execute()
-	action_base.execute(self)
+        action_base.execute(self)
 
-	self.object:set_dest_level_vertex_id(self.st.animpoint.position_vertex)
+        self.object:set_dest_level_vertex_id(self.st.animpoint.position_vertex)
 
-	self.object:set_desired_direction(self.st.animpoint.smart_direction)
-	self.object:set_path_type(game_object.level_path)
+        self.object:set_desired_direction(self.st.animpoint.smart_direction)
+        self.object:set_path_type(game_object.level_path)
 
 
-	--printf("%s animpoint position riched %s", npc:name(), npc:position():distance_to_sqr(self.vertex_position))
-	local distance_reached = self.object:position():distance_to_sqr(self.st.animpoint.vertex_position) <= self.st.reach_distance
+        --printf("%s animpoint position riched %s", npc:name(), npc:position():distance_to_sqr(self.vertex_position))
+        local distance_reached = self.object:position():distance_to_sqr(self.st.animpoint.vertex_position) <= self.st.reach_distance
 
-	if distance_reached then
-		state_mgr.set_state(self.object, self.st.reach_movement, nil, nil, {look_position = self.st.animpoint.look_position}  )
-	else
-		state_mgr.set_state(self.object, self.st.reach_movement)
-	end
+    local reach_movement = xr_logic.pick_section_from_condlist(db.actor, nil, self.st.reach_movement)
+
+        if distance_reached then
+                state_mgr.set_state(self.object, reach_movement, nil, nil, {look_position = self.st.animpoint.look_position}  )
+        else
+                state_mgr.set_state(self.object, reach_movement)
+        end
 end
 function action_reach_animpoint:finalize()
 	action_base.finalize(self)
@@ -119,24 +121,24 @@ function animpoint:activate_scheme(loading, npc, switching_scheme)
 	if self.started == true then   -- не стопать, если нужно отыграть тот же смарткавер и тот же экшн. (Кешировать в :start())
 		-- Возможно self.current_action - то, что надо
 		if not self.st.use_camp and self.cover_name == self.st.cover_name then
-		
+
 			self:fill_approved_actions()
-		
+
 			local target_action = self.st.approved_actions[math.random(#self.st.approved_actions)].name
 			--printf("check animpoint stop %s == %s", tostring(target_action), tostring(self.current_action))
-			
-			
+
+
 			local current_st_animstate = state_lib.states[target_action].animstate
 			local target_st_animstate = state_lib.states[self.current_action].animstate
 			--printf("check animpoint stop %s == %s", tostring(current_st_animstate), tostring(target_st_animstate))
-			
+
 			if current_st_animstate == target_st_animstate	then
 				--printf("NO ANIMPOINT STOP %s", npc:name())
 				-- Если у нас одинаковое состояние тела, но сами дескрипторы анимаций разные, нужно перевыбрать текущее действие
 				if target_action ~= self.current_action then
 					self.current_action = self.st.approved_actions[math.random(#self.st.approved_actions)].name
 				end
-				
+
 				return
 			end
 		end
@@ -202,7 +204,7 @@ function animpoint:calculate_position()
 	if(#self.st.approved_actions==0) then
 		abort("There is no approved actions for stalker[%s] in animpoint[%s]", db.storage[self.npc_id].object:name(), self.object:name())
 	end
-	]] 
+	]]
 end
 -- Возвращает позицию и направление смарткавера (чтобы отыграть анимацию с привязкой к точке)
 function animpoint:get_animation_params()
@@ -284,8 +286,8 @@ function animpoint:start()
 	else
 		self.current_action = self.st.approved_actions[math.random(#self.st.approved_actions)].name
 	end
-	
-	
+
+
 	self.started = true
 	self.cover_name = self.st.cover_name
 end
@@ -367,8 +369,8 @@ function animpoint:update()
 
 	local rnd = math.random(#tmp_actions)
 	local action = tmp_actions[rnd]
-	
-	
+
+
 	--action - выбранный экшн из доступных
 	if(self.st.base_action) then
 		--printf("		have base_action")
@@ -376,7 +378,7 @@ function animpoint:update()
 			--printf("		still play_weapon_anim")
 			action = descr.."_weapon"
 		end
-		
+
 		--printf(" *** [%s]==[%s] and [%s]==[%s]", action, descr.."_weapon", self.st.base_action, descr )
 		if(action==descr.."_weapon") and (self.st.base_action==descr) then
 			--printf("		LFN")
@@ -429,6 +431,7 @@ function add_to_binder(npc, ini, scheme, section, storage)
 	new_action:add_precondition(world_property(stalker_ids.property_alive, true))
 	new_action:add_precondition(world_property(stalker_ids.property_anomaly,false))
 	new_action:add_precondition(world_property(stalker_ids.property_enemy,false))
+	new_action:add_precondition(world_property(stalker_ids.property_danger,false))
 	new_action:add_precondition(world_property(properties["need_animpoint"], true))
 	new_action:add_precondition(world_property(properties["reach_animpoint"], false))
 	xr_motivator.addCommonPrecondition(new_action)
@@ -441,6 +444,7 @@ function add_to_binder(npc, ini, scheme, section, storage)
 	new_action:add_precondition(world_property(stalker_ids.property_alive, true))
 	new_action:add_precondition(world_property(stalker_ids.property_anomaly,false))
 	new_action:add_precondition(world_property(stalker_ids.property_enemy,false))
+	new_action:add_precondition(world_property(stalker_ids.property_danger,false))
 	new_action:add_precondition(world_property(properties["need_animpoint"], true))
 	new_action:add_precondition(world_property(properties["reach_animpoint"], true))
 	xr_motivator.addCommonPrecondition(new_action)
@@ -461,8 +465,8 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 	st.cover_name		= utils.cfg_get_string(ini, section, "cover_name", npc, false, "", "$script_id$_cover")
 	st.use_camp 		= utils.cfg_get_bool(ini, section, "use_camp", npc, false, true)
 	st.reach_distance	= utils.cfg_get_number(ini, section, "reach_distance", npc, false, 0.75)
-	st.reach_movement	= utils.cfg_get_string(ini, section, "reach_movement", npc, false, "", "walk")
-
+	--st.reach_movement	= utils.cfg_get_string(ini, section, "reach_movement", npc, false, "", "walk")
+	st.reach_movement = xr_logic.parse_condlist(db.actor, "animpoint", "reach_movement", utils.cfg_get_string(ini, section, "reach_movement", npc, false, "", "walk"))
 	st.reach_distance = st.reach_distance*st.reach_distance
 
 	local tmp = utils.cfg_get_string(ini, section, "avail_animations", npc, false, "", nil)

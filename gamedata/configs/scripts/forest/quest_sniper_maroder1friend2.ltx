@@ -1,0 +1,73 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+on_death = death
+
+[walker@start]
+path_walk = quest_sniper_zone_point12
+path_look = quest_sniper_zone_point8_3
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} walker@1 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_bizon} walker@1 %=give_items(wpn_bizon)%
+on_info6 = {+actor_has_sayga} walker@1 %=give_items(wpn_sayga)%
+on_info7 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_sayga} walker@1
+
+
+[walker@1]
+path_walk = quest_sniper_zone_point12
+path_look = quest_sniper_zone_point8_3
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {+quest_sniper_scene_alarm} walker@2
+
+[walker@2]
+path_walk = quest_sniper_zone_point12
+path_look = quest_sniper_zone_point8_4
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {+maroder_sniper_scene_rasstrel} walker@3
+
+[walker@3]
+path_walk = quest_sniper_zone_point13
+path_look = quest_sniper_zone_point8_4
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal       = arriwed|walker@4
+
+[walker@4]
+path_walk = quest_sniper_zone_point13
+path_look = quest_sniper_zone_point8_4
+combat_ignore_cond = {-quest_sniper_scene} true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+
+
+
+[death]
+on_info = %+quest_sniper_maroder1friend2_dead%
+
+
+
+
+
+

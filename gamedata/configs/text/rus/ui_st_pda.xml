@@ -10,13 +10,13 @@
 		<text>Военный</text>
 	</string>
 	<string id="bandit">
-		<text>Бандит</text>
+		<text>Мародёр</text>
 	</string>
 	<string id="dolg">
 		<text>«Долг»</text>
 	</string>
 	<string id="ecolog">
-		<text>Учёный</text>
+		<text>«...»</text>
 	</string>
 	<string id="filter_secondary_tasks_text">
 		<text>Попутные задания</text>
@@ -25,7 +25,7 @@
 		<text>Тайники</text>
 	</string>
 	<string id="freedom">
-		<text>«Свобода»</text>
+		<text>Свобода</text>
 	</string>
 	<string id="killer">
 		<text>Наёмник</text>

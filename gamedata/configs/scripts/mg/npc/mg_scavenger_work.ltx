@@ -1,0 +1,267 @@
+[smart_terrains]
+none = true
+
+[dont_spawn_loot]
+
+[logic]
+active = {+mg_airdrop_lost} companion@3, {-mg_airdrop_lost} remark@searching1
+;on_hit = hit
+on_death = death
+
+
+; Подготовка:
+[remark@searching1]
+anim = binocular
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+airdrop_pnt1} walker@1
+on_info3 = {+airdrop_pnt2} walker@2
+on_info4 = {+airdrop_pnt3} walker@3
+on_info5 = {+airdrop_pnt4} walker@4
+on_info6 = {+airdrop_pnt5} walker@5
+on_info7 = {+airdrop_pnt6} walker@6
+on_info8 = {+airdrop_pnt7} walker@7
+on_info9 = {+airdrop_pnt8} walker@8
+on_info10 = {+airdrop_pnt9} walker@9
+
+
+; Бежим к ящику:
+
+[walker@1]
+path_walk = mg_start_heli_airdrop_pnt1_land
+path_look = mg_start_heli_airdrop_pnt1
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+[walker@2]
+path_walk = mg_start_heli_airdrop_pnt2_land
+path_look = mg_start_heli_airdrop_pnt2
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+[walker@3]
+path_walk = mg_start_heli_airdrop_pnt3_land
+path_look = mg_start_heli_airdrop_pnt3
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+[walker@4]
+path_walk = mg_start_heli_airdrop_pnt4_land
+path_look = mg_start_heli_airdrop_pnt4
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+[walker@5]
+path_walk = mg_start_heli_airdrop_pnt5_land
+path_look = mg_start_heli_airdrop_pnt5
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+[walker@6]
+path_walk = mg_start_heli_airdrop_pnt6_land
+path_look = mg_start_heli_airdrop_pnt6
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+[walker@7]
+path_walk = mg_start_heli_airdrop_pnt7_land
+path_look = mg_start_heli_airdrop_pnt7
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+[walker@8]
+path_walk = mg_start_heli_airdrop_pnt8_land
+path_look = mg_start_heli_airdrop_pnt8
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+[walker@9]
+path_walk = mg_start_heli_airdrop_pnt9_land
+path_look = mg_start_heli_airdrop_pnt9
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_signal       = arriwed|remark@gather_airdrop %=spawn_smoke_grenade_at_pos =start_npc_smoke_bomb_timer%
+
+
+; Пиздим лут из ящика:
+[remark@gather_airdrop]
+anim = dynamite
+target = story | mg_airdrop
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_airdrop_gathered} companion@1
+on_game_timer = 57|%=destroy_object =spawn_mg_scav2 =send_tip(mg_airdrop_lost:default) =del_mg_airdrop +mg_airdrop_lost%
+
+
+
+; Начинаем преследовать ГГ:
+[companion@1]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+;combat_ignore_cond = true
+can_use_knife = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_up%
+on_actor_dist_le_nvis = 30|companion@2
+
+[companion@2]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_up%
+
+
+[companion@3]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+;combat_ignore_cond = true
+can_use_knife = false
+on_actor_dist_le_nvis = 50|%=mg_npc_scav_indicator%
+on_actor_dist_ge_nvis = 51|%=mg_npc_scav_indicator_off%
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_up%
+on_actor_dist_le_nvis = 30|companion@4
+
+[companion@4]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_actor_dist_le_nvis = 50|%=mg_npc_scav_indicator%
+on_actor_dist_ge_nvis = 51|%=mg_npc_scav_indicator_off%
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_up%
+
+
+[hit]
+on_info = companion@2
+
+[death]
+on_info = {+mg_airdrop_lost} %=remowe_self_spot(mg_npc_scav_mark:mg_npc_actor_scav_mark_text) =remowe_self_spot(mg_npc_scav_mark:mg_npc_actor_scav_mark_text) =give_rnd_item_ammo2 =give_rnd_item_ammo2 =give_items(neutral_assault_outfit)%, {-mg_airdrop_lost} %=remowe_self_spot(mg_npc_scav_mark:mg_npc_actor_scav_mark_text) =remowe_self_spot(mg_npc_scav_mark:mg_npc_actor_scav_mark_text) =give_rnd_item_ammo2%
+
+
+
+
+
+

@@ -91,7 +91,7 @@
 		<text>Приветствую.</text>
 	</string>
 	<string id="dm_hello_10">
-		<text>Привет, сталкер.</text>
+		<text>Привет.</text>
 	</string>
 	<string id="dm_hello_11">
 		<text>Здравствуй.</text>
@@ -106,13 +106,13 @@
 		<text>Говори.</text>
 	</string>
 	<string id="dm_hello_15">
-		<text>Здравия желаю, товарищ майор!</text>
+		<text>Здравия желаю.</text>
 	</string>
 	<string id="dm_hello_16">
 		<text>Здравия желаю!</text>
 	</string>
 	<string id="dm_hello_17">
-		<text>Слушаю вас, товарищ майор.</text>
+		<text>Слушаю вас.</text>
 	</string>
 	<string id="dm_hello_2">
 		<text>Ну, здравствуй.</text>
@@ -124,7 +124,7 @@
 		<text>О, нарисовался!</text>
 	</string>
 	<string id="dm_hello_5">
-		<text>О, сталкер! Шо надо?</text>
+		<text>Шо надо?</text>
 	</string>
 	<string id="dm_hello_6">
 		<text>Хаюшки.</text>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <merc_radio_interface5>
+
+	<table x="200" y="85" width="812" height="450" stretch="1">
+		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+	</table>
+
+	<name x="250" y="95" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Рация</text>
+	</name>
+
+	<text1 x="270" y="160" width="180" height="230">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Отлично, тогда оставайся на месте. Сейчас мы подойдём.</text>
+	</text1>
+
+
+
+	<btn_1 x="500" y="180" width="108" height="24">
+	        	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text font="letterica16" align="c" complex_mode="0">Окей, жду.</text>
+	</btn_1>
+
+
+
+
+    </merc_radio_interface5>
+
+

@@ -1,0 +1,16 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+tips      = village_scientist_seif_tip
+on_use = {+narkoman_note4_info} ph_idle@open %=play_sound(metal_small_open) +scientist_seif_open%
+on_info = {=master_difficulty} ph_idle@open
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+
+
+
+
+ 

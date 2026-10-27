@@ -1,0 +1,31 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = mob_move@1
+on_death = mob_death
+
+
+[mob_move@1]
+captured_actor = true
+;combat_ignore_cond = {=captured_monster_ignore_precond} true
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+;on_game_timer = 1|mob_move@2 %=add_self_spot(mg_mob_actor_killer_mark:mg_mob_actor_killer_mark_text)%
+on_info2 = {=actor_has_item(af_eye_mg)} mob_move@2 %=add_self_spot(mg_mob_actor_killer_mark:mg_mob_actor_killer_mark_text)%, {!actor_has_item(af_eye_mg)} mob_move@2
+
+[mob_move@2]
+captured_actor = true
+;combat_ignore_cond = {=captured_monster_ignore_precond} true
+;invulnerable = true
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+
+
+
+[mob_death]
+on_info = %=remowe_self_spot(mg_mob_actor_killer_mark:mg_mob_actor_killer_mark_text)%
+
+
+
+
+
+

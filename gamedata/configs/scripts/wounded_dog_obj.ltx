@@ -1,0 +1,26 @@
+[collide]
+ignore_static
+
+[logic]
+active = ph_button@1
+
+[ph_button@1]
+anim = _lie_idle_1
+tooltip = wounded_dog_obj_use
+on_game_timer = 20|ph_button@2
+on_info = {+stranger_talk1} %=destroy_object%
+on_info2 = {=master_difficulty} %=destroy_object%
+
+[ph_button@2]
+anim = _lie_idle_2
+tooltip = wounded_dog_obj_use
+on_game_timer = 20|ph_button@1
+on_info = {+stranger_talk1} %=destroy_object%
+
+; Если увеличен радиус алайфа:
+on_info2 = {+game_start} %=destroy_object%
+
+
+
+
+ 

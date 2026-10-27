@@ -17,15 +17,15 @@ cost					= 200
 weapon_class			= shotgun
 inv_weight				= 1.9
 
-upgrades                = up_gr_firstab_bm16, up_gr_seconab_bm16, up_gr_thirdab_bm16
-installed_upgrades      =
-upgrade_scheme          = upgrade_scheme_bm16
+upgrades                				= up_gr_firstab_bm16, up_gr_seconab_bm16, up_gr_thirdab_bm16
+installed_upgrades      				=
+upgrade_scheme          				= upgrade_scheme_bm16
 
 ;---TTX-------------------------------------------------------------------------
-hit_power       = 0.5, 0.5, 0.5, 0.5
+hit_power       = 0.42, 0.42, 0.42, 0.42
 hit_impulse     = 150
 hit_type 		= fire_wound
-fire_distance       	= 50
+fire_distance       	= 160
 bullet_speed			= 190
 rpm                 	= 1000
 
@@ -48,7 +48,7 @@ condition_queue_shot_dec	= 0.0065
 
 ammo_elapsed		 	= 2
 ammo_mag_size		 	= 2
-ammo_class		 		= ammo_12x70_buck
+ammo_class		 		= ammo_12x70_buck, ammo_12x76_zhekan
 hand_dependence 		= 1
 single_handed			= 0
 
@@ -107,10 +107,10 @@ inv_grid_height			= 1
 inv_grid_x				= 6
 inv_grid_y				= 1
 
-upgr_icon_x			= 599
-upgr_icon_y			= 559
-upgr_icon_width		= 272
-upgr_icon_height   	= 54
+upgr_icon_x			= 750
+upgr_icon_y			= 300
+upgr_icon_width			= 250
+upgr_icon_height 			= 100
 
 kill_msg_x				= 0
 kill_msg_y		  		= 104
@@ -147,106 +147,98 @@ strap_bone1							= bip01_spine1
 startup_ammo             		= 10
 visual                   		= dynamics\weapons\wpn_bm16\wpn_bm16.ogf
 
-light_color		 					= 0.6,0.5,0.3
-light_range		 					= 6.0
-light_var_color		 			= 0.05
-light_var_range		 			= 0.5
-light_time 		 					= 0.2
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 6.0
+light_var_color		 		= 0.05
+light_var_range		 		= 0.5
+light_time 		 			= 0.2
 
-ph_mass			 					= 3
+ph_mass			 		= 3
 
 ;addons
-scope_status						= 0
-silencer_status					= 0
+scope_status				= 0
+silencer_status				= 0
 grenade_launcher_status			= 0
 
-zoom_enabled						= true
-scope_zoom_factor	    			= 55
+zoom_enabled				= true
+scope_zoom_factor	    			= 73.3
 
-;звуки
-snd_draw				            = weapons\generic_draw
-snd_holster			            = weapons\generic_holster
-snd_shoot			            = weapons\n_bm16_shot
-snd_empty			            = weapons\generic_empty
-snd_reload			            = weapons\bm16_reload_lr		;reload both
-snd_shoot_duplet					= weapons\n_bm16_shot
-snd_shoot_1			            = weapons\n_bm16_shot
+snd_draw						= weapons\bm16\bm16_draw
+snd_holster			            = weapons\shotgun_holster
+snd_shoot			            = weapons\bm16\bm16_shoot
+snd_empty			            = weapons\bm16\bm16_empty
+snd_reload			            = weapons\bm16\bm16_reload_lr
+snd_shoot_duplet				= weapons\bm16\bm16_shoot
+snd_shoot_1			            = weapons\bm16\bm16_shoot
+snd_reload_1		            = weapons\bm16\bm16_reload_l
 
-snd_reload_1		            = weapons\bm16_reload_l		;reload left
 
 [wpn_bm16_hud]:hud_base
-zoom_hide_crosshair				= true
+zoom_hide_crosshair			= true
+attach_place_idx			= 0
+item_visual				= dynamics\weapons\wpn_bm16\wpn_bm16_hud
 
+hands_position				= 0.03,-0.11,0.05
+hands_orientation			= 2,2,0
 
-hands_position				= 0.014500,-0.096000,0.057500
-hands_orientation			= -0.450030,2.099998,-0.200003
+hands_position_16x9			= 0.03,-0.11,0.05
+hands_orientation_16x9			= 2,2,0
 
+item_position				= 0,0,0
+item_orientation			= 0,0,0
 
-hands_position_16x9				= 0.016500,-0.096000,-0.004000
-hands_orientation_16x9			= 0.300000,1.350000,-2.599999
+aim_hud_offset_pos			= -0.108,0.0893,0
+aim_hud_offset_rot			= 0.0228,0.0385,0
 
-item_position						= -0.003178,0.002246,0.000581
-item_orientation					= -181.191742,180.482727,-180.330688
+aim_hud_offset_pos_16x9			= -0.108,0.0893,0
+aim_hud_offset_rot_16x9			= 0.0228,0.0385,0
 
-shell_point							= 0,0,0
-shell_dir                     = 0.0, 1.0, 0.0
-shell_bone							= wpn_body
+shell_point				= 0,0,0
+shell_dir                     		= 0,1,0
+shell_bone				= wpn_body
 
-fire_point		= 0, 0.066, 0.514
-fire_bone                     = wpn_body
+fire_point				= 0,0,0
+fire_bone                     		= muzzle
 
-attach_place_idx					= 0
-item_visual							= dynamics\weapons\wpn_bm16\wpn_bm16_hud
+anm_show_0			        = bm16_draw,idle_both
+anm_show_1			        = bm16_draw,idle_one
+anm_show_2			        = bm16_draw,idle
 
-anm_show_0			            = bm16_draw,bm16_idle_lr
-anm_show_1			            = bm16_draw,bm16_idle_l
-anm_show_2			            = bm16_draw,bm16_idle
+anm_hide_0			        = bm16_holster,idle_both
+anm_hide_1			        = bm16_holster,idle_one
+anm_hide_2			        = bm16_holster,idle
 
-anm_hide_0			            = bm16_holster,bm16_idle_lr
-anm_hide_1			            = bm16_holster,bm16_idle_l
-anm_hide_2			            = bm16_holster,bm16_idle
+anm_idle_0				= bm16_idle,idle_both
+anm_idle_1				= bm16_idle,idle_one
+anm_idle_2				= bm16_idle,idle
 
-anm_idle_0			            = bm16_idle,bm16_idle_lr
-anm_idle_1			            = bm16_idle,bm16_idle_l
-anm_idle_2			            = bm16_idle,bm16_idle
+anm_idle_aim_0			       	= bm16_idle_aim,idle_both
+anm_idle_aim_1			     	= bm16_idle_aim,idle_one
+anm_idle_aim_2			     	= bm16_idle_aim,idle
 
-anm_idle_aim_0			         = bm16_idle_aim,bm16_idle_lr
-anm_idle_aim_1			         = bm16_idle_aim,bm16_idle_l
-anm_idle_aim_2			         = bm16_idle_aim,bm16_idle
+anm_idle_moving_0		    	= bm16_idle_moving,idle_both
+anm_idle_moving_1		    	= bm16_idle_moving,idle_one
+anm_idle_moving_2			= bm16_idle_moving,idle
 
-anm_idle_moving_0		         = bm16_idle_moving,bm16_idle_lr
-anm_idle_moving_1		         = bm16_idle_moving,bm16_idle_l
-anm_idle_moving_2		         = bm16_idle_moving,bm16_idle
+anm_idle_moving_crouch_0		= bm16_idle_crouch,idle_both
+anm_idle_moving_crouch_1		= bm16_idle_crouch,idle_one
+anm_idle_moving_crouch_2		= bm16_idle_crouch,idle
 
-anm_idle_sprint_0		         = bm16_idle_sprint,bm16_idle_lr
-anm_idle_sprint_1		         = bm16_idle_sprint,bm16_idle_l
-anm_idle_sprint_2		         = bm16_idle_sprint,bm16_idle
+anm_idle_sprint_0		        = bm16_idle_sprint,idle_both
+anm_idle_sprint_1		       	= bm16_idle_sprint,idle_one
+anm_idle_sprint_2		        = bm16_idle_sprint,idle
 
-anm_reload_1						= bm16_reload_l
-anm_reload_2						= bm16_reload_lr
-anm_shot_1							= bm16_shoot_r
-anm_shot_2							= bm16_shoot_l
+anm_reload_1				= bm16_reload,reload_one
+anm_reload_2				= bm16_reload,reload_both
+anm_shot_1				= bm16_shoot_one,shoot_both
+anm_shot_2				= bm16_shoot_both,shoot_one
 
-anm_bore_0							= bm16_idle_bore,bm16_idle_lr
-anm_bore_1							= bm16_idle_bore,bm16_idle_l
-anm_bore_2							= bm16_idle_bore,bm16_idle
+anm_bore_0				= bm16_idle_aim,idle_both
+anm_bore_1				= bm16_idle_aim,idle_one
+anm_bore_2				= bm16_idle_aim,idle
 
+gl_hud_offset_pos			= 0,0,0
+gl_hud_offset_rot			= 0,0,0
 
-aim_hud_offset_pos				= -0.078500,0.034000,-0.052500
-aim_hud_offset_rot				= -0.007500,-0.017500,0.007500
-
-aim_hud_offset_pos_16x9				= -0.079500,0.008000,0.043000
-aim_hud_offset_rot_16x9				= -0.047500,-0.005000,-0.030000
-;aim_hud_offset_pos_16x9				= -0.040500,0.032500,0.043000
-;aim_hud_offset_rot_16x9				= -0.017500,-0.022500,0.000000
-
-gl_hud_offset_pos					= 0,0,0
-gl_hud_offset_rot					= 0,0,0
-
-lean_hud_offset_pos				= 0,0,0
-lean_hud_offset_rot				= 0,0,0
-
-;-----------------------------------------------------------------------------
-; ”никальные
-;-----------------------------------------------------------------------------
-
+lean_hud_offset_pos			= 0,0,0
+lean_hud_offset_rot			= 0,0,0

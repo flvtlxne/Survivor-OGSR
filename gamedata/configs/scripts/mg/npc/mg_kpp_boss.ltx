@@ -1,0 +1,68 @@
+[smart_terrains]
+none = true
+
+[dont_spawn_loot]
+
+[logic]
+active = {+village_seif1_opened} companion@1, {-village_seif1_opened} animpoint@1
+on_death = death
+
+
+[animpoint@1]
+cover_name = mg_kpp_boss_animpoint1
+avail_animations = animpoint_sit_normal
+reach_distance = 3
+danger = danger_condition
+combat_ignore_cond = true
+reach_movement = run
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+show_spot = false
+meet = meet@2
+on_info = {!master_difficulty} %=destroy_object%
+on_info2 = {+mg_heli_die} %=destroy_object%
+on_info3 = {+mg_phase1_completed} %=play_sound(mg_boss_phrase1)%
+
+
+; Сражаемся против ГГ в деревне:
+[companion@1]
+meet = no_meet
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+can_use_knife = false
+on_info = {=heavy_wounded} %=health_slow_up%
+on_game_timer = 37|companion@2 %=give_items(wpn_desert_eagle) =give_items(ammo_11.43x23_hydro) =give_items(ammo_11.43x23_hydro) =give_items(ammo_11.43x23_hydro) =give_items(ammo_11.43x23_hydro) =give_items(wpn_knife)%
+
+[companion@2]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+;combat_ignore_cond = true
+can_use_knife = false
+on_info = {=heavy_wounded} %=health_slow_up%
+
+
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+[death]
+on_info = %=give_items(drug_anabiotic) =give_items(af_compass) +mg_kpp_boss_dead%
+
+
+
+
+
+

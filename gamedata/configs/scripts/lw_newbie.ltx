@@ -1,0 +1,132 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {+lw_newbie_on_base} animpoint@1, walker@1
+combat_ignore = combat_ignore
+on_death = death
+
+
+; В плену:
+[walker@1]
+path_walk = lw_newbie_walk1
+path_look = lw_newbie_look1_1
+meet = no_meet
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+scenario_razlom_marodrs_dead} walker@2
+
+
+; Освобождён:
+[walker@2]
+path_walk = lw_newbie_walk1
+path_look = lw_newbie_look1_2
+meet = meet@2
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+lw_newbie_companion} companion@1 %=play_sound(lw_newbie_speech1)%
+
+[companion@1]
+meet = meet@2
+invulnerable = true
+danger = danger_condition
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+combat_ignore_cond = true
+can_use_knife = false
+on_info = {+lw_newbie_on_base} animpoint@1
+
+
+; После спасения сидим в доме:
+[animpoint@1]
+use_camp = false
+cover_name = lonl_house_starnger_animpoint3
+avail_animations = animpoint_sit_normal
+reach_distance = 0.5
+meet = meet@2
+danger = danger_condition
+combat_ignore_cond = true
+reach_movement = walk
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+lonl_house_marodr_atack} remark@maroders
+on_info2 = {+lonl_house_zomb_atack} remark@maroders
+
+
+; При нападении мародёров на убежище:
+[remark@maroders]
+anim = hands_up
+target = path | lonl_house_bed_point2, 0
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {-lonl_house_marodr_atack} animpoint@1
+
+; При нападении зомби на убежище:
+[remark@zomby]
+anim = hands_up
+target = path | lonl_house_bed_point2, 0
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {-lonl_house_zomb_atack} animpoint@1
+
+
+
+
+; диалог неразрываемый(нпс юзает ГГ сам):
+[meet@1]
+abuse = false
+use = self
+trade_enable = false
+allow_break = false
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[combat_ignore]
+combat_ignore = always
+ 
+[death] 
+on_info = %+lw_newbie_dead%
+
+
+
+

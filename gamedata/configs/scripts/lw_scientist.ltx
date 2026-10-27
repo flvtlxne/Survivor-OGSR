@@ -1,0 +1,268 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {+lw_scientist_to_komp} animpoint@3, {+karlik_real_death} animpoint@2, {+scientist_goto_house -karlik_real_death} animpoint@1, walker@1_1
+on_death = death
+trade = misc\trade_scientist.ltx
+
+[walker@1_1]
+path_walk = karlik_field_zone_point0
+path_look = karlik_field_zone_point0_1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+lw_scientist_to_komp} animpoint@3
+on_info2 = {+lake_house_check} walker@2 %=play_sound(lw_scientist_bye)%
+on_game_timer = 500|walker@1_2
+
+[walker@1_2]
+path_walk = karlik_field_zone_point1
+path_look = karlik_field_zone_point1_1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+lake_house_check} walker@2 %=play_sound(lw_scientist_bye)%
+on_game_timer = 180|walker@1_3
+
+[walker@1_3]
+path_walk = karlik_field_zone_point1
+path_look = karlik_field_zone_point1_2
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+lake_house_check} walker@2 %=play_sound(lw_scientist_bye)%
+on_game_timer = 180|walker@1_1
+
+
+[walker@2]
+path_walk = karlik_field_zone_point0
+path_look = karlik_field_zone_point0_1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {+suicider_note4_info} walker@3
+
+[walker@3]
+path_walk = karlik_field_zone_point0
+path_look = karlik_field_zone_point0_1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+undegr_door_check} walker@4 %=play_sound(lw_scientist_bye)%
+on_info2 = {+old_army_items_check} walker@4 %=play_sound(lw_scientist_bye)%
+
+[walker@4]
+path_walk = karlik_field_zone_point0
+path_look = karlik_field_zone_point0_1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {+karlik_fake_death} walker@5
+
+[walker@5]
+path_walk = karlik_field_zone_point0
+path_look = karlik_field_zone_point0_1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+scientist_shield_off} walker@6
+
+[walker@6]
+path_walk = karlik_field_zone_point0
+path_look = karlik_field_zone_point0_1
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {+karlik_resurrect} walker@7
+
+[walker@7]
+path_walk = travel_point_lonl_house
+path_look = lonl_house_pnt4_look
+;def_state_moving1 = run
+;def_state_moving2 = run
+;def_state_moving3 = run
+invulnerable = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {!story_obj_in_zone_by_name(lw_scientist:karlik_quest_zone5)} remark@1
+
+
+[remark@1]
+anim = pri_a25_psy_medic_idle
+target = story | karlik_quest_zone7
+combat_ignore_cond = true
+invulnerable = true
+meet = no_meet
+on_info = %=play_sound(help_heavy)%
+on_signal = sound_end | remark@2 %+scientist_psy_atack%
+
+[remark@2]
+anim = pri_a25_psy_medic_idle
+target = story | karlik_quest_zone7
+combat_ignore_cond = true
+invulnerable = true
+meet = meet@2
+on_info = {+karlik_first_talk} remark@3 %=play_sound(pri_a28_army_what_is_that)%
+on_info2 = {+karlik_kill_scientist} remark@4 %=play_sound(pri_a28_army_what_is_that)%
+
+[remark@3]
+anim = caution
+target = story | karlik_quest_zone7
+combat_ignore_cond = true
+invulnerable = true
+meet = meet@2
+on_info = {+scientist_goto_house} animpoint@1
+
+[remark@4]
+anim = caution
+target = story | karlik_quest_zone7
+combat_ignore_cond = true
+invulnerable = false
+meet = no_meet
+
+
+[animpoint@1]
+cover_name = lonl_house_scientist_animpoint1
+avail_animations = animpoint_sit_normal
+reach_distance = 1.5
+danger = danger_condition
+combat_ignore_cond = true
+reach_movement = run
+;invulnerable = true
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {+karlik_real_death} animpoint@2 %=restore_health%
+
+[animpoint@2]
+cover_name = lonl_house_scientist_animpoint1
+avail_animations = animpoint_sit_normal
+reach_distance = 1.5
+danger = danger_condition
+combat_ignore_cond = true
+reach_movement = run
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@3
+on_info = {+lonl_house_marodr_atack} remark@maroders1
+on_info2 = {+lw_scientist_to_komp} animpoint@3
+
+
+; При нападении мародёров на убежище:
+[remark@maroders1]
+anim = hands_up
+target = path | lonl_house_bed_point2, 0
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {-lonl_house_marodr_atack -lw_scientist_to_komp} animpoint@2
+on_info2 = {-lonl_house_marodr_atack +lw_scientist_to_komp} animpoint@3
+
+
+; За компом:
+[animpoint@3]
+cover_name = lonl_house_scientist_animpoint2
+avail_animations = animpoint_sit_normal
+reach_distance = 1.5
+danger = danger_condition
+combat_ignore_cond = true
+reach_movement = run
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@3
+on_info = {+lonl_house_marodr_atack} remark@maroders1
+
+
+
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+[meet@3]
+close_snd_hello = lw_scientist_hello
+close_snd_bye = lw_scientist_bye
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+close_snd_distance = 3
+use = {=actor_enemy} false, true
+allow_break = true
+trade_enable = true
+meet_on_talking = false
+
+
+[death]
+on_info = {=killed_by_actor} %=actor_kill_quest_npc_replic +lw_scientist_dead%, {!killed_by_actor} %+lw_scientist_dead%
+
+
+

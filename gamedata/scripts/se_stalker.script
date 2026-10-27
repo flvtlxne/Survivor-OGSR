@@ -57,10 +57,16 @@ function se_stalker:can_switch_online()
 end
 
 function se_stalker:switch_online()
+	if rx_ai then
+		rx_ai.npc_switch_online(self.id)
+	end
 	cse_alife_human_stalker.switch_online(self)
 end
 
 function se_stalker:switch_offline()
+	if rx_ai then
+		rx_ai.npc_switch_offline(self.id)
+	end
 	cse_alife_human_stalker.switch_offline(self)
 end
 --------------------

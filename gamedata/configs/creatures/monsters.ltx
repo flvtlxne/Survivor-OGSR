@@ -13,9 +13,17 @@
 #include "m_chimera.ltx"
 #include "m_burer.ltx"
 
+#include "m_fracture.ltx"
+#include "m_zombie.ltx"
+#include "m_cat.ltx"
+#include "m_controller_old.ltx"
+
 [monsters_common]
-	corpse_remove_game_time_interval	= 65535 ; in hours
-	stay_after_death_time_interval		= 65535 ; in hours
+	corpse_remove_game_time_interval	= 5 ; in hours
+	stay_after_death_time_interval		= 5 ; in hours
+
+	; corpse_remove_game_time_interval	= 65535 ; in hours
+	; stay_after_death_time_interval		= 65535 ; in hours
 
     script_move_min_offset_from_leader	=	3
 	script_move_max_offset_from_leader	=	8

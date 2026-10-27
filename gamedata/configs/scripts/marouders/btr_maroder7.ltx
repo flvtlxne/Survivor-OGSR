@@ -1,0 +1,59 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+on_death = death
+
+[walker@start]
+path_walk = wrecked_btr_pnt1
+path_look = wrecked_btr_pnt2
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} walker@1 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_bizon} walker@1 %=give_items(wpn_bizon)%
+on_info6 = {+actor_has_mosin} walker@1 %=give_items(wpn_m1891)%
+on_info7 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_mosin} walker@1
+
+[walker@1]
+path_walk = wrecked_btr_pnt1
+path_look = wrecked_btr_pnt2
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+out_restr = wrecked_btr_zone2
+on_actor_dist_le_nvis = 65|walker@2 %+btr_seif_maroder_runaway%
+
+[walker@2]
+path_walk = maroders_escape_point1
+path_look = kpp_ambush_merc8_walk1
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+can_use_knife = false
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_signal       = arriwed|%=destroy_object +btr_seif_maroder_lost%
+
+
+[death]
+on_info = %+btr_seif_maroder_dead =give_items(bizon_part_1:bizon_part_2:bizon_part_3:bizon_part_4:aksu_part4)%
+
+
+
+
+
+
+
+
+
+
+
+

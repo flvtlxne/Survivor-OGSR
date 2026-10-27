@@ -6,6 +6,11 @@
 #include "weapons\weapons.ltx"
 #include "misc\inventory_upgrades.ltx"
 #include "misc\items.ltx"
+#include "misc\items_for_upgrades.ltx"
+#include "misc\items_weapons_parts.ltx"
+#include "car_spawns.ltx"
+#include "misc\items_for_cars.ltx"
+#include "misc\items_for_lab.ltx"
 
 #include "creatures\actor.ltx"
 #include "zones\zones.ltx"
@@ -62,6 +67,9 @@
 #include "localization.ltx"
 #include "smart_cover.ltx"
 
+; Ai Additions
+#include "misc\ai_additions\_system.ltx"
+
 
 [zone_pick_dof]
 near    = -1500.0
@@ -73,10 +81,10 @@ snd_collide_min_volume=0.1
 snd_collide_max_volume=200.
 
 [demo_record]
-speed0    = 0.3
-speed1    = 3.0
-speed2    = 15.0
-speed3    = 60.0
+speed0    = 3.3
+speed1    = 15.0
+speed2    = 70.0
+speed3    = 150.0
 ang_speed0  = 0.1
 ang_speed1  = 0.5
 ang_speed2  = 7.0
@@ -88,7 +96,7 @@ ang_speed3  = 2.0
 files = info_portions, info_zaton, info_jupiter, info_pripyat, info_upgrades
 
 [dialogs]
-files = dialogs, dialogs_zaton, dialogs_jupiter, dialogs_pripyat
+files = dialogs, dialogs_zaton, dialogs_jupiter, dialogs_pripyat, dialogs_mod
 
 
 [encyclopedia]
@@ -783,4 +791,11 @@ swing_fast_speed  = 0.5;1
 ;monsters\snork\snork_dead
 ;monsters\tushkano\tushkano
 ;monsters\tushkano\tushkano_dead
+
+
+
+[custom_storage]
+class = CUST_ST
+
+
 

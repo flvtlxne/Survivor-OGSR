@@ -120,12 +120,11 @@ function empty	(container)
 	return			(true)
 end
 
-
 schemes = {} -- соответствие схем модулям
 stypes = {} -- типv схем
 
--- іагружает схему из файла на диске и активирует в мотиваторе.
--- ідесь:
+-- загружает схему из файла на диске и активирует в мотиваторе.
+-- здесь:
 -- 	filename - имя файла, в котором реализована схема, без расширения
 -- 	scheme - имя схем
 function load_scheme(filename, scheme, stype)
@@ -138,7 +137,6 @@ dev_debug = false
 sim_debug = false
 mus_vol = 0
 amb_vol = 0
-b_discard_settings_shown = false
 ----------------------------------------------------------------------
 local scripts_to_print =	{
 							["stalker_generic"] = true,
@@ -180,102 +178,59 @@ local scripts_to_print =	{
 							["task_manager"] = true,
 							["task_objects"]	 = true
 							}
-function printf(fmt,...)
+--######################################################--
+--######################################################--
+function printf(fmt,...) end
 
-	local is_g = 0
-	local result = fmt
-	if debug == nil then
-		log(string.format(fmt,...))
-		return
-	end
-	local info_table = debug.getinfo(2)
-	local script_name = string.gsub(info_table.short_src, "%.script", "")
-	script_name = string.gsub(script_name, "gamedata\\scripts\\", "")
+time_global = function () return device():time_global() end
+--######################################################--
+--// А тут у нас устаревший кусок 
 
-	if scripts_to_print[script_name] == false then return end
-
-	script_name,is_g = string.gsub(script_name, "_g", "")
-	if is_g == 0 then
-		result = script_name..":("..info_table.currentline.."):"..fmt
+function wait_manager(time_to_wait, type)
+	verify_if_thread_is_running()
+	if time_to_wait == nil then
+	   coroutine.yield()
 	else
-		result = fmt
-	end
-	log(string.format(result,...))
-
-end
-
-----------------------------------------------------------------------
-if nil == time_global then
-	time_global = function () return device():time_global() end
+	   while type <= game.time() + time_to_wait do
+	     coroutine.yield()
+	   end
+     end
 end
 
 function wait_game(time_to_wait)
-	verify_if_thread_is_running()
-	if (time_to_wait == nil) then
-		coroutine.yield()
-	else
-		local time_to_stop = game.time() + time_to_wait
-		while game.time() <= time_to_stop do
-			coroutine.yield()
-		end
-	end
+ wait_manager(time_to_wait, game.time())
 end
 
 function wait(time_to_wait)
-	verify_if_thread_is_running()
-	if (time_to_wait == nil) then
-		coroutine.yield()
-	else
-		local time_to_stop = time_global() + time_to_wait
-		while time_global() <= time_to_stop do
-			coroutine.yield()
-		end
-	end
+ wait_manager(time_to_wait, time_global())
+end
+--######################################################--
+--######################################################--
+--------------------------------------------------------------------------------------------------
+--Автор этих функций Dennis_Chikin(AMK) Дата(06.03.2017, 23:52)
+function action( obj, ... )	-- здесь и далее - странная фигня с entity_action( entity_action() )
+	local a = entity_action()
+	for i, v in ipairs( { ... } ) do a:set_action( v ) end
+	if obj then obj:command( a, false ) end
+	-- return a	-- entity_action( a )	-- может быть просто act ? посмотрим...
+	return entity_action( a )
 end
 
-function action(obj,...)
-	local arg = {...}
-	local act = entity_action()
-	local i = 1
-	while true do
-		if (arg[i] ~= nil) then
-			act:set_action(arg[i])
-		else
-			break
-		end
-		i = i + 1
-	end
-	if (obj ~= nil) then
-		obj:command(act,false)
-	end
-	return  entity_action(act)
-end
 
-function action_first(obj,...)
-	local arg = {...}
-	local act = entity_action()
-	local i = 1
-	while true do
-		if (arg[i] ~= nil) then
-			act:set_action(arg[i])
-		else
-			break
-		end
-		i = i + 1
-	end
-	if (obj ~= nil) then
-		obj:command(act,true)
-	end
-	return  entity_action(act)
+function action_first( obj, ... )
+	local a = entity_action()
+	for i, v in ipairs( { ... } ) do a:set_action( v ) end
+	if obj then obj:command( a, true ) end
+	-- return a	-- entity_action( a )	-- аналогично предыдущему
+	return entity_action( a )
 end
-
+---------------------------------------------------------------------------------------------------------
+-- (#FX) Пока будет так, надо шаманить
 function round (value)
-	local min = math.floor (value)
-	local max = min + 1
-	if value - min > max - value then return max end
-	return min
+	local ev = value - math.floor(value) -- получаем десятичное значение
+	if ev > 1 - ev then return math.floor(value) + 1 end
+	return math.floor(value)
 end
-
 
 function distance_between(obj1, obj2)
 	return obj1:position():distance_to(obj2:position())
@@ -288,12 +243,17 @@ function distance_between_safe(obj1, obj2)
 end
 
 local aa = nil
---' іроверка на инфопоршнv, даже если игрока не су	ествует
+--' Проверка на инфопоршни, даже если игрока не существует. Автор функции Полтергейст(AMK) Дата(06.03.2017, 23:45)
 function has_alife_info(info_id)
-	if aa == nil then
-		return false
-	end
-	return aa:has_info(0, info_id)
+	   local sim = alife()
+       if not (sim and info_id and info_id:len() > 0) then
+			 return false
+       end
+       if actor then -- online
+             return actor:has_info(info_id)
+       end
+       -- offline
+       return sim:has_info(0, info_id)
 end
 
 
@@ -309,8 +269,8 @@ end
 -- Functions and variables added by Zmey
 --------------------------------------------------
 
--- іонстанта, которуі использовать в местах, где нужно задать неограниченное время действия
-time_infinite = 100000000
+--' Та самая переменная
+time_infinite = math.huge
 
 -- +сли в даннvй момент вvполняется какое-то действие, прерvвает его и отклічает скриптовvй режим
 function interrupt_action(who, script_name)
@@ -321,8 +281,7 @@ end
 
 function random_choice(...)
 	local arg = {...}
-	local r = math.random(1, #arg)
-	return arg[r]
+	return arg[math.random(1, #arg)]
 end
 
 function if_then_else(cond, if_true, if_false)
@@ -425,9 +384,9 @@ function vector_rotate_y(v, angle)
 end
 
 -- очистка таблицы.
-function clear_table (t)
-	while #t > 0 do
-		table.remove (t, #t)
+function clear_table (t) --\ Теперь чистит любые таблицы
+	for key, val in pairs(t) do
+		t[key] = nil
 	end
 end
 
@@ -507,10 +466,19 @@ local monster_classes = {}
 local stalker_classes = {}
 local weapon_classes = {}
 local artefact_classes = {}
+local outfit_classes 	= {}
+local ammo_classes 	= {}
+local addon_classes 	= {}
+local food_classes 	= {}
+local explos_classes 	= {}
 
 function IsMonster (object, class_id)
 		local id = class_id or get_clsid(object)
 		return monster_classes[id] == true
+end
+function IsStrongMonster (object, class_id)
+		local id = class_id or get_clsid(object)
+		return strong_monster_classes[id] == true
 end
 function IsStalker (object, class_id)
 		local id = class_id or get_clsid(object)
@@ -522,9 +490,34 @@ function isWeapon(object, class_id)
 	return weapon_classes[id] == true
 end
 
+function isOutfit(object, class_id)
+	local id = class_id or get_clsid(object)
+	return outfit_classes[id] == true
+end
+
 function isArtefact(object, class_id)
 		local id = class_id or get_clsid(object)
 	return artefact_classes[id] == true
+end
+
+function isAmmo(object, class_id)
+		local id = class_id or get_clsid(object)
+	return ammo_classes[id] == true
+end
+
+function isAddon(object, class_id)
+		local id = class_id or get_clsid(object)
+	return addon_classes[id] == true
+end
+
+function isEatable(object, class_id)
+		local id = class_id or get_clsid(object)
+	return food_classes[id] == true
+end
+
+function isExplosive(object, class_id)
+		local id = class_id or get_clsid(object)
+	return explos_classes[id] == true
 end
 
 
@@ -573,6 +566,249 @@ function id_by_sid( sid )
 	end
 	return nil
 end
+
+-- 'Возвращение строки
+function to_string(val)
+   if val==nil then
+      return val
+   end
+   return tostring(val)
+end
+-- 'Возвращение цифры
+function to_number(val)
+   if val==nil then
+      return val
+   end
+   return tonumber(val)
+end
+
+-- 'Создание файл с текстом внутри.
+function debug_to_file(filename,text)
+   local file=io.open(filename,"a+")
+   file:write(tostring(text),"\n")
+   file:close(file)
+end
+
+-- 'Проверка метки на обьекте.
+function get_spot_on_map(obj_id,location_name)
+   return level.map_has_object_spot(obj_id,location_name)~=0
+end
+-- 'Установка метки на обьект.
+function add_spot_on_map(obj_id,location_name,descr)
+   if obj_id~=nil and level.map_has_object_spot(obj_id,location_name)==0 then
+      if descr==nil then descr="" end
+      level.map_add_object_spot_ser(obj_id,location_name,descr)
+   end
+end
+-- 'Удаление метки с обьекта.
+function remove_spot_on_map(obj_id,location_name)
+   if obj_id~=nil and level.map_has_object_spot(obj_id,location_name)~=0 then
+      level.map_remove_object_spot(obj_id,location_name)
+   end
+end
+-- 'Установка/удаление метки на обьекте.
+function set_spot_choose(obj_id,location_name,type,descr)
+   if type=="hide" and obj_id~=nil then
+      remove_spot_on_map(obj_id,location_name)
+   elseif type=="show" and obj_id~=nil then
+      add_spot_on_map(obj_id,location_name,descr)
+   end
+end
+
+function distance_to_object(obj,type,dist_value,absence_parent)
+     local currert_distance=db.actor:position():distance_to(obj:position())
+     if ((type=="<=" and currert_distance<=dist_value) or (type=="<" and currert_distance<dist_value) or (type==">=" and currert_distance>=dist_value) or (type==">" and currert_distance>dist_value) or (type=="==" and currert_distance<dist_value)) and ((absence_parent==nil) or (absence_parent~=nil and absence_parent==false and obj:parent()~=nil) or (absence_parent~=nil and absence_parent==true and obj:parent()==nil)) then 
+        return true
+     end
+     return false
+end
+
+function find_in_string(where,what)
+   if where~=nil and what~=nil and string.find(where,what) then 
+      return true
+   elseif where==nil or what==nil then 
+      return nil
+   end
+   return false
+end
+
+-- 'Чтение отношений одного обьекта к другому.
+function check_relation_between(obj1,obj2)
+   local relation="neutral"
+   if IsStalker(obj1) then
+      if obj1:relation(obj2)==game_object.friend then
+         relation="friend"
+      elseif obj1:relation(obj2)==game_object.neutral then
+         relation="neutral"
+      elseif obj1:relation(obj2)==game_object.enemy then
+         relation="enemy"
+      else
+         relation="enemy"
+      end
+   elseif IsMonster(obj1) then
+      if obj2:relation(obj1)==game_object.friend then
+         relation="friend"
+      elseif obj2:relation(obj1)==game_object.neutral then
+         relation="neutral"
+      elseif obj2:relation(obj1)==game_object.enemy then
+         relation="enemy"
+      else
+         relation="enemy"
+      end
+   end
+   return relation
+end
+
+-- 'Проверка по количеству предметов одного типа.
+function have_item_count(need_item,num,st_find)
+   local item_section=need_item
+   local need_count=tonumber(num)
+   local has_count=0
+   local function calc(temp,item)
+      if (st_find==nil or st_find==false) and item:section()==item_section then
+         has_count=has_count+1
+      elseif st_find==true and find_in_string(item:section(),item_section) then
+         has_count=has_count+1
+      end
+   end
+   db.actor:iterate_inventory(calc,db.actor)
+   return has_count>=need_count
+end
+
+
+-- 'Запись глобальной переменной в таблицу, из которой эти данные потом перекочуют в файл.
+function write_mod_param(variable_name,variable_value)
+   sgm_flags.table_mod_data_actor[variable_name]=variable_value
+end
+-- 'Чтение глобальной переменной.
+function read_mod_param(variable_name,safe)
+   if sgm_flags.table_mod_data_actor[variable_name]~=nil then
+      return sgm_flags.table_mod_data_actor[variable_name]
+   elseif safe==true then
+      return 0
+   else
+      return nil
+   end
+end
+-- 'Ликвидация глобальной переменной.
+function clear_mod_param(variable_name)
+   sgm_flags.table_mod_data_actor[variable_name]=nil
+   sgm_flags.table_mod_data_actor_cleaner[variable_name]=true
+end
+
+-- 'Пройденное игровое время, с момента начала игры.
+function get_general_game_time(n_day,n_hour,n_minute,accuracy)
+   local time_result=(level.get_time_days()*60*24+level.get_time_hours()*60+level.get_time_minutes())-1440
+   if n_day~=nil and n_hour==nil and n_minute==nil then time_result=n_day*60*24+level.get_time_hours()*60+level.get_time_minutes() end
+   if n_day~=nil and n_hour~=nil and n_minute==nil then time_result=n_day*60*24+n_hour*60+level.get_time_minutes() end
+   if n_day==nil and n_hour==nil and n_minute~=nil then time_result=level.get_time_days()*60*24+level.get_time_hours()*60+n_minute end
+   if n_day==nil and n_hour~=nil and n_minute~=nil then time_result=level.get_time_days()*60*24+n_hour*60+n_minute end
+   if n_day~=nil and n_hour~=nil and n_minute~=nil then time_result=n_day*60*24+n_hour*60+n_minute end
+   if accuracy==true then
+      return time_result
+   else
+      return GetUntilGameTime()+time_result
+   end
+end
+
+-- 'Значение смены месяца.
+function GetUntilGameTime()
+   if read_mod_param("until_game_time")~=nil then
+      return read_mod_param("until_game_time")
+   else
+      return 0
+   end
+end
+
+function check_seconds(name)
+   if name==1 then name="one"
+   elseif name==2 then name="two"
+   elseif name==3 then name="three"
+   elseif name==4 then name="four"
+   elseif name==5 then name="fifth"
+   elseif name==10 then name="ten"
+   elseif name==20 then name="twenty"
+   elseif name==30 then name="thirty"
+   elseif name==40 then name="fourty"
+   elseif name==50 then name="fifty"
+   end
+   return sgm_flags["timer_"..name.."_seconds"]==0
+end
+
+
+-- 'Фунция чтения параметров с конфигов.
+function get_params_by_section(ini_name,section,val_type,target_string,default_value,use_action)
+   local ini,line=ini_file(ini_name),section
+   if val_type=="number" then
+      if ini:line_exist(line,target_string) then
+         if use_action==nil or use_action=="nil" then
+            return ini:r_float(line,target_string)
+         elseif use_action=="floor" then
+            return ini:r_float(line,target_string)/100
+         elseif use_action=="multiply" then
+            return ini:r_float(line,target_string)*100
+         end
+      else
+         if use_action==nil or use_action=="nil" then
+            return default_value
+         elseif use_action=="floor" then
+            return default_value/100
+         elseif use_action=="multiply" then
+            return default_value*100
+         end
+      end
+   elseif val_type=="string" then
+      if ini:line_exist(line,target_string) then
+         if use_action==nil or use_action=="nil" then
+            return ini:r_string(line,target_string)
+         elseif use_action=="floor" then
+            return ini:r_string(line,target_string)/100
+         elseif use_action=="multiply" then
+            return ini:r_string(line,target_string)*100
+         end
+      else
+         if use_action==nil or use_action=="nil" then
+            return default_value
+         elseif use_action=="floor" then
+            return default_value/100
+         elseif use_action=="multiply" then
+            return default_value*100
+         end
+      end
+   elseif val_type=="bool" then
+      if ini:line_exist(line,target_string) then
+         if use_action==nil or use_action=="nil" then
+            return ini:r_bool(line,target_string)
+         elseif use_action=="floor" then
+            return ini:r_bool(line,target_string)/100
+         elseif use_action=="multiply" then
+            return ini:r_bool(line,target_string)*100
+         end
+      else
+         if use_action==nil or use_action=="nil" then
+            return default_value
+         elseif use_action=="floor" then
+            return default_value/100
+         elseif use_action=="multiply" then
+            return default_value*100
+         end
+      end
+   else
+      return 0
+   end
+end
+-- 'Считывать главные опции.
+function r_mod_params(val_type,target_string,default_value,use_action)
+   return get_params_by_section("mod_parameters\\mod_params.ltx","mod_params",val_type,target_string,default_value,use_action)
+end
+
+
+
+
+--function abort(fmt, ...)
+--	local reason = string.format(fmt, ...)
+--	--error_log(reason)
+--end
 
 function set_inactivate_input_time(delta)
 	db.storage[db.actor:id()].disable_input_time = game.get_game_time()
@@ -628,7 +864,14 @@ function start_game_callback()
 	}
 
 
-
+	strong_monster_classes = {
+		[clsid.bloodsucker_s] 			= true,
+		[clsid.burer_s] 				= true,
+		[clsid.chimera_s] 				= true,
+		[clsid.controller_s] 			= true,
+		[clsid.gigant_s] 				= true,
+		[clsid.psy_dog_s] 				= true}
+	
 
 	monster_classes = {
 		[clsid.bloodsucker_s] 			= true,
@@ -637,13 +880,13 @@ function start_game_callback()
 		[clsid.flesh_s] 				= true,
 		[clsid.pseudodog_s] 			= true,
 		[clsid.burer_s] 				= true,
---		[clsid.cat_s] 					= true,
+		[clsid.cat_s] 					= true,
 		[clsid.chimera_s] 				= true,
 		[clsid.controller_s] 			= true,
---		[clsid.fracture_s] 				= true,
+		[clsid.fracture_s] 				= true,
 		[clsid.poltergeist_s] 			= true,
 		[clsid.gigant_s] 				= true,
---		[clsid.zombie_s] 				= true,
+		[clsid.zombie_s] 				= true,
 		[clsid.snork_s] 				= true,
 		[clsid.tushkano_s] 				= true,
 		[clsid.psy_dog_s] 				= true,
@@ -652,6 +895,31 @@ function start_game_callback()
 	stalker_classes = {
 		[clsid.script_actor] 			= true,
 		[clsid.script_stalker] 			= true}
+		
+	outfit_classes = {
+		[clsid.equ_stalker_s] 			= true,
+		[clsid.equ_helmet_s] 			= true}
+		
+	ammo_classes = {
+		[clsid.wpn_ammo_s] 			= true,
+		[clsid.wpn_ammo_og7b_s] 			= true,
+		[clsid.wpn_ammo_m209_s] 			= true,
+		[clsid.wpn_ammo_vog25_s] 			= true}
+		
+	addon_classes = {
+		[clsid.wpn_scope_s] 			= true,
+		[clsid.wpn_silencer_s] 			= true,
+		[clsid.wpn_grenade_launcher_s] 			= true}
+		
+	food_classes = {
+		[clsid.obj_medkit_s] 			= true,
+		[clsid.obj_bandage_s] 			= true,
+		[clsid.obj_food_s] 			= true,
+		[clsid.obj_bottle_s] 			= true,
+		[clsid.obj_antirad_s] 					= true}
+		
+	explos_classes = {
+		[clsid.obj_explosive_s] 			= true}
 
 	weapon_classes = {
 		[clsid.wpn_vintorez_s] 			= true,
@@ -707,6 +975,10 @@ function start_game_callback()
 	-- Tестирование оптимизации
 	--local test_object = test_object.test_object_class()
 	--test_object:test()
+	--/#+# [m_netpk] ---------------------------------------------------
+	m_netpk.attach() -- инициализация модуля m_netpk
+	--/< ---------------------------------------------------------------
+	se_stor.attach()
 end
 
 --' Lсталость
@@ -910,6 +1182,20 @@ function unregister_story_id(story_id)
 	story_objects.get_story_objects_registry():unregister_by_story_id(story_id)
 end
 
+-- 'Проверка на крепления аддонов.
+function get_installed_addon(wpn,type)
+   if wpn~=nil and type~=nil then
+      if type=="scope" then
+        result=wpn:weapon_is_scope()
+      elseif type=="silencer" then
+        result=wpn:weapon_is_silencer()
+      elseif type=="launcher" then
+        result=wpn:weapon_is_grenadelauncher()
+      end
+   end
+   return result
+end
+
 -----------------------------------------------------------------------------------------------
 -- Получить сквад обьекта!!!!!
 function get_object_squad(object)
@@ -961,3 +1247,36 @@ function show_all_ui(show)
 			db.actor:disable_hit_marks(true)
 	end
 end
+
+--/-------------------------------------------------------------------
+--/#+# initialize modules [lua_helper/lua_extensions/lua_addition]
+--/-------------------------------------------------------------------
+prefetch("lua_extension") --/#+# подключение модуля расширений Lua
+prefetch("lua_helper") --/#+# подключение модуля 'общих' хелп-функций
+prefetch("lua_addition") --/ подключение модуля дополнительных полезных функций
+--/ ------------------------------------------------------------------
+--/ print-log (вывод отладочной информации)
+--/-------------------------------------------------------------------
+local console
+--/ функция вывода сообщения в игровую консоль
+to_log = debug_print or logf or log1 or function(fmt,...)
+	if not console then console = get_console() end
+	console:execute("load ~:"..string.exformat(fmt,...))
+end
+--/-------------------------------------------------------------------
+--/ Принудительное прерывание игры при фатальных ошибках
+--/-------------------------------------------------------------------
+--abort = function(fmt,...)
+--	to_log(string.rep("~",86))
+--	assert("[error]ABORT CALLED:\n" .. string.exformat(fmt, ...))
+--	to_log("ATTENTION! Game is interrupted! The information in lines above.")
+--	to_log(string.rep("~",86))
+--	get_console():execute('flush')
+--	exit() --/#!# interrupt game in case of fatal errors
+--end
+--/ ------------------------------------------------------------------
+
+
+
+
+

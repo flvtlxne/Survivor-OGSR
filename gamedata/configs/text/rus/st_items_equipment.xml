@@ -1,5 +1,1927 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+
+
+
+	<string id="helicras_radio_name">
+		<text>Рация</text>
+	</string>
+	<string id="helicras_radio_descr">
+		<text>Коротковолновая армейская рация, радиус действия - несколько десятков километров. Вполне хватит, чтобы связаться с ближайшим блокпостом и запросить помощь в случае беды.</text>
+	</string>
+
+	<string id="kanistra_empty_name">
+		<text>Пустая канистра</text>
+	</string>
+	<string id="kanistra_empty_descr">
+		<text>Небольшая канистра для бензина или дизельного топлива.</text>
+	</string>
+
+	<string id="vedro_empty_name">
+		<text>Пустое ведро</text>
+	</string>
+	<string id="vedro_empty_descr">
+		<text>Пустое эмалированное ведро.</text>
+	</string>
+
+	<string id="vedro_full_name">
+		<text>Ведро с водой</text>
+	</string>
+	<string id="vedro_full_descr">
+		<text>Ведро с водой.</text>
+	</string>
+
+	<string id="kanistra_full_name">
+		<text>Канситра с топливом</text>
+	</string>
+	<string id="kanistra_full_descr">
+		<text>Канистра с топливом.</text>
+	</string>
+
+	<string id="helicrash_box_key_name">
+		<text>Ключ от ящика с припасами</text>
+	</string>
+	<string id="helicrash_box_key_descr">
+		<text>Ключ от ящика с припасами на случай ЧП, который находится у военного вертолёта.</text>
+	</string>
+
+	<string id="kpp_bunker_door_key_name">
+		<text>Ключ от бункера</text>
+	</string>
+	<string id="kpp_bunker_door_key_descr">
+		<text>Ключ от бункера на военном блокпосту.</text>
+	</string>
+
+	<string id="lonl_house_pogreb_door_key_name">
+		<text>Ключ от погреба</text>
+	</string>
+	<string id="lonl_house_pogreb_door_key_descr">
+		<text>Ключ от подвала во дворе заброшенного дома.</text>
+	</string>
+
+	<string id="village_seif1_key_name">
+		<text>Ключ от сейфа</text>
+	</string>
+	<string id="village_seif1_key_descr">
+		<text>Ключ от сейфа в деревне Грачи.</text>
+	</string>
+
+	<string id="workshop_budka1_door_key_name">
+		<text>Ключ от мастерской</text>
+	</string>
+	<string id="workshop_budka1_door_key_descr">
+		<text>Ключ от мастерской рембазы.</text>
+	</string>
+
+	<string id="weapon_remkit_name">
+		<text>Набор для ремонта оружия</text>
+	</string>
+	<string id="weapon_remkit_descr">
+		<text>Представляет собой запчасти, смазку и прочий материал для распостранённых видов оружия.</text>
+	</string>
+
+	<string id="showel_name">
+		<text>Лопата</text>
+	</string>
+	<string id="showel_descr">
+		<text>Старая ржавая штыковая лопата.</text>
+	</string>
+
+	<string id="armor_remkit_name">
+		<text>Набор для ремонта брони</text>
+	</string>
+	<string id="armor_remkit_descr">
+		<text>Представляет собой запчасти, смазку и прочий материал для распостранённых видов комбинезонов и бронежилетов.</text>
+	</string>
+
+	<string id="actors_note_name">
+		<text>Блокнот</text>
+	</string>
+	<string id="actors_note_descr">
+		<text>Наш личный блокнот, в которой мы регулярно будем оставлять записи о важных событиях, а также полезную для выживания в Зоне информацию.</text>
+	</string>
+
+	<string id="bolts_name">
+		<text>Болт</text>
+	</string>
+	<string id="bolts_descr">
+		<text>Ржавый болт на 24. Используется сталкерами для определения границ аномалий.</text>
+	</string>
+
+	<string id="firewood_name">
+		<text>Дрова</text>
+	</string>
+	<string id="firewood_descr">
+		<text>Небольшая связка дров.</text>
+	</string>
+
+	<string id="rnd_task_item_name">
+		<text>Ценный груз</text>
+	</string>
+	<string id="rnd_task_item_descr">
+		<text>Металопластиковый ударопрочный несгораемый контейнер с герметичной крышкой. Содержит нечто ценное.</text>
+	</string>
+
+
+	<string id="marouder_lider_3pda_name">
+		<text>ПДА Ахмета</text>
+	</string>
+	<string id="marouder_lider_3pda_descr">
+		<text>Память забита разной ерундой, вроде списков должников и порнухи. В конце имеется запись о сделке с незнакомцем.</text>
+	</string>
+
+	<string id="lw_stranger_pda_name">
+		<text>ПДА незнакомца</text>
+	</string>
+	<string id="lw_stranger_pda_descr">
+		<text>Все записи, кроме последней, зашифрованы. В последнем сообщении от Ахмета присутствуют координаты тайника. Возможно, этот предмет нам ещё пригодится.</text>
+	</string>
+
+	<string id="btr_maroder_pda_name">
+		<text>ПДА мародёра-разведчика</text>
+	</string>
+	<string id="btr_maroder_pda_descr">
+		<text>Бывший владелец был опытным мародёром, который занимался поиском оружия и боеприпасов, оставшихся от военных в Зоне.</text>
+	</string>
+
+	<string id="village_roof_maroder_pda_name">
+		<text>ПДА мародёра-падальщика</text>
+	</string>
+	<string id="village_roof_maroder_pda_descr">
+		<text>Бывший владелец был мародёром-одиночкой, который обворовывал трупы погибших товарищей.</text>
+	</string>
+
+	<string id="shron_merc_lider_pda_name">
+		<text>ПДА Коршуна</text>
+	</string>
+	<string id="shron_merc_lider_pda_descr">
+		<text>ПДА наёмника по кличке Коршун. Содержит переписку на каком-то восточном языке. Среди прочего имеется одна запись на английском.</text>
+	</string>
+
+	<string id="village_ambush_door_key_name">
+		<text>Ключ охранника</text>
+	</string>
+	<string id="village_ambush_door_key_descr">
+		<text>Ключ мародёра-охранника.</text>
+	</string>
+
+	<string id="satellite_memory_block_name">
+		<text>Блок памяти</text>
+	</string>
+	<string id="satellite_memory_block_descr">
+		<text>Блок памяти с военного спутника.</text>
+	</string>
+
+	<string id="af_treasure_name">
+		<text>"Прелесть"</text>
+	</string>
+	<string id="af_treasure_descr">
+		<text>Артефакт, обладающий букетом полезных свойств и... неужели ни одного негативного эффекта? Кто знает...</text>
+	</string>
+
+	<string id="mushrom_name">
+		<text>Аномальный гриб</text>
+	</string>
+	<string id="mushrom_descr">
+		<text>Древесный гриб, обработанный каким-то химическим веществом.</text>
+	</string>
+
+	<string id="af_mushrom_name">
+		<text>"Трутень"</text>
+	</string>
+	<string id="af_mushrom_descr">
+		<text>Мутировавший древесный гриб, превратившийся в артефакт. Фонит, но вместе с тем имеет ряд полезных свойств.</text>
+	</string>
+
+	<string id="narkoman_pribor_instruction_name">
+		<text>Инструкция учёного</text>
+	</string>
+	<string id="narkoman_pribor_instruction_descr">
+		<text>Инструкция по эксплуатации преобразователя М-272. Судя по всему, прибор предназначался для облучения мутировавших растений и грибов, помещённых в специальный герметический контейнер.</text>
+	</string>
+
+	<string id="personal_dog_note1_name">
+		<text>Дневник Прощелыги</text>
+	</string>
+	<string id="personal_dog_note1_descr">
+		<text>Страница из дневника опытного сталкера, являвшегося хозяином псевдособаки, которую мы нашли.</text>
+	</string>
+
+	<string id="maroder_zavhoz_note_name">
+		<text>Записка мародёра-завхоза</text>
+	</string>
+	<string id="maroder_zavhoz_note_descr">
+		<text>Записка мародёра, отвечавшего за главный "общак".</text>
+	</string>
+
+	<string id="item_napilnik_name">
+		<text>Напильник</text>
+	</string>
+	<string id="item_napilnik_descr">
+		<text>Старый напильник. Неплохо сохранился, так как находился в помещении.</text>
+	</string>
+
+	<string id="narkoman_note_name">
+		<text>Дневник учёного</text>
+	</string>
+	<string id="narkoman_note_descr">
+		<text>Страница из дневника учёного-одиночки, проводившего исследования в окрестностях деревни Грачи.</text>
+	</string>
+
+	<string id="arthunter_note1_name">
+		<text>Дневник разведчика</text>
+	</string>
+	<string id="arthunter_note1_descr">
+		<text>Страница из дневника сталкера-разведчика, промышлявшего в окрестностях деревни Грачи.</text>
+	</string>
+
+
+	<string id="weapon_parts_name">
+		<text>Расходники для ремонта</text>
+	</string>
+	<string id="weapon_parts_descr">
+		<text>Всё, что удалось изъять из сломанного оружия. Если собрать воедино 3 таких набора, то может получиться стандартный ремонтный комплект, которым можно будет чинить повреждённое оружие в мастерской.</text>
+	</string>
+
+	<string id="car_remkit_name">
+		<text>Ремнабор для автомобилей</text>
+	</string>
+	<string id="car_remkit_descr">
+		<text>Набор инструментов и маатериалов, необходимых для осмотра и ревизии автомобильного двигателя, коробки передач, электропроводки и трансмиссии.</text>
+	</string>
+
+	<string id="car_item_bearing_name">
+		<text>Металлические изделия</text>
+	</string>
+	<string id="car_item_bearing_descr">
+		<text>Гайки, втулки, подшипники и прочая дребедень. \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+	<string id="car_item_avtol_name">
+		<text>Машинное масло</text>
+	</string>
+	<string id="car_item_avtol_descr">
+		<text>Старое, но вполне пригодное масло. Заливается в картер. \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+	<string id="car_item_litol_name">
+		<text>Литол</text>
+	</string>
+	<string id="car_item_litol_descr">
+		<text>Смазочное вещество из нефтепродуктов. Защищает от ржавчины. \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+	<string id="car_item_wrenches_name">
+		<text>Набор инструментов</text>
+	</string>
+	<string id="car_item_wrenches_descr">
+		<text>Торцевые и рожковые ключи, отвёртки, метчики, плашки. \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+	<string id="car_item_wiring_name">
+		<text>Автомобильная электроника</text>
+	</string>
+	<string id="car_item_wiring_descr">
+		<text>Провода, лампочки, датчики и тому подобное. \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+	<string id="car_item_domkrat_name">
+		<text>Домкрат</text>
+	</string>
+	<string id="car_item_domkrat_descr">
+		<text>Инструмент, незаменимый при капитальном ремонте автомобилей. Выдержит даже грузовик. \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+	<string id="car_item_wd40_name">
+		<text>WD-40</text>
+	</string>
+	<string id="car_item_wd40_descr">
+		<text>Реагент, предназначенный для обработки металлических элементов, пострадавших от ржавчины. Незаменим при ремонте старых автомобилей. \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+	<string id="car_item_akumulator_name">
+		<text>Аккумулятор</text>
+	</string>
+	<string id="car_item_akumulator_descr">
+		<text>Автомобильный аккумулятор. \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+	<string id="car_item_tyre_name">
+		<text>Покрышка</text>
+	</string>
+	<string id="car_item_tyre_descr">
+		<text>Автомобильная покрышка. Резина ещё не совсем "лысая". \n%c[100,195,100,50]Может быть использовано для ремонта автотранспорта. %c[default]</text>
+	</string>
+
+
+	<string id="af_teleport_name">
+		<text>"Трамплин"</text>
+	</string>
+	<string id="af_teleport_descr">
+		<text>Уникальный артефакт, обладающий свойством переносить своего владельца в безопасное место. Перезаряжается после каждого выброса. \n%c[100,195,100,50]Чтобы телепортироваться в убежище, используйте артефакт в инвентаре. %c[default]</text>
+	</string>
+
+	<string id="maroder_courier_item_name">
+		<text>Груз курьера</text>
+	</string>
+	<string id="maroder_courier_item_descr">
+		<text>Запертый и опечатанный чемоданчик. Принадлежал курьеру-мародёру и должен вмещать в себя нечто ценное. \n%c[100,195,100,50]Чтобы вскрыть его и завладеть содержимым, нужно воспользоваться мастерской. %c[default]</text>
+	</string>
+
+
+
+	<string id="komp_monitor_descr">
+		<text>Часть старого персонального компьютера. Состояние удовлетворительное.</text>
+	</string>
+	<string id="komp_block_descr">
+		<text>Часть старого персонального компьютера. Состояние удовлетворительное.</text>
+	</string>
+	<string id="komp_klava_descr">
+		<text>Часть старого персонального компьютера. Состояние удовлетворительное.</text>
+	</string>
+
+	<string id="wind_generator_wing_name">
+		<text>Лопасти</text>
+	</string>
+	<string id="wind_generator_wing_descr">
+		<text>Дюралевые лопасти от ветрогенератора.</text>
+	</string>
+
+	<string id="wind_generator_reductor_name">
+		<text>Редуктор</text>
+	</string>
+	<string id="wind_generator_reductor_descr">
+		<text>Редуктор от ветрогенератора.</text>
+	</string>
+
+	<string id="likvidator_treasure_name">
+		<text>Клад ликвидатора</text>
+	</string>
+	<string id="likvidator_treasure_descr">
+		<text>Ржавая коробка, в которой когда-то были спрятаны золотые изделия. Теперь это просто мусор.</text>
+	</string>
+
+
+	<string id="chem_item_injector_name">
+		<text>Шприц</text>
+	</string>
+	<string id="chem_item_injector_descr">
+		<text>Одноразовый шприц. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_harness_name">
+		<text>Жгут</text>
+	</string>
+	<string id="chem_item_harness_descr">
+		<text>Медицинский резиновый жгут. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_liquor_name">
+		<text>Раствор для инъекций</text>
+	</string>
+	<string id="chem_item_liquor_descr">
+		<text>Водный раствор NaCl. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_antiseptic_name">
+		<text>Антисептик</text>
+	</string>
+	<string id="chem_item_antiseptic_descr">
+		<text>Вещество, обладающее антибактерицидным эффектом. Предназначено для обработки ран. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_rags_name">
+		<text>Ветошь</text>
+	</string>
+	<string id="chem_item_rags_descr">
+		<text>Хлопчатобумажные тряпки. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_yod_name">
+		<text>Йод</text>
+	</string>
+	<string id="chem_item_yod_descr">
+		<text>Таблетки с йодом для приёма внутрь. Рекомендуются при заболеваниях щитовидной железы. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_meldoniy_name">
+		<text>Мельдоний</text>
+	</string>
+	<string id="chem_item_meldoniy_descr">
+		<text>Относительно новый медицинский препарат, относящийся к категории допинг-веществ. Ускоряет восстановление сил при физических нагрузках. Запрещён для приёма спортсменам, учавствующим в соревнованиях. Кое-кто из них, впрочем, был пойман на горячем... Или это всё-же проделки вонючих буржуев? \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_cofeine_name">
+		<text>Кофеин</text>
+	</string>
+	<string id="chem_item_cofeine_descr">
+		<text>Таблетки, которые прописывают людям, страдающим пониженным артериальным давлением. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_sugar_name">
+		<text>Сахар</text>
+	</string>
+	<string id="chem_item_sugar_descr">
+		<text>Пищевой продукт. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_yeast_name">
+		<text>Дрожжи</text>
+	</string>
+	<string id="chem_item_yeast_descr">
+		<text>Пищевой продукт. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_gematogen_name">
+		<text>Гематоген</text>
+	</string>
+	<string id="chem_item_gematogen_descr">
+		<text>Батончик, в состав которого входят вещества, повышающие иммунитет и ускоряющие кровообразовательные процессы в организме. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+	<string id="chem_item_coal_name">
+		<text>Активированый уголь</text>
+	</string>
+	<string id="chem_item_coal_descr">
+		<text>Дешевые таблетки, используемые при отравлениях. \n%c[100,195,100,50]Может быть использовано для изготовления медпрепаратов. %c[default]</text>
+	</string>
+
+
+	<string id="medkit_amateur1_name">
+		<text>Самодельная аптечка</text>
+	</string>
+	<string id="medkit_amateur1_descr">
+		<text>Аптечка, изготовленная в полевых условиях из имеющихся медикаментов. Менее эффективна, нежели фабричная.</text>
+	</string>
+
+	<string id="medkit_amateur2_name">
+		<text>Улучшенная аптечка</text>
+	</string>
+	<string id="medkit_amateur2_descr">
+		<text>Аптечка, изготовленная в полевых условиях из имеющихся медикаментов. Менее эффективна, нежели фабричная. Выводит часть радиации.</text>
+	</string>
+
+	<string id="drug_serum_name">
+		<text>Сыворотка</text>
+	</string>
+	<string id="drug_serum_descr">
+		<text>Раствор для внутримышечного введения, предназначен для усиления защитных реакций организма. Также способствует улучшенной сворачиваемости крови.</text>
+	</string>
+
+	<string id="drug_steampack_name">
+		<text>Стимулятор</text>
+	</string>
+	<string id="drug_steampack_descr">
+		<text>Раствор для внутривенного введения, является слабым наркотическим веществом, приближённым к допинг-препаратам. Повышает выносливость и мышечную силу.</text>
+	</string>
+
+	<string id="drug_antitoxin_name">
+		<text>Противоядие</text>
+	</string>
+	<string id="drug_antitoxin_descr">
+		<text>Раствор из препаратов, ускоряющих выведение токсичных веещств из организма.</text>
+	</string>
+
+	<string id="braga_name">
+		<text>Брага</text>
+	</string>
+	<string id="braga_descr">
+		<text>Штука, не предназнаяенная для приёма внутрь, зато сгодится в качестве сырья для самогонного аппарата.</text>
+	</string>
+
+
+	<string id="item_bomb_name">
+		<text>Самодельная бомба</text>
+	</string>
+	<string id="item_bomb_descr">
+		<text>Примитивная бомба, изготовленная из бытового газового баллона и электрического искрового детонатора. Подрыв производится с помощью одноразового детонатора.</text>
+	</string>
+
+	<string id="detonator_name">
+		<text>Детонатор</text>
+	</string>
+	<string id="detonator_descr">
+		<text>Одноразовый детонатор, используемый для подрыва самодельной бомбы. Радиус действия - 50м.</text>
+	</string>
+
+
+
+	<string id="aksu_wrecked_name">
+		<text>Повреждённый автомат</text>
+	</string>
+	<string id="aksu_wrecked_descr">
+		<text>Оружие пострадало при жёсткой посадке вертолёта. Теперь оно сгодится разве что в качестве источника запчастей.</text>
+	</string>
+
+	<string id="pm_wrecked_name">
+		<text>Повреждённый пистолет</text>
+	</string>
+	<string id="pm_wrecked_descr">
+		<text>Оружие пострадало при жёсткой посадке вертолёта. Теперь оно сгодится разве что в качестве источника запчастей.</text>
+	</string>
+	<string id="gas_balon_name">
+		<text>Газовый балон</text>
+	</string>
+	<string id="gas_balon_descr">
+		<text>Портативный балон со сжиженым газом ёмкостью 5 л.</text>
+	</string>
+	<string id="gas_balon_big_name">
+		<text>Большой газовый баллон</text>
+	</string>
+	<string id="gas_balon_big_descr">
+		<text>Балон со сжиженым газом.</text>
+	</string>
+
+	<string id="lonl_house_deadman_diary_name">
+		<text>Часть дневника</text>
+	</string>
+	<string id="lonl_house_deadman_diary_descr">
+		<text>Этот пожелтевший листок - часть чьего-то дневника.</text>
+	</string>
+
+	<string id="lost_soldier_diary_name">
+		<text>Записка пилота</text>
+	</string>
+	<string id="lost_soldier_diary_descr">
+		<text>Листок из блокнота пилота Ми-24, потерявшегося в Зоне.</text>
+	</string>
+
+	<string id="likvidator_diary_name">
+		<text>Записка ликвидатора</text>
+	</string>
+	<string id="likvidator_diary_descr">
+		<text>Листок из блокнота пожарника, участвовавшего в ликвидации послдествий аварии 1986 г.</text>
+	</string>
+
+
+	<string id="scaner_maroder1_pda_name">
+		<text>ПДА Борзого</text>
+	</string>
+	<string id="scaner_maroder1_pda_descr">
+		<text>ПДА мародёра с примитивной инструкцией по использованию сканнера артефактов.</text>
+	</string>
+
+	<string id="artefact_scaner_name">
+		<text>Сканер артефактов</text>
+	</string>
+	<string id="artefact_scaner_descr">
+		<text>Научный прибор, служащий для обнаружения артефактов всех видов на обширной территории. Даёт информацию общего типа.</text>
+	</string>
+
+	<string id="anomaly_maroder1_pda_name">
+		<text>ПДА мародёра</text>
+	</string>
+	<string id="anomaly_maroder1_pda_descr">
+		<text>ПДА мародёра из туннеля.</text>
+	</string>
+
+	<string id="narkoman_door_key_name">
+		<text>Ключ учёного</text>
+	</string>
+	<string id="narkoman_door_key_descr">
+		<text>Ключ от временного убежища учёного-одиночки.</text>
+	</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<string id="upgr_item_exo_outf1_name">
+		<text>Подвижные пластины</text>
+	</string>
+	<string id="upgr_item_exo_outf1_descr">
+		<text>Подвижные пластины уберегают суставы от пуль и осколков.\n%c[100,195,100,50]Может быть использовано для улучшения: \nЭкзоскелет %c[default]</text>
+	</string>
+
+	<string id="upgr_item_exo_outf2_name">
+		<text>Сегментная защита</text>
+	</string>
+	<string id="upgr_item_exo_outf2_descr">
+		<text>Листы брони, более тонкие и накладывающиеся один на другой, как чешуя, увеличивают общую стойкость брони к износу. \n%c[100,195,100,50]Может быть использовано для улучшения: \nЭкзоскелет %c[default]</text>
+	</string>
+
+	<string id="upgr_item_exo_outf3_name">
+		<text>Комбез "Эвакуатор"</text>
+	</string>
+	<string id="upgr_item_exo_outf3_descr">
+		<text>Отечественная разработка, появилась после Чернобыльской катастрофы. Используется в экзоскелетах для защиты электроники. \n%c[100,195,100,50]Может быть использовано для улучшения: \nЭкзоскелет %c[default]</text>
+	</string>
+
+	<string id="upgr_item_exo_outf4_name">
+		<text>Сервомоторы</text>
+	</string>
+	<string id="upgr_item_exo_outf4_descr">
+		<text>Усиленный передвижной привод помогает увеличить количество переносимого груза. \n%c[100,195,100,50]Может быть использовано для улучшения: \nЭкзоскелет %c[default]</text>
+	</string>
+
+	<string id="upgr_item_exo_outf5_name">
+		<text>Система "Шагоход"</text>
+	</string>
+	<string id="upgr_item_exo_outf5_descr">
+		<text>В системе облегчённого хода используются мощные пружины и шарниры, что позволяет носителю затрачивать намного меньше сил для передвижения. \n%c[100,195,100,50]Может быть использовано для улучшения: \nЭкзоскелет %c[default]</text>
+	</string>
+
+	<string id="upgr_item_exo_outf6_name">
+		<text>Гидравлические усилители</text>
+	</string>
+	<string id="upgr_item_exo_outf6_descr">
+		<text>Гидравлические усилители, позволяющие переходить на бег, - главное отличие четвёртого поколения экзоскелетов от третьего. \n%c[100,195,100,50]Может быть использовано для улучшения: \nЭкзоскелет %c[default]</text>
+	</string>
+
+	<string id="upgr_item_exo_outf7_name">
+		<text>ПНВ II поколения</text>
+	</string>
+	<string id="upgr_item_exo_outf7_descr">
+		<text>Установка более совершенного прибора ночного видения для действий в абсолютной темноте. \n%c[100,195,100,50]Может быть использовано для улучшения: \nЭкзоскелет \nШлем тактический %c[default]</text>
+	</string>
+
+	<string id="upgr_item_respirat_helm1_name">
+		<text>Плексиглас</text>
+	</string>
+	<string id="upgr_item_respirat_helm1_descr">
+		<text>Плексигласовая маска может частично защитить от радиации. \n%c[100,195,100,50]Может быть использовано для улучшения: \nРеспиратор \nСтальной шлем \nШлем «Заслон» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_hardhat_helm1_name">
+		<text>Дыхательная маска</text>
+	</string>
+	<string id="upgr_item_hardhat_helm1_descr">
+		<text>Изолирующий респиратор позволяет носителю избежать вдыхания опасных для организма веществ. \n%c[100,195,100,50]Может быть использовано для улучшения: \nШлем стальной \nШлем тактический %c[default]</text>
+	</string>
+
+	<string id="upgr_item_hardhat_helm3_name">
+		<text>ПНВ I поколения</text>
+	</string>
+	<string id="upgr_item_hardhat_helm3_descr">
+		<text>Прибор ночного видения, позволяющий уверенно действовать ночью или в недостаточно освещённых помещениях. \n%c[100,195,100,50]Может быть использовано для улучшения: \nШлем стальной %c[default]</text>
+	</string>
+
+	<string id="upgr_item_hardhat_helm4_name">
+		<text>Респиратор "Пар"</text>
+	</string>
+	<string id="upgr_item_hardhat_helm4_descr">
+		<text>Маска применяется в условиях высокой загрязнённости воздуха или экстремальных для человеческого организма температур. \n%c[100,195,100,50]Может быть использовано для улучшения: \nШлем тактический %c[default]</text>
+	</string>
+
+	<string id="upgr_item_hardhat_helm5_name">
+		<text>Инфракрасный сканер</text>
+	</string>
+	<string id="upgr_item_hardhat_helm5_descr">
+		<text>Инфракрасный сканер позволяет надёжно фиксировать находящихся поблизости людей даже в темноте. \n%c[100,195,100,50]Может быть использовано для улучшения: \nШлем тактический %c[default]</text>
+	</string>
+
+	<string id="upgr_item_protect_helm1_name">
+		<text>Система упреждения</text>
+	</string>
+	<string id="upgr_item_protect_helm1_descr">
+		<text>Система автоматичесого переключения на замкнутый цикл дыхания в случае наличия в воздухе опасных концентраций радиоактивных или ядовитых веществ. \n%c[100,195,100,50]Может быть использовано для улучшения: \nШлем «Заслон» %c[default]</text>
+	</string>
+
+
+
+	<string id="usp_part1_name">
+		<text>Ствол от УДП «Компакт»</text>
+	</string>
+	<string id="usp_part1_descr">
+		<text>Ствол от пистолета УДП «Компакт»</text>
+	</string>
+
+	<string id="usp_part2_name">
+		<text>Затвор от УДП «Компакт»</text>
+	</string>
+	<string id="usp_part2_descr">
+		<text>Кожух-затвор от пистолета УДП «Компакт»</text>
+	</string>
+
+	<string id="usp_part3_name">
+		<text>Рукоятка от УДП «Компакт»</text>
+	</string>
+	<string id="usp_part3_descr">
+		<text>Рукоятка и спусковой механизм от пистолета УДП «Компакт».</text>
+	</string>
+
+	<string id="usp_part4_name">
+		<text>Магазин от УДП «Компакт»</text>
+	</string>
+	<string id="usp_part4_descr">
+		<text>Магазин-обойма на 7 патронов от пистолета УДП «Компакт».</text>
+	</string>
+
+	<string id="hpsa_part1_name">
+		<text>Ствол от ХПСС-1м</text>
+	</string>
+	<string id="hpsa_part1_descr">
+		<text>Ствол от пистолета ХПСС-1м.</text>
+	</string>
+
+	<string id="hpsa_part2_name">
+		<text>Затвор от ХПСС-1м</text>
+	</string>
+	<string id="hpsa_part2_descr">
+		<text>Кожух-затвор от пистолета ХПСС-1м.</text>
+	</string>
+
+	<string id="hpsa_part3_name">
+		<text>Рукоятка от ХПСС-1м</text>
+	</string>
+	<string id="hpsa_part3_descr">
+		<text>Рукоятка и спусковой механизм от пистолета ХПСС-1м.</text>
+	</string>
+
+	<string id="hpsa_part4_name">
+		<text>Магазин от ХПСС-1м</text>
+	</string>
+	<string id="hpsa_part4_descr">
+		<text>Магазин-обойма от пистолета ХПСС-1м.</text>
+	</string>
+
+	<string id="toz_part1_name">
+		<text>Ствол от ТОЗ-34</text>
+	</string>
+	<string id="toz_part1_descr">
+		<text>Ствол от охотничьего ружья ТОЗ-34</text>
+	</string>
+
+	<string id="toz_part2_name">
+		<text>Ложе от ТОЗ-34</text>
+	</string>
+	<string id="toz_part2_descr">
+		<text>Ложе и спусковой механизм от охотничьего ружья ТОЗ-34</text>
+	</string>
+
+	<string id="toz_part3_name">
+		<text>Приклад от ТОЗ-34</text>
+	</string>
+	<string id="toz_part3_descr">
+		<text>Приклад от охотничьего ружья ТОЗ-34</text>
+	</string>
+
+	<string id="aksu_part1_name">
+		<text>Компенсатор для АКСУ</text>
+	</string>
+	<string id="aksu_part1_descr">
+		<text>Надульный компенсатор для автомата АКСУ.</text>
+	</string>
+
+	<string id="aksu_part2_name">
+		<text>Ствольная коробка от АКСУ</text>
+	</string>
+	<string id="aksu_part2_descr">
+		<text>Ствольная коробка от автомата АКСУ.</text>
+	</string>
+
+	<string id="aksu_part3_name">
+		<text>Магазин от АКСУ</text>
+	</string>
+	<string id="aksu_part3_descr">
+		<text>Магазин на 30 патронов от автомата АКСУ.</text>
+	</string>
+
+	<string id="aksu_part4_name">
+		<text>Приклад от АКСУ\АК-74</text>
+	</string>
+	<string id="aksu_part4_descr">
+		<text>Складной приклад от автомата АКСУ. Также подходит для АК-74 и ПП "Бизон".</text>
+	</string>
+
+	<string id="aksu_part5_name">
+		<text>Рукоятка от АКСУ</text>
+	</string>
+	<string id="aksu_part5_descr">
+		<text>Рукоятка и спусковой механизм от автомата АКСУ.</text>
+	</string>
+
+	<string id="ak_part1_name">
+		<text>Ствол от АК-74</text>
+	</string>
+	<string id="ak_part1_descr">
+		<text>Ствол и газовый поршень от автомата АК-74.</text>
+	</string>
+
+	<string id="ak_part2_name">
+		<text>Ствольная коробка от АК-74</text>
+	</string>
+	<string id="ak_part2_descr">
+		<text>Ствольная коробка от автомата АК-74.</text>
+	</string>
+
+	<string id="ak_part3_name">
+		<text>Магазин от АК-74</text>
+	</string>
+	<string id="ak_part3_descr">
+		<text>Магазин на 30 патронов от автомата АК-74.</text>
+	</string>
+
+	<string id="ak_part4_name">
+		<text>Рукоятка от АК-74</text>
+	</string>
+	<string id="ak_part4_descr">
+		<text>Рукоятка и спусковой механизм от автомата АК-74.</text>
+	</string>
+
+	<string id="trs_part1_name">
+		<text>Ствол от ТРс-301</text>
+	</string>
+	<string id="trs_part1_descr">
+		<text>Цевьё и ствол от винтовки ТРс-301</text>
+	</string>
+
+	<string id="trs_part2_name">
+		<text>Ствольная коробка от ТРс-301</text>
+	</string>
+	<string id="trs_part2_descr">
+		<text>Ствольная коробка от винтовки ТРс-301</text>
+	</string>
+
+	<string id="trs_part3_name">
+		<text>Приклад от ТРс-301</text>
+	</string>
+	<string id="trs_part3_descr">
+		<text>Приклад от винтовки ТРс-301</text>
+	</string>
+
+	<string id="trs_part4_name">
+		<text>Рукоятка от ТРс-301</text>
+	</string>
+	<string id="trs_part4_descr">
+		<text>Рукоятка и спусковой механизм от винтовки ТРс-301</text>
+	</string>
+
+	<string id="trs_part5_name">
+		<text>Магазин от ТРс-301</text>
+	</string>
+	<string id="trs_part5_descr">
+		<text>Магазин на 30 патронов от винтовки ТРс-301</text>
+	</string>
+
+	<string id="vintorez_part1_name">
+		<text>Ствол от «Винтарь-ВС»</text>
+	</string>
+	<string id="vintorez_part1_descr">
+		<text>Ствол от спецвинтовки «Винтарь-ВС»</text>
+	</string>
+
+	<string id="vintorez_part2_name">
+		<text>Ствольная коробка от «Винтарь-ВС»</text>
+	</string>
+	<string id="vintorez_part2_descr">
+		<text>Ствольная коробка от спецвинтовки «Винтарь-ВС».</text>
+	</string>
+
+	<string id="vintorez_part3_name">
+		<text>Приклад от «Винтарь-ВС»</text>
+	</string>
+	<string id="vintorez_part3_descr">
+		<text>Деревянный приклад от спецвинтовки «Винтарь-ВС».</text>
+	</string>
+
+	<string id="vintorez_part4_name">
+		<text>Магазин от «Винтарь-ВС»</text>
+	</string>
+	<string id="vintorez_part4_descr">
+		<text>Магазин на 10 патронов от спецвинтовки «Винтарь-ВС».</text>
+	</string>
+
+	<string id="bizon_part_1_name">
+		<text>Ствол от ПП "Бизон"</text>
+	</string>
+	<string id="bizon_part_1_descr">
+		<text>Короткий ствол от пистолета-пулемёта "Бизон".</text>
+	</string>
+
+	<string id="bizon_part_2_name">
+		<text>Магазин от ПП "Бизон"</text>
+	</string>
+	<string id="bizon_part_2_descr">
+		<text>Циллиндрический 64-хзарядный магазин от пистолета-пулемёта "Бизон".</text>
+	</string>
+
+	<string id="bizon_part_3_name">
+		<text>Ствольная коробка от ПП "Бизон"</text>
+	</string>
+	<string id="bizon_part_3_descr">
+		<text>Ствольная коробка от пистолета-пулемёта "Бизон".</text>
+	</string>
+
+	<string id="bizon_part_4_name">
+		<text>УСМ от ПП "Бизон"</text>
+	</string>
+	<string id="bizon_part_4_descr">
+		<text>Ударно-спусковой механизм от пистолета-пулемёта "Бизон".</text>
+	</string>
+
+
+	<string id="sayga_part_1_name">
+		<text>Ствольная коробка от Сайги-12</text>
+	</string>
+	<string id="sayga_part_1_descr">
+		<text>Ствольная коробка от гладкоствольного ружья Сайга-12.</text>
+	</string>
+
+	<string id="sayga_part_2_name">
+		<text>Приклад от Сайги-12</text>
+	</string>
+	<string id="sayga_part_2_descr">
+		<text>Пластиковый приклад от гладкоствольного ружья Сайга-12.</text>
+	</string>
+
+	<string id="sayga_part_3_name">
+		<text>Ствол и цевьё от Сайги-12</text>
+	</string>
+	<string id="sayga_part_3_descr">
+		<text>Ствол с газоходом и цевьё от гладкоствольного ружья Сайга-12.</text>
+	</string>
+
+	<string id="sayga_part_4_name">
+		<text>Магазин от Сайги-12</text>
+	</string>
+	<string id="sayga_part_4_descr">
+		<text>Пятизарядный магазин от гладкоствольного ружья Сайга-12.</text>
+	</string>
+
+
+
+
+
+
+
+	<string id="upgr_item_ak74_1_name">
+		<text>Противоход</text>
+	</string>
+	<string id="upgr_item_ak74_1_descr">
+		<text>Дополнительный элемент - противоход - устанавливается в ствольную коробку для компенсации отдачи. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ \nАК-74 \nТРс-301 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_2_name">
+		<text>Автоматический газовый регулятор</text>
+	</string>
+	<string id="upgr_item_ak74_2_descr">
+		<text>Установка специального механизма для уменьшения загрязнённости оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ \nАК-74 \nТРс-301 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_3_name">
+		<text>Безударная система</text>
+	</string>
+	<string id="upgr_item_ak74_3_descr">
+		<text>Замена ряда деталей оружия, повышающая точность боя, но влекущая за собой усложнение конструкции. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ \nАК-74 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_4_name">
+		<text>Замедлитель отката</text>
+	</string>
+	<string id="upgr_item_ak74_4_descr">
+		<text>Особая деталь, установленная в затвор, позволяет компенсировать его движение и тем самым снизить отдачу. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nХПСС-1м \nАКСУ \nАК-74 \nТРс-301 \n«Винтарь-ВС» \nПБ-1с%c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_5_name">
+		<text>Амортизатор</text>
+	</string>
+	<string id="upgr_item_ak74_5_descr">
+		<text>Установка уплотнителей на подвижных частях механизма поможет в процессе стрельбы максимально синхронизировать траекторию полёта пули с линией прицеливания. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_6_name">
+		<text>Балансирующий элемент</text>
+	</string>
+	<string id="upgr_item_ak74_6_descr">
+		<text>Полимерная деталь, жёстко фиксирующая траекторию хода стержней, позволяет не сбить прицел при ведении огня. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 \nТРс-301 \n«Винтарь-ВС» \nПП "Бизон"%c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_7_name">
+		<text>Титановые стержни</text>
+	</string>
+	<string id="upgr_item_ak74_7_descr">
+		<text>Направляющие титановые стержни позволяют обеспечить ведение значительно более интенсивного огня, чем стальные. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ \nАК-74 \nТРс-301 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_8_name">
+		<text>Уплотнитель муфты</text>
+	</string>
+	<string id="upgr_item_ak74_8_descr">
+		<text>Уплотнение муфты помогает увеличить давление в стволе и таким образом повысить начальную скорость пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 \n«Винтарь-ВС» \nПП "Бизон"%c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_9_name">
+		<text>Цельный затвор</text>
+	</string>
+	<string id="upgr_item_ak74_9_descr">
+		<text>Модификация не из дешёвых, но это наверняка будущий стандарт для оружия нового поколения. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 \nТРс-301 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_10_name">
+		<text>Синтетические уплотнители</text>
+	</string>
+	<string id="upgr_item_ak74_10_descr">
+		<text>Уменьшение диаметра газовой камеры при помощи синтетических уплотнителей заметно увеличивает начальную скорость пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_11_name">
+		<text>Газовый поршень</text>
+	</string>
+	<string id="upgr_item_ak74_11_descr">
+		<text>Второй газовый поршень создаёт противомассу затворному механизму и тем самым компенсирует импульс движения последнего - это положительно сказывается на точности боя оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_12_name">
+		<text>Система обтюрации</text>
+	</string>
+	<string id="upgr_item_ak74_12_descr">
+		<text>В данной системе часть газов удерживается затворным механизмом с целью ускорить движение последнего. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_13_name">
+		<text>Ударопрочная ложа</text>
+	</string>
+	<string id="upgr_item_ak74_13_descr">
+		<text>Замена базовой ложи на полимерную позволяет снизить массу оружия без потери его надёжности. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 \nТРс-301 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_14_name">
+		<text>Эргономичные элементы</text>
+	</string>
+	<string id="upgr_item_ak74_14_descr">
+		<text>Более удобная форма рукоятей повышает приёмистость оружия при ведении огня в движении. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nОбрез \nХПСС-1м \nТОЗ-34 \nАК-74 \nТРс-301 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_15_name">
+		<text>Рукоять со стабилизатором</text>
+	</string>
+	<string id="upgr_item_ak74_15_descr">
+		<text>В полую рукоять устанавливается лёгкая подвижная деталь - стабилизатор, при ведении огня создающий противоэффект импульсу отдачи. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 \nТРс-301 \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_16_name">
+		<text>Крепление для оптики</text>
+	</string>
+	<string id="upgr_item_ak74_16_descr">
+		<text>Установка крепления для оптического прицела. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_ak74_17_name">
+		<text>Набор адаптации под калибр 5.56мм</text>
+	</string>
+	<string id="upgr_item_ak74_17_descr">
+		<text>Сложная комплексная модификация механики и автоматики оружия, позволяющая сменить калибр оружия - правда, с некоторым ущербом для надёжности последнего. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАК-74 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_1_name">
+		<text>Ускоренный автоспуск</text>
+	</string>
+	<string id="upgr_item_aksu_1_descr">
+		<text>Несмотря на название, в данном случае замене в основном подвергается затворная система для обеспечения более высокого темпа стрельбы. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_2_name">
+		<text>Газоотвод со смещающимся блоком</text>
+	</string>
+	<string id="upgr_item_aksu_2_descr">
+		<text>Газоотвод со смещающимся блоком принимает на себя часть импульса отдачи, что повышает точность боя. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_3_name">
+		<text>Набегающий затвор</text>
+	</string>
+	<string id="upgr_item_aksu_3_descr">
+		<text>Затвор оружия скользит вдоль ствола, препятствуя подпрыгиванию дульной части при выстреле. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_4_name">
+		<text>Система "умной" компенсации</text>
+	</string>
+	<string id="upgr_item_aksu_4_descr">
+		<text>Перемычка фиксирует номинальное положение ствола; при смещении последнего от линии прицеливания открываются компенсационные отверстия и пороховые газы толкают ствол в нужном направлении. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ \n«Винтарь-ВС» \nВинтовка Мосина %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_5_name">
+		<text>Компенсатор ударника затвора</text>
+	</string>
+	<string id="upgr_item_aksu_5_descr">
+		<text>Установка данной детали позволяет частично компенсировать отдачу, в результате повысив кучность стрельбы при ведении автоматического огня. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_6_name">
+		<text>Замедлитель курка</text>
+	</string>
+	<string id="upgr_item_aksu_6_descr">
+		<text>Данная модификация позволяет повысить темп стрельбы. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_7_name">
+		<text>Композитные детали УСМ</text>
+	</string>
+	<string id="upgr_item_aksu_7_descr">
+		<text>Индивидуальная для каждой модели подборка деталей из композитных материалов обходится недёшево, однако в результате срок службы оружия заметно возрастает. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_8_name">
+		<text>Возвратная пружина</text>
+	</string>
+	<string id="upgr_item_aksu_8_descr">
+		<text>Установка дополнительной пружины с обратным ходом спирали позволяет снизить отдачу без вреда для настильности траектории пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ \n«Винтарь-ВС» \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_9_name">
+		<text>Распределительная перемычка</text>
+	</string>
+	<string id="upgr_item_aksu_9_descr">
+		<text>Перемычка, открываемая газами и закрываемая возвратным механизмом, помогает заметно увеличить темп стрельбы. \n%c[100,195,100,50]Может быть использовано для улучшения: \nАКСУ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_aksu_10_name">
+		<text>Магазин повышенной ёмкости</text>
+	</string>
+	<string id="upgr_item_aksu_10_descr">
+		<text>Смена стандартного оружейного магазина на более ёмкий. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nУДП «Компакт» \nХПСС-1м \nАКСУ \nТРс-301 \nПБ-1с \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_bm16_1_name">
+		<text>Синтетический уплотнитель ствола</text>
+	</string>
+	<string id="upgr_item_bm16_1_descr">
+		<text>Уплотнитель ствола из синтетического материала позволяет заметно увеличить кучность стрельбы. \n%c[100,195,100,50]Может быть использовано для улучшения: \nОбрез \nТРс-301 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_bm16_2_name">
+		<text>Амортизирущая рукоять</text>
+	</string>
+	<string id="upgr_item_bm16_2_descr">
+		<text>Амортизирующая рукоять помогает меньше ощущать импульс отдачи. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nОбрез \nУДП «Компакт» \nХПСС-1м \nСайга-12 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_bm16_3_name">
+		<text>Малоимпульсный ударный механизм</text>
+	</string>
+	<string id="upgr_item_bm16_3_descr">
+		<text>Малоимпульсный ударный механизм в деле проявляет себя очень умеренной отдачей - в отличие от прежних технологических решений. \n%c[100,195,100,50]Может быть использовано для улучшения: \nОбрез \nТОЗ-34 \nСайга-12 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_1_name">
+		<text>Ствол из сверхпрочного сплава</text>
+	</string>
+	<string id="upgr_item_toz_1_descr">
+		<text>Сверхпрочные материалы препятствуют быстрому разрушению нарезов. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТОЗ-34 \nСайга-12 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_2_name">
+		<text>Удлинённый ствол</text>
+	</string>
+	<string id="upgr_item_toz_2_descr">
+		<text>Благодаря замене стандартного ствола на более длинный увеличивается настильность траектории полёта пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nУДП «Компакт» \nХПСС-1м \nТОЗ-34 \nСайга-12 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_3_name">
+		<text>Система балансировки</text>
+	</string>
+	<string id="upgr_item_toz_3_descr">
+		<text>Система балансировки ствольной части включает в себя несколько подвижных плунжеров; в результате оружие становится более устойчивым во время ведения огня. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТОЗ-34 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_4_name">
+		<text>Инструменты для нарезки ствола</text>
+	</string>
+	<string id="upgr_item_toz_4_descr">
+		<text>Нарезной ствол оружия исключает возможность стрельбы дробью, но этот недостаток компенсируется намного более высокой точностью боя. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТОЗ-34 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_5_name">
+		<text>Облегчённый приклад</text>
+	</string>
+	<string id="upgr_item_toz_5_descr">
+		<text>Облегчённая версия базового приклада. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТОЗ-34 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_6_name">
+		<text>Эргономичный приклад</text>
+	</string>
+	<string id="upgr_item_toz_6_descr">
+		<text>Более удобный приклад упрощает обращение с оружием. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТОЗ-34 \n«Винтарь-ВС» \nВинтовка Мосина %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_7_name">
+		<text>Ртутный компенсатор отдачи</text>
+	</string>
+	<string id="upgr_item_toz_7_descr">
+		<text>Размещённый в прикладе оружия ртутный компенсатор в момент выстрела принимает на себя часть импульса отдачи. \n%c[100,195,100,50]Может быть использовано для улучшения: \nХПСС-1м \nТОЗ-34 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_8_name">
+		<text>Полимерные детали</text>
+	</string>
+	<string id="upgr_item_toz_8_descr">
+		<text>Идея замены некоторых металлических деталей оружия пластиковыми уже давно показала свою состоятельность. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nУДП «Компакт» \nХПСС-1м \nТОЗ-34 \n«Винтарь-ВС» \nПБ-1с \nСайга-12%c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_9_name">
+		<text>Защитное напыление для деталей</text>
+	</string>
+	<string id="upgr_item_toz_9_descr">
+		<text>Защитное напыление исключает возможность осечки из-за сбоя в работе механизмов. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТРс-301 \nТОЗ-34 \n«Винтарь-ВС» \nПБ-1с \nПП "Бизон" \nСайга-12 \nВинтовка Мосина %c[default]</text>
+	</string>
+
+	<string id="upgr_item_toz_10_name">
+		<text>Система запирания ствола</text>
+	</string>
+	<string id="upgr_item_toz_10_descr">
+		<text>Особая деталь при выстреле открывает просвет ствола и вновь запирает его, двигаясь вдоль цевья. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nТОЗ-34 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pm_1_name">
+		<text>Подвижная запорная часть</text>
+	</string>
+	<string id="upgr_item_pm_1_descr">
+		<text>Новая затворная часть обеспечивает повышенную скорострельность без перегрузки остальных деталей механизма оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nУДП «Компакт» \nХПСС-1м \nПБ-1с %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pm_2_name">
+		<text>Затвор с коротким ходом</text>
+	</string>
+	<string id="upgr_item_pm_2_descr">
+		<text>Короткий ход затвора позволяет повысить скорострельность без снижения характеристик настильности траектории пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pm_3_name">
+		<text>Набор для хромирования</text>
+	</string>
+	<string id="upgr_item_pm_3_descr">
+		<text>Хромирование помогает повысить живучесть ствола оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nУДП «Компакт» \nХПСС-1м %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pm_4_name">
+		<text>"Мягкий" спусковой механизм</text>
+	</string>
+	<string id="upgr_item_pm_4_descr">
+		<text>Одна из самых простых и распространённых модификаций позволяет уменьшить инерцию спускового крючка. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ \nПБ-1с %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pm_5_name">
+		<text>Ударно-спусковой механизм с частичным взведением</text>
+	</string>
+	<string id="upgr_item_pm_5_descr">
+		<text>Предварительное частичное взведение курка помогает увеличить точность боя оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pm_6_name">
+		<text>Набор адаптации под калибр 9х19мм.</text>
+	</string>
+	<string id="upgr_item_pm_6_descr">
+		<text>Сложная комплексная модификация механики и автоматики оружия, позволяющая сменить калибр оружия - правда, с некоторым ущербом для надёжности последнего. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПМ %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_1_name">
+		<text>Удлинённый затвор</text>
+	</string>
+	<string id="upgr_item_usp_1_descr">
+		<text>Удлинение хода затвора с одновременным усилением возвратного механизма позволяет повысить настильность траектории пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_2_name">
+		<text>Механизм автоматической стрельбы</text>
+	</string>
+	<string id="upgr_item_usp_2_descr">
+		<text>Переделка механизмов пистолета для возможности ведения автоматического огня. \n%c[100,195,100,50]Может быть использовано для улучшения: \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_3_name">
+		<text>Ствол с уменьшенными нарезами</text>
+	</string>
+	<string id="upgr_item_usp_3_descr">
+		<text>Менее глубокие нарезы позволяют повысить темп стрельбы, что важно при близком огневом контакте с противником. \n%c[100,195,100,50]Может быть использовано для улучшения: \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_4_name">
+		<text>Инструмент для синусоидальной нарезки</text>
+	</string>
+	<string id="upgr_item_usp_4_descr">
+		<text>Синусоидальная нарезка ствола позволяет уменьшить нагрев последнего и повысить скорострельность без потери настильности трактории полёта пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \nХПСС-1м \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_5_name">
+		<text>Титановая ствольная коробка</text>
+	</string>
+	<string id="upgr_item_usp_5_descr">
+		<text>Более совершенная - но и дорогая - ствольная коробка позволяет оружию прослужить намного дольше. \n%c[100,195,100,50]Может быть использовано для улучшения: \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_6_name">
+		<text>Рукоять с прямой тыльной частью</text>
+	</string>
+	<string id="upgr_item_usp_6_descr">
+		<text>Достижение более эргономичной формы рукояти путём изменения её тыльной части. \n%c[100,195,100,50]Может быть использовано для улучшения: \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_7_name">
+		<text>Рукоять изменённой формы</text>
+	</string>
+	<string id="upgr_item_usp_7_descr">
+		<text>Форма рукояти, оптимизированная путём индивидуального подбора затыльника. \n%c[100,195,100,50]Может быть использовано для улучшения: \nУДП «Компакт» \nПБ-1с \nСайга-12 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_8_name">
+		<text>УСМ двойного действия</text>
+	</string>
+	<string id="upgr_item_usp_8_descr">
+		<text>Курок механически взводится при первом выстреле; при всех последующиих взведение происходит автоматически. \n%c[100,195,100,50]Может быть использовано для улучшения: \nХПСС-1м \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_9_name">
+		<text>Модульный УСМ</text>
+	</string>
+	<string id="upgr_item_usp_9_descr">
+		<text>Модульный ударно-спусковой механизм обеспечивает простоту обслуживания и ремонта оружия, а также большее удобство в обращении с последним. \n%c[100,195,100,50]Может быть использовано для улучшения: \nХПСС-1м \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_usp_10_name">
+		<text>Деталь-взводитель</text>
+	</string>
+	<string id="upgr_item_usp_10_descr">
+		<text>Оснащение отдельной деталью-взводителем позволяет заметно уменьшить усилие, необходимое для спуска курка, что положительно влияет на точность боя. \n%c[100,195,100,50]Может быть использовано для улучшения: \nУДП «Компакт» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_hpsa_1_name">
+		<text>Система запирания перекосом ствола</text>
+	</string>
+	<string id="upgr_item_hpsa_1_descr">
+		<text>Новая система запирания благодаря более полной передаче энергии пороховых газов улучшает настильность траектории пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \nХПСС-1м %c[default]</text>
+	</string>
+
+	<string id="upgr_item_hpsa_2_name">
+		<text>Ствол с полигональными нарезами</text>
+	</string>
+	<string id="upgr_item_hpsa_2_descr">
+		<text>Полигональная нарезка ствола наилучшим образом подходит для снайперских винтовок, позволяя повысить настильность. \n%c[100,195,100,50]Может быть использовано для улучшения: \nХПСС-1м \nВинтовка Мосина %c[default]</text>
+	</string>
+
+	<string id="upgr_item_hpsa_3_name">
+		<text>Набор адаптации под калибр 9х18мм.</text>
+	</string>
+	<string id="upgr_item_hpsa_3_descr">
+		<text>Сложная комплексная модификация механики и автоматики оружия, позволяющая сменить калибр оружия - правда, с некоторым ущербом для надёжности последнего. \n%c[100,195,100,50]Может быть использовано для улучшения: \nХПСС-1м %c[default]</text>
+	</string>
+
+	<string id="upgr_item_lr300_1_name">
+		<text>Газовый шток</text>
+	</string>
+	<string id="upgr_item_lr300_1_descr">
+		<text>С установкой газового штока пороховые газы перестают попадать непосредственно в ствольную коробку, что заметно снижает загрязнённость оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТРс-301 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_lr300_2_name">
+		<text>Останавливающий привод</text>
+	</string>
+	<string id="upgr_item_lr300_2_descr">
+		<text>Деталь из упругого полимера амортизирует удар затвора о ствольную коробку, что позволяет увеличить точность стрельбы. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТРс-301 \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_lr300_3_name">
+		<text>Амортизатор возвратного механизма</text>
+	</string>
+	<string id="upgr_item_lr300_3_descr">
+		<text>Установка уплотнителей на подвижных частях механизма поможет в процессе стрельбы максимально синхронизировать траекторию полёта пули с линией прицеливания. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТРс-301 \nПБ-1с \nПП "Бизон" \nВинтовка Мосина %c[default]</text>
+	</string>
+
+	<string id="upgr_item_lr300_4_name">
+		<text>Дублированные направляющие и боевые пружины</text>
+	</string>
+	<string id="upgr_item_lr300_4_descr">
+		<text>Замена базового возвратного механизма более мощным - из двух направляющих стержней и возвратных пружин - позволяет повысить темп стрельбы. \n%c[100,195,100,50]Может быть использовано для улучшения: \nТРс-301 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_vintorez_1_name">
+		<text>Шестерня-синхронизатор</text>
+	</string>
+	<string id="upgr_item_vintorez_1_descr">
+		<text>Синхронизация осуществляется с помощью устанавливаемой шестерни, что позволяет повысить настильность траектории пули. \n%c[100,195,100,50]Может быть использовано для улучшения: \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_vintorez_2_name">
+		<text>Пневмоприклад</text>
+	</string>
+	<string id="upgr_item_vintorez_2_descr">
+		<text>Пневмоприклад служит для частичной компенсации отдачи в автоматическом режиме ведения огня. \n%c[100,195,100,50]Может быть использовано для улучшения: \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_vintorez_3_name">
+		<text>Подвижный противовес</text>
+	</string>
+	<string id="upgr_item_vintorez_3_descr">
+		<text>Установка подвижного элемента в приклад создаёт противоэффект импульсу отдачи. \n%c[100,195,100,50]Может быть использовано для улучшения: \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_vintorez_4_name">
+		<text>Газовый буфер</text>
+	</string>
+	<string id="upgr_item_vintorez_4_descr">
+		<text>При стрельбе часть пороховых газов отводится из ствола в полость позади затвора, обеспечивая плавное торможение последнего при откате. \n%c[100,195,100,50]Может быть использовано для улучшения: \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_vintorez_5_name">
+		<text>Набор усиленных линз для прицелов</text>
+	</string>
+	<string id="upgr_item_vintorez_5_descr">
+		<text>Для установки в оптические прицелы для ведения боя на дальних дистанциях. \n%c[100,195,100,50]Может быть использовано для улучшения: \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_vintorez_6_name">
+		<text>Набор контрастных линз для прицелов</text>
+	</string>
+	<string id="upgr_item_vintorez_6_descr">
+		<text>Модификация коллиматорного прицела, которая заключается в повышении контрастности последнего в жёлтой части спектра. Помогает вести бой в сумерках или недостаточно освещённых помещениях. \n%c[100,195,100,50]Может быть использовано для улучшения: \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_vintorez_7_name">
+		<text>ПНВ для оптического прицела</text>
+	</string>
+	<string id="upgr_item_vintorez_7_descr">
+		<text>Установка прибора ночного видения поможет спасти свою жизнь - или отнять чужую. \n%c[100,195,100,50]Может быть использовано для улучшения: \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_vintorez_8_name">
+		<text>Тепловизор для оптического прицела</text>
+	</string>
+	<string id="upgr_item_vintorez_8_descr">
+		<text>Тепловизор позволяет выявить и локализовать источники тепла, по характеристикам схожие с человеческим телом. \n%c[100,195,100,50]Может быть использовано для улучшения: \n«Винтарь-ВС» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pb_1_name">
+		<text>Затвор с длинным ходом</text>
+	</string>
+	<string id="upgr_item_pb_1_descr">
+		<text>Использование длинного хода затвора позволяет придать пуле более высокую начальную скорость. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПБ-1с %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pb_2_name">
+		<text>Перфорированный ствол</text>
+	</string>
+	<string id="upgr_item_pb_2_descr">
+		<text>Модификация ствола позволяет снизить отдачу: при выходе часть газов истекает через специальные отверстия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПБ-1с %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pb_3_name">
+		<text>Резиновые сепараторы</text>
+	</string>
+	<string id="upgr_item_pb_3_descr">
+		<text>Сепараторы принимают на себя часть отдачи. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПБ-1с %c[default]</text>
+	</string>
+
+	<string id="upgr_item_pb_4_name">
+		<text>УСМ с частичным взведением</text>
+	</string>
+	<string id="upgr_item_pb_4_descr">
+		<text>Предварительное частичное взведение курка помогает увеличить точность боя оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПБ-1с %c[default]</text>
+	</string>
+
+	<string id="upgr_item_bizon_1_name">
+		<text>Ускоритель подачи патронов</text>
+	</string>
+	<string id="upgr_item_bizon_1_descr">
+		<text>Установка механизма с подвижными элементами, позволяющими добиться более быстрой подачи патронов в патронник. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_bizon_2_name">
+		<text>Роликовая система запирания</text>
+	</string>
+	<string id="upgr_item_bizon_2_descr">
+		<text>Система роликового запирания позволяет повысить кучность стрельбы. \n%c[100,195,100,50]Может быть использовано для улучшения: \nПП "Бизон" %c[default]</text>
+	</string>
+
+	<string id="upgr_item_sayga_1_name">
+		<text>Активный противовес</text>
+	</string>
+	<string id="upgr_item_sayga_1_descr">
+		<text>Активный противовес при стрельбе смещается к дульной части ствола и тем самым частично гасит импульс отдачи. \n%c[100,195,100,50]Может быть использовано для улучшения: \nСайга-12 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_sayga_2_name">
+		<text>Насверливание ствола</text>
+	</string>
+	<string id="upgr_item_sayga_2_descr">
+		<text>Цилиндрическое насверливание ствола помогает повысить скорострельность оружия без утраты точности боя. \n%c[100,195,100,50]Может быть использовано для улучшения: \nСайга-12 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_sayga_3_name">
+		<text>Газовый двигатель</text>
+	</string>
+	<string id="upgr_item_sayga_3_descr">
+		<text>Газовый двигатель, установленный в самозарядных дробовиках, позволяет вести автоматический огонь из этого оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nСайга-12 %c[default]</text>
+	</string>
+
+	<string id="upgr_item_sayga_4_name">
+		<text>Приводный стержень</text>
+	</string>
+	<string id="upgr_item_sayga_4_descr">
+		<text>Приводной стержень автоматики помогает усовершенствовать кучность стрельбы оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nСайга-12 %c[default]</text>
+	</string>
+	
+	
+	<string id="upgr_item_mosin_1_name">
+		<text>Затвор с роликовой системой</text>
+	</string>
+	<string id="upgr_item_mosin_1_descr">
+		<text>Часто используемая в стрелковом оружии западных стран система роликового запирания помогает снизить отдачу и увеличить кучность стрельбы. \n%c[100,195,100,50]Может быть использовано для улучшения: \nВинтовка Мосина %c[default]</text>
+	</string>
+	
+	<string id="upgr_item_mosin_2_name">
+		<text>Система длинной тяги УСМ</text>
+	</string>
+	<string id="upgr_item_mosin_2_descr">
+		<text>Установка длинной тяги ударно-спускового механизма помогает вести автоматический огонь из снайперского оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nВинтовка Мосина %c[default]</text>
+	</string>
+	
+	<string id="upgr_item_mosin_3_name">
+		<text>Перфорированый кожух</text>
+	</string>
+	<string id="upgr_item_mosin_3_descr">
+		<text>Кожух ствола предохраняет оружие от быстрого износа. \n%c[100,195,100,50]Может быть использовано для улучшения: \nВинтовка Мосина %c[default]</text>
+	</string>
+	
+	<string id="upgr_item_mosin_4_name">
+		<text>Дульный тормоз-компенсатор</text>
+	</string>
+	<string id="upgr_item_mosin_4_descr">
+		<text>Более продуманная в сравнении с базовой деталь обеспечивает оружию более высокие боевые качества. \n%c[100,195,100,50]Может быть использовано для улучшения: \nВинтовка Мосина %c[default]</text>
+	</string>
+	
+	<string id="upgr_item_mosin_5_name">
+		<text>Гидравлический демпфер</text>
+	</string>
+	<string id="upgr_item_mosin_5_descr">
+		<text>Расположенная в прикладе деталь для гашения мощной отдачи крупнокалиберного оружия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nВинтовка Мосина %c[default]</text>
+	</string>
+
+
+
+
+
+	
+	
+	
+
+
+
+
+
+
+	<string id="upgr_item_specops_outf1_name">
+		<text>Подкладка под броню</text>
+	</string>
+	<string id="upgr_item_specops_outf1_descr">
+		<text>Подкладки из синтетических материалов, которые можно использовать для компенсации ударных нагрузок при повреждении бронежилета.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М.%c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf2_name">
+		<text>Полимерные материалы</text>
+	</string>
+	<string id="upgr_item_specops_outf2_descr">
+		<text>Набор таких материалов, как поликарбонат, силикон, пластик и углепластик.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М \nкомбинезон «Заря» \nБронекостюм «Булат» \nкомбинезон «СЕВА» \nэкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf3_name">
+		<text>Емкость с медикаментами</text>
+	</string>
+	<string id="upgr_item_specops_outf3_descr">
+		<text>Сумка и дозатор с противостолбнячными и противовоспалительными средствами. Принадлежала полевому врачу.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М \nкомбинезон «Заря» \nБронекостюм «Булат» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf4_name">
+		<text>Алюминиевая арматура</text>
+	</string>
+	<string id="upgr_item_specops_outf4_descr">
+		<text>Партия алюминиевых трубок, шарниров и креплений.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М %c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf5_name">
+		<text>Армирующий материал</text>
+	</string>
+	<string id="upgr_item_specops_outf5_descr">
+		<text>Несколько пластин из прочного материала, пригодных для усовершенствования бронеостюма.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М \nЭкзоскелет %c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf6_name">
+		<text>Каучуковый материал</text>
+	</string>
+	<string id="upgr_item_specops_outf6_descr">
+		<text>Листы и полосы из промышленного каучука.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М %c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf7_name">
+		<text>Полимер "Константан"</text>
+	</string>
+	<string id="upgr_item_specops_outf7_descr">
+		<text>Недавняя разработка одного из оборонных НИИ РФ. Партия явно приобретена на чёрном рынке.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М \nБронекостюм «Булат» \nкомбинезон «СЕВА» \nЭкзоскелет \n Шлем «Заслон»%c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf8_name">
+		<text>Набор туриста</text>
+	</string>
+	<string id="upgr_item_specops_outf8_descr">
+		<text>Ремешки, карабины, клапаны и прочая дребедень, пригодная разве что для нашивки на рюкзаки или комбезы.\n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «Заря» \nБронекостюм «Булат» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf9_name">
+		<text>Титановые элементы</text>
+	</string>
+	<string id="upgr_item_specops_outf9_descr">
+		<text>Редкий и дорогой материал. Использовать можно для усовершенствования брони.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М \nЭкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf10_name">
+		<text>Керамический материал</text>
+	</string>
+	<string id="upgr_item_specops_outf10_descr">
+		<text>Пластины из закалённой термостойкой керамики. Использовать можно для усовершенствования брони.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М \nКомбинезон «Заря» \nКомбинезон «СЕВА» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf11_name">
+		<text>СБК-РХЗ м2</text>
+	</string>
+	<string id="upgr_item_specops_outf11_descr">
+		<text>Защитная оболочка от антирадиационного комбеза Комбез СБК-РХЗ м2. Использовать можно для усовершенствования брони.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М %c[default]</text>
+	</string>
+
+	<string id="upgr_item_specops_outf12_name">
+		<text>Двойной поясной контейнер</text>
+	</string>
+	<string id="upgr_item_specops_outf12_descr">
+		<text>Контейнер из пластика с просвинцованной оболочкой. Для хранения радиоактивных материалов.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБерилл-5М \nКомбинезон «Заря» \nБронекостюм «Булат» \nКомбинезон «СЕВА» \nЭкзоскелет%c[default]</text>
+	</string>
+
+
+	<string id="upgr_item_novice_outf1_name">
+		<text>Стальные пластины</text>
+	</string>
+	<string id="upgr_item_novice_outf1_descr">
+		<text>Пластины из закалённой стали. Могут защищить от пистолетной пули или дроби, выпущенной с дальней дистанции. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКостюм мародёра \nКомбинезон «Заря» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_novice_outf2_name">
+		<text>Прорезиненная ткань</text>
+	</string>
+	<string id="upgr_item_novice_outf2_descr">
+		<text>Материал полезен своей непромокаемостью. Сгодится для подшивки под броню костюма.\n%c[100,195,100,50]Может быть использовано для улучшения: \nКостюм мародёра \nКомбинезон «Заря» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_novice_outf3_name">
+		<text>Распределительный жилет</text>
+	</string>
+	<string id="upgr_item_novice_outf3_descr">
+		<text>Система из ремешков, карманов и клапанов. Всё это можно пришить на свой многострадальный комбез. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКостюм мародёра %c[default]</text>
+	</string>
+
+	<string id="upgr_item_novice_outf4_name">
+		<text>Вставки из кожи</text>
+	</string>
+	<string id="upgr_item_novice_outf4_descr">
+		<text>Полоски и пластины из натуральной кожи для укрепления костюмов.\n%c[100,195,100,50]Может быть использовано для улучшения: \nКостюм мародёра \nКомбинезон «Заря» \nКомбинезон «СЕВА» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_novice_outf5_name">
+		<text>Брезент</text>
+	</string>
+	<string id="upgr_item_novice_outf5_descr">
+		<text>Распространённый и полезный для укрепления костюмов материал. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКостюм мародёра %c[default]</text>
+	</string>
+
+	<string id="upgr_item_novice_outf6_name">
+		<text>Огнеупорный состав</text>
+	</string>
+	<string id="upgr_item_novice_outf6_descr">
+		<text>Безвредное химическое вещество на основе асбеста. Повышает порог возгорания тканей и синтетических материалов. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКостюм мародёра %c[default]</text>
+	</string>
+
+	<string id="upgr_item_novice_outf7_name">
+		<text>Кольчуга</text>
+	</string>
+	<string id="upgr_item_novice_outf7_descr">
+		<text>Ручная работа - сетчатая кольчуга из нержавеющей стали! Такое произведение исскуства встретишь нечасто. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКостюм мародёра %c[default]</text>
+	</string>
+
+	<string id="upgr_item_stalk_outf1_name">
+		<text>Магниевые пластины</text>
+	</string>
+	<string id="upgr_item_stalk_outf1_descr">
+		<text>Пластины из редкого материала - магния. Использовать можно для усовершенствования брони. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «Заря» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_stalk_outf2_name">
+		<text>Импрегнированная ткань</text>
+	</string>
+	<string id="upgr_item_stalk_outf2_descr">
+		<text>Это ткань, обработанная специальным химическим составом, предотвращающим проникновение вредных химикатов и газов.\n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «Заря» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_stalk_outf3_name">
+		<text>Полиэтилен</text>
+	</string>
+	<string id="upgr_item_stalk_outf3_descr">
+		<text>Простой и дешевый материал, тем не менее может дать защиту от ударов током или отравляющего газа.\n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «Заря» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_stalk_outf4_name">
+		<text>Кислородный баллон</text>
+	</string>
+	<string id="upgr_item_stalk_outf4_descr">
+		<text>Без кислородного баллона не обойтись в условиях загрязнённой атмосферы, будь то радиоактивные частицы или химикаты. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «Заря» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf1_name">
+		<text>Углепластик</text>
+	</string>
+	<string id="upgr_item_milit_outf1_descr">
+		<text>Замена металла углепластиками позволяет снизить массу бронежилета без утраты прежней механической прочности.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» \nЭкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf2_name">
+		<text>Листы брони</text>
+	</string>
+	<string id="upgr_item_milit_outf2_descr">
+		<text>Листы брони, более тонкие и накладывающиеся один на другой, как чешуя, увеличивают общую стойкость брони к износу. \n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf3_name">
+		<text>Алюминиево-титановые пластины</text>
+	</string>
+	<string id="upgr_item_milit_outf3_descr">
+		<text>Увеличенное в сравнении со стандартным количество титановых пластин значительно повышает механическую прочность бронежилета.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf4_name">
+		<text>Сапфировый материал</text>
+	</string>
+	<string id="upgr_item_milit_outf4_descr">
+		<text>Одна из самых последних отчественных разработок в сфере индивидуальной защиты - выращивание искусственных сапфиров. \n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf5_name">
+		<text>Силиконовые уплотнители</text>
+	</string>
+	<string id="upgr_item_milit_outf5_descr">
+		<text>Силиконовые уплотнители, более эффективные, чем резиновые, лучше гасят удары, оберегая носителя.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» \nЭкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf6_name">
+		<text>Стекловолокно</text>
+	</string>
+	<string id="upgr_item_milit_outf6_descr">
+		<text>Стекловолокно широко используется в снаряжении служб Министерства по чрезвычайным ситуациям.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» \nКомбинезон «СЕВА» \nЭкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf7_name">
+		<text>Комбез "Эколог"</text>
+	</string>
+	<string id="upgr_item_milit_outf7_descr">
+		<text>Защитный костюм, созданный на основе полимеров нового поколения, со вставками из висмута.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» \nКомбинезон «СЕВА» \nЭкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf8_name">
+		<text>Свинцовая сетка</text>
+	</string>
+	<string id="upgr_item_milit_outf8_descr">
+		<text>Свинцовая сетка формирует беззазорную защиту от радиационного излучения и вредных веществ и при этом не ограничивает подвижность носителя.\n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» \nКомбинезон «СЕВА» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf9_name">
+		<text>Усовершенствованные фильтры</text>
+	</string>
+	<string id="upgr_item_milit_outf9_descr">
+		<text>Система выведения ядовитых веществ из полостей респиратора. \n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» \nКомбинезон «СЕВА» \nЭкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf10_name">
+		<text>Спинной каркас</text>
+	</string>
+	<string id="upgr_item_milit_outf10_descr">
+		<text>Спинной каркас спасает плечи от усталости, распределяя вес носимого груза по всему телу. Это позволяет набирать в рюкзак больше оружия, припасов и снаряжения. \n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» \nКомбинезон «СЕВА» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf11_name">
+		<text>Адреналиновый инъектор</text>
+	</string>
+	<string id="upgr_item_milit_outf11_descr">
+		<text>Инъектор поколения А, разработанный одним из киевских НИИ, периодически вводит в кровь мини-дозы адреналина. С одной стороны, это вредно для организма, но с другой может спасти жизнь, поскольку значительно повышает скорость реакции в экстремальной ситуации. \n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf12_name">
+		<text>Гемоглобиновый инъектор</text>
+	</string>
+	<string id="upgr_item_milit_outf12_descr">
+		<text>Инъектор поколения Б при сильном снижении кровяного давления начинает периодически вводить в кровоток мини-дозы состава, ускоряющего сворачивание крови в открытых ранах. \n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_milit_outf13_name">
+		<text>Восстановляющий инъектор</text>
+	</string>
+	<string id="upgr_item_milit_outf13_descr">
+		<text>Инъектор поколения В вводит в кровь боевой коктейль сложного химического состава, который ускоряет регенерацию тканей и блокирует болевые ощущения. \n%c[100,195,100,50]Может быть использовано для улучшения: \nБронекостюм «Булат» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf1_name">
+		<text>Уплотнительный материал</text>
+	</string>
+	<string id="upgr_item_scient_outf1_descr">
+		<text>Хотя простым добавлением пластин пулестойкость бронежилета толком не увеличить, запас механической прочности всё же возрастает. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf2_name">
+		<text>Синтетическая подкладка</text>
+	</string>
+	<string id="upgr_item_scient_outf2_descr">
+		<text>Герметичная подкладка из синтетических материалов на случай повреждения внешнего слоя. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf3_name">
+		<text>Система вентиляции</text>
+	</string>
+	<string id="upgr_item_scient_outf3_descr">
+		<text>Система вентиляции комбинезона с предохранительным фильтром, обеспечивающим носителю безопасное нахождение в условиях различного рода загрязнений. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» \nЭкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf4_name">
+		<text>Дополнительный контейнер</text>
+	</string>
+	<string id="upgr_item_scient_outf4_descr">
+		<text>Установка дополнительного контейнера для артефактов. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» \nЭкзоскелет%c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf5_name">
+		<text>Пылеотталкиватель</text>
+	</string>
+	<string id="upgr_item_scient_outf5_descr">
+		<text>Система электризует поверхность защитного костюма для отталкивания от последней радиоактивных и химических частиц. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf6_name">
+		<text>Пси-стимулятор «Оракул»</text>
+	</string>
+	<string id="upgr_item_scient_outf6_descr">
+		<text>Волновое устройство, предназначенное для работы в аномальных зонах с высокими уровнями пси-воздействия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» \nШлем «Заслон» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf7_name">
+		<text>Система жизнеобеспечения</text>
+	</string>
+	<string id="upgr_item_scient_outf7_descr">
+		<text>Комплексная система слежения за параметрами жизнедеятельности организма носителя, по мере надобности впрыскивающая в кровоток витамины, адреналин или анаболики. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» %c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf8_name">
+		<text>Экранирующее покрытие</text>
+	</string>
+	<string id="upgr_item_scient_outf8_descr">
+		<text>Нанесение экранирующего покрытия. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» \nЭкзоскелет \n Шлем стальной \nШлем тактический%c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf9_name">
+		<text>Обруч "Пси-купол"</text>
+	</string>
+	<string id="upgr_item_scient_outf9_descr">
+		<text>Высокотехнологичная пси-защита, изобретённая неким учёным по фамилии Сахаров. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» \nЭкзоскелет \nПротивогаз \nШлем «Заслон» \nШлем тактический%c[default]</text>
+	</string>
+
+	<string id="upgr_item_scient_outf10_name">
+		<text>Система "Ионный ветер"</text>
+	</string>
+	<string id="upgr_item_scient_outf10_descr">
+		<text>Образование ионов из молекул атмосферного воздуха позволяет создать так называемый ионный ветер. \n%c[100,195,100,50]Может быть использовано для улучшения: \nКомбинезон «СЕВА» \nШлем «Заслон» %c[default]</text>
+	</string>
+
+
+
+	<string id="mg_repair_kit_name">
+		<text>Набор для чистки</text>
+	</string>
+	<string id="mg_repair_kit_descr">
+		<text>Полевой набор для быстрой очистки оружия от порохового нагара.\n %c[100,50,250,50]При использовании ремнтирует оружие в обеих слотах.%c[default]</text>
+	</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<string id="st_antirad">
 		<text>Противорадиационный препарат</text>
 	</string>
@@ -130,7 +2052,7 @@
 		<text>Водка «Казаки»</text>
 	</string>
 	<string id="st_vodka_descr">
-		<text>Водка производства компании «GSC». Хорошо пьётся, заметно снижает воздействие радиации на организм, хотя злоупотреблять ею не следует.</text>
+		<text>Водка производства компании «GSC». Хорошо пьётся, заметно снижает воздействие радиации на организм, хотя злоупотреблять ею не следует. %c[100,50,250,50]Частично снимает стресс.%c[default]</text>
 	</string>
 	<string id="st_detector2_descr">
 		<text>Детектор аномальной активности прошлого поколения. Снабжён локатором аномальных образований и светодиодным табло для отображения направления на артефакт, причём способен не только обнаруживать артефакты, но и определять расстояния до них. Режим поиска артефактов включается поднятием крышки-антенны на лицевой стороне прибора. К сожалению, уже несколько устаревший список обнаруживаемых артефактов вшит в прибор намертво - на аппаратном уровне.</text>

@@ -1,0 +1,85 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@1
+combat_ignore = combat_ignore
+
+
+[walker@1]
+path_walk = mechanical_npc1_walk
+path_look = mechanical_npc1_look
+meet = meet@1
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_game_timer = 10|walker@2
+
+[walker@2]
+path_walk = mechanical_npc1_walk
+path_look = mechanical_npc1_look
+meet = meet@1
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {!talking} %=destroy_object%
+
+
+[remark@1]
+;snd = 
+anim = sit_ass
+target = story | actor
+;in_restr = mechanical_npc1_zone
+danger = danger_condition
+combat_ignore_cond = always
+meet = meet@3
+show_spot = false
+invulnerable = true
+;on_game_timer = 5|walker@1 %=send_tip(test_tip:default)%
+
+
+
+[meet@1]
+abuse = false
+use = true
+snd_on_use = pri_a28_army_confusion
+use_text = mechanical_npc1_use_text
+close_distance = 30
+far_distance = 30
+
+[meet@2]
+close_distance = 25
+close_anim      = guard_na
+close_victim    = actor
+use		= true
+abuse		= false
+trade_enable 	= true
+allow_break = true
+
+
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[combat_ignore]
+combat_ignore = always
+ 
+
+
+
+
+

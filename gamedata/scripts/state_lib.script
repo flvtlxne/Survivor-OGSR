@@ -11,7 +11,8 @@ states = {
 				mental = nil,
 				bodystate = nil,
 				animstate = nil,
-				animation = nil
+				animation = nil,
+				direction = look.cur_dir
 			},
 	smartcover = {	weapon = "unstrapped",
 				movement = nil,
@@ -44,7 +45,7 @@ states = {
 				animstate = nil,
 				animation = nil
 			},
-	sprint = {	weapon = "strapped",
+	sprint = {	weapon = "none",
 				movement = move.run,
 				mental = anim.panic,
 				bodystate = move.standing,
@@ -458,14 +459,6 @@ states = {
 				animation = "punch"
 			},
 
-	search_corpse = {weapon = "strapped",
-				movement = move.stand,
-				mental = anim.danger,
-				bodystate = move.crouch,
-				animstate = nil,
-				animation = "search_corpse"
-			},
-
 	help_wounded = {weapon = "strapped",
 				movement = move.stand,
 				mental = anim.danger,
@@ -691,6 +684,14 @@ states = {
 				bodystate = move.standing,
 				animstate = nil,
 				animation = "talk_default"
+			},
+	talk_wait = { weapon = nil,
+				movement = move.stand,
+				mental = anim.free,
+				bodystate = move.standing,
+				direction = look.cur_dir,
+				animstate = nil,
+				animation = nil
 			},
 
 	-- ѕси раненый

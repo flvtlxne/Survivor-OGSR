@@ -1,0 +1,14 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+on_info = {=master_difficulty -mg_heli_evac_sucess} ph_idle@open %=add_self_spot(treasure:random_treasure_mark)%
+on_info2 = {+workshop_instrum_box_open} ph_idle@open
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=remowe_self_spot(treasure:random_treasure_mark)%
+on_info = {+mg_heli_evac_sucess} ph_idle@1 %=remowe_self_spot(treasure:random_treasure_mark)%
+
+ 

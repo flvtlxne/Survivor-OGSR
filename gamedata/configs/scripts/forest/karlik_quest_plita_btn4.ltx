@@ -1,0 +1,19 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+on_info = {+field_tree_check} ph_idle@1
+
+
+[ph_idle@1]
+tips = karlik_quest_plita_btn4_use1
+on_info = {+karlik_plita_open} ph_idle@nil
+on_use = ph_idle@2 %=play_sound(pribor_switch) =inc_counter(plita)%
+
+[ph_idle@2]
+tips = karlik_quest_plita_btn4_use2
+on_info = {+karlik_plita_open} ph_idle@nil
+on_use = ph_idle@1 %=play_sound(pribor_switch) =dec_counter(plita)%
+
+
+[ph_idle@nil]

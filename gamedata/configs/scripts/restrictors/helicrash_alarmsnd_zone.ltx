@@ -1,0 +1,219 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+shron_merc_lider_pda_info} sr_idle@26 %=spawn_kpp_mercs_radio +note_diary5 +note_using%
+on_info3 = {+lw_stranger_pda_info} sr_idle@24
+on_info4 = {+marorers_house_trap} sr_idle@20 %=run_postprocess(fade_in) =actor_on_mine_blow =actor_on_mine_blow_think2 =kill_mutants_around_actor50 =disable_ui =delete_workshop_scenar_maroders =relocate_actor_inventory_to_box(village_marodrs_ambush_box) =remove_item(wpn_knife) =personal_dog_gohome%
+on_info5 = {+stranger_talk2} sr_idle@2
+on_info6 = {=actor_on_level(derevnya) -stranger_talk2} %=play_sound_looped(helicrash_alarm_snd)%
+
+
+; СЮЖЕТНЫЕ ТРИГГЕРЫ:
+
+; Осмотр лагеря в лесу:
+[sr_idle@2]
+on_info = {+stranger_talk2 +forest_camp_fireplace +forest_camp_fireplace2 =actor_has_item(detector_simple)} sr_idle@3 %+marodr_camp_done =lonl_house_stranger_spawn2%
+
+; Отбиваем заложника возле чёрного оврага:
+[sr_idle@3]
+on_info = {=is_dead(scenar_razlom_marouder_guard1) =story_object_exist(scenar_razlom_marouder_guard1) =is_dead(scenar_razlom_marouder_guard2) =story_object_exist(scenar_razlom_marouder_guard2) =is_dead(scenar_razlom_marouder_guard3) =story_object_exist(scenar_razlom_marouder_guard3) =is_dead(scenar_razlom_marouder_guard4) =story_object_exist(scenar_razlom_marouder_guard4) =is_dead(scenar_razlom_marouder_guard5) =story_object_exist(scenar_razlom_marouder_guard5) =is_dead(scenar_razlom_marouder_comandr) =story_object_exist(scenar_razlom_marouder_comandr)} sr_idle@4 %+scenario_razlom_marodrs_dead%
+
+; Ведём заложника в убежище:
+[sr_idle@4]
+on_npc_in_zone = lw_newbie |lonl_house_save_zone|sr_idle@5 %+lw_newbie_on_base -rnd_task_razlom_discard =delete_razlom_maroders%
+
+; После того, как отвели заложника, идём на разговор с незнакомцем:
+[sr_idle@5]
+on_game_timer = 30|sr_idle@6 %+lw_stranger_after_newbie_call =send_tip(lw_stranger_after_newbie_tip:default) =spawn_lw_stranger_behind_willage =destroy_object(story:scenar_razlom_marouder_guard1) =destroy_object(story:scenar_razlom_marouder_guard2) =destroy_object(story:scenar_razlom_marouder_guard3) =destroy_object(story:scenar_razlom_marouder_guard4) =destroy_object(story:scenar_razlom_marouder_guard5) =destroy_object(story:scenar_razlom_marouder_comandr)%
+
+; Убиваем первого босса-мародёра в деревне(Дед):
+[sr_idle@6]
+on_info = {+stranger_talk4} sr_idle@7 %=scenario_save4%
+
+[sr_idle@7]
+on_actor_in_zone = willage_avtoritets_hide_zone|sr_idle@8 %=spawn_willage_scenario_maroders1 =spawn_willage_scenario_maroders2 =kill_mutants_around_actor120%
+
+[sr_idle@8]
+on_timer = 5|sr_idle@9 %+actor_in_willage_budka%
+
+[sr_idle@9]
+on_info = {+willage_scenar_marod_lider_dead} sr_idle@10 %+note_diary2 +note_using%
+
+
+; Завалили первого босса и снова идём к Незнакомцу на доклад:
+[sr_idle@10]
+on_timer = 5|sr_idle@11 %=spawn_lw_stranger_after_willage%
+
+[sr_idle@11]
+on_timer = 10|sr_idle@12 %+lw_stranger_after_willage_call%
+
+[sr_idle@12]
+on_info = {+stranger_talk5} sr_idle@13 %=delete_willage_scenar_maroders =scenario_save5%
+
+[sr_idle@13]
+on_info = {+lake_scenar_marod_lider_dead} sr_idle@14 %=spawn_lw_stranger_after_lake +note_diary3 +note_using%
+
+
+; Завалили второго босса:
+[sr_idle@14]
+on_game_timer = 30|sr_idle@15 %+lw_stranger_after_lake_call =send_tip(lw_stranger_after_lake_tip:default)%
+
+
+; Идём брать "языка":
+[sr_idle@15]
+on_info = {+stranger_talk6} sr_idle@16 %=spawn_scenar_secret_camp_maroders =secret_camp_random_items_in_box_spawn =scenario_save6%
+
+[sr_idle@16]
+on_info = {+hostage_scenar_maroder_talk1} sr_idle@17 %-random_event_workshop =delete_workshop_maroders =delete_workshop_mutants =delete_workshop_anomalys =delete_workshop_artefact =clear_box(kolhoz_invbox_1) =clear_box(kolhoz_invbox_2) +rnd_task_workshop_discard -workshop_rnd_artefact_gathered -workshop_rnd_item_gathered -rnd_task_workshop_item_in_box -rnd_task_workshop_artefact_in_box =spawn_scenar_workshop_marodrs +workshop_marodrs_info%
+
+on_info2 = {+hostage_scenar_maroder_getlost} sr_idle@17 %-random_event_workshop =delete_workshop_maroders =delete_workshop_mutants =delete_workshop_anomalys =delete_workshop_artefact =clear_box(kolhoz_invbox_1) =clear_box(kolhoz_invbox_2) +rnd_task_workshop_discard -workshop_rnd_artefact_gathered -workshop_rnd_item_gathered -rnd_task_workshop_item_in_box -rnd_task_workshop_artefact_in_box =spawn_scenar_workshop_marodrs +workshop_marodrs_info%
+
+
+; Идём мочить Башку и Дерзкого на рембазу:
+[sr_idle@17]
+on_info = {=is_dead(workshop_scenar_maroder_lider1) =story_object_exist(workshop_scenar_maroder_lider1) =is_dead(workshop_scenar_maroder_lider2) =story_object_exist(workshop_scenar_maroder_lider2)} sr_idle@18 %=lw_stranger_after_workshop_spawn +lw_stranger_after_workshop_call%
+
+[sr_idle@18]
+on_game_timer = 50| sr_idle@19 %=send_tip(lw_stranger_after_workshop_tip:default)%
+
+
+; Попадаем в плен к мародёрам:
+[sr_idle@19]
+on_info = {+marorers_house_trap} sr_idle@20 %=run_postprocess(fade_in) =actor_on_mine_blow =actor_on_mine_blow_think2 =kill_mutants_around_actor50 =disable_ui =delete_workshop_scenar_maroders =relocate_actor_inventory_to_box(village_marodrs_ambush_box) =remove_item(wpn_knife) =personal_dog_gohome%
+
+[sr_idle@20]
+on_game_timer = 15|sr_idle@21 %=spawn_maroders_ambush_company1%
+
+[sr_idle@21]
+on_game_timer = 5|sr_cutscene@ambush
+
+[sr_cutscene@ambush]
+point = maroder_hostage_pnt1_walk
+look = maroder_hostage_pnt1_look
+cam_effector = scenario_cam\ambush_camera_wiev
+;on_signal = cameff_end | sr_idle@22a %+maroders_ambush_end =run_postprocess_deadcity_wake =spawn_maroders_ambush_company2 +note_diary4 +note_using =clear_weapons_around_actor15%
+on_signal = cameff_end | sr_idle@22a %+maroders_ambush_end =run_postprocess_deadcity_wake =spawn_maroders_ambush_company2 +note_diary4 +note_using%
+global_cameffect = true
+outdoor = false
+enable_ui_on_end = true
+
+[sr_idle@22a]
+on_game_timer = 5|sr_idle@22 %=scenario_save7%
+
+[sr_idle@22]
+on_info = {+marouder_lider_3pda_info} sr_idle@23 %=lw_stranger_after_ambush_spawn%
+
+[sr_idle@23]
+on_info = {+stranger_talk7} sr_cutscene@controler
+
+[sr_cutscene@controler]
+point = lw_stranger_after_ambush_spawn_pnt2
+look = village_stranger_controller_pnt2
+cam_effector = scenario_cam\village_tunnel_camera_wiev
+on_signal = cameff_end | sr_idle@24 %+village_stranger_controller%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@24]
+on_info = {=actor_has_item(satellite_memory_block)} sr_idle@25 %+satellite_memory_block_finded =delete_village_ambush_maroders =spawn_mercs_ambush1 =mercs_ambush1_radio_message =scenario_save8%
+
+[sr_idle@25]
+on_info = {+shron_merc_lider_pda_info} sr_idle@26 %=spawn_kpp_mercs_radio +note_diary5 +note_using -random_event_blokpost =delete_kpp_maroders =delete_kpp_mobs =delete_kpp_anomalys =delete_kpp_artefact =clear_box(kpp_invbox_1) =clear_box(kpp_invbox_2) +rnd_tasks_kpp_discard -kpp_rnd_artefact_gathered -kpp_rnd_item_gathered -rnd_task_kpp_item_in_box -rnd_task_kpp_artefact_in_box%
+
+
+; Рандеву с наёмниками на блокпосту:
+[sr_idle@26]
+on_info = {+kpp_mercs_radio_use} sr_idle@27 %=delete_shron_mercs =personal_dog_gohome%
+
+[sr_idle@27]
+on_game_timer = 15|sr_cutscene@kpp %=spawn_kpp_radio_script_npc =start_kpp_radio_talking%
+
+[sr_cutscene@kpp]
+point = kpp_pnt1_look
+look = kpp_merc1_look
+cam_effector = scenario_cam\kpp_radio_camera_wiev
+on_signal = cameff_end | sr_idle@28 %+kpp_merc_radio_off%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+on_info = {+kpp_merc_radio_off} sr_idle@28
+
+[sr_idle@28]
+on_timer = 1|sr_idle@29 %+kpp_mercs_yes =scenario_save9%
+
+[sr_idle@29]
+on_info = {+kpp_mercs_yes} sr_idle@30 %=spawn_kpp_mercs1%
+on_info2 = {+kpp_mercs_no} sr_idle@31 %=spawn_kpp_mercs2%
+
+
+; Согласились отдать блок:
+[sr_idle@30]
+on_info = {+kpp_sbu_see_ambush} sr_cutscene@mercs_ambush
+;on_info2 = {+kpp_sbu_see_ambush2} sr_idle@36
+
+[sr_cutscene@mercs_ambush]
+point = sbu_comand1_walk2
+look = sbu_comand1_walk
+cam_effector = scenario_cam\kpp_mercs_ambush_panoram
+on_signal = cameff_end | sr_idle@36 %=scenario_save10%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+on_info = {+kpp_sbu_see_ambush2} sr_idle@36
+
+[sr_idle@36]
+on_info = {+kpp_mercs_ambush_atack} sr_timer@wait_heli %=spawn_kpp_mercs2%
+on_info2 = {+kpp_sbu_atack} sr_timer@wait_heli
+
+[sr_timer@wait_heli]
+type = dec
+start_value = 45000
+on_value = 0 | sr_idle@37 %+kpp_heli_start =send_tip(kpp_heli_on_place_tip:heli)%
+
+[sr_idle@37]
+on_info = {=is_dead(kpp_ambush_merc1) =story_object_exist(kpp_ambush_merc1) =is_dead(kpp_ambush_merc2) =story_object_exist(kpp_ambush_merc2) =is_dead(kpp_ambush_merc3) =story_object_exist(kpp_ambush_merc3) =is_dead(kpp_ambush_merc4) =story_object_exist(kpp_ambush_merc4) =is_dead(kpp_ambush_merc5) =story_object_exist(kpp_ambush_merc5) =is_dead(kpp_ambush_merc6) =story_object_exist(kpp_ambush_merc6) =is_dead(kpp_ambush_merc7) =story_object_exist(kpp_ambush_merc7) =is_dead(kpp_ambush_merc8) =story_object_exist(kpp_ambush_merc8) =is_dead(kpp_merc_lider) =story_object_exist(kpp_merc_lider) =is_dead(kpp_merc_guard1) =story_object_exist(kpp_merc_guard1) =is_dead(kpp_merc_guard2) =story_object_exist(kpp_merc_guard2) =counter_greater(kpp_mercs_helpers:11)} sr_idle@38 %+kpp_mercs_dead%
+on_info2 = {=is_dead(sbu_comand_sold1) =story_object_exist(sbu_comand_sold1) =is_dead(sbu_comand_sold2) =story_object_exist(sbu_comand_sold2) =is_dead(sbu_comand_sold3) =story_object_exist(sbu_comand_sold3) !story_object_exist(sbu_comand_lider)} sr_idle@42 %+kpp_sbu_dead =send_tip(kpp_merck_kill_heli_tip:battle_systems_master)%
+
+
+; Наёмники уничтожены. Говорим с Дегтярёвым и получаем финал №1:
+[sr_idle@38]
+on_info = {+lw_sbu_escape} sr_idle@43
+on_info2 = {+lw_freeplay} sr_idle@46 %=disable_ui =run_postprocess(fade_to_black_9_sec)%
+
+; Отказались отдать блок:
+[sr_idle@31]
+
+
+; Сбиваем вертушку:
+[sr_idle@42]
+on_info = {=is_dead(kpp_heli) =story_object_exist(kpp_heli)} sr_idle@43 %+kpp_heli_dead =kpp_heli_healthbar_off%
+
+; Вертушка сбита. Говорим с наёмником и получаем финал №2:
+[sr_idle@43]
+on_info = {+lw_mercs_escape} sr_idle@44 %=disable_ui =run_postprocess(fade_to_black_9_sec)%
+on_info2 = {+lw_sbu_escape} sr_idle@45 %=disable_ui =run_postprocess(fade_to_black_9_sec)%
+on_info3 = {+lw_freeplay} sr_idle@46 %=disable_ui =run_postprocess(fade_to_black_9_sec)%
+
+[sr_idle@44]
+on_game_timer = 80|sr_idle@nil %=start_outro_mercs%
+
+[sr_idle@45]
+on_game_timer = 80|sr_idle@nil %=start_outro_sbu%
+
+[sr_idle@46]
+on_game_timer = 80|sr_idle@nil %=actor_freeplay_action1 =enable_ui%
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+
+
+

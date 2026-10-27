@@ -1,0 +1,38 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+
+[walker@start]
+path_walk = helicrash_mutants_atack_spawn3
+path_look = village_roof_maroder_pnt2
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+avail_release = false
+combat_ignore_keep_when_attacked = true
+on_timer = 10|walker@1 %=teleport_npc(village_roof_maroder_pnt2) =kill_npc(village_roof_maroder)%
+
+[walker@1]
+path_walk = helicrash_mutants_atack_spawn3
+path_look = village_roof_maroder_pnt2
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+avail_release = false
+
+
+
+
+
+
+
+
+
+
+
+
+

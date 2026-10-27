@@ -2,9 +2,29 @@ function init    (obj)
 				xr_motivator.AddToMotivator(obj)
 end
 
-function actor_init    (npc)
-				npc:bind_object(actor_binder(npc))
+--/#x# [se_stor] отключить!
+--[[
+--function actor_init    (npc)
+	--npc:bind_object(actor_binder(npc))
+--end
+--]]
+
+--/ -----------------------------------------------------------------
+--/#+# [se_stor] организуем внешний доступ к биндеру актора:
+--/ -----------------------------------------------------------------
+function actor_init(npc)
+	_G.g_bind_actor = this.actor_binder(npc)
+	npc:bind_object(g_bind_actor)
 end
+function save(...)
+	_G.g_bind_actor:ext_save(...)
+end
+function load(...)
+	_G.g_bind_actor:ext_load(...)
+end
+
+local iSID = 9901 --/#+# начальный story_id для stor-элементов хранения данных
+--/<-----------------------------------------------------------------
 
 local game_difficulty_by_num = {
 				[0] = "gd_novice",
@@ -30,6 +50,10 @@ function actor_binder:__init (obj) super(obj)
 	self.loaded_slot_applied = false
 	self.last_detective_achievement_spawn_time 	= nil
 	self.last_mutant_hunter_achievement_spawn_time	= nil
+	--/#+# [m_timers] for update timers -------------------------------
+	if (m_timers) then m_timers.start() 
+	end
+	--/<---------------------------------------------------------------
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:net_spawn(data)
@@ -52,12 +76,39 @@ function actor_binder:net_spawn(data)
 	self.weather_manager:reset()
 	--' Загружаем настройки дропа
 	death_manager.init_drop_settings()
+	
+	--' Уборщик трупов мутантов
+	ss_off_corpses.off_corpses()
+	
+	-- Ограничение сохранений:
+	mod_functions.post_load_game_action1()
+	
+	-- Переспавниваем имеющиеся тачки:
+	if xr_conditions.master_difficulty() == false then
+		mod_functions.reload_car1()
+		mod_functions.reload_car2()
+		mod_functions.reload_car3()
+		mod_functions.reload_car4()
+	end
+	
+	start_real_timer(1, "mod_timer_functions.lights1")
+	start_real_timer(1, "mod_timer_functions.lights2")
+	--start_real_timer(1, "mod_timer_functions.lights3")
+
+	
 	--'Устанавливаем ссылку на таскменеджер
 	self.task_manager = task_manager.get_task_manager()
 	self.spawn_frame = device().frame
 	self.already_jumped = false
 	self.loaded = false
-	benchmark.main()							          --' Distemper 06.2008 --
+	benchmark.main()	
+	if rx_ai then rx_ai.actor_net_spawn() end	--' Distemper 06.2008 --
+--Вызываем фукцию один единственный раз при старте новой игры-------------------------
+	if not has_alife_info("StartGame") then
+        db.actor:give_info_portion("StartGame")
+        module_startgame.StartGameEvent()       
+	end
+--------------------------------------------------------------------------------------
 	return true
 end
 ----------------------------------------------------------------------------------------------------------------------
@@ -118,6 +169,12 @@ function actor_binder:reinit()
 	self.object:set_callback(callback.task_state, self.task_callback, self)
 	self.object:set_callback(callback.take_item_from_box, self.take_item_from_box, self)
 	self.object:set_callback(callback.use_object, self.use_inventory_item, self)
+	
+	--/#+# [lua_helper] ------------------------------------------------
+	if event then event("actor_stor"):once(true):trigger() --/#!#> событие: инициализация 'storage' актора
+	elseif lua_helper.Init_ActorPStor then lua_helper.Init_ActorPStor()
+	end
+	--/< ---------------------------------------------------------------
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:take_item_from_box(box, item)
@@ -143,6 +200,7 @@ function actor_binder:article_callback(npc, group, name)
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_take (obj)
+	module_callbacks.OnItemTake(obj) --/ Система колбэков
 	printf("on_item_take [%s]", obj:name())
 	if isArtefact(obj) then
 		local anomal_zone = bind_anomaly_zone.parent_zones_by_artefact_id[obj:id()]
@@ -164,12 +222,17 @@ function actor_binder:on_item_take (obj)
 ]]
 	end
 	treasure_manager.get_treasure_manager():on_item_take(obj:id())
+	if rx_ai then
+		rx_ai.actor_item_take(obj)
+	end 
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_drop (obj)
+module_callbacks.OnItemDrop(obj) --/ Система колбэков
 end
 
 function actor_binder:use_inventory_item(obj)
+module_callbacks.OnItemUse(obj) --/ Система колбэков
 	if(obj) then
 		local s_obj = alife():object(obj:id())
 		if(s_obj) and (s_obj:section_name()=="drug_anabiotic") then
@@ -183,6 +246,8 @@ function actor_binder:use_inventory_item(obj)
 			get_console():execute("snd_volume_eff 0")
 		end
 	end
+	
+	mod_items_using.on_use_object(obj)
 end
 
 function anabiotic_callback()
@@ -227,8 +292,12 @@ end
 
 ----------------------------------------------------------------------------------------------------------------------
 
-function actor_binder:update(delta)
+function actor_binder:update(delta) --/ Биндер актора, РАДИ БОГА НЕ ВЕЩАЙ НИЧЕГО НА АПДЕЙТ! Для это есть отдельный модуль(module_dynamic_update.script)
+	module_dynamic_update.update_fps(delta) --/модуль апдейта
 	object_binder.update(self, delta)
+	
+	--mod_update.hunger_effect()
+	--mod_update.wounded_pp_update()
 
 	if string.find(command_line(), "-designer") then
 		return
@@ -359,14 +428,29 @@ function actor_binder:update(delta)
 	end
 	treasure_manager.get_treasure_manager():update()
 
-	if not(primary_objects_filled) then
+	if not(primary_objects_filled) and has_alife_info("map_finded") then
 		pda.fill_primary_objects()
 		primary_objects_filled = true
 	end
 	pda.fill_sleep_zones()
+	if rx_ai then rx_ai.actor_update() end
+	
+	if not test_modules_executed and test_modules and type(test_modules.execute) == 'function' and device().precache_frame < 2 then
+		--test_modules.execute("lua_helper", "m_netpk", "se_stor", "m_timers")
+		--test_modules_executed = true
+  end
 end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:save(packet)
+module_save_load.saveEvent()
+--/#+# for debug --------------------------------------------------
+	local size = packet:w_tell()
+--/<---------------------------------------------------------------
+
+-- Ограничение сохранений:
+	mod_functions.save_game_action()
+	
+	if rx_ai then rx_ai.actor_save() end
 	set_save_marker(packet, "save", false, "actor_binder")
 	object_binder.save(self, packet)
 	--' Сохраняем уровень сложности
@@ -379,16 +463,16 @@ function actor_binder:save(packet)
 		utils.w_CTime(packet, self.st.disable_input_time)
 	end
 	xr_logic.pstor_save_all(self.object, packet)
-	self.weather_manager:save(packet)
-	release_body_manager.get_release_body_manager():save(packet)
-	self.surge_manager:save(packet)
-	sr_psy_antenna.save( packet )
+	--self.weather_manager:save(packet)
+	--release_body_manager.get_release_body_manager():save(packet)
+	--self.surge_manager:save(packet)
+	--sr_psy_antenna.save( packet )
 	packet:w_bool(sim_board.get_sim_board().simulation_started)
 
-	xr_sound.actor_save(packet)
+	--xr_sound.actor_save(packet)
 	packet:w_stringZ(tostring(self.last_level_name))
-	xr_statistic.save(packet)
-	treasure_manager.get_treasure_manager():save(packet)
+	--xr_statistic.save(packet)
+	--treasure_manager.get_treasure_manager():save(packet)
 
 	local n = 0
 	for k,v in pairs(db.script_ids) do
@@ -399,7 +483,7 @@ function actor_binder:save(packet)
 		packet:w_u16(k)
 		packet:w_stringZ(v)
 	end
-	task_manager.get_task_manager():save(packet)
+	--task_manager.get_task_manager():save(packet)
 
 --	packet:w_bool(self.actor_weapon_on_start)
 	
@@ -431,9 +515,36 @@ function actor_binder:save(packet)
 		utils.w_CTime(packet, self.last_mutant_hunter_achievement_spawn_time)
 	end
 	set_save_marker(packet, "save", true, "actor_binder")
+	--/#+# [m_timers] вызов сохранений во внешних модулях -------------
+	if se_stor then
+		if to_log then to_log(script_name()..":save:size=["..(packet:w_tell() - size).."]") end --/#~#
+		if event then --/ вызов через 'систему сигналов'
+			event("actor_saved"):trigger() --/#!#> событие: 'окончание сохранения данных актора'
+		elseif type(se_stor.save) == 'function' then --/ 'прямой' вызов
+			if (m_timers) then m_timers.save() end --/ for timers
+			se_stor.save()
+		end
+	elseif (m_timers) then m_timers.save() --/ for timers
+	end
+	--/<---------------------------------------------------------------
 end
+--/#+# [se_stor] сохранение в чанках данных из внешних модулей без публичного save(): --
+function actor_binder:ext_save(pk)
+	self.weather_manager:save(pk)
+	release_body_manager.get_release_body_manager():save(pk)
+	self.surge_manager:save(pk)
+	treasure_manager.get_treasure_manager():save(pk)
+	task_manager.get_task_manager():save(pk)
+end
+--/<------------------------------------------------------------------------------------
+
+
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:load(reader)
+module_save_load.loadEvent()
+--/#+# for debug --------------------------------------------------
+	local size = reader:r_tell() --/#+# for debug
+--/<---------------------------------------------------------------
 	set_save_marker(reader, "load", false, "actor_binder")
 	object_binder.load(self, reader)
 	--' Загружаем уровень сложности
@@ -445,27 +556,27 @@ function actor_binder:load(reader)
 		self.st.disable_input_time = utils.r_CTime(reader)
 	end
 	xr_logic.pstor_load_all(self.object, reader)
-	self.weather_manager:load(reader)
-	release_body_manager.get_release_body_manager():load(reader)
+	--self.weather_manager:load(reader)
+	--release_body_manager.get_release_body_manager():load(reader)
 --	self.surge_manager:initialize()
-	self.surge_manager:load(reader)
-	self.f_surge_manager_loaded = true
-	sr_psy_antenna.load(reader)
+	--self.surge_manager:load(reader)
+	--self.f_surge_manager_loaded = true
+	--sr_psy_antenna.load(reader)
 	sim_board.get_sim_board().simulation_started = reader:r_bool()
 
-	xr_sound.actor_load(reader)
+	--xr_sound.actor_load(reader)
 	local n = reader:r_stringZ()
 	if(n~="nil") then
 		self.last_level_name = n
 	end
-	xr_statistic.load(reader)
-	treasure_manager.get_treasure_manager():load(reader)
+	--xr_statistic.load(reader)
+	--treasure_manager.get_treasure_manager():load(reader)
 	n = reader:r_u8()
 	for i = 1,n do
 		db.script_ids[reader:r_u16()] = reader:r_stringZ()
 	end
 
-	task_manager.get_task_manager():load(reader)
+	--task_manager.get_task_manager():load(reader)
 
 --	self.actor_weapon_on_start = reader:r_bool()
 	
@@ -487,7 +598,30 @@ function actor_binder:load(reader)
 		self.last_mutant_hunter_achievement_spawn_time = utils.r_CTime(reader)
 	end
 	set_save_marker(reader, "load", true, "actor_binder")
+	--/#+# [m_timers] вызов загрузки во внешних модулях ----------------
+	if se_stor then
+		if to_log then to_log(script_name()..":load:size=["..(reader:r_tell() - size).."]") end --/#~#
+		if event then --/ вызов через 'систему сигналов'
+			event("actor_load"):trigger() --/#!#> событие: 'загружены данные актора' (для инициализации стораджа актора)
+		elseif type(se_stor.load) == 'function' then --/ 'прямой' вызов
+			se_stor.load()
+			if (m_timers) then m_timers.load() end --/ for timers
+		end
+	elseif (m_timers) then m_timers.load() --/ for timers
+	end
+	--/<---------------------------------------------------------------
 end
+
+--/#+# [se_stor] загрузка данных из чанков во внешние модули без публичного save(): ----
+function actor_binder:ext_load(pk)
+	self.weather_manager:load(pk)
+	release_body_manager.get_release_body_manager():load(pk)
+	self.surge_manager:load(pk)
+	self.f_surge_manager_loaded = true --/ эта переменная устанавливается после чтения данных surge_manager
+	treasure_manager.get_treasure_manager():load(pk)
+	task_manager.get_task_manager():load(pk)
+end
+--/<------------------------------------------------------------------------------------
 
 --*************************************************************
 --*					Подспаун вещей в ящики					  *

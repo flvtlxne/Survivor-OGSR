@@ -35,7 +35,7 @@ end
 function CSurgeManager:initialize()
 	self.ini = ini_file("misc\\surge_manager.ltx")
 
-	self.levels_respawn = {zaton = false, jupiter = false, pripyat = false}
+	self.levels_respawn = {zaton = false, jupiter = false, pripyat = false, derevnya = false}
 
 	self.started = false
 	self.finished = true
@@ -194,6 +194,15 @@ function CSurgeManager:update()
 					xr_sound.set_sound_play(db.actor:id(), "zat_a2_stalker_barmen_after_surge")
 				elseif(level.name()=="jupiter") then
 					xr_sound.set_sound_play(db.actor:id(), "jup_a6_stalker_medik_after_surge")
+				elseif(level.name()=="derevnya" and db.actor:alive()) then
+					xr_sound.set_sound_play(db.actor:id(), "derevnya_after_surge")
+					mod_functions.after_surge_think()
+					disable_info("af_teleport_idle")
+					disable_info("af_armadeus_idle")
+					-- на 1 с. выдаём инфо для респавна:
+						start_real_timer(3, "mod_timer_functions.global_respawn_timer_action2")
+						--mod_functions.clear_all_lw_smarts()
+						db.actor:give_info_portion ("global_respawn")
 				elseif not has_alife_info("pri_b305_fifth_cam_end") then
 					xr_sound.set_sound_play(db.actor:id(), "pri_a17_kovalsky_after_surge")
 				end
@@ -248,6 +257,8 @@ function CSurgeManager:update()
 						xr_sound.set_sound_play(db.actor:id(), "zat_a2_stalker_barmen_surge_phase_2")
 					elseif(level.name()=="jupiter") then
 						xr_sound.set_sound_play(db.actor:id(), "jup_a6_stalker_medik_phase_2")
+					elseif(level.name()=="derevnya") then
+						xr_sound.set_sound_play(db.actor:id(), "jup_a6_stalker_medik_phase_2")
 					elseif not has_alife_info("pri_b305_fifth_cam_end") then
 						xr_sound.set_sound_play(db.actor:id(), "pri_a17_kovalsky_surge_phase_2")
 					end
@@ -269,6 +280,8 @@ function CSurgeManager:update()
 					if(level.name()=="zaton") then
 						xr_sound.set_sound_play(db.actor:id(), "zat_a2_stalker_barmen_surge_phase_1")
 					elseif(level.name()=="jupiter") then
+						xr_sound.set_sound_play(db.actor:id(), "jup_a6_stalker_medik_phase_1")
+					elseif(level.name()=="derevnya") then
 						xr_sound.set_sound_play(db.actor:id(), "jup_a6_stalker_medik_phase_1")
 					elseif not has_alife_info("pri_b305_fifth_cam_end") then
 						xr_sound.set_sound_play(db.actor:id(), "pri_a17_kovalsky_surge_phase_1")
@@ -294,8 +307,14 @@ function CSurgeManager:start(manual)
 	diff_sec = math.ceil(game.get_game_time():diffSec(self.inited_time)/level.get_time_factor())
 	log("--->start diff_sec="..tostring(diff_sec))
 	local level_name = level.name()
-	if(level_name=="labx8" or level_name=="jupiter_underground") then
+	if(level_name=="labx8" or level_name=="jupiter_underground" ) then
 		printf("Surge skipped because of level!")
+		self.skip_message = true
+		self:skip_surge()
+		return
+	end
+	if xr_conditions.master_difficulty() == true and db.actor:dont_has_info("mg_surge_last_phase") then
+		printf("Surge skipped because master game!")
 		self.skip_message = true
 		self:skip_surge()
 		return
@@ -308,7 +327,7 @@ function CSurgeManager:start(manual)
 		self.finished = false
 -- autosave
 		if not has_alife_info("pri_b305_fifth_cam_end") or has_alife_info("pri_a28_actor_in_zone_stay") then
-			xr_effects.scenario_autosave(nil,nil,{"st_save_uni_surge_start"})
+			--xr_effects.scenario_autosave(nil,nil,{"st_save_uni_surge_start"})
 		end
 	end
 end
@@ -320,7 +339,7 @@ function CSurgeManager:skip_surge()
 
 	self.started 			= false
 	self.finished 			= true
-	self.levels_respawn 	= {zaton = true, jupiter = true, pripyat = true}
+	self.levels_respawn 	= {zaton = true, jupiter = true, pripyat = true, derevnya = true}
 	self._delta 			= math.random(MIN_SURGE_TIME, MAX_SURGE_TIME)
 	self.surge_message 		= ""
 	self.surge_task_sect 	= ""
@@ -336,6 +355,13 @@ function CSurgeManager:skip_surge()
 	xr_statistic.inc_surges_counter()
 	if (not self.skip_message) then
 		news_manager.send_tip(db.actor, "st_surge_while_asleep", nil, "recent_surge", nil, nil)
+		disable_info("af_teleport_idle")
+		disable_info("af_armadeus_idle")
+		-- на 1 с. выдаём инфо для респавна:
+			start_real_timer(3, "mod_timer_functions.global_respawn_timer_action2")
+			--mod_functions.clear_all_lw_smarts()
+			db.actor:give_info_portion ("global_respawn")
+		--mod_functions
 		self.skip_message = true
 	end
 end
@@ -398,6 +424,7 @@ function CSurgeManager:respawn_artefacts_and_replace_anomaly_zone()
 end
 
 function CSurgeManager:give_surge_hide_task()
+if xr_conditions.master_difficulty() == false then
 	if(self.surge_message~="empty") then
 		local mess = ""
 		if(self.surge_message=="") then
@@ -414,6 +441,7 @@ function CSurgeManager:give_surge_hide_task()
 			task_manager.get_task_manager():give_task(self.surge_task_sect)
 		end
 	end
+end
 end
 
 function get_squad_members(squad_id)
@@ -632,6 +660,7 @@ function CSurgeManager:save(packet)
 		packet:w_bool(self.levels_respawn.zaton)
 		packet:w_bool(self.levels_respawn.jupiter)
 		packet:w_bool(self.levels_respawn.pripyat)
+		packet:w_bool(self.levels_respawn.derevnya)
 
 		packet:w_bool(self.task_given)
 		packet:w_bool(self.effector_set)
@@ -658,6 +687,7 @@ function CSurgeManager:load(packet)
 		self.levels_respawn.zaton = packet:r_bool()
 		self.levels_respawn.jupiter = packet:r_bool()
 		self.levels_respawn.pripyat = packet:r_bool()
+		self.levels_respawn.derevnya = packet:r_bool()
 
 		self.task_given = packet:r_bool()
 		self.effector_set = packet:r_bool()

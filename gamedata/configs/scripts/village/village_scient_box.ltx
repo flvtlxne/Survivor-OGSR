@@ -1,0 +1,41 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = village_scient_box_use
+on_use = {=actor_has_item(mushrom) +narkoman_note1_info} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+on_info = {=master_difficulty} %=destroy_object%
+
+
+; Кладём гриб в ящик:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(metal_small_open)%
+
+[ph_idle@3]
+on_game_timer = 15|ph_idle@4 %=remove_item(mushrom) =enable_ui%
+
+
+[ph_idle@4]
+on_info = {+narkoman_pribor_on} ph_idle@5
+
+
+; Забираем артефакт из ящика:
+[ph_idle@5]
+tips      = village_scient_box_use2
+on_info = {+game_start} %=play_sound_looped(helicrash_alarm_snd)%
+on_use = ph_idle@6 %=stop_sound_looped(helicrash_alarm_snd) =disable_ui =run_postprocess(fade_in)%
+
+[ph_idle@6]
+on_game_timer = 20|ph_idle@7 %=run_postprocess(fade_in) =play_sound(metal_small_open)%
+
+[ph_idle@7]
+on_game_timer = 15|ph_idle@1 %=play_sound(actor_finds_something2) =give_item(af_mushrom:actor) =enable_ui%
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = {-maroders_ambush_habar +maroders_ambush_end} %+maroders_ambush_habar%
+on_info = {=master_difficulty -mg_heli_evac_sucess} ph_idle@2 %=add_self_spot(treasure:random_treasure_mark)%
+
+[ph_idle@2]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=remowe_self_spot(treasure:random_treasure_mark)%
+on_info = {+mg_heli_evac_sucess} ph_idle@1 %=remowe_self_spot(treasure:random_treasure_mark)%
+
+ 

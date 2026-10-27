@@ -1,0 +1,16 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+on_info = {=master_difficulty} %=destroy_object%
+on_actor_dist_le_nvis = 30|ph_idle@2 %=strike_to_actor%
+
+[ph_idle@2]
+tips      = workshop_napilnik_use
+on_use = {+personal_dog_note2_info} %=give_item(item_napilnik:actor) =destroy_object =workshop_napilnik_mobs_spawn +workshop_napilnik%
+
+
+
+
+
+ 

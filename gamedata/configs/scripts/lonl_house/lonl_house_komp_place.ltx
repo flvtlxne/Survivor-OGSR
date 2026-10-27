@@ -1,0 +1,17 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+on_info = {=actor_has_item(item_komp_monitor) =actor_has_item(item_komp_block) =actor_has_item(item_komp_klava)} ph_idle@1
+on_info2 = {=master_difficulty} %=destroy_object%
+on_info3 = {+lw_scientist_to_komp} %=destroy_object%
+
+[ph_idle@1]
+tips      = lonl_house_komp_place_use
+on_info = {!actor_has_item(item_komp_monitor) !actor_has_item(item_komp_block) !actor_has_item(item_komp_klava)} ph_idle@0
+on_use = %=spawn_lonl_house_komp =destroy_object%
+
+
+
+
+ 

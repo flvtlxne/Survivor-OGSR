@@ -1,0 +1,19 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+on_info = {=master_difficulty +master_game -mg_heli_evac_sucess =actor_has_item(af_eye_mg) !actor_in_zone(kpp_surge_hide_zone)} ph_idle@2 %=add_self_spot(treasure:random_treasure_mark)%
+on_info2 = {+karlik_plita_open} ph_idle@open
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+
+; В режиме Мастера:
+[ph_idle@2]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=remowe_self_spot(treasure:random_treasure_mark)%
+on_info = {+mg_heli_evac_sucess} ph_idle %=remowe_self_spot(treasure:random_treasure_mark)%
+
+ 

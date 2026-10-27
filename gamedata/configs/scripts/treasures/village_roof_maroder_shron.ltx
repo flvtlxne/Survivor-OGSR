@@ -1,0 +1,14 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+;on_info = {=master_difficulty} ph_idle@open
+on_info2 = {+village_roof_maroder_pda_info} ph_idle@open %=add_self_spot(treasure:village_roof_maroder_shron_habar_mark) =send_tip(personal_treasure_finded_tip:default)%
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=remowe_self_spot(treasure:village_roof_maroder_shron_habar_mark) =actor_finds_goodloot_snd%
+
+
+ 

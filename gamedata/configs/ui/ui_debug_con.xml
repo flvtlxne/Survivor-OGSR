@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1251" ?>        
+<gui>        
+<debug_con x="10" y="10" width="451" height="280">        
+           <texture x="0" y="0" width="451" height="280">ui\ui_debug_con</texture>          
+          <button_run x="290" y="78" width="135" height="25">        
+           <texture>ui_inGame2_Mp_bigbuttone</texture>        
+           <text font="letterica18">---></text>        
+          </button_run>        
+          <console x="20" y="34" width="400" height="32">
+			<text x="10" font="letterica18" vert_align="c" align="l"/>
+		</console>
+		<story_1 x="30" y="105" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</story_1> 
+		<story_2 x="30" y="130" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</story_2>
+		<story_3 x="30" y="155" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</story_3>
+		<story_4 x="30" y="180" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</story_4>
+		<story_5 x="30" y="205" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</story_5>
+		<valid_1 x="350" y="105" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</valid_1>
+		<valid_2 x="350" y="130" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</valid_2>
+		<valid_3 x="350" y="155" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</valid_3>
+		<valid_4 x="350" y="180" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</valid_4>
+		<valid_5 x="350" y="205" width="392" height="30">
+			<text x="0" y="0" r="245" g="245" b="245" vert_align="c" align="l" font="letterica18" />
+		</valid_5>		
+         </debug_con>        
+
+</gui>

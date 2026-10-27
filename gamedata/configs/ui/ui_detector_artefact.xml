@@ -15,6 +15,8 @@
     </palette>
   </elite>
 
+
+
   <scientific x="0" y="0" width="0.0576" height="0.029">
     <wrk_area width="0.0576" height="0.029">
       <auto_static width="0.0576" height="0.029" stretch="1">
@@ -413,6 +415,201 @@
     <palette id="jup_b1_half_artifact" width="0.0011" height="0.0011" stretch="1" alignment="c">
       <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
     </palette>
+
+
+    <palette id="af_treasure" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="af_mushrom" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+
+    <palette id="kpp_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="willage_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="workshop_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="graveyard_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="rad_hill_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="razlom_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="island_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="forest_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+    <palette id="forest_camp_rnd_artefact" width="0.0011" height="0.0011" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_artefact</texture>
+    </palette>
+
+    <palette id="kpp_anom_1" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+    <palette id="kpp_anom_2" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+    <palette id="kpp_anom_3" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+    <palette id="kpp_anom_4" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+    <palette id="kpp_anom_5" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+    <palette id="kpp_anom_6" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+    <palette id="kpp_anom_7" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+    <palette id="kpp_anom_8" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+
+    <palette id="willage_anom_1" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_electric</texture>
+    </palette>
+    <palette id="willage_anom_2" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_electric</texture>
+    </palette>
+    <palette id="willage_anom_3" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_electric</texture>
+    </palette>
+    <palette id="willage_anom_4" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_electric</texture>
+    </palette>
+    <palette id="willage_anom_5" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_electric</texture>
+    </palette>
+    <palette id="willage_anom_6" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_electric</texture>
+    </palette>
+    <palette id="willage_anom_7" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_electric</texture>
+    </palette>
+
+    <palette id="workshop_anom_1" width="0.008" height="0.008" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="workshop_anom_2" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="workshop_anom_3" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="workshop_anom_4" width="0.008" height="0.008" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="workshop_anom_5" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="workshop_anom_6" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="workshop_anom_7" width="0.008" height="0.008" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+
+    <palette id="graveyard_anom_1" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_acidic</texture>
+    </palette>
+    <palette id="graveyard_anom_2" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_acidic</texture>
+    </palette>
+    <palette id="graveyard_anom_3" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_acidic</texture>
+    </palette>
+    <palette id="graveyard_anom_4" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_acidic</texture>
+    </palette>
+    <palette id="graveyard_anom_5" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_acidic</texture>
+    </palette>
+    <palette id="graveyard_anom_6" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_acidic</texture>
+    </palette>
+    <palette id="graveyard_anom_7" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_acidic</texture>
+    </palette>
+
+    <palette id="island_anom_1" width="0.008" height="0.008" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="island_anom_2" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="island_anom_3" width="0.008" height="0.008" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_thermal</texture>
+    </palette>
+    <palette id="island_anom_4" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="island_anom_5" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="island_anom_6" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="island_anom_7" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+
+    <palette id="forest_camp_anom_1" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="forest_camp_anom_2" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="forest_camp_anom_3" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="forest_camp_anom_4" width="0.008" height="0.008" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="forest_camp_anom_5" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+    <palette id="forest_camp_anom_6" width="0.008" height="0.008" stretch="1" alignment="c">
+       <texture shader="hud\p3d">ui_inGame2_Detector_icon_gravity_big</texture>
+    </palette>
+
+    <palette id="willage_transformator_anom" width="0.0065" height="0.0065" stretch="1" alignment="c">
+      <texture shader="hud\p3d">ui_temp_ad4_mine_electric</texture>
+    </palette>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   </scientific>
 </w>

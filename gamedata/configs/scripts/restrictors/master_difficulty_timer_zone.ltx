@@ -1,0 +1,146 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {!master_difficulty} sr_idle@nil
+;on_info2 = {+actor_start_move} sr_timer@1 %+mg_deathzone_phase1 =add_self_spot(mg_deathzone_mark1:mg_deathzone_mark1_text)%
+on_info2 = {+actor_start_move} sr_timer@1 %+mg_deathzone_phase1 =mark_mg_deadzone1%
+
+[sr_timer@1]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip1
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 850|%=actor_mg_deathzone_effect%
+;on_value = 0 | sr_timer@2 %+mg_deathzone_phase2 =mg_actor_mob_respawn =surge_small_strike =remowe_self_spot(mg_deathzone_mark1:mg_deathzone_mark1_text) =add_self_spot(mg_deathzone_mark2:mg_deathzone_mark1_text)%
+on_value = 0 | sr_timer@2 %+mg_deathzone_phase2 =mg_actor_mob_respawn =surge_small_strike =mark_mg_deadzone2%
+
+[sr_timer@2]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip2
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 750|%=actor_mg_deathzone_effect%
+;on_value = 0 | sr_timer@3 %+mg_deathzone_phase3 =mg_actor_mob_respawn =mg_airdrop_info =surge_small_strike =remowe_self_spot(mg_deathzone_mark2:mg_deathzone_mark1_text) =add_self_spot(mg_deathzone_mark3:mg_deathzone_mark1_text)%
+on_value = 0 | sr_timer@3 %+mg_deathzone_phase3 =mg_actor_mob_respawn =mg_airdrop_info =surge_small_strike =mark_mg_deadzone3%
+
+[sr_timer@3]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip3
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 650|%=actor_mg_deathzone_effect%
+;on_value = 0 | sr_timer@4 %+mg_deathzone_phase4 =mg_actor_mob_respawn =surge_small_strike =remowe_self_spot(mg_deathzone_mark3:mg_deathzone_mark1_text) =add_self_spot(mg_deathzone_mark4:mg_deathzone_mark1_text)%
+on_value = 0 | sr_timer@4 %+mg_deathzone_phase4 =mg_actor_mob_respawn =surge_small_strike =mark_mg_deadzone4%
+
+[sr_timer@4]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip4
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 550|%=actor_mg_deathzone_effect%
+;on_value = 0 | sr_timer@5 %+mg_deathzone_phase5 =mg_actor_mob_respawn =surge_small_strike =remowe_self_spot(mg_deathzone_mark4:mg_deathzone_mark1_text) =add_self_spot(mg_deathzone_mark5:mg_deathzone_mark1_text)%
+on_value = 0 | sr_timer@5 %+mg_deathzone_phase5 =mg_actor_mob_respawn =surge_small_strike =mark_mg_deadzone5%
+
+[sr_timer@5]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip5
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 450|%=actor_mg_deathzone_effect%
+;on_value = 0 | sr_timer@6 %+mg_deathzone_phase6 =mg_actor_mob_respawn =surge_small_strike =remowe_self_spot(mg_deathzone_mark5:mg_deathzone_mark1_text) =add_self_spot(mg_deathzone_mark6:mg_deathzone_mark1_text)%
+on_value = 0 | sr_timer@6 %+mg_deathzone_phase6 =mg_actor_mob_respawn =surge_small_strike =mark_mg_deadzone6%
+
+[sr_timer@6]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip6
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 350|%=actor_mg_deathzone_effect%
+;on_value = 0 | sr_timer@7 %+mg_deathzone_phase7 =mg_actor_mob_respawn =surge_small_strike =remowe_self_spot(mg_deathzone_mark6:mg_deathzone_mark1_text) =add_self_spot(mg_deathzone_mark7:mg_deathzone_mark1_text)%
+on_value = 0 | sr_timer@7 %+mg_deathzone_phase7 =mg_actor_mob_respawn =surge_small_strike =mark_mg_deadzone7%
+
+[sr_timer@7]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip7
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 250|%=actor_mg_deathzone_effect%
+;on_value = 0 | sr_timer@8 %+mg_deathzone_phase8 =mg_actor_mob_respawn =surge_small_strike =remowe_self_spot(mg_deathzone_mark7:mg_deathzone_mark1_text) =add_self_spot(mg_deathzone_mark8:mg_deathzone_mark1_text)%
+on_value = 0 | sr_timer@8 %+mg_deathzone_phase8 =mg_actor_mob_respawn =surge_small_strike =mark_mg_deadzone8%
+
+[sr_timer@8]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip8
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 150|%=actor_mg_deathzone_effect%
+;on_value = 0 | sr_timer@9 %+mg_deathzone_phase9 =mg_actor_mob_respawn +mg_surge_last_phase =start_small_reject =give_mg_zone_last_phase_info =remowe_self_spot(mg_deathzone_mark8:mg_deathzone_mark1_text)%
+on_value = 0 | sr_timer@9 %+mg_deathzone_phase9 =mg_actor_mob_respawn +mg_surge_last_phase =start_small_reject =give_mg_zone_last_phase_info =mark_mg_deadzone9%
+
+[sr_timer@9]
+type = dec
+start_value = 84000
+;start_value = 6000
+string = master_difficulty_timer_zone_tip8
+on_info = {+mg_heli_evacuation_result} sr_idle@1
+on_actor_dist_ge_nvis = 150|%=actor_mg_deathzone_effect%
+on_value = 0 | sr_idle@2 %=start_surge =mg_actor_mob_respawn%
+
+
+[sr_idle@2]
+on_info = {+mg_heli_evac_start} sr_timer@10
+on_info2 = {+mg_zone_helicrash !actor_in_zone(script_zone_helicrash)} %=actor_mg_deathzone_effect%
+on_info3 = {+mg_zone_kpp !actor_in_zone(script_zone_blokpost)} %=actor_mg_deathzone_effect%
+on_info4 = {+mg_zone_forest !actor_in_zone(script_zone_forest)} %=actor_mg_deathzone_effect%
+on_info5 = {+mg_zone_forest_camp !actor_in_zone(script_zone_forest_camp)} %=actor_mg_deathzone_effect%
+on_info6 = {+mg_zone_graveyard !actor_in_zone(script_zone_graveyard)} %=actor_mg_deathzone_effect%
+on_info7 = {+mg_zone_razlom !actor_in_zone(script_zone_ground_anomaly)} %=actor_mg_deathzone_effect%
+on_info8 = {+mg_zone_island !actor_in_zone(script_zone_island)} %=actor_mg_deathzone_effect%
+on_info9 = {+mg_zone_lonl_house !actor_in_zone(script_zone_lonl_house)} %=actor_mg_deathzone_effect%
+on_info10 = {+mg_zone_radhill !actor_in_zone(script_zone_rad_hill)} %=actor_mg_deathzone_effect%
+on_info11 = {+mg_zone_willage !actor_in_zone(script_zone_willage)} %=actor_mg_deathzone_effect%
+on_info12 = {+mg_zone_workshop !actor_in_zone(script_zone_workshop)} %=actor_mg_deathzone_effect%
+
+
+; Пошла эвакуация у вертухи:
+[sr_timer@10]
+type = dec
+start_value = 65000
+string = master_difficulty_timer_zone_tip9
+on_value = 0 | sr_idle@3 %+mg_heli_evacuation_result =remowe_self_spot(mg_deathzone_mark9:mg_deathzone_mark1_text)%
+on_info = {+mg_zone_helicrash !actor_in_zone(script_zone_helicrash)} %=actor_mg_deathzone_effect%
+on_info2 = {+mg_zone_kpp !actor_in_zone(script_zone_blokpost)} %=actor_mg_deathzone_effect%
+on_info3 = {+mg_zone_forest !actor_in_zone(script_zone_forest)} %=actor_mg_deathzone_effect%
+on_info4 = {+mg_zone_forest_camp !actor_in_zone(script_zone_forest_camp)} %=actor_mg_deathzone_effect%
+on_info5 = {+mg_zone_graveyard !actor_in_zone(script_zone_graveyard)} %=actor_mg_deathzone_effect%
+on_info6 = {+mg_zone_razlom !actor_in_zone(script_zone_ground_anomaly)} %=actor_mg_deathzone_effect%
+on_info7 = {+mg_zone_island !actor_in_zone(script_zone_island)} %=actor_mg_deathzone_effect%
+on_info8 = {+mg_zone_lonl_house !actor_in_zone(script_zone_lonl_house)} %=actor_mg_deathzone_effect%
+on_info9 = {+mg_zone_radhill !actor_in_zone(script_zone_rad_hill)} %=actor_mg_deathzone_effect%
+on_info10 = {+mg_zone_willage !actor_in_zone(script_zone_willage)} %=actor_mg_deathzone_effect%
+on_info11 = {+mg_zone_workshop !actor_in_zone(script_zone_workshop)} %=actor_mg_deathzone_effect%
+
+
+[sr_idle@3]
+on_info = {+mg_heli_evac_sucess =actor_alive -mg_game_over} sr_idle@4 %=actor_after_evac_rest =run_postprocess(fade_in_out) =disable_ui =relocate_actor_inventory_to_box_with_knife(location_box_utilizator)%
+;on_info2 = {+master_game} %=actor_mg_deathzone_effect%
+
+[sr_idle@4]
+on_game_timer = 15|sr_idle@1 %=clear_box(location_box_utilizator) =remove_item(wpn_knife) -actor_start_move =forward_game_time(1)%
+
+
+
+
+
+
+
+[sr_idle@nil]

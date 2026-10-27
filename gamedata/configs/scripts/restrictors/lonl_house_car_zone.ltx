@@ -1,0 +1,47 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_actor_inside = sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_lonl_house_car_npc%
+
+[sr_idle@2]
+on_game_timer = 40|sr_cutscene@1 %=lonl_house_car_think%
+
+[sr_cutscene@1]
+point = lonl_house_script_npc_point7
+look = lonl_house_script_npc_point8
+cam_effector = scenario_cam\lonl_house_script_cam5
+on_signal = cameff_end | sr_idle@3 %+car_finded%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+
+; Квесты пилотом Ми-24:
+[sr_idle@3]
+on_info = {+lost_soldier_info1} sr_idle@4 %=give_task(addtask_soldier)%
+
+[sr_idle@4]
+on_info = {+lost_soldier_info2} sr_idle@5 %=spawn_lostsold_place1_mobs =spawn_object_in(lost_soldier_diary3:willage_invbox_2)%
+
+[sr_idle@5]
+on_info = {+lost_soldier_info3} sr_idle@6 %=spawn_lostsold_place2_mobs%
+
+[sr_idle@6]
+on_info = {=actor_behind_workshop_house_zone} sr_idle@7 %+actor_behind_workshop_house_zone%
+
+[sr_idle@7]
+on_info = {=is_dead(lostsold_place3_mob1) =story_object_exist(lostsold_place3_mob1) =is_dead(lostsold_place3_mob2) =story_object_exist(lostsold_place3_mob2) =is_dead(lostsold_place3_mob3) =story_object_exist(lostsold_place3_mob3)} sr_idle@8 %+lostsold_burers_dead%
+
+[sr_idle@8]
+on_info = {+lost_soldier_info4 +workshop_house_search} sr_idle@9 %+workshop_house_search2 =spawn_lost_soldier_end_scene%
+
+[sr_idle@9]
+
+
+[sr_idle@nil]
+
+
+

@@ -1,0 +1,29 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_force@1
+
+[ph_force@1]
+force = 40000
+time = 50000
+delay = 0
+point = test_car_point2
+point_index = 0
+on_info = {+game_start} %=play_snd_on_me(scenario\diesel_generator_work)%
+on_actor_dist_le_nvis = 8|ph_force@2 %=spawn_test_car_desant%
+
+[ph_force@2]
+force = 40000
+time = 50000
+delay = 0
+point = travel_point_lonl_house
+point_index = 0
+;on_info = {=test_car_on_pnt1} ph_force@2 %=spawn_test_car_desant%
+on_info = {+game_start} %=play_snd_on_me(scenario\diesel_generator_work)%
+
+
+
+[ph_idle@1]
+tips      = lake_stone_art_use

@@ -1,0 +1,74 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+map_finded} sr_idle@2 %=add_self_spot(red_location:usefull_place_mark)%
+
+[sr_idle@2]
+on_actor_inside = sr_idle@3 %=disable_ui =run_postprocess(fade_in) =spawn_sniper_tree_script_npc =remowe_self_spot(red_location:usefull_place_mark)%
+
+[sr_idle@3]
+on_game_timer = 40|sr_cutscene@1 %=sniper_quest_tree_think1%
+
+[sr_cutscene@1]
+point = quest_sniper_zone_point1
+look = quest_sniper_zone_point2
+cam_effector = scenario_cam\sniper_tree_quest_fly2
+on_signal = cameff_end | sr_idle@4 %+sniper_tree_check =give_task(addtask_sniper) =spawn_sniper_quest_chimera%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@4]
+on_info = {+sniper_note1_info} sr_idle@5 %=spawn_sniper_quest_maroder2%
+
+[sr_idle@5]
+on_info = {+sniper_maroder2_talk} sr_cutscene@2 %=spawn_quest_sniper1 =spawn_sniper_script_npc2%
+
+[sr_cutscene@2]
+point = quest_sniper_maroder2_walk2
+look = quest_sniper_maroder2_walk
+cam_effector = scenario_cam\sniper_tree_quest_fly3
+on_signal = cameff_end | sr_idle@6 %+quest_sniper_shot1%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@6]
+on_info = {+sniper_note2_info} sr_idle@7 %=spawn_sniper_quest_maroders_scene%
+
+[sr_idle@7]
+on_info = {+sniper_note2_info =actor_in_zone(quest_sniper_zone3)} sr_cutscene@3 %=start_sniper_maroder_scene_timer +quest_sniper_scene_start =delete_willage_sniper_maroder%
+
+[sr_cutscene@3]
+point = quest_sniper_zone_point10
+look = quest_sniper_zone_point9
+cam_effector = scenario_cam\sniper_tree_quest_fly4
+on_signal = cameff_end | sr_idle@8 %+quest_sniper_scene%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@8]
+on_info = {+quest_sniper_reward =is_dead(quest_sniper2) =actor_has_item(showel) =actor_behind_sniper_dead_body} sr_idle@9 %=disable_ui =run_postprocess(fade_in) =spawn_sniper_dead_script_npc%
+
+[sr_idle@9]
+on_game_timer = 40|sr_cutscene@4 %=sniper_dead_think%
+
+[sr_cutscene@4]
+point = quest_sniper_zone_point15
+look = quest_sniper_zone_point14
+cam_effector = scenario_cam\sniper_tree_quest_fly5
+on_signal = cameff_end | sr_idle@nil %+sniper_last_wish%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+
+
+
+[sr_idle@nil]
+
+

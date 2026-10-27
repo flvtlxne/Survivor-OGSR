@@ -1,0 +1,87 @@
+[smart_terrains]
+none = true
+
+[dont_spawn_loot]
+
+[logic]
+active = remark@searching1
+;on_hit = hit
+on_death = death
+
+
+; Подготовка:
+[remark@searching1]
+anim = binocular
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+actor_has_lr300} companion@1 %=give_items(wpn_lr300)%
+on_info3 = {+actor_has_ak74} companion@1 %=give_items(wpn_ak74_mg)%
+on_info4 = {+actor_has_aksu} companion@1 %=give_items(wpn_ak74u)%
+on_info5 = {+actor_has_toz} companion@1 %=give_items(wpn_toz34)%
+on_info6 = {+actor_has_bizon} companion@1 %=give_items(wpn_bizon)%
+on_info7 = {+actor_has_mosin} companion@1 %=give_items(wpn_m1891)%
+on_info8 = {+actor_has_sayga} companion@1 %=give_items(wpn_sayga)%
+on_info9 = {+actor_has_fort500} companion@1 %=give_items(wpn_fort500)%
+on_info10 = {+actor_has_vityaz} companion@1 %=give_items(wpn_vityaz)%
+on_info11 = {+actor_has_vss} companion@1 %=give_items(wpn_vintorez)%
+on_info12 = {+actor_has_groza} companion@1 %=give_items(wpn_groza)%
+on_info13 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_sayga -actor_has_mosin -actor_has_vss -actor_has_groza -actor_has_vityaz -actor_has_fort500} companion@1
+
+
+; Бежим к ГГ:
+[companion@1]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+;combat_ignore_cond = true
+can_use_knife = false
+on_info = {=actor_has_item(af_eye_mg)} companion@2 %=add_self_spot(mg_npc_shooter_mark:mg_npc_actor_shooter_mark_text)%
+on_info2 = {+mg_heli_evac_sucess} %=destroy_object%
+on_info3 = {=heavy_wounded} %=health_slow_down%
+on_actor_dist_le = 30|companion@3
+
+[companion@2]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+;combat_ignore_cond = true
+can_use_knife = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_down%
+on_actor_dist_le = 30|companion@3
+
+
+[companion@3]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=heavy_wounded} %=health_slow_down%
+
+
+
+
+[hit]
+on_info = companion@3
+
+[death]
+on_info = {=actor_has_item(af_fire_mg)} %=remowe_self_spot(mg_npc_shooter_mark:mg_npc_actor_shooter_mark_text) =mg_actor_killer_respawn =give_rnd_item_ammo2 =give_rnd_item_ammo2%, {!actor_has_item(af_fire_mg)} %=remowe_self_spot(mg_npc_shooter_mark:mg_npc_actor_shooter_mark_text) =mg_actor_killer_respawn =give_rnd_item_ammo2%
+
+
+
+
+
+

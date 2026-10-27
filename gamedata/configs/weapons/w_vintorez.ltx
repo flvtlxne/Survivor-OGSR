@@ -24,7 +24,7 @@ installed_upgrades      =
 upgrade_scheme          = upgrade_scheme_vintorez
 
 ;-TTX-----------------------------------------------------------------------------
-hit_power				= 0.42,0.42, 0.42, 0.42
+hit_power				= 0.52
 hit_impulse				= 100
 hit_type				= fire_wound
 
@@ -123,10 +123,10 @@ inv_grid_height         = 2
 inv_grid_x              = 0
 inv_grid_y              = 4
 
-upgr_icon_x			= 8
-upgr_icon_y			= 395
-upgr_icon_width		= 290
-upgr_icon_height   	= 78
+upgr_icon_x		= 0
+upgr_icon_y		= 300
+upgr_icon_width		= 300
+upgr_icon_height   		= 100
 
 kill_msg_x              = 98
 kill_msg_y              = 0
@@ -172,11 +172,11 @@ scope_status            = 1
 silencer_status         = 1
 grenade_launcher_status = 0
 
-scope_texture				= wpn_crosshair
+scope_texture				= wpn_crosshair_vss
 
 zoom_enabled			= true
-zoom_rotate_time		= 0.25
-scope_zoom_factor	    = 15		;ПСО-1 4X
+zoom_rotate_time		= 0.20
+scope_zoom_factor	    = 19		;ПСО-1 4X
 
 scope_name              = wpn_addon_scope
 scope_x                 = 78
@@ -188,21 +188,8 @@ grenade_launcher_name   = wpn_addon_grenade_launcher_m203
 grenade_launcher_x      = 109
 grenade_launcher_y      = 30
 
-;звуки
-snd_draw                = weapons\generic_draw
-snd_holster             = weapons\generic_holster
-snd_shoot				= weapons\n_vintorez_shot
-
-snd_empty               = weapons\gen_empty, 0.5
-snd_reload              = weapons\groza_reload, 0.7
-snd_shoot_grenade       = weapons\gen_grenshoot
-snd_reload_grenade      = weapons\gen_grenload, 1.0, 0.8
-snd_switch              = weapons\groza_switch, 1.0, 0.5
-
 ;silencer_flame_particles  = weapons\generic_weapon01
 silencer_smoke_particles   = weapons\generic_shoot_00
-
-snd_silncer_shot        = weapons\w_ak74_shot1
 
 silencer_light_color    = 0.6,0.5,0.3
 silencer_light_range    = 0.01
@@ -210,89 +197,62 @@ silencer_light_var_color= 0.05
 silencer_light_var_range= 0.5
 silencer_light_time     = 0.2
 
+snd_draw						= weapons\vintorez\vintorez_draw
+snd_holster					= weapons\rifle_holster
+snd_shoot						= weapons\vintorez\vintorez_shoot
+snd_shoot1					= weapons\vintorez\vintorez_shoot1
+snd_empty					= weapons\vintorez\vintorez_empty, 	0.8
+snd_reload					= weapons\vintorez\vintorez_reload
+snd_silncer_shot					= weapons\vintorez\vintorez_shoot
+snd_silncer_shot1					= weapons\vintorez\vintorez_shoot1
+
 [wpn_vintorez_hud]:hud_base
-zoom_hide_crosshair	= true
-attach_place_idx	= 0
-item_visual		= dynamics\weapons\wpn_vintorez\wpn_vintorez_hud.ogf
+zoom_hide_crosshair				= true
+attach_place_idx				= 0
+item_visual					= dynamics\weapons\wpn_vintorez\wpn_vintorez_hud.ogf
 
+hands_position				= -0.06,-0.16,0.2
+hands_orientation				= -2.1,2.0,2.0
 
-hands_position				= -0.053000,-0.196500,0.250499
-hands_orientation			= 0.300000,1.849999,-0.000001
+hands_position_16x9				= -0.06,-0.16,0.2
+hands_orientation_16x9			= -2.1,2.0,2.0
 
+item_position				= 0.0,0.0,-0.001
+item_orientation				= -15.646272,-3.230760,0.0
 
-hands_position_16x9				= -0.047500,-0.203500,0.194999
-hands_orientation_16x9			= 0.800000,1.650000,-2.500000
+aim_hud_offset_pos 				= -0.0895,0.05,-0.1
+aim_hud_offset_rot 				= 0.015,-0.047,-0.04
 
-aim_hud_offset_pos	= -0.112000,0.029500,-0.118000
-aim_hud_offset_rot	= 0.010000,0.002500,-0.010000
+aim_hud_offset_pos_16x9 			= -0.0895,0.05,-0.1
+aim_hud_offset_rot_16x9 			= 0.015,-0.047,-0.04
 
-aim_hud_offset_pos_16x9		= -0.092000,0.0149500,-0.038000
-aim_hud_offset_rot_16x9		= 0.010000,0.002500,-0.010000
-
-
-
-item_position				= 0.007119,0.019630,0.009658
-item_orientation			= -15.646272,-3.230760,364.546112
-
-shell_point					= 0.023,0.042,0.129
-shell_dir               = 0.0, 1.0, 0.0
+shell_point					= 0.01,0.05,0.041
+shell_dir              	 			= 0.0, 1.0, 0.0
 shell_bone					= wpn_body
 
-fire_point		= 0,0.037,0.626
-fire_bone      	      = wpn_body
+fire_point					= 0,0.037,0.626
+fire_bone      	      			= wpn_body
 fire_point2					= -0.014000,0.010000,-0.037000
 fire_bone2					= wpn_body
 
-anm_show             	= vintorez_draw
-anm_hide             	= vintorez_holster
-anm_idle             	= vintorez_idle
-anm_idle_sprint         = vintorez_idle_sprint
-anm_idle_moving 			= vintorez_idle_moving
-anm_shots               = vintorez_shoot
-anm_reload              = vintorez_reload
-anm_idle_aim           	= vintorez_idle_aim
+anm_show             				= vintorez_draw
+anm_hide             				= vintorez_holster
+anm_idle             				= vintorez_idle
+anm_idle_sprint         				= vintorez_sprint
+anm_idle_moving 				= vintorez_moving
+anm_shots               				= vintorez_shoot, shoot
+anm_reload              				= vintorez_reload, reload
+anm_idle_aim           				= vintorez_idle_aim
+anm_bore					= vintorez_bore
 
-;anm_switch              = vintorez_switch_off
-;anm_switch_g            = vintorez_switch_on
-anm_bore						= vintorez_idle_bore
-
-;anm_hide_w_gl           = vintorez_holster_w_gl
-;anm_show_w_gl           = vintorez_draw_w_gl
-;anm_idle_w_gl           = vintorez_idle_w_gl
-;anm_shots_w_gl          = vintorez_shoot_w_gl
-;anm_reload_w_gl         = vintorez_reload_w_gl
-;anm_idle_w_gl_aim       = vintorez_idle_w_gl_aim
-;anm_idle_sprint_w_gl		= vintorez_idle_sprint_w_gl
-;anm_idle_moving_w_gl		= vintorez_idle_moving_w_gl
-;anm_bore_w_gl				= vintorez_idle_bore
-
-;anm_show_g         	   = vintorez_draw_grenade
-;anm_hide_g         	   = vintorez_holster_grenade
-;anm_idle_g         	   = vintorez_idle_grenade
-;anm_reload_g       	   = vintorez_reload_grenade
-;anm_idle_g_aim     	   = vintorez_idle_grenade
-;anm_shots_g        	   = vintorez_shoot_grenade
-;anm_idle_sprint_g			= vintorez_idle_sprint_grenade
-;anm_idle_moving_g			= vintorez_idle_moving_grenade
-;anm_bore_g					= vintorez_idle_bore
-
-
-
-gl_hud_offset_pos	= -0.053000,-0.059000,0.000000
-gl_hud_offset_rot	= -0.145000,0.000000,0.000000
-
-lean_hud_offset_pos	= 0,0,0
-lean_hud_offset_rot	= 0,0,0
-
-grenade_bone            = grenade
+lean_hud_offset_pos				= 0,0,0
+lean_hud_offset_rot				= 0,0,0
 
 ;-----------------------------------------------------------------------------
 ; Уникальные
 ;-----------------------------------------------------------------------------
 [wpn_vintorez_nimble]:wpn_vintorez
 $spawn						= "weapons\unique\vintorez_nimble"                ; option for Level Editor
-inv_name				= st_wpn_vintorez_nimble
-description					= st_wpn_vintorez_nimble_descr
 
 cost                    = 15000
 

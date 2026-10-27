@@ -1,0 +1,23 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+stranger_talk1} sr_idle@2
+on_info2 = {+mg_zone_lonl_house =is_render_r1or2} sr_idle@mg1 %=add_self_spot(mg_deathzone_mark9a:mg_deathzone_mark1_text) =mg_zone_lonlhouse_think%
+on_info3 = {+mg_zone_lonl_house =is_render_r3or4} sr_idle@mg1 %=add_self_spot(mg_deathzone_mark9b:mg_deathzone_mark1_text) =mg_zone_lonlhouse_think%
+
+[sr_idle@2]
+on_info = {+knife_finded +map_finded +car_finded +laboratory_finded +bolt_finded +well_finded} sr_idle@4
+on_actor_dist_ge_nvis = 45|sr_idle@3 %=disable_ui =run_postprocess(fade_in_out) =run_cam_effector(dream) =play_sound_by_story(actor:actor_moan)%
+
+[sr_idle@3]
+on_game_timer = 35|sr_idle@2 %=lonl_house_script_zone_leave =enable_ui%
+
+[sr_idle@4]
+
+
+
+; Для режима Мастер:
+[sr_idle@mg1]
+on_info = {-mg_zone_lonl_house =is_render_r1or2} sr_idle@1 %=remowe_self_spot(mg_deathzone_mark9a:mg_deathzone_mark1_text)%
+on_info2 = {-mg_zone_lonl_house =is_render_r3or4} sr_idle@1 %=remowe_self_spot(mg_deathzone_mark9b:mg_deathzone_mark1_text)%

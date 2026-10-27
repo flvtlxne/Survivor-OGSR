@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+
+	<string id="st_actor_name">
+		<text>Инженер</text>
+	</string>
+	<string id="zmechanical">
+		<text>Мастерская</text>
+	</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<string id="jup_a10_bandit_leader_name">
 		<text>Валет</text>
 	</string>
@@ -162,9 +189,7 @@
 	<string id="pri_b306_envoy_name">
 		<text>Барчук</text>
 	</string>
-	<string id="st_actor_name">
-		<text>Дегтярёв</text>
-	</string>
+
 	<string id="st_jup_a12_bandit_cashier">
 		<text>Гном</text>
 	</string>

@@ -1,0 +1,23 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_wind_generator_base_use
+on_use = {=actor_has_item(wind_generator_wing) =actor_has_item(wind_generator_reductor) =actor_has_item(car_item_litol) =actor_has_item(car_item_wiring)} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+on_info = {=master_difficulty} %=destroy_object%
+
+; Устанавливаем ветряк:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(repare_something)%
+
+[ph_idle@3]
+on_game_timer = 15|ph_idle@1 %=remove_item(wind_generator_wing) =remove_item(wind_generator_reductor) =remove_item(car_item_litol) =remove_item(car_item_wiring) =destroy_object =spawn_lonl_house_wind_generator +lonl_house_electricity =enable_ui%
+
+
+
+
+ 

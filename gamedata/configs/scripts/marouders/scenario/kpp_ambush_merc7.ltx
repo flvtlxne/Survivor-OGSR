@@ -1,0 +1,72 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+
+
+[walker@start]
+path_walk = kpp_ambush_merc7_walk1
+path_look = kpp_ambush_mercs_look_pnt
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {-actor_has_lr300 -actor_has_ak74 -actor_has_aksu} walker@1
+
+
+; В засаде:
+[walker@1]
+path_walk = kpp_ambush_merc7_walk1
+path_look = kpp_ambush_mercs_look_pnt
+invulnerable = true
+combat_ignore_cond = true
+meet = no_meet
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+kpp_sbu_see_ambush2} walker@1_1
+
+[walker@1_1]
+path_walk = kpp_ambush_merc7_walk1
+path_look = kpp_ambush_mercs_look_pnt
+invulnerable = false
+combat_ignore_cond = true
+meet = no_meet
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+kpp_mercs_ambush_atack} walker@2, {+kpp_sbu_atack} walker@2 %=actor_neutral%
+
+
+; Атакуем:
+[walker@2]
+path_walk = kpp_ambush_merc7_walk1
+path_look = kpp_ambush_mercs_look_pnt
+invulnerable = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+kpp_heli_dead} walker@3
+
+
+; После боя:
+[walker@3]
+path_walk = kpp_ambush_merc7_walk2
+path_look = kpp_ambush_mercs_look_pnt2
+invulnerable = true
+meet = no_meet
+
+
+
+
+
+
+
+

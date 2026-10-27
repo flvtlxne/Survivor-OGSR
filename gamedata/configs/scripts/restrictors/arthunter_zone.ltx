@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+map_finded} sr_idle@2 %=add_self_spot(red_location:usefull_place_mark)%
+
+[sr_idle@2]
+on_info = {+arthunter_note1_info} sr_idle@3 %=give_task(addtask_arthunter) =remowe_self_spot(red_location:usefull_place_mark)%
+
+[sr_idle@3]
+on_info = {+arthunter_note2_info} sr_idle@4 %=spawn_arthunter_friend%
+
+[sr_idle@4]
+on_info = {=actor_has_item(af_teleport)} sr_idle@nil %+af_teleport_finded =remove_item(af_teleport) =give_item(af_teleport_item:actor) =destroy_object(story:arthunter_friend)%
+
+[sr_idle@nil]
+
+

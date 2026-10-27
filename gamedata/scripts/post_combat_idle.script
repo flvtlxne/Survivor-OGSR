@@ -1,3 +1,12 @@
+--'-------------------------------------------------------------------------------------------------------------------
+--' post combat idle
+--' ai additions
+--' modified by Bak
+--'--------------------------------------------------------------------------------------------------------------------
+
+local def_min_post_combat_time = 5000
+local def_max_post_combat_time = 15000
+local squad_play_dist = 25*25
 
 class "evaluator_combat_enemy" (property_evaluator)
 function evaluator_combat_enemy:__init(storage, name) super(nil, name)
@@ -8,42 +17,68 @@ function evaluator_combat_enemy:__init(storage, name) super(nil, name)
 end
 function evaluator_combat_enemy:evaluate()
 	local best_enemy = self.object:best_enemy()
-	if best_enemy ~= nil and not xr_combat_ignore.is_enemy(self.object, best_enemy, db.storage[self.object:id()].combat_ignore, true) then
+	if best_enemy ~= nil and xr_combat_ignore.is_ignored(self.object,best_enemy) then
 		return false
 	end
-	if best_enemy ~= nil and self.st.timer ~= nil then
-		self.st.last_best_enemy_id = best_enemy:id()
-		self.st.last_best_enemy_name = best_enemy:name()
-		self.st.timer = nil
+	local st = self.st
+	if best_enemy ~= nil and st.timer ~= nil and not best_enemy:wounded() then
+		st.last_best_enemy_id = best_enemy:id()
+--		st.last_best_enemy_name = best_enemy:name()
+		st.timer = nil
 		return true
 	end
 
-	if best_enemy == nil and self.st.timer == nil then
-		--printf("object name is [%s]", self.object:name())
-		local overrides = db.storage[self.object:id()].overrides
-		local min = (overrides and overrides.min_post_combat_time*1000) or 10000
-		local max = (overrides and overrides.max_post_combat_time*1000) or 15000
-		if self.st.last_best_enemy_id == db.actor:id() then
-			self.st.timer = time_global()
+	if st.timer == nil and (best_enemy == nil or best_enemy:wounded()) then
+		local my_id = self.object:id()
+		local squad = get_object_squad(self.object)
+		st.iamcomandeer = not squad or my_id == squad:commander_id()
+		local overrides = db.storage[my_id].overrides
+		if overrides and overrides.min_post_combat_time then
+			local min = overrides.min_post_combat_time*1000
+			local max = overrides.max_post_combat_time*1000
+			st.timer = time_global() + math.random(min, max)
 		else
-			self.st.timer = time_global() + math.random(min, max)
+			if st.iamcomandeer then
+				if st.last_best_enemy_id == db.actor:id() then
+					st.timer = time_global()+ math.random(def_min_post_combat_time/2,def_max_post_combat_time/2)
+				else
+					st.timer = time_global() + math.random(def_min_post_combat_time, def_max_post_combat_time)
+				end
+				if squad then
+					local my_pos = self.object:position()
+					for member in squad:squad_members() do
+						if member.id ~= my_id and db.storage[member.id] and member.object.position:distance_to_sqr(my_pos) <= squad_play_dist then
+							db.storage[member.id].post_combat_wait.timer = st.timer+6000
+						end
+					end
+				end
+			else
+				st.timer = time_global() + math.random(def_min_post_combat_time/5,def_max_post_combat_time/3)
+			end
 		end
 	end
 
-	if self.st.timer == nil then
-		return best_enemy ~= nil
-	end
-	
-	if time_global() < self.st.timer then
+	if best_enemy ~= nil then
 		return true
-	end 
-
-	if self.st.animation == nil then
+	elseif st.timer == nil then
 		return false
 	end
-	self.st.animation:set_state(nil)
-	
-	return self.st.animation.states.anim_marker ~= nil	
+
+	if surge_manager.is_started() then
+		st.timer = 0
+		return false
+	end
+
+	if time_global() < st.timer then
+		return true
+	end
+
+	if st.animation == nil then
+		return false
+	end
+--	st.animation:set_state(nil)
+
+	return st.animation.states.anim_marker ~= nil
 end
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -53,46 +88,128 @@ function action_post_combat_wait:__init(npc, storage, action_name) super(nil, ac
 end
 function action_post_combat_wait:initialize()
 	action_base.initialize(self)
+	local npc = self.object
 
---	state_mgr.set_state(self.object, "hide")
 
-	self.object:set_item(object.idle, self.object:best_weapon())
-	self.object:set_mental_state(anim.danger)
-	self.object:set_body_state(move.crouch)
-	self.object:set_movement_type(move.stand)
-	self.object:set_sight(look.danger, nil, 0)
-	
 	self.anim_st = { animstate = { states = {anim_marker = nil } } }
-	
-	self.st.animation = state_mgr_animation.animation(self.object, self.anim_st, "state_mgr_animation_list")
-	
-	
-	self.anim_started = false		
+
+	self.st.animation = state_mgr_animation.animation(npc, self.anim_st, "state_mgr_animation_list")
+	if self.st.iamcomandeer and self.st.timer > time_global()+def_min_post_combat_time then
+		local squad = get_object_squad(npc)
+		if squad and squad:npc_count() > 1 then
+			local my_pos,my_id = self.object:position(),self.object:id()
+			for member in squad:squad_members() do
+				if member.id ~= my_id and member.object.position:distance_to_sqr(my_pos) <= squad_play_dist then
+					xr_sound.set_sound_play(npc:id(), "post_combat_wait")
+					self.play_relax_sound = true
+					break
+				end
+			end
+		end
+	end
+	npc:set_movement_type(move.stand)
+
+	if npc:in_smart_cover() then
+		npc:set_smart_cover_target()
+		npc:set_smart_cover_target_lookout()
+		return
+	end
+
+	npc:set_mental_state(anim.danger)
+	npc:set_body_state(move.crouch)
+	npc:set_dest_level_vertex_id(npc:level_vertex_id())
+	npc:set_item(object.idle,npc:active_item() or npc:best_weapon())
+
+	local wm = npc:get_wm(true)
+	if wm then
+		wm:disable()
+	end
+
+	if math.random() > 0.3 then
+--		npc:set_sight(look.cur_dir, nil, 0)
+		npc:set_sight(look.direction, npc:direction())
+	else
+		npc:set_sight(look.danger, nil, 0)
+	end
 end
 function action_post_combat_wait:execute()
 	action_base.execute(self)
+	local npc = self.object
+	if npc:in_smart_cover() then
+		npc:set_smart_cover_target_lookout()
+		return
+	end
 
-	if not self.object:in_smart_cover() then
-		if self.anim_started == false and  
-		   not weapon_locked(self.object) 
-		then
-			self.anim_started = true
-			self.st.animation:set_state("hide")
-			self.st.animation:set_control()		
+	if self.anim_started == nil then
+		self.anim_started = false
+		local rand =  math.random()
+		if rand < 0.1 and npc:active_slot() == 3 then
+			self.anim = "bloodsucker_search"
+			npc:set_body_state(move.standing)
+		elseif rand < 0.2 then
+			self.anim = "caution"
+			npc:set_body_state(move.standing)
+		elseif rand < 0.25 then
+			self.anim = "zat_b38_stalker_alert"
+			npc:set_sight(look.direction, npc:direction())
+			npc:set_body_state(move.standing)
+--			npc:set_mental_state(anim.free)
+		else
+			self.anim = "hide"
+			npc:set_body_state(move.crouch)
 		end
-	end 
+	elseif self.anim_started == false and not weapon_locked(npc) then
+		local wpn = rx_reload and rx_reload.get_weapon_to_reload(npc,true) --!
+		if wpn and wpn:get_ammo_in_magazine() < 20 then
+			npc:set_item(object.aim_force_full1,wpn)
+			return
+		end
+		npc:set_item(object.idle,npc:active_item())
+		self.anim_started = true
+		self.st.animation:set_state(self.anim)
+		self.st.animation:set_control()
+	end
 
-	xr_sound.set_sound_play(self.object:id(), "post_combat_wait")
+	if time_global() > self.st.timer then
+		if self.anim_started == true then
+			self.st.animation:set_state(nil,self.st.iamcomandeer ~= true)
+		end
+	end
 end
 function action_post_combat_wait:finalize()
-	xr_sound.set_sound_play(self.object:id(), "post_combat_relax")
-	
-	if self.anim_started == true then
-		self.st.animation:set_state(nil, true)
-	end
-	
-	self.st.animation = nil
 	action_base.finalize(self)
+	local npc = self.object
+
+	if self.anim_started == true then
+		self.st.animation:set_state(nil,true)
+	end
+
+	local wm = npc:get_wm(true)
+	if wm then
+		wm:enable()
+	end
+
+	if self.play_relax_sound and not npc:best_enemy() and self.st.timer and self.st.timer < time_global()+2000 then
+		local squad = get_object_squad(npc)
+		if squad and squad:npc_count() > 1 then
+			local my_pos,my_id,tg = npc:position(),npc:id(),time_global()
+			for member in squad:squad_members() do
+				if member.id ~= my_id then
+					local mst = db.storage[member.id].post_combat_wait
+					if mst.animation and mst.animation.states.anim_marker and member.object.position:distance_to_sqr(my_pos) <= squad_play_dist then
+						mst.timer = tg+math.random(200,2800)
+					end
+				end
+			end
+		end
+		xr_sound.set_sound_play(npc:id(), "post_combat_relax")
+	end
+
+	npc:set_sight(look.danger, nil, 0)
+	self.st.animation = nil
+	self.anim_started = nil
+	self.play_relax_sound = nil
+	self.anim = nil
 end
 
 
@@ -100,7 +217,6 @@ function weapon_locked(npc)
 	local weapon_strapped = npc:weapon_strapped()
 	local weapon_unstrapped = npc:weapon_unstrapped()
 
-	--log(string.format("%s [%s] [%s]", self.object:name(), tostring(weapon_strapped), tostring(weapon_unstrapped)))
 	if not (weapon_unstrapped or weapon_strapped) then
 		return true
 	end
@@ -112,25 +228,24 @@ function weapon_locked(npc)
 	if npc:active_item() == nil then
 		return false
 	end
-	
-	local weapon_going_to_be_strapped = npc:is_weapon_going_to_be_strapped(bestweapon) 
-	
+
+	local weapon_going_to_be_strapped = npc:is_weapon_going_to_be_strapped(bestweapon)
+
 	if weapon_going_to_be_strapped and not weapon_strapped then
 		return true
 	end
 
-	if not weapon_going_to_be_strapped and not weapon_unstrapped then
-		return true
-	end
+--	if not weapon_going_to_be_strapped and not weapon_unstrapped then
+--		return true
+--	end
 
-	return false 
+	return false
 end
 
 
 function add_post_combat_idle(npc)
 		local manager = npc:motivation_action_manager()
 		local combat_action = manager:action(stalker_ids.action_combat_planner)
-		--combat_action:show("")
 		local combat_action_planner = cast_planner(combat_action)
 
 		db.storage[npc:id()].post_combat_wait = {}
@@ -148,6 +263,11 @@ function add_post_combat_idle(npc)
 		new_action:add_precondition(world_property(stalker_ids.property_pure_enemy, false))
 		new_action:add_precondition(world_property(stalker_ids.property_critically_wounded, false))
 		new_action:add_precondition(world_property(stalker_ids.property_danger_grenade, false))
+--		new_action:add_precondition(world_property(stalker_ids.property_danger, false))	-- !
 		new_action:add_effect(world_property(stalker_ids.property_enemy, false))
 		combat_action_planner:add_action(stalker_ids.action_post_combat_wait, new_action)
+
+		-- temporary fix here
+		local sudden_act = combat_action_planner:action(stalker_ids.action_sudden_attack)
+		sudden_act:add_precondition(world_property(stalker_ids.property_pure_enemy,true))
 end

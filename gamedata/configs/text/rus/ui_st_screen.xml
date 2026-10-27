@@ -10,7 +10,7 @@
 		<text>Вы слишком перегружены, чтобы двигаться</text>
 	</string>
 	<string id="car_character_use">
-		<text>Открыть дверь ($$ACTION_USE$$)</text>
+		<text>Открыть дверь ($$ACTION_USE$$) \n Завести двигатель - ($$ACTION_SHOW_DETECTOR$$) </text>
 	</string>
 	<string id="character_use">
 		<text>Говорить ($$ACTION_USE$$)</text>

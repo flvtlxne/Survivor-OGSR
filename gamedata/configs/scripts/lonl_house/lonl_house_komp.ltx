@@ -1,0 +1,65 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_komp_tip
+on_info = {=master_difficulty} ph_idle@2_1
+on_use = {+lonl_house_electricity} %=start_lonl_house_comp_interface%
+
+
+[ph_idle@2_1]
+tips      = lonl_house_komp_tip2_1
+on_info = {+lonl_house_electricity} ph_idle@2
+
+[ph_idle@2]
+tips      = lonl_house_komp_tip2
+on_use = {+lonl_house_electricity} ph_idle@3 %=send_tip(mg_komp_vzlom_tip1:default)%
+
+
+[ph_idle@3]
+tips      = lonl_house_komp_tip2
+on_actor_dist_ge_nvis = 10|ph_idle@2 %=send_tip(mg_komp_vzlom_tip3:default)%
+on_game_timer = 91|ph_idle@4 %=send_tip(mg_komp_vzlom_tip1:default)%
+
+[ph_idle@4]
+tips      = lonl_house_komp_tip2
+on_actor_dist_ge_nvis = 10|ph_idle@2 %=send_tip(mg_komp_vzlom_tip3:default)%
+on_game_timer = 91|ph_idle@5 %=send_tip(mg_komp_vzlom_tip1:default)%
+
+[ph_idle@5]
+tips      = lonl_house_komp_tip2
+on_actor_dist_ge_nvis = 10|ph_idle@2 %=send_tip(mg_komp_vzlom_tip3:default)%
+on_game_timer = 91|ph_idle@6 %=send_tip(mg_komp_vzlom_tip1:default)%
+
+[ph_idle@6]
+tips      = lonl_house_komp_tip2
+on_actor_dist_ge_nvis = 10|ph_idle@2 %=send_tip(mg_komp_vzlom_tip3:default)%
+on_game_timer = 91|ph_idle@7 %=send_tip(mg_komp_vzlom_tip1:default)%
+
+[ph_idle@7]
+tips      = lonl_house_komp_tip2
+on_actor_dist_ge_nvis = 10|ph_idle@2 %=send_tip(mg_komp_vzlom_tip3:default)%
+on_game_timer = 91|ph_idle@8 %=send_tip(mg_komp_vzlom_tip1:default)%
+
+[ph_idle@8]
+tips      = lonl_house_komp_tip2
+on_actor_dist_ge_nvis = 10|ph_idle@2 %=send_tip(mg_komp_vzlom_tip3:default)%
+on_game_timer = 91|ph_idle@9 %=send_tip(mg_komp_vzlom_tip2:default) +mg_art_robber_pda_info2 =remove_mg_art_robber_npc_pda =spawn_mg_courier%
+
+
+[ph_idle@9]
+on_info = {=actor_near_mg_courier} ph_idle@nil %=spawn_mg_courier_mob_boss%
+
+
+[ph_idle@nil]
+
+
+
+
+
+
+

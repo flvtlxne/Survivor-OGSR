@@ -1,0 +1,24 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_force@1
+
+[ph_force@1]
+force = 3000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point9
+point_index = 0
+on_info = {+lake_art_sheck_workshop} %=destroy_object%
+on_game_timer = 17|ph_force@2
+
+[ph_force@2]
+force = 3000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point9
+point_index = 0
+on_info = {+lake_art_sheck_workshop} %=destroy_object%
+on_game_timer = 17|ph_force@1

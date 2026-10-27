@@ -1,0 +1,14 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_matches_use
+on_use = {=actor_has_item(firewood) -lonl_house_stove_works} ph_idle@2 %+lonl_house_stove_works =remove_item(firewood)%
+on_info = {=master_difficulty} %=destroy_object%
+
+[ph_idle@2]
+on_info = {-lonl_house_stove_works} ph_idle@1
+
+
+
+ 

@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_actor_inside = sr_idle@2 %=back_to_safezone_replic%
+
+[sr_idle@2]
+on_actor_outside = {!actor_in_car1 -vodka_peredoz} sr_idle@1 %=scenario_save11%
+
+
+[sr_idle@nil]

@@ -1,0 +1,13 @@
+[logic]
+active = sr_light
+
+[sr_light]
+light_on = true
+on_info = {=master_difficulty} sr_idle@nil
+;on_info = {+lonl_house_electricity} sr_idle@1
+
+[sr_idle@1]
+on_info = {-lonl_house_electricity} sr_light
+
+
+[sr_idle@nil]

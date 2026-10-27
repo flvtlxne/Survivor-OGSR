@@ -19,7 +19,7 @@ local death_ini = ini_file("misc\\death_generic.ltx")
 
 
 function init_drop_settings()
-	local community_list = { "stalker", "dolg", "freedom", "bandit", "army", "zombied", "ecolog", "killer", "monolith" }
+	local community_list = { "stalker", "dolg", "freedom", "bandit", "army", "zombied", "ecolog", "killer", "monolith", "zmechanical" }
 
 		for k,v in pairs(community_list) do
 				--' Необходимо заполнить таблицу
@@ -93,7 +93,7 @@ function init_drop_settings()
 			always_keep_item[id] = true
 		end
 	end
-
+	
 	--' Предметы, относящиеся к патронам. Их надо спаунить другим методом.
 	ammo_sections = {}
 	local n = death_ini:line_count("ammo_sections")
@@ -120,6 +120,7 @@ function drop_manager:create_release_item()
 
 	--' Запускаем итератор на удаление предметов
 	self.npc:iterate_inventory(keep_item, self.npc)
+	--self.npc:iterate_inventory(keep_item2, self.npc)
 
 	--' Проверка на отсутствие спауна лута
 	local ini = self.npc:spawn_ini()
@@ -155,6 +156,21 @@ function drop_manager:create_release_item()
 
 end
 
+
+function keep_item2(npc, item)
+	local section = item:section()
+	local ini = npc:spawn_ini()
+	if ini and ini:section_exist("mg_bad_items") and xr_conditions.master_difficulty() == true
+	--and ( section == "upgr_item_specops_outf1"
+	--or section == "upgr_item_specops_outf2"
+	--or section == "upgr_item_specops_outf3" ) 
+	then
+		alife():release(alife():object(item:id()), true)
+		news_manager.send_tip(db.actor, "bad_item_deleted", nil, "recent_surge", nil, nil)
+			--return
+	end
+end
+
 --' Функция вызывается для каждого предмета, если вернет false то предмет удалится.
 function keep_item(npc, item)
 	local section = item:section()
@@ -169,10 +185,20 @@ function keep_item(npc, item)
 			and section ~= "device_pda" then
 		return
 	end
+	
+	
+	if ini and ini:section_exist("mg_bad_items") then
+		alife():release(alife():object(item:id()), true)
+		news_manager.send_tip(db.actor, "bad_item_deleted", nil, "recent_surge", nil, nil)
+	end
+	
 
 	if isArtefact(item) then
 		return
 	end
+	
+	
+	
 --	printf("keep_item:item ["..item:name().."] npc_name ["..npc:name().."]")
 	if section == "bolt" then
 		return
@@ -190,6 +216,9 @@ function keep_item(npc, item)
 	if xr_corpse_detection.lootable_table[section] == true and ammo_sections[section] == nil then
 		return
 	end
+	
+	
+	
 	alife():release(alife():object(item:id()), true)
 
 --[[
@@ -217,6 +246,7 @@ function keep_item(npc, item)
 		alife():release(alife():object(item:id()), true)
 	end
 	]]
+	
 end
 
 function set_weapon_drop_condition(item)

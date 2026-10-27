@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <mechanical_others>
+
+	<table x="200" y="85" width="812" height="450" stretch="1">
+		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+	</table>
+
+	<name x="250" y="95" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Мастерская (прочее):</text>
+	</name>
+
+	<text1 x="260" y="140" width="380" height="230">
+		<text x="0" y="0" r="135" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Здесь можно собирать комплекты для ремонта транспорта и прочее. При наличии всех необходимых компонентов для сборки, напротив кнопки будет гореть зелёный индикатор.</text>
+	</text1>
+
+
+	<text2 x="250" y="220" width="250" height="230">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Подшипники + масло + литол + набор ключей + проводка + домкрат + WD-40 + аккумулятор + покрышка = </text>
+	</text2>
+
+	<text3 x="250" y="300" width="260" height="230">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Газовый баллон + аккумулятор + проводка = </text>
+	</text3>
+
+
+	<indicator1 x="500" y="220" width="32" height="32" stretch="1">
+		<texture x="0" y="0" width="32" height="32">ui\indicator_green</texture>
+	</indicator1>
+
+	<indicator2 x="500" y="295" width="32" height="32" stretch="1">
+		<texture x="0" y="0" width="32" height="32">ui\indicator_green</texture>
+	</indicator2>
+
+	<indicator3 x="500" y="370" width="32" height="32" stretch="1">
+		<texture x="0" y="0" width="32" height="32">ui\indicator_green</texture>
+	</indicator3>
+
+	<indicator4 x="450" y="270" width="32" height="32" stretch="1">
+		<texture x="0" y="0" width="32" height="32">ui\indicator_green</texture>
+	</indicator4>
+
+	<indicator5 x="450" y="300" width="32" height="32" stretch="1">
+		<texture x="0" y="0" width="32" height="32">ui\indicator_green</texture>
+	</indicator5>
+
+
+
+
+	<btn_1 x="540" y="225" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Ремкомплект для авто</text>
+	</btn_1>
+
+	<btn_2 x="540" y="300" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Самодельная бомба</text>
+	</btn_2>
+
+	<btn_3 x="540" y="375" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Взломать кейс курьера</text>
+	</btn_3>
+
+	<btn_4 x="500" y="270" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Прочее</text>
+	</btn_4>
+
+	<btn_5 x="500" y="300" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Прочее</text>
+	</btn_5>
+
+
+
+	<btn_back x="330" y="480" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Назад</text>
+	</btn_back>
+
+	<btn_exit x="460" y="480" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Выход</text>
+	</btn_exit>
+
+
+    </mechanical_others>
+
+

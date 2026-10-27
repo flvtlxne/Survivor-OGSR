@@ -1,0 +1,56 @@
+[logic]
+active = sr_idle@1
+
+
+; Обрабатываем квест на поиск убийцы:
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+stranger_secret_task1_info} sr_idle@2 %=give_task(addtask_murder)%
+
+[sr_idle@2]
+on_actor_inside = {=actor_has_item(showel)} sr_idle@3 %=run_postprocess(fade_in) =disable_ui =spawn_lonl_house_grave_npc =spawn_lonl_house_grave_cross%
+
+[sr_idle@3]
+on_game_timer = 40|sr_cutscene@1 %=lonl_house_grave_think%
+
+[sr_cutscene@1]
+point = lonl_house_grave_cross_point_1
+look = lonl_house_grave_cross_point
+cam_effector = scenario_cam\lonl_house_script_cam7
+on_signal = cameff_end | sr_idle@4 %+lonl_house_grave_dig =delete_lonl_house_scelet1%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@4]
+on_info = {+deadman_diary_info2} sr_idle@5 %=spawn_village_house_polter%
+
+[sr_idle@5]
+on_info = {+deadman_diary_info3} sr_idle@6
+
+[sr_idle@6]
+on_info = {+lonl_house_pogreb_scelet_off} sr_idle@7 %=run_postprocess(fade_in) =disable_ui =spawn_lonl_house_grave_npc =spawn_lonl_house_grave_cross2%
+
+[sr_idle@7]
+on_game_timer = 40|sr_cutscene@2
+
+[sr_cutscene@2]
+point = lonl_house_grave_cross_point_1
+look = lonl_house_grave_cross_point2
+cam_effector = scenario_cam\lonl_house_script_cam7
+on_signal = cameff_end | sr_idle@nil %+lonl_house_grave2_dig =delete_lonl_house_scelet2%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+

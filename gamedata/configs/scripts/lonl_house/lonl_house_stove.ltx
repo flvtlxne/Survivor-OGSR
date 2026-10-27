@@ -1,0 +1,16 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+nonscript_usable = true
+tips      = lonl_house_stove_use
+on_info = {+lonl_house_stove_works} ph_idle@2
+
+[ph_idle@2]
+nonscript_usable = false
+on_info = {-lonl_house_stove_works} ph_idle@1
+
+
+
+
+ 

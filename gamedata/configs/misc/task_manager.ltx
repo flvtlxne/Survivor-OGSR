@@ -4,6 +4,772 @@
 #include "tm_jupiter.ltx"
 #include "tm_pripyat.ltx"
 
+
+
+;;;; Survival Mod Storyline Tasks ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[lwtask_find_radio]
+icon = ui_inGame2_Propavshiy_chasovoy
+prior = 192
+storyline = false
+
+title = {+kpp_heli_dead} lwtask_find_radio_name17, {+kpp_sbu_dead} lwtask_find_radio_name16, {+kpp_mercs_dead} lwtask_find_radio_name15, {+kpp_sbu_atack} lwtask_find_radio_name14, {+kpp_mercs_ambush_atack} lwtask_find_radio_name13, {+kpp_sbu_see_ambush2} lwtask_find_radio_name12, {+memory_block_hided} lwtask_find_radio_name11, {+shron_merc_lider_pda_info} lwtask_find_radio_name10, {+satellite_memory_block_finded} lwtask_find_radio_name9, {+lw_stranger_pda_info} lwtask_find_radio_name8, {+village_stranger_controller} lwtask_find_radio_name7, {+marouder_lider_3pda_info} lwtask_find_radio_name6, {+maroders_ambush_habar} lwtask_find_radio_name5, {+maroders_ambush_end} lwtask_find_radio_name4, {+stranger_talk2} lwtask_find_radio_name3, {+helicr_box_open} lwtask_find_radio_name2, {-helicr_box_open -stranger_talk2 -maroders_ambush_end -maroders_ambush_habar -marouder_lider_3pda_info -village_stranger_controller -lw_stranger_pda_info -satellite_memory_block_finded -shron_merc_lider_pda_info -memory_block_hided -kpp_sbu_see_ambush2 -kpp_mercs_ambush_atack -kpp_sbu_atack -kpp_mercs_dead -kpp_sbu_dead -kpp_heli_dead} lwtask_find_radio_name1
+
+descr = {+kpp_heli_dead} lwtask_find_radio_descr17, {+kpp_sbu_dead} lwtask_find_radio_descr16, {+kpp_mercs_dead} lwtask_find_radio_descr15, {+kpp_sbu_atack} lwtask_find_radio_descr14, {+kpp_mercs_ambush_atack} lwtask_find_radio_descr13, {+kpp_sbu_see_ambush2} lwtask_find_radio_descr12, {+memory_block_hided} lwtask_find_radio_descr11, {+shron_merc_lider_pda_info} lwtask_find_radio_descr10, {+satellite_memory_block_finded} lwtask_find_radio_descr9, {+lw_stranger_pda_info} lwtask_find_radio_descr8, {+village_stranger_controller} lwtask_find_radio_descr7, {+marouder_lider_3pda_info} lwtask_find_radio_descr6, {+maroders_ambush_habar} lwtask_find_radio_descr5, {+maroders_ambush_end} lwtask_find_radio_descr4, {+stranger_talk2} lwtask_find_radio_descr3, {+helicr_box_open} lwtask_find_radio_descr2, {-helicr_box_open -stranger_talk2 -maroders_ambush_end -maroders_ambush_habar -marouder_lider_3pda_info -village_stranger_controller -lw_stranger_pda_info -satellite_memory_block_finded -shron_merc_lider_pda_info -memory_block_hided -kpp_sbu_see_ambush2 -kpp_mercs_ambush_atack -kpp_sbu_atack -kpp_mercs_dead -kpp_sbu_dead -kpp_heli_dead} lwtask_find_radio_descr1
+
+target = {+kpp_heli_dead} kpp_merc_lider, {+kpp_sbu_dead} kpp_heli, {+kpp_mercs_dead} sbu_comand_lider, {+kpp_sbu_atack} script_zone_blokpost, {+kpp_mercs_ambush_atack} script_zone_blokpost, {+kpp_sbu_see_ambush2} script_zone_blokpost, {+memory_block_hided} kpp_mercs_radio, {+shron_merc_lider_pda_info} lonl_house_artefact_box, {+satellite_memory_block_finded} shron_merc_lider, {+lw_stranger_pda_info} lw_stranger_treasure, {+village_stranger_controller} village_stranger_controller, {+marouder_lider_3pda_info} lw_stranger, {+maroders_ambush_habar} ambush_scenar_maroder_lider1, {+maroders_ambush_end} village_marodrs_ambush_box, {+stranger_talk2} ccc, {+helicr_box_open} script_zone_lonl_house, {-helicr_box_open -stranger_talk2 -maroders_ambush_end -maroders_ambush_habar -village_stranger_controller -marouder_lider_3pda_info -lw_stranger_pda_info -satellite_memory_block_finded -shron_merc_lider_pda_info -memory_block_hided -kpp_sbu_see_ambush2 -kpp_mercs_ambush_atack -kpp_sbu_atack -kpp_mercs_dead -kpp_sbu_dead -kpp_heli_dead} helicrash_box
+
+condlist_0 = {+lw_mercs_escape} complete
+condlist_1 = {+lw_sbu_escape} complete
+condlist_2 = {+lw_freeplay} reversed 
+
+
+
+[lwtask_stranger_work]
+icon = ui_inGame2_Reputatsiya
+prior = 191
+storyline = true
+
+title = {+lw_stranger_after_workshop_call} lwtask_stranger_work_name12, {+workshop_marodrs_info} lwtask_stranger_work_name11, {+stranger_talk6} lwtask_stranger_work_name10, {+lw_stranger_after_lake_call} lwtask_stranger_work_name9, {+stranger_talk5} lwtask_stranger_work_name8, {+lw_stranger_after_willage_call} lwtask_stranger_work_name7, {+actor_in_willage_budka} lwtask_stranger_work_name6, {+stranger_talk4} lwtask_stranger_work_name5, {+lw_stranger_after_newbie_call} lwtask_stranger_work_name4, {+stranger_talk3} lwtask_stranger_work_name3, {+marodr_camp_done} lwtask_stranger_work_name2, {-marodr_camp_done -stranger_talk3 -lw_stranger_after_newbie_call -stranger_talk4 -actor_in_willage_budka -lw_stranger_after_willage_call -stranger_talk5 -lw_stranger_after_lake_call -stranger_talk6 -workshop_marodrs_info -lw_stranger_after_workshop_call -333 -444 -555} lwtask_stranger_work_name1
+
+descr = {+lw_stranger_after_workshop_call} lwtask_stranger_work_descr12, {+workshop_marodrs_info} lwtask_stranger_work_descr11, {+stranger_talk6} lwtask_stranger_work_descr10, {+lw_stranger_after_lake_call} lwtask_stranger_work_descr9, {+stranger_talk5} lwtask_stranger_work_descr8, {+lw_stranger_after_willage_call} lwtask_stranger_work_descr7, {+actor_in_willage_budka} lwtask_stranger_work_descr6, {+stranger_talk4} lwtask_stranger_work_descr5, {+lw_stranger_after_newbie_call} lwtask_stranger_work_descr4, {+stranger_talk3} lwtask_stranger_work_descr3, {+marodr_camp_done} lwtask_stranger_work_descr2, {-marodr_camp_done -stranger_talk3 -lw_stranger_after_newbie_call -stranger_talk4 -actor_in_willage_budka -lw_stranger_after_willage_call -stranger_talk5 -lw_stranger_after_lake_call -stranger_talk6 -workshop_marodrs_info -lw_stranger_after_workshop_call -333 -444 -555} lwtask_stranger_work_descr1
+
+target = {+lw_stranger_after_workshop_call} willage_stranger_trap_zone, {+workshop_marodrs_info} script_zone_workshop, {+stranger_talk6} secret_camp_zone, {+lw_stranger_after_lake_call} lw_stranger, {+stranger_talk5} lake_hutor_zone, {+lw_stranger_after_willage_call} lw_stranger, {+actor_in_willage_budka} willage_scenar_marouder_lider, {+stranger_talk4} willage_avtoritets_hide_zone, {+lw_stranger_after_newbie_call} lw_stranger, {+stranger_talk3} lw_newbie, {+marodr_camp_done} script_zone_lonl_house, {-marodr_camp_done -stranger_talk3 -lw_stranger_after_newbie_call -stranger_talk4 -actor_in_willage_budka -lw_stranger_after_willage_call -stranger_talk5 -lw_stranger_after_lake_call -stranger_talk6 -workshop_marodrs_info -lw_stranger_after_workshop_call -333 -444 -555} script_zone_forest_camp
+
+condlist_0 = {+101010} complete
+condlist_1 = {+marorers_house_trap} reversed 
+
+
+
+;;;; Survival Mod Additional Tasks ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[addtask_murder]
+icon = ui_inGame2_PD_Sisshik
+prior = 110
+storyline = false
+title = {+deadman_diary_info5} addtask_murder_name7, {+deadman_diary_info4} addtask_murder_name6, {+deadman_diary_info3} addtask_murder_name5, {+deadman_diary_info2} addtask_murder_name4, {+deadman_diary_info1} addtask_murder_name3, {+lonl_house_grave_dig} addtask_murder_name2, {-lonl_house_grave_dig -deadman_diary_info1 -deadman_diary_info2 -deadman_diary_info3 -deadman_diary_info4 -deadman_diary_info5} addtask_murder_name1
+descr = {+deadman_diary_info5} addtask_murder_descr7, {+deadman_diary_info4} addtask_murder_descr6, {+deadman_diary_info3} addtask_murder_descr5, {+deadman_diary_info2} addtask_murder_descr4, {+deadman_diary_info1} addtask_murder_descr3, {+lonl_house_grave_dig} addtask_murder_descr2, {-lonl_house_grave_dig -deadman_diary_info1 -deadman_diary_info2 -deadman_diary_info3 -deadman_diary_info4 -deadman_diary_info5} addtask_murder_descr1
+target = {+deadman_diary_info5} lonl_house_pogreb_door, {+deadman_diary_info4} hill_sceleton, {+deadman_diary_info3} script_zone_graveyard, {+deadman_diary_info2} village_house_polter_zone, {+deadman_diary_info1} willage_secr_place_box, {+lonl_house_grave_dig} lonl_house_invbox_6, {-lonl_house_grave_dig -deadman_diary_info1 -deadman_diary_info2 -deadman_diary_info3 -deadman_diary_info4 -deadman_diary_info5} lonl_house_grave_zone
+condlist_0 = {+deadman_diary_info6} complete
+
+
+[addtask_scaner]
+icon = ui_inGame2_Radiopomehi
+prior = 111
+storyline = false
+title = {+222} addtask_scaner_name3, {+scaner_maroder1_pda_info} addtask_scaner_name2, {-scaner_maroder1_pda_info -222} addtask_scaner_name1
+descr = {+222} addtask_scaner_descr3, {+scaner_maroder1_pda_info} addtask_scaner_descr2, {-scaner_maroder1_pda_info -222} addtask_scaner_descr1
+target = {+222} ccc, {+scaner_maroder1_pda_info} script_zone_lonl_house, {-scaner_maroder1_pda_info -222} scaner_maroder1
+condlist_0 = {+artefacts_spawn} complete
+
+
+[addtask_soldier]
+icon = ui_inGame2_Skat_3
+prior = 112
+storyline = false
+title = {+workshop_house_search2} addtask_soldier_name6, {+lostsold_burers_dead} addtask_soldier_name5, {+actor_behind_workshop_house_zone} addtask_soldier_name4, {+lost_soldier_info3} addtask_soldier_name3, {+lost_soldier_info2} addtask_soldier_name2, {-lost_soldier_info2 -lost_soldier_info3 -actor_behind_workshop_house_zone -lostsold_burers_dead -workshop_house_search2} addtask_soldier_name1
+descr = {+workshop_house_search2} addtask_soldier_descr6, {+lostsold_burers_dead} addtask_soldier_descr5, {+actor_behind_workshop_house_zone} addtask_soldier_descr4, {+lost_soldier_info3} addtask_soldier_descr3, {+lost_soldier_info2} addtask_soldier_descr2, {-lost_soldier_info2 -lost_soldier_info3 -actor_behind_workshop_house_zone -lostsold_burers_dead -workshop_house_search2} addtask_soldier_descr1
+target = {+workshop_house_search2} lost_soldier, {+lostsold_burers_dead} workshop_house_zone, {+actor_behind_workshop_house_zone} workshop_house_zone, {+lost_soldier_info3} workshop_house_zone, {+lost_soldier_info2} willage_invbox_2, {-lost_soldier_info2 -lost_soldier_info3 -actor_behind_workshop_house_zone -lostsold_burers_dead -workshop_house_search2} lost_sold_car_box
+condlist_0 = {+lost_soldier_info} complete
+
+
+[addtask_likvidator]
+icon = ui_inGame2_PD_Otmecheniy_zonoy
+prior = 113
+storyline = false
+title = {+likvidator_info3} addtask_likvidator_name3, {+likvidator_info2} addtask_likvidator_name2, {-likvidator_info3 -likvidator_info2} addtask_likvidator_name1
+descr = {+likvidator_info3} addtask_likvidator_descr3, {+likvidator_info2} addtask_likvidator_descr2, {-likvidator_info3 -likvidator_info2} addtask_likvidator_descr1
+target = {+likvidator_info3} nil, {+likvidator_info2} workshop_likvidator_box, {-likvidator_info3 -likvidator_info2} village_likvidator_box
+condlist_0 = {+likvidator_treasure_finded} complete
+
+
+[addtask_dog]
+icon = ui_inGame2_Issledovanie_anomaliy
+prior = 114
+storyline = false
+title = {+anomaly_maroder2_dead} addtask_dog_name4, {+workshop_napilnik} addtask_dog_name3, {+personal_dog_note2_info} addtask_dog_name2, {-anomaly_maroder2_dead -workshop_napilnik -personal_dog_note2_info} addtask_dog_name1
+descr = {+anomaly_maroder2_dead} addtask_dog_descr4, {+workshop_napilnik} addtask_dog_descr3, {+personal_dog_note2_info} addtask_dog_descr2, {-anomaly_maroder2_dead -workshop_napilnik -personal_dog_note2_info} addtask_dog_descr1
+target = {+anomaly_maroder2_dead} tunnel_anomaly_maroder1, {+workshop_napilnik} village_anomaly_tunnel_zone, {+personal_dog_note2_info} workshop_napilnik, {-anomaly_maroder2_dead -workshop_napilnik -personal_dog_note2_info} village_blackhole_zone
+condlist_0 = {+anomaly_maroder1_pda_info} complete
+
+
+[addtask_mushrom]
+icon = ui_inGame2_Kontrakt_s_uchenimi
+prior = 115
+storyline = false
+title = {+narkoman_note4_info} addtask_mushrom_name4, {+narkoman_note3_info} addtask_mushrom_name3, {+narkoman_note2_info} addtask_mushrom_name2, {-narkoman_note3_info -narkoman_note2_info +narkoman_note1_info} addtask_mushrom_name1
+descr = {+narkoman_note4_info} addtask_mushrom_descr4, {+narkoman_note3_info} addtask_mushrom_descr3, {+narkoman_note2_info} addtask_mushrom_descr2, {-narkoman_note3_info -narkoman_note2_info +narkoman_note1_info} addtask_mushrom_descr1
+target = {+narkoman_note4_info} village_narkoman_room, {+narkoman_note3_info} narkoman_box4, {+narkoman_note2_info} narkoman_box3, {-narkoman_note4_info -narkoman_note3_info -narkoman_note2_info +narkoman_note1_info} village_narkoman_room
+condlist_0 = {+scientist_seif_open} complete
+
+
+[addtask_chimera]
+icon = ui_inGame2_Ohota_na_Himeru
+prior = 116
+storyline = false
+title = {+maroder_chimera_box_finded} addtask_chimera_name4, {+maroder_chimera_search} addtask_chimera_name3, {+maroder_chimera_dead} addtask_chimera_name2, {-maroder_chimera_box_finded -maroder_chimera_dead -maroder_chimera_search} addtask_chimera_name1
+descr = {+maroder_chimera_box_finded} addtask_chimera_descr4, {+maroder_chimera_search} addtask_chimera_descr3, {+maroder_chimera_dead} addtask_chimera_descr2, {-maroder_chimera_box_finded -maroder_chimera_dead -maroder_chimera_search} addtask_chimera_descr1
+target = {+maroder_chimera_box_finded} chimera_hunter, {+maroder_chimera_search} maroder_chimera_home, {+maroder_chimera_dead} maroder_chimera, {-maroder_chimera_box_finded -maroder_chimera_dead -maroder_chimera_search} kill_himera_zone
+condlist_0 = {+maroder_chimera_end} complete
+
+
+[addtask_zavhoz]
+icon = ui_inGame2_PD_Sostoyatelniy_klient
+prior = 117
+storyline = false
+title = {+zavhoz_friend_info} addtask_zavhoz_name2, {-zavhoz_friend_info} addtask_zavhoz_name1
+descr = {+zavhoz_friend_info} addtask_zavhoz_descr2, {-zavhoz_friend_info} addtask_zavhoz_descr1
+target = {+zavhoz_friend_info} maroders_big_treasure, {-zavhoz_friend_info} zavhoz_friend
+condlist_0 = {+maroders_big_treasure_finded} complete
+
+
+[addtask_arthunter]
+icon = ui_inGame2_Neizvestniy
+prior = 118
+storyline = false
+title = {+village_power_box_on} addtask_arthunter_name4, {+arthunter_note3_info} addtask_arthunter_name3, {+arthunter_note2_info} addtask_arthunter_name2, {-arthunter_note2_info -arthunter_note3_info -village_power_box_on} addtask_arthunter_name1
+descr = {+village_power_box_on} addtask_arthunter_descr4, {+arthunter_note3_info} addtask_arthunter_descr3, {+arthunter_note2_info} addtask_arthunter_descr2, {-arthunter_note2_info -arthunter_note3_info -village_power_box_on} addtask_arthunter_descr1
+target = {+village_power_box_on} af_teleport, {+arthunter_note3_info} village_power_box, {+arthunter_note2_info} arthunter_friend, {-arthunter_note2_info -arthunter_note3_info -village_power_box_on} arthunter_box2
+condlist_0 = {+af_teleport_finded} complete
+
+
+[addtask_btr]
+icon = ui_inGame2_Krazha
+prior = 119
+storyline = false
+title = {+btr_seif_maroder_runaway} addtask_btr_name4, {+razlom_wound_maroder_info} addtask_btr_name3, {+forest_btr_maroders_off} addtask_btr_name2, {-forest_btr_maroders_off -razlom_wound_maroder_info -btr_seif_maroder_runaway} addtask_btr_name1
+descr = {+btr_seif_maroder_runaway} addtask_btr_descr4, {+razlom_wound_maroder_info} addtask_btr_descr3, {+forest_btr_maroders_off} addtask_btr_descr2, {-forest_btr_maroders_off -razlom_wound_maroder_info -btr_seif_maroder_runaway} addtask_btr_descr1
+target = {+btr_seif_maroder_runaway} btr_maroder7, {+razlom_wound_maroder_info} wrecked_btr_seif, {+forest_btr_maroders_off} btr_maroder6, {-forest_btr_maroders_off -razlom_wound_maroder_info -btr_seif_maroder_runaway} forest_btr_maroders_zone
+condlist_0 = {+btr_seif_maroder_dead} complete
+condlist_1 = {+btr_seif_maroder_lost} fail
+
+
+
+;;;; Survival Mod Random Tasks ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Блокпост:
+[rnd_task_kpp_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 129
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_blokpost
+;condlist_0 = {=is_dead(kpp_marouder_guard1) =story_object_exist(kpp_marouder_guard1) =is_dead(kpp_marouder_guard2) =story_object_exist(kpp_marouder_guard2) =is_dead(kpp_marouder_guard3) =story_object_exist(kpp_marouder_guard3) =is_dead(kpp_marouder_guard4) =story_object_exist(kpp_marouder_guard4) =is_dead(kpp_marouder_guard5) =story_object_exist(kpp_marouder_guard5) =is_dead(kpp_marouder_guard6) =story_object_exist(kpp_marouder_guard6) =is_dead(kpp_marouder_guard7) =story_object_exist(kpp_marouder_guard7) =is_dead(kpp_marouder_comandr) =story_object_exist(kpp_marouder_comandr) =is_dead(kpp_marouder_scav) =story_object_exist(kpp_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_bp:8)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_tasks_kpp_discard} reversed 
+
+[rnd_task_kpp_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 130
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_blokpost
+;condlist_0 = {=is_dead(kpp_mob_1) =story_object_exist(kpp_mob_1) =is_dead(kpp_mob_2) =story_object_exist(kpp_mob_2) =is_dead(kpp_mob_3) =story_object_exist(kpp_mob_3) =is_dead(kpp_mob_4) =story_object_exist(kpp_mob_4) =is_dead(kpp_mob_5) =story_object_exist(kpp_mob_5) =is_dead(kpp_mob_6) =story_object_exist(kpp_mob_6) =is_dead(kpp_mob_7) =story_object_exist(kpp_mob_7) =is_dead(kpp_mob_8) =story_object_exist(kpp_mob_8) =is_dead(kpp_mob_9) =story_object_exist(kpp_mob_9) =is_dead(kpp_mob_10) =story_object_exist(kpp_mob_10)} complete
+condlist_0 = {=counter_greater(mb_bp:9)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_tasks_kpp_discard} reversed 
+
+[rnd_task_kpp_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 131
+storyline = false
+title = {+kpp_rnd_artefact_gathered} rnd_task_artefact_name2, {-kpp_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+kpp_rnd_artefact_gathered} rnd_task_artefact_desc2, {-kpp_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+kpp_rnd_artefact_gathered} lonl_house_artefact_box, {-kpp_rnd_artefact_gathered} script_zone_blokpost
+condlist_0 = {+rnd_task_kpp_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_tasks_kpp_discard} reversed 
+
+[rnd_task_kpp_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 132
+storyline = false
+title = {+kpp_rnd_item_gathered} rnd_task_robbery_name2, {-kpp_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+kpp_rnd_item_gathered} rnd_task_robbery_desc2, {-kpp_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+kpp_rnd_item_gathered} lonl_house_artefact_box, {-kpp_rnd_item_gathered} script_zone_blokpost
+condlist_0 = {+rnd_task_kpp_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_tasks_kpp_discard} reversed 
+
+
+;; Деревня:
+[rnd_task_willage_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 133
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_willage
+;condlist_0 = {=is_dead(willage_marouder_guard1) =story_object_exist(willage_marouder_guard1) =is_dead(willage_marouder_guard2) =story_object_exist(willage_marouder_guard2) =is_dead(willage_marouder_guard3) =story_object_exist(willage_marouder_guard3) =is_dead(willage_marouder_guard4) =story_object_exist(willage_marouder_guard4) =is_dead(willage_marouder_guard5) =story_object_exist(willage_marouder_guard5) =is_dead(willage_marouder_guard6) =story_object_exist(willage_marouder_guard6) =is_dead(willage_marouder_comandr) =story_object_exist(willage_marouder_comandr) =is_dead(willage_marouder_scav) =story_object_exist(willage_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_wl:7)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_willage_discard} reversed 
+
+[rnd_task_willage_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 134
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_willage
+;condlist_0 = {=is_dead(willage_mob_1) =story_object_exist(willage_mob_1) =is_dead(willage_mob_2) =story_object_exist(willage_mob_2) =is_dead(willage_mob_3) =story_object_exist(willage_mob_3) =is_dead(willage_mob_4) =story_object_exist(willage_mob_4) =is_dead(willage_mob_5) =story_object_exist(willage_mob_5) =is_dead(willage_mob_6) =story_object_exist(willage_mob_6) =is_dead(willage_mob_7) =story_object_exist(willage_mob_7)} complete
+condlist_0 = {=counter_greater(mb_wl:6)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_willage_discard} reversed 
+
+[rnd_task_willage_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 135
+storyline = false
+title = {+willage_rnd_artefact_gathered} rnd_task_artefact_name2, {-willage_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+willage_rnd_artefact_gathered} rnd_task_artefact_desc2, {-willage_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+willage_rnd_artefact_gathered} lonl_house_artefact_box, {-willage_rnd_artefact_gathered} script_zone_willage
+condlist_0 = {+rnd_task_willage_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_willage_discard} reversed 
+
+[rnd_task_willage_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 136
+storyline = false
+title = {+willage_rnd_item_gathered} rnd_task_robbery_name2, {-willage_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+willage_rnd_item_gathered} rnd_task_robbery_desc2, {-willage_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+willage_rnd_item_gathered} lonl_house_artefact_box, {-willage_rnd_item_gathered} script_zone_willage
+condlist_0 = {+rnd_task_willage_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_willage_discard} reversed 
+
+
+;; Рембаза:
+[rnd_task_workshop_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 137
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_workshop
+;condlist_0 = {=is_dead(workshop_marouder_guard1) =story_object_exist(workshop_marouder_guard1) =is_dead(workshop_marouder_guard2) =story_object_exist(workshop_marouder_guard2) =is_dead(workshop_marouder_guard3) =story_object_exist(workshop_marouder_guard3) =is_dead(workshop_marouder_guard4) =story_object_exist(workshop_marouder_guard4) =is_dead(workshop_marouder_guard5) =story_object_exist(workshop_marouder_guard5) =is_dead(workshop_marouder_guard6) =story_object_exist(workshop_marouder_guard6) =is_dead(workshop_marouder_guard7) =story_object_exist(workshop_marouder_guard7) =is_dead(workshop_marouder_guard8) =story_object_exist(workshop_marouder_guard8) =is_dead(workshop_marouder_comandr) =story_object_exist(workshop_marouder_comandr) =is_dead(workshop_marouder_scav) =story_object_exist(workshop_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_wr:9)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_workshop_discard} reversed 
+
+[rnd_task_workshop_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 138
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_workshop
+;condlist_0 = {=is_dead(workshop_mob_1) =story_object_exist(workshop_mob_1) =is_dead(workshop_mob_2) =story_object_exist(workshop_mob_2) =is_dead(workshop_mob_3) =story_object_exist(workshop_mob_3) =is_dead(workshop_mob_4) =story_object_exist(workshop_mob_4) =is_dead(workshop_mob_5) =story_object_exist(workshop_mob_5) =is_dead(workshop_mob_6) =story_object_exist(workshop_mob_6) =is_dead(workshop_mob_7) =story_object_exist(workshop_mob_7) =is_dead(workshop_mob_8) =story_object_exist(workshop_mob_8) =is_dead(workshop_mob_9) =story_object_exist(workshop_mob_9) +workshop_mob_10_dead} complete
+condlist_0 = {=counter_greater(mb_wr:9)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_workshop_discard} reversed 
+
+[rnd_task_workshop_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 139
+storyline = false
+title = {+workshop_rnd_artefact_gathered} rnd_task_artefact_name2, {-workshop_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+workshop_rnd_artefact_gathered} rnd_task_artefact_desc2, {-workshop_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+workshop_rnd_artefact_gathered} lonl_house_artefact_box, {-workshop_rnd_artefact_gathered} script_zone_workshop
+condlist_0 = {+rnd_task_workshop_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_workshop_discard} reversed 
+
+[rnd_task_workshop_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 140
+storyline = false
+title = {+workshop_rnd_item_gathered} rnd_task_robbery_name2, {-workshop_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+workshop_rnd_item_gathered} rnd_task_robbery_desc2, {-workshop_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+workshop_rnd_item_gathered} lonl_house_artefact_box, {-workshop_rnd_item_gathered} script_zone_workshop
+condlist_0 = {+rnd_task_workshop_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_workshop_discard} reversed 
+
+
+;; Кладбище:
+[rnd_task_graveyard_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 141
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_graveyard
+;condlist_0 = {=is_dead(graveyard_marouder_guard1) =story_object_exist(graveyard_marouder_guard1) =is_dead(graveyard_marouder_guard2) =story_object_exist(graveyard_marouder_guard2) =is_dead(graveyard_marouder_guard3) =story_object_exist(graveyard_marouder_guard3) =is_dead(graveyard_marouder_guard4) =story_object_exist(graveyard_marouder_guard4) =is_dead(graveyard_marouder_guard5) =is_dead(graveyard_marouder_comandr) =story_object_exist(graveyard_marouder_comandr) =is_dead(graveyard_marouder_scav) =story_object_exist(graveyard_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_gv:6)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_graveyard_discard} reversed 
+
+[rnd_task_graveyard_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 142
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_graveyard
+;condlist_0 = {=is_dead(graveyard_mob_1) =story_object_exist(graveyard_mob_1) =is_dead(graveyard_mob_2) =story_object_exist(graveyard_mob_2) =is_dead(graveyard_mob_3) =story_object_exist(graveyard_mob_3) =is_dead(graveyard_mob_4) =story_object_exist(graveyard_mob_4) =is_dead(graveyard_mob_5) =story_object_exist(graveyard_mob_5) =is_dead(graveyard_mob_6) =story_object_exist(graveyard_mob_6) =is_dead(graveyard_mob_7) =story_object_exist(graveyard_mob_7) =is_dead(graveyard_mob_8) =story_object_exist(graveyard_mob_8) =is_dead(graveyard_mob_9) =story_object_exist(graveyard_mob_9) =is_dead(graveyard_mob_10) =story_object_exist(graveyard_mob_10)} complete
+condlist_0 = {=counter_greater(mb_gv:9)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_graveyard_discard} reversed 
+
+[rnd_task_graveyard_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 143
+storyline = false
+title = {+graveyard_rnd_artefact_gathered} rnd_task_artefact_name2, {-graveyard_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+graveyard_rnd_artefact_gathered} rnd_task_artefact_desc2, {-graveyard_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+graveyard_rnd_artefact_gathered} lonl_house_artefact_box, {-graveyard_rnd_artefact_gathered} script_zone_graveyard
+condlist_0 = {+rnd_task_graveyard_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_graveyard_discard} reversed 
+
+[rnd_task_graveyard_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 144
+storyline = false
+title = {+graveyard_rnd_item_gathered} rnd_task_robbery_name2, {-graveyard_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+graveyard_rnd_item_gathered} rnd_task_robbery_desc2, {-graveyard_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+graveyard_rnd_item_gathered} lonl_house_artefact_box, {-graveyard_rnd_item_gathered} script_zone_graveyard
+condlist_0 = {+rnd_task_graveyard_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_graveyard_discard} reversed 
+
+
+
+;; Очаг радиации:
+[rnd_task_rad_hill_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 145
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_rad_hill
+;condlist_0 = {=is_dead(radhill_marouder_guard1) =story_object_exist(radhill_marouder_guard1) =is_dead(radhill_marouder_guard2) =story_object_exist(radhill_marouder_guard2) =is_dead(radhill_marouder_guard3) =story_object_exist(radhill_marouder_guard3) =is_dead(radhill_marouder_guard4) =story_object_exist(radhill_marouder_guard4) =is_dead(radhill_marouder_guard5) =story_object_exist(radhill_marouder_guard5) =is_dead(radhill_marouder_guard6) =story_object_exist(radhill_marouder_guard6) =is_dead(radhill_marouder_comandr) =story_object_exist(radhill_marouder_comandr) =is_dead(radhill_marouder_scav) =story_object_exist(radhill_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_rh:7)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_rad_hill_discard} reversed 
+
+[rnd_task_rad_hill_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 146
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_rad_hill
+;condlist_0 = {=is_dead(rad_hill_mob_1) =story_object_exist(rad_hill_mob_1) =is_dead(rad_hill_mob_2) =story_object_exist(rad_hill_mob_2) =is_dead(rad_hill_mob_3) =story_object_exist(rad_hill_mob_3) =is_dead(rad_hill_mob_4) =story_object_exist(rad_hill_mob_4) =is_dead(krad_hill_mob_5) =story_object_exist(rad_hill_mob_5) =is_dead(rad_hill_mob_6) =story_object_exist(rad_hill_mob_6) =is_dead(rad_hill_mob_7) =story_object_exist(rad_hill_mob_7)} complete
+condlist_0 = {=counter_greater(mb_rh:6)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_rad_hill_discard} reversed 
+
+[rnd_task_rad_hill_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 147
+storyline = false
+title = {+rad_hill_rnd_artefact_gathered} rnd_task_artefact_name2, {-rad_hill_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+rad_hill_rnd_artefact_gathered} rnd_task_artefact_desc2, {-rad_hill_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+rad_hill_rnd_artefact_gathered} lonl_house_artefact_box, {-rad_hill_rnd_artefact_gathered} script_zone_rad_hill
+condlist_0 = {+rnd_task_rad_hill_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_rad_hill_discard} reversed 
+
+[rnd_task_rad_hill_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 148
+storyline = false
+title = {+rad_hill_rnd_item_gathered} rnd_task_robbery_name2, {-rad_hill_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+rad_hill_rnd_item_gathered} rnd_task_robbery_desc2, {-rad_hill_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+rad_hill_rnd_item_gathered} lonl_house_artefact_box, {-rad_hill_rnd_item_gathered} script_zone_rad_hill
+condlist_0 = {+rnd_task_rad_hill_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_rad_hill_discard} reversed 
+
+
+;; Разлом:
+[rnd_task_razlom_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 149
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_ground_anomaly
+;condlist_0 = {=is_dead(razlom_marouder_guard1) =story_object_exist(razlom_marouder_guard1) =is_dead(razlom_marouder_guard2) =story_object_exist(razlom_marouder_guard2) =is_dead(razlom_marouder_guard3) =story_object_exist(razlom_marouder_guard3) =is_dead(razlom_marouder_guard4) =story_object_exist(razlom_marouder_guard4) =is_dead(razlom_marouder_guard5) =story_object_exist(razlom_marouder_guard5) =is_dead(razlom_marouder_comandr) =story_object_exist(razlom_marouder_comandr) =is_dead(razlom_marouder_scav) =story_object_exist(razlom_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_rz:6)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_razlom_discard} reversed 
+
+[rnd_task_razlom_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 150
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_ground_anomaly
+;condlist_0 = {=is_dead(razlom_mob_1) =story_object_exist(razlom_mob_1) =is_dead(razlom_mob_2) =story_object_exist(razlom_mob_2) =is_dead(razlom_mob_3) =story_object_exist(razlom_mob_3) =is_dead(razlom_mob_4) =story_object_exist(razlom_mob_4)}  complete
+condlist_0 = {=counter_greater(mb_rz:3)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_razlom_discard} reversed 
+
+[rnd_task_razlom_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 151
+storyline = false
+title = {+razlom_rnd_artefact_gathered} rnd_task_artefact_name2, {-razlom_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+razlom_rnd_artefact_gathered} rnd_task_artefact_desc2, {-razlom_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+razlom_rnd_artefact_gathered} lonl_house_artefact_box, {-razlom_rnd_artefact_gathered} script_zone_ground_anomaly
+condlist_0 = {+rnd_task_razlom_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_razlom_discard} reversed 
+
+[rnd_task_razlom_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 152
+storyline = false
+title = {+razlom_rnd_item_gathered} rnd_task_robbery_name2, {-razlom_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+razlom_rnd_item_gathered} rnd_task_robbery_desc2, {-razlom_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+razlom_rnd_item_gathered} lonl_house_artefact_box, {-razlom_rnd_item_gathered} script_zone_ground_anomaly
+condlist_0 = {+rnd_task_razlom_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_razlom_discard} reversed 
+
+
+;; Островок:
+[rnd_task_island_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 153
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_island
+;condlist_0 = {=is_dead(island_marouder_guard1) =story_object_exist(island_marouder_guard1) =is_dead(island_marouder_guard2) =story_object_exist(island_marouder_guard2) =is_dead(island_marouder_guard3) =story_object_exist(island_marouder_guard3) =is_dead(island_marouder_guard4) =story_object_exist(island_marouder_guard4) =is_dead(island_marouder_guard5) =story_object_exist(island_marouder_guard5) =is_dead(island_marouder_guard6) =story_object_exist(island_marouder_guard6) =is_dead(island_marouder_guard7) =story_object_exist(island_marouder_guard7) =is_dead(island_marouder_comandr) =story_object_exist(island_marouder_comandr) =is_dead(island_marouder_scav) =story_object_exist(island_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_is:8)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_island_discard} reversed 
+
+[rnd_task_island_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 154
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_island
+;condlist_0 = {=is_dead(island_mob_1) =story_object_exist(island_mob_1) =is_dead(island_mob_2) =story_object_exist(island_mob_2) =is_dead(island_mob_3) =story_object_exist(island_mob_3) =is_dead(island_mob_4) =story_object_exist(island_mob_4) =is_dead(island_mob_5) =story_object_exist(island_mob_5) =is_dead(island_mob_6) =story_object_exist(island_mob_6) =is_dead(island_mob_7) =story_object_exist(island_mob_7)} complete
+condlist_0 = {=counter_greater(mb_is:6)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_island_discard} reversed 
+
+[rnd_task_island_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 155
+storyline = false
+title = {+island_rnd_artefact_gathered} rnd_task_artefact_name2, {-island_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+island_rnd_artefact_gathered} rnd_task_artefact_desc2, {-island_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+island_rnd_artefact_gathered} lonl_house_artefact_box, {-island_rnd_artefact_gathered} script_zone_island
+condlist_0 = {+rnd_task_island_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_island_discard} reversed 
+
+[rnd_task_island_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 156
+storyline = false
+title = {+island_rnd_item_gathered} rnd_task_robbery_name2, {-island_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+island_rnd_item_gathered} rnd_task_robbery_desc2, {-island_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+island_rnd_item_gathered} lonl_house_artefact_box, {-island_rnd_item_gathered} script_zone_island
+condlist_0 = {+rnd_task_island_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_island_discard} reversed 
+
+
+;; Роща на холме:
+[rnd_task_forest_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 157
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_forest
+;condlist_0 = {=is_dead(forest_marouder_guard1) =story_object_exist(forest_marouder_guard1) =is_dead(forest_marouder_guard2) =story_object_exist(forest_marouder_guard2) =is_dead(forest_marouder_guard3) =story_object_exist(forest_marouder_guard3) =is_dead(forest_marouder_guard4) =story_object_exist(forest_marouder_guard4) =is_dead(forest_marouder_guard5) =story_object_exist(forest_marouder_guard5) =is_dead(forest_marouder_guard6) =story_object_exist(forest_marouder_guard6) =is_dead(forest_marouder_comandr) =story_object_exist(forest_marouder_comandr) =is_dead(forest_marouder_scav) =story_object_exist(forest_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_fr:7)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_forest_discard} reversed 
+
+[rnd_task_forest_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 158
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_forest
+;condlist_0 = {=is_dead(forest_mob_1) =story_object_exist(forest_mob_1) =is_dead(forest_mob_2) =story_object_exist(forest_mob_2) =is_dead(forest_mob_3) =story_object_exist(forest_mob_3)} complete
+condlist_0 = {=counter_greater(mb_fr:2)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_forest_discard} reversed 
+
+[rnd_task_forest_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 159
+storyline = false
+title = {+forest_rnd_artefact_gathered} rnd_task_artefact_name2, {-forest_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+forest_rnd_artefact_gathered} rnd_task_artefact_desc2, {-forest_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+forest_rnd_artefact_gathered} lonl_house_artefact_box, {-forest_rnd_artefact_gathered} script_zone_forest
+condlist_0 = {+rnd_task_forest_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_forest_discard} reversed 
+
+[rnd_task_forest_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 160
+storyline = false
+title = {+forest_rnd_item_gathered} rnd_task_robbery_name2, {-forest_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+forest_rnd_item_gathered} rnd_task_robbery_desc2, {-forest_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+forest_rnd_item_gathered} lonl_house_artefact_box, {-forest_rnd_item_gathered} script_zone_forest
+condlist_0 = {+rnd_task_forest_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_forest_discard} reversed
+
+
+;; Лагерь в лесу:
+[rnd_task_forest_camp_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 161
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_forest_camp
+;condlist_0 = {=is_dead(forest_camp_marouder_guard1) =story_object_exist(forest_camp_marouder_guard1) =is_dead(forest_camp_marouder_guard2) =story_object_exist(forest_camp_marouder_guard2) =is_dead(forest_camp_marouder_guard3) =story_object_exist(forest_camp_marouder_guard3) =is_dead(forest_camp_marouder_guard4) =story_object_exist(forest_camp_marouder_guard4) =story_object_exist(forest_camp_marouder_guard5) =is_dead(forest_camp_marouder_guard5) =is_dead(forest_camp_marouder_comandr) =story_object_exist(forest_camp_marouder_comandr) =is_dead(forest_camp_marouder_scav) =story_object_exist(forest_camp_marouder_scav)} complete
+condlist_0 = {=counter_greater(mr_fc:6)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_forest_camp_discard} reversed 
+
+[rnd_task_forest_camp_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 162
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_forest_camp
+;condlist_0 = {=is_dead(forest_camp_mob1) =story_object_exist(forest_camp_mob1) =is_dead(forest_camp_mob2) =story_object_exist(forest_camp_mob2) =is_dead(forest_camp_mob3) =story_object_exist(forest_camp_mob3) =is_dead(forest_camp_mob4) =story_object_exist(forest_camp_mob4) =is_dead(forest_camp_mob5) =story_object_exist(forest_camp_mob5) =is_dead(forest_camp_mob6) =story_object_exist(forest_camp_mob6)} complete
+condlist_0 = {=counter_greater(mb_fc:6)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_forest_camp_discard} reversed 
+
+[rnd_task_forest_camp_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 163
+storyline = false
+title = {+forest_camp_rnd_artefact_gathered} rnd_task_artefact_name2, {-forest_camp_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+forest_camp_rnd_artefact_gathered} rnd_task_artefact_desc2, {-forest_camp_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+forest_camp_rnd_artefact_gathered} lonl_house_artefact_box, {-forest_camp_rnd_artefact_gathered} script_zone_forest_camp
+condlist_0 = {+rnd_task_forest_camp_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_forest_camp_discard} reversed 
+
+[rnd_task_forest_camp_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 164
+storyline = false
+title = {+forest_camp_rnd_item_gathered} rnd_task_robbery_name2, {-forest_camp_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+forest_camp_rnd_item_gathered} rnd_task_robbery_desc2, {-forest_camp_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+forest_camp_rnd_item_gathered} lonl_house_artefact_box, {-forest_camp_rnd_item_gathered} script_zone_forest_camp
+condlist_0 = {+rnd_task_forest_camp_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_task_forest_camp_discard} reversed 
+
+
+;; Вертолёт:
+[rnd_task_helicrash_maroders]
+icon = ui_inGame2_PD_Lider
+prior = 172
+storyline = false
+title = rnd_task_maroders_name
+descr = rnd_task_maroders_desc
+target = script_zone_helicrash
+condlist_0 = {=counter_greater(mr_hl:7)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_tasks_helicrash_discard} reversed 
+
+[rnd_task_helicrash_mutants]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 173
+storyline = false
+title = rnd_task_mutants_name
+descr = rnd_task_mutants_desc
+target = script_zone_helicrash
+condlist_0 = {=counter_greater(mb_hl:6)} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_tasks_helicrash_discard} reversed 
+
+[rnd_task_helicrash_artefact]
+icon = ui_inGame2_D_gonets_pravosudiya
+prior = 174
+storyline = false
+title = {+helicrash_rnd_artefact_gathered} rnd_task_artefact_name2, {-helicrash_rnd_artefact_gathered} rnd_task_artefact_name1
+descr = {+helicrash_rnd_artefact_gathered} rnd_task_artefact_desc2, {-helicrash_rnd_artefact_gathered} rnd_task_artefact_desc1
+target = {+helicrash_rnd_artefact_gathered} lonl_house_artefact_box, {-helicrash_rnd_artefact_gathered} script_zone_helicrash
+condlist_0 = {+rnd_task_helicrash_artefact_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_tasks_helicrash_discard} reversed 
+
+[rnd_task_helicrash_robbery]
+icon = ui_inGame2_Osobiy_zakaz
+prior = 175
+storyline = false
+title = {+helicrash_rnd_item_gathered} rnd_task_robbery_name2, {-helicrash_rnd_item_gathered} rnd_task_robbery_name1
+descr = {+helicrash_rnd_item_gathered} rnd_task_robbery_desc2, {-helicrash_rnd_item_gathered} rnd_task_robbery_desc1
+target = {+helicrash_rnd_item_gathered} lonl_house_artefact_box, {-helicrash_rnd_item_gathered} script_zone_helicrash
+condlist_0 = {+rnd_task_helicrash_item_in_box} complete
+condlist_1 = {+critical_health} fail
+condlist_2 = {+rnd_tasks_helicrash_discard} reversed 
+
+
+
+
+; Отбить атаку мародёров на убежище:
+[rnd_task_marodr_atack]
+icon = ui_inGame2_Issledovatelskaya_gruppa
+prior = 161
+storyline = false
+title = rnd_task_marodr_atack_name
+descr = rnd_task_marodr_atack_desc
+target = script_zone_lonl_house
+condlist_0 = {=is_dead(test_marouder1) =story_object_exist(test_marouder1) =is_dead(test_marouder2) =story_object_exist(test_marouder2) =is_dead(test_marouder3) =story_object_exist(test_marouder3) =is_dead(test_marouder4) =story_object_exist(test_marouder4) =is_dead(test_marouder5) =story_object_exist(test_marouder5)} complete
+condlist_1 = {=actor_dead} fail
+
+
+
+;; Курьер:
+[rnd_task_kill_courier]
+icon = ui_inGame2_PD_Avtoritet
+prior = 165
+storyline = false
+title = {=actor_has_item(maroder_courier_item)} rnd_task_kill_courier_name2, {!actor_has_item(maroder_courier_item)} rnd_task_kill_courier_name1
+descr = {=actor_has_item(maroder_courier_item)} rnd_task_kill_courier_desc2, {!actor_has_item(maroder_courier_item)} rnd_task_kill_courier_desc1
+target = {=actor_has_item(maroder_courier_item)} lonl_house_artefact_box, {!actor_has_item(maroder_courier_item)} maroder_courier
+condlist_0 = {-courier_task} complete
+condlist_1 = {+courier_task_fail} fail
+;condlist_2 = {+222} reversed
+
+
+
+;; Самоубийца-карлик:
+[addtask_suicider]
+icon = ui_inGame2_PD_storonnik_ravnovesiya
+prior = 166
+storyline = false
+title = {+karlik_real_death} addtask_suicider_name18, {+scientist_goto_house =story_obj_in_zone_by_name(lw_scientist:lonl_house_surge_hide_zone1)} addtask_suicider_name17, {+lw_scientist_dead} addtask_suicider_name16, {+karlik_kill_scientist} addtask_suicider_name15, {+scientist_shield_off} addtask_suicider_name14, {+karlik_fake_death} addtask_suicider_name13, {+actor_teleport_to_karlik_trap} addtask_suicider_name12, {+undegr_door_check} addtask_suicider_name11, {+old_army_items_check} addtask_suicider_name10, {+suicider_note4_info} addtask_suicider_name9, {+lake_house_check} addtask_suicider_name8, {+field_stones_check} addtask_suicider_name7, {+karlik_vizit_2} addtask_suicider_name6, {+field_tree_check} addtask_suicider_name5, {+willage_hill_check} addtask_suicider_name4, {+willage_magaz_check} addtask_suicider_name3, {+suicider_note1_info} addtask_suicider_name2, {+suicider_cross_use} addtask_suicider_name1
+descr = {+karlik_real_death} addtask_suicider_desc18, {+scientist_goto_house =story_obj_in_zone_by_name(lw_scientist:lonl_house_surge_hide_zone1)} addtask_suicider_desc17, {+lw_scientist_dead} addtask_suicider_desc16, {+karlik_kill_scientist} addtask_suicider_desc15, {+scientist_shield_off} addtask_suicider_desc14, {+karlik_fake_death} addtask_suicider_desc13, {+actor_teleport_to_karlik_trap} addtask_suicider_desc12, {+undegr_door_check} addtask_suicider_desc11, {+old_army_items_check} addtask_suicider_desc10, {+suicider_note4_info} addtask_suicider_desc9, {+lake_house_check} addtask_suicider_desc8, {+field_stones_check} addtask_suicider_desc7, {+karlik_vizit_2} addtask_suicider_desc6, {+field_tree_check} addtask_suicider_desc5, {+willage_hill_check} addtask_suicider_desc4, {+willage_magaz_check} addtask_suicider_desc3, {+suicider_note1_info} addtask_suicider_desc2, {+suicider_cross_use} addtask_suicider_desc1
+target = {+karlik_real_death} lw_scientist, {+scientist_goto_house =story_obj_in_zone_by_name(lw_scientist:lonl_house_surge_hide_zone1)} lw_scientist, {+lw_scientist_dead} karlik_quest_zone8, {+karlik_kill_scientist} lw_scientist, {+scientist_shield_off} lw_scientist, {+karlik_fake_death} karlik_quest_zone5, {+actor_teleport_to_karlik_trap} karlik_quest_zone7, {+undegr_door_check} karlik_undegr_door, {+old_army_items_check} scientist_kpp_box, {+suicider_note4_info} karlik_quest_zone5, {+lake_house_check} script_zone_island, {+field_stones_check} karlik_quest_zone5, {+karlik_vizit_2} karlik_quest_zone4, {+field_tree_check} karlik_quest_zone3, {+willage_hill_check} karlik_quest_zone2, {+willage_magaz_check} karlik_quest_zone2, {+suicider_note1_info} karlik_quest_zone1, {+suicider_cross_use} willage_suicider_box
+condlist_0 = {+karlik_reward =actor_has_item(af_armadeus)} complete
+condlist_1 = {+scientist_karlik_reward} complete
+condlist_2 = {+lw_scientist_dead +scientist_goto_house} fail
+
+
+
+;; Чёрный кровосос и артефакт "Лягушка":
+[addtask_bloodsucker]
+icon = ui_inGame2_Ohota_na_Krovososov
+prior = 167
+storyline = false
+title = {=actor_has_item(wire_roll) =actor_has_item(anomal_claw)} addtask_bloodsucker_name7, {!actor_has_item(wire_roll) +workshop_instrum_box_lock_cheked} addtask_bloodsucker_name6, {+lake_art_sheck_workshop} addtask_bloodsucker_name5, {+lake_stone_art_touch} addtask_bloodsucker_name4, {+lake_stone_art_check} addtask_bloodsucker_name3, {=actor_has_item(anomal_claw)} addtask_bloodsucker_name2, {!actor_has_item(anomal_claw)} addtask_bloodsucker_name1
+descr = {=actor_has_item(wire_roll) =actor_has_item(anomal_claw)} addtask_bloodsucker_desc7, {!actor_has_item(wire_roll) +workshop_instrum_box_lock_cheked} addtask_bloodsucker_desc6, {+lake_art_sheck_workshop} addtask_bloodsucker_desc5, {+lake_stone_art_touch} addtask_bloodsucker_desc4, {+lake_stone_art_check} addtask_bloodsucker_desc3, {=actor_has_item(anomal_claw)} addtask_bloodsucker_desc2, {!actor_has_item(anomal_claw)} addtask_bloodsucker_desc1
+target = {=actor_has_item(wire_roll) =actor_has_item(anomal_claw)} lake_stone_art2, {!actor_has_item(wire_roll) +workshop_instrum_box_lock_cheked} script_zone_workshop, {+lake_art_sheck_workshop} workshop_instrum_box_lock, {+lake_stone_art_touch} lake_stone_art2, {+lake_stone_art_check} lake_stone_art, {=actor_has_item(anomal_claw)} lake_art_zone1, {!actor_has_item(anomal_claw)} bloodsucker_hunter
+condlist_0 = {+lake_art_gathered} complete
+condlist_1 = {+222} fail
+;condlist_2 = {+222} reversed
+
+
+
+;; Снайпер-мститель:
+[addtask_sniper]
+icon = ui_inGame2_Odin_vistrel
+prior = 168
+storyline = false
+title = {+777} addtask_sniper_name7, {+quest_sniper_reward} addtask_sniper_name6, {+sniper_maroder1_dead +quest_sniper_maroder1friend1_dead +quest_sniper_maroder1friend2_dead} addtask_sniper_name5, {+quest_sniper_scene} addtask_sniper_name4, {+sniper_note2_info} addtask_sniper_name3_1, {+quest_sniper_shot1} addtask_sniper_name3, {+sniper_note1_info} addtask_sniper_name2, {-sniper_note1_info} addtask_sniper_name1
+descr = {+777} addtask_sniper_desc7, {+quest_sniper_reward} addtask_sniper_desc6, {+sniper_maroder1_dead +quest_sniper_maroder1friend1_dead +quest_sniper_maroder1friend2_dead} addtask_sniper_desc5, {+quest_sniper_scene} addtask_sniper_desc4, {+sniper_note2_info} addtask_sniper_desc3_1, {+quest_sniper_shot1} addtask_sniper_desc3, {+sniper_note1_info} addtask_sniper_desc2, {-sniper_note1_info} addtask_sniper_desc1
+target = {+777} eee, {+quest_sniper_reward} quest_sniper_treasure, {+sniper_maroder1_dead +quest_sniper_maroder1friend1_dead +quest_sniper_maroder1friend2_dead} quest_sniper2, {+quest_sniper_scene} quest_sniper_zone3, {+sniper_note2_info} quest_sniper_zone3, {+quest_sniper_shot1} quest_sniper_maroder2, {+sniper_note1_info} quest_sniper_zone2, {-sniper_note1_info} quest_sniper_zone_note
+condlist_0 = {+quest_sniper_end} complete
+condlist_1 = {+222} fail
+condlist_2 = {+village_seif1_opened} reversed
+
+
+
+;; Собираем комп:
+[addtask_comp]
+icon = ui_inGame2_PD_Torgovets_informatsiey
+prior = 171
+storyline = false
+title = {+lonl_house_komp_present} addtask_comp_name3, {+scientist_komp_task =actor_has_item(item_komp_klava) =actor_has_item(item_komp_block) =actor_has_item(item_komp_monitor)} addtask_comp_name2, {+scientist_komp_task} addtask_comp_name1
+descr = {+lonl_house_komp_present} addtask_comp_desc3, {+scientist_komp_task =actor_has_item(item_komp_klava) =actor_has_item(item_komp_block) =actor_has_item(item_komp_monitor)} addtask_comp_desc2, {+scientist_komp_task} addtask_comp_desc1
+target = {+lonl_house_komp_present} lw_scientist, {+scientist_komp_task =actor_has_item(item_komp_klava) =actor_has_item(item_komp_block) =actor_has_item(item_komp_monitor)} lonl_house_komp_place
+condlist_0 = {+lw_scientist_to_komp} complete
+condlist_1 = {+232323} fail
+;condlist_2 = {+343434} reversed
+
+
+
+;; Для режима "Соревнование": ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Эвакуация:
+[mg_task_evacuation]
+icon = ui_inGame2_AD_Pro_Company
+prior = 170
+storyline = false
+title = {+mg_heli_evac_start} mg_task_evacuation_name4, {=actor_in_heli_evac_zone +mg_heli_goto_evac} mg_task_evacuation_name3, {+mg_surge_last_phase} mg_task_evacuation_name2, {-mg_surge_last_phase} mg_task_evacuation_name1
+descr = {+mg_heli_evac_start} mg_task_evacuation_desc4, {=actor_in_heli_evac_zone +mg_heli_goto_evac} mg_task_evacuation_desc3, {+mg_surge_last_phase} mg_task_evacuation_desc2, {-mg_surge_last_phase} mg_task_evacuation_desc1
+target = {+mg_heli_evac_start} mg_start_heli, {+mg_zone_workshop} heli_evac_zone6, {+mg_zone_willage} heli_evac_zone4, {+mg_zone_radhill} heli_evac_zone8, {+mg_zone_lonl_house} heli_evac_zone3, {+mg_zone_island} heli_evac_zone9, {+mg_zone_razlom} heli_evac_zone1, {+mg_zone_graveyard} heli_evac_zone5, {+mg_zone_forest_camp} heli_evac_zone7, {+mg_zone_forest} heli_evac_zone10, {+mg_zone_kpp} heli_evac_zone11, {+mg_zone_helicrash} heli_evac_zone2
+condlist_0 = {+mg_heli_evac_sucess} complete
+condlist_1 = {!actor_alive} fail
+condlist_2 = {+mg_heli_evac_fail} fail
+;condlist_3 = {+343434} reversed
+
+
+;; Помощь сталкеру и освобождение собственной шкуры:
+[mg_task_companion1]
+icon = ui_inGame2_PD_Drug_Stalkerov
+prior = 169
+storyline = false
+title = {+mg_heli_die} mg_task_companion1_name18, {+village_seif1_opened} mg_task_companion1_name17, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) =actor_has_item(scientific_outfit) =actor_has_item(village_seif1_key)} mg_task_companion1_name16_1, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) =actor_has_item(scientific_outfit) !actor_has_item(village_seif1_key)} mg_task_companion1_name16, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) !actor_has_item(scientific_outfit)} mg_task_companion1_name15, {+kpp_lider_shron_spawned} mg_task_companion1_name14, {+kpp_lider_assistant_away} mg_task_companion1_name13, {+kpp_boss_personal_shron_info} mg_task_companion1_name12, {+mg_wolf_planshet_info} mg_task_companion1_name11, {+kpp_boss_courier_shron_info} mg_task_companion1_name10, {+mg_courier_pda_info} mg_task_companion1_name9, {+mg_art_robber_pda_info2} mg_task_companion1_name8, {+kpp_boss_komp_info} mg_task_companion1_name7, {+mg_art_robber_pda_info} mg_task_companion1_name6, {+mg_robber_zapiska_info} mg_task_companion1_name5, {+mg_friend_zapiska1_info} mg_task_companion1_name4, {+mg_companion1_help_actor} mg_task_companion1_name3, {+mg_companion1_saved} mg_task_companion1_name2, {-mg_companion1_saved} mg_task_companion1_name1
+descr = {+mg_heli_die} mg_task_companion1_desc18, {+village_seif1_opened} mg_task_companion1_desc17, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) =actor_has_item(scientific_outfit) =actor_has_item(village_seif1_key)} mg_task_companion1_desc16_1, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) =actor_has_item(scientific_outfit) !actor_has_item(village_seif1_key)} mg_task_companion1_desc16, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) !actor_has_item(scientific_outfit)} mg_task_companion1_desc15, {+kpp_lider_shron_spawned} mg_task_companion1_desc14, {+kpp_lider_assistant_away} mg_task_companion1_desc13, {+kpp_boss_personal_shron_info} mg_task_companion1_desc12, {+mg_wolf_planshet_info} mg_task_companion1_desc11, {+kpp_boss_courier_shron_info} mg_task_companion1_desc10, {+mg_courier_pda_info} mg_task_companion1_desc9, {+mg_art_robber_pda_info2} mg_task_companion1_desc8, {+kpp_boss_komp_info} mg_task_companion1_desc7, {+mg_art_robber_pda_info} mg_task_companion1_desc6, {+mg_robber_zapiska_info} mg_task_companion1_desc5, {+mg_friend_zapiska1_info} mg_task_companion1_desc4, {+mg_companion1_help_actor} mg_task_companion1_desc3, {+mg_companion1_saved} mg_task_companion1_desc2, {-mg_companion1_saved} mg_task_companion1_desc1
+target = {+mg_kpp_boss_dead} mg_kpp_boss2, {+mg_heli_die} mg_kpp_boss2, {+village_seif1_opened} mg_start_heli, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) =actor_has_item(scientific_outfit) =actor_has_item(village_seif1_key)} village_seif1, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) =actor_has_item(scientific_outfit) !actor_has_item(village_seif1_key)} village_seif2, {+mg_wolf_map_info =actor_has_item(mg_wolf_map) !actor_has_item(scientific_outfit)} mg_kpp_boss, {+kpp_lider_shron_spawned} kpp_lider_shron, {+kpp_lider_assistant_away} lake_hutor_zone, {+kpp_boss_personal_shron_info} mg_kpp_lider_assistant, {+mg_wolf_planshet_info} mg_kpp_boss, {+mg_courier_shron1_check +mg_courier_shron2_check +mg_courier_shron3_check -mg_courier_shron4_check} mg_courier_shron4, {+mg_courier_shron1_check +mg_courier_shron2_check -mg_courier_shron3_check -mg_courier_shron4_check} mg_courier_shron3, {+mg_courier_shron1_check -mg_courier_shron2_check -mg_courier_shron3_check -mg_courier_shron4_check} mg_courier_shron2, {+kpp_boss_courier_shron_info} mg_courier_shron1, {+mg_courier_pda_info} mg_kpp_boss, {+mg_art_robber_pda_info2} mg_courier, {+kpp_boss_komp_info} script_zone_lonl_house, {+mg_art_robber_pda_info} mg_kpp_boss, {+mg_robber_zapiska_info} mg_art_robber_npc, {+mg_friend_zapiska1_info} script_zone_willage, {+mg_companion1_help_actor} kpp_bunker_door, {-mg_companion1_saved} mg_companion1
+condlist_0 = {+mg_wolf_map_info =actor_has_item(af_compass)} complete
+condlist_1 = {+mg_companion1_dead} fail
+condlist_2 = {+333} fail
+;condlist_3 = {+343434} reversed
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [test_storyline_task]
 icon = ui_mt_image_attack_tower
 prior = 5

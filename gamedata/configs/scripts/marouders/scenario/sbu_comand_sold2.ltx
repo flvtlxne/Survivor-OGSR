@@ -1,0 +1,64 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+
+[walker@start]
+path_walk = sbu_comand2_walk
+path_look = sbu_comand1_look
+on_info = {+actor_has_vss} walker@1 %=give_items(wpn_vintorez) =actor_neutral%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74) =actor_neutral%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u) =actor_neutral%
+on_info4 = {-actor_has_ak74 -actor_has_aksu -actor_has_vss} walker@1 %=actor_neutral%
+
+
+[walker@1]
+path_walk = sbu_comand3_walk
+path_look = sbu_comand1_look
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+invulnerable = false
+meet = no_meet
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+on_info = {+kpp_mercs_ambush_atack} walker@2, {+kpp_sbu_atack} walker@3 %=actor_enemy%
+
+
+; Дерёмся с наёмниками:
+[walker@2]
+path_walk = sbu_comand3_walk
+path_look = sbu_comand1_look
+invulnerable = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Обиделись на ГГ:
+[walker@3]
+path_walk = sbu_comand3_walk
+path_look = sbu_comand1_look
+invulnerable = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

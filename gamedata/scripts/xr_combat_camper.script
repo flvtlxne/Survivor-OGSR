@@ -51,9 +51,9 @@ end
 function action_shoot:initialize()
 	action_base.initialize( self )
 
-	state_mgr.set_state( self.object, "hide_fire", nil, nil, { look_object = self.object:best_enemy() } )
+	state_mgr.set_state( self.object, "hide_fire", nil, nil, { look_object = self.object:best_enemy() }, {fast_set = true} )
 
-	self.st.camper_combat_action = true
+--	self.st.camper_combat_action = true
 end
 
 function action_shoot:execute()
@@ -63,7 +63,7 @@ end
 function action_shoot:finalize()
 	action_base.finalize( self )
 
-	self.st.camper_combat_action = false
+--	self.st.camper_combat_action = false
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ function action_look_around:reset()
 		self.st.last_seen_pos = self.object:best_enemy():position()
 	end
 
-	state_mgr.set_state( self.object, "hide", nil, nil, { look_position = self.st.last_seen_pos } )
+	state_mgr.set_state( self.object, "hide", nil, nil, { look_position = self.st.last_seen_pos }, {fast_set = true} )
 end
 
 function action_look_around:execute()

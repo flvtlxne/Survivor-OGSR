@@ -1,0 +1,11 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = ph_idle@2 %=spawn_mg_courier_shron4 +mg_courier_shron3_check =actor_loot_bad_replic =destroy_object%
+
+[ph_idle@2]
+nonscript_usable = false
+on_actor_dist_ge_nvis = 50|%=destroy_object%

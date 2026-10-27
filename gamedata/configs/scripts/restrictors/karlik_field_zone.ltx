@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+suicider_note3_info} sr_particle@1
+
+[sr_particle@1]
+name = anomaly2\effects\anomaly_teleport_color_00
+path = karlik_field_zone_point0
+mode = 2
+looped = false
+on_info = {+karlik_resurrect} sr_idle@nil
+
+[sr_idle@nil]

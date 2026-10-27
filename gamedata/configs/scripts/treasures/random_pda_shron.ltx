@@ -1,0 +1,10 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+on_game_timer = 1|ph_idle@2 %=add_self_spot(treasure2:random_pda_shron_mark_text)%
+
+[ph_idle@2]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=random_pda_shron_item1_give =actor_finds_goodloot_snd =remowe_self_spot(treasure2:random_pda_shron_mark_text) =destroy_object%

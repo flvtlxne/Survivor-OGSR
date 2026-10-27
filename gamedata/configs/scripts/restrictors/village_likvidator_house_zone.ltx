@@ -1,0 +1,34 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+likvidator_info1} sr_particle@1
+
+[sr_particle@1]
+name = anomaly2\anomaly_teleport
+path = village_likvidator_house_point0
+mode = 2
+looped = false
+on_info = {+likvidator_item1_on +likvidator_item2_on +likvidator_item3_on} sr_particle@2
+on_actor_inside = sr_idle@3 %=disable_ui =run_postprocess(fade_in)%
+
+[sr_idle@3]
+on_game_timer = 15|sr_idle@4 %=run_postprocess(fade_in) =village_likvidator_house_actor_teleport%
+
+[sr_idle@4]
+on_game_timer = 5|sr_particle@1 %=enable_ui%
+
+
+
+[sr_particle@2]
+name = explosions\effects\expl_car_smoke_big_smoke
+path = village_likvidator_house_point1
+mode = 2
+looped = false
+on_info = {+likvidator_info2} sr_idle@nil
+
+
+[sr_idle@nil]
+
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <likvidator_note2>
+
+	<table x="350" y="100" width="270" height="500" stretch="1">
+		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_list_1</texture>
+	</table>
+
+	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Запись ликвидатора 2 (1987г.)</text>
+	</name>
+
+	<text1 x="380" y="140" width="240" height="300">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">Похоже, бригадир что-то подозревает. Стал чаще меня проверять, докапывается по мелочам, а вчера заставил вывернуть карманы. Кто-то настучал на меня, но кто? Не имеет значения. Вечером стало известно, что меня хотят снять с объекта и перебросить на рембазу, что западнее деревни. Делайте что хотите, но золота не найдете - ещё утром спрятал в своём камазе, а по прибытии на рембазу перепрячу ещё надёжнее - на крыше, в одном раструбе... Если получится выбраться из Зоны не с пустыми руками - тогда заживу...</text>
+	</text1>
+
+
+
+	<btn_1 x="360" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> {{{ </text>
+	</btn_1>
+
+	<btn_2 x="460" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> }}} </text>
+	</btn_2>
+
+
+
+
+	<btn_exit x="570" y="560" width="25" height="25">
+	      	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
+	</btn_exit>
+
+    </likvidator_note2>
+
+

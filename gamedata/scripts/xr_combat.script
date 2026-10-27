@@ -8,7 +8,10 @@ function set_combat_type(npc, actor, t)
 	end
 	-- это нужно для функций в xr_conditions.script
 	local storage = db.storage[npc:id()]
-	storage.enemy = npc:best_enemy()
+	local enemy = npc:best_enemy()
+	if enemy then
+		storage.enemy_id = enemy:id()
+	end
 
 	local script_combat_type = nil
 	if t.combat_type ~= nil then

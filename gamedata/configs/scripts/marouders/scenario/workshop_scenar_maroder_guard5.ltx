@@ -1,0 +1,33 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@1
+on_death = death
+on_hit = hit
+
+[walker@1]
+path_walk = kolhoz_pnt6_walk
+path_look = kolhoz_pnt6_look
+def_state_moving1 = assault
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+out_restr = script_zone_workshop
+combat_ignore_cond = {-workshop_scenar_maroder_hit =dist_to_actor_ge(100)} true
+wounded = wounded@no_wound
+
+
+[wounded@no_wound]
+hp_state = 0 | wounded_heavy@help_heavy
+hp_state_see = 0 | wounded_heavy@help_heavy
+hp_victim = 0 | nil
+hp_cover = 0 | false
+hp_fight = 0 | false
+
+[hit]
+on_info = {=hit_by_actor} %+workshop_scenar_maroder_hit%
+
+[death]
+on_info = %=workshop_scenar_maroder_guard5_wpn_remove%

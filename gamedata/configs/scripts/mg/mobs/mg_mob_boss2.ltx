@@ -1,0 +1,20 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = mob_home
+;on_death = mob_death
+
+[mob_home]
+path_home = travel_point_lonl_house
+home_min_radius = 5
+home_max_radius = 25
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+
+
+[mob_death]
+on_info = %+mg_mob_boss2_dead%
+
+
+
+

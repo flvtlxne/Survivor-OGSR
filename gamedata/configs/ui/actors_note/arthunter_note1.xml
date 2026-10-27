@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <arthunter_note1>
+
+	<table x="350" y="100" width="270" height="500" stretch="1">
+		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_blank_gray</texture>
+	</table>
+
+	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Дневник искателя 1</text>
+	</name>
+
+	<text1 x="380" y="140" width="240" height="300">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">Выгодный контракт привёл меня сюда. К сожелению, меня опередили: клиент прислал сообщение, что где-то здесь уже орудует мой конкурент-искатель артефактов. Очень не хотелось бы встретить его, тем более упустить ценный артефакт, ведь его свойтсво поистине уникально! На кону такие крупные деньги, которые я не зарабатывал за все годы моего искательского ремесла. Кто же это может быть? Думаю, что Ворон сюда не полезет, он ещё не отошел от ранения. Нюхача вроде посадили в тюрьму, а Шмыгу по слухам убили на периметре. Остатся Шурик из Бердичева. Он ещё зелёный, хотя учил его сам Калган... Не знаю, чего ожидать от этого салабона, но оружие завтра в ходку возьму. А идти недалеко: подходящие условия для возникновения "Трамплина" могут быть только в одном определённом месте. Главное - успеть первым.</text>
+	</text1>
+
+
+
+	<btn_1 x="360" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> {{{ </text>
+	</btn_1>
+
+	<btn_2 x="460" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> }}} </text>
+	</btn_2>
+
+
+
+
+	<btn_exit x="570" y="560" width="25" height="25">
+	      	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
+	</btn_exit>
+
+    </arthunter_note1>
+
+

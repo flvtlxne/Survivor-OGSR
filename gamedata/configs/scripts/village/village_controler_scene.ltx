@@ -1,0 +1,13 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+;tips      = village_controler_scene_use
+on_info = {=master_difficulty} %=destroy_object%
+on_info2 = {+stranger_talk1} %=destroy_object%
+
+; Если увеличен радиус алайфа:
+on_info3 = {+game_start} %=destroy_object%
+
+
+
