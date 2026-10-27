@@ -1,0 +1,11 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = anomal_mushrom_use
+on_use = {=zat_b7_is_night} %=turn_off_anomal_mushrom_light =give_item(mushrom:actor) =destroy_object%, {!zat_b7_is_night} %=play_particle_on_path(anomaly2\effects\body_tear_face_align:anomal_mushrom_point) =play_sound(anomal_mushrom_hit) =run_cam_effector(fusker) =hit_obj_chemical(actor:bip01_spine:0.2:0) =anomal_mushrom_hit_think%
+
+
+
+
+ 

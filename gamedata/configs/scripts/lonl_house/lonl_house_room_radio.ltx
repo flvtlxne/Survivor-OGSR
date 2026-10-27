@@ -1,0 +1,41 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+tips      = lonl_house_room_radio_tip0
+on_info = {+lonl_house_electricity} ph_idle@1
+on_info2 = {=master_difficulty} %=destroy_object%
+
+[ph_idle@1]
+tips      = lonl_house_room_radio_tip1
+on_info = {-lonl_house_electricity} ph_idle@0
+on_use = {~30} ph_idle@2 %=play_sound(pribor_switch)%, {~50} ph_idle@3 %=play_sound(pribor_switch)%, {~70} ph_idle@4 %=play_sound(pribor_switch)%, {~90} ph_idle@5 %=play_sound(pribor_switch)%
+
+
+; Музло:
+[ph_idle@2]
+tips      = lonl_house_room_radio_tip2
+on_use = ph_idle@1 %=play_sound(pribor_switch) =stop_sound_looped(lonl_house_room_radio_snd1)%
+on_info = {-lonl_house_electricity} ph_idle@0 %=stop_sound_looped(lonl_house_room_radio_snd1)%
+on_info2 =  {+stranger_talk1} %=play_sound_looped(lonl_house_room_radio_snd1)%
+
+[ph_idle@3]
+tips      = lonl_house_room_radio_tip2
+on_use = ph_idle@1 %=play_sound(pribor_switch) =stop_sound_looped(lonl_house_room_radio_snd2)%
+on_info = {-lonl_house_electricity} ph_idle@0 %=stop_sound_looped(lonl_house_room_radio_snd2)%
+on_info2 =  {+stranger_talk1} %=play_sound_looped(lonl_house_room_radio_snd2)%
+
+[ph_idle@4]
+tips      = lonl_house_room_radio_tip2
+on_use = ph_idle@1 %=play_sound(pribor_switch) =stop_sound_looped(lonl_house_room_radio_snd3)%
+on_info = {-lonl_house_electricity} ph_idle@0 %=stop_sound_looped(lonl_house_room_radio_snd3)%
+on_info2 =  {+stranger_talk1} %=play_sound_looped(lonl_house_room_radio_snd3)%
+
+[ph_idle@5]
+tips      = lonl_house_room_radio_tip2
+on_use = ph_idle@1 %=play_sound(pribor_switch) =stop_sound_looped(lonl_house_room_radio_snd4)%
+on_info = {-lonl_house_electricity} ph_idle@0 %=stop_sound_looped(lonl_house_room_radio_snd4)%
+on_info2 =  {+stranger_talk1} %=play_sound_looped(lonl_house_room_radio_snd4)%
+
+
+ 

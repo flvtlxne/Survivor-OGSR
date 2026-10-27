@@ -82,6 +82,488 @@ wounded_medkit
 radio_call
 
 
+actor_moan
+helicrash_alarm_snd
+state_maroder
+help_me
+lake_frogs_snd
+forest_cocoo_snd
+lonl_house_room_radio_snd1
+lonl_house_room_radio_snd2
+lonl_house_room_radio_snd3
+lonl_house_room_radio_snd4
+pribor_switch
+matches_use
+fireplace_snd
+actor_axeplace_use
+actor_finds_something
+actor_finds_something2
+wood_strike
+diesel_generator_work
+water_splash
+barrel_kanistra_use
+balon_gas_use
+repare_something
+marodr_lider2_aktor_kill
+marodr_guard_aktor_kill1
+marodr_guard_aktor_kill2
+derevnya_after_surge
+actor_grave_replic
+actor_perplexity
+merc_radio_snd
+kpp_merc_heli_alarm
+kpp_merc_actor_atack
+kpp_merc_victory
+hill_sceleton_snd
+samogn_aparat_works
+wounded_dog_snd
+use_bandage
+actor_heal_wounded
+pistol_shot
+actor_laugh
+steam_sound
+tunnel_anomaly_maroder_scream
+anomaly_maroder1_snd
+anomal_mushrom_hit
+chimera_hunter_say
+forest_secret_teleport_zone_obj_snd
+actor_play_guitar1
+crow_snd
+actor_vodka_overdose
+workshop_house_radio_snd
+ahmet_battle_speech
+traktor_npc_speech
+lw_newbie_speech1
+village_saray_trap_snd1
+village_saray_trap_snd2
+lw_newbie_dialog_snd
+hostage_maroder_dialog_snd
+stranger_phrase1
+stranger_phrase2
+stranger_phrase3
+stranger_phrase4
+karlik_psyzone_trap
+lake_art_snd
+lw_scientist_bye
+lw_scientist_hello
+karlik_hello_snd
+actor_alarm
+maroder_alarm
+maroder_sniper_kill_him
+mg_boss_phrase1
+mg_boss_phrase2
+mg_boss_phrase3
+mg_boss_phrase4
+mg_boss_phrase5
+mg_bomber_speech
+kpp_bunker_radio_snd1
+kpp_bunker_radio_snd2
+kpp_bunker_radio_snd3
+
+panic_monster_bandit
+
+
+
+
+
+
+[actor_moan]
+type = 3d
+path = actor_replics\actor_moan_1
+
+[helicrash_alarm_snd]
+type = looped
+path = scenario\helicrash_alarm_snd
+
+[lake_frogs_snd]
+type = looped
+path = scenario\lake_frogs_snd_1
+
+[forest_cocoo_snd]
+type = looped
+path = scenario\forest_cocoo_snd_1
+
+[lonl_house_room_radio_snd1]
+type = looped
+path = scenario\lonl_house_room_radio_snd_1
+
+[lonl_house_room_radio_snd2]
+type = looped
+path = scenario\lonl_house_room_radio_snd_2
+
+[lonl_house_room_radio_snd3]
+type = looped
+path = scenario\lonl_house_room_radio_snd_3
+
+[lonl_house_room_radio_snd4]
+type = looped
+path = scenario\lonl_house_room_radio_snd_4
+
+[pribor_switch]
+type = 3d
+path = scenario\pribor_switch
+
+[matches_use]
+type = 3d
+path = scenario\matches_use
+
+[fireplace_snd]
+type = looped
+path = scenario\fireplace_snd
+
+[actor_axeplace_use]
+type = 3d
+path = scenario\actor_axeplace_use_
+
+
+[actor_finds_something]
+type = npc
+path = scenario\actor_goodloot_find_
+shuffle = rnd
+;idle = 4,5,100 ;min,max,rnd
+idle = 6,7,100 ;min,max,rnd
+
+[actor_grave_replic]
+type = npc
+path = scenario\actor_grave_replic_
+shuffle = rnd
+idle = 13,15,100 ;min,max,rnd
+
+[actor_perplexity]
+type = npc
+path = scenario\actor_perplexity
+shuffle = seq
+;idle = 13,15,100 ;min,max,rnd
+
+
+[wood_strike]
+type = 3d
+path = scenario\wood_strike_1
+
+[diesel_generator_work]
+type = looped
+path = scenario\diesel_generator_work
+
+[water_splash]
+type = 3d
+path = scenario\water_splash_1
+
+[barrel_kanistra_use]
+type = 3d
+path = scenario\water_flow
+
+[balon_gas_use]
+type = 3d
+path = scenario\balon_gas_use
+
+[repare_something]
+type = 3d
+path = remkit\ui_repairweapon_03
+
+[marodr_lider2_aktor_kill]
+type = 3d
+path = characters_voice\human_01\bandit\fight\attack\attack_7
+
+[marodr_guard_aktor_kill1]
+type = 3d
+path = characters_voice\human_03\killer\states\idle\idle_2
+
+[marodr_guard_aktor_kill2]
+type = 3d
+path = characters_voice\human_03\killer\fight\searching_enemy\search_12
+
+[derevnya_after_surge]
+type = actor
+npc_prefix = false
+path = characters_voice\human_01\military\fight\post_combat_wait\relax_2
+shuffle = rnd
+idle = 3,5,100
+
+[merc_radio_snd]
+type = looped
+path = device\radio_call
+
+[kpp_merc_heli_alarm]
+type = npc
+path = scenario\kpp_merc_heli_alarm2
+shuffle = seq
+
+[kpp_merc_actor_atack]
+type = actor
+npc_prefix = false
+path = scenario\kpp_merc_actor_atack
+shuffle = rnd
+idle = 0,0,100
+
+[kpp_merc_victory]
+type = actor
+npc_prefix = false
+path = scenario\kpp_merc_victory
+shuffle = seq
+
+[hill_sceleton_snd]
+type = looped
+path = scenario\hill_sceleton_snd
+
+[samogn_aparat_works]
+type = looped
+path = scenario\samogn_aparat_works
+
+[wounded_dog_snd]
+type = 3d
+path = scenario\wounded_dog_snd
+
+[use_bandage]
+type = 3d
+path = interface\inv_bandage
+
+[actor_heal_wounded]
+type = 3d
+path = characters_voice\human_01\military\help\wounded\medkit_2
+
+[pistol_shot]
+type = 3d
+path = weapons\n_pm_shot
+
+[actor_laugh]
+type = 3d
+path = characters_voice\human_01\military\reactions\story\laughter_7
+
+[steam_sound]
+type = looped
+path = ambient\underground\steam_1
+
+[tunnel_anomaly_maroder_scream]
+type = 3d
+path = scenario\tunnel_anomaly_maroder_scream
+
+[anomaly_maroder1_snd]
+type = 3d
+path = scenario\anomaly_maroder1_snd
+
+[anomal_mushrom_hit]
+type = 3d
+path = anomaly\bfuzz_hit
+
+[actor_finds_something2]
+type = 3d
+path = actor_replics\actor_goodloot_find_1
+
+[chimera_hunter_say]
+type = 3d
+path = scenario\chimera_hunter_say
+
+[forest_secret_teleport_zone_obj_snd]
+type = looped
+path = scenario\forest_secret_teleport_zone_obj_snd
+
+[actor_play_guitar1]
+type = 3d
+path = scenario\actor_guitar_play_
+
+[crow_snd]
+type = 3d
+path = monsters\crow\idle_0
+
+[actor_vodka_overdose]
+type = 3d
+path = scenario\actor_vodka_overdose_
+
+[workshop_house_radio_snd]
+type = looped
+path = scenario\workshop_house_radio_snd
+
+[ahmet_battle_speech]
+type = 3d
+path = scenario\ahmet_battle_speech
+
+[traktor_npc_speech]
+type = 3d
+path = scenario\traktor_npc_speech
+
+[lw_newbie_speech1]
+type = 3d
+path = scenario\lw_newbie_speech_
+
+[village_saray_trap_snd1]
+type = looped
+path = scenario\village_saray_trap_snd_1
+
+[village_saray_trap_snd2]
+type = 3d
+path = scenario\village_saray_trap_snd_2
+
+[lw_newbie_dialog_snd]
+type = 3d
+path = scenario\lw_newbie_dialog_snd_
+
+[hostage_maroder_dialog_snd]
+type = 3d
+path = scenario\hostage_maroder_dialog_snd_
+
+
+; Пример озвучки для НПС:
+[stranger_phrase1]
+type = npc
+npc_prefix = false
+path = scenario\stranger_phrase1
+shuffle = seq
+idle = 4,8,100
+
+[stranger_phrase2]
+type = npc
+npc_prefix = false
+path = scenario\stranger_phrase2
+shuffle = seq
+idle = 4,8,100
+
+[stranger_phrase3]
+type = npc
+npc_prefix = false
+path = scenario\stranger_phrase3
+shuffle = seq
+idle = 4,8,100
+
+[stranger_phrase4]
+type = npc
+npc_prefix = false
+path = scenario\stranger_phrase4
+shuffle = seq
+idle = 4,8,100
+
+[karlik_psyzone_trap]
+type = actor
+npc_prefix = false
+path = scenario\village_saray_trap_snd_2
+shuffle = seq
+
+[lake_art_snd]
+type = 3d
+path = scenario\lake_art_snd_1
+
+[lw_scientist_bye]
+type = npc
+npc_prefix = false
+path = scenario\mar_csky_doctor_meet_bye_
+;shuffle = seq
+shuffle = rnd
+idle = 4,8,100
+
+[lw_scientist_hello]
+type = npc
+npc_prefix = false
+path = scenario\mar_csky_doctor_meet_greet_
+;shuffle = seq
+shuffle = rnd
+idle = 4,8,100
+
+[karlik_hello_snd]
+type = 3d
+path = monsters\karlik\hit_0
+
+[actor_alarm]
+type = npc
+npc_prefix = false
+path = scenario\actor_alarm_1
+shuffle = seq
+idle = 4,8,100
+
+[maroder_alarm]
+type = npc
+npc_prefix = false
+path = scenario\maroder_alarm_
+shuffle = rnd
+idle = 4,8,100
+
+[maroder_sniper_kill_him]
+type = npc
+npc_prefix = false
+path = scenario\maroder_sniper_kill_him_1
+shuffle = rnd
+idle = 4,8,100
+
+[mg_boss_phrase1]
+type = npc
+npc_prefix = false
+path = scenario\mg_boss_phrase1
+shuffle = seq
+idle = 4,8,100
+
+[mg_boss_phrase2]
+type = npc
+npc_prefix = false
+path = scenario\mg_boss_phrase2
+shuffle = seq
+idle = 4,8,100
+
+[mg_boss_phrase3]
+type = npc
+npc_prefix = false
+path = scenario\mg_boss_phrase3
+shuffle = seq
+idle = 4,8,100
+
+[mg_boss_phrase4]
+type = npc
+npc_prefix = false
+path = scenario\mg_boss_phrase4
+shuffle = seq
+idle = 4,8,100
+
+[mg_boss_phrase5]
+type = npc
+npc_prefix = false
+path = scenario\mg_boss_phrase5
+shuffle = seq
+idle = 4,8,100
+
+[mg_bomber_speech]
+type = npc
+npc_prefix = false
+path = scenario\mg_bomber_speech_
+;shuffle = seq
+shuffle = rnd
+idle = 4,8,100
+
+
+[kpp_bunker_radio_snd1]
+type = looped
+path = scenario\kpp_bunker_radio_snd1
+
+[kpp_bunker_radio_snd2]
+type = looped
+path = scenario\kpp_bunker_radio_snd2
+
+[kpp_bunker_radio_snd3]
+type = looped
+path = scenario\kpp_bunker_radio_snd3
+
+
+[panic_monster_bandit]
+type = npc
+npc_prefix = false
+path = human_03\bandit\states\panic_monster\panic_monster_
+shuffle = rnd
+idle = 4,8,100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [surge_earthquake_sound_looped]
 type = looped
 path = ambient\earthquake
@@ -137,6 +619,13 @@ npc_prefix = true|false
 path = states\idle\idle_
 shuffle = rnd|seq|loop
 idle = 3,5,100 ;min,max,rnd
+
+[state_maroder]
+type = npc
+npc_prefix = true
+path = states\idle\idle_
+shuffle = rnd
+idle = 7,13,100
 
 ;************************************************************
 ;Универсальная озвучка встречи
@@ -513,6 +1002,15 @@ path = help\wounded_heavy\help_
 shuffle = rnd
 idle = 4,8,100
 
+
+[help_me]
+type = npc
+npc_prefix = false
+path = human_01\military\help\wounded_heavy\help_4
+shuffle = seq
+idle = 4,8,100
+
+
 [help_thanks]
 type = npc
 avail_communities = army, stalker, bandit, dolg, freedom, killer
@@ -528,6 +1026,8 @@ npc_prefix = true
 path = help\wounded\medkit_
 shuffle = rnd
 idle = 1,1,100
+
+
 
 ;***************************************************************
 ; ТЕМЫ ДЛЯ ТИРА

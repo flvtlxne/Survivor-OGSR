@@ -1,0 +1,19 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_car_use
+on_info = {=master_difficulty} %=destroy_object%
+on_use = {=actor_has_item(car_remkit)} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+
+; Чиним тачку:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(repare_something)%
+
+[ph_idle@3]
+on_game_timer = 15|ph_idle@1 %=remove_item(car_remkit) =destroy_object =spawn_kpp_car =enable_ui%
+
+
+
+
+ 

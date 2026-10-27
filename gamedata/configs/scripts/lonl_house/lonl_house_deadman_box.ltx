@@ -1,0 +1,15 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+tips      = lonl_house_deadman_box_use
+on_info = {+lonl_house_grave_dig} ph_idle@open
+on_info2 = {=master_difficulty} ph_idle@open
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+
+
+
+ 

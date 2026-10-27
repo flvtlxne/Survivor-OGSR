@@ -24,6 +24,11 @@ monster_classes = {
 			[clsid.psy_dog_s] 		  = "psy_dog",
 			[clsid.pseudodog_s]		  = "pseudodog",
 			[clsid.snork_s ] 		  = "snork",
+
+			[clsid.zombie_s ] 		  = "zombie",
+			[clsid.fracture_s ] 		  = "fracture",
+			[clsid.cat_s ] 		  = "cat",
+
 			[clsid.tushkano_s ] 	  = "tushkano",
 		}
 
@@ -575,3 +580,66 @@ function friend_of_stalkers_functor()
 	end
 	return has_alife_info("sim_stalker_help_harder")
 end
+
+
+
+function lw_achiev1_functor()	-- "Ищейка"(обыскать 20 рандомных тайников)
+	if has_alife_info("achivement_1_info") then
+		return true
+	end
+	return false
+end
+
+function lw_achiev2_functor()	-- "Душегуб"(убить 50 мародёров)
+	if has_alife_info("achivement_2_info") then
+		return true
+	end
+	return false
+end
+
+function lw_achiev3_functor()	-- "Живодёр"(убить 50 мутантов)
+	if has_alife_info("achivement_3_info") then
+		return true
+	end
+	return false
+end
+
+function lw_achiev4_functor()	-- "Конструктор"(собрать все доступные стволы)
+	if has_alife_info("achivement_4_info") then
+		return true
+	end
+	return false
+end
+
+function lw_achiev5_functor()	-- "Любопытный"(выполнить все доп. квесты)
+	if has_alife_info("achivement_5_info") then
+		return true
+	end
+	return false
+end
+
+function lw_achiev6_functor()	-- "Слабак"(упасть в обморок 10 раз)
+	if has_alife_info("achivement_6_info") then
+		return true
+	end
+	return false
+end
+
+function lw_achiev7_functor()	-- "Алкаш"(набухаться и бредить 10 раз)
+	if has_alife_info("achivement_7_info") then
+		return true
+	end
+	return false
+end
+
+function lw_achiev8_functor()	-- "Головорез"(убить Хирурга ножом)
+	if has_alife_info("achivement_8_info") then
+		return true
+	end
+	return false
+end
+
+
+
+
+

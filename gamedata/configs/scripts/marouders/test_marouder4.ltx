@@ -1,0 +1,52 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+
+[walker@start]
+path_walk = lonl_house_pnt4_walk
+path_look = lonl_house_pnt4_look
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} walker@1 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_bizon} walker@1 %=give_items(wpn_bizon)%
+on_info6 = {+actor_has_mosin} walker@1 %=give_items(wpn_m1891) =give_items(scope_pu)%
+on_info7 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_mosin} walker@1
+
+
+[walker@1]
+path_walk = lonl_house_pnt4_walk
+path_look = lonl_house_pnt4_look
+def_state_moving1 = assault
+def_state_standing = guard_na
+meet = no_meet
+invulnerable = false
+;combat_ignore_keep_when_attacked = true
+;danger = danger_condition
+gather_items_enabled = true
+help_wounded_enabled = true
+corpse_detection_enabled = true
+;team = lonl_house_marouders_team
+out_restr = script_zone_lonl_house
+
+
+[hit]
+on_info = %=destroy_object%
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[combat_ignore]
+combat_ignore = always
+ 
+
+
+
+
+

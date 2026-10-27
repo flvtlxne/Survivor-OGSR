@@ -9,6 +9,7 @@ net_spawn
 --------------------------------------------------------------------------------------------------------------------]]
 
 
+
 ----------------------------------------------------------------------------------------------------------------------
 class "motivator_binder" (object_binder)
 
@@ -86,11 +87,13 @@ function motivator_binder:net_spawn(sobject)
 	self.object:set_callback(callback.death, motivator_binder.death_callback, self)
 	self.object:set_callback(callback.use_object, motivator_binder.use_callback, self)
 	self.object:set_callback(callback.sound, motivator_binder.hear_callback, self)
+	self.object:set_callback(callback.on_item_drop, self.on_item_drop, self)
+	self.object:set_callback(callback.on_item_take, self.on_item_take, self)
 	--memusage.collect_info(self.object, "after__callback")
 
 	-- ставим дефолтное расстояние входа в смарткаверы
 
-	self.object:apply_loophole_direction_distance(1.0)
+	self.object:apply_loophole_direction_distance(1.6)
 
 		--' Загрузка историй для лагеря.
 	if self.loaded == false then
@@ -113,7 +116,7 @@ function motivator_binder:net_spawn(sobject)
 
 	if not self.object:alive() then
 		self.object:death_sound_enabled(false)
-
+		if rx_ai then rx_ai.corpse_net_spawn(self.object,self.loaded) end
 		release_body_manager.get_release_body_manager():moving_dead_body(self.object) ---НЕ ЗАБЫТЬ УБРАТЬ
 		return true
 	end
@@ -175,10 +178,15 @@ function motivator_binder:net_spawn(sobject)
 
 	self.object:group_throw_time_interval(2000)
 
+	if rx_ai then
+		rx_ai.npc_net_spawn(self.object)
+	end
+	
 	return true
 end
 
 function motivator_binder:net_destroy()
+	if rx_ai then rx_ai.npc_net_destroy(self.object) end
 	--printf("motivator_binder:net_destroy(): self.object:name()='%s'", self.object:name())
 	xrs_dyn_music.npc_table[self.object:id()] = nil
 
@@ -224,9 +232,125 @@ function motivator_binder:clear_callbacks()
 	self.object:set_callback(callback.sound, nil)
 end
 
+
+
 function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_index)
 	-- FIXME: коллбеки неплохо было бы регистрировать в общем storage, а не посхемно...
 	-- просто всегда ставить их при включении схемы и снимать при отключении.
+	
+-- эффект артефактов в режиме Соревнования:
+if who and who:id()==db.actor:id() and who:id()~=obj:id() and xr_conditions.master_difficulty() == true and db.actor:object("af_dummy_battery_mg") ~= nil 
+	--and  ( string.find(obj:name(), "mg_scavenger") 
+	--or string.find(obj:name(), "mg_scavenger_strong")
+	--or string.find(obj:name(), "mg_art_robber_npc")
+	--or string.find(obj:name(), "mg_npc_tank1")
+	--or string.find(obj:name(), "maroder_assault1")
+	--or string.find(obj:name(), "maroder_assault2")
+	--or string.find(obj:name(), "mg_kpp_boss")
+	--or string.find(obj:name(), "test_marouder7")
+	--or string.find(obj:name(), "test_marouder10")
+	--or string.find(obj:name(), "maroder_killer1")
+	--or string.find(obj:name(), "maroder_killer2")
+	--or string.find(obj:name(), "maroder_killer3")
+	--or string.find(obj:name(), "maroder_killer4")	) then
+	and amount > 0.1 then
+		local h = hit()
+		h.type = hit.fire_wound
+		h.power = 0.25
+		h.impulse = 0
+		h.draftsman = obj
+		h.direction = obj:position():sub(db.actor:position())
+		obj:hit(h)
+		--news_manager.send_tip(db.actor, "obj_hit_with_silencer", nil, "default", nil, nil)
+end
+	
+-- стрельба в глову боссам:
+if bone_index == 15 and  ( string.find(obj:name(), "marouder_lider1") 
+	or string.find(obj:name(), "marouder_lider2")
+	or string.find(obj:name(), "marouder_lider3")
+	or string.find(obj:name(), "marouder_lider4")
+	or string.find(obj:name(), "marouder_lider5")
+	or string.find(obj:name(), "marouder_lider6")	) and obj.health > 0.1 then
+		local h = hit()
+		h.type = hit.fire_wound
+		h.power = 0.7
+		h.impulse = 0
+		h.draftsman = obj
+		h.direction = obj:position():sub(db.actor:position())
+		obj:hit(h)
+		news_manager.send_tip(db.actor, "maroder_lider_critical_hit", nil, "default", nil, nil)
+end
+	
+-- эффект при попадании из оружия с глушителем:
+if ( who and who:id()==db.actor:id() and amount > 0 ) then
+	local enemy = obj:best_enemy()
+	local active_weapon = db.actor:active_item()
+	if not enemy and not self.object:see(db.actor) and xr_conditions.actor_silencer_use() == true and active_weapon then
+		local h = hit()
+		h.type = hit.fire_wound
+		h.power = 1.2
+		h.impulse = 0
+		h.draftsman = obj
+		h.direction = obj:position():sub(db.actor:position())
+		obj:hit(h)
+		news_manager.send_tip(db.actor, "obj_hit_with_silencer", nil, "default", nil, nil)
+	end
+end	
+
+-- эффект при попадании жеканом(если хит не смертельный и не в голову):
+--if ( who and who:id()==db.actor:id() and amount > 0 and xr_conditions.actor_shotguns_use() == true ) then
+--local active_weapon = db.actor:active_item()
+--local ammo_type = rx_utils.get_weapon_data(alife():object(db.actor:active_item():id())).ammo_type
+--if active_weapon then
+--	if ammo_type == 1 and bone_index ~= 15 and amount < self.object.health*100 and not
+--	( string.find(obj:name(), "marouder_lider1") 
+--	or string.find(obj:name(), "marouder_lider2")
+--	or string.find(obj:name(), "marouder_lider3")
+--	or string.find(obj:name(), "marouder_lider4")
+--	or string.find(obj:name(), "marouder_lider5")
+--	or string.find(obj:name(), "marouder_lider6")
+--	or string.find(obj:name(), "maroder_killer1")
+--	or string.find(obj:name(), "maroder_killer2")
+--	or string.find(obj:name(), "maroder_killer3")
+--	or string.find(obj:name(), "maroder_courier1")
+--	or string.find(obj:name(), "maroder_courier2")
+--	or string.find(obj:name(), "maroder_courier3")
+--	or string.find(obj:name(), "maroder_courier4")	) and obj.health > 0.1 then
+--	local range = obj:range()
+--	local fov = obj:fov()
+--		obj:set_range(2)
+--		obj:set_fov(5)
+--		xr_wounded.hit_callback(obj:id())
+--		obj.health = obj.health*0.3
+--		news_manager.send_tip(db.actor, "obj_hit_with_jekan", nil, "default", nil, nil)
+--	end
+--end
+--end
+
+-- Для СБУ и наёмников на КПП: --------------------------------------------------------------
+if has_alife_info("kpp_sbu_see_ambush2") then
+if who and who:id()==db.actor:id() and ( string.find(self.object:name(), "^kpp_merc_lider")  or
+	string.find(self.object:name(), "^kpp_merc_guard1") or
+	string.find(self.object:name(), "^kpp_merc_guard2") or
+	string.find(self.object:name(), "^kpp_ambush_merc1") or
+	string.find(self.object:name(), "^kpp_ambush_merc2") or
+	string.find(self.object:name(), "^kpp_ambush_merc3") or
+	string.find(self.object:name(), "^kpp_ambush_merc4") or
+	string.find(self.object:name(), "^kpp_ambush_merc5") or
+	string.find(self.object:name(), "^kpp_ambush_merc6") or
+	string.find(self.object:name(), "^kpp_ambush_merc7") or
+	string.find(self.object:name(), "^kpp_ambush_merc8") ) and amount > 0 then
+		xr_effects.kpp_mercs_atack()
+end
+if who and who:id()==db.actor:id() and ( string.find(self.object:name(), "^sbu_comand_lider") or
+	string.find(self.object:name(), "^sbu_comand_sold1") or
+	string.find(self.object:name(), "^sbu_comand_sold2") or
+	string.find(self.object:name(), "^sbu_comand_sold3") ) and amount > 0 then
+		xr_effects.kpp_sbu_atack()
+end
+end
+---------------------------	
+		
 	if(who:id()==db.actor:id()) then
 		xr_statistic.set_best_weapon(amount)
 
@@ -271,22 +395,64 @@ function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_i
 	end
 
 	-- Если пришел смертельный хит, с некоторой вероятностью делаем чувака раненым.
-	if bone_index ~= 15 and amount > self.object.health*100 then
-		--printf("DEADLY HIT %s %s", amount, self.object.health*100)
-		self.object.health = 0.15
+	--if bone_index ~= 15 and amount > self.object.health*100 then
+	--	self.object.health = 0.15
+	--end
+	
+	if bone_index ~= 15 and amount > obj.health*100 then
+		obj.health = 0.15
 	end
-
 
 	if amount > 0 then
 		printf("HIT_CALLBACK: %s amount=%s bone=%s", obj:name(), amount, tostring(bone_index))
 --		self.need_relation_update = who:id() == db.actor:id()
 		xr_wounded.hit_callback(obj:id())
+		
 	end
+	if rx_ai then rx_ai.npc_hit(obj,amount,local_direction,who,bone_index) end
+	
+	if who:section() == "karlik_friend" then
+	local pos = obj:position()
+	snd = sound_object("anomaly\\anomaly_body_tear_1")
+	local fx_particle = "anomaly2\\body_tear_00"
+		fx_particle = particles_object(fx_particle)
+		fx_particle:play_at_pos(pos)
+		snd:play_at_pos(who, obj:position(), sound_object.s2d)
+		snd.volume = 2.0
+		local health = db.actor.health
+		db.actor.health = health + 0.3
+		db.actor.bleeding = 1.0
+	end
+	
+	--if who:section() == "npc_bomb" then
+	--	local npc = self.object
+	--	who = npc
+	--end
+	
+	if who == nil then
+		local npc = self.object
+		who = npc
+	end
+	
+	if who:section() == "personal_dog" then
+		if xr_conditions.actor_wears_novice_outfit() == true then
+			--who = db.actor
+			local h = hit()
+			h.type = hit.fire_wound
+			h.power = 0.01
+			h.impulse = 0
+			h.draftsman = db.actor
+			h.direction = obj:position():sub(db.actor:position())
+			obj:hit(h)
+		end
+	end
+	
 end
 
 function motivator_binder:death_callback(victim, who)
 	self:hit_callback(victim, 1, vector():set(0,0,0), who, "from_death_callback")
-
+	if rx_ai then rx_ai.npc_death(self.object,who) end
+	
 	xrs_dyn_music.npc_table[self.object:id()] = nil
 	xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] = nil
 --	xrs_dyn_music.stop_combat(self.object:id())
@@ -295,10 +461,77 @@ function motivator_binder:death_callback(victim, who)
 	local npc = self.object
 	stalker_generic.remove_level_spot(npc, st)
 	--' end  --
+	
+	
+		
 	if who:id() == db.actor:id() then
 		xr_statistic.inc_killed_stalkers_counter()
 		xr_statistic.set_best_monster(npc)
+		
+		if db.actor:dont_has_info("actor_set_maroder") then
+			if not ( string.find(victim:name(), "marouder_lider1") 
+				or string.find(victim:name(), "marouder_lider2")
+				or string.find(victim:name(), "marouder_lider3")
+				or string.find(victim:name(), "marouder_lider4")
+				or string.find(victim:name(), "marouder_lider5")
+				or string.find(victim:name(), "kpp_merc_lider")
+				or string.find(victim:name(), "lw_scientist")
+				or string.find(victim:name(), "lw_stranger_zombied") ) then
+					if db.actor:alive() then
+						soundtrack.actor_npc_kill_snd()
+					end
+			end
+		end
+		
+		local counter_name = "stress"
+		local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
+		if cnt_value < 15 and db.actor:dont_has_info("actor_set_maroder") and not xr_conditions.actor_in_zone(nil,nil,{"lonl_house_save_zone"}) then
+			xr_effects.inc_counter(db.actor, nil, {"stress",tostring(1)})
+		end
+		
+		if db.actor:dont_has_info("achivement_2_info") then
+			xr_effects.inc_counter(db.actor, nil, {"kill_maroder",tostring(1)})
+		end
+	
+	--if string.find(self.object:name(), "marouder_lider4") and xr_conditions.actor_armed_knife() == true then
+	--		local counter_name = "knife"
+	--		local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
+	--		if cnt_value < 2 then
+	--				xr_effects.inc_counter(db.actor, nil, {"knife",1})
+	--		end
+	--end	
+
+
 	end
+
+	if who:section() == "karlik_friend" then
+		mod_functions.karlik_habar_random_info()
+		if xr_conditions.actor_wears_novice_outfit() == true then
+			who = db.actor
+		end
+	end
+	
+	if who:section() == "personal_dog" then
+		if xr_conditions.actor_wears_novice_outfit() == true then
+			who = db.actor
+		end
+	end
+	
+	if who == nil then
+		local npc = self.object
+		who = npc
+	end
+	
+	-- эффект артефактов в режиме Соревнования:
+if who and who:id()==db.actor:id() and xr_conditions.master_difficulty() == true and xr_conditions.actor_armed_knife() == true and db.actor:object("af_fuzz_kolobok_mg") ~= nil and has_alife_info("invulnerability") then
+	local target_dist = victim:position():distance_to(db.actor:position())
+	if target_dist < 3 then
+		mod_functions.kill_stalkers_around20()
+		mod_functions.kill_mutants_around20()
+		soundtrack.script_monster_hit_snd()
+	end
+end
+	
 
 	--' Загрузка историй для лагеря.
 	local known_info = utils.cfg_get_string(st.ini,st.section_logic , "known_info", self.object, false, "", nil)
@@ -336,7 +569,8 @@ function motivator_binder:death_callback(victim, who)
 		end
 
 	end
-	release_body_manager.get_release_body_manager():moving_dead_body(self.object)
+	release_body_manager.get_release_body_manager():moving_dead_body(self.object,true)
+	
 end
 
 function motivator_binder:use_callback(obj, who)
@@ -351,12 +585,36 @@ function motivator_binder:use_callback(obj, who)
 	end
 end
 
+function motivator_binder:on_item_drop(obj)
+	local snpc = alife():object(self.object:id())
+	if not (snpc and snpc.online) then
+		return		-- уходит в оффлайн
+	end
+	if rx_ai then
+		rx_ai.npc_item_drop(self.object,obj)
+	end
+--	local sobj = alife():object(obj:id())
+--	if not sobj then
+--		return		-- предмет удалён
+--	end
+end
+
+function motivator_binder:on_item_take(obj)
+	local sobj = alife():object(obj:id())
+	if not sobj then
+		return		-- предмет удалён
+	end
+	if rx_ai then
+		rx_ai.npc_item_take(self.object,obj)
+	end
+end
+
 function motivator_binder:update(delta)
 	object_binder.update(self, delta)
 
-	if xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] and self.object:best_enemy() == nil then
-		xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] = nil
-	end
+--	if xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] and self.object:best_enemy() == nil then
+--		xr_combat_ignore.fighting_with_actor_npcs[self.object:id()] = nil
+--	end
 
 	local object = self.object
 	local object_alive = object:alive()
@@ -365,6 +623,9 @@ function motivator_binder:update(delta)
 	-- Переключение логики.
 	update_logic(object)
 
+	if object_alive then
+		xr_combat_ignore.npc_update(object)
+	end
 
 	if self.first_update == false then
 		if object_alive == false then
@@ -466,6 +727,7 @@ function motivator_binder:update(delta)
 		end
 		self.need_relation_update = false
 	end]]--
+	if rx_ai and object_alive then rx_ai.npc_update(object,self.st) end
 end
 
 function motivator_binder:reload(section)
@@ -524,6 +786,9 @@ function motivator_binder:hear_callback(self, who_id, sound_type, sound_position
 	if who_id == self:id() then
 		return
 	end
+	if rx_ai then
+		rx_ai.npc_hear(self,who_id,sound_type,sound_position,sound_power)
+	end
 	xr_hear.hear_callback(self, who_id, sound_type, sound_position, sound_power)
 end
 
@@ -541,6 +806,7 @@ function addCommonPrecondition(action)
 	action:add_precondition (world_property(xr_evaluators_id.wounded_exist,		false))
 	action:add_precondition (world_property(xr_evaluators_id.corpse_exist,		false))
 	action:add_precondition (world_property(stalker_ids.property_items,		false))
+	if rx_ai then rx_ai.addCommonPrecondition(action) end
 end
 
 
@@ -553,32 +819,31 @@ function update_logic(object)
 	if st ~= nil and st.active_scheme ~= nil and object_alive then
 		-- Обрабатываем Override on_combat
 		local switched = false
-		local manager = object:motivation_action_manager()
-		if manager:initialized() and manager:current_action_id() == stalker_ids.action_combat_planner then
+		if object:best_enemy() then
 			local overrides = xr_logic.generic_scheme_overrides(object)
 			if overrides then
 				if overrides.on_combat then
 					xr_logic.pick_section_from_condlist(actor, object, overrides.on_combat.condlist)
 				end
 				if st_combat and st_combat.logic then
-					if  not xr_logic.try_switch_to_another_section(object, st_combat, actor) then
+					if not xr_logic.try_switch_to_another_section(object, st_combat, actor) then
 						if overrides.combat_type then
-							set_combat_type(object, actor, overrides)
+							xr_combat.set_combat_type(object, actor, overrides)
+						else
+							xr_combat.set_combat_type(object, actor, st_combat)
 						end
 					else
 						switched = true
 					end
 				end
-
 			else
-				set_combat_type(object, actor, st_combat)
+				xr_combat.set_combat_type(object, actor, st_combat)
 			end
 		end
-
 		if not switched then
 			xr_logic.try_switch_to_another_section(object, st[st.active_scheme], actor)
 		end
-	else
+	elseif st_combat then
 		-- если нет активной секции, то тип боя взять из секции on_combat
 		xr_combat.set_combat_type(object, actor, st_combat)
 	end

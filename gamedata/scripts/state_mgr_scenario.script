@@ -118,6 +118,14 @@ function add_state_lib()
 										animstate = nil,
 										animation = "zat_b22_medic_suicide",
 										direction = CSightParams.eSightTypeAnimationDirection},
+										
+		suicide_prepare = {						weapon = "unstrapped",
+										movement = move.stand,
+										mental = anim.free,
+										bodystate = move.standing,
+										animstate = nil,
+										animation = "zat_b22_medic_suicide",
+										direction = CSightParams.eSightTypeAnimationDirection},
 
 		zat_b3_tech_drunk = {			weapon = "none",
 										movement = move.stand,
@@ -907,6 +915,14 @@ function add_animation_list()
 
 
 		zat_b22_medic_suicide = { 	prop	= { maxidle = 1,
+												sumidle = 1,
+												moving 	= true },
+									into	= {	[0]	=  {"zat_b22_medic_suicide_in"} },
+									out		= nil,
+									idle	= {	[0]	=  "zat_b22_medic_suicide_idle" },
+									rnd		= nil},
+									
+		suicide_prepare = { 	prop	= { maxidle = 1,
 												sumidle = 1,
 												moving 	= true },
 									into	= {	[0]	=  {"zat_b22_medic_suicide_in"} },

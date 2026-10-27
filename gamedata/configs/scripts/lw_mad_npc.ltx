@@ -1,0 +1,89 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+
+[walker@start]
+path_walk = lw_stranger1_walk1
+path_look = lonl_house_bed_point1
+on_info = {+suicider_cross_use} companion@1
+;on_info2 = 
+;on_info3 = 
+
+
+[companion@1]
+meet = no_meet
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+can_use_knife = false
+on_actor_dist_le_nvis = 4|companion@2
+
+[companion@2]
+meet = meet@1
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+can_use_knife = false
+on_info = {+mad_npc_info1} walker@away
+
+
+
+
+Сваливаем и удаляемся:
+[walker@away]
+path_walk = maroders_escape_point1
+path_look = lonl_house_pnt5_1_look
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+avail_release = false
+combat_ignore_keep_when_attacked = true
+can_use_knife = false
+on_actor_dist_ge_nvis = 60|%=destroy_object%
+on_signal       = arriwed|%=destroy_object%
+
+
+
+
+
+
+; диалог неразрываемый(нпс юзает ГГ сам):
+[meet@1]
+abuse = false
+use = self
+trade_enable = false
+allow_break = false
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[combat_ignore]
+combat_ignore = always
+ 
+
+
+
+
+

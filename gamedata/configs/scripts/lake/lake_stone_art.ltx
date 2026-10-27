@@ -1,0 +1,15 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lake_stone_art_use
+on_use = {+lake_stone_art_check} %=destroy_object =spawn_lake_stone_art2 +lake_stone_art_touch =play_particle_on_path(anomaly2\effects\teleport_damage:anom_bloodsucker_zone1_point1) =play_lake_art_snd%
+
+
+
+
+ 

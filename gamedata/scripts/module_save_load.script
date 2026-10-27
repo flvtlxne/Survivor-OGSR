@@ -1,0 +1,17 @@
+--[[ ----------------------------------------------------------------------------------------------
+ File       : module_save_load.script
+ Description: "Модуль событий при сэйв\лоад"
+ Copyright  : 2015 © Neof-One
+ Author     : (Vampirnik77)
+ Editors    : Vampirnik77
+ Last edit  : 15.07.2017 (by Vampirnik77)
+--]] ----------------------------------------------------------------------------------------------
+function saveEvent() --// Событие при сэйве, например сохранение переменных в хранилища se_stor
+module_dynamic_update.saveTbl()
+module_callbacks.SaveCallbacks()
+end
+
+function loadEvent() --// Событие при лоаде, например загрузка переменных из хранилища se_stor
+module_dynamic_update.loadTbl()
+module_callbacks.LoadCallbacks()
+end

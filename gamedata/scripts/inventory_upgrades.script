@@ -52,6 +52,24 @@ function effect_functor_a( param2, section, loading ) --( string, string, int )
 		local money = char_ini:r_u32(section, "cost")
 		db.actor:give_money(math.floor(money*-1*cur_price_percent))
 	end
+
+	if loading == 0 and 
+	( section ~= "up_sect_firsta_bm16" and 
+	section ~= "up_sect_secona_bm16" and 
+	section ~= "up_sect_firstc_ak74u" and 
+	section ~= "up_sect_fourte_hpsa" and 
+	section ~= "up_sect_firstd_lr300" and 
+	section ~= "up_sect_firstd_toz34" and 
+	section ~= "up_sect_fourta_protecta" and
+	section ~= "up_sect_fourtc_protecta" and
+	section ~= "up_sect_thirda_bm16" ) then
+		local material = char_ini:r_string(section, "material")
+		alife():release(alife():object(db.actor:object(material):id()), true)
+		xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if xr_conditions.actor_in_zone(nil,nil,{"lonl_house_store_zone"}) then
+		soundtrack.repair_sounds()
+	end
 end
 
 function get_upgrade_cost(section)
@@ -70,7 +88,10 @@ function get_possibility_string(mechanic_name, possibility_table)
 		end
 	end
 	if(str=="") then
-		str = " - add hints for this upgrade"
+		--str = " - add hints for this upgrade"
+		--str = "upgrade_material_needed"
+		str = "Необходим расходный материал"
+		--soundtrack.no_replics()
 	end
 	return str
 end
@@ -186,7 +207,8 @@ local function how_much_repair( item_name, item_condition )
 	local ltx = system_ini()
 	local cost = ltx:r_u32(item_name, "cost")
 	local class = ltx:r_string(item_name, "class")
-	local cof = 0.6
+	--local cof = 0.6
+	local cof = 0
 	return math.floor(cost*(1-item_condition)*cof * cur_price_percent)
 end
 
@@ -198,7 +220,84 @@ function can_repair_item( item_name, item_condition, mechanic ) --( string, floa
 	if db.actor:money() < price then
 		return false
 	end
+	
+	if (item_name=="novice_outfit" 
+		and db.actor:object("upgr_item_novice_outf4") ~= nil
+		and db.actor:object("upgr_item_novice_outf2") ~= nil	) then
 	return true
+	end
+	if (item_name=="stalker_outfit" 
+		and db.actor:object("upgr_item_specops_outf8") ~= nil
+		and db.actor:object("upgr_item_novice_outf2") ~= nil	) then
+	return true
+	end
+	if (item_name=="scientific_outfit" 
+		and db.actor:object("upgr_item_scient_outf2") ~= nil
+		and db.actor:object("upgr_item_novice_outf2") ~= nil	) then
+	return true
+	end
+	if (item_name=="specops_outfit" 
+		and db.actor:object("upgr_item_specops_outf1") ~= nil
+		and db.actor:object("upgr_item_milit_outf2") ~= nil	) then
+	return true
+	end
+	if (item_name=="military_outfit" 
+		and db.actor:object("upgr_item_specops_outf1") ~= nil
+		and db.actor:object("upgr_item_milit_outf2") ~= nil	) then
+	return true
+	end
+	if (item_name=="exo_outfit" 
+		and db.actor:object("upgr_item_specops_outf4") ~= nil
+		and db.actor:object("upgr_item_specops_outf5") ~= nil	) then
+	return true
+	end
+	if (item_name=="helm_respirator"
+		and db.actor:object("upgr_item_milit_outf9") ~= nil	) then	
+	return true
+	end
+	if (item_name=="helm_hardhat"
+		and db.actor:object("upgr_item_milit_outf2") ~= nil	) then
+	return true
+	end
+	if (item_name=="helm_protective"
+		and db.actor:object("upgr_item_specops_outf2") ~= nil	) then
+	return true
+	end
+	if (item_name=="helm_tactic"
+		and db.actor:object("upgr_item_specops_outf9") ~= nil	) then
+	return true
+	end
+	
+	if (item_name=="wpn_pm"
+		or item_name=="wpn_pb"
+		or item_name=="wpn_hpsa"
+		or item_name=="wpn_usp"
+		or item_name=="wpn_bm16"
+		or item_name=="wpn_toz34"
+		or item_name=="wpn_ak74u"
+		or item_name=="wpn_ak74"
+		or item_name=="wpn_lr300"
+		or item_name=="wpn_bizon"
+		or item_name=="wpn_sayga"
+		or item_name=="wpn_m1891"
+		or item_name=="wpn_vintorez") and db.actor:object("weapon_remkit") ~= nil then
+	return true
+	elseif (item_name=="wpn_pm"
+		or item_name=="wpn_pb"
+		or item_name=="wpn_hpsa"
+		or item_name=="wpn_usp"
+		or item_name=="wpn_bm16"
+		or item_name=="wpn_toz34"
+		or item_name=="wpn_ak74u"
+		or item_name=="wpn_ak74"
+		or item_name=="wpn_lr300"
+		or item_name=="wpn_bizon"
+		or item_name=="wpn_sayga"
+		or item_name=="wpn_m1891"
+		or item_name=="wpn_vintorez") and db.actor:object("weapon_remkit") ~= nil then
+	return false
+	end
+	
 end
 
 function question_repair_item( item_name, item_condition, can, mechanic ) --( string, float, bool, string )
@@ -209,13 +308,231 @@ function question_repair_item( item_name, item_condition, can, mechanic ) --( st
 	if db.actor:money() < price then
 		return game.translate_string("st_upgr_cost")..": "..price.." RU\\n"..game.translate_string("ui_inv_not_enought_money")..": "..price-db.actor:money().." RU"
 	end
-	return game.translate_string("st_upgr_cost").." "..price.." RU. "..game.translate_string("ui_inv_repair").."?"
+	
+--	if ( db.actor:object("weapon_remkit") ~= nil or db.actor:object("armor_remkit") ~= nil ) then
+--	return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+--	end
+--	if ( db.actor:object("weapon_remkit") == nil or db.actor:object("armor_remkit") == nil ) then
+--	return game.translate_string("ui_inv_repair3")	--	У вас нет ремкомплектов. Разберите любое оружие(3 набора деталей);
+--	end
+	
+	if (item_name=="novice_outfit" 
+		and ( db.actor:object("upgr_item_novice_outf4") == nil
+		or db.actor:object("upgr_item_novice_outf2") == nil )	) then
+			return game.translate_string("ui_inv_repair_outf1")	--	нет расходных материалов для ремонта брони;
+	elseif (item_name=="novice_outfit" 
+		and db.actor:object("upgr_item_novice_outf4") ~= nil
+		and db.actor:object("upgr_item_novice_outf2") ~= nil	) then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if (item_name=="stalker_outfit" 
+		and ( db.actor:object("upgr_item_specops_outf8") == nil
+		or db.actor:object("upgr_item_novice_outf2") == nil )	) then
+			return game.translate_string("ui_inv_repair_outf2")	--	нет расходных материалов для ремонта брони;
+	elseif (item_name=="stalker_outfit" 
+		and db.actor:object("upgr_item_specops_outf8") ~= nil
+		and db.actor:object("upgr_item_novice_outf2") ~= nil	) then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if (item_name=="scientific_outfit" 
+		and ( db.actor:object("upgr_item_scient_outf2") == nil
+		or db.actor:object("upgr_item_novice_outf2") == nil )	) then
+			return game.translate_string("ui_inv_repair_outf3")	--	нет расходных материалов для ремонта брони;
+	elseif (item_name=="scientific_outfit" 
+		and db.actor:object("upgr_item_scient_outf2") ~= nil
+		and db.actor:object("upgr_item_novice_outf2") ~= nil	) then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if (item_name=="specops_outfit" 
+		and ( db.actor:object("upgr_item_specops_outf1") == nil
+		or db.actor:object("upgr_item_milit_outf2") == nil )	) then
+			return game.translate_string("ui_inv_repair_outf4")	--	нет расходных материалов для ремонта брони;
+	elseif (item_name=="specops_outfit" 
+		and db.actor:object("upgr_item_specops_outf1") ~= nil
+		and db.actor:object("upgr_item_milit_outf2") ~= nil	) then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if (item_name=="military_outfit" 
+		and ( db.actor:object("upgr_item_specops_outf1") == nil
+		or db.actor:object("upgr_item_milit_outf2") == nil )	) then
+			return game.translate_string("ui_inv_repair_outf5")	--	нет расходных материалов для ремонта брони;
+	elseif (item_name=="military_outfit" 
+		and db.actor:object("upgr_item_specops_outf1") ~= nil
+		and db.actor:object("upgr_item_milit_outf2") ~= nil	) then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if (item_name=="exo_outfit" 
+		and ( db.actor:object("upgr_item_specops_outf4") == nil
+		or db.actor:object("upgr_item_specops_outf5") == nil )	) then
+			return game.translate_string("ui_inv_repair_outf6")	--	нет расходных материалов для ремонта брони;
+	elseif (item_name=="exo_outfit" 
+		and db.actor:object("upgr_item_specops_outf4") ~= nil
+		and db.actor:object("upgr_item_specops_outf5") ~= nil	) then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if item_name=="helm_respirator" 
+		and db.actor:object("upgr_item_milit_outf9") == nil  then
+			return game.translate_string("ui_inv_repair_outf7")	--	нет расходных материалов для ремонта брони;
+	elseif item_name=="helm_respirator"
+		and db.actor:object("upgr_item_milit_outf9") ~= nil	 then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if item_name=="helm_hardhat" 
+		and db.actor:object("upgr_item_milit_outf2") == nil  then
+			return game.translate_string("ui_inv_repair_outf8")	--	нет расходных материалов для ремонта брони;
+	elseif item_name=="helm_hardhat"
+		and db.actor:object("upgr_item_milit_outf2") ~= nil	 then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if item_name=="helm_protective" 
+		and db.actor:object("upgr_item_specops_outf2") == nil  then
+			return game.translate_string("ui_inv_repair_outf9")	--	нет расходных материалов для ремонта брони;
+	elseif item_name=="helm_protective"
+		and db.actor:object("upgr_item_specops_outf2") ~= nil	 then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	if item_name=="helm_tactic" 
+		and db.actor:object("upgr_item_specops_outf9") == nil  then
+			return game.translate_string("ui_inv_repair_outf10")	--	нет расходных материалов для ремонта брони;
+	elseif item_name=="helm_tactic"
+		and db.actor:object("upgr_item_specops_outf9") ~= nil	 then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
+	
+	if (item_name=="wpn_pm"
+		or item_name=="wpn_pb"
+		or item_name=="wpn_hpsa"
+		or item_name=="wpn_usp"
+		or item_name=="wpn_bm16"
+		or item_name=="wpn_toz34"
+		or item_name=="wpn_ak74u"
+		or item_name=="wpn_ak74"
+		or item_name=="wpn_lr300"
+		or item_name=="wpn_bizon"
+		or item_name=="wpn_sayga"
+		or item_name=="wpn_m1891"
+		or item_name=="wpn_vintorez") and db.actor:object("weapon_remkit") == nil  then
+			return game.translate_string("ui_inv_repair3")	--	нет расходных материалов для оружия;
+	elseif (item_name=="wpn_pm"
+		or item_name=="wpn_pb"
+		or item_name=="wpn_hpsa"
+		or item_name=="wpn_usp"
+		or item_name=="wpn_bm16"
+		or item_name=="wpn_toz34"
+		or item_name=="wpn_ak74u"
+		or item_name=="wpn_ak74"
+		or item_name=="wpn_lr300"
+		or item_name=="wpn_bizon"
+		or item_name=="wpn_sayga"
+		or item_name=="wpn_m1891"
+		or item_name=="wpn_vintorez") and db.actor:object("weapon_remkit") ~= nil  then
+			return game.translate_string("ui_inv_repair2")	--	Починить снаряжение(Да\Нет)?
+	end
 end
 
 function effect_repair_item( item_name, item_condition )
 	if mechanic_name ~= "kat_cs_commander" then
 		local price = how_much_repair( item_name, item_condition )
 		db.actor:give_money(-price)
+	end
+	
+	if item_name=="novice_outfit" then
+			mod_functions.remove_items("upgr_item_novice_outf4", 1)
+			mod_functions.remove_items("upgr_item_novice_outf2", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="stalker_outfit" then
+			mod_functions.remove_items("upgr_item_specops_outf8", 1)
+			mod_functions.remove_items("upgr_item_novice_outf2", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="scientific_outfit" then
+			mod_functions.remove_items("upgr_item_scient_outf2", 1)
+			mod_functions.remove_items("upgr_item_novice_outf2", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="specops_outfit" then
+			mod_functions.remove_items("upgr_item_specops_outf1", 1)
+			mod_functions.remove_items("upgr_item_milit_outf2", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="military_outfit" then
+			mod_functions.remove_items("upgr_item_specops_outf1", 1)
+			mod_functions.remove_items("upgr_item_milit_outf2", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="exo_outfit" then
+			mod_functions.remove_items("upgr_item_specops_outf4", 1)
+			mod_functions.remove_items("upgr_item_specops_outf5", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="helm_respirator" then
+			mod_functions.remove_items("upgr_item_milit_outf9", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="helm_hardhat" then
+			mod_functions.remove_items("upgr_item_milit_outf2", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="helm_protective" then
+			mod_functions.remove_items("upgr_item_specops_outf2", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	if item_name=="helm_tactic" then
+			mod_functions.remove_items("upgr_item_specops_outf9", 1)	--	удаляем расходные материалы для брони
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+	
+	
+	if(item_name=="wpn_pm"
+		or item_name=="wpn_pb"
+		or item_name=="wpn_fort"
+		or item_name=="wpn_hpsa"
+		or item_name=="wpn_beretta"
+		or item_name=="wpn_walther"
+		or item_name=="wpn_sig220"
+		or item_name=="wpn_colt1911"
+		or item_name=="wpn_usp"
+		or item_name=="wpn_desert_eagle"
+		or item_name=="wpn_bm16"
+		or item_name=="wpn_toz34"
+		or item_name=="wpn_wincheaster1300"
+		or item_name=="wpn_spas12"
+		or item_name=="wpn_protecta"
+		or item_name=="wpn_ak74u"
+		or item_name=="wpn_mp5"
+		or item_name=="wpn_ak74"
+		or item_name=="wpn_abakan"
+		or item_name=="wpn_l85"
+		or item_name=="wpn_lr300"
+		or item_name=="wpn_sig550"
+		or item_name=="wpn_groza"
+		or item_name=="wpn_val"
+		or item_name=="wpn_vintorez"
+		or item_name=="wpn_svu"
+		or item_name=="wpn_svd"
+		or item_name=="wpn_rg-6"
+		or item_name=="wpn_rpg7"
+		or item_name=="wpn_g36"
+		or item_name=="wpn_fn2000"
+		or item_name=="wpn_pkm"
+		or item_name=="wpn_bizon"
+		or item_name=="wpn_sayga"
+		or item_name=="wpn_m1891"
+		or item_name=="wpn_gauss" and db.actor:object("weapon_remkit") == nil ) then
+			mod_functions.remove_items("weapon_remkit", 1)	--	удаляем расходные материалы для оружия
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 	end
 end
 

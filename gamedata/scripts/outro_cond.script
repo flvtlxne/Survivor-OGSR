@@ -135,7 +135,7 @@ function outro_sound:__init()
 end
 
 function outro_sound:start()
-	self.snd			= sound_object("music\\outro")
+	self.snd			= sound_object("scenario\\survival_logo_snd_long")
 	self.snd:play		(nil, 0.0, sound_object.s2d)
 	self:set_volume		(1.0)
 end

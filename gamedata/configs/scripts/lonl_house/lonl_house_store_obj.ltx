@@ -1,0 +1,25 @@
+[logic]
+active = ph_idle@0
+
+; Обесточено:
+[ph_idle@0]
+tips      = lonl_house_store_obj_tip1
+on_info = {+lonl_house_electricity} ph_idle@1
+on_info2 = {=master_difficulty} %=destroy_object%
+
+; Рабочее состояние:
+[ph_idle@1]
+tips      = lonl_house_store_obj_tip2
+on_info = {-lonl_house_electricity} ph_idle@0
+on_use = ph_idle@2 %=start_mechanical_interface%
+
+[ph_idle@2]
+on_game_timer = 3|ph_idle@3
+
+[ph_idle@3]
+on_info = {!talking} ph_idle@1 %=remove_npc(mechanical_npc1)%
+
+
+
+
+ 

@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+zavhoz_friend_info} sr_idle@2
+
+
+[sr_idle@2]
+on_actor_inside = {+marod_treasure_zone3_on} sr_idle@3 %+marod_treasure_zone4_on%, {-marod_treasure_zone3_on} sr_idle@3 %=run_postprocess(fade_in_out) =marod_treasure_actor_teleport1%
+
+[sr_idle@3]
+on_info = {-marod_treasure_zone1_on -marod_treasure_zone2_on -marod_treasure_zone3_on -marod_treasure_zone4_on -marod_treasure_zone5_on} sr_idle@2
+
+
+[sr_idle@nil]

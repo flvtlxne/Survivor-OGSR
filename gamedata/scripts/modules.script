@@ -35,10 +35,12 @@ load_scheme("xr_smartcover",					"smartcover",		stype_stalker)
 load_scheme("xr_companion",						"companion",		stype_stalker)
 load_scheme("xr_animpoint",						"animpoint",		stype_stalker)
 load_scheme("xr_reach_task",					"reach_task",		stype_stalker)
+if rx_ai then rx_ai.load_schemes() end
 
 ----------------------------------------------------------------------
 -- Загрузка модулей монстров:
 ----------------------------------------------------------------------
+load_scheme("mob_move",						"mob_move",		stype_mobile)
 load_scheme("mob_remark",						"mob_remark",		stype_mobile)
 load_scheme("mob_walker",						"mob_walker",		stype_mobile)
 load_scheme("mob_combat",						"mob_combat",		stype_mobile)
@@ -58,6 +60,7 @@ load_scheme("ph_death",							"ph_on_death",		stype_item)
 load_scheme("ph_minigun",						"ph_minigun",		stype_item)
 --load_scheme("ph_target",						"ph_target",		stype_item)
 load_scheme("ph_oscillate",						"ph_oscillate",		stype_item)
+load_scheme("ph_appforce",    					"ph_force",    		stype_item)
 ----------------------------------------------------------------------
 -- Загрузка модулей вертолёта:
 ----------------------------------------------------------------------
@@ -83,3 +86,4 @@ load_scheme("sr_crow_spawner",					"sr_crow_spawner",	stype_restrictor)
 --load_scheme("sr_recoveritem",					"sr_recoveritem",	stype_restrictor)
 load_scheme("sr_silence",						"sr_silence",		stype_restrictor)
 load_scheme("sr_deimos",						"sr_deimos",		stype_restrictor)
+load_scheme("sr_sound2d",     		"sr_sound_act",   stype_restrictor)

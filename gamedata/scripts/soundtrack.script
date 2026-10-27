@@ -1,0 +1,935 @@
+------Copyright DEXXX-------
+
+snd_obj = {}
+--snd_obj = xr_sound.get_safe_sound_object([[soundtrack\escape_theme]])
+
+function s_stop()
+	--if snd_obj:playing()==true then snd_obj:stop() end
+end
+
+function s_play(path)
+	s_stop()
+	snd_obj = xr_sound.get_safe_sound_object(path)
+	if snd_obj then
+		snd_obj:play_at_pos(db.actor, vector ():set (0, 0, 0), 0, sound_object.s2d)
+	end
+end
+
+-----------------------------------------
+
+function repair_sounds()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[remkit\ui_repairweapon_01]])
+end
+if rnd == 2 then 
+s_play([[remkit\ui_repairweapon_02]])
+end
+if rnd == 3 then 
+s_play([[remkit\ui_repairweapon_03]])
+end
+end
+
+
+function accept_replics()
+if IsImportantSave() then
+rnd = math.random(1, 12)
+if rnd == 1 then 
+s_play([[actor_replics\actor_yes_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_yes_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_yes_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_yes_4]])
+end
+if rnd == 5 then 
+s_play([[actor_replics\actor_yes_5]])
+end
+if rnd == 6 then 
+s_play([[actor_replics\actor_yes_6]])
+end
+if rnd == 7 then 
+s_play([[actor_replics\actor_yes_7]])
+end
+if rnd == 8 then 
+s_play([[actor_replics\actor_yes_8]])
+end
+if rnd == 9 then 
+s_play([[actor_replics\actor_yes_9]])
+end
+if rnd == 10 then 
+s_play([[actor_replics\actor_yes_10]])
+end
+if rnd == 11 then 
+s_play([[actor_replics\actor_yes_11]])
+end
+if rnd == 12 then 
+s_play([[actor_replics\actor_yes_12]])
+end
+end
+end
+
+
+function accept_replics_maroder()
+if IsImportantSave() then
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\bandit\states\idle\idle_21]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\bandit\states\idle\idle_19]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\bandit\states\idle\idle_18]])
+end
+end
+end
+
+
+function no_replics()
+if IsImportantSave() then
+rnd = math.random(1, 11)
+if rnd == 1 then 
+s_play([[actor_replics\actor_no_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_no_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_no_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_no_4]])
+end
+if rnd == 5 then 
+s_play([[actor_replics\actor_no_5]])
+end
+if rnd == 6 then 
+s_play([[actor_replics\actor_no_6]])
+end
+if rnd == 7 then 
+s_play([[actor_replics\actor_no_7]])
+end
+if rnd == 8 then 
+s_play([[actor_replics\actor_no_8]])
+end
+if rnd == 9 then 
+s_play([[actor_replics\actor_no_9]])
+end
+if rnd == 10 then 
+s_play([[actor_replics\actor_no_10]])
+end
+if rnd == 11 then 
+s_play([[actor_replics\actor_no_11]])
+end
+end
+end
+
+function no_replics_maroder()
+if IsImportantSave() then
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\bandit\alife\attack\begin_reply_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\bandit\alife\attack\begin_reply_2]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\bandit\alife\attack\begin_reply_3]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\bandit\alife\attack\begin_reply_5]])
+end
+end
+end
+
+
+function refuse_replics()
+if IsImportantSave() then
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[actor_replics\actor_refuse_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_refuse_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_refuse_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_refuse_4]])
+end
+end
+end
+
+
+function happy_replics()
+if IsImportantSave() then
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[actor_replics\actor_happy_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_happy_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_happy_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_happy_4]])
+end
+end
+end
+
+
+function good_loot_replics()
+if IsImportantSave() then
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[actor_replics\actor_goodloot_find_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_goodloot_find_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_goodloot_find_3]])
+end
+end
+end
+
+
+function tragic_replics()
+if IsImportantSave() then
+rnd = math.random(1, 6)
+if rnd == 1 then 
+s_play([[actor_replics\actor_tragic_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_tragic_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_tragic_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_tragic_4]])
+end
+if rnd == 5 then 
+s_play([[actor_replics\actor_tragic_5]])
+end
+if rnd == 6 then 
+s_play([[actor_replics\actor_tragic_6]])
+end
+end
+end
+
+
+function surprise_replics()
+if IsImportantSave() then
+rnd = math.random(1, 5)
+if rnd == 1 then 
+s_play([[actor_replics\actor_surprise_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_surprise_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_surprise_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_surprise_4]])
+end
+if rnd == 5 then 
+s_play([[actor_replics\actor_surprise_5]])
+end
+end
+end
+
+
+function hit_replics()
+rnd = math.random(1, 6)
+if rnd == 1 then 
+s_play([[actor_replics\actor_hit_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_hit_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_hit_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_hit_4]])
+end
+if rnd == 5 then 
+s_play([[actor_replics\actor_hit_5]])
+end
+if rnd == 6 then 
+s_play([[actor_replics\actor_hit_6]])
+end
+end
+
+
+function actor_npc_kill_snd()
+if IsImportantSave() then
+rnd = math.random(1, 21)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\military\alife\attack\begin_reply_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\military\alife\attack\begin_reply_2]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\military\alife\attack\begin_reply_3]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\military\alife\attack\begin_reply_5]])
+end
+if rnd == 5 then 
+s_play([[characters_voice\human_01\military\fight\enemy_down\enemy_down_1]])
+end
+if rnd == 6 then 
+s_play([[characters_voice\human_01\military\fight\enemy_down\enemy_down_2]])
+end
+if rnd == 7 then 
+s_play([[characters_voice\human_01\military\fight\enemy_down\enemy_down_3]])
+end
+if rnd == 8 then 
+s_play([[characters_voice\human_01\military\fight\enemy_down\enemy_down_4]])
+end
+if rnd == 9 then
+s_play([[characters_voice\human_01\military\fight\enemy_hit\enemy_hit_1]])
+end
+if rnd == 10 then
+s_play([[characters_voice\human_01\military\fight\enemy_hit\enemy_hit_2]])
+end
+if rnd == 11 then
+s_play([[characters_voice\human_01\military\fight\enemy_hit\enemy_hit_3]])
+end
+if rnd == 12 then
+s_play([[characters_voice\human_01\military\fight\enemy_hit\enemy_hit_4]])
+end
+if rnd == 13 then
+s_play([[characters_voice\human_01\military\fight\enemy_hit\enemy_hit_5]])
+end
+if rnd == 14 then 
+end
+if rnd == 15 then 
+end
+if rnd == 16 then 
+end
+if rnd == 17 then 
+end
+if rnd == 18 then 
+end
+if rnd == 19 then 
+end
+if rnd == 20 then 
+end
+if rnd == 21 then 
+end
+end
+end
+
+
+function actor_critical_health_replic()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\military\help\wounded_heavy\help_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\military\help\wounded_heavy\help_3]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\military\help\wounded_heavy\help_4]])
+end
+end
+
+
+function papers_use()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[interface\inv_papers_1]])
+end
+if rnd == 2 then 
+s_play([[interface\inv_papers_2]])
+end
+if rnd == 3 then 
+s_play([[interface\inv_papers_3]])
+end
+end
+
+
+
+function explosion()
+s_play([[weapons\heli_explosion]])
+end
+
+function mine_blow()
+s_play([[weapons\f1_explode_]])
+end
+
+
+function mercs_ambush1_radio_message()
+s_play([[characters_voice\scenario\zaton\zat_b40_merc_combat_pda]])
+end
+
+
+function raciya_sounds()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[detectors\contact_3]])
+end
+if rnd == 2 then 
+s_play([[detectors\contact_5]])
+end
+if rnd == 3 then 
+s_play([[detectors\contact_7]])
+end
+end
+
+
+
+function actor_after_vodka_replic()
+if IsImportantSave() then
+rnd = math.random(1, 5)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_3]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_7]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_9]])
+end
+if rnd == 5 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_14]])
+end
+end
+end
+
+
+function actor_after_vodka_replic2()
+if IsImportantSave() then
+rnd = math.random(1, 6)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_6]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_10]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_13]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_9]])
+end
+if rnd == 5 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_15]])
+end
+if rnd == 6 then 
+s_play([[characters_voice\human_01\military\states\idle\idle_17]])
+end
+end
+end
+
+
+function glass_snd()
+s_play([[material\bottle\collide\bottle_4]])
+end
+
+
+function lab_item_creating()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[ambient\waterdrop1]])
+end
+if rnd == 2 then 
+s_play([[ambient\waterdrop2]])
+end
+if rnd == 3 then 
+s_play([[ambient\dropinpool1]])
+end
+end
+
+function dog_command0()
+if IsImportantSave() then
+s_play([[characters_voice\human_01\military\help\wounded\medkit_2]])
+end
+end
+
+function dog_command1()
+if IsImportantSave() then
+s_play([[characters_voice\human_01\military\fight\post_combat_wait\relax_1]])	-- вольно, разойдись;
+end
+end
+
+function dog_command2()
+if IsImportantSave() then
+s_play([[characters_voice\human_01\military\fight\post_combat_wait\relax_3]])	-- личному составу отдыхать;
+end
+end
+
+function dog_command3()
+if IsImportantSave() then
+s_play([[characters_voice\human_01\military\fight\post_combat_wait\wait_1]])	-- не спать, осмотреться;
+end
+end
+
+function dog_command4()
+if IsImportantSave() then
+s_play([[characters_voice\human_01\military\help\wounded\medkit_3]])	-- зацепило, да? ничего...;
+end
+end
+
+
+function survival_logo_snd()
+s_play([[scenario\survival_logo_snd]])	
+end
+
+
+function actor_bomb_planting()
+if IsImportantSave() then
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[actor_replics\actor_refuse_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_refuse_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_refuse_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_refuse_4]])
+end
+end
+end
+
+
+function actor_play_guitar()
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[scenario\actor_guitar_play_1]])
+end
+if rnd == 2 then 
+s_play([[scenario\actor_guitar_play_2]])
+end
+if rnd == 3 then 
+s_play([[scenario\actor_guitar_play_3]])
+end
+if rnd == 4 then 
+s_play([[scenario\actor_guitar_play_4]])
+end
+end
+
+
+function actor_after_maroder_replic()
+if IsImportantSave() then
+rnd = math.random(1, 2)
+if rnd == 1 then 
+s_play([[actor_replics\actor_no_5]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_no_6]])
+end
+end
+end
+
+
+function actor_is_maroder_replic()
+if IsImportantSave() then
+rnd = math.random(1, 7)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\bandit\fight\searching_enemy\search_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\bandit\fight\searching_enemy\search_2]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\bandit\fight\searching_enemy\search_5]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\bandit\fight\searching_enemy\search_9]])
+end
+if rnd == 5 then 
+s_play([[characters_voice\human_01\bandit\fight\searching_enemy\search_10]])
+end
+if rnd == 6 then 
+s_play([[characters_voice\human_01\bandit\fight\searching_enemy\search_11]])
+end
+if rnd == 7 then 
+s_play([[characters_voice\human_01\bandit\fight\searching_enemy\search_13]])
+end
+end
+end
+
+
+function comp_interface_snd()
+s_play([[detectors\art_beep1]])	
+end
+
+
+function actor_kill_quest_npc_replic()
+if IsImportantSave() then
+rnd = math.random(1, 6)
+if rnd == 1 then 
+s_play([[actor_replics\kill_lider_replic_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\kill_lider_replic_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\kill_lider_replic_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\kill_lider_replic_4]])
+end
+if rnd == 5 then 
+s_play([[actor_replics\kill_lider_replic_5]])
+end
+if rnd == 6 then 
+s_play([[actor_replics\kill_lider_replic_6]])
+end
+end
+end
+
+
+function actor_strong_mutant_kill_snd()
+if IsImportantSave() then
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[actor_replics\kill_mutant_replic_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\kill_mutant_replic_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\kill_mutant_replic_3]])
+end
+end
+end
+
+
+function actor_kill_quest_npc_replic2()
+if IsImportantSave() then
+rnd = math.random(1, 6)
+if rnd == 1 then 
+s_play([[actor_replics\actor_goodloot_find_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_goodloot_find_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_goodloot_find_3]])
+end
+if rnd == 4 then 
+s_play([[actor_replics\actor_goodloot_find_4]])
+end
+if rnd == 5 then 
+s_play([[actor_replics\actor_goodloot_find_5]])
+end
+if rnd == 6 then 
+s_play([[actor_replics\actor_goodloot_find_6]])
+end
+end
+end
+
+
+function actor_helicrash_box_use_snd()
+if IsImportantSave() then
+s_play([[scenario\actor_helicrash_box_use_snd]])
+end
+end
+
+
+function actor_finds_goodloot_snd()
+if IsImportantSave() then
+rnd = math.random(1, 2)
+if rnd == 1 then 
+s_play([[actor_replics\actor_goodloot_find_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_goodloot_find_2]])
+end
+end
+end
+
+
+function maroder_killer_see_replics()
+if IsImportantSave() then
+rnd = math.random(1, 2)
+if rnd == 1 then 
+s_play([[characters_voice\scenario\zaton\zat_b14_robbery_after_pay_snd_3_pda]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\scenario\zaton\zat_b14_robbery_kill_actor_snd_2_pda]])
+end
+end
+end
+
+
+function back_to_safezone_replic()
+if IsImportantSave() then
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[actor_replics\actor_final_happy]])
+end
+if rnd == 2 then 
+
+end
+if rnd == 3 then 
+
+end
+if rnd == 4 then 
+
+end
+if rnd == 5 then 
+
+end
+end
+end
+
+
+function actor_gather_stuff()
+if IsImportantSave() then
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[scenario\actor_axeplace_use_1]])
+s_play([[interface\inv_open]])
+end
+if rnd == 2 then 
+s_play([[scenario\actor_axeplace_use_2]])
+s_play([[interface\inv_open]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\actor_goodloot_find_2]])
+s_play([[interface\inv_open]])
+end
+end
+end
+
+
+function actor_gather_stuff2()
+s_play([[interface\inv_open]])
+end
+
+
+
+function lake_art_snd()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+s_play([[scenario\lake_art_snd_1]])
+end
+if rnd == 2 then 
+s_play([[scenario\lake_art_snd_2]])
+end
+if rnd == 3 then 
+s_play([[actor_replics\lake_art_snd_3]])
+end
+end
+
+
+function lake_art_on_trap_catch_snd()
+if IsImportantSave() then
+rnd = math.random(1, 8)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\military\fight\searching_enemy\enemy_lost_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\military\fight\searching_enemy\enemy_lost_3]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\military\fight\searching_enemy\enemy_lost_5]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\military\fight\searching_enemy\search_4]])
+end
+if rnd == 5 then 
+
+end
+if rnd == 6 then 
+
+end
+if rnd == 7 then 
+
+end
+if rnd == 8 then 
+
+end
+end
+end
+
+
+
+function karlik_command1()
+if IsImportantSave() then
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\military\states\meet\meet_hello_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\military\states\meet\meet_hello_2]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\military\states\meet\meet_hello_3]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\military\states\loot\loot_begin_1]])
+end
+end
+end
+
+
+function chimera_roar_snd()
+s_play([[monsters\chimera\chimera_attack_1]])
+end
+
+function script_monster_hit_snd()
+s_play([[ambient\random\rnd_drone2]])
+end
+
+
+function radhit()
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[detectors\geiger_1]])
+end
+if rnd == 2 then 
+s_play([[detectors\geiger_2]])
+end
+if rnd == 3 then 
+s_play([[detectors\geiger_3]])
+end
+if rnd == 4 then 
+s_play([[detectors\geiger_4]])
+end
+end
+
+
+function no_replics_mg()
+if IsImportantSave() then
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\military\fight\friendly_fire\friendly_fire_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\military\fight\friendly_fire\friendly_fire_3]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\military\fight\friendly_fire\friendly_fire_4]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\military\fight\friendly_fire\friendly_fire_5]])
+end
+end
+end
+
+
+
+function teleport_fly_snd()
+s_play([[anomaly\teleport_work_1]])
+end
+
+
+function mg_menu_abort_snd()
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[characters_voice\scenario\disbelief_1]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\scenario\disbelief_2]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\scenario\disbelief_3]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\scenario\disbelief_4]])
+end
+end
+
+function mg_menu_start_snd()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+--s_play([[characters_voice\human_01\military\fight\threat\threat_close_2]])
+s_play([[characters_voice\scenario\mg_boss_phrase1]])
+end
+if rnd == 2 then 
+--s_play([[characters_voice\human_01\military\fight\threat\threat_close_3]])
+s_play([[characters_voice\scenario\mg_boss_phrase2]])
+end
+if rnd == 3 then 
+--s_play([[characters_voice\human_01\military\fight\threat\threat_close_6]])
+s_play([[characters_voice\scenario\mg_boss_phrase3]])
+end
+if rnd == 4 then 
+--s_play([[characters_voice\human_01\military\fight\attack\script_attack_6]])
+s_play([[characters_voice\scenario\mg_boss_phrase4]])
+end
+if rnd == 5 then 
+--s_play([[characters_voice\human_01\military\fight\attack\script_attack_6]])
+s_play([[characters_voice\scenario\mg_boss_phrase5]])
+end
+end
+
+
+
+function mg_kpp_boss_letsgo()
+s_play([[characters_voice\scenario\mg_boss_letsgo_1]])
+end
+
+function mg_kpp_boss_no()
+s_play([[characters_voice\scenario\mg_boss_letsgo_2]])
+end
+
+
+function actor_go_on_fight()
+if IsImportantSave() then
+rnd = math.random(1, 4)
+if rnd == 1 then 
+s_play([[characters_voice\human_01\military\fight\attack\attack_many_3]])
+end
+if rnd == 2 then 
+s_play([[characters_voice\human_01\military\fight\attack\attack_many_4]])
+end
+if rnd == 3 then 
+s_play([[characters_voice\human_01\military\fight\attack\attack_many_5]])
+end
+if rnd == 4 then 
+s_play([[characters_voice\human_01\military\fight\attack\attack_many_6]])
+end
+end
+end
+
+
+function actor_loot_bad_replic()
+if IsImportantSave() then
+rnd = math.random(1, 2)
+if rnd == 1 then 
+s_play([[actor_replics\actor_loot_bad_1]])
+end
+if rnd == 2 then 
+s_play([[actor_replics\actor_loot_bad_2]])
+end
+end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

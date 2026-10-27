@@ -1,0 +1,83 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+bloodsucker_hunter_dead} sr_idle@4
+on_info3 = {-bloodsucker_hunter_dead +achivement_3_info !actor_in_camp_zone =actor_on_ai_net !scenario_tasks_outdoor_condition =nightmobs_spawn_time} sr_idle@2 %=spawn_bloodsucker_hunter -bloodsucker_hunter_away%
+
+[sr_idle@2]
+on_info = {+bloodsucker_hunter_away} sr_idle@3
+on_info2 = {!nightmobs_spawn_time} sr_idle@1 %=bloodsucker_hunter_delete%
+on_info3 = {+bloodsucker_hunter_dead} sr_idle@4
+
+[sr_idle@3]
+on_info = {=actor_in_camp_zone} sr_idle@1
+on_info2 = {+bloodsucker_hunter_dead} sr_idle@4
+
+
+; Пошел квест:
+[sr_idle@4]
+on_game_timer = 1|sr_particle@1 %=spawn_lake_stone_art%
+
+[sr_particle@1]
+name = anomaly2\studen_idle_up
+path = anom_bloodsucker_zone1_point1
+mode = 2
+looped = true
+on_actor_in_zone = lake_art_zone1|sr_idle@5 %=disable_ui =run_postprocess(fade_in) =spawn_lake_stone_script_npc1%
+
+[sr_idle@5]
+on_game_timer = 40|sr_cutscene@1 %=lake_stone_think1%
+
+[sr_cutscene@1]
+point = anom_bloodsucker_zone1_point2
+look = anom_bloodsucker_zone1_point1
+cam_effector = scenario_cam\lake_stone_fly1
+on_signal = cameff_end | sr_particle@2 %+lake_stone_art_check%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_particle@2]
+name = anomaly2\studen_idle_up
+path = anom_bloodsucker_zone1_point1
+mode = 2
+looped = true
+on_info = {+lake_stone_art_touch} sr_idle@6
+
+[sr_idle@6]
+on_info = {=counter_greater(frog:12)} sr_idle@7 %=disable_ui =run_postprocess(fade_in) =spawn_lake_stone_script_npc2%
+
+[sr_idle@7]
+on_game_timer = 40|sr_cutscene@2 %=lake_stone_think2%
+
+[sr_cutscene@2]
+point = anom_bloodsucker_zone1_point7
+look = anom_bloodsucker_zone1_point1
+cam_effector = scenario_cam\lake_stone_fly2
+on_signal = cameff_end | sr_idle@nil %+lake_art_sheck_workshop%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

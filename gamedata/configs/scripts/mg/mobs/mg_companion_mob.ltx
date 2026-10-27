@@ -1,0 +1,36 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = mob_move@1
+on_death = mob_death
+
+
+[mob_move@1]
+captured_actor = true
+invulnerable = true
+combat_ignore_cond = {=captured_monster_ignore_precond} true
+on_game_timer = 1|mob_move@2 %=add_self_spot(personal_dog_mark:mg_companion_mob_mark_text)%
+
+[mob_move@2]
+captured_actor = true
+combat_ignore_cond = {=captured_monster_ignore_precond} true
+;invulnerable = true
+;on_info = {=health_le(0.25)} mob_home@away1 %=set_visual_memory_enabled(0)%
+;on_info2 = {+karlik_talk} mob_remark@stay1 %=set_visual_memory_enabled(0)%
+;on_info3 = {=npc_in_actor_frustum =dist_to_actor_le(5)} %=karlik_friend_commands_hint%
+;on_info4 = {+karlik_stay} mob_remark@stay2
+;on_info5 = {+karlik_getlost} mob_home@away2
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+
+
+
+
+[mob_death]
+on_info = %=remowe_self_spot(personal_dog_mark:mg_companion_mob_mark_text)%
+
+
+
+
+
+

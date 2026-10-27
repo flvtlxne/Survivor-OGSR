@@ -1,0 +1,16 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = mob_home@1
+
+[mob_home@1]
+path_home = traktor_npc_pnt1
+home_min_radius = 8
+home_max_radius = 25
+on_actor_dist_ge_nvis = 60|mob_home@2
+
+[mob_home@2]
+path_home = willage_avtoritet_guard3_look
+home_min_radius = 6
+home_max_radius = 20

@@ -1,0 +1,74 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {+maroders_ambush_end} walker@start, walker@1
+known_info = known_info
+on_death = death
+
+[known_info]
+scenar_maroder_lider5_info
+
+[walker@start]
+path_walk = maroder_boss3_pnt2_walk
+path_look = maroder_boss3_pnt2_look
+on_info = {+actor_has_usp} animpoint@1 %=give_items(wpn_usp)%
+on_info2 = {+actor_has_hpsa} animpoint@1 %=give_items(wpn_hpsa)%
+on_info3 = {+actor_has_aksu} animpoint@1 %=give_items(wpn_ak74u)%
+on_info4 = {-actor_has_aksu -actor_has_usp -actor_has_hpsa} animpoint@1
+
+
+; В доме берём ГГ в плен:
+[walker@1]
+path_walk = maroder_boss3_pnt1_walk
+path_look = maroder_boss3_pnt1_look
+def_state_moving1 = walk
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+maroders_ambush_end} walker@2 %=teleport_npc(maroder_boss3_pnt2_walk)%
+
+
+; После сценки в другом доме:
+[walker@2]
+path_walk = maroder_boss3_pnt2_walk
+path_look = maroder_boss3_pnt2_look
+def_state_moving1 = walk
+invulnerable = false
+combat_ignore_cond = {=actor_in_ambush_room_zone} true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+out_restr = script_zone_willage
+
+
+[animpoint@1]
+cover_name = ambush_lider_animpoint
+avail_animations = animpoint_sit_normal
+reach_distance = 0.5
+combat_ignore_cond = {=actor_in_ambush_room_zone} true
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+out_restr = script_zone_willage
+on_actor_dist_le = 15|walker@2 %=play_sound(ahmet_battle_speech)%
+
+
+[death]
+on_info = %=give_items(exo_outfit) =actor_kill_quest_npc_replic%
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,105 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+
+
+	<string id="af_armadeus_name">
+		<text>"Армадеус"</text>
+	</string>
+	<string id="af_armadeus_descr">
+		<text>Уникальный артефакт, который выглядит как сухая сморщенная голова старика, застывшая в полупрозрачной массе. Использование призывает карлика-психофага, который будет сражаться на вашей стороне до ближайшего выброса. Убитый карликом противник отдаёт владельцу часть своих жизненных сил и хабара.\n %c[100,50,250,50]Каждая атака карлика лечит владельца артефакта. \n Карлик выбивает из противников полезный лут.%c[default]\n %c[255,255,118,118]Повышает уровень стресса.%c[default]</text>
+	</string>
+	
+
+	<string id="af_medusa_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Любая пища или напиток полностью восстанавливает здоровье и выводит радиацию.%c[default]</text>
+	</string>
+	<string id="af_electra_sparkler_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Выносливость восстанавливается быстрее.%c[default]</text>
+	</string>
+	<string id="af_night_star_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Водка лечит раны, чинит оружие и броню.%c[default]</text>
+	</string>
+	<string id="af_ice_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Повышенный урон мутантам.%c[default]</text>
+	</string>
+	<string id="af_gravi_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Здоровье восстанавливается быстрее.%c[default]</text>
+	</string>
+	<string id="af_gold_fish_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Оружие в руках не изнашивается.%c[default]</text>
+	</string>
+	<string id="af_cristall_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]На помощь приходит ручной мутант.%c[default]</text>
+	</string>
+	<string id="af_dummy_battery_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Повышенный урон людям.%c[default]</text>
+	</string>
+	<string id="af_dummy_glassbeads_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Возможность ходить вне безопасной зоны без ущерба для здоровья.%c[default]</text>
+	</string>
+	<string id="af_eye_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Все противники помечаются на карте.\nБольше тайников с лутом на локации.%c[default]</text>
+	</string>
+	<string id="af_fire_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Больше лута на трупах.%c[default]</text>
+	</string>
+	<string id="af_blood_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Нечувствительность к радиации.%c[default]</text>
+	</string>
+	<string id="af_fuzz_kolobok_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Водка даёт повышенную живучесть на короткое время (20c).\nУбийство противника ножом в этом состоянии убивает всех врагов в радиусе 30 м.%c[default]</text>
+	</string>
+	<string id="af_soul_mg_descr">
+		<text>Необязательно помещать в слот. \n%c[100,50,250,50]Легендарный сталкер всегда появляется недалеко от вас.\nВозможность выбора точки высадки.%c[default]</text>
+	</string>
+	
+	<string id="af_medusa_mg_name">
+		<text>Талисман от Дядьки Яра</text>
+	</string>
+	<string id="af_electra_sparkler_mg_name">
+		<text>Талисман от Вано</text>
+	</string>
+	<string id="af_night_star_mg_name">
+		<text>Талисман от Кардана</text>
+	</string>
+	<string id="af_ice_mg_name">
+		<text>Талисман от Зулуса</text>
+	</string>
+	<string id="af_gravi_mg_name">
+		<text>Талисман от Меченого</text>
+	</string>
+	<string id="af_gold_fish_mg_name">
+		<text>Талисман от Азота</text>
+	</string>
+	<string id="af_cristall_mg_name">
+		<text>Талисман от Ноя</text>
+	</string>
+	<string id="af_dummy_battery_mg_name">
+		<text>Талисман от Шрама</text>
+	</string>
+	<string id="af_dummy_glassbeads_mg_name">
+		<text>Талисман от Бродяги</text>
+	</string>
+	<string id="af_eye_mg_name">
+		<text>Талисман от Новикова</text>
+	</string>
+	<string id="af_fire_mg_name">
+		<text>Талисман от Соколова</text>
+	</string>
+	<string id="af_blood_mg_name">
+		<text>Талисман от Отца Валерьяна</text>
+	</string>
+	<string id="af_fuzz_kolobok_mg_name">
+		<text>Талисман от Йоги</text>
+	</string>
+	<string id="af_soul_mg_name">
+		<text>Талисман от Дегтярёва</text>
+	</string>
+	
+	
+	
+
+
 	<string id="st_af_baloon_descr">
 		<text>Артефакт представляет собой несколько полых образований органической природы, соединённых между собой. Выделяет газообразное вещество, способное нейтрализовать радиоактивные частицы в организме человека; какого-либо вредоносного воздействия данного вещества не выявлено. Ввиду высокой эффективности пользуется огромным спросом.</text>
 	</string>

@@ -1,0 +1,19 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_idle@1
+
+
+[ph_idle@1]
+tips      = quest_sniper_zone_obj_use
+on_use = %=destroy_object =give_item(quest_sniper_note1:actor)%
+on_info = {=master_difficulty} %=destroy_object%
+
+
+
+
+
+
+ 

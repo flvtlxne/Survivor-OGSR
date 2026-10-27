@@ -639,3 +639,241 @@ fixed_bones							= link
 $spawn                      = "dynamic_objects\museum_weapons\balloon_poison_gas"
 visual                      = dynamics\equipments\quest\balloon_poison_gas.ogf
 fixed_bones					= link
+
+
+
+
+;; Survival Mod  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[lonl_house_grave_cross]:physic_object
+visual                      = additions\tomb_02.ogf
+fixed_bones	= link
+is_ai_obstacle	= true
+
+[village_secr_place_box]:physic_object
+visual                      = additions\big_box.ogf
+fixed_bones	= link
+is_ai_obstacle	= true
+custom_data 		      = models\objects\ignore_static.ltx
+
+
+[lonl_house_komp_monitor]:physic_object
+visual                      = dynamics\el_tehnika\komp_monitor.ogf
+fixed_bones	= link
+custom_data 		      = scripts\lonl_house\lonl_house_komp.ltx
+
+[lonl_house_komp_block]:physic_object
+visual                      = dynamics\el_tehnika\komp_blok.ogf
+fixed_bones	= link
+story_id 		= lonl_house_komp
+custom_data 		      = models\objects\ignore_static.ltx
+
+[lonl_house_komp_klava]:physic_object
+visual                      = dynamics\el_tehnika\komp_klava.ogf
+fixed_bones	= link
+custom_data 		     = models\objects\ignore_static.ltx
+
+
+[anomaly_scaner_static]:physic_object
+visual                      = dynamics\equipments\quest\scanner_artefact.ogf
+fixed_bones	= link
+startup_animation  	      = idle
+custom_data 		      = scripts\lonl_house\lonl_house_scaner.ltx
+
+
+[kpp_mercs_radio]:physic_object
+visual                      = dynamics\devices\dev_fmradio\dev_fmradio.ogf
+fixed_bones	= wpn_body
+story_id 		= kpp_mercs_radio
+custom_data 		     = scripts\kpp\kpp_mercs_radio.ltx
+
+
+[wind_generator]:physic_object
+visual                      = additions\vetrogenerator_base.ogf
+fixed_bones	= link
+custom_data 		    = models\objects\ignore_static.ltx
+startup_animation  	      = idle
+is_ai_obstacle	= true
+custom_data 	= scripts\lonl_house\lonl_house_wind_generator.ltx
+
+[wind_generator_base]:physic_object
+visual                      = additions\vetrogenerator_base2.ogf
+fixed_bones	= link
+custom_data 	= models\objects\ignore_static.ltx
+is_ai_obstacle	= true
+
+[wind_generator_base2]:physic_object
+visual                      = dynamics\equipment_cache\equipment_pipe_01_case.ogf
+fixed_bones	= link
+custom_data 	= scripts\lonl_house\lonl_house_wind_generator_base.ltx
+
+
+
+[wounded_dog_obj]:physic_object
+visual                      = monsters\pseudodog\pseudodog_grey.ogf
+fixed_bones	= bone01
+custom_data 		    = scripts\wounded_dog_obj.ltx
+startup_animation  	      = _lie_idle_2
+
+
+[tunnel_anomaly_door]:physic_object
+visual                      = dynamics\door\door_metal_145_230_01.ogf
+is_ai_obstacle	= true
+
+
+[lonl_house_guitar_obj]:physic_object
+visual                      = dynamics\equipment_cache\equipment_rucksack_01_case.ogf
+fixed_bones	= link
+custom_data 		    = scripts\lonl_house\lonl_house_guitar_obj.ltx
+
+
+[suicider_cross1]:physic_object
+visual                      = additions\tomb_02.ogf
+fixed_bones	= link
+is_ai_obstacle	= true
+custom_data 		    = scripts\graveyard\suicider_cross1.ltx
+
+[suicider_cross2]:physic_object
+visual                      = additions\tomb_02.ogf
+is_ai_obstacle	= false
+custom_data 		    = scripts\graveyard\suicider_cross2.ltx
+
+
+
+[static_bloodsucker]:physic_object
+visual                      = monsters\krovosos\krovosos.ogf
+custom_data 	= scripts\static_bloodsucker.ltx
+fixed_bones	= bip01_pelvis, bip01_l_foot, bip01_l_calf, bip01_l_foot, bip01_r_thigh, bip01_pelvis, bip01_r_foot, bip01_head, bip01_l_hand, bip01_l_forearm, bip01_r_hand, bip01_r_forearm, bip01_r_upperarm
+startup_animation  	      = stand_idle_2
+is_ai_obstacle	= true
+
+
+[karlik_quest_pribor]:physic_object
+visual                  = dynamics\equipments\quest\scanner_anomaly.ogf
+fixed_bones				= link
+startup_animation  	    = idle
+custom_data 		    = scripts\forest\karlik_quest_pribor.ltx
+is_ai_obstacle	= true
+
+
+[lake_stone_art]:physic_object
+visual                  = dynamics\artefacts\af_frog.ogf
+fixed_bones				= link
+startup_animation  	    = idle
+custom_data 		    = scripts\lake\lake_stone_art.ltx
+is_ai_obstacle	= true
+story_id 				= lake_stone_art
+
+[lake_stone_art2]:physic_object
+visual                  = dynamics\artefacts\af_frog.ogf
+;fixed_bones				= link
+startup_animation  	    = idle
+custom_data 		    = scripts\lake\lake_stone_art2.ltx
+is_ai_obstacle	= false
+story_id 				= lake_stone_art2
+
+[lake_stone_art3]:physic_object
+visual                  = dynamics\artefacts\af_frog.ogf
+;fixed_bones				= link
+startup_animation  	    = idle
+custom_data 		    = scripts\lake\lake_stone_art3.ltx
+is_ai_obstacle	= false
+
+
+[lw_scientist_tent]:physic_object
+visual                  = additions\palatka.ogf
+fixed_bones				= bone02,bone03,link,bone16,bone13,bone08,bone10,bone19
+;startup_animation  	= idle
+custom_data 		    = scripts\forest\lw_scientist_tent.ltx
+is_ai_obstacle			= true
+
+
+
+[test_car_obj]:physic_object
+visual                  = dynamics\vehicles\veh_uaz_buhanka\veh_uaz_buhanka_u_01.ogf
+custom_data 		    = scripts\test_car_obj.ltx
+is_ai_obstacle			= true
+story_id 				= test_car_obj
+
+[test_car_obj_static]:physic_object
+visual                  = dynamics\vehicles\veh_uaz_buhanka\veh_uaz_buhanka_u_01.ogf
+fixed_bones				= root
+custom_data 		    = models\objects\ignore_static.ltx
+is_ai_obstacle			= true
+
+
+[dead_sniper_cross]:physic_object
+visual                      = additions\tomb_02.ogf
+fixed_bones	= link
+is_ai_obstacle	= true
+
+
+[mg_airdrop]:physic_object
+visual                  = additions\inv_box_zelen.ogf
+;fixed_bones			= root
+custom_data 		    = scripts\mg\mg_airdrop.ltx
+is_ai_obstacle			= true
+story_id 				= mg_airdrop
+
+
+[mg_shron1_courier]:physic_object
+visual = dynamics\devices\dev_rukzak\dev_rukzak
+story_id 		= mg_courier_shron1
+fixed_bones			= link
+is_ai_obstacle		= true
+custom_data = scripts\treasures\mg_courier_shron1.ltx
+
+[mg_shron2_courier]:physic_object
+visual = dynamics\devices\dev_rukzak\dev_rukzak
+story_id 		= mg_courier_shron2
+fixed_bones			= link
+is_ai_obstacle		= true
+custom_data = scripts\treasures\mg_courier_shron2.ltx
+
+[mg_shron3_courier]:physic_object
+visual = dynamics\devices\dev_rukzak\dev_rukzak
+story_id 		= mg_courier_shron3
+fixed_bones			= link
+is_ai_obstacle		= true
+custom_data = scripts\treasures\mg_courier_shron3.ltx
+
+[mg_shron4_courier]:physic_object
+visual = dynamics\devices\dev_rukzak\dev_rukzak
+story_id 		= mg_courier_shron4
+fixed_bones			= link
+is_ai_obstacle		= true
+custom_data = scripts\treasures\mg_courier_shron4.ltx
+
+
+[kpp_lider_shron]:physic_object
+visual = dynamics\devices\dev_rukzak\dev_rukzak
+story_id 		= kpp_lider_shron
+fixed_bones			= link
+is_ai_obstacle		= true
+custom_data = scripts\treasures\kpp_lider_shron.ltx
+
+
+[lw_scientist_chair]:physic_object
+visual = dynamics\stul\stul_wood_01
+fixed_bones			= link
+is_ai_obstacle		= true
+custom_data 		    = models\objects\ignore_static.ltx
+
+
+[random_pda_shron]:physic_object
+visual = dynamics\devices\dev_rukzak\dev_rukzak
+fixed_bones			= link
+is_ai_obstacle		= true
+custom_data = scripts\treasures\random_pda_shron.ltx
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+on_info = {+master_game} ph_idle@open
+on_info2 = {!master_difficulty} %=destroy_object%
+
+[ph_idle@open]
+nonscript_usable = true
+tips = kpp_bunker_habar_box_use
+
+
+
+ 

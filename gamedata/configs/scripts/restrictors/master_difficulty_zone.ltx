@@ -1,0 +1,69 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {!master_difficulty} sr_idle@0_1
+on_info2 = {=master_difficulty} sr_idle@2 %+master_game =run_postprocess(black:4009:true) =scenario_save_master1 =spawn_mg_kpp_boss%
+
+[sr_idle@2]
+on_game_timer = 17|sr_idle@3 %=release_scenario_objects =run_postprocess(black:4009:true) =actor_back_to_mg_start_zone%
+
+[sr_idle@3]
+on_info = {+actor_start_move} sr_idle@3_1 %=remove_item(actors_note)%
+on_info2 = {+master_game} %=run_postprocess(black:4009:true)%
+
+
+
+; Секция контроля жизни ГГ и прочего:
+[sr_idle@3_1]
+on_info = {!master_difficulty} sr_idle@0_2 %=disable_ui =master_difficulty_abort_think2%
+on_info2 = {+actor_start_move} %=stop_postprocess(4009)%
+on_info3 = {!actor_alive} sr_idle@4 %=run_postprocess(fade_in)%
+on_info4 = {-actor_start_move +mg_actor_ready_to_go} sr_idle@6 %=run_postprocess(black:4009)%
+on_info5 = {+mg_companion1_saved +mg_companion1_help_actor =actor_has_item(mg_friend_zapiska1) -mg_friend_zapiska1_info} %+mg_friend_zapiska1_info =mg_village_zapiska_spawn%
+on_info6 = {+mg_friend_zapiska1_info =actor_has_item(mg_robber_zapiska) -mg_robber_zapiska_info} %+mg_robber_zapiska_info =mg_robber_spawn%
+on_info7 = {+mg_robber_zapiska_info =actor_has_item(mg_art_robber_npc_pda) -mg_art_robber_pda_info} %+mg_art_robber_pda_info%
+on_info8 = {=actor_has_item(mg_courier_pda) -mg_courier_pda_info} %+mg_courier_pda_info%
+on_info9 = {=actor_has_item(mg_wolf_planshet) -mg_wolf_planshet_info} %+mg_wolf_planshet_info%
+on_info10 = {=actor_has_item(village_seif1_key) -village_seif1_key_finded} %+village_seif1_key_finded =village_seif1_actions%
+on_info11 = {=actor_has_item(af_compass) +mg_kpp_boss_dead -mg_game_over} sr_idle@7 %+invulnerability +mg_heli_evac_sucess +mg_game_over =disable_ui =run_postprocess(fade_to_black_9_sec)%
+
+
+[sr_idle@4]
+;on_game_timer = 43|sr_idle@nil %=game_disconnect%
+
+[sr_idle@6]
+on_info = {+actor_start_move} sr_idle@3_1 %=stop_postprocess(4009) -mg_actor_ready_to_go%
+
+
+; Завершаем сюжет:
+[sr_idle@7]
+on_game_timer = 80|sr_idle@nil %=start_outro_mg%
+
+
+
+
+
+; Если врубили сложность Мастер в процессе сюжета, то стопорим игру:
+[sr_idle@0_1]
+on_info = {+game_start =master_difficulty} sr_idle@0_2 %=disable_ui =master_difficulty_abort_think%
+
+[sr_idle@0_2]
+on_game_timer = 67|sr_idle@nil %=game_disconnect%
+
+
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+
+
+
+
+
+

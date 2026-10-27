@@ -236,3 +236,16 @@ function stop_sounds_by_id(obj_id)
 		end
 	end
 end
+
+local sound_object_by_path = {}
+--' Обертка вокруг функции, возвращающий звуковой объект.
+function get_safe_sound_object(path)
+	if sound_object_by_path[path] == nil then
+		sound_object_by_path[path] = sound_object(path)
+	end
+	return sound_object_by_path[path]
+end
+
+
+
+

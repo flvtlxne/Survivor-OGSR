@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+map_finded} sr_idle@2 %=add_self_spot(red_location:usefull_place_mark)%
+
+[sr_idle@2]
+on_info = {+lost_soldier_info1} sr_idle@nil %=remowe_self_spot(red_location:usefull_place_mark)%
+
+[sr_idle@nil]

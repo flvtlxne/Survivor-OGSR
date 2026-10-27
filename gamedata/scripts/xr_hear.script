@@ -71,7 +71,17 @@ function reset_hear_callback(st, section)
 end
 function hear_callback(obj, who_id, sound_type, sound_position, sound_power)
 	local st = db.storage[obj:id()]
+	local who_st = db.storage[who_id]
 	local s_type = get_sound_type(sound_type)
+	if st.stype == modules.stype_stalker and (s_type == "WPN_shoot" or s_type == "WPN_hit" or s_type == "MST_attack" or s_type == "MST_damage" and who_id ~= 0) and not xr_wounded.is_wounded(obj) then
+		local dist = sound_position:distance_to_sqr(obj:position())
+		if dist < 650 then
+			xr_danger.set_script_danger(obj,4000-dist*5,who_st and who_st.object)
+		end
+	end
+	if who_st and (who_st.stype == modules.stype_stalker or who_id == 0) and (string.find(s_type,"WPN") or string.find(s_type,"MST")) then
+		xr_combat_ignore.reset_memory_time(obj,who_st.object,st)
+	end
 	local story_id = get_object_story_id(who_id) or "any"
 	if st.hear_sounds == nil then
 		return

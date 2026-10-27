@@ -1,0 +1,49 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+known_info = known_info
+on_death = death
+on_hit = hit
+
+[known_info]
+; some_info_portion
+
+[walker@start]
+path_walk = helicrash_pnt1_walk
+path_look = helicrash_pnt1_look
+on_info = {+actor_has_usp} walker@1 %=give_items(wpn_usp)%
+on_info2 = {+actor_has_hpsa} walker@1 %=give_items(wpn_hpsa)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {-actor_has_aksu -actor_has_usp -actor_has_hpsa} walker@1
+
+[walker@1]
+path_walk = helicrash_pnt1_walk
+path_look = helicrash_pnt1_look
+def_state_moving1 = assault
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+out_restr = script_zone_helicrash
+combat_ignore_cond = {-helicrash_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_helicrash_item) !actor_has_item(helicrash_rnd_artefact)} true
+on_info = {=dist_to_actor_le(3) -helicrash_marod_hit} %+helicrash_marod_hit%
+
+[hit]
+on_info = {=hit_by_actor} %+helicrash_marod_hit%
+
+
+[death]
+on_info = {+lw_scientist_to_komp} %=give_items(maroder_random_pda) =inc_counter(mr_hl)%, {-lw_scientist_to_komp} %=inc_counter(mr_hl)%
+
+
+
+
+
+
+
+
+
+
+

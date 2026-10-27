@@ -1,0 +1,27 @@
+[logic]
+active = ph_button@1
+
+[ph_button@1]
+anim_blend = true
+anim = idle_close
+tooltip = village_power_box_use1
+on_press = {+arthunter_note3_info} ph_button@2 %=play_sound(zat_b38_electro_box_door)%
+on_info = {=master_difficulty} %=destroy_object%
+
+[ph_button@2]
+anim_blend = true
+anim = idle_open_off
+on_press = ph_button@3 %=play_sound(zat_b38_electro_box_switch) +village_power_box_on =spawn_willage_transformator_anomalies%
+
+[ph_button@3]
+anim_blend = true
+anim = switch
+tooltip = village_power_box_use2
+on_timer = 150 | ph_button@4
+
+[ph_button@4]
+anim_blend = true
+anim = idle_open_on
+
+
+ 

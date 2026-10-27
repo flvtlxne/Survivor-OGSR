@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <deadman_note1>
+
+	<table x="350" y="100" width="270" height="500" stretch="1">
+		<texture x="0" y="0" width="750" height="1020">ui\actors_note\actors_note_list_1</texture>
+	</table>
+
+	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Запись бывшего хозяина 1</text>
+	</name>
+
+	<text1 x="380" y="140" width="240" height="300">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">Мы приехали сюда с женой в начале осени. Я твёрдо решил отыскать этот Артефакт и я найду его, а пока что надо обустроить себе убежище. Старый дом в окрестностях Грачей - кому он принадлежал? Судя по обстановке, здесь жил деревенский плотник или столяр, но почему отдельно от людей? Мутный, видимо, он был тип... Впрочем, здесь мы нашли почти всё необходимое для выживания, а если чего-то не хватит - позаимствую у мародёров. Завтра я планирую обследовать одно из мест вероятного нахождения Артефакта - саму деревню. Жиган уверял, что подстреленный мародёр долго возился в одном из подвальчиков - я проверю эту информацию.</text>
+	</text1>
+
+
+
+	<btn_1 x="360" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> {{{ </text>
+	</btn_1>
+
+	<btn_2 x="460" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> }}} </text>
+	</btn_2>
+
+
+
+
+	<btn_exit x="570" y="560" width="25" height="25">
+	      	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
+	</btn_exit>
+
+    </deadman_note1>
+
+

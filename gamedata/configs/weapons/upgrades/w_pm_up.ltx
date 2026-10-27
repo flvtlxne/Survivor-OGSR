@@ -1,50 +1,55 @@
 [up_sect_firsta_pm]
 ;Скорострельность(1)10%
 ;----------------------
-cost		      		= 200
+cost		      		= 0
 value					= +10
 
 rpm						= +20
+material		= upgr_item_pm_1
 
 [up_sect_firstc_pm]
 ;Настильность(2)20%
 ;------------------
-cost		      		= 400
+cost		      		= 0
 value					= +20
 
 bullet_speed		 	= +45
 fire_dispersion_base	= -0.01 
+material		= upgr_item_toz_10
 
 [up_sect_firstd_pm]
 ;Отдача(2)-20%
 ;------------
-cost		      		= 400
+cost		      		= 0
 value					= -20
 
 cam_dispersion          = -0.2		;0.5
 cam_dispersion_inc		= -0.2		;0.5
 cam_step_angle_horz		= -0.25;    ;1.0
+material		= upgr_item_ak74_4
 
 [up_sect_firste_pm]
 ;Скорострельность(3)25%
 ;----------------------
-cost		      		= 600
+cost		      		= 0
 value					= +25
 
 rpm						= +60
+material		= upgr_item_pm_2
 
 [up_sect_secona_pm]
 ;Настильность(1)10%
 ;------------------
-cost		      		= 200
+cost		      		= 0
 value					= +10
 
 bullet_speed		 	= +25
+material		= upgr_item_toz_2
 
 [up_sect_seconc_pm]
 ;Надежность(2)15%
 ;---------------
-cost		      		= 400
+cost		      		= 0
 value					= +15
 
 ;увеличение дисперсии в процентах при максимальном износе
@@ -58,10 +63,12 @@ misfire_start_prob	     	= -0.002
 ;шанс осечки при изношености больше чем misfireEndCondition
 misfire_end_prob	     	= -0.02 ;0.03
 
+material		= upgr_item_pm_3
+
 [up_sect_thirda_pm]
 ;Вес
 ;------------------
-cost		      		= 200
+cost		      		= 0
 value					= -0.35
 
 inv_weight             = -0.35
@@ -71,11 +78,12 @@ crosshair_inertion			= -0.3
 PDM_disp_base 				= -0.05
 PDM_disp_vel_factor 		= -0.15
 PDM_disp_accel_factor 		= -0.15
+material		= upgr_item_toz_8
 
 [up_sect_thirdc_pm]
 ;Удобство(2)15%
 ;--------------
-cost		      		= 400
+cost		      		= 0
 value					= +15
 
 crosshair_inertion			= -0.7
@@ -83,47 +91,52 @@ crosshair_inertion			= -0.7
 PDM_disp_base 				= -0.15
 PDM_disp_vel_factor 		= -0.35
 PDM_disp_accel_factor 		= -0.35
+material		= upgr_item_ak74_14
 
 [up_sect_thirdd_pm]
 ;Отдача(2)-20%
 ;------------
-cost		      		= 400
+cost		      		= 0
 value					= -20
 
 cam_dispersion          = -0.2		;0.5
 cam_dispersion_inc		= -0.2		;0.5
 cam_step_angle_horz		= -0.25;    ;1.0
+material		= upgr_item_bm16_2
 
 [up_sect_fourta_pm]
 ;Точность(1)10%
 ;---------------
-cost		      		= 200
+cost		      		= 0
 value					= +10
 
 fire_dispersion_base	= -0.03 
 fire_dispersion_condition_factor    = -1
+material		= upgr_item_pm_4
 
 [up_sect_fourtc_pm]
 ;Точность(2)20%
 ;---------------
-cost		      		= 400
+cost		      		= 0
 value					= +20
 
 fire_dispersion_base	= -0.05 
 fire_dispersion_condition_factor    = -1
+material		= upgr_item_pm_5
 
 [up_sect_fiftha_pm]
 ;Увеличенный объем магазина
 ;---------------
-cost		      		= 350
+cost		      		= 0
 value					= +4
 
 ammo_mag_size		 	= +4
+material		= upgr_item_aksu_10
 
 [up_sect_fifthc_pm]
 ;Смена калибра на 9х19
 ;---------------
-cost		      		= 550
+cost		      		= 0
 value					= "9x19"
 
 ammo_class		 		= ammo_9x19_fmj, ammo_9x19_pbp
@@ -136,6 +149,11 @@ condition_shot_dec      	= 0.0002 ;0.0011
 misfire_start_prob	     	= 0.0008
 ;шанс осечки при изношености больше чем misfireEndCondition
 misfire_end_prob	     	= 0.008 ;0.03
+material		= upgr_item_pm_6
+
+
+
+
 
 [up_firsta_pm]
 scheme_index            = 0, 0

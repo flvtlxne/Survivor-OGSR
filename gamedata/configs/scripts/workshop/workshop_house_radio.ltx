@@ -1,0 +1,14 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = workshop_house_radio_use1
+on_use = ph_idle@2 %=play_sound(pribor_switch) =play_sound_looped(workshop_house_radio_snd)%
+on_info = {=master_difficulty} %=destroy_object%
+
+; Музло:
+[ph_idle@2]
+tips      = workshop_house_radio_use2
+on_use = ph_idle@1 %=play_sound(pribor_switch) =stop_sound_looped(workshop_house_radio_snd)%
+
+

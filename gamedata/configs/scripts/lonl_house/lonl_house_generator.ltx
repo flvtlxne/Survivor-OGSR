@@ -1,0 +1,22 @@
+[logic]
+active = ph_button@1
+
+[ph_button@1]
+anim = idle
+tooltip = lonl_house_generator_tip1
+on_press = {=actor_has_item(kanistra_full) -lonl_house_electricity} ph_button@2 %=remove_item(kanistra_full) =give_item(kanistra_empty:actor) =turn_on_lonl_house_lamps +lonl_house_electricity =inc_lonl_house_generator_counter%
+;on_info = {=master_difficulty} %=destroy_object%
+
+
+[ph_button@2]
+anim = work
+;on_info = {-lonl_house_electricity} ph_button@1 %=stop_sound_looped(diesel_generator_work) =turn_off_lonl_house_lamps%
+on_info = {=counter_equal(generator:0)} ph_button@1 %=stop_sound_looped(diesel_generator_work) =turn_off_lonl_house_lamps -lonl_house_electricity =send_tip(lonl_house_generator_off_tip:recent_surge)%
+on_info2 = {+game_start} %=play_sound_looped(diesel_generator_work)%
+
+
+
+
+
+
+ 

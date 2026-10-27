@@ -1,0 +1,30 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_weel_place_use
+on_use = {=actor_has_item(vedro_empty)} ph_idle@2 %=disable_ui =run_postprocess(fade_in) =play_sound(actor_axeplace_use)%
+on_info = {=master_difficulty} %=destroy_object%
+
+
+; Рубим:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(water_splash)%
+
+[ph_idle@3]
+on_game_timer = 15|ph_idle@1 %=enable_ui =give_item(vedro_full:actor) =remove_item(vedro_empty)%
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+

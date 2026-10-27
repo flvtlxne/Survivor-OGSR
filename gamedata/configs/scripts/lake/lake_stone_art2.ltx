@@ -1,0 +1,96 @@
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+active = ph_force@1
+
+
+; Ловля без крючка:
+
+[ph_force@1]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point3
+point_index = 0
+on_info = {=actor_has_item(wire_roll) =actor_has_item(anomal_claw)} ph_force@5
+on_actor_dist_le_nvis = 5|{~30} ph_force@2 %=play_sound(lake_art_snd) =inc_counter(frog)%, {~50} ph_force@3 %=play_lake_art_snd%, {~70} ph_force@4 %=play_sound(lake_art_snd)%
+
+[ph_force@2]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point4
+point_index = 0
+on_info = {=actor_has_item(wire_roll) =actor_has_item(anomal_claw)} ph_force@5
+on_actor_dist_le_nvis = 5|{~30} ph_force@1 %=play_sound(lake_art_snd) =inc_counter(frog)%, {~50} ph_force@3 %=play_lake_art_snd%, {~70} ph_force@4 %=play_sound(lake_art_snd)%
+
+[ph_force@3]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point5
+point_index = 0
+on_info = {=actor_has_item(wire_roll) =actor_has_item(anomal_claw)} ph_force@5
+on_actor_dist_le_nvis = 5|{~30} ph_force@1 %=play_sound(lake_art_snd) =inc_counter(frog)%, {~50} ph_force@2 %=play_lake_art_snd%, {~70} ph_force@4 %=play_sound(lake_art_snd)%
+
+[ph_force@4]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point6
+point_index = 0
+on_info = {=actor_has_item(wire_roll) =actor_has_item(anomal_claw)} ph_force@5
+on_actor_dist_le_nvis = 5|{~30} ph_force@1 %=play_sound(lake_art_snd) =inc_counter(frog)%, {~50} ph_force@2 %=play_lake_art_snd%, {~70} ph_force@3 %=play_sound(lake_art_snd)%
+
+
+; Ловля на крючок:
+
+[ph_force@5]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point3
+point_index = 0
+on_info = {=counter_greater(frog2:12)} ph_force@9
+on_actor_dist_le_nvis = 5|{~30} ph_force@6 %=play_sound(lake_art_snd) =inc_counter(frog2) =lake_art_on_trap_catch_think%, {~50} ph_force@7 %=play_lake_art_snd%, {~70} ph_force@8 %=play_sound(lake_art_snd)%
+
+[ph_force@6]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point6
+point_index = 0
+on_info = {=counter_greater(frog2:12)} ph_force@9
+on_actor_dist_le_nvis = 5|{~30} ph_force@5 %=play_sound(lake_art_snd) =inc_counter(frog2)%, {~50} ph_force@7 %=play_lake_art_snd%, {~70} ph_force@8 %=play_sound(lake_art_snd)%
+
+[ph_force@7]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point5
+point_index = 0
+on_info = {=counter_greater(frog2:12)} ph_force@9
+on_actor_dist_le_nvis = 5|{~30} ph_force@6 %=play_sound(lake_art_snd) =inc_counter(frog2)%, {~50} ph_force@5 %=play_lake_art_snd%, {~70} ph_force@8 %=play_sound(lake_art_snd)%
+
+[ph_force@8]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point4
+point_index = 0
+on_info = {=counter_greater(frog2:12)} ph_force@9
+on_actor_dist_le_nvis = 5|{~30} ph_force@6 %=play_sound(lake_art_snd) =inc_counter(frog2)%, {~50} ph_force@7 %=play_lake_art_snd%, {~70} ph_force@5 %=play_sound(lake_art_snd)%
+
+
+[ph_force@9]
+force = 10000
+time = 50
+delay = 0
+point = anom_bloodsucker_zone1_point4
+point_index = 0
+on_actor_dist_le_nvis = 5|%=lake_art_on_trap_catch_think2 =actor_finds_goodloot_snd =destroy_object =remove_item(anomal_claw) =remove_item(wire_roll) =give_item(af_frog:actor) +lake_art_gathered%
+
+
+

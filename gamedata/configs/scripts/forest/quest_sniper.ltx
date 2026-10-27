@@ -1,0 +1,124 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {+sniper_note2_info} walker@3, walker@1
+
+
+[walker@1]
+path_walk = quest_sniper_zone_point5
+path_look = quest_sniper_zone_point6
+;def_state_moving1 = assault
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_game_timer = 51|walker@2
+
+[walker@2]
+path_walk = quest_sniper_zone_point6
+path_look = quest_sniper_maroder2_walk
+;def_state_moving1 = assault
+def_state_moving1 = sneak_run
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {+sniper_maroder2_dead} walker@away
+
+
+; Сваливаем в быстром темпе:
+[walker@away]
+path_walk = quest_sniper_zone_point7
+path_look = quest_sniper_maroder2_walk
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+meet = no_meet
+on_signal       = arriwed|%=destroy_object%
+
+
+; В плену:
+[walker@3]
+path_walk = quest_sniper_zone_point8_1
+path_look = quest_sniper_zone_point9
+;def_state_moving1 = assault
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_info = {+maroder_sniper_scene_rasstrel} walker@4
+
+[walker@4]
+path_walk = quest_sniper_zone_point8_1
+path_look = quest_sniper_zone_point9
+;def_state_moving1 = assault
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_game_timer = 77|remark@1
+
+; Раненый:
+[remark@1]
+anim = wounded
+target = path | quest_sniper_zone_point9, 0
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+sniper_maroder1_dead +quest_sniper_maroder1friend1_dead +quest_sniper_maroder1friend2_dead} remark@2 %=actor_neutral%
+
+[remark@2]
+anim = wounded
+target = path | quest_sniper_zone_point9, 0
+combat_ignore_cond = true
+meet = meet@2
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+avail_release = false
+on_info = {+quest_sniper_reward} remark@3
+
+[remark@3]
+anim = wounded
+target = path | quest_sniper_zone_point9, 0
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+avail_release = false
+on_info = {+quest_sniper_reward =dist_to_actor_ge(60)} %=kill_npc =delete_sniper_maroders2 =quest_sniper_lay_to_rest_think%
+
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+
+

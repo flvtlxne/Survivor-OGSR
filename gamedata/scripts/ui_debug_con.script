@@ -1,0 +1,124 @@
+--[[ ----------------------------------------------------------------------------------------------
+ File       : ui_debug_con.script
+ Description: "Скриптовая консоль разработчика"
+ Copyright  : 2015 © Neof-One
+ Author     : Vampirnik77
+ Editors    : Vampirnik77 
+ Last edit  : 28.06.2017 (by Vampirnik77)
+--]] ----------------------------------------------------------------------------------------------
+local story_buffer = {} --/ Таблица хранит 5 последних использованных команд
+local func_valid = {} --/ Таблица хранит валидности команд
+local command = {["show_info"] = "ui_debug_con.ShowInfo", ["hide_info"] = "ui_debug_con.HideInfo"} --/ Тут команды для консоли
+---------------------------------------------------------------------------------------------------
+function ShowInfo() --/ Показать отладочную инфу(lv,gv, coord и т.д)
+module_dynamic_update.addTable("module_debug.render_debug_info", "b")
+end
+
+function HideInfo() --/ Скрыть отладочную инфу
+module_dynamic_update.delTable("module_debug.render_debug_info", "b")
+module_debug.remove_debug_info()
+end 
+---------------------------------------------------------------------------------------------------
+
+class "ui_debug_con" (CUIScriptWnd)     --Регистрация нового класса гуи-элемента от существующего класса CUIScriptWnd 
+
+function ui_debug_con:__init(owner) super()      --Иницилизируем класс, добавляем отсылки к функциям         
+         self.owner = owner 
+         self:InitControls()          --Отсылка к функции регистрации элементов окна 
+         self:InitCallBacks()         --Отсылка к функции регистрации коллбеков (условий) 
+end 
+
+function ui_debug_con:__finalize()    --Функция завершения работы нового класса 
+end 
+
+function ui_debug_con:InitControls()   --Функция иницилизации элементов окна 
+self:SetWndRect   (Frect():set(0,0,1024,768))   --Установка стандартных размеров файла         
+local xml, ctrl   = CScriptXmlInit(), CUIWindow()    --Задаем локальные переменные на классы         
+xml:ParseFile   ("ui_debug_con.xml")         --Инициализация XML-файла Gui-элемента 
+self.debug_con    = xml:InitStatic("debug_con",self)   --Регистрируем само окно 
+self.button_run = xml:Init3tButton ("debug_con:button_run",self.debug_con)	--Регистрация кнопки
+self:Register (self.button_run, "button_run") 
+self.console = xml:InitEditBox("debug_con:console",self.debug_con)	-- Регистрация поля ввода
+self:Register(self.console,"console")
+self.story_1 = xml:InitTextWnd("debug_con:story_1", self.debug_con) --/ Регистрируем текст для 5 последних команд и их валидности
+self.story_2 = xml:InitTextWnd("debug_con:story_2", self.debug_con)
+self.story_3 = xml:InitTextWnd("debug_con:story_3", self.debug_con)
+self.story_4 = xml:InitTextWnd("debug_con:story_4", self.debug_con)
+self.story_5 = xml:InitTextWnd("debug_con:story_5", self.debug_con)
+self.valid_1 = xml:InitTextWnd("debug_con:valid_1", self.debug_con)
+self.valid_2 = xml:InitTextWnd("debug_con:valid_2", self.debug_con)
+self.valid_3 = xml:InitTextWnd("debug_con:valid_3", self.debug_con)
+self.valid_4 = xml:InitTextWnd("debug_con:valid_4", self.debug_con)
+self.valid_5 = xml:InitTextWnd("debug_con:valid_5", self.debug_con)
+self.story_1:SetText(story_buffer[1]) --/ Тут задаем начальный текст из таблиц, чтоб при закрытии/открытии все оставалось 
+self.story_2:SetText(story_buffer[2])
+self.story_3:SetText(story_buffer[3])
+self.story_4:SetText(story_buffer[4])
+self.story_5:SetText(story_buffer[5])
+self.valid_1:SetText(func_valid[1])
+self.valid_2:SetText(func_valid[2])
+self.valid_3:SetText(func_valid[3])
+self.valid_4:SetText(func_valid[4])
+self.valid_5:SetText(func_valid[5])
+end 
+
+function ui_debug_con:InitCallBacks()         --Функци коллбеков 
+         self:AddCallback("button_run", ui_events.BUTTON_CLICKED, self.OnButton_run_clicked, self)  --Коллбек кнопки
+end 
+
+function ui_debug_con:OnKeyboard(dik,keyboard_action)    --Функция закрытия окна по нажатию на клавиатуре "Escape" 
+           CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)      --Инициализируем нажатие кнопки на клаве 
+           if keyboard_action == ui_events.WINDOW_KEY_PRESSED then  --Условие: если нажата кнопка на клаве 
+              if dik == DIK_keys.DIK_ESCAPE then                    --Условие: если нажата конкретно кнопка "Escape" 
+				self:HideDialog()                        --При нажатии на кнопку закрытия, закрываем окошко       
+              end 
+           end 
+           return true 
+end 
+
+function ui_debug_con:OnButton_run_clicked()    --Функция коллбека кнопки
+local str = self.console:GetText() --/ Получаем введный в консоль текст
+local str_func = string.match(self.console:GetText(), '[0-z%p]+[(]+[)]$') --/  Порогоняем через паттерны
+local flag = "" --/ Пременная для хранения валидности команды(используется кода чистится консоль, лучше пока не придумал)
+ if str and str ~= "" then --// Проверяем введен ли текст
+	if str_func then --/ Проверяем функция ли
+		str_func = string.sub(str_func, 0,  string.len(str_func)- 2) --/ Тут сложные манипуляции для ф-ции Get_CheckedFunc
+	end
+	local func =  Get_CheckedFunc(str_func) --/ Получаем функцию
+		if func then --/ Если функция существет
+			func_valid[#story_buffer + 1] = "done" -- // То она валидна
+			func() --/ Вызываем ее
+			flag = "done" --/ Ставим флаг
+		else
+			func_valid[#story_buffer + 1] = "error" --/ Ф-ция не валидна
+			flag = "error" --/ Ставим флаг
+		end
+	if #story_buffer <= 4 then --/ Проверяем не заполнена ли таблица
+		story_buffer[#story_buffer + 1] = "~ "..str --/ Заносим в таблицу введные команды
+	else 
+		for key, val in pairs(story_buffer) do --// Если заполенна чистим и таблицу валидности заодно
+			story_buffer[key] = nil
+			func_valid[key] = nil
+		end
+		story_buffer[1] = "~ "..str
+		func_valid[1] = flag
+	end
+------------------------------------------------------------------------
+if command[str] then --// Проверяем существует ли такая команда
+Get_CheckedFunc(command[str])() --/ Вызываем ее
+func_valid[#story_buffer] = "done" --/ Ставим валидность
+end	
+------------------------------------------------------------------------
+self.story_1:SetText(story_buffer[1]) --/ Тут все выводим
+self.story_2:SetText(story_buffer[2])
+self.story_3:SetText(story_buffer[3])
+self.story_4:SetText(story_buffer[4])
+self.story_5:SetText(story_buffer[5])
+self.valid_1:SetText(func_valid[1])
+self.valid_2:SetText(func_valid[2])
+self.valid_3:SetText(func_valid[3])
+self.valid_4:SetText(func_valid[4])
+self.valid_5:SetText(func_valid[5])
+end
+self.console:SetText("") --/ Очищаем строку консоли
+end

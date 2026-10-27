@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <lostsold_note4>
+
+	<table x="350" y="100" width="270" height="500" stretch="1">
+		<texture x="0" y="0" width="750" height="1020">ui\actors_note\actors_note_blank_squares</texture>
+	</table>
+
+	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Запись пилота 4</text>
+	</name>
+
+	<text1 x="380" y="140" width="240" height="300">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">Этот дом у ремонтной базы вполне сгодится - место защищённое и от выброса можно укрыться. Однако снова этот голос! Сегодня он меня вывел из себя и я открыл огонь по маленькой тени, копошашейся в углу - безрезультатно. Чуть позже я расслышал тихий, но отчтливый смех и снова просьбу... Он просил послушать его... Я вслух ответил ему "Говори громче". После этого он зашептал более отчётливо: "я хочу помочь, - говорил он, - покажу тебе выход отсюда! Пойди на холм за рембазой, там будет секретный проход и ты..." Голос стих. Что там будет, на холме? Впрочем, что-то подсказывает мне, что надо пойти и проверить это место.</text>
+	</text1>
+
+
+
+	<btn_1 x="360" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> {{{ </text>
+	</btn_1>
+
+	<btn_2 x="460" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> }}} </text>
+	</btn_2>
+
+
+
+
+	<btn_exit x="570" y="560" width="25" height="25">
+	      	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
+	</btn_exit>
+
+    </lostsold_note4>
+
+

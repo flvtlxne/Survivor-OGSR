@@ -1,0 +1,17 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_stanok_use1
+on_info = {+lonl_house_electricity} ph_idle@2
+on_info2 = {=master_difficulty} %=destroy_object%
+
+[ph_idle@2]
+tips      = lonl_house_stanok_use2
+on_info = {-lonl_house_electricity} ph_idle@1
+
+
+
+
+
+ 

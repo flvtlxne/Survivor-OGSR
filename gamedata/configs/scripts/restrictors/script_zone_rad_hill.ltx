@@ -1,0 +1,68 @@
+[logic]
+active = sr_idle@0
+
+[sr_idle@0]
+on_info = {+random_event_rad_hill} sr_idle@1
+on_info2 = {+mg_zone_radhill =is_render_r1or2} sr_idle@mg1 %=add_self_spot(mg_deathzone_mark9a:mg_deathzone_mark1_text) =mg_zone_radhill_think%
+on_info3 = {+mg_zone_radhill =is_render_r3or4} sr_idle@mg1 %=add_self_spot(mg_deathzone_mark9b:mg_deathzone_mark1_text) =mg_zone_radhill_think%
+
+[sr_idle@1]
+on_game_timer = 15|{~25} sr_idle@1_1 %=give_task(rnd_task_rad_hill_maroders) =rad_hill_maroders_spawn_on_base =rad_hill_random_items_in_box_spawn =mark_radhill_maroders_box1%, {~45} sr_idle@1_2 %=give_task(rnd_task_rad_hill_mutants) =rad_hill_mutants_spawn_on_base%, {~60} sr_idle@1_3 %=give_task(rnd_task_rad_hill_artefact) =rad_hill_artefact_spawn =radhill_maroders_spawn%, {~80} sr_idle@1_4 %=give_task(rnd_task_rad_hill_robbery) =rad_hill_maroders_spawn_on_base =spawn_object_in(rnd_task_rad_hill_item:radhill_invbox_1) =rad_hill_weapon_parts_in_box_spawn =mark_radhill_maroders_box1%
+
+
+
+; Уничтожить мародёров:
+[sr_idle@1_1]
+;on_info = {=is_dead(radhill_marouder_guard1) =story_object_exist(radhill_marouder_guard1) =is_dead(radhill_marouder_guard2) =story_object_exist(radhill_marouder_guard2) =is_dead(radhill_marouder_guard3) =story_object_exist(radhill_marouder_guard3) =is_dead(radhill_marouder_guard4) =story_object_exist(radhill_marouder_guard4) =is_dead(radhill_marouder_guard5) =story_object_exist(radhill_marouder_guard5) =is_dead(radhill_marouder_guard6) =story_object_exist(radhill_marouder_guard6) =is_dead(radhill_marouder_comandr) =story_object_exist(radhill_marouder_comandr) =is_dead(radhill_marouder_scav) =story_object_exist(radhill_marouder_scav)} sr_idle@1_1_1 %=start_rnd_task_default_reward%
+on_info = {=counter_greater(mr_rh:7)} sr_idle@1_1_1 %=start_rnd_task_default_reward%
+; если нас ранили:
+on_info2 = {+critical_health} sr_idle@wait %=delete_rad_hill_maroders =clear_box(radhill_invbox_1) =unmark_radhill_maroders_box1%
+
+[sr_idle@1_1_1]
+on_actor_dist_ge_nvis = 140|sr_idle@wait %=delete_rad_hill_maroders =clear_box(radhill_invbox_1) -random_event_rad_hill =unmark_radhill_maroders_box1 -radhill_marod_hit%
+
+
+; Уничтожить мутантов:
+[sr_idle@1_2]
+;on_info = {=is_dead(rad_hill_mob_1) =story_object_exist(rad_hill_mob_1) =is_dead(rad_hill_mob_2) =story_object_exist(rad_hill_mob_2) =is_dead(rad_hill_mob_3) =story_object_exist(rad_hill_mob_3) =is_dead(rad_hill_mob_4) =story_object_exist(rad_hill_mob_4) =is_dead(krad_hill_mob_5) =story_object_exist(rad_hill_mob_5) =is_dead(rad_hill_mob_6) =story_object_exist(rad_hill_mob_6) =is_dead(rad_hill_mob_7) =story_object_exist(rad_hill_mob_7)} sr_idle@1_1_2 %=start_rnd_task_default_reward%
+on_info = {=counter_greater(mb_rh:6)} sr_idle@1_1_2 %=start_rnd_task_default_reward%
+; если нас ранили:
+on_info2 = {+critical_health} sr_idle@wait %=delete_rad_hill_mobs%
+
+[sr_idle@1_1_2]
+on_actor_dist_ge_nvis = 140|sr_idle@wait %=delete_rad_hill_mobs -random_event_rad_hill%
+
+
+; Найти артефакт:
+[sr_idle@1_3]
+on_info = {=actor_has_item(rad_hill_rnd_artefact)} sr_idle@1_1_3 %+rad_hill_rnd_artefact_gathered%
+; если нас ранили:
+on_info2 = {+critical_health} sr_idle@wait %=delete_rad_hill_artefact =delete_rad_hill_maroders =set_counter(mr_rh:0)%
+
+[sr_idle@1_1_3]
+on_actor_dist_ge_nvis = 140|sr_idle@wait %=delete_rad_hill_maroders -radhill_marod_hit%
+
+
+; Выкрасть ценный груз:
+[sr_idle@1_4]
+on_info = {=actor_has_item(rnd_task_rad_hill_item)} sr_idle@1_1_4 %+rad_hill_rnd_item_gathered%
+; если нас ранили:
+on_info2 = {+critical_health} sr_idle@wait %=delete_rad_hill_maroders =clear_box(radhill_invbox_1) =unmark_radhill_maroders_box1 =set_counter(mr_rh:0)%
+
+[sr_idle@1_1_4]
+on_actor_dist_ge_nvis = 140|sr_idle@wait %=delete_rad_hill_maroders =unmark_radhill_maroders_box1 -radhill_marod_hit%
+
+
+
+; Вспомогательная секция ожидания:
+[sr_idle@wait]
+on_info = {-random_event_rad_hill} sr_idle@0 %=set_counter(mr_rh:0) =set_counter(mb_rh:0)%
+
+
+
+; Для режима Мастер:
+[sr_idle@mg1]
+on_info = {-mg_zone_radhill =is_render_r1or2} sr_idle@0 %=remowe_self_spot(mg_deathzone_mark9a:mg_deathzone_mark1_text)%
+on_info2 = {-mg_zone_radhill =is_render_r3or4} sr_idle@0 %=remowe_self_spot(mg_deathzone_mark9b:mg_deathzone_mark1_text)%
+
+

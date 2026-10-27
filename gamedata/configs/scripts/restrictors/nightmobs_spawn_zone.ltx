@@ -1,0 +1,19 @@
+; Отключено
+
+[logic]
+active = sr_idle@3
+
+[sr_idle@1]
+on_info = {=nightmobs_spawn_time !actor_in_camp_zone =actor_on_ai_net !scenario_tasks_outdoor_condition} sr_idle@2 %=spawn_nightmobs%
+
+[sr_idle@2]
+on_game_timer = 8000|sr_idle@1 %-nightmob1_dead -nightmob2_dead -nightmob3_dead -nightmob4_dead -nightmob5_dead%
+on_info = {=actor_in_camp_zone} sr_idle@1 %=night_mob1delete =night_mob2delete =night_mob3delete =night_mob4delete =night_mob5delete%
+on_info2 = {!nightmobs_spawn_time} sr_idle@1 %=night_mob1delete =night_mob2delete =night_mob3delete =night_mob4delete =night_mob5delete%
+
+
+[sr_idle@3]
+
+
+
+

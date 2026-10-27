@@ -1,6 +1,13 @@
 ------------------------------------------------------------------------------------
 --    Схема: прячемся в кавере
 ------------------------------------------------------------------------------------
+local random_states = {
+	_sit_random = {"sit","sit_ass","sit_knee"},
+	_surge_random = {"wait","wait","sit","sit","sit","sit_ass","sleep","psy_pain","caution","choose","fold_arms","wounded","jup_b41_novikov_stand","pri_a25_psy_medic_idle"},
+--	_surge_monolit = {"trans_0","trans_1"},
+--	_surge_zombied = {"trans_zombied"},
+}
+
 class "evaluator_need_cover" (property_evaluator)
 function evaluator_need_cover:__init(storage, name) super(nil, name)
   	self.st = storage
@@ -16,30 +23,46 @@ function action_cover:__init (npc_name, action_name, storage) super(nil, action_
 end
 function action_cover:initialize()
 	action_base.initialize(self)
-	self.board = sim_board.get_sim_board()
+--	self.board = sim_board.get_sim_board()
+	self.object:set_path_type(game_object.level_path)
+	if surge_manager.is_started() then
+		self.object:set_body_state(move.standing)
+		self.object:set_mental_state(anim.panic)
+		self.object:set_movement_type(move.run)
+		self.object:set_item(object.idle,nil)
+	end
+	self.object:set_dest_level_vertex_id(self.cover_vertex_id)
+	state_mgr.set_state(self.object, "assault")
+	local desired_direction = vector():sub(self.cover_position,self.enemy_random_position)
+	if desired_direction ~= nil and not utils.vector_cmp(desired_direction, vector():set(0,0,0)) then
+		desired_direction:normalize()
+		self.object:set_desired_direction(desired_direction)
+	end
 end
 function action_cover:activate_scheme()
-    self.st.signals = {}
-    self.board = sim_board.get_sim_board()
-    --' Высчитываем кавер.
-    local base_point = sim_board.get_sim_board():get_smart_by_name(self.st.smart).m_level_vertex_id
+	self.st.signals = {}
+--	self.board = sim_board.get_sim_board()
+	--' Высчитываем кавер.
+	local base_point = sim_board.get_sim_board():get_smart_by_name(self.st.smart).m_level_vertex_id
 
-       
-    local direction_vector = vector():set(math.random(-100,100), 0, math.random(-100,100))
-    local base_vertex_id = level.vertex_in_direction(base_point, direction_vector, math.random(self.st.radius_min,self.st.radius_max))
-    local self_random_position = level.vertex_position(base_vertex_id)
+	local direction_vector = vector():set(math.random(-100,100), 0, math.random(-100,100))
+	local base_vertex_id = level.vertex_in_direction(base_point, direction_vector, math.random(self.st.radius_min,self.st.radius_max))
+	local self_random_position = level.vertex_position(base_vertex_id)
 
 	--' Получаем врага, относительно которого надо искать кавер
-	self.enemy_random_position = self_random_position --' дефолтовая позиция
+	if self.st.look_center then
+		self.enemy_random_position = level.vertex_position(base_point) --' дефолтовая позиция
+	else
+		self.enemy_random_position = self_random_position --' дефолтовая позиция
+	end
 
 	local cover = nil
-	local tcover = nil
 
-	local cover_dist = 2
-    while cover == nil and cover_dist <= 4 do
-		cover = self.object:best_cover(self_random_position, self.enemy_random_position, cover_dist, 1, 150)		
-		cover_dist = cover_dist + 1		
-	end	
+	local cover_dist = 1
+	while cover == nil and cover_dist <= 3 do
+		cover = self.object:best_cover(self_random_position, self.enemy_random_position, cover_dist, 1, 150)
+		cover_dist = cover_dist + 1
+	end
 
 	if cover == nil then
 		--printf("cover is [nil]")
@@ -47,50 +70,42 @@ function action_cover:activate_scheme()
 		self.cover_position = self_random_position
 		--printf("cover doesn't exists -- cover_vertex [%s] cover_position [%s]", tostring(self.cover_vertex_id), vec_to_str(self.cover_position))
 	else
-		if tcover ~= nil then
-			self.cover_vertex_id = tcover.cover_vertex_id
-			self.cover_position = tcover.cover_position
-		else
-			self.cover_vertex_id = cover:level_vertex_id()
-			self.cover_position = cover:position()
-		end
-		--printf("cover exists -- cover_vertex [%s] cover_position [%s]", tostring(self.cover_vertex_id), vec_to_str(self.cover_position))
+		self.cover_vertex_id = cover:level_vertex_id()
+		self.cover_position = cover:position()
+--		printf("cover exists -- cover_vertex [%s] cover_position [%s]", tostring(self.cover_vertex_id), vec_to_str(self.cover_position))
 	end
-			
+
 	if not self.object:accessible(self.cover_position) then
 		local ttp = vector():set(0,0,0)
 		self.cover_vertex_id = self.object:accessible_nearest(self.cover_position, ttp)
 		self.cover_position = level.vertex_position(self.cover_vertex_id)
 		--printf("cover exists but not accesible -- cover_vertex [%s] cover_position [%s]", tostring(self.cover_vertex_id), vec_to_str(self.cover_position))
-	end	
-
-	local desired_direction = vector():sub(self.cover_position,self.enemy_random_position)
-	printf("desired_direction = %s", vec_to_str(desired_direction))
-	if desired_direction ~= nil and not utils.vector_cmp(desired_direction, vector():set(0,0,0)) then
-		desired_direction:normalize()
-		self.object:set_desired_direction(desired_direction)
 	end
-	self.object:set_path_type(game_object.level_path)
 
-	self.object:set_dest_level_vertex_id(self.cover_vertex_id)
 	--printf("cover position is %s enemy position is %s",  vec_to_str(self.cover_position), vec_to_str(self.enemy_random_position))
-
-	state_mgr.set_state(self.object, "assault")
 	--printf("[%s]Setting cover %s", self.object:name(), self.cover_vertex_id)
 end
 function action_cover:execute()
 	--printf("[%s] dist %s to %s", self.object:name(), self.cover_position:distance_to_sqr(self.object:position()), vec_to_str(self.cover_position))
 	--' Проверяем пришли ли в точку.
-	if self.cover_position:distance_to_sqr(self.object:position()) <= 0.4 then
+	if self.cover_position:distance_to_sqr(self.object:position()) <= 0.7 then
 		local anim = xr_logic.pick_section_from_condlist(db.actor, self.object, self.st.anim)
-		state_mgr.set_state(self.object, anim, nil, nil, {look_position = self.enemy_random_position}, nil, nil)
+		if self.anim ~= anim then
+			self.anim = anim
+			self.random_anim = random_states[anim] and random_states[anim][math.random(#random_states[anim])]
+		end
+		anim = self.random_anim or anim
+		if state_mgr.get_state(self.object) ~= anim then
+			state_mgr.set_state(self.object, anim, nil, nil, {look_position = self.enemy_random_position}, nil, nil)
+		end
 	else
+		local state = xr_logic.pick_section_from_condlist(db.actor, self.object, self.st.moving)
 		self.object:set_dest_level_vertex_id(self.cover_vertex_id)
-		state_mgr.set_state(self.object, "assault")
+		state_mgr.set_state(self.object, state)
 	end
 	if self.st.sound_idle ~= nil then
 		xr_sound.set_sound_play(self.object:id(), self.st.sound_idle)
-	end	
+	end
 	action_base.execute(self)
 end
 function action_cover:finalize()
@@ -98,7 +113,7 @@ function action_cover:finalize()
 end
 --' Возвращает достиг ли персонаж точки начала работы схемы
 function action_cover:position_riched()
-	return self.cover_position:distance_to_sqr(self.object:position()) <= 0.4
+	return self.cover_position:distance_to_sqr(self.object:position()) <= 0.7
 end
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -107,13 +122,13 @@ end
 function add_to_binder(npc, ini, scheme, section, storage)
   		local operators	= {}
 	  	local properties  = {}
-		
+
 	   	local manager = npc:motivation_action_manager()
 
 		properties["event"]			= xr_evaluators_id.reaction
 	 	properties["need_cover"]	= xr_evaluators_id.stohe_cover_base + 1
 		properties["state_mgr_logic_active"] 	= xr_evaluators_id.state_mgr + 4
-		
+
 	 	operators["action_cover"]	= xr_actions_id.stohe_cover_base + 1
 
 	   	-- evaluators
@@ -145,13 +160,15 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 
 	st.smart	= utils.cfg_get_string(ini, section, "smart", npc, false, "")
 	st.anim		= xr_logic.parse_condlist(npc, "anim", "anim", utils.cfg_get_string(ini, section, "anim", npc, false, "", "hide"))
+	st.moving  	= xr_logic.parse_condlist(npc, "def_state_moving", "def_state_moving", utils.cfg_get_string(ini, section, "def_state_moving", npc, false, "", "assault"))
 	st.sound_idle= utils.cfg_get_string(ini, section, "sound_idle",npc, false, "")
-		
+
 	if st.smart == nil then
 		abort("There is no path_walk and smart in xr_cover.")
 	end
-	
-	st.use_attack_direction = utils.cfg_get_bool(ini, section, "use_attack_direction", npc, false, true)
+
+	st.look_center = utils.cfg_get_bool(ini, section, "look_center", npc, false, false)
+--	st.use_attack_direction = utils.cfg_get_bool(ini, section, "use_attack_direction", npc, false, true)
 
 	st.radius_min = utils.cfg_get_number(ini, section, "radius_min", npc, false, 3)
 	st.radius_max = utils.cfg_get_number(ini, section, "radius_max", npc, false, 5)

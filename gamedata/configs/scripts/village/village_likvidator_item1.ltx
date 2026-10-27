@@ -1,0 +1,19 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+on_info = {+likvidator_info1} ph_idle@1
+
+[ph_idle@1]
+tips      = village_likvidator_item1_use
+on_use = {+likvidator_item1_on} ph_idle@2 %+likvidator_item2_on%
+on_info = {=master_difficulty} %=destroy_object%
+
+; лопата
+[ph_idle@2]
+on_info = {-likvidator_item1_on -likvidator_item2_on -likvidator_item3_on} ph_idle@1
+
+
+
+
+ 

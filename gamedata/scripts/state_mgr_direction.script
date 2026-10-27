@@ -118,7 +118,7 @@ function act_state_mgr_direction_turn:turn()
 	elseif self.st.look_position ~= nil then
 
 		--' Если принудительно задано тип смотрения
-		if state_lib.states[self.st.target_state].direction then
+		if state_lib.states[self.st.target_state].direction == CSightParams.eSightTypeAnimationDirection then
 			--printf("SET STATE SIGHT! %s", tostring(self.st.target_state))
 			self.object:set_sight(CSightParams.eSightTypeAnimationDirection, false,false)
 			return
@@ -163,7 +163,7 @@ function act_state_mgr_direction_search:initialize()
 	action_base.initialize(self)
 
 	--' Если принудительно задано тип смотрения
-	if state_lib.states[self.st.target_state].direction and state_lib.states[self.st.target_state].direction == CSightParams.eSightTypeAnimationDirection then
+	if state_lib.states[self.st.target_state].direction == CSightParams.eSightTypeAnimationDirection then
 		self.object:set_sight(CSightParams.eSightTypeAnimationDirection, false,false)
 	else
 		self.object:set_sight(look_position_type(self.object, self.st), nil, 0)
@@ -209,23 +209,27 @@ function look_position_type(npc, st)
 	if st == nil then
 		return look.path_dir
 	end
+	
+	local state_direction = state_lib.states[st.target_state].direction
+	
+	--' Если анимпоинт, смотрим по анимации
+	if state_direction == CSightParams.eSightTypeAnimationDirection then
+		return state_direction
+	end
+	
+	--' Смотрим в позицию
+	if st.look_position ~= nil then
+		 return look.direction
+	end
 
 	--' Если принудительно задано тип смотрения
-	if state_lib.states[st.target_state].direction then
-		return state_lib.states[st.target_state].direction
+	if state_direction then
+		return state_direction
 	end
 
 	--' Для движения
 	if not st.planner:evaluator(st.properties["movement_stand"]):evaluate() then
-		if st.look_position ~= nil then
-			return look.direction
-		end
 		return look.path_dir
-	end
-
-	--' Смотрим в позицию
-	if st.look_position ~= nil then
-		 return look.direction
 	end
 
 	return look.danger

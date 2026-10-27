@@ -1,0 +1,113 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {+karlik_house_atack} mob_walker@3, {=actor_in_zone(karlik_quest_zone8)} mob_remark@3, {=actor_in_zone(karlik_quest_zone5)} mob_remark@2, {=actor_behind_karlik_quest_zone7} mob_home@3, {=actor_in_zone(karlik_quest_zone1)} mob_home@1, {=actor_in_zone(karlik_quest_zone3)} mob_remark@1
+on_death = mob_death
+
+
+; На холме:
+[mob_home@1]
+path_home = maroders_treasure_point0_1
+home_min_radius = 3
+home_max_radius = 8
+combat_ignore_cond = true
+invulnerable = true
+on_timer = 10000|%=destroy_object%
+
+
+; Возле плиты:
+[mob_remark@1]
+anim = norm_idle
+anim_head = norm_idle
+combat_ignore_cond = true
+invulnerable = true
+on_game_timer = 90|mob_home@2
+
+[mob_home@2]
+path_home = script_karlik_point_1
+home_min_radius = 3
+home_max_radius = 8
+combat_ignore_cond = true
+invulnerable = true
+on_info = {=npc_in_actor_frustum} %=destroy_object%
+
+
+; В пси-зоне:
+[mob_home@3]
+path_home = karlik_trap_psyzone_point_0
+home_min_radius = 4
+home_max_radius = 12
+;on_info = %=killactor%
+on_info = {!actor_in_zone(karlik_quest_zone7)} mob_move@1
+
+[mob_move@1]
+captured_actor = true
+on_info = {=actor_in_zone(karlik_quest_zone7)} mob_home@3
+
+
+; В пси-зоне, возрождение:
+[mob_remark@2]
+anim = norm_idle
+anim_head = norm_idle
+combat_ignore_cond = true
+invulnerable = true
+on_game_timer = 20|mob_home@4
+
+[mob_home@4]
+path_home = script_karlik_point_1
+home_min_radius = 3
+home_max_radius = 8
+combat_ignore_cond = true
+invulnerable = true
+on_info = {+karlik_resurrect} %=destroy_object%
+
+
+; У сухого дерева, вознаграждаем ГГ:
+[mob_remark@3]
+anim = norm_idle
+anim_head = norm_idle
+combat_ignore_cond = true
+invulnerable = true
+on_game_timer = 10|mob_walker@1
+
+[mob_walker@1]
+path_walk = karlik_field_zone_point4
+path_look = karlik_field_zone_point3
+on_signal = arriwed | mob_remark@4
+
+[mob_remark@4]
+anim = norm_idle
+anim_head = norm_idle
+combat_ignore_cond = true
+invulnerable = true
+on_game_timer = 30|mob_walker@2 %=spawn_karlik_present_box%
+
+[mob_walker@2]
+path_walk = karlik_field_zone_point5
+path_look = karlik_field_zone_point3
+on_info = {+af_armadeus_idle} %=destroy_object%
+on_signal = arriwed | %=destroy_object%
+
+
+; Нападаем на дом ГГ:
+[mob_walker@3]
+path_walk = karlik_house_zomb_point_1
+path_look = karlik_house_zomb_point_2
+on_info = {+lw_scientist_dead +karlik_house_atack} mob_walker@4
+
+[mob_walker@4]
+path_walk = maroders_escape_point1
+path_look = karlik_house_zomb_point_2
+combat_ignore_cond = true
+invulnerable = true
+on_actor_dist_ge_nvis = 50|%=destroy_object%
+on_signal = arriwed|%=destroy_object%
+
+
+
+[mob_death]
+on_info = {-karlik_house_atack} %+karlik_fake_death%, {+karlik_house_atack} %+karlik_real_death%
+
+
+

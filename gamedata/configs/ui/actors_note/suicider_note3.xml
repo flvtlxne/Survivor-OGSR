@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <suicider_note3>
+
+	<table x="350" y="100" width="270" height="500" stretch="1">
+		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_blank_gray</texture>
+	</table>
+
+	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Запись самоубийцы 3 (1986г.)</text>
+	</name>
+
+	<text1 x="380" y="140" width="240" height="300">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">Проснулся в три часа ночи от далёкого грохота. Взглянул в окно, на горизонте увидел зарево. Сразу понял, что это на станции. В чём было вскочил на мотоцикл и через час был уже на ЧАЭС - но поздно... Там уже были пожарные и всё оцеплено. Это катастрофа. Опытным глазом энергетика я сразу понял, что взорвался реактор. Причина может быть только одна: из-за моих экспериментов с оборудованием, скорей всего накрылись насосы охладительного контура. Это всё - из-за меня? Нет! Я не выдержу этого. Вернулся в деревню, теперь вот сижу один в тёмной избе и смотрю в окно. Что ж, это фиаско. Зачем мучиться, лучше быстро и сразу. Яд, которым я травил волков, возьму в кладовке, ключ от отчего дома выброшу в поле, где камни уложены кругом... Прощайте и простите.</text>
+	</text1>
+
+
+
+	<btn_1 x="360" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> {{{ </text>
+	</btn_1>
+
+	<btn_2 x="460" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> }}} </text>
+	</btn_2>
+
+
+
+
+	<btn_exit x="570" y="560" width="25" height="25">
+	      	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
+	</btn_exit>
+
+    </suicider_note3>
+
+

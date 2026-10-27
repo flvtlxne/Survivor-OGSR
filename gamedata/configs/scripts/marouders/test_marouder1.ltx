@@ -1,0 +1,70 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+combat_ignore = combat_ignore
+known_info = known_info
+;on_death = death
+
+[known_info]
+;zat_b42_mayron_serchd
+
+[walker@start]
+path_walk = lonl_house_pnt1_walk
+path_look = lonl_house_pnt1_look
+on_info = {+actor_has_usp} walker@1 %=give_items(wpn_usp)%
+on_info2 = {+actor_has_hpsa} walker@1 %=give_items(wpn_hpsa)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {-actor_has_aksu -actor_has_usp -actor_has_hpsa} walker@1
+
+[walker@1]
+path_walk = lonl_house_pnt1_walk
+path_look = lonl_house_pnt1_look
+def_state_moving1 = assault
+meet = meet@1
+invulnerable = false
+gather_items_enabled = true
+help_wounded_enabled = true
+corpse_detection_enabled = true
+out_restr = script_zone_lonl_house
+
+
+[companion@1]
+meet = meet@1
+team = lonl_house_marouders_team
+;on_actor_dist_le_nvis = 5|walker@1
+danger = danger_condition
+
+
+[meet@1]
+abuse = false
+use = true
+
+[hit]
+on_info = %=destroy_object%
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[combat_ignore]
+combat_ignore = always
+ 
+
+[death]
+on_info = %=give_items(af_gold_fish)%
+
+
+
+
+
+
+
+
+
+
+

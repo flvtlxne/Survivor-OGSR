@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <actors_note_notes>
+
+	<table x="310" y="200" width="352" height="380" stretch="1">
+		<texture x="0" y="0" width="932" height="890">ui\actors_note\actors_note_title</texture>
+	</table>
+
+	<name x="480" y="300" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Блокнот</text>
+	</name>
+
+	<text1 x="250" y="-1140" width="392" height="30">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Данные персонажа:</text>
+	</text1>
+
+
+
+	<btn_1 x="450" y="300" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Хозяин дома</text>
+	</btn_1>
+
+	<btn_2 x="445" y="325" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Военный пилот</text>
+	</btn_2>
+
+	<btn_3 x="440" y="350" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Ликвидатор</text>
+	</btn_3>
+
+	<btn_4 x="435" y="375" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Прощелыга</text>
+	</btn_4>
+
+	<btn_5 x="430" y="400" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Учёный</text>
+	</btn_5>
+
+	<btn_6 x="425" y="425" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Завхоз</text>
+	</btn_6>
+
+	<btn_7 x="420" y="450" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Искатель</text>
+	</btn_7>
+
+	<btn_8 x="415" y="475" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Самоубийца</text>
+	</btn_8>
+	
+	<btn_9 x="415" y="500" width="108" height="19">
+	        <texture>ui_inGame3_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Снайпер</text>
+	</btn_9>
+
+
+
+
+	<btn_exit x="420" y="530" width="25" height="25">
+	      	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >назад</text>
+	</btn_exit>
+
+    </actors_note_notes>
+
+

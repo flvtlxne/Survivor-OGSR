@@ -1,0 +1,277 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+on_death = death
+
+[walker@start]
+path_walk = lw_stranger1_walk1
+path_look = lonl_house_bed_point1
+
+on_info = {+stranger_talk7} remark@end
+on_info2 = {+marouder_lider_3pda_info} walker@end1
+on_info3 = {+marorers_house_trap} walker@ambush
+on_info4 = {+lake_scenar_marod_lider_dead} animpoint@7
+on_info5 = {+willage_scenar_marod_lider_dead} animpoint@6
+on_info6 = {+stranger_talk4} walker@3
+on_info7 = {+lw_stranger_after_newbie_call} animpoint@5
+on_info8 = {+marodr_camp_done} animpoint@3
+on_info9 = {+stranger_talk1} animpoint@1
+on_info10 = {-stranger_talk1 -stranger_talk2} walker@1
+
+
+; Первая встреча(после аварии очнулись в доме отшельника):
+[walker@1]
+path_walk = lw_stranger1_walk1
+path_look = lonl_house_bed_point1
+meet = meet@1
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+;on_info = {+stranger_talk1} walker@2 %=disable_ui%
+on_info = {+stranger_talk1} remark@1 %=disable_ui%
+
+;=play_sound(jup_a12_bandits_bodyguard_warning_actor)
+
+[remark@1]
+snd = stranger_phrase1
+anim = fold_arms
+;target = path | lonl_house_bed_point1, 0
+target = story | actor
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+on_signal = sound_end|walker@2
+
+[walker@2]
+path_walk = lw_stranger1_walk2
+path_look = lonl_house_pnt5_3_walk
+meet = no_meet
+invulnerable = false
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_signal       = arriwed|%=destroy_object =enable_ui +note_diary1 +note_using =scenario_save1%
+
+
+; Вторая встреча(после обыска ящика):
+[animpoint@1]
+cover_name = lonl_house_starnger_animpoint1
+avail_animations = animpoint_sit_normal
+reach_distance = 0.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+stranger_talk2} animpoint@2 %=scenario_save2 =spawn_forest_camp_mutants_quest =give_task(lwtask_stranger_work) =spawn_object_in(detector_simple:forest_camp_invbox1) =destroy_object(story:helicrash_body2) =destroy_object(story:helicrash_body3) =delete_helicrash_mobs =play_sound(stranger_phrase2)%
+
+[animpoint@2]
+cover_name = lonl_house_starnger_animpoint1
+avail_animations = animpoint_sit_normal
+reach_distance = 0.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = no_meet
+on_actor_dist_ge_nvis = 20|%=destroy_object =after_sleep_event%
+
+
+; Третья встреча(после осмотра лагеря):
+[animpoint@3]
+cover_name = lonl_house_starnger_animpoint2
+avail_animations = animpoint_stay_wall
+reach_distance = 1.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+stranger_talk3} animpoint@4 %=scenario_save3 =delete_razlom_mobs =delete_razlom_maroders =delete_razlom_artefact =clear_box(razlom_invbox_1) =unmark_razlom_maroders_box1 -random_event_razlom -razlom_rnd_artefact_gathered -rnd_task_razlom_artefact_in_box -razlom_rnd_item_gathered -rnd_task_razlom_item_in_box +rnd_task_razlom_discard =spawn_razlom_scenario_maroders%
+
+[animpoint@4]
+cover_name = lonl_house_starnger_animpoint2
+avail_animations = animpoint_stay_wall
+;cover_name = lonl_house_starnger_animpoint1
+;avail_animations = animpoint_sit_normal
+reach_distance = 0.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_actor_dist_ge_nvis = 25|%=destroy_object%
+
+
+; Четвёртая встреча(у деревни):
+[animpoint@5]
+cover_name = willage_starnger_animpoint1
+avail_animations = animpoint_sit_high
+reach_distance = 0.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+stranger_talk4} walker@3 %=delete_willage_mobs =delete_willage_maroders =delete_willage_artefact =clear_box(willage_invbox_1) -random_event_willage -willage_rnd_artefact_gathered -rnd_task_willage_artefact_in_box -willage_rnd_item_gathered -rnd_task_willage_item_in_box +rnd_task_willage_discard =unmark_village_maroders_box1 =play_sound(stranger_phrase4)%
+
+; и пыримся в бинокль на деревню:
+[walker@3]
+path_walk = lw_stranger_willage_point
+path_look = lw_stranger_willage_point_look
+meet = no_meet
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_actor_dist_ge_nvis = 45|%=destroy_object%
+
+
+; Пятая встреча(после убийства главаря Деда):
+[animpoint@6]
+cover_name = willage_starnger_animpoint2
+avail_animations = animpoint_stay_wall
+reach_distance = 0.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+stranger_talk5} animpoint@6_1 %=play_sound(stranger_phrase3)%
+
+[animpoint@6_1]
+cover_name = willage_starnger_animpoint2
+avail_animations = animpoint_stay_wall
+reach_distance = 0.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_actor_dist_ge_nvis = 30|%=destroy_object%
+
+
+; Шестая встреча(после убийства главаря Хирурга):
+[animpoint@7]
+cover_name = willage_starnger_animpoint3
+avail_animations = animpoint_sit_normal
+reach_distance = 0.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_info = {+stranger_talk6} animpoint@7_1
+
+[animpoint@7_1]
+cover_name = willage_starnger_animpoint3
+avail_animations = animpoint_sit_normal
+reach_distance = 0.5
+danger = danger_condition
+combat_ignore_cond = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+meet = meet@2
+on_actor_dist_ge_nvis = 30|%=destroy_object%
+
+
+; Сдаём ГГ мародёрам:
+[walker@ambush]
+path_walk = lw_stranger_willage_pnt1_walk
+path_look = lw_stranger_willage_pnt1_look
+meet = no_meet
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+maroders_ambush_end} %=destroy_object%
+
+
+; В туннеле с контролёром:
+[walker@end1]
+path_walk = lw_stranger_after_ambush_spawn_pnt
+path_look = lw_stranger_after_ambush_spawn_pnt2
+meet = meet@2
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+stranger_talk7} remark@end %=spawn_village_stranger_controller%
+
+[remark@end]
+snd = jup_b1_stalkers_psy_wound_1
+anim = psy_pain
+target = story | actor
+;in_restr = mechanical_npc1_zone
+danger = danger_condition
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+on_info = {+village_stranger_controller_dead} %=destroy_object =spawn_lw_stranger_zombied +lw_stranger_dead%
+
+
+
+
+
+; диалог неразрываемый(нпс юзает ГГ сам):
+[meet@1]
+abuse = false
+use = self
+trade_enable = false
+allow_break = false
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+
+[death] 
+on_info = %+lw_stranger_dead%
+
+

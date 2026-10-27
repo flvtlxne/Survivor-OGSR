@@ -1,0 +1,12 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+on_info = {+stranger_talk2} ph_idle@2
+
+[ph_idle@2]
+tips      = forest_camp_fireplace_use
+on_use = ph_idle@3 %=run_postprocess(fade_in)%
+
+[ph_idle@3]
+on_game_timer = 15|%=forest_camp_fireplace_think =destroy_object +forest_camp_fireplace%

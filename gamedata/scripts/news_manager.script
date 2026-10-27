@@ -53,6 +53,11 @@ tips_icons = {
 	got_duty_heavy_armor	= "ui_inGame2_D_Vipolnil_4_zadaniya_dlya_Dolga",
 	got_freedom_light_armor	= "ui_inGame2_D_Vipolnil_2_zadaniya_dlya_Swobodi",
 	got_freedom_heavy_armor	= "ui_inGame2_D_Vipolnil_4_zadaniya_dlya_Swobodi",
+	
+	heli	= "ui_inGame2_Skat_1",
+	maroder	= "ui_inGame2_Issledovatelskaya_gruppa",
+	ad_pro	= "ui_inGame2_AD_Pro_Company",
+	stalker	= "ui_inGame2_Reputatsiya",
 
 	can_resupply			= "ui_inGame2_Pered_zadaniyami_voennih",
 	recent_surge			= "ui_inGame2_V_zone_nedavno_proshel_vibros",

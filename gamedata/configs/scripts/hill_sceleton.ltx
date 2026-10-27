@@ -1,0 +1,12 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+on_info = {+deadman_diary_info4 -deadman_diary_info5} %=play_sound_looped(hill_sceleton_snd)%
+on_actor_dist_le_nvis = 5|ph_idle@nil %=stop_sound_looped(hill_sceleton_snd)%
+
+[ph_idle@nil]
+
+
+
+ 

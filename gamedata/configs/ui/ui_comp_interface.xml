@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <comp_interface>
+
+	<table x="200" y="85" width="812" height="450" stretch="1">
+		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+	</table>
+
+	<name x="250" y="95" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">...</text>
+	</name>
+
+	<text1 x="270" y="160" width="180" height="230">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Хотите отменить текущие случайные задания и получить порцию новых?</text>
+	</text1>
+
+
+
+	<btn_1 x="300" y="280" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Да</text>
+	</btn_1>
+
+	<btn_2 x="450" y="280" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Нет</text>
+	</btn_2>
+
+
+
+	<btn_exit x="530" y="470" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Выход</text>
+	</btn_exit>
+
+    </comp_interface>
+
+

@@ -1,0 +1,30 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = maroders_dead_crow_use1
+on_info = {+marod_treasure_zone1_on} ph_idle@2 %=play_sound(crow_snd)%
+
+[ph_idle@2]
+tips      = maroders_dead_crow_use2
+on_info = {-marod_treasure_zone1_on -marod_treasure_zone2_on -marod_treasure_zone3_on -marod_treasure_zone4_on -marod_treasure_zone5_on} ph_idle@1
+on_info2 = {+marod_treasure_zone2_on} ph_idle@3 %=play_sound(crow_snd)%
+
+[ph_idle@3]
+tips      = maroders_dead_crow_use3
+on_info = {-marod_treasure_zone1_on -marod_treasure_zone2_on -marod_treasure_zone3_on -marod_treasure_zone4_on -marod_treasure_zone5_on} ph_idle@1
+on_info2 = {+marod_treasure_zone3_on} ph_idle@4 %=play_sound(crow_snd)%
+
+[ph_idle@4]
+tips      = maroders_dead_crow_use4
+on_info = {-marod_treasure_zone1_on -marod_treasure_zone2_on -marod_treasure_zone3_on -marod_treasure_zone4_on -marod_treasure_zone5_on} ph_idle@1
+on_info2 = {+marod_treasure_zone4_on} ph_idle@5 %=play_sound(crow_snd)%
+
+[ph_idle@5]
+tips      = maroders_dead_crow_use5
+on_info = {-marod_treasure_zone1_on -marod_treasure_zone2_on -marod_treasure_zone3_on -marod_treasure_zone4_on -marod_treasure_zone5_on} ph_idle@1
+on_info2 = {+marod_treasure_zone5_on} ph_idle@nil %=play_sound(crow_snd)%
+
+[ph_idle@nil]
+
+ 

@@ -1,0 +1,239 @@
+;===========================================================================
+; CONTROLLER OLD VERSION; Shield run and speed attack
+;Approximately regained : Ekagors (^_^)
+;===========================================================================
+[m_controller_rapid_old]:m_burer_e ;m_controller_e
+$spawn              = "monsters\old\controller_normal"
+visual				= monsters\controller_old\controller_1
+corpse_visual		 = monsters\controller_old\controller_1 ;controller_dead
+icon				= ui_npc_monster_controller
+;species of monster
+species						= controller
+rank						= 18
+spec_rank					= normal
+community					= controller
+
+protections_sect = controller_protections
+
+bone_torso				= bip01_pelvis
+bone_head				= bip01_head
+bone_fire				= bip01_head
+
+damage					= controller_rapid_damage
+
+DayTime_Begin			= 0			; начала дня для монстра
+DayTime_End				= 21		; конец дня для монстра
+Min_Satiety				= 0.6		; мин. норма сытости (меньше - уже голодный)
+Max_Satiety				= 0.9		; макс. норма сытости (больше - очень сытый)
+
+
+
+;-------------------------------------------------------------------------
+; Shield Ability ; Щит
+;-------------------------------------------------------------------------
+shield_cooldown					=	0
+shield_time						=	0 ;1
+shield_keep_particle			=   anomaly2\burer_shield_01
+shield_keep_particle_period		=	1
+Particle_Shield					= 	anomaly2\burer_shield_01
+
+;-------------------------------------------------------------------------
+; Anti-aim Ability ;Выхват оружия ???
+;-------------------------------------------------------------------------
+anti_aim_timeout				=	0 ;1.5 ; sec
+anti_aim_effectors				=	effector_monster_hit_1, effector_monster_hit_2, effector_monster_hit_3, effector_monster_hit_4
+anti_aim_animation				=	stand_stamina_attack_
+anti_aim_max_angle				=	0.0
+anti_aim_detection_gain_speed	=	0		; 2
+anti_aim_detection_loose_speed	=	0.0
+weapon_drop_velocity			=	0
+weapon_drop_stamina_k			=	0.0   ;IF player stamina < stamina_hit*inv_weight(weapon param)*weapon_drop_stamina_k THEN weapon is dropped
+weight_to_stamina_hit			=	0.00 ;0.25 ;kg to stamina %
+
+;-------------------------------------------------------------------------
+; Gravi Ability ;Гарви способности
+;-------------------------------------------------------------------------
+Gravi_Cooldown				= 3800 ;5000  ; milisec
+Gravi_MinDist				= 3     ; meter
+Gravi_MaxDist				= 55 ;85   ; meter
+Gravi_Speed					= 150	; meter/sec
+Gravi_Step					= 2		; meter
+Gravi_Time_To_Hold			= 1200	; milisec
+Gravi_Radius				= 3.0
+Gravi_Impulse_To_Objects	= 60.0
+Gravi_Impulse_To_Enemy		= 1000.0
+Gravi_Hit_Power				= 1.2
+
+;-------------------------------------------------------------------------
+; Tele Ability ;Телекенез
+;-------------------------------------------------------------------------
+Tele_Max_Handled_Objects = 0;
+Tele_Max_Time			 = 0;  // (s) max time to be in telekinesis
+Tele_Time_To_Hold		 = 0
+Tele_Object_Min_Mass	 = 1
+Tele_Object_Max_Mass	 = 0.00001
+Tele_Find_Radius		 = 0.001
+Tele_Min_Distance		 = 0.01
+Tele_Max_Distance		 = 0.02
+Tele_Raise_Speed		 = 0
+Tele_Fly_Velocity		 = 1 ;50
+Tele_Object_Height		 = 1  ;2
+
+sound_tele_hold			= monsters\burer\burer_tele_hold
+sound_tele_throw		= monsters\burer\burer_tele_throw
+
+
+;-------------------------------------------------------------------------
+; Scanner ;Но коментс
+;-------------------------------------------------------------------------
+scan_critical_value		= 0.0	; граничное значение
+scan_radius				= 0.01  ; радиус сканирования
+scan_velocity_threshold	= 0.01	; граничная скорость, до которой движение актера игнорируется
+scan_decrease_value		= 0.3	; уменьшение текущей суммы в секунду
+scan_trace_time_freq	= 2		; частота трейса скорости (for programmer only) (1 = 2 раза в сек)
+
+scan_sound				= monsters\burer\burer_scan_affect_0
+scan_effector_section	= m_burer_scan_effector
+
+;-------------------------------------------------------------------------
+; Particles ;Но коментс
+;-------------------------------------------------------------------------
+Particle_Tele_Object	= static\fire_distort
+Particle_Gravi_Wave		= weapons\generic_weapon_controller ;anomaly2\burer_wave
+Particle_Gravi_Prepare	= weapons\generic_weapon_controller ;anomaly2\burer_prepare
+
+;---------------------------------------------------------
+; Sounds and sound parameters ;Но коментс
+;---------------------------------------------------------
+
+sound_idle				= monsters\controller\controller_idle_
+sound_eat				= monsters\controller\controller_eat_
+sound_aggressive		= monsters\controller\controller_attack_
+sound_attack_hit		= monsters\controller\controller_attack_hit_
+sound_take_damage		= monsters\controller\controller_hit_
+sound_die				= monsters\controller\controller_die_
+sound_threaten			= monsters\boar\boar_threaten_
+sound_landing			= monsters\boar\landing_
+sound_steal				= monsters\biting\def_
+sound_panic				= monsters\controller\controller_panic_
+sound_growling			= monsters\biting\def_
+sound_bkgnd				= monsters\biting\def_
+sound_die_in_anomaly	= monsters\controller\controller_die_
+
+sound_gravi_attack		= monsters\biting\def_ ;monsters\controller\controller_attack_ ;monsters\burer\burer_gravi_attack_
+sound_tele_attack		= monsters\biting\def_
+sound_gravi_wave		= monsters\controller\controller_control1
+
+;---------------------------------------------------------
+; Velocities  ;Но коментс
+;---------------------------------------------------------
+
+; speed factors			linear | angular_real | angular_path | min |  max
+Velocity_Stand     		 = 0,     5.0,          5.0,         1,       1
+Velocity_RunFwdNormal   = 6.0,    5.0,          5.0,         0.5,     1
+Velocity_RunFwdDamaged  = 5.0,    5.0,          5.0,         0.5,     1
+Velocity_WalkFwdNormal  = 2.15,   5.0,          5.0,         0.2,     2.0
+Velocity_WalkFwdDamaged = 1.4,    5.0,          5.0,         0.2,     2.0
+Velocity_Drag           = 1.5,    4.0,          4.0,         1,       1
+Velocity_Steal          = 0.7,    4.0,          4.0,         1,       1
+
+;Velocity_Stand			= 0,		6.0,			6.0,		0.2,	0.5
+;Velocity_RunFwdNormal	= 4.5,		2.5,			2.5,		0.2,	1
+;Velocity_RunFwdDamaged	= 3.5,  	3.0,			3.0,		0.2,	1
+;Velocity_WalkFwdNormal	= 1.6,		3.0,			3.0,		0.02,	1.5
+;Velocity_WalkFwdDamaged	= 1.0,		3.0,			3.0,		0.5,	2.0
+;Velocity_Drag			= 1.0,		3.0,			3.0,		1,		1
+;Velocity_Steal			= 1.5,		3.0,			3.0,		1,		1
+
+;------------------------------------------------------------------------
+; Influences psy ;Но коментс
+;------------------------------------------------------------------------
+
+psy_linear_factor		=	0.5
+psy_quadratic_factor	=	0.0
+psy_max_distance		=	85.0
+psy_max_power			=	0.25
+psy_sound				= monsters\controller\controller_presence_1_l	;anomaly\psy_voices_1_l		;monsters\controller\controller_presence_l
+psy_pp_effector_name	= 	psy_antenna 				;postprocess_psi
+psy_pp_highest_at		= 	0.1
+
+;--------------------------------------------------------------------------
+; Attack parameters ;Но коментс
+;--------------------------------------------------------------------------
+MinAttackDist		= 1.5	;0.5
+MaxAttackDist		= 2.9	;3.8
+
+as_min_dist				= 0.8
+as_step					= 0.5
+
+DayTime_Begin		= 0			; начала дня для монстра
+DayTime_End			= 21		; конец дня для монстра
+Min_Satiety			= 0.6		; мин. норма сытости (меньше - уже голодный)
+Max_Satiety			= 0.9		; макс. норма сытости (больше - очень сытый)
+
+distance_to_corpse	= 1.2		; дист. до трупа, при которой он переходит в состояние еды
+
+terrain				 = controller_terrain
+
+hit_type = wound
+
+;-------------------------------------------------------------------------
+; Entity Conditions ;Но коментс
+;-------------------------------------------------------------------------
+satiety_v =           0.0005;0.01		;скорость уменьшения сытости со временем
+radiation_v =        0.00001;0.004		;скорость уменьшения радиации
+satiety_power_v =      0.001;0.01		;увеличение силы при уменьшении сытости
+satiety_health_v =     0.001;0.03		;увеличение здоровья при уменьшении сытости
+satiety_critical =      -1.0;0.25		;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v =    0.01;0.006		;уменьшение здоровья при воздействии радиации
+morale_v			=    0.1			;скорость восстановления морали
+health_hit_part =        0.25;0.1;0.8	;процент хита, уходящий на отнимание здоровья
+power_hit_part =         0.1;0.9		;процент хита, уходящий на отнимание силы
+psy_health_v =           0.1			;скорость восстановления psy-здоровья
+
+
+immunities_sect				= controller_immunities
+
+;открытые раны
+bleeding_v					= 0.04						;потеря крови при номинальной ране в секунду
+wound_incarnation_v			= 0.05				;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size				= 0.01
+
+sleep_health = 1.0		;1.5				;коэффициенты скоростей изменения параметров во время сна
+sleep_power = 1.0		;1.5
+sleep_satiety = 1.0		;0.8
+sleep_radiation = 1.0	;1.1
+sleep_psy_health			= 1.0
+
+eat_freq			=	5.0		; частота укусов в сек
+eat_slice			=	0.04	; увеличение сытости при 1 укусе
+eat_slice_weight	=	10.0	; уменьшение еды у трупа
+
+satiety_threshold		= 0.5							; below this value monster fill hunger
+;-------------------------------------------------------------------------
+; Morale ;Но коментс
+;-------------------------------------------------------------------------
+Morale_Hit_Quant				= 0.05
+Morale_Attack_Success_Quant		= 0.1
+Morale_Take_Heart_Speed			= 0.1
+Morale_Despondent_Speed			= 0.1
+Morale_Stable_Speed				= 0.02
+Morale_Despondent_Threashold	= 0.5
+
+;=================================================================================
+; *** PROFILES *******************************************************************
+;=================================================================================
+
+
+[controller_rapid_damage]
+;bone_name		 = <hit_scale>,-1,<wound_scale>
+;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья)
+;<wound_scale>	- коэфф. изменения величины открытой раны
+
+default				= 0.5, -1, 0.1
+
+bip01_l_foot					= 1, -1, 0.1
+bip01_spine 				= 1, -1, 0.1
+bip01_pelvis	 			= 1, -1, 0.1
+bip01_neck				= 1, -1, 0.5
+bip01_head	 			= 2, -1, 0.2

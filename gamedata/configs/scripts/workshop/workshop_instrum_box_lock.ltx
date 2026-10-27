@@ -1,0 +1,28 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+on_info = {+lake_art_sheck_workshop} ph_idle@1
+on_info2 = {=master_difficulty} %=destroy_object%
+
+[ph_idle@1]
+tips      = workshop_instrum_box_lock_use1
+on_use = {+lake_art_sheck_workshop} ph_idle@2 %+workshop_instrum_box_lock_cheked =spawn_workshop_lock_sheck_mob%
+
+[ph_idle@2]
+tips      = workshop_instrum_box_lock_use2
+on_use = {=actor_has_item(car_item_wd40) =actor_has_item(workshop_instrum_box_key)} ph_idle@3 %=disable_ui =run_postprocess(fade_in)%
+
+[ph_idle@3]
+on_game_timer = 20|ph_idle@4 %=run_postprocess(fade_in) =play_sound(repare_something)%
+
+[ph_idle@4]
+on_game_timer = 15|%+workshop_instrum_box_open =remove_item(car_item_wd40) =remove_item(workshop_instrum_box_key) =destroy_object =enable_ui%
+
+
+
+
+
+
+
+ 

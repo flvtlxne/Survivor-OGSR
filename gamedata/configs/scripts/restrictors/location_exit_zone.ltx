@@ -1,0 +1,24 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+map_finded} sr_idle@2 %=add_self_spot(alife_presentation_smart_target:location_exit_zone_mark)%
+
+[sr_idle@2]
+on_actor_inside = {+kpp_sbu_atack +lw_freeplay} sr_idle@4 %=disable_ui =run_postprocess(fade_to_black_9_sec)%, {+kpp_mercs_ambush_atack +lw_freeplay} sr_idle@5 %=disable_ui =run_postprocess(fade_to_black_9_sec)%, {-lw_mercs_escape -lw_sbu_escape -lw_freeplay} sr_idle@3 %=actor_exit_location_interface%
+
+[sr_idle@3]
+on_actor_dist_ge_nvis = 10|sr_idle@2
+on_info = {+lw_mercs_escape} sr_idle@4 %=disable_ui =run_postprocess(fade_to_black_9_sec)%
+on_info2 = {+lw_sbu_escape} sr_idle@5 %=disable_ui =run_postprocess(fade_to_black_9_sec)%
+on_info3 = {+location_exit_fake} sr_idle@2 %=actor_exit_location_bad%
+
+[sr_idle@4]
+on_game_timer = 80|sr_idle@nil %=start_outro_mercs%
+
+[sr_idle@5]
+on_game_timer = 80|sr_idle@nil %=start_outro_sbu%
+
+
+[sr_idle@nil]

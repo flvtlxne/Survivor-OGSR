@@ -1,0 +1,49 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_balon_tip
+on_use = {=actor_has_item(gas_balon_big)} ph_idle@5 %=disable_ui =run_postprocess(fade_in)%, {=actor_has_item(gas_balon)} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+on_info = {=master_difficulty} %=destroy_object%
+
+
+; Закачиваем газ:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(balon_gas_use)%
+
+[ph_idle@3]
+on_game_timer = 15|ph_idle@4 %=remove_item(gas_balon) +lab_balon_charged =enable_ui =inc_lonl_house_balon_counter%
+
+
+[ph_idle@4]
+on_info = {=counter_equal(balon:0)} ph_idle@1 %-lab_balon_charged%
+
+
+
+; Закачиваем навсегда:
+[ph_idle@5]
+on_game_timer = 20|ph_idle@6 %=run_postprocess(fade_in) =play_sound(balon_gas_use)%
+
+[ph_idle@6]
+on_game_timer = 15|ph_idle@7 %=remove_item(gas_balon_big) +lab_balon_charged =enable_ui =inc_lonl_house_balon_counter2%
+
+
+[ph_idle@7]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

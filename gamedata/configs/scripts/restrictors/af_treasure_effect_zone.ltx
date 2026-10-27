@@ -1,0 +1,26 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {=af_treasure_suicide_condition =counter_greater(stress:14) !actor_in_zone(lonl_house_surge_hide_zone2)} sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_lonl_house_suicide_npc =play_sound_by_story(actor:actor_laugh)%
+
+[sr_idle@2]
+on_game_timer = 40|sr_cutscene@1 %=lonl_house_suicide_think%
+
+[sr_cutscene@1]
+point = travel_point_lonl_house
+look = lonl_house_pnt2_walk
+cam_effector = scenario_cam\lonl_house_actor_suicide_cam
+on_signal = cameff_end | sr_idle@3 %+af_treasure_suicide =run_postprocess(fade_in)%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = false
+
+[sr_idle@3]
+on_game_timer = 20|sr_idle@4 %=play_sound_by_story(actor:pistol_shot) =kill_actor%
+
+[sr_idle@4]
+
+
+[sr_idle@nil]

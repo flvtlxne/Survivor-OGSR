@@ -2,6 +2,402 @@
 
 <game_information_portions>
 
+
+
+<info_portion id="invulnerability"></info_portion>
+<info_portion id="location_exit_fake"></info_portion>
+
+<info_portion id="game_start"></info_portion>
+<info_portion id="helicrash_body1_info"></info_portion>
+<info_portion id="helicrash_pilot_talk"></info_portion>
+<info_portion id="stranger_talk1"></info_portion>
+<info_portion id="stranger_talk2"></info_portion>
+<info_portion id="stranger_talk3"></info_portion>
+<info_portion id="stranger_talk4"></info_portion>
+<info_portion id="stranger_talk5"></info_portion>
+<info_portion id="stranger_talk6"></info_portion>
+<info_portion id="stranger_talk7"></info_portion>
+<info_portion id="forest_camp_fireplace"></info_portion>
+<info_portion id="forest_camp_fireplace2"></info_portion>
+<info_portion id="marodr_camp_done"></info_portion>
+<info_portion id="scenario_razlom_marodrs_dead"></info_portion>
+<info_portion id="lw_newbie_on_base"></info_portion>
+<info_portion id="lw_newbie_companion"></info_portion>
+<info_portion id="lw_newbie_dead"></info_portion>
+<info_portion id="stranger_secret_task1_info"></info_portion>
+<info_portion id="lw_newbie_talk1"></info_portion>
+<info_portion id="lw_newbie_talk2"></info_portion>
+<info_portion id="lonl_house_grave_dig"></info_portion>
+<info_portion id="lonl_house_grave2_dig"></info_portion>
+<info_portion id="lw_stranger_after_newbie_call"></info_portion>
+<info_portion id="actor_in_willage_budka"></info_portion>
+<info_portion id="willage_scenario_maroders_alarm"></info_portion>
+<info_portion id="willage_avtoritet_on_place"></info_portion>
+<info_portion id="willage_scenar_marod_lider_dead"></info_portion>
+<info_portion id="lw_stranger_after_willage_call"></info_portion>
+<info_portion id="lake_scenar_marod_lider_dead"></info_portion>
+<info_portion id="lw_stranger_after_lake_call"></info_portion>
+<info_portion id="hostage_scenar_maroder1_dead"></info_portion>
+<info_portion id="hostage_scenar_maroder2_dead"></info_portion>
+<info_portion id="hostage_scenar_maroder3_dead"></info_portion>
+<info_portion id="hostage_scenar_maroder_talk1"></info_portion>
+<info_portion id="hostage_scenar_maroder_talk2"></info_portion>
+<info_portion id="hostage_scenar_maroder_getlost"></info_portion>
+<info_portion id="hostg_mardr_on_base"></info_portion>
+<info_portion id="workshop_marodrs_info"></info_portion>
+<info_portion id="lw_stranger_after_workshop_call"></info_portion>
+<info_portion id="marorers_house_trap"></info_portion>
+<info_portion id="maroders_ambush_end"></info_portion>
+<info_portion id="maroders_ambush_habar"></info_portion>
+<info_portion id="marouder_lider_3pda_info"></info_portion>
+<info_portion id="village_stranger_controller"></info_portion>
+<info_portion id="village_stranger_controller_dead"></info_portion>
+<info_portion id="lw_stranger_dead"></info_portion>
+<info_portion id="lw_stranger_pda_info"></info_portion>
+<info_portion id="satellite_memory_block_finded"></info_portion>
+<info_portion id="shron_merc_lider_pda_info"></info_portion>
+<info_portion id="scaner_maroder1_pda_info"></info_portion>
+<info_portion id="memory_block_hided"></info_portion>
+<info_portion id="kpp_heli_start"></info_portion>
+<info_portion id="kpp_mercs_radio_use"></info_portion>
+<info_portion id="kpp_merc_radio_off"></info_portion>
+<info_portion id="kpp_mercs_yes"></info_portion>
+<info_portion id="kpp_mercs_no"></info_portion>
+<info_portion id="kpp_mercs_getlost"></info_portion>
+<info_portion id="kpp_mercs_agree"></info_portion>
+<info_portion id="kpp_merc_heli_alarm"></info_portion>
+<info_portion id="kpp_sbu_see_ambush"></info_portion>
+<info_portion id="kpp_sbu_see_ambush2"></info_portion>
+<info_portion id="kpp_mercs_ambush_atack"></info_portion>
+<info_portion id="kpp_sbu_atack"></info_portion>
+<info_portion id="kpp_mercs_dead"></info_portion>
+<info_portion id="kpp_sbu_dead"></info_portion>
+<info_portion id="kpp_heli_dead"></info_portion>
+<info_portion id="lw_sbu_escape"></info_portion>
+<info_portion id="lw_mercs_escape"></info_portion>
+<info_portion id="lw_freeplay"></info_portion>
+
+<info_portion id="global_respawn"></info_portion>
+
+<info_portion id="bloodsucker_hunter_dead"></info_portion>
+<info_portion id="bloodsucker_hunter_away"></info_portion>
+
+<info_portion id="knife_finded"></info_portion>
+<info_portion id="map_finded"></info_portion>
+<info_portion id="car_finded"></info_portion>
+<info_portion id="laboratory_finded"></info_portion>
+<info_portion id="bolt_finded"></info_portion>
+<info_portion id="well_finded"></info_portion>
+<info_portion id="lonl_house_stove_works"></info_portion>
+<info_portion id="helicr_box_open"></info_portion>
+<info_portion id="lonl_house_electricity"></info_portion>
+<info_portion id="lab_balon_charged"></info_portion>
+<info_portion id="critical_health"></info_portion>
+<info_portion id="artefacts_spawn"></info_portion>
+<info_portion id="personal_dog_gohome"><disable>personal_dog_stay</disable></info_portion>
+<info_portion id="personal_dog_stay"><disable>personal_dog_gohome</disable></info_portion>
+<info_portion id="wounded_dog_help"></info_portion>
+<info_portion id="wounded_dog_meet"></info_portion>
+<info_portion id="personal_dog_dead"></info_portion>
+<info_portion id="lonl_house_marodr_atack"></info_portion>
+
+
+
+<info_portion id="scenar_maroder_lider1_info"></info_portion>
+<info_portion id="scenar_maroder_lider2_info"></info_portion>
+<info_portion id="scenar_maroder_lider3_info"></info_portion>
+<info_portion id="scenar_maroder_lider4_info"></info_portion>
+<info_portion id="scenar_maroder_lider5_info"></info_portion>
+
+
+<info_portion id="maroders_spawn_forest_camp"></info_portion>
+<info_portion id="maroders_spawn_lonl_house"></info_portion>
+<info_portion id="maroders_spawn_helicrash"></info_portion>
+<info_portion id="maroders_spawn_willage"></info_portion>
+<info_portion id="maroders_spawn_island"></info_portion>
+<info_portion id="maroders_spawn_forest"></info_portion>
+<info_portion id="maroders_spawn_radhill"></info_portion>
+<info_portion id="maroders_spawn_graveyard"></info_portion>
+<info_portion id="maroders_spawn_razlom"></info_portion>
+<info_portion id="maroders_spawn_kpp"></info_portion>
+<info_portion id="maroders_spawn_workshop"></info_portion>
+
+
+
+<info_portion id="nightmob1_dead"></info_portion>
+<info_portion id="nightmob2_dead"></info_portion>
+<info_portion id="nightmob3_dead"></info_portion>
+<info_portion id="nightmob4_dead"></info_portion>
+<info_portion id="nightmob5_dead"></info_portion>
+
+
+
+<info_portion id="actor_has_aksu"></info_portion>
+<info_portion id="actor_has_ak74"></info_portion>
+<info_portion id="actor_has_toz"></info_portion>
+<info_portion id="actor_has_lr300"></info_portion>
+<info_portion id="actor_has_vss"></info_portion>
+<info_portion id="actor_has_usp"></info_portion>
+<info_portion id="actor_has_hpsa"></info_portion>
+<info_portion id="actor_has_bizon"></info_portion>
+<info_portion id="actor_has_sayga"></info_portion>
+
+
+<info_portion id="random_event_helicrash"></info_portion>
+<info_portion id="random_event_forest"></info_portion>
+<info_portion id="random_event_forest_camp"></info_portion>
+<info_portion id="random_event_graveyard"></info_portion>
+<info_portion id="random_event_razlom"></info_portion>
+<info_portion id="random_event_island"></info_portion>
+<info_portion id="random_event_rad_hill"></info_portion>
+<info_portion id="random_event_willage"></info_portion>
+<info_portion id="random_event_workshop"></info_portion>
+<info_portion id="random_event_lonl_house"></info_portion>
+<info_portion id="random_event_blokpost"></info_portion>
+
+
+<info_portion id="rnd_tasks_kpp_discard"></info_portion>
+<info_portion id="rnd_task_willage_discard"></info_portion>
+<info_portion id="rnd_task_workshop_discard"></info_portion>
+<info_portion id="rnd_task_graveyard_discard"></info_portion>
+<info_portion id="rnd_task_rad_hill_discard"></info_portion>
+<info_portion id="rnd_task_razlom_discard"></info_portion>
+<info_portion id="rnd_task_island_discard"></info_portion>
+<info_portion id="rnd_task_forest_discard"></info_portion>
+<info_portion id="rnd_task_forest_camp_discard"></info_portion>
+
+
+<info_portion id="kpp_rnd_artefact_gathered"></info_portion>
+<info_portion id="kpp_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_kpp_item_in_box"></info_portion>
+<info_portion id="rnd_task_kpp_artefact_in_box"></info_portion>
+
+<info_portion id="willage_rnd_artefact_gathered"></info_portion>
+<info_portion id="willage_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_willage_item_in_box"></info_portion>
+<info_portion id="rnd_task_willage_artefact_in_box"></info_portion>
+
+<info_portion id="workshop_rnd_artefact_gathered"></info_portion>
+<info_portion id="workshop_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_workshop_item_in_box"></info_portion>
+<info_portion id="rnd_task_workshop_artefact_in_box"></info_portion>
+
+<info_portion id="graveyard_rnd_artefact_gathered"></info_portion>
+<info_portion id="graveyard_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_graveyard_item_in_box"></info_portion>
+<info_portion id="rnd_task_graveyard_artefact_in_box"></info_portion>
+
+<info_portion id="rad_hill_rnd_artefact_gathered"></info_portion>
+<info_portion id="rad_hill_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_rad_hill_item_in_box"></info_portion>
+<info_portion id="rnd_task_rad_hill_artefact_in_box"></info_portion>
+
+<info_portion id="razlom_rnd_artefact_gathered"></info_portion>
+<info_portion id="razlom_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_razlom_item_in_box"></info_portion>
+<info_portion id="rnd_task_razlom_artefact_in_box"></info_portion>
+
+<info_portion id="island_rnd_artefact_gathered"></info_portion>
+<info_portion id="island_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_island_item_in_box"></info_portion>
+<info_portion id="rnd_task_island_artefact_in_box"></info_portion>
+
+<info_portion id="forest_rnd_artefact_gathered"></info_portion>
+<info_portion id="forest_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_forest_item_in_box"></info_portion>
+<info_portion id="rnd_task_forest_artefact_in_box"></info_portion>
+
+<info_portion id="forest_camp_rnd_artefact_gathered"></info_portion>
+<info_portion id="forest_camp_rnd_item_gathered"></info_portion>
+<info_portion id="rnd_task_forest_camp_item_in_box"></info_portion>
+<info_portion id="rnd_task_forest_camp_artefact_in_box"></info_portion>
+
+<info_portion id="workshop_mob_10_dead"></info_portion>
+
+
+
+
+<info_portion id="note_using"></info_portion>
+<info_portion id="note_diary1"></info_portion>
+<info_portion id="note_diary2"></info_portion>
+<info_portion id="note_diary3"></info_portion>
+<info_portion id="note_diary4"></info_portion>
+<info_portion id="note_diary5"></info_portion>
+<info_portion id="note_diary6"></info_portion>
+<info_portion id="note_diary7"></info_portion>
+<info_portion id="note_diary8"></info_portion>
+<info_portion id="note_diary9"></info_portion>
+<info_portion id="note_diary10"></info_portion>
+<info_portion id="note_diary11"></info_portion>
+<info_portion id="note_diary12"></info_portion>
+<info_portion id="note_diary13"></info_portion>
+<info_portion id="note_diary14"></info_portion>
+<info_portion id="note_diary15"></info_portion>
+
+
+<info_portion id="deadman_diary_info1"></info_portion>
+<info_portion id="deadman_diary_info2"></info_portion>
+<info_portion id="deadman_diary_info3"></info_portion>
+<info_portion id="deadman_diary_info4"></info_portion>
+<info_portion id="deadman_diary_info5"></info_portion>
+<info_portion id="deadman_diary_info6"></info_portion>
+<info_portion id="deadman_diary_info7"></info_portion>
+<info_portion id="deadman_diary_info8"></info_portion>
+<info_portion id="deadman_diary_info9"></info_portion>
+<info_portion id="deadman_diary_info10"></info_portion>
+
+<info_portion id="village_house_polter_dead"></info_portion>
+<info_portion id="lonl_house_pogreb_scelet_off"></info_portion>
+<info_portion id="af_treasure_suicide"></info_portion>
+
+
+<info_portion id="lost_soldier_info1"></info_portion>
+<info_portion id="lost_soldier_info2"></info_portion>
+<info_portion id="lost_soldier_info3"></info_portion>
+<info_portion id="lost_soldier_info4"></info_portion>
+<info_portion id="lost_soldier_info5"></info_portion>
+
+<info_portion id="likvidator_info1"></info_portion>
+<info_portion id="likvidator_info2"></info_portion>
+<info_portion id="likvidator_info3"></info_portion>
+<info_portion id="likvidator_info4"></info_portion>
+<info_portion id="likvidator_item1_on"></info_portion>
+<info_portion id="likvidator_item2_on"></info_portion>
+<info_portion id="likvidator_item3_on"></info_portion>
+<info_portion id="likvidator_house_finded"></info_portion>
+<info_portion id="worksop_vintil_repared"></info_portion>
+<info_portion id="workshop_electricity"></info_portion>
+<info_portion id="likvidator_treasure_finded"></info_portion>
+
+
+<info_portion id="personal_dog_note1_info"></info_portion>
+<info_portion id="personal_dog_note2_info"></info_portion>
+<info_portion id="workshop_napilnik"></info_portion>
+<info_portion id="tunnel_anomaly_maroder1_go"></info_portion>
+<info_portion id="anomaly_maroder2_dead"></info_portion>
+<info_portion id="anomaly_maroder1_pda_info"></info_portion>
+
+
+
+<info_portion id="actor_behind_workshop_house_zone"></info_portion>
+<info_portion id="lostsold_burers_dead"></info_portion>
+<info_portion id="workshop_house_search"></info_portion>
+<info_portion id="workshop_house_search2"></info_portion>
+<info_portion id="lost_sold_talk"></info_portion>
+<info_portion id="lost_soldier_info"></info_portion>
+<info_portion id="lost_soldier_dead"></info_portion>
+
+
+<info_portion id="af_mushrom_finded"></info_portion>
+<info_portion id="narkoman_note1_info"></info_portion>
+<info_portion id="narkoman_note2_info"></info_portion>
+<info_portion id="narkoman_note3_info"></info_portion>
+<info_portion id="narkoman_note4_info"></info_portion>
+<info_portion id="village_mushrom_pribor_finded"></info_portion>
+<info_portion id="narkoman_pribor_on"></info_portion>
+<info_portion id="scientist_seif_open"></info_portion>
+
+
+<info_portion id="kill_himera_task"></info_portion>
+<info_portion id="maroder_chimera_dead"></info_portion>
+<info_portion id="maroder_chimera_search"></info_portion>
+<info_portion id="maroder_chimera_box_finded"></info_portion>
+<info_portion id="maroder_chimera_bad"></info_portion>
+<info_portion id="maroder_chimera_good"></info_portion>
+<info_portion id="maroder_chimera_end"></info_portion>
+
+
+<info_portion id="suicider_cross_use"></info_portion>
+<info_portion id="suicider_grave_check"></info_portion>
+<info_portion id="suicider_note1_info"></info_portion>
+<info_portion id="suicider_note2_info"></info_portion>
+<info_portion id="suicider_note3_info"></info_portion>
+<info_portion id="suicider_note4_info"></info_portion>
+<info_portion id="suicider_note5_info"></info_portion>
+<info_portion id="suicider_note6_info"></info_portion>
+<info_portion id="suicider_note7_info"></info_portion>
+
+
+
+<info_portion id="lonl_house_sofa_rest"></info_portion>
+<info_portion id="lonl_house_guitar_rest"></info_portion>
+<info_portion id="stress_effect1"></info_portion>
+<info_portion id="stress_effect2"></info_portion>
+<info_portion id="stress_effect3"></info_portion>
+
+<info_portion id="samogon_aparat_work"></info_portion>
+
+<info_portion id="graveyard_treasure_info"></info_portion>
+<info_portion id="graveyard_treasure_info2"></info_portion>
+
+
+<info_portion id="maroder_zavhoz_note_info"></info_portion>
+<info_portion id="maroder_zavhoz_finded"></info_portion>
+<info_portion id="marod_treasure_zone1_on"></info_portion>
+<info_portion id="marod_treasure_zone2_on"></info_portion>
+<info_portion id="marod_treasure_zone3_on"></info_portion>
+<info_portion id="marod_treasure_zone4_on"></info_portion>
+<info_portion id="marod_treasure_zone5_on"></info_portion>
+<info_portion id="zavhoz_friend_mob_dead"></info_portion>
+<info_portion id="zavhoz_friend_dead"></info_portion>
+<info_portion id="zavhoz_friend_info"></info_portion>
+<info_portion id="maroders_big_treasure_finded"></info_portion>
+
+
+<info_portion id="arthunter_note1_info"></info_portion>
+<info_portion id="arthunter_note2_info"></info_portion>
+<info_portion id="arthunter_note3_info"></info_portion>
+<info_portion id="village_power_box_on"></info_portion>
+<info_portion id="af_teleport_finded"></info_portion>
+<info_portion id="af_teleport_idle"></info_portion>
+
+
+
+<info_portion id="achivement_1_info"></info_portion>
+<info_portion id="achivement_2_info"></info_portion>
+<info_portion id="achivement_3_info"></info_portion>
+<info_portion id="achivement_4_info"></info_portion>
+<info_portion id="achivement_5_info"></info_portion>
+<info_portion id="achivement_6_info"></info_portion>
+<info_portion id="achivement_7_info"></info_portion>
+<info_portion id="achivement_8_info"></info_portion>
+
+<info_portion id="random_treasure_use"></info_portion>
+<info_portion id="vodka_peredoz"></info_portion>
+<info_portion id="actor_set_maroder"></info_portion>
+
+
+<info_portion id="btr_maroder_pda_info"></info_portion>
+<info_portion id="forest_btr_maroders_off"></info_portion>
+<info_portion id="razlom_wound_maroder_info"></info_portion>
+<info_portion id="btr_seif_maroder_runaway"></info_portion>
+<info_portion id="btr_seif_maroder_lost"></info_portion>
+<info_portion id="btr_seif_maroder_dead"></info_portion>
+
+<info_portion id="traktor_npc_speech"></info_portion>
+
+<info_portion id="village_saray_trap"></info_portion>
+
+<info_portion id="village_roof_maroder_pda_info"></info_portion>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <info_portion id="global_dialogs">
     <dialog>actor_break_dialog</dialog>
 <!--    <dialog>actor_help_wounded</dialog>   -->

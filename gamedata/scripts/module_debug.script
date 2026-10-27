@@ -1,0 +1,45 @@
+--[[ ----------------------------------------------------------------------------------------------
+ File       : module_debug.script"
+ Copyright  : 2015 © Neof-One
+ Author     : Vampirnik77
+ Editors    : Vampirnik77
+ Last edit  : 07.03.2017 (by Vampirnik77)
+--]] ----------------------------------------------------------------------------------------------
+function render_debug_info()
+local hud = get_hud()
+	local cs = hud:GetCustomStatic("cs_debug" )
+	if cs == nil then
+		hud:AddCustomStatic("cs_debug", true)
+		cs = hud:GetCustomStatic("cs_debug" )
+	end
+	local up = module_dynamic_update.quantityFunc("a")
+	local up1 = module_dynamic_update.quantityFunc("b")
+	local up2 = module_dynamic_update.quantityFunc("c")
+	local up3 = module_dynamic_update.quantityFunc("d")
+	local weather = tostring(level.get_weather())
+	local lvid, gvid = db.actor:level_vertex_id(), db.actor:game_vertex_id()
+	local pos, dir = db.actor: position(), db.actor:direction()
+	local pos2 = level.vertex_position(lvid)
+	local valid = pos2:distance_to(pos) <= 0.7
+	local msg =	string.format("Functions in an update(frequency ~40ms): %d\\n", up) ..
+				string.format("Functions in an update(frequency ~100ms): %d\\n", up1) ..
+				string.format("Functions in an update(frequency ~1000ms): %d\\n", up2) ..
+				string.format("Functions in an update(frequency ~5000ms): %d\\n", up3) ..
+				string.format("Weather Section: %s\\n", weather) ..
+				string.format("Level vertex id: %d\\n", lvid) ..
+				string.format("Game vertex id: %d\\n", gvid) ..
+				string.format("Position: %f,%f,%f\\n", pos.x, pos.y, pos.z) ..
+				string.format("Direction: %f,%f,%f\\n", dir.x, dir.y, dir.z) ..
+				string.format("Valid: %s", tostring(valid))
+	if cs ~= nil then
+		cs:wnd():TextControl():SetText(msg)
+	end
+end
+
+function remove_debug_info()
+local hud = get_hud()
+local cs = hud:GetCustomStatic("cs_debug" )
+	if cs ~= nil then
+		hud:RemoveCustomStatic("cs_debug")
+	end
+end

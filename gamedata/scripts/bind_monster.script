@@ -174,6 +174,15 @@ function generic_object_binder:death_callback(victim, who)
 	if who:id() == db.actor:id() then
 		xr_statistic.inc_killed_monsters_counter()
 		xr_statistic.set_best_monster(self.object)
+		
+		if db.actor:dont_has_info("achivement_3_info") then
+			xr_effects.inc_counter(db.actor, nil, {"kill_mutant",tostring(1)})
+		end
+		
+		if IsStrongMonster(victim) and db.actor:alive() then
+			soundtrack.actor_strong_mutant_kill_snd()
+		end
+		
 	end
 
 	if self.st.mob_death then
@@ -199,6 +208,8 @@ function generic_object_binder:death_callback(victim, who)
 		if alife():object(self.object:id()) ~= nil then
 			alife():release(alife():object(self.object:id()), true)
 		end
+	else
+		release_body_manager.get_release_body_manager():moving_dead_body(self.object,true)
 	end
 end
 
@@ -216,6 +227,30 @@ function generic_object_binder:hit_callback(obj, amount, local_direction, who, b
 	if amount > 0 then
 		printf("HIT_CALLBACK: %s amount=%s bone=%s who:id() = [%s] actor:id() = [%s]", obj:name(), amount, tostring(bone_index), who:id(), db.actor:id())
 	end
+	
+	
+	if who:id()==db.actor:id() and IsStrongMonster(obj) and has_alife_info("sniper_last_wish") and xr_conditions.actor_armed_mosin() == true then
+		local h = hit()
+		h.draftsman = db.actor
+		h.type = hit.fire_wound
+		h.direction = db.actor:position():sub(self.object:position())
+		h:bone("pelvis")
+		h.power = 1.7
+		h.impulse = 10
+		obj:hit(h)
+		soundtrack.script_monster_hit_snd()
+	end
+	
+	if who and who:id()==db.actor:id() and xr_conditions.master_difficulty() == true and db.actor:object("af_ice_mg") ~= nil then
+		local h = hit()
+		h.type = hit.fire_wound
+		h.power = 0.45
+		h.impulse = 0
+		h.draftsman = obj
+		h.direction = obj:position():sub(db.actor:position())
+		obj:hit(h)
+end
+	
 end
 
 function generic_object_binder:hear_callback(self, who_id, sound_type, sound_position, sound_power)
@@ -236,6 +271,7 @@ function generic_object_binder:net_spawn(sobject)
 	end
 
 	if not self.object:alive() then
+		release_body_manager.get_release_body_manager():moving_dead_body(self.object)
 		return true
 	end
 	if alife():object(self.object:id()) == nil then

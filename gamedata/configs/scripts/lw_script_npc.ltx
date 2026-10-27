@@ -1,0 +1,555 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {=actor_in_zone(script_zone_blokpost) +kpp_mercs_radio_use} remark@kpp, {=actor_in_zone(willage_stranger_trap_zone) +lw_stranger_after_workshop_call} walker@ambush, {=actor_in_zone(lonl_house_grave_zone) +stranger_secret_task1_info} remark@grave, {=actor_in_zone(lonl_house_surge_hide_zone2) +lonl_house_pogreb_scelet_off} remark@grave2, {=actor_in_zone(script_zone_forest_camp)} remark@forest_camp, {=actor_in_zone(lonl_house_store_zone)} remark@store, {=actor_in_zone(lonl_house_table1_zone)} remark@table1, {=actor_in_zone(lonl_house_table2_zone)} remark@table2, {=actor_in_zone(lonl_house_well_zone)} remark@well, {=actor_in_zone(lonl_house_car_zone)} remark@car, {+lonl_house_sofa_rest} animpoint@sofa %=give_items(vodka)%, {=actor_in_zone(wounded_dog_zone)} remark@dog, {=actor_in_zone(workshop_house_zone2)} remark@workshop_house, {=actor_in_zone(lonl_house_save_zone) !actor_in_zone(lonl_house_surge_hide_zone2) =actor_has_item(af_treasure) =counter_greater(stress:14)} remark@suicide %=give_items(wpn_pm)%, {=actor_in_zone(village_likvidator_house_zone_yard)} remark@likvidator_house, {=actor_in_zone(anomal_mushrom_zone)} remark@mushrom, {=actor_in_zone(village_mushrom_pribor_zone)} remark@mushrom_pribor, {=maroder_chimera_near} remark@chimera, {=actor_in_zone(lonl_house_chair_zone)} animpoint@guitar, {=actor_in_zone(maroder_zavhoz_zone2)} remark@dead_maroder, {=actor_in_zone(forest_btr_maroders_zone_2)} remark@forest_btr, {=actor_in_zone(graveyard_cross_zone)} remark@graveyard_cross, {=actor_in_zone(karlik_quest_zone3) -suicider_key_finded} remark@field_tree, {=actor_in_zone(karlik_quest_zone3) +suicider_key_finded} remark@field_tree2, {=actor_in_zone(script_zone_helicrash)} remark@helicrash, {=actor_in_zone(lake_art_zone1) !counter_greater(frog:12)} remark@lake_stone1, {=actor_in_zone(lake_water_zone) =counter_greater(frog:12)} remark@lake_stone2, {=actor_in_zone(karlik_quest_zone7)} remark@karlik_zone, {=actor_in_zone(karlik_quest_zone8)} remark@karlik_reward1, {=actor_in_zone(quest_sniper_zone1)} remark@sniper_tree1, {=actor_in_zone(quest_sniper_zone2)} remark@sniper_marodr, {=actor_in_zone(quest_sniper_zone3)} remark@sniper_grave, {=actor_in_zone(kpp_surge_hide_zone)} animpoint@kpp_drink %=give_items(vodka)%
+;combat_ignore = combat_ignore
+
+
+; Возле мастерской в сарае:
+[remark@store]
+anim = search
+target = path | lonl_house_pnt5_1_look, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_timer = 800|remark@store1
+
+[remark@store1]
+snd = actor_finds_something
+anim = search
+target = path | lonl_house_pnt5_1_look, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+knife_finded} %=destroy_object%
+
+
+; Возле столика у окна:
+[remark@table1]
+anim = choose
+target = path | lonl_house_script_npc_point2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_timer = 800|remark@table1_1
+
+[remark@table1_1]
+snd = actor_finds_something
+anim = choose
+target = path | lonl_house_script_npc_point2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+map_finded} %=destroy_object%
+
+
+; Возле столика у печки:
+[remark@table2]
+anim = choose
+target = path | lonl_house_script_npc_point4, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_timer = 800|remark@table2_1
+
+[remark@table2_1]
+snd = actor_finds_something
+anim = choose
+target = path | lonl_house_script_npc_point4, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+laboratory_finded} %=destroy_object%
+
+
+; У колодца:
+[remark@well]
+anim = wait
+target = path | lonl_house_script_npc_point6, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_timer = 800|remark@well_1
+
+[remark@well_1]
+snd = actor_finds_something
+anim = wait
+target = path | lonl_house_script_npc_point6, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+well_finded} %=destroy_object%
+
+
+; Возле тачки:
+[remark@car]
+anim = wait
+target = path | lonl_house_script_npc_point8, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_timer = 800|remark@car_1
+
+[remark@car_1]
+snd = actor_finds_something
+anim = wait
+target = path | lonl_house_script_npc_point8, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+car_finded} %=destroy_object%
+
+
+; На диване:
+[animpoint@sofa]
+cover_name = lonl_house_divan_animpoint
+avail_animations = zat_b3_tech_drink
+reach_distance = 5.5
+danger = danger_condition
+combat_ignore_cond = true
+reach_movement = walk
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {-lonl_house_sofa_rest} %=destroy_object%
+
+
+; Лагерь в лесу:
+[remark@forest_camp]
+anim = search
+target = path | forest_camp_fireplace_point, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_game_timer = 5|remark@forest_camp_1
+
+[remark@forest_camp_1]
+snd = actor_perplexity
+anim = search
+target = path | forest_camp_fireplace_point, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+forest_camp_fireplace2} %=destroy_object%
+
+
+; У могилы 1:
+[remark@grave]
+anim = wait
+target = path | lonl_house_grave_cross_point, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_game_timer = 15|remark@grave_1
+
+[remark@grave_1]
+snd = actor_grave_replic
+anim = wait
+target = path | lonl_house_grave_cross_point, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+lonl_house_grave_dig} %=destroy_object%
+
+
+; У могилы 2:
+[remark@grave2]
+anim = wait
+target = path | lonl_house_grave_cross_point2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_game_timer = 15|remark@grave2_1
+
+[remark@grave2_1]
+snd = actor_grave_replic
+anim = wait
+target = path | lonl_house_grave_cross_point2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+lonl_house_grave2_dig} %=destroy_object%
+
+
+; Попали в плен к мародёрам:
+[walker@ambush]
+path_walk = maroder_hostage_pnt1_walk
+path_look = maroder_hostage_pnt1_look
+def_state_moving1 = walk
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+on_info = {+maroders_ambush_end} %=destroy_object%
+
+
+; На КПП перед встречей с наёмниками:
+[remark@kpp]
+;snd = actor_finds_something
+;anim = stoop_no_weap
+anim = wait_rac
+target = path | kpp_radio_actor_look, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+kpp_merc_radio_off} %=destroy_object%
+
+
+; Возле раненой собаки:
+[remark@dog]
+anim = wait
+target = path | personal_dog_spawn_pnt2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+wounded_dog_meet} %=destroy_object%
+
+
+; Дом у рембазы(поиски пилота):
+[remark@workshop_house]
+anim = choose
+target = path | workshop_house_pnt2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+workshop_house_search} %=destroy_object%
+
+
+; Самоубийство(большой стресс + арт Прелесть):
+[remark@suicide]
+anim = suicide_prepare
+target = path | lonl_house_script_npc_point5, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+af_treasure_suicide} %=destroy_object%
+
+
+; У дома ликвидатора в деревне:
+[remark@likvidator_house]
+anim = wait
+target = path | village_likvidator_house_point0, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+likvidator_house_finded} %=destroy_object%
+
+
+; У аномального гриба:
+[remark@mushrom]
+anim = wait
+target = path | anom_mushrom_script_npc_point2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+af_mushrom_finded} %=destroy_object%
+
+
+; У прибора по исследованию грибов:
+[remark@mushrom_pribor]
+anim = choose
+target = path | village_mushrom_pribor_pnt2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+village_mushrom_pribor_finded} %=destroy_object%
+
+
+; Возле убитой химеры:
+[remark@chimera]
+anim = search
+target = path | maroder_chimera_pnt3, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+maroder_chimera_search} %=destroy_object%
+
+
+; Играем на гитаре:
+[animpoint@guitar]
+cover_name = lonl_house_chair_animpoint
+avail_animations = animpoint_sit_normal_guitar
+reach_distance = 2.5
+danger = danger_condition
+combat_ignore_cond = true
+reach_movement = walk
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {-lonl_house_guitar_rest} %=destroy_object%
+
+
+; Возле убитого мародёра:
+[remark@dead_maroder]
+snd = actor_finds_something
+anim = search
+target = path | maroder_zavhoz_spawn_pnt, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+maroder_zavhoz_finded} %=destroy_object%
+
+
+; В лесном лагере Медвежатника:
+[remark@forest_btr]
+anim = search
+target = path | forest_btr_fireplace_point, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+forest_btr_maroders_off} %=destroy_object%
+
+
+; У креста на кладбище:
+[remark@graveyard_cross]
+anim = wait
+target = path | graveyard_cross_point2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+suicider_grave_check} %=destroy_object%
+
+
+; У дерева с плитой за селом:
+[remark@field_tree]
+anim = choose
+target = path | field_tree_quest_point1, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+field_plita_check} %=destroy_object%
+
+
+; У вертолёта в начале игры:
+[remark@helicrash]
+anim = search
+;anim = zat_b106_wounded_idle
+target = path | helicrash_body1_walk, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+game_start} %=destroy_object%
+
+
+; У дерева с плитой за селом-2:
+[remark@field_tree2]
+anim = choose
+target = path | field_tree_quest_point1, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+karlik_vizit_2} %=destroy_object%
+
+
+; У озёрного артефакта 1:
+[remark@lake_stone1]
+anim = choose
+target = path | anom_bloodsucker_zone1_point1, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+lake_stone_art_check} %=destroy_object%
+
+
+; У озёрного артефакта 2:
+[remark@lake_stone2]
+anim = search
+target = path | anom_bloodsucker_zone1_point1, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+lake_art_sheck_workshop} %=destroy_object%
+
+
+; В пси-зоне с карликом:
+[remark@karlik_zone]
+anim = threat_danger
+;anim = caution
+target = path | karlik_trap_psyzone_point_1, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+actor_has_lr300} remark@karlik_zone2 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} remark@karlik_zone2 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} remark@karlik_zone2 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} remark@karlik_zone2 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_bizon} remark@karlik_zone2 %=give_items(wpn_bizon)%
+on_info6 = {+actor_has_sayga} remark@karlik_zone2 %=give_items(wpn_sayga)%
+on_info7 = {+actor_has_mosin} remark@karlik_zone2 %=give_items(wpn_m1891)%
+on_info8 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_sayga -actor_has_mosin} remark@karlik_zone2 %=give_items(wpn_bm16)%
+
+[remark@karlik_zone2]
+;anim = threat_danger
+anim = caution
+target = path | karlik_field_zone_point4, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+actor_in_karlik_psyzone} %=destroy_object%
+
+
+; Получаем награду от карлика:
+[remark@karlik_reward1]
+;anim = threat_danger
+anim = caution
+target = path | karlik_field_zone_point4, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+karlik_reward} %=destroy_object%
+
+
+; Записка снайпера:
+[remark@sniper_tree1]
+anim = choose
+target = path | quest_sniper_zone_point2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+actor_has_lr300} remark@sniper_tree2 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} remark@sniper_tree2 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} remark@sniper_tree2 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} remark@sniper_tree2 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_bizon} remark@sniper_tree2 %=give_items(wpn_bizon)%
+on_info6 = {+actor_has_sayga} remark@sniper_tree2 %=give_items(wpn_sayga)%
+on_info7 = {+actor_has_mosin} remark@sniper_tree2 %=give_items(wpn_m1891)%
+on_info8 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_sayga -actor_has_mosin} remark@sniper_tree2 %=give_items(wpn_bm16)%
+
+[remark@sniper_tree2]
+anim = choose
+target = path | quest_sniper_zone_point2, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_game_timer = 81|remark@sniper_tree3 %=chimera_roar_snd%
+
+[remark@sniper_tree3]
+anim = threat_danger
+target = path | quest_sniper_zone_point3, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_game_timer = 11|remark@sniper_tree4
+
+[remark@sniper_tree4]
+anim = threat_danger
+target = path | quest_sniper_zone_point3, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_game_timer = 11|remark@sniper_tree5 %=play_sound(actor_alarm)%
+
+[remark@sniper_tree5]
+anim = threat_danger
+target = path | quest_sniper_zone_point3, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+sniper_tree_check} %=destroy_object%
+
+
+; Разговор с жертвой снайпера у деревни:
+[remark@sniper_marodr]
+anim = wait
+target = path | quest_sniper_maroder2_walk, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+quest_sniper_shot1} %=destroy_object%
+
+
+; У могилы снайпера:
+[remark@sniper_grave]
+anim = ward
+target = path | quest_sniper_zone_point14, 0
+danger = danger_condition
+combat_ignore_cond = true
+show_spot = false
+invulnerable = true
+on_info = {+sniper_last_wish} %=destroy_object%
+
+
+; На стуле в бункере бухаем:
+[animpoint@kpp_drink]
+cover_name = kpp_bunker_drink_animpoint
+avail_animations = zat_b3_tech_drink
+reach_distance = 5
+danger = danger_condition
+combat_ignore_cond = true
+reach_movement = walk
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {-kpp_bunker_chair_rest} %=destroy_object%
+
+
+
+
+
+
+
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[combat_ignore]
+combat_ignore = always
+ 
+
+
+
+
+

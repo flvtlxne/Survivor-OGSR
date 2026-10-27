@@ -299,6 +299,7 @@ class "action_reach_task_location" ( action_base )
 
 function action_reach_task_location:__init( name, storage )  super ( nil, name )
 	self.st = storage
+	self.updcnt = -1
 end
 function action_reach_task_location:initialize()
 	action_base.initialize( self )
@@ -309,13 +310,15 @@ function action_reach_task_location:initialize()
 	self.l_vid = -1
 	self.dist = 0
 	self.dir = vector():set(0, 0, 1)
-	self.on_point = false
-	self.was_reset = false
-	self.time_to_update = time_global () + 1000
+--	self.on_point = false
+--	self.was_reset = false
+	db.storage[self.object:id()].under_reach_task = true
 
 	self.object:set_desired_direction   	()
 	self.object:set_movement_selection_type	(game_object.alifeMovementTypeMask)
-	self.object:set_item					(object.idle, self.object:best_weapon())
+--	if not self.object:weapon_strapped() then
+		self.object:set_item				(object.idle, self.object:best_weapon())
+--	end
 	self.object:set_body_state				(move.standing)
 	self.object:set_detail_path_type    	( move.line )
 	self.object:set_mental_state			(anim.free)
@@ -328,17 +331,35 @@ function action_reach_task_location:initialize()
 	add_to_patrol							(self.object, self.target_id)
 end
 
-
 function action_reach_task_location:execute()
-	if self.object:id() == get_object_squad(self.object):commander_id() then
+	action_base.execute (self)
+	self.updcnt = self.updcnt-1
+ 	if self.updcnt >= 0 then
+		return
+	end
+	local squad = get_object_squad(self.object)
+	if (not squad) or (squad:commander_id() == self.object:id() or not level.object_by_id(squad:commander_id()))then
 		self:commander_execute()
+		self.updcnt = 5
 	else
 		self:soldier_execute()
+		self.updcnt = 9
 	end
-	action_base.execute (self)
+	if self.object:mental_state() == anim.panic then
+--		local wpn = self.object:best_weapon()
+--		if wpn and self.object:weapon_unstrapped() and state_mgr_weapon.strappable_weapon(wpn) then
+			self.object:set_item(object.idle,nil)
+--		end
+		self.panic_state = true
+	elseif self.panic_state then
+		self.panic_state = nil
+	else
+		self.object:set_item(object.idle,self.object:best_weapon())
+	end
 end
 
 function action_reach_task_location:finalize()
+	db.storage[self.object:id()].under_reach_task = nil
 	self.object:set_movement_selection_type(game_object.alifeMovementTypeRandom)
 	action_base.finalize( self )
 end
@@ -353,9 +374,17 @@ function action_reach_task_location:commander_execute()
 
 	local function update_movement (target, object)
 		if target ~= nil and not object:is_talking() then
-			if xr_conditions.surge_started() then
-				object:set_movement_type(move.run)
+			if target.id == squad.id then
 				object:set_mental_state (anim.free)
+				return
+			end
+			if surge_manager.is_started() and character_community(object) ~= "zombied" then
+				if target.position:distance_to_sqr(object:position()) <= 1200 then
+					object:set_mental_state(anim.free)
+				else
+					object:set_mental_state(anim.panic)
+				end
+				object:set_movement_type(move.run)
 				return
 			end
 			if target:clsid() == clsid.online_offline_group_s then
@@ -367,7 +396,7 @@ function action_reach_task_location:commander_execute()
 				end
 			else
 				object:set_movement_type(move.walk)
-				object:set_mental_state (anim.free)
+				object:set_mental_state(anim.free)
 			end
 		else
 			object:set_movement_type(move.stand)
@@ -400,10 +429,6 @@ function action_reach_task_location:commander_execute()
 end
 
 function action_reach_task_location:soldier_execute()
- 	if self.time_to_update - time_global() > 0 then
-		return
-	end
-
 	local squad = get_object_squad(self.object)
 	local squad_target = simulation_objects.get_sim_obj_registry().objects[squad.assigned_target_id]
 
@@ -411,7 +436,6 @@ function action_reach_task_location:soldier_execute()
 		squad_target = alife():object(squad.assigned_target_id)
 	end
 
-	self.time_to_update = time_global() + 1000
 	self.l_vid, self.dir, self.cur_state = patrols[self.target_id.."_to_"..self.squad_id]:get_npc_command(self.object)
 	self.l_vid = utils.send_to_nearest_accessible_vertex(self.object, self.l_vid)
 	local desired_direction = self.dir
@@ -422,16 +446,21 @@ function action_reach_task_location:soldier_execute()
 	end
 	self.object:set_path_type(game_object.level_path)
 
+	local coman = level.object_by_id(squad:commander_id())
 	if squad_target == nil or squad_target:clsid() == clsid.online_offline_group_s or xr_conditions.surge_started() then
-		self.object:set_movement_type(level.object_by_id(squad:commander_id()):movement_type())
-		self.object:set_mental_state (level.object_by_id(squad:commander_id()):mental_state())
+		self.object:set_movement_type(coman:movement_type())
+		self.object:set_mental_state(coman:mental_state())
 		return
 	end
-	if level.object_by_id(get_object_squad(self.object):commander_id()):movement_type() == move.stand then
-		self.object:set_movement_type(move.stand)
+	if coman:movement_type() == move.stand then
+		if coman:position():distance_to_sqr(self.object:position()) <= 200 then
+			self.object:set_movement_type(move.stand)
+		else
+			self.object:set_movement_type(move.run)
+		end
 		return
 	end
-	if level.vertex_position(self.l_vid):distance_to(self.object:position()) > 5 then
+	if level.vertex_position(self.l_vid):distance_to_sqr(self.object:position()) > 25 then
 		self.object:set_movement_type(move.run)
 	else
 		self.object:set_movement_type(move.walk)

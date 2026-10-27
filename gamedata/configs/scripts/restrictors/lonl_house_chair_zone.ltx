@@ -1,0 +1,22 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+lonl_house_guitar_rest} sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_lonl_house_chair_npc%
+
+[sr_idle@2]
+;on_game_timer = 25|sr_cutscene@1 %=run_postprocess(fade_in_out) =lonl_house_chair_think =play_sound_by_story(lonl_house_script_npc:actor_play_guitar1)%
+on_game_timer = 25|sr_cutscene@1 %=run_postprocess(fade_in_out) =lonl_house_chair_think =spawn_lonl_house_guitar_obj%
+
+[sr_cutscene@1]
+point = lonl_house_script_npc_point10
+look = lonl_house_script_npc_point11
+cam_effector = scenario_cam\lonl_house_script_cam8
+on_signal = cameff_end | sr_idle@1 %-lonl_house_guitar_rest =lonl_house_guitar_effect%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+[sr_idle@nil]

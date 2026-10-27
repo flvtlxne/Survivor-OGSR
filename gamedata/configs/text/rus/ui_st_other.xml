@@ -1,5 +1,1903 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+
+
+
+	<string id="derevnya">
+		<text>Окрестности деревни Грачи</text>
+	</string>
+
+	<string id="actor_survival_logo_title_text">
+		<text>Выживший. Побег из Зоны.</text>
+	</string>
+
+
+	<string id="survival_mod_intro_text1">
+		<text>11 июня, 2012 года. С военной базы близ Чернигова вылетел транспортный вертолёт.</text>
+	</string>
+	<string id="survival_mod_intro_text2">
+		<text>Перед его экипажем стояла задача доставить материалы для ремонта научной базы на озере Янтарь, пострадавшей от нашествия ренегатов.</text>
+	</string>
+	<string id="survival_mod_intro_text3">
+		<text>Через 4 часа после вылета экипаж перестал выходить на связь.</text>
+	</string>
+	<string id="survival_mod_intro_text4">
+		<text>Спустя некоторое время всех, находившихся на борту, официально признали погибшими...</text>
+	</string>
+	<string id="survival_mod_intro_text5">
+		<text>Однако погибли не все. Нескольким военным чудом удалось выжить.</text>
+	</string>
+	<string id="survival_mod_intro_text6">
+		<text>Перед ними непростая задача: выбраться из Зоны отчуждения во что бы то ни стало...</text>
+	</string>
+	<string id="survival_mod_intro_text7">
+		<text>Опасности подстерегают их на каждом шагу.</text>
+	</string>
+
+	<string id="survival_mod_fake_outro_text1">
+		<text>Попытавшись покинуть Зону отчуждения самостоятельно, наш герой пропал без вести...</text>
+	</string>
+
+
+	<string id="survival_endgame_sbu_text1">
+		<text>После того, как выживший вместе с агентами СБУ покинул Зону, его настигли неприятности.</text>
+	</string>
+	<string id="survival_endgame_sbu_text2">
+		<text>Военное командование обвинило его в сотрудничестве с иностранными спецслужбами.</text>
+	</string>
+	<string id="survival_endgame_sbu_text3">
+		<text>Свидетельства теперь уже майора Дегтярёва спасло нашего героя от тюрьмы, но со службы он был уволен и воинского звания лишен. </text>
+	</string>
+	<string id="survival_endgame_sbu_text4">
+		<text>Спустя некоторое время он начал пить и в конце концов очутился на улице. </text>
+	</string>
+	<string id="survival_endgame_sbu_text5">
+		<text>После этого его стало тянуть обратно - в Зону...</text>
+	</string>
+	<string id="survival_endgame_sbu_text6">
+		<text>Возвращайся, друг!</text>
+	</string>
+
+	<string id="survival_endgame_mercs_text1">
+		<text>После того, как выживший вместе с наёмниками покинул Зону, ему улыбнулась удача.</text>
+	</string>
+	<string id="survival_endgame_mercs_text2">
+		<text>Кондор помог ему с документами и выездом за границу...</text>
+	</string>
+	<string id="survival_endgame_mercs_text3">
+		<text>...а щедрый гонорар от неизвестных лиц обеспечил безбедное существование в одной из западных стран. </text>
+	</string>
+	<string id="survival_endgame_mercs_text4">
+		<text>Вскоре после этого на международной арене вспыхнул скандал, связанный с обнаружением данных со спутника-шпиона. </text>
+	</string>
+	<string id="survival_endgame_mercs_text5">
+		<text>Ещё через год в родной стране нашего героя началась гражданская война...</text>
+	</string>
+	
+	
+
+	<string id="survival_mod_master_intro_text1">
+		<text>В недалёком будущем международные корпорации достигли больших успехов в сфере развлекательного бизнеса. Одна из них - AD-Pro Entertaiment, специализировалась на экстремальных реалити-шоу.</text>
+	</string>
+	<string id="survival_mod_master_intro_text2">
+		<text>Забрасывая добровольцев и приговорённых к смерти преступников в радиоактивную Зону отчуждения, она транслировала их отчаянные попытки выжить.</text>
+	</string>
+	<string id="survival_mod_master_intro_text3">
+		<text>Разыскивая снаряжение, они истребляли друг друга на фоне надвигающегося выброса.</text>
+	</string>
+	<string id="survival_mod_master_intro_text4">
+		<text>В результате жестокой борьбы, в живых оставался только один резидент.</text>
+	</string>
+	<string id="survival_mod_master_intro_text5">
+		<text>Теперь его судьба в ваших руках.</text>
+	</string>
+
+	<string id="survival_mod_mg_outro_text1">
+		<text>Нашему герою удалось вырваться из лап корпорации. Воспользовавшись помощью Зоны, он перенесся в безопасное место.</text>
+	</string>
+	<string id="survival_mod_mg_outro_text2">
+		<text>... однако ещё долго он вздрагивал, заслышав звук вертолёта над головой.</text>
+	</string>
+	<string id="survival_mod_mg_outro_text3">
+		<text>Чудовищное "Соревнование" сделало из него машину для убийства. Своё место за периметром он уже вряд-ли найдёт.</text>
+	</string>
+	
+
+	
+
+
+	<string id="lost_willage_game_start">
+		<text>Выживший. Начало игры</text>
+	</string>
+	<string id="lost_willage_stranger_talk2">
+		<text>Выживший. Работа на незнакомца</text>
+	</string>
+	<string id="safe_zone_autosave">
+		<text>Выживший. Выход из безопасной зоны</text>
+	</string>
+	<string id="lost_willage_stranger_talk3">
+		<text>Выживший. Спасение отмычки</text>
+	</string>
+	<string id="kill_marodr_lider1">
+		<text>Выживший. Убить Деда</text>
+	</string>
+	<string id="kill_marodr_lider2">
+		<text>Выживший. Убить Хирурга</text>
+	</string>
+	<string id="kill_marodr_liders3_4">
+		<text>Выживший. Убить Башку и Дерзкого</text>
+	</string>
+	<string id="maroders_ambush">
+		<text>Выживший. В плену у мародёров</text>
+	</string>
+	<string id="memory_block_finded">
+		<text>Выживший. Найден блок памяти</text>
+	</string>
+	<string id="kpp_mercs_randevu">
+		<text>Выживший. Встреча с наёмниками</text>
+	</string>
+	<string id="kpp_sbu_mercs_choise">
+		<text>Выживший. Сделать выбор.</text>
+	</string>
+	
+	
+	
+	<string id="scenario_save_master1">
+		<text>СОРЕВНОВАНИЕ. Начало.</text>
+	</string>
+	
+	<string id="master_difficulty_abort_think_text">
+		<text>Прохождение основного сюжета недоступно на этом уровне сложности! Измените сложность в настройках на более низкую и попробуйте ещё раз.</text>
+	</string>
+	<string id="master_difficulty_abort_think2_text">
+		<text>режим "Соревнование" недоступен на этом уровне сложности! Измените сложность в настройках на более низкую и попробуйте ещё раз.</text>
+	</string>
+	
+	<string id="mg_autosave1">
+		<text>СОРЕВНОВАНИЕ. Первый круг ада пройден.</text>
+	</string>
+	<string id="mg_autosave2">
+		<text>СОРЕВНОВАНИЕ. Второй круг ада пройден.</text>
+	</string>
+	<string id="mg_autosave3">
+		<text>СОРЕВНОВАНИЕ. Третий круг ада пройден.</text>
+	</string>
+	<string id="mg_autosave4">
+		<text>СОРЕВНОВАНИЕ. Червёртый круг ада пройден.</text>
+	</string>
+	<string id="mg_autosave5">
+		<text>СОРЕВНОВАНИЕ. Пятый круг ада пройден.</text>
+	</string>
+	<string id="mg_autosave6">
+		<text>СОРЕВНОВАНИЕ. Шестой круг ада пройден.</text>
+	</string>
+	<string id="mg_autosave7">
+		<text>СОРЕВНОВАНИЕ. Седьмой круг ада пройден.</text>
+	</string>
+	
+	
+	
+	
+	
+
+
+
+	<string id="save_game_incorrect_tip">
+		<text>%c[255,255,118,118]Сохранение недействительно! Вернитесь в безопасную зону и попробуйте ещё раз.%c[default]</text>
+	</string>
+	<string id="save_game_incorrect_tip2">
+		<text>%c[255,255,118,118]В режиме соревнования сохранения не работают.%c[default]</text>
+	</string>
+	<string id="save_game_correct_tip">
+		<text>%c[100,50,250,50]Игра сохранена.%c[default]</text>
+	</string>
+
+	<string id="invulnerability_off">
+		<text>%c[255,255,118,118]Неуязвимость отключена%c[default]</text>
+	</string>
+	<string id="invulnerability_on">
+		<text>%c[100,50,250,50]Неузявимость включена%c[default]</text>
+	</string>
+
+	<string id="personal_treasure_finded_tip">
+		<text>%c[100,50,250,50]Получены координаты личного схрона.%c[default]</text>
+	</string>
+	<string id="random_treasure_finded_tip">
+		<text>%c[100,50,250,50]Обнаружен тайник.%c[default]</text>
+	</string>
+
+	<string id="rnd_tasks_recharge_timer_tip">
+		<text>%c[100,50,250,50]Чтобы получить следующую порцию случайных заданий, поспите в убежище.%c[default]</text>
+	</string>
+
+	<string id="wpn_cant_be_destroyed_tip">
+		<text>%c[255,255,118,118]Невозможно разобрать оружие, находящееся в слоте.%c[default]</text>
+	</string>
+	<string id="kpp_sbu_command_tip">
+		<text>%c[255,255,118,118]Говорит офицер службы безопасности. Все находящиеся на блокпосту - артестованы! Предлагаю сложить оружие и не оказывать сопротивления.%c[default]</text>
+	</string>
+
+
+	<string id="balon_timer_tip">
+		<text>Газа хватит на 12 часов</text>
+	</string>
+
+	<string id="helicrash_box_use">
+		<text>Ящик с припасами\n(заперт)</text>
+	</string>
+	<string id="lonl_house_store_obj_tip1">
+		<text>Мастерская\n(обесточено)</text>
+	</string>
+	<string id="lonl_house_store_obj_tip2">
+		<text>Мастерская</text>
+	</string>
+	<string id="mechanical_npc_dialog_phrase">
+		<text>Для того, чтобы чинить и усовершенствовать оружия или броню, необходимы расходные материалы. Для починки\апгрейда брони используется один вид расходников, для оружия - другой. Найти эти материалы можно, исследуя ключевые места на локации или обыскивая трупы врагов.</text>
+	</string>
+
+	<string id="upgrade_material_needed">
+		<text>Необходим расходный материал</text>
+	</string>
+
+	<string id="hunger_effect_hud_mesg1_text">
+		<text>Страдаю от голода</text>
+	</string>
+	<string id="hunger_effect_hud_mesg2_text">
+		<text>Умираю от голода</text>
+	</string>
+	<string id="after_surge_think_text">
+		<text>Выброс закончился</text>
+	</string>
+
+	<string id="actor_freeplay_think_text">
+		<text>Можно покинуть Зону в любой момент, уйдя за периметр</text>
+	</string>
+
+	<string id="lonl_house_script_zone_leave_think_text">
+		<text>Я ещё очень слаб</text>
+	</string>
+
+	<string id="helicrash_survivals_think_text">
+		<text>Где остальные члены экипажа?</text>
+	</string>
+
+	<string id="lonl_house_sceleton_tip">
+		<text>Останки</text>
+	</string>
+	<string id="lonl_house_knife_tip">
+		<text>Нож\n(поднять)</text>
+	</string>
+
+	<string id="lonl_house_sceleton_tip">
+		<text>Останки</text>
+	</string>
+
+	<string id="lonl_house_store_think_text">
+		<text>Среди костей виден нож...</text>
+	</string>
+	<string id="lonl_house_table1_think_text">
+		<text>ПДА с картой местности! Пригодится.</text>
+	</string>
+	<string id="lonl_house_table2_think_text">
+		<text>Кто-то здесь "химичил"...</text>
+	</string>
+	<string id="lonl_house_well_think_text">
+		<text>Колодец - источник воды.</text>
+	</string>
+	<string id="axe_place_think_text">
+		<text>А вот и дровишки</text>
+	</string>
+	<string id="lonl_house_car_think_text">
+		<text>Это корыто можно отремонтировать.</text>
+	</string>
+	<string id="lonl_house_divan_think_text">
+		<text>Да пошло оно всё к чёрту!</text>
+	</string>
+	<string id="forest_camp_fireplace_use">
+		<text>Костёр(осмотреть)</text>
+	</string>
+	<string id="forest_camp_search_think_text">
+		<text>Здесь сожгли чьи-то вещи... Документы, ПДА, дневник.</text>
+	</string>
+	<string id="lonl_house_grave_think_text">
+		<text>Покойся с миром, бывший хозяин...</text>
+	</string>
+	<string id="wounded_dog_meet_think_text">
+		<text>Эта сука ранена. Помочь или добить?</text>
+	</string>
+
+
+	<string id="location_exit_zone_mark">
+		<text>Дорога за периметр</text>
+	</string>
+	<string id="kpp_mercs_radio_use">
+		<text>Выйти на связь</text>
+	</string>
+	<string id="lonl_house_pogreb_scelet_tip">
+		<text>Похоронить останки</text>
+	</string>
+
+	<string id="lonl_house_wind_generator_base_use">
+		<text>Стойка ветрогенератора\n установка: лопасти, редуктор, литол, проводка</text>
+	</string>
+
+	<string id="map_finded_tip">
+		<text>Ключевые места: метки на карте</text>
+	</string>
+	<string id="knife_finded_tip">
+		<text>Получен предмет: нож</text>
+	</string>
+	<string id="lonl_house_car_use">
+		<text>Автомобиль\n(для осмотра нужен ремнабор)</text>
+	</string>
+	<string id="generator_timer_tip">
+		<text>Топлива хватит на 12 часов работы.</text>
+	</string>
+
+	<string id="lonl_house_artefact_box_use1">
+		<text>Специальный контейнер</text>
+	</string>
+	<string id="lonl_house_artefact_box_use2">
+		<text>Специальный контейнер\n(заперт)</text>
+	</string>
+
+	<string id="lonl_house_weel_place_use">
+		<text>Набрать воды\n(необходимо ведро)</text>
+	</string>
+	<string id="lonl_house_logs_place_use">
+		<text>Взять полено</text>
+	</string>
+	<string id="wood_log_name">
+		<text>Полено</text>
+	</string>
+	<string id="wood_log_descr">
+		<text>Можно расколоть на дрова с помощью топора.</text>
+	</string>
+	<string id="lonl_house_scaner_use">
+		<text>Просканировать окрестности на наличие артефактов</text>
+	</string>
+	<string id="lonl_house_samogon_aparat_use1">
+		<text>Самогонный аппарат\n необходимо: вода, брага, газ </text>
+	</string>
+	<string id="lonl_house_samogon_aparat_use2">
+		<text>Самогонный аппарат\n в процессе...</text>
+	</string>
+	<string id="lonl_house_samogon_aparat_use3">
+		<text>Самогонный аппарат\n собрать урожай</text>
+	</string>
+
+	<string id="kpp_script_zone_tip1">
+		<text>Блокпост: мародёры удалены</text>
+	</string>
+	<string id="kpp_script_zone_tip2">
+		<text>Блокпост: мутанты удалены</text>
+	</string>
+	<string id="kpp_script_zone_tip3">
+		<text>Блокпост: артефакт засчитан</text>
+	</string>
+	<string id="kpp_script_zone_tip4">
+		<text>Блокпост: артефакт и аномалии удалены</text>
+	</string>
+	<string id="kpp_script_zone_tip5">
+		<text>Блокпост: ценный груз и мародёры удалены</text>
+	</string>
+
+
+	<string id="lonl_house_map_tip">
+		<text>ПДА с картой</text>
+	</string>
+	<string id="lonl_house_flare_tip">
+		<text>Фонарик</text>
+	</string>
+	<string id="lonl_house_lab_obj_tip">
+		<text>Лаборатория</text>
+	</string>
+	<string id="lonl_house_stove_use">
+		<text>Печка</text>
+	</string>
+	<string id="lonl_house_room_divan_tip">
+		<text>Отдохнуть и расслабиться\n(нужна водка)</text>
+	</string>
+	<string id="lonl_house_room_radio_tip0">
+		<text>Радиоприёмник\n(обесточен)</text>
+	</string>
+	<string id="lonl_house_room_radio_tip1">
+		<text>Радиоприёмник\n(настроить волну)</text>
+	</string>
+	<string id="lonl_house_room_radio_tip2">
+		<text>Радиоприёмник\n(выключить)</text>
+	</string>
+
+	<string id="lonl_house_stanok_use1">
+		<text>Токарный станок\n(обесточен)</text>
+	</string>
+	<string id="lonl_house_stanok_use2">
+		<text>Токарный станок</text>
+	</string>
+	<string id="lonl_house_generator_off_tip">
+		<text>Генератор: топливо закончилось</text>
+	</string>
+	<string id="lonl_house_chair_use">
+		<text>Присесть и сыграть\n (нужна гитара)</text>
+	</string>
+	<string id="lonl_house_guitar_use">
+		<text>Гитара</text>
+	</string>
+
+	<string id="locked_door_need_key_tip">
+		<text>Заперто\n(нужен ключ)</text>
+	</string>
+	<string id="lonl_house_bolts_box_use">
+		<text>Коробка</text>
+	</string>
+	<string id="lonl_house_axe_place_use">
+		<text>Нарубить дров</text>
+	</string>
+	<string id="lonl_house_matches_use">
+		<text>Растопить печку\n(нужны дрова)</text>
+	</string>
+	<string id="lonl_house_generator_tip1">
+		<text>Завести генератор\n(необходимо топливо)</text>
+	</string>
+	<string id="lonl_house_generator_tip2">
+		<text>Загрушить генератор</text>
+	</string>
+	<string id="lonl_house_generator_tip3">
+		<text>Завести генератор</text>
+	</string>
+
+	<string id="lonl_house_barrel_tip">
+		<text>Набрать солярки\n(нужна канистра)</text>
+	</string>
+	<string id="lonl_house_kanistra_tip">
+		<text>Пустая канистра</text>
+	</string>
+	<string id="lonl_house_vedro_tip">
+		<text>Пустое ведро</text>
+	</string>
+	<string id="lonl_house_balon_tip">
+		<text>Зарядить газ\n(нужен балон)</text>
+	</string>
+	<string id="lonl_house_balon_tip2">
+		<text>Портативный газовый балон</text>
+	</string>
+
+	<string id="lonl_house_deadman_box_use">
+		<text>Нычка за печкой</text>
+	</string>
+	<string id="village_secr_place_obj_use">
+		<text>Ящик с барахлом\n(чтобы сдвинуть, необходим домкрат)</text>
+	</string>
+
+	<string id="lonl_house_tube_tip">
+		<text>Установить сканер</text>
+	</string>
+	<string id="village_proval_zone_think_text">
+		<text>Здесь не пройти без научного костюма</text>
+	</string>
+
+	<string id="workshop_komp_monitor_use">
+		<text>Монитор</text>
+	</string>
+	<string id="village_komp_block_use">
+		<text>Системный блок</text>
+	</string>
+	<string id="village_komp_klava_use">
+		<text>Клавиатура</text>
+	</string>
+	<string id="lonl_house_komp_place_use">
+		<text>Установить ПК</text>
+	</string>
+	<string id="artefact_spawn_zone_mark">
+		<text>Район поиска артефакта</text>
+	</string>
+
+	<string id="kpp_heli_mark">
+		<text>Вертолёт</text>
+	</string>
+
+	<string id="kpp_radio_talking1_text">
+		<text>Приём... Я слушаю.</text>
+	</string>
+	<string id="kpp_radio_talking2_text">
+		<text>Приём, мы на подходе. Никуда не уходите. Нужно поговорить.</text>
+	</string>
+
+	<string id="artefact_scaner_tip1">
+		<text>%c[255,255,118,118]Сканер: обнаружены артефакты. Метки на карте обновлены.%c[default]</text>
+	</string>
+	<string id="artefact_scaner_tip2">
+		<text>%c[255,255,118,118]Сканер: перезарядка завершена.%c[default]</text>
+	</string>
+
+	<string id="satellite_part_tip">
+		<text>Неизвестный аппарат</text>
+	</string>
+
+	<string id="lonl_house_suicide_think_text">
+		<text>Моя прелесть, я иду к тебе...</text>
+	</string>
+
+
+	<string id="script_zone_lonl_house_mark">
+		<text>Дом отшельника</text>
+	</string>
+	<string id="script_zone_blokpost_mark">
+		<text>Военный блокпост</text>
+	</string>
+	<string id="script_zone_forest_camp_mark">
+		<text>Лагерь в лесу</text>
+	</string>
+	<string id="script_zone_graveyard_mark">
+		<text>Кладбище</text>
+	</string>
+	<string id="script_zone_ground_anomaly_mark">
+		<text>Чёрный овраг</text>
+	</string>
+	<string id="script_zone_helicrash_mark">
+		<text>Разбившийся вертолёт</text>
+	</string>
+	<string id="script_zone_island_mark">
+		<text>Островок</text>
+	</string>
+	<string id="script_zone_rad_hill_mark">
+		<text>Очаг радиации</text>
+	</string>
+	<string id="script_zone_willage_mark">
+		<text>Деревня Грачи</text>
+	</string>
+	<string id="script_zone_workshop_mark">
+		<text>Рембаза</text>
+	</string>
+	<string id="script_zone_forest_mark">
+		<text>Роща на холме</text>
+	</string>
+
+
+	<string id="helicr_box_open_think_text">
+		<text>Передатчика здесь нет.</text>
+	</string>
+
+	<string id="critical_health_think_text">
+		<text>Критическое ранение. Потеря сознания.</text>
+	</string>
+
+
+
+	<string id="lw_stranger_critical_health_tip">
+		<text>%c[100,50,250,50]Незнакомец: %c[default]\n%c[255,255,118,118]Поздравляю, я снова спас твою задницу! Когда я тебя нашел, то какой-то мародёр уже покопался в твоём рюкзаке, так что не горюй... и больше так не подставляйся.%c[default]</text>
+	</string>
+
+	<string id="lw_newbie_critical_health_tip">
+		<text>%c[100,50,250,50]Колян-отмычка: %c[default]\n%c[255,255,118,118]Я нашел вас полуживым и притащил сюда. Не благодарите, я и так вам обязан жизнью. Увы, имущество ваше кто-то уже спёр...%c[default]</text>
+	</string>
+
+	<string id="lw_stranger_reward_tip">
+		<text>%c[100,50,250,50]Незнакомец: %c[default]\n%c[255,255,118,118]Я тебе небольшую награду в сейфе оставил - пожрать там, пострелять... Не вешай нос, вояка, скоро будешь дома!%c[default]</text>
+	</string>
+
+	<string id="lw_newbie_reward_tip">
+		<text>%c[100,50,250,50]Колян: %c[default]\n%c[255,255,118,118]Пока вас не было, я тут кой-чего надыбал и сложил в наш сейф. Приятного аппетита!%c[default]</text>
+	</string>
+
+	<string id="lw_stranger_tasks_not_completed_tip">
+		<text>%c[100,50,250,50]Незнакомец: %c[default]\n%c[255,255,118,118]Вижу, ты не спешишь выполнять задания, которые я тебе дал. Этим ты можешь создать для себя большие неудобства...%c[default]</text>
+	</string>
+
+	<string id="lw_stranger_after_newbie_tip">
+		<text>%c[100,50,250,50]Незнакомец: %c[default]\n%c[255,255,118,118]Молодец, что спас отмычку. Жду тебя в условленном месте для дальнейших указаний.%c[default]</text>
+	</string>
+
+	<string id="lw_stranger_maroders_alarm_tip">
+		<text>%c[100,50,250,50]Незнакомец: %c[default]\n%c[255,255,118,118]Тебя заметили! Вали главного, а то убежит!%c[default]</text>
+	</string>
+
+	<string id="lw_stranger_after_lake_tip">
+		<text>%c[100,50,250,50]Незнакомец: %c[default]\n%c[255,255,118,118]Поздравляю с ликвидацией очередного урода. Теперь двигай ко мне, намечается очередная фаза нашего дела.%c[default]</text>
+	</string>
+
+	<string id="lw_stranger_after_workshop_tip">
+		<text>%c[100,50,250,50]Незнакомец: %c[default]\n%c[255,255,118,118]Молодец, военный! С нетерпением жду тебя в условленном месте, вот координаты. Тебя ждёт вознаграждение за все труды и страдания.%c[default]</text>
+	</string>
+
+	<string id="marouder_lider_3pda_tip">
+		<text>%c[100,50,250,50]Ахмет: %c[default]\n%c[255,255,118,118]Этат штрих палучил свой бабло и свалил, хатя абещал, что атпразнует вмести с нами. Хитрый, аднака! Я би на его месте так жи паступил бы, ха-ха-ха! Но маи джигиты заметили, что он свалил в туннель на краю деревни. Что он там забыл? Ладно, х.р с ним...%c[default]</text>
+	</string>
+
+	<string id="maroders_ambush_tip1">
+		<text>%c[100,50,250,50]Ахмет: %c[default] Вах, дарагой! Какой хароший ты мне падарок на день раждения сдэлал! Я за это золотом осыплю, мамой клинусь. Что тибэ падарить, выбирай сам!</text>
+	</string>
+	<string id="maroders_ambush_tip2">
+		<text>%c[100,50,250,50]Незнакомец: %c[default] Не беспокойся, Ахмет, мне нужна всего одна вещь, - та, о которой я тебе говорил.</text>
+	</string>
+	<string id="maroders_ambush_tip3">
+		<text>%c[100,50,250,50]Ахмет: %c[default] Э-э-э, какиэ вапросы? Всё палучишь, генацвале.</text>
+	</string>
+
+	<string id="lw_stranger_pda_tip">
+		<text>%c[255,255,118,118]Координаты схрона.%c[default]</text>
+	</string>
+
+	<string id="shron_merc_lider_pda_tip">
+		<text>%c[255,255,118,118]Коршун: координаты места встречи с главным.%c[default]</text>
+	</string>
+
+	<string id="scaner_maroder1_pda_tip">
+		<text>%c[100,50,250,50]Борзый: %c[default]\n%c[255,255,118,118]Кароче надо эту фигню сначала повыше поднять, а то фурычить не будет. Мы с пацанами решили её на опору ЛЭП запиндюрить, чтоб наверняк. Потом надо подрубить к ней ПДА через провод, просканировать малёхо и всё будет тип-топ.%c[default]</text>
+	</string>
+
+	<string id="maroder_hostage_surrend_tip">
+		<text>%c[100,50,250,50]Не стреляй, братэлло!%c[default]</text>
+	</string>
+
+	<string id="kpp_mercs_ambush_tip">
+		<text>%c[100,50,250,50]Военный, встань на нашу сторону! Напади врасплох на СБУ-шников и мы выведем тебя из Зоны. Наша компания тебе щедро заплатит за сотрудничество, будешь жить за границей. Соглашайся!%c[default]</text>
+	</string>
+
+	<string id="kpp_heli_on_place_tip">
+		<text>%c[100,50,250,50]Ми-24 на подходе.%c[default]</text>
+	</string>
+
+	<string id="sbu_lider_wounded_tip">
+		<text>%c[100,50,250,50]Я ранен...%c[default]</text>
+	</string>
+
+	<string id="kpp_merck_kill_heli_tip">
+		<text>%c[100,50,250,50]Военный вертолёт... Сбейте его!!%c[default]</text>
+	</string>
+
+
+
+
+	<string id="weapon_details_communicate_tip">
+		<text>%c[100,50,250,50]Запчасти удалены; %c[default]\n%c[255,255,118,118]Ремкомплект для оружия собран.%c[default]</text>
+	</string>
+
+	<string id="obj_hit_with_silencer">
+		<text>%c[100,50,250,50]Критический урон!%c[default]</text>
+	</string>
+	<string id="obj_hit_with_jekan">
+		<text>%c[255,255,118,118]Цель контужена!%c[default]</text>
+	</string>
+	<string id="maroder_lider_critical_hit">
+		<text>%c[255,255,118,118]Критический урон по главарю!%c[default]</text>
+	</string>
+
+	<string id="actor_on_mine_blow_think_text">
+		<text>Растяжка!</text>
+	</string>
+	<string id="actor_on_mine_blow_think2_text">
+		<text>Подстава...</text>
+	</string>
+	<string id="village_ambush_knife_tip">
+		<text>Спрятанный нож</text>
+	</string>
+
+
+
+	<string id="scenar_maroder_lider1_habar_mark">
+		<text>Личный схрон Деда</text>
+	</string>
+	<string id="scenar_maroder_lider2_habar_mark">
+		<text>Личный схрон Хирурга</text>
+	</string>
+	<string id="scenar_maroder_lider3_habar_mark">
+		<text>Личный схрон Башки</text>
+	</string>
+	<string id="scenar_maroder_lider4_habar_mark">
+		<text>Личный схрон Дерзкого</text>
+	</string>
+	<string id="scenar_maroder_lider5_habar_mark">
+		<text>Личный схрон Ахмета</text>
+	</string>
+
+	<string id="village_polter_door_tip">
+		<text>Полтергейст блокирует дверь</text>
+	</string>
+
+	<string id="personal_dog_commands_hint0_text">
+		<text>Раненый мутант: H - помощь(нужен бинт)</text>
+	</string>
+	<string id="personal_dog_commands_hint1_text">
+		<text>Команда собаке: H - сидеть, J - домой, K - лечение(корм)</text>
+	</string>
+	<string id="personal_dog_commands_hint2_text">
+		<text>Команда собаке: H - за мной</text>
+	</string>
+	<string id="personal_dog_mark_text">
+		<text>Сука</text>
+	</string>
+
+	<string id="workshop_house_think_text">
+		<text>Здесь кто-то недавно готовил пищу...</text>
+	</string>
+	<string id="lost_sold_personal_shron_mark">
+		<text>Схрон лейтенанта Михеева</text>
+	</string>
+
+	<string id="usefull_place_mark">
+		<text>Сюда не помешало бы наведаться</text>
+	</string>
+
+	<string id="village_likvidator_item1_use">
+		<text>Ржавая лопата (прикоснуться)</text>
+	</string>
+	<string id="village_likvidator_item2_use">
+		<text>Ржавый молот (прикоснуться)</text>
+	</string>
+	<string id="village_likvidator_item3_use">
+		<text>Ржавый топор (прикоснуться)</text>
+	</string>
+
+	<string id="likvidator_house_actor_think_text">
+		<text>Здесь какая-то аномалия...</text>
+	</string>
+
+	<string id="maroder_box_robbery_tip">
+		<text>%c[255,255,118,118]Мародёры ограбили ваш схрон.%c[default]</text>
+	</string>
+
+	<string id="workshop_likvidator_box_use">
+		<text>Раструб забит застывшим цементом</text>
+	</string>
+
+	<string id="workshop_vintil_use1">
+		<text>Ржавый вентиль\n (нужен состав WD-40)</text>
+	</string>
+
+	<string id="village_tunnel_anomaly_door_think_text">
+		<text>Заперто. Нужно осмотреться.</text>
+	</string>
+	<string id="workshop_napilnik_use">
+		<text>Напильник</text>
+	</string>
+
+	<string id="village_anomaly_tunnel_tip1">
+		<text>%c[100,50,250,50]Мародёр: %c[default]\n%c[255,255,118,118]Чё-то ссыкотно мне, Васян...%c[default]</text>
+	</string>
+	<string id="village_anomaly_tunnel_tip2">
+		<text>%c[100,50,250,50]Васян: %c[default]\n%c[255,255,118,118]Да не бзди, всё будет чих-пых. Я сам видел, как тот хмырь в неё запрыгивал. Смелее!%c[default]</text>
+	</string>
+
+	<string id="tunnel_anomaly_maroders_think_text">
+		<text>Похоже, меня опередили...</text>
+	</string>
+
+	<string id="anomaly_maroder1_pda_tip">
+		<text>%c[100,50,250,50]Васян: %c[default]\n%c[255,255,118,118]Зырил недавно, что какой-то хмырь в этот туннель пролезть хотел. Там аномалия какая-то стрёмная, чего ему там делать? Я там прикинул малёхо и решил засаду ему сделать. На следующий день он снова припёрся, уже с лопатой. Подкопался под решетку, влез в туннель и - тишина. Я туда за ним сунулся, чтобы заценить, а этого хмыря уже и след простыл, вот жеж гнида! Только собака бешеная там паслась, ну да и хрен с ней.%c[default]</text>
+	</string>
+
+
+	<string id="anomal_mushrom_use">
+		<text>Аномальный гриб</text>
+	</string>
+	<string id="anom_mushrom_think_text">
+		<text>Странный гриб на дереве...</text>
+	</string>
+	<string id="village_scient_pribor_use">
+		<text>Преобразователь М-272\n (нужна инструкция)</text>
+	</string>
+	<string id="village_scient_box_use">
+		<text>Герметичный контейнер</text>
+	</string>
+	<string id="village_scient_box_use2">
+		<text>Герметичный контейнер\n (забрать содержимое)</text>
+	</string>
+	<string id="village_scient_pribor2_use">
+		<text>Сломаный научный прибор</text>
+	</string>
+	<string id="village_scientist_seif_tip">
+		<text>Сейф заперт на кодовый замок</text>
+	</string>
+	<string id="village_mushrm_pribor_think_text">
+		<text>Похоже, здесь он исследовал те самые грибы.</text>
+	</string>
+	<string id="anomal_mushrom_hit_think_text">
+		<text>Возможно, я выбрал неудачное время.</text>
+	</string>
+
+	<string id="maroder_chimera_think_text">
+		<text>Полузажившие раны... Следы крови приведут меня в логово.</text>
+	</string>
+
+	<string id="forest_secret_teleport_zone_obj_use">
+		<text>Выключить магнитофон</text>
+	</string>
+
+	<string id="death_maroder_think_text">
+		<text>Убит выстрелом в затылок...</text>
+	</string>
+
+	<string id="maroders_dead_crow_use1">
+		<text>Дохлая ворона</text>
+	</string>
+	<string id="maroders_dead_crow_use2">
+		<text>Дохлая ворона. Или просто спит?</text>
+	</string>
+	<string id="maroders_dead_crow_use3">
+		<text>Дохлая ворона. А может, сорока?</text>
+	</string>
+	<string id="maroders_dead_crow_use4">
+		<text>А может, это сорока? Нет, всё-же ворона.</text>
+	</string>
+	<string id="maroders_dead_crow_use5">
+		<text>А не такая уж и дохлая эта... ворона? Нет, сорока.</text>
+	</string>
+
+	<string id="village_power_box_use1">
+		<text>Силовой щиток \n открыть крышку</text>
+	</string>
+	<string id="village_power_box_use2">
+		<text>Силовой щиток \n включить рубильник</text>
+	</string>
+
+
+	<string id="achivement1_tip">
+		<text>%c[100,50,250,50]Получено достижение "Ищейка"%c[default]</text>
+	</string>
+	<string id="lw_achiev_treasures_hint">
+		<text>За нахождение 20 необозначенных тайников в окрестностях деревни Грачи.</text>
+	</string>
+	<string id="lw_achiev_treasures_name">
+		<text>Ищейка</text>
+	</string>
+	<string id="lw_achiev_treasures_descr">
+		<text>За нахождение 20 необозначенных тайников в окрестностях деревни Грачи.</text>
+	</string>
+
+	<string id="achivement2_tip">
+		<text>%c[100,50,250,50]Получено достижение "Душегуб"%c[default]</text>
+	</string>
+	<string id="lw_achiev_maroders_hint">
+		<text>За убийство 50 мародёров.</text>
+	</string>
+	<string id="lw_achiev_maroders_name">
+		<text>Душегуб</text>
+	</string>
+	<string id="lw_achiev_maroders_descr">
+		<text>"Я этих уродов гнобил, гноблю и гнобить буду!" (с) E_f_T.</text>
+	</string>
+
+	<string id="achivement3_tip">
+		<text>%c[100,50,250,50]Получено достижение "Живодёр"%c[default]</text>
+	</string>
+	<string id="lw_achiev_mutants_hint">
+		<text>За убийство 50 мутантов.</text>
+	</string>
+	<string id="lw_achiev_mutants_name">
+		<text>Живодёр</text>
+	</string>
+	<string id="lw_achiev_mutants_descr">
+		<text>"Мы тварей душили-душили, душили-душили..." (с)Шариков.</text>
+	</string>
+
+	<string id="achivement4_tip">
+		<text>%c[100,50,250,50]Получено достижение "Конструктор"%c[default]</text>
+	</string>
+	<string id="lw_achiev_weapons_hint">
+		<text>За сборку из запчастей всех доступных видов стрелкового вооружения.</text>
+	</string>
+	<string id="lw_achiev_weapons_name">
+		<text>Конструктор</text>
+	</string>
+	<string id="lw_achiev_weapons_descr">
+		<text>Торговцев здесь нет, так что стрелять приходится из того, что сам нашел и собрал.</text>
+	</string>
+
+	<string id="achivement5_tip">
+		<text>%c[100,50,250,50]Получено достижение "Любопытный"%c[default]</text>
+	</string>
+	<string id="lw_achiev_tasks_hint">
+		<text>За прохождение всех дополнительных заданий.</text>
+	</string>
+	<string id="lw_achiev_tasks_name">
+		<text>Любопытный</text>
+	</string>
+	<string id="lw_achiev_tasks_descr">
+		<text>Всюду лазил и совал свой нос, в результате вытащил на свет божий такое, чего лучше было и не знать.</text>
+	</string>
+
+	<string id="achivement6_tip">
+		<text>%c[100,50,250,50]Получено достижение "Слабак"%c[default]</text>
+	</string>
+	<string id="lw_achiev_noob_hint">
+		<text>За потерю сознания и снаряжения более 10 раз.</text>
+	</string>
+	<string id="lw_achiev_noob_name">
+		<text>Слабак</text>
+	</string>
+	<string id="lw_achiev_noob_descr">
+		<text>Достала эта Зона! То мутнаты за пятки цапают, то мародёры отметелить пытаются. Измотали до невозможности, просто с ног падаю.</text>
+	</string>
+
+	<string id="achivement7_tip">
+		<text>%c[100,50,250,50]Получено достижение "Алкаш"%c[default]</text>
+	</string>
+	<string id="lw_achiev_alco_hint">
+		<text>Дойти до состочния алкогольного бреда 5 раз.</text>
+	</string>
+	<string id="lw_achiev_alco_name">
+		<text>Алкаш</text>
+	</string>
+	<string id="lw_achiev_alco_descr">
+		<text>Это ж надо так нажраться! Мало того, что валялся без сознания полдня, так ещё такое почудилось, что лучше не вспоминать.</text>
+	</string>
+
+	<string id="achivement8_tip">
+		<text>%c[100,50,250,50]Получено достижение "Головорез"%c[default]</text>
+	</string>
+	<string id="lw_achiev_knife_hint">
+		<text>Убить главаря Хирурга с помощью ножа.</text>
+	</string>
+	<string id="lw_achiev_knife_name">
+		<text>Головорез</text>
+	</string>
+	<string id="lw_achiev_knife_descr">
+		<text>Этот ваш хвалёный Хирург видимо имел липовый диплом.</text>
+	</string>
+
+
+	<string id="actor_vodka_overdose_think_text">
+		<text>Перебрал...</text>
+	</string>
+	<string id="actor_maroder_think_text">
+		<text>Убить инженера!</text>
+	</string>
+
+	<string id="random_treasure_mark">
+		<text>Тайник</text>
+	</string>
+	<string id="trader_mark">
+		<text>Торговец</text>
+	</string>
+
+	<string id="workshop_house_radio_use1">
+		<text>Радиола \n включить</text>
+	</string>
+	<string id="workshop_house_radio_use2">
+		<text>Радиола \n выключить</text>
+	</string>
+
+
+	<string id="btr_maroder_pda_tip">
+		<text>%c[100,50,250,50]Мародёр-разведчик: %c[default]\n%c[255,255,118,118]Вояки пёрли куда-то на БТР-е и гробанулись. После них остался ящичек запертый, что же в нём такое? Бля буду, там чё-то прикольное, надо только его открыть. Позову Медвежатника с инструментами, он сделает своё дело.%c[default]</text>
+	</string>
+	<string id="wrecked_btr_box_use">
+		<text>Сейф военных \n заперт</text>
+	</string>
+
+	<string id="forest_btr_think_text">
+		<text>Рюкзак с антирадами... Куда они собрались лезть?</text>
+	</string>
+
+	<string id="village_roof_maroder_pda_tip">
+		<text>%c[100,50,250,50]Мародёр-падальщик: %c[default]\n%c[255,255,118,118]Ещё пару лохов оберу и можно валить из Зоны нахрен! Только что-то никто не спешит копыта отбрасывать... Помочь, что ли? Заберусь на крышу и посмотрю на окрестности, заодно бухну чуток.%c[default]</text>
+	</string>
+
+	<string id="village_roof_maroder_shron_habar_mark">
+		<text>Нычка Падальщика</text>
+	</string>
+
+	<string id="actors_note_info_text_1">
+		<text>Топливо для генератора можно найти в колонке на рембазе; \n Нормальное оружие собирается из запчастей, которые можно найти в ящиках мародёров; \n Бронекостюмами и комбинезонами владеют только лидеры мародёров; \n Стресс понижается с помощью водки; \n Газ для лаборатории можно найти у мародёров; \n Компоненты для создания медпрепаратов, а также запчасти для починки авто можно найти на трупах мародёров, а можно и купить у кого-то из них; \n Пищу можно получить за случайные задания, награда приходит через несколько часов после выполнения; \n Оружие с глушителем наносит дополнительный урон, если поразить цель скрытно.</text>
+	</string>
+
+	<string id="lonl_house_komp_tip">
+		<text>Компьютер</text>
+	</string>
+	<string id="lonl_house_komp_tip2_1">
+		<text>Компьютер обесточен\n(нужно зарядить генератор во дворе)</text>
+	</string>
+	<string id="lonl_house_komp_tip2">
+		<text>Подключить ПДА с помощью кабеля.</text>
+	</string>
+
+	<string id="personal_dog_dead">
+		<text>%c[255,255,118,118]Сука мертва.%c[default]</text>
+	</string>
+	
+	
+	<string id="anomal_claw_name">
+		<text>Чёрный коготь</text>
+	</string>
+	<string id="anomal_claw_descr">
+		<text>Коготь, принадлежавший уникальному чёрному кровососу. Имеет странное свойство: подвешенный на верёвочке, всё время указывает острием в одном и том-же направлении, подобно стрелке компаса. Интересно, на что именно?</text>
+	</string>
+
+
+	<string id="rnd_task_kill_courier_name1">
+		<text>Перехватить курьера</text>
+	</string>
+	<string id="rnd_task_kill_courier_desc1">
+		<text>Неподалёку был замечен мародёр-курьер, доставляющий ценный груз. Нужно уничтожить его и завладеть этим грузом.</text>
+	</string>
+	<string id="rnd_task_kill_courier_name2">
+		<text>Доставить посылку на базу</text>
+	</string>
+	<string id="rnd_task_kill_courier_desc2">
+		<text>Завладев грузом курьера, нужно доставить его в убежище, где можно будет вскрыть его и завладеть содержимым. Для этого следует использовать мастерскую.</text>
+	</string>
+
+	<string id="maroder_courier_alarm_tip">
+		<text>%c[255,255,118,118]Курьер засёк вас.%c[default]</text>
+	</string>
+
+	<string id="maroder_killer_alarm_tip">
+		<text>%c[255,255,118,118]Убийца засёк вас.%c[default]</text>
+	</string>
+
+
+	<string id="suicider_cross_use">
+		<text>Старый крест \n осмотреть</text>
+	</string>
+
+	<string id="willage_suicider_diary_name">
+		<text>Часть дневника самоубийцы</text>
+	</string>
+	<string id="willage_suicider_diary_descr">
+		<text>Страница из дневника человека, некогда обитавшего в деревне Грачи и покончившего жизнь самоубийством.</text>
+	</string>
+
+
+	<string id="suicider_key_name">
+		<text>Ключ-артефакт</text>
+	</string>
+	<string id="suicider_key_descr">
+		<text>Ключ самоубийцы, превратившийся в артефакт. Какую дверь он открывает? Явно не простую.</text>
+	</string>
+
+	<string id="graveyard_cross_think_text">
+		<text>Какие-то цифры...</text>
+	</string>
+	<string id="field_tree_think_text">
+		<text>Кто это сюда притащил? Мародёры? Не думаю.</text>
+	</string>
+	<string id="village_undegr_door_use1">
+		<text>Запертая дверь</text>
+	</string>
+	<string id="village_undegr_door_use2">
+		<text>Запертая дверь\nоткрыть ключом самоубийцы</text>
+	</string>
+	
+	
+	
+	
+
+
+
+	<string id="addtask_suicider_name1">
+		<text>Расплата за грехи: осмотреть дом в деревне</text>
+	</string>
+	<string id="addtask_suicider_name2">
+		<text>Расплата за грехи: осмотреть магазин</text>
+	</string>
+	<string id="addtask_suicider_name3">
+		<text>Расплата за грехи: догнать мутанта</text>
+	</string>
+	<string id="addtask_suicider_name4">
+		<text>Расплата за грехи: обыскать холм у деревни</text>
+	</string>
+	<string id="addtask_suicider_name5">
+		<text>Расплата за грехи: проверить место отдыха</text>
+	</string>
+	<string id="addtask_suicider_name6">
+		<text>Расплата за грехи: догнать карлика</text>
+	</string>
+	<string id="addtask_suicider_name7">
+		<text>Расплата за грехи: осмотреть место в поле</text>
+	</string>
+	<string id="addtask_suicider_name8">
+		<text>Расплата за грехи: осмотреть местность у водоёма</text>
+	</string>
+	<string id="addtask_suicider_name9">
+		<text>Расплата за грехи: поговорить с учёным</text>
+	</string>
+	<string id="addtask_suicider_name10">
+		<text>Расплата за грехи: раздобыть защиту от пси-излучения</text>
+	</string>
+	<string id="addtask_suicider_name11">
+		<text>Расплата за грехи: войти в пси-аномалию</text>
+	</string>
+	<string id="addtask_suicider_name12">
+		<text>Расплата за грехи: убить карлика</text>
+	</string>
+	<string id="addtask_suicider_name13">
+		<text>Расплата за грехи: поговорить с учёным</text>
+	</string>
+	<string id="addtask_suicider_name14">
+		<text>Расплата за грехи: сопроводить учёного</text>
+	</string>
+	<string id="addtask_suicider_name15">
+		<text>Расплата за грехи: убить учёного</text>
+	</string>
+	<string id="addtask_suicider_name16">
+		<text>Расплата за грехи: встретиться с карликом</text>
+	</string>
+	<string id="addtask_suicider_name17">
+		<text>Расплата за грехи: защитить учёного</text>
+	</string>
+	<string id="addtask_suicider_name18">
+		<text>Расплата за грехи: поговорить с учёным</text>
+	</string>
+	
+
+	<string id="addtask_suicider_desc1">
+		<text>Встретив сумасшедшего мародёра у старого кладбища, я узнал от него, что в одном из домов в деревне хранится нечто ценное. Не помешало бы осмотреть это место.</text>
+	</string>
+	<string id="addtask_suicider_desc2">
+		<text>Если верить в то, что за оградой кладбищ обычно хоронили самоубийц, то страница из дневника, найденного в старом шкафу, принадлежала одному из них. Однако судя по дате, этим записям более 30 лет. Как с этим связаны последние события? Проследую в место, упомянутое там и выясню это.</text>
+	</string>
+	<string id="addtask_suicider_desc3">
+		<text>Из окна магазина я увидел мутанта-карлика, который копошился на холме. Нужно посмотреть, что он там делал.</text>
+	</string>
+	<string id="addtask_suicider_desc4">
+		<text>Мутант-карлик, замеченый мной у магазина, скрылся. Желательно осмотреть то место, где я видел его в последний раз.</text>
+	</string>
+	<string id="addtask_suicider_desc5">
+		<text>Во второй части дневника самоубийцы обнаружилась информация о его любимом месте отдыха за деревней у рощи. Есть смысл проверить эту точку.</text>
+	</string>
+	<string id="addtask_suicider_desc6">
+		<text>Мутант-карлик, замеченый мной у дерева, скрылся. Желательно осмотреть то место, где я видел его в последний раз.</text>
+	</string>
+	<string id="addtask_suicider_desc7">
+		<text>В очередной части дневника самоубийцы раскрылся его мотив: по-видимому, он был как-то причастен к аварии на Чернобыльской АЭС. Кроме того, нашлась информация о ещё одном месте - групе камней среди поля. Желательно проверить его.</text>
+	</string>
+	<string id="addtask_suicider_desc8">
+		<text>Судя по наблюдениям учёного, карлик может прятаться где-то у воды. Надо осмотреть место у водоёма и поискать возможное убежище или следы обитания психофага.</text>
+	</string>
+	<string id="addtask_suicider_desc9">
+		<text>Вместо мутанта я нашел очередную часть дневника самоубийцы, в которой снова упоминается некий Армадеус. Надо обсудить это с профессором.</text>
+	</string>
+	<string id="addtask_suicider_desc10">
+		<text>Хитрый карлик-психофаг хочет заманить меня в пси-аномалию, чтобы захватить моё сознание. Следует подкрепить свою пси-устойчивость с помощью подручных средств(костюма, артефакта или медикаментов) и дать отпор мутанту.</text>
+	</string>
+	<string id="addtask_suicider_desc11">
+		<text>Судя по всему, карлик спрятался внутри пси-аномалии. Чтобы не пострадать от неё, нужно обзавестись любыми средствами от пси-излучения(костюм, препараты, артефакт). Кое-что должно лежать в тайнике военных.</text>
+	</string>
+	<string id="addtask_suicider_desc12">
+		<text>Нужно убить карлика-психофага, прячущегося в пси-аномалии.</text>
+	</string>
+	<string id="addtask_suicider_desc13">
+		<text>Мутант-психофаг уничтожен. Нужно рассказать об этом профессору Каланче.</text>
+	</string>
+	<string id="addtask_suicider_desc14">
+		<text>Нужно сопроводить профессора Каланчу в убежище, где он сможет обитать.</text>
+	</string>
+	<string id="addtask_suicider_desc15">
+		<text>Карлик выжил и рассказал нам свою версию: оказывается, профессор Каланча причастен к эксперименту, в результате которого образовалась Зона. Если убить его, то можно получить награду от психофага.</text>
+	</string>
+	<string id="addtask_suicider_desc16">
+		<text>Теперь разумный мутант - мой союзник. Необходимо встретить его и получить заслуженную награду.</text>
+	</string>
+	<string id="addtask_suicider_desc17">
+		<text>Коварный карлик будет пытаться отомстить мне, нападая на учёного, которого я спас. Нужно защитить Каланчу и окончательно расправиться с мутантом.</text>
+	</string>
+	<string id="addtask_suicider_desc18">
+		<text>На этот раз карлик-психофаг действительно уничтожен. Профессор Каланча с удовольствием выдаст за это награду.</text>
+	</string>
+
+
+	
+	<string id="willage_suicider_box_use">
+		<text>Старый шкаф</text>
+	</string>
+	<string id="karlik_quest_plita_use">
+		<text>Старая плита\nосмотреть</text>
+	</string>
+	<string id="karlik_quest_freezer_use1">
+		<text>Старый холодильник\n(открыть)</text>
+	</string>
+	<string id="karlik_quest_freezer_use2">
+		<text>Старый холодильник\n(закрыть)</text>
+	</string>
+	
+	<string id="karlik_quest_plita_btn1_use1">
+		<text>Конфорка 1\n(выключено)</text>
+	</string>
+	<string id="karlik_quest_plita_btn1_use2">
+		<text>Конфорка 1\n(включено)</text>
+	</string>
+	<string id="karlik_quest_plita_btn2_use1">
+		<text>Конфорка 2\n(выключено)</text>
+	</string>
+	<string id="karlik_quest_plita_btn2_use2">
+		<text>Конфорка 2\n(включено)</text>
+	</string>
+	<string id="karlik_quest_plita_btn3_use1">
+		<text>Конфорка 3\n(выключено)</text>
+	</string>
+	<string id="karlik_quest_plita_btn3_use2">
+		<text>Конфорка 3\n(включено)</text>
+	</string>
+	<string id="karlik_quest_plita_btn4_use1">
+		<text>Конфорка 4\n(выключено)</text>
+	</string>
+	<string id="karlik_quest_plita_btn4_use2">
+		<text>Конфорка 4\n(включено)</text>
+	</string>
+	<string id="karlik_quest_plita_btn5_use1">
+		<text>%c[255,255,118,118]Духовка \n(выключено)%c[default]</text>
+	</string>
+	<string id="karlik_quest_plita_btn5_use2">
+		<text>%c[255,255,118,118]Духовка \n(включено)%c[default]</text>
+	</string>
+	
+	<string id="karlik_quest_pribor_use">
+		<text>Генератор защитного поля</text>
+	</string>
+	<string id="karlik_psyzone_think_text">
+		<text>Он должен быть где-то здесь!</text>
+	</string>	
+	<string id="tree_koryaga_karlik_think_text">
+		<text>Карлик бросил какой-то рюкзак.</text>
+	</string>	
+	
+	
+	
+	
+	
+
+	<string id="bloodsucker_hunter_away_think_text">
+		<text>Кровосос удирает</text>
+	</string>
+
+	
+	
+	<string id="gather_items_box_static1_text">
+		<text>Взять апгрейды для одетой брони (Z)</text>
+	</string>
+	<string id="gather_items_box_static2_text">
+		<text>Взять апгрейды для экипированого оружия (B)</text>
+	</string>
+	<string id="gather_items_box_static3_text">
+		<text>Сгрузить все апгрейды (U)</text>
+	</string>
+	<string id="gather_items_box_static4_text">
+		<text>Сгрузить все расходники (U)</text>
+	</string>
+
+
+
+
+	<string id="addtask_bloodsucker_name1">
+		<text>Аномальная рыбалка: подобрать предмет</text>
+	</string>
+	<string id="addtask_bloodsucker_name2">
+		<text>Аномальная рыбалка: проверить место</text>
+	</string>
+	<string id="addtask_bloodsucker_name3">
+		<text>Аномальная рыбалка: взять артефакт</text>
+	</string>
+	<string id="addtask_bloodsucker_name4">
+		<text>Аномальная рыбалка: поймать артефакт</text>
+	</string>
+	<string id="addtask_bloodsucker_name5">
+		<text>Аномальная рыбалка: найти инструменты</text>
+	</string>
+	<string id="addtask_bloodsucker_name6">
+		<text>Аномальная рыбалка: открыть шкаф</text>
+	</string>
+	<string id="addtask_bloodsucker_name7">
+		<text>Аномальная рыбалка: поймать артефакт ловушкой</text>
+	</string>
+	
+	<string id="addtask_bloodsucker_desc1">
+		<text>Убив уникального чёрного кровососа, я заметил, что с его туши что-то выпало. Желательно поднять и осмотреть этот предмет, возможно, он имеет ценность.</text>
+	</string>
+	<string id="addtask_bloodsucker_desc2">
+		<text>Мой трофей - коготь уникального чёрного кровососа. Он, подобно стрелке компаса, указывает на определённое место. Стоит его проверить.</text>
+	</string>
+	<string id="addtask_bloodsucker_desc3">
+		<text>Коготь кровососа привёл меня к странному зелёному артефакту на берегу озерца. Стоит попробовать забрать его.</text>
+	</string>
+	<string id="addtask_bloodsucker_desc4">
+		<text>Странный артефакт оказался активным и не желает браться в руки. Надо изловчиться и поймать его.</text>
+	</string>
+	<string id="addtask_bloodsucker_desc5">
+		<text>Уникальный артефакт на озере не желает идти в руки. Чтобы его поймать, надо запастись какими-то подходящими средствами. На старой рембазе должно быть осталось кое-что полезное.</text>
+	</string>
+	<string id="addtask_bloodsucker_desc6">
+		<text>Какие-то инструменты или материалы точно есть в шкафу, но он под замком. Чтобы открыть его, необходимо воспользоваться составом WD-40 для удаления ржавчины, а также найти ключ.</text>
+	</string>
+	<string id="addtask_bloodsucker_desc7">
+		<text>Для поимки артефакта надо сделать незамысловатую ловушку из крючка на проволоке. Медная проволока имеется, а в качестве крючка послужит коготь того самого кровососа.</text>
+	</string>
+	
+	
+		
+	
+	<string id="lake_stone_think1_text">
+		<text>Странный артефакт... Он виден без детектора.</text>
+	</string>
+	<string id="lake_stone_art_use">
+		<text>Озёрный артефакт</text>
+	</string>
+	<string id="workshop_instrum_box_lock_use1">
+		<text>Замок\nосмотреть</text>
+	</string>
+	<string id="workshop_instrum_box_lock_use2">
+		<text>Ржавый замок\nнеобходим ключ\nнеобходим состав WD-40</text>
+	</string>
+	<string id="af_frog_name">
+		<text>"Лягушка"</text>
+	</string>
+	<string id="af_frog_descr">
+		<text>Распостранённый артефакт "Кровь камня", который долго лежал среди кислотных аномалий, в результате чего поменял свойства. Теперь он лечит любые раны и защищает от кислоты. Может совершать прыжки.</text>
+	</string>
+	<string id="wire_roll_name">
+		<text>Моток проволоки</text>
+	</string>
+	<string id="wire_roll_descr">
+		<text>Моток крепкой медной проволоки. Практически не пострадал от времени.</text>
+	</string>
+	<string id="lake_stone_think2_text">
+		<text>Просто так его не поймать! Нужны инструменты.</text>
+	</string>
+	<string id="lake_art2_use">
+		<text>Попробовать схватить артефакт</text>
+	</string>
+	<string id="workshop_instrum_box_key_name">
+		<text>Ключ от шкафа</text>
+	</string>
+	<string id="workshop_instrum_box_key_descr">
+		<text>Ключ от шкафа с инструментами, который находится на рембазе.</text>
+	</string>
+	<string id="lake_art_on_trap_catch_think_text">
+		<text>Сорвался, гад!</text>
+	</string>
+	
+	
+	<string id="karlik_friend_mark_text">
+		<text>Карлик</text>
+	</string>
+	
+	<string id="karlik_friend_commands_hint_text">
+		<text>Карлик (M - говорить)</text>
+	</string>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<string id="quest_sniper_zone_obj_use">
+		<text>Записка на дереве\nпрочесть</text>
+	</string>
+	<string id="sniper_quest_tree_think1_text">
+		<text>Записку оставили недавно, можно разобрать надпись.</text>
+	</string>
+	
+	
+	<string id="quest_sniper_note1_name">
+		<text>Записка снайпера</text>
+	</string>
+	<string id="quest_sniper_note1_descr">
+		<text>Неизвестный снайпер оставил кому-то эту записку.</text>
+	</string>
+	<string id="quest_sniper_note2_name">
+		<text>Мародёрская "малява"</text>
+	</string>
+	<string id="quest_sniper_note2_descr">
+		<text>Короткая записка с сообщением.</text>
+	</string>
+	
+	
+	<string id="addtask_sniper_name1">
+		<text>Уловимый мститель: прочесть записку</text>
+	</string>
+	<string id="addtask_sniper_name2">
+		<text>Уловимый мститель: найти мародёра Хмыря</text>
+	</string>
+	<string id="addtask_sniper_name3">
+		<text>Уловимый мститель: обыскать мародёра</text>
+	</string>
+	<string id="addtask_sniper_name3_1">
+		<text>Уловимый мститель: проверить место</text>
+	</string>
+	<string id="addtask_sniper_name4">
+		<text>Уловимый мститель: вмешаться в разборку</text>
+	</string>
+	<string id="addtask_sniper_name5">
+		<text>Уловимый мститель: поговорить в неизвестным снайпером</text>
+	</string>
+	<string id="addtask_sniper_name6">
+		<text>Уловимый мститель: получить награду</text>
+	</string>
+	
+	
+	<string id="addtask_sniper_desc1">
+		<text>Странная записка приколота ножом к дереву в безлюдном месте. Кто мог оставить её? Её содержание прояснит этот вопрос.</text>
+	</string>
+	<string id="addtask_sniper_desc2">
+		<text>Записка содержала угрозы в адрес каких-то мародёров, одного из которых якобы можно найти где-то в окрестностях Грачей. Стоит проверить это место.</text>
+	</string>
+	<string id="addtask_sniper_desc3">
+		<text>На наших глазах упомянутого в записке мародёра убил неизвестный снайпер. Кто стоит за всем этим? Стоит обыскать тело жертвы на предмет зацепок.</text>
+	</string>
+	<string id="addtask_sniper_desc3_1">
+		<text>На теле убитого мародёра обнаружилась записка-малява, в которой есть инфа о местонахождении Сиплого. Надо проверить это место.</text>
+	</string>
+	<string id="addtask_sniper_desc4">
+		<text>Похоже, мародёры поймали неизвестного снайпера. Стоит вмешаться в эту сцену, чтобы выяснить в чём дело.</text>
+	</string>
+	<string id="addtask_sniper_desc5">
+		<text>Мародёры успели расстрелять неизвестного снайпера, но он ещё жив. Надо поговорить с ним, возможно, он расскажет что-то интерестное.</text>
+	</string>
+	<string id="addtask_sniper_desc6">
+		<text>Перед смертью снайпер поведал мне о своём схроне. Это благодарность за убийство его врага. Надо забрать содержимое.</text>
+	</string>
+	
+	
+	<string id="sniper_maroder_scene_tip1">
+		<text>%c[255,255,118,118]Сиплый:%c[default] Что, влип, очкарик? Говори, кто меня заказал, быстро!</text>
+	</string>
+	<string id="quest_sniper_lay_to_rest_think_text">
+		<text>Надо бы похоронить этого снайпера.</text>
+	</string>
+	<string id="sniper_dead_think_text">
+		<text>Зря ты так, парень.</text>
+	</string>
+	
+	<string id="master_difficulty_timer_zone_tip1">
+		<text>Первая фаза выброса</text>
+	</string>
+	<string id="master_difficulty_timer_zone_tip2">
+		<text>Вторая фаза выброса</text>
+	</string>
+	<string id="master_difficulty_timer_zone_tip3">
+		<text>Третья фаза выброса</text>
+	</string>
+	<string id="master_difficulty_timer_zone_tip4">
+		<text>Червёртая фаза выброса</text>
+	</string>
+	<string id="master_difficulty_timer_zone_tip5">
+		<text>Пятая фаза выброса</text>
+	</string>
+	<string id="master_difficulty_timer_zone_tip6">
+		<text>Шестая фаза выброса</text>
+	</string>
+	<string id="master_difficulty_timer_zone_tip7">
+		<text>Седьмая фаза выброса</text>
+	</string>
+	<string id="master_difficulty_timer_zone_tip8">
+		<text>Последняя фаза выброса</text>
+	</string>
+	<string id="master_difficulty_timer_zone_tip9">
+		<text>Эвакуация! Находитесь у вертолёта.</text>
+	</string>
+	
+	
+	<string id="mg_npc_actor_killer_mark_text">
+		<text>Головорез</text>
+	</string>
+	<string id="mg_npc_actor_bomber_mark_text">
+		<text>Камикадзе</text>
+	</string>
+	<string id="mg_npc_actor_shooter_mark_text">
+		<text>Штурмовик</text>
+	</string>
+	<string id="mg_npc_tank_mark_text">
+		<text>Танк</text>
+	</string>
+	<string id="mg_npc_actor_scav_mark_text">
+		<text>Гладиатор</text>
+	</string>
+	<string id="mg_mob_actor_killer_mark_text">
+		<text>Мутант</text>
+	</string>
+	<string id="mg_npc_companion_mark_text">
+		<text>Напарник</text>
+	</string>
+	<string id="mg_npc_legend_mark_text">
+		<text>Легендарный сталкер</text>
+	</string>
+	<string id="mg_deathzone_mark1_text">
+		<text>Безопасная зона</text>
+	</string>
+	
+	
+	
+	
+		
+	
+	<string id="mg_task_evacuation_name1">
+		<text>Соревнование: дождаться начала эвакуации</text>
+	</string>
+	<string id="mg_task_evacuation_name2">
+		<text>Соревнование: добраться до места эвакуации</text>
+	</string>
+	<string id="mg_task_evacuation_name3">
+		<text>Соревнование: дождаться вертолёта</text>
+	</string>
+	<string id="mg_task_evacuation_name4">
+		<text>Соревнование: эвакуироваться</text>
+	</string>
+	
+	
+	<string id="mg_task_evacuation_desc1">
+		<text>Продержаться до начала эвакуации.</text>
+	</string>
+	<string id="mg_task_evacuation_desc2">
+		<text>Как можно быстрее добраться до места эвакуации.</text>
+	</string>
+	<string id="mg_task_evacuation_desc3">
+		<text>Вертолёт приземлится в ближайшее время.</text>
+	</string>
+	<string id="mg_task_evacuation_desc4">
+		<text>Находитесь у вертолёта, он подберёт вас.</text>
+	</string>
+	
+	
+	
+	<string id="mg_task_companion1_name1">
+		<text>Взаимовыручка: откликнуться на сигнал о помощи.</text>
+	</string>
+	<string id="mg_task_companion1_name2">
+		<text>Взаимовыручка: продержаться до эвакуации</text>
+	</string>
+	<string id="mg_task_companion1_name3">
+		<text>Взаимовыручка: осмотреть бункер</text>
+	</string>
+	<string id="mg_task_companion1_name4">
+		<text>Взаимовыручка: найти артефакт "Компас"</text>
+	</string>
+	<string id="mg_task_companion1_name5">
+		<text>Взаимовыручка: догнать вора</text>
+	</string>
+	<string id="mg_task_companion1_name6">
+		<text>Взаимовыручка: разузнать о способе взлома</text>
+	</string>
+	<string id="mg_task_companion1_name7">
+		<text>Взаимовыручка: взломать ПДА</text>
+	</string>
+	<string id="mg_task_companion1_name8">
+		<text>Взаимовыручка: найти курьера</text>
+	</string>
+	<string id="mg_task_companion1_name9">
+		<text>Взаимовыручка: разузнать о нычке курьера</text>
+	</string>
+	<string id="mg_task_companion1_name10">
+		<text>Взаимовыручка: найти схрон курьера</text>
+	</string>
+	<string id="mg_task_companion1_name11">
+		<text>Взаимовыручка: выведать информацию</text>
+	</string>
+	<string id="mg_task_companion1_name12">
+		<text>Взаимовыручка: проследить за помощником Волчары</text>
+	</string>
+	<string id="mg_task_companion1_name13">
+		<text>Взаимовыручка: проследить ещё раз</text>
+	</string>
+	<string id="mg_task_companion1_name14">
+		<text>Взаимовыручка: проверить место</text>
+	</string>
+	<string id="mg_task_companion1_name15">
+		<text>Взаимовыручка: достать научный костюм</text>
+	</string>
+	<string id="mg_task_companion1_name16">
+		<text>Взаимовыручка: достать ключ от схрона Волчары</text>
+	</string>
+	<string id="mg_task_companion1_name16_1">
+		<text>Взаимовыручка: осмотреть схрон с контрабандой</text>
+	</string>
+	<string id="mg_task_companion1_name17">
+		<text>Взаимовыручка: сбить вертолёт</text>
+	</string>
+	<string id="mg_task_companion1_name18">
+		<text>Взаимовыручка: победить Волчару</text>
+	</string>
+	
+	<string id="mg_task_companion1_desc1">
+		<text>В этом районе был пойман сигнал о помощи. Стоит проверить место.</text>
+	</string>
+	<string id="mg_task_companion1_desc2">
+		<text>Сталкер по кличке Одноглазый спасён, теперь надо продержаться вместе с ним до эвакуации.</text>
+	</string>
+	<string id="mg_task_companion1_desc3">
+		<text>Во время очередного витка "Соревнования" мне удалось спасти сталкера по кличке Одноглазый. Возможно, теперь он хочет отблагодарить меня.</text>
+	</string>
+	<string id="mg_task_companion1_desc4">
+		<text>Мне стало известно о том, что где-то в деревне спрятан артефакт, который может образовать пространственную аномалию. Если войти в неё, то есть шанс спастись из лап Волчары. Это шанс.</text>
+	</string>
+	<string id="mg_task_companion1_desc5">
+		<text>Какой-то шустряк по кличке Жиган умыкнул нужный для моего спасения "Компас". Придётся догнать его и отобрать артефакт.</text>
+	</string>
+	<string id="mg_task_companion1_desc6">
+		<text>Вор Жиган спёр мой артефакт, перепрятал его, а инфу о схроне зашифровал в своём ПДА. Надо попробовать выспросить у Волчары, есть ли способ взломать носитель информации.</text>
+	</string>
+	<string id="mg_task_companion1_desc7">
+		<text>Компьютер нашелся, теперь инженерное образование поможет мне методом подбора пароля вытащить инфу из ПДА Жигана и продолжить поиск артефакта "Компас".</text>
+	</string>
+	<string id="mg_task_companion1_desc8">
+		<text>В ПДА Жигана, укравшего "Компас", нашлась инфа о том, что он хотел отнести артефакт на оценку какому-то Курьеру. Надо проверить место их встречи.</text>
+	</string>
+	<string id="mg_task_companion1_desc9">
+		<text>В ПДА курьера обнаружилась информация о том, что Волчара как-то причастен к общему "делу". Также упоминается личный схрон курьера, но его местонахождение неизвестно. Надо получить у Волчары инфу об этом схроне и обыскать его.</text>
+	</string>
+	<string id="mg_task_companion1_desc10">
+		<text>Выведав у Волчары приблизительные координаты места нахождения схрона курьера, следует обыскать его. Возможно, там обнаружится вещь или информация, которая поможет мне вырваться из лап AD-production.</text>
+	</string>
+	<string id="mg_task_companion1_desc11">
+		<text>Теперь в руки ко мне попали материалы, в которых речь идёт о том, что Волчара тайно промышляет торговлей оружием и снаряжением за спиной у руководства AD-production. Это серьезный компромат, его можно использовать в плане собственного освобождения. Также в этих материалах есть информация о том, что артефакт "Компас" тоже находится в лапах у Волчары, скорей всего и оружие, и артефакт лежат в одном схроне. Надо добиться хотя-бы какой-то зацепки в плане местонахождения его личного схрона.</text>
+	</string>
+	<string id="mg_task_companion1_desc12">
+		<text>Волчара клюнул на нашу приманку и послал своего человека, чтобы проверить схрон с контрабандой. Нужно проследить за ним и выяснить, где точно он находится. Возможно, в нём лежит и артефакт "Компас", который нам нужен.</text>
+	</string>
+	<string id="mg_task_companion1_desc13">
+		<text>Я спугнул помощника Волчары, надо дождаться следующей вылазки и попробовать ещё раз.</text>
+	</string>
+	<string id="mg_task_companion1_desc14">
+		<!--text>В схроне ни оружия, ни "Компаса" не обнаружилось, - хитрый Волчара спрятал добро в более надёжном месте. Однако есть карта с пометкой где-то в центре деревни Грачи. Ничего не остаётся, кроме как проверить это место.</text-->
+		<text>Схрон Волчары находится где-то здесь. Возможно, в нём лежит необходимый нам "Компас".</text>
+	</string>
+	<string id="mg_task_companion1_desc15">
+		<text>Приятель Волчары, сталкер Димидрол погиб в огненной аномалии, куда пробраться можно только в научном костюме. Чтобы достать ключ, который он унёс с собой, надо выпросить костюм у Волчары.</text>
+	</string>
+	<string id="mg_task_companion1_desc16">
+		<text>Наконец-то я узнал расположение схрона Волчары с награбленным. Однако сперва надо достать ключ от места, где он находится..</text>
+	</string>
+	<string id="mg_task_companion1_desc16_1">
+		<text>Наконец-то я узнал расположение схрона Волчары с награбленным. Но меня интересует в первую очередь то, что поможет выбраться отсюда.</text>
+	</string>
+	<string id="mg_task_companion1_desc17">
+		<text>Волчара смертельно обиделся на меня за то, что я раскрыл его планы. Выхода нет, придётся сбить его, пока не наступил выброс!</text>
+	</string>
+	<string id="mg_task_companion1_desc18">
+		<text>"Воздушный волк" сбит, но Волчара ещё жив. Вероятно, на его трупе я найду то, что мне поможет.</text>
+	</string>
+	
+	
+	
+	
+	
+	
+	<string id="mg_heli_mark_text">
+		<text>"Воздушный волк" (вертолёт компании)</text>
+	</string>
+	<string id="mg_start_heli_tip1">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Поздравляю, ты - в ж.пе, то есть в Зоне! Не сиди на месте, по твою шкуру уже выдвинулись добры молодцы. Шевели копытами!!!</text>
+	</string>
+	<string id="mg_start_heli_tip1_1">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] А вот и наш Французик! Ну теперь ты уже в курсе дела, так что давай, развлекай зрителей.</text>
+	</string>
+	<string id="mg_start_heli_tip1_2">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Всем привет! С вами Волчара и мы продолжаем серию прямых трансляций с просторов Зоны.</text>
+	</string>
+	<string id="mg_start_heli_tip1_3">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Дамы и господа, наше "Соревнование" продолжается! Все прильнули к мониторам и готовим денежные пожертвования.</text>
+	</string>
+		<string id="mg_start_heli_tip2">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Эй, мясо! А ну живо эвакуируся, я сказал! Кто не успеет, того прихлопнет выброс, а потом сожрут местные твари.</text>
+	</string>
+	<string id="mg_start_heli_tip3">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Начинаем эвакуацию. Долго ждать не буду!</text>
+	</string>
+	<string id="mg_start_heli_tip4">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Прости-прощай, парниша.</text>
+	</string>
+	<string id="mg_start_heli_tip5">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Вынужденная посадка!</text>
+	</string>
+	<string id="mg_heli_airdrop_tip">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Я тебе посылочку сброшу. Интересно, кто до неё первым доберётся: ты или мой Гладиатор?</text>
+	</string>
+	<string id="mg_heli_door_alarm_tip">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Эй, Французик, ты куда это полез? Там же заминировано!</text>
+	</string>
+	<string id="mg_heli_start_fight_tip">
+		<text>%c[255,255,118,118]Воздушный волк:%c[default] Ну всё, бля, ты допрыгался, придётся тебя слить. А ведь так хорошо всё начиналось!</text>
+	</string>
+	
+	<string id="mg_companion1_tip1">
+		<text>%c[100,50,250,50]Неизвестный:%c[default] На помощь! Сюда!</text>
+	</string>
+	<string id="mg_companion1_tip2">
+		<text>%c[100,50,250,50]Одноглазый:%c[default] Я ранен...</text>
+	</string>
+	<string id="mg_companion1_tip3">
+		<text>%c[255,255,118,118]Ваш напарник Одноглазый погиб.%c[default]</text>
+	</string>
+	<string id="mg_companion1_note_tip">
+		<text>%c[100,50,250,50]Одноглазый:%c[default] Ты меня спас - я этого не забуду.</text>
+	</string>
+	
+	
+		
+	
+	<string id="kpp_bunker_radio_tip1">
+		<text>Радио: включить</text>
+	</string>
+	<string id="kpp_bunker_radio_tip2">
+		<text>Радио: выключить</text>
+	</string>
+	
+	
+	<string id="mg_zone_workshop_think_text">
+		<text>Точка эвакуации: Рембаза</text>
+	</string>
+	<string id="mg_zone_willage_think_text">
+		<text>Точка эвакуации: Деревня Грачи</text>
+	</string>
+	<string id="mg_zone_radhill_think_text">
+		<text>Точка эвакуации: Очаг радиации</text>
+	</string>
+	<string id="mg_zone_lonlhouse_think_text">
+		<text>Точка эвакуации: Дом отшельника</text>
+	</string>
+	<string id="mg_zone_island_think_text">
+		<text>Точка эвакуации: Островок</text>
+	</string>
+	<string id="mg_zone_helicrash_think_text">
+		<text>Точка эвакуации: Упавший вертолёт</text>
+	</string>
+	<string id="mg_zone_razlom_think_text">
+		<text>Точка эвакуации: Разлом</text>
+	</string>
+	<string id="mg_zone_graveyard_think_text">
+		<text>Точка эвакуации: Кладбище</text>
+	</string>
+	<string id="mg_zone_forest_camp_think_text">
+		<text>Точка эвакуации: Лагерь в лесу</text>
+	</string>
+	<string id="mg_zone_forest_think_text">
+		<text>Точка эвакуации: Роща на холме</text>
+	</string>
+	<string id="mg_zone_kpp_think_text">
+		<text>Точка эвакуации: Блокпост</text>
+	</string>
+	
+	
+	<string id="mg_friend_zapiska1_name">
+		<text>Записка от друга</text>
+	</string>
+	<string id="mg_friend_zapiska1_descr">
+		<text>"Ты спас меня, теперь я хочу вернуть должок. Вижу, что этот Волчара крепко в тебя вцепился, но не унывай. Вот мой совет: найди артефакт "Компас". Я слышал, что им владел легендарный сталкер, который спрятал этот артефакт где-то здесь, в окрестностях деревни. За ним я, собственно, сюда и припёрся. "Компас" поможет тебе найти пространственную аномалию, войдя в которую ты переместишься в случайное место Зоны. Риск есть, но всё-же лучше, нежели бегать под пулями каждый день, верно? Итак, вот координаты. Удачи. \nОдноглазый."</text>
+	</string>
+	
+	<string id="mg_robber_zapiska_name">
+		<text>Записка вора</text>
+	</string>
+	<string id="mg_robber_zapiska_descr">
+		<text>"Тому, кто здесь хабар свой ныкал:\n Чувак, кем бы ты не был, не серчай, а помни: деньги от продажи того, что здесь лежало, пойдут на пользу бедным. Удачки!\n Подпись: Жиган."</text>
+	</string>
+	
+	<string id="mg_art_robber_npc_pda_name">
+		<text>ПДА Жигана</text>
+	</string>
+	<string id="mg_art_robber_npc_pda_descr">
+		<text>Среди многочисленных записей о собутыльниках и долгах имеется информация о личном схроне, но она под паролем.</text>
+	</string>
+	
+	
+	<string id="mg_legend_npc_spawn_tip">
+		<text>%c[100,50,250,50]Обнаружен легендарный сталкер. Добавлена метка на карте.%c[default]</text>
+	</string>
+	
+	<string id="mg_quest_box_use">
+		<text>Нычка чья-то\n(заперто)</text>
+	</string>
+	
+	<string id="mg_komp_vzlom_tip1">
+		<text>%c[100,50,250,50]Процесс подбора пароля. Не отключайте девайс от компьютера...%c[default]</text>
+	</string>
+	<string id="mg_komp_vzlom_tip2">
+		<text>%c[100,50,250,50]Успешно выполнено!%c[default]</text>
+	</string>
+	<string id="mg_komp_vzlom_tip3">
+		<text>%c[255,255,118,118]Подбор пароля: обрыв связи!%c[default]</text>
+	</string>
+	
+	<string id="mg_legend_npc_reward_tip">
+		<text>%c[100,50,250,50]За помощь легендарному сталкеру вы получили уникальный артефакт.%c[default]</text>
+	</string>
+	
+	<string id="mg_companion_mob_mark_text">
+		<text>Мутант-помощник</text>
+	</string>
+	<string id="kpp_bunker_habar_box_use">
+		<text>Хранилище артефактов\n (в рейд можно взять только один)</text>
+	</string>
+	
+	<string id="mg_courier_pda_name">
+		<text>ПДА Курьера</text>
+	</string>
+	<string id="mg_courier_pda_descr">
+		<text>Большинство записей владелец успел перед смертью удалить, об этом свидетельствуют кровавые отпечатки пальцев на экране. Однако всё подчистить он не успел: "...теперь идти к этой деревне. Место глухое, к тому же ходят слухи, что здесь в последнее время творится какой-то беспередел. Ладно, я лишь доберусь до условленного места, дождусь посланника от Волчары и поговорю на счёт партии товара. Если этот лысый хрен не соврал, то бабло можно сорвать нехилое. Потом надо будет наведаться к своей нычке и идти на поклон к Боссу. Надеюсь, он будет в хорошем настроении."</text>
+	</string>
+	
+	<string id="mg_wolf_planshet_name">
+		<text>Компромат</text>
+	</string>
+	<string id="mg_wolf_planshet_descr">
+		<text>Планшет с фотоматериалами, аудиозаписями и документами, свидетельствующими о том, что Волчара занимался хищениями оружия и снаряжения со складов компании AD-production. Все материалы собраны курьером. Очевидно, что он был на самом деле агентом AD-production, задача которого состояла в получении информации о Волчаре. Компромат подробный и обширный, достаточный для того, чтобы создать проходимцу большие проблемы. Также есть информация о том, что Волчара успел завладеть и артефактом "Компас", спрятав его в схроне с контрабандой.</text>
+	</string>
+	
+	<string id="mg_wolf_map_name">
+		<text>Карта Волчары</text>
+	</string>
+	<string id="mg_wolf_map_descr">
+		<text>Нарисованная вручную карта окрестностей деревни. Есть пометка с подписью: "Дружище Димидрол, послал его заныкать всё как следует, а он взял и гробанулся, потому что костюмчик я ему дал немного неисправный. Что ж, зато ключик от добра похоронил вместе с собой. Так надёжней будет. Лежи, приятель, я скоро вернусь."</text>
+	</string>
+	
+	<string id="kpp_bunker_chair_rest_tip">
+		<text>Прибухнуть малёхо\n(нужна водка)</text>
+	</string>
+	
+	<string id="kpp_bunker_drink_think_text">
+		<text>Накатим.</text>
+	</string>
+	
+	<string id="mg_art_robber_tresure_mark_text">
+		<text>Вероятное местонахождение артефакта "Компас"</text>
+	</string>
+	
+	<string id="mg_airdrop_use">
+		<text>Груз с вертолёта\nзабрать содержимое</text>
+	</string>
+	
+	<string id="mg_airdrop_lost">
+		<text>%c[255,255,118,118]Посылка с вертолёта перехвачена! Гладиатор выдвигается к вам.%c[default]</text>
+	</string>
+	
+	<string id="mg_wolf_planshet_finded_tip">
+		<text>Получен предмет: планшет.</text>
+	</string>
+	<string id="mg_wolf_map_finded_tip">
+		<text>Получен предмет: карта Волчары.</text>
+	</string>
+	
+	
+	<string id="addtask_comp_name1">
+		<text>Деревенский хакер: собрать компьютер</text>
+	</string>
+	<string id="addtask_comp_name2">
+		<text>Деревенский хакер: установить компьютер в убежище</text>
+	</string>
+	<string id="addtask_comp_name3">
+		<text>Деревенский хакер: поговорить с профессором</text>
+	</string>
+	
+	<string id="addtask_comp_desc1">
+		<text>Если я отыщу где-нибудь старый компьютер, то профессор Каланча сможет починить его и вытаскивать информацию из ПДА мародёров.</text>
+	</string>
+	<string id="addtask_comp_desc2">
+		<text>Комплектующие собраны, теперь надо собрать их и установить на столе в убежище.</text>
+	</string>
+	<string id="addtask_comp_desc3">
+		<text>Уведомить профессора о том, что компьютер собран.</text>
+	</string>
+	
+	
+	<string id="maroder_random_pda_name">
+		<text>ПДА мародёра</text>
+	</string>
+	<string id="maroder_random_pda_descr">
+		<text>ПДА главаря одной из мелких шаек мародёров, снующих в окрестностях. Содержит информацию, защищённую паролем.</text>
+	</string>
+	<string id="random_pda_shron_mark_text">
+		<text>Схрон по наводке из ПДА случайного мародёра.</text>
+	</string>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
 	<string id="Btn_Cancel">
 		<text>Отменить</text>
 	</string>
@@ -129,6 +2027,45 @@
 	<string id="ui_inv_repair">
 		<text>Починить</text>
 	</string>
+	<string id="ui_inv_repair2">
+		<text>Починить снаряжение?</text>
+	</string>
+	<string id="ui_inv_repair3">
+		<text>У вас нет ремкомплектов. Разберите любое оружие(3 набора деталей).</text>
+	</string>
+
+	<string id="ui_inv_repair_outf1">
+		<text>Для ремонта необходимы: Вставки из кожи, Прорезиненая ткань.</text>
+	</string>
+	<string id="ui_inv_repair_outf2">
+		<text>Для ремонта необходимы: Набор туриста, Прорезиненая ткань.</text>
+	</string>
+	<string id="ui_inv_repair_outf3">
+		<text>Для ремонта необходимы: Синтетическая подкладка, Прорезиненая ткань.</text>
+	</string>
+	<string id="ui_inv_repair_outf4">
+		<text>Для ремонта необходимы: Подкладка под броню, Листы брони.</text>
+	</string>
+	<string id="ui_inv_repair_outf5">
+		<text>Для ремонта необходимы: Подкладка под броню, Листы брони.</text>
+	</string>
+	<string id="ui_inv_repair_outf6">
+		<text>Для ремонта Алюминиевая арматура, Армирующий материал.</text>
+	</string>
+	<string id="ui_inv_repair_outf7">
+		<text>Для ремонта необходимы: Усовершенствованные фильтры.</text>
+	</string>
+	<string id="ui_inv_repair_outf8">
+		<text>Для ремонта необходимы: Листы брони.</text>
+	</string>
+	<string id="ui_inv_repair_outf9">
+		<text>Для ремонта необходимы: Полимерные материалы.</text>
+	</string>
+	<string id="ui_inv_repair_outf10">
+		<text>Для ремонта необходимы: Титановые элементы.</text>
+	</string>
+
+
 	<string id="ui_st_cant_run_r2">
 		<text>Вы не можете запустить второй рендер на вашем компьютере</text>
 	</string>

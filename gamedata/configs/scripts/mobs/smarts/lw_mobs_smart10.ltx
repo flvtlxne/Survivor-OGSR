@@ -1,0 +1,18 @@
+[smart_terrain]
+squad_id = 109
+;максимальное число отр€дов в смарте
+max_population = 1
+arrive_dist = 10
+respawn_params = respawn@lw_sim10
+;радиус респавна. ≈сли актер ближе - не спавнить. ѕо умолчанию 150:
+respawn_radius = 50
+
+[respawn@lw_sim10]
+spawn_lw_sim10
+
+[spawn_lw_sim10]
+spawn_squads = lw_mobs_team10, lw_mobs_team10_1, lw_mobs_team10_2, lw_mobs_team10_3
+;сколько отр€дов спавнить и при каких услови€х:
+spawn_num = {+global_respawn} 1, 0
+;spawn_num = {=surge_complete} 1, 0
+

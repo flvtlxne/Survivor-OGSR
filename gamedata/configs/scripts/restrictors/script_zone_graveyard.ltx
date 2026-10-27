@@ -1,0 +1,68 @@
+[logic]
+active = sr_idle@0
+
+[sr_idle@0]
+on_info = {+random_event_graveyard} sr_idle@1
+on_info2 = {+mg_zone_graveyard =is_render_r1or2} sr_idle@mg1 %=add_self_spot(mg_deathzone_mark9a:mg_deathzone_mark1_text) =mg_zone_graveyard_think%
+on_info3 = {+mg_zone_graveyard =is_render_r3or4} sr_idle@mg1 %=add_self_spot(mg_deathzone_mark9b:mg_deathzone_mark1_text) =mg_zone_graveyard_think%
+
+[sr_idle@1]
+on_game_timer = 9|{~25} sr_idle@1_1 %=give_task(rnd_task_graveyard_maroders) =graveyard_maroders_spawn_on_base =graveyard_random_items_in_box_spawn =mark_graveyard_maroders_box1%, {~45} sr_idle@1_2 %=give_task(rnd_task_graveyard_mutants) =graveyard_mutants_spawn_on_base%, {~60} sr_idle@1_3 %=give_task(rnd_task_graveyard_artefact) =graveyard_artefact_spawn =graveyard_maroders_spawn%, {~80} sr_idle@1_4 %=give_task(rnd_task_graveyard_robbery) =graveyard_maroders_spawn_on_base =spawn_object_in(rnd_task_graveyard_item:graveyard_invbox_1) =graveyard_weapon_parts_in_box_spawn =mark_graveyard_maroders_box1%
+
+
+
+; Уничтожить мародёров:
+[sr_idle@1_1]
+;on_info = {=is_dead(graveyard_marouder_guard1) =story_object_exist(graveyard_marouder_guard1) =is_dead(graveyard_marouder_guard2) =story_object_exist(graveyard_marouder_guard2) =is_dead(graveyard_marouder_guard3) =story_object_exist(graveyard_marouder_guard3) =is_dead(graveyard_marouder_guard4) =story_object_exist(graveyard_marouder_guard4) =story_object_exist(graveyard_marouder_guard5) =is_dead(graveyard_marouder_guard5) =is_dead(graveyard_marouder_comandr) =story_object_exist(graveyard_marouder_comandr) =is_dead(graveyard_marouder_scav) =story_object_exist(graveyard_marouder_scav)} sr_idle@1_1_1 %=start_rnd_task_default_reward%
+on_info = {=counter_greater(mr_gv:6)} sr_idle@1_1_1 %=start_rnd_task_default_reward%
+; если нас ранили:
+on_info2 = {+critical_health} sr_idle@wait %=delete_graveyard_maroders =clear_box(graveyard_invbox_1) =unmark_graveyard_maroders_box1 =set_counter(mr_gv:0)%
+
+[sr_idle@1_1_1]
+on_actor_dist_ge_nvis = 100|sr_idle@wait %=delete_graveyard_maroders =clear_box(graveyard_invbox_1) -random_event_graveyard =unmark_graveyard_maroders_box1 -graveyard_marod_hit%
+
+
+; Уничтожить мутантов:
+[sr_idle@1_2]
+;on_info = {=is_dead(graveyard_mob_1) =story_object_exist(graveyard_mob_1) =is_dead(graveyard_mob_2) =story_object_exist(graveyard_mob_2) =is_dead(graveyard_mob_3) =story_object_exist(graveyard_mob_3) =is_dead(graveyard_mob_4) =story_object_exist(graveyard_mob_4) =is_dead(graveyard_mob_5) =story_object_exist(graveyard_mob_5) =is_dead(graveyard_mob_6) =story_object_exist(graveyard_mob_6) =is_dead(graveyard_mob_7) =story_object_exist(graveyard_mob_7) =is_dead(graveyard_mob_8) =story_object_exist(graveyard_mob_8) =is_dead(graveyard_mob_9) =story_object_exist(graveyard_mob_9) =is_dead(graveyard_mob_10) =story_object_exist(graveyard_mob_10)} sr_idle@1_1_2 %=start_rnd_task_default_reward%
+on_info = {=counter_greater(mb_gv:9)} sr_idle@1_1_2 %=start_rnd_task_default_reward%
+; если нас ранили:
+on_info2 = {+critical_health} sr_idle@wait %=delete_graveyard_mobs =set_counter(mb_gv:0)%
+
+[sr_idle@1_1_2]
+on_actor_dist_ge_nvis = 100|sr_idle@wait %=delete_graveyard_mobs -random_event_graveyard%
+
+
+; Найти артефакт:
+[sr_idle@1_3]
+on_info = {=actor_has_item(graveyard_rnd_artefact)} sr_idle@1_1_3 %+graveyard_rnd_artefact_gathered%
+; если нас ранили:
+on_info2 = {+critical_health} sr_idle@wait %=delete_graveyard_artefact =delete_graveyard_anomalys =delete_graveyard_maroders =set_counter(mr_gv:0)%
+
+[sr_idle@1_1_3]
+on_actor_dist_ge_nvis = 100|sr_idle@wait %=delete_graveyard_anomalys =delete_graveyard_maroders -graveyard_marod_hit%
+
+
+; Выкрасть ценный груз:
+[sr_idle@1_4]
+on_info = {=actor_has_item(rnd_task_graveyard_item)} sr_idle@1_1_4 %+graveyard_rnd_item_gathered%
+; если нас ранили:
+on_info2 = {+critical_health} sr_idle@wait %=delete_graveyard_maroders =clear_box(graveyard_invbox_1) =unmark_graveyard_maroders_box1 =set_counter(mr_gv:0)%
+
+[sr_idle@1_1_4]
+on_actor_dist_ge_nvis = 100|sr_idle@wait %=delete_graveyard_maroders =unmark_graveyard_maroders_box1 -graveyard_marod_hit%
+
+
+
+; Вспомогательная секция ожидания:
+[sr_idle@wait]
+on_info = {-random_event_graveyard} sr_idle@0 %=set_counter(mr_gv:0) =set_counter(mb_gv:0)%
+
+
+
+; Для режима Мастер:
+[sr_idle@mg1]
+on_info = {-mg_zone_graveyard =is_render_r1or2} sr_idle@0 %=remowe_self_spot(mg_deathzone_mark9a:mg_deathzone_mark1_text)%
+on_info2 = {-mg_zone_graveyard =is_render_r3or4} sr_idle@0 %=remowe_self_spot(mg_deathzone_mark9b:mg_deathzone_mark1_text)%
+
+

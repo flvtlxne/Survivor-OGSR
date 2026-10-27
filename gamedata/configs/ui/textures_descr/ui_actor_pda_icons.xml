@@ -38,5 +38,15 @@
 		<texture id="ui_inGame2_Detector_icon_artefact" x="2" y="569" width="8" height="8" />
 
 	    <texture id="ui_inGame2_PDA_icon_location" x="0" y="585" width="205" height="205" />
+		
    </file>
+   
+   <file name="ui\ui_icon_special_zone">
+		
+		<texture id="ui_inGame2_PDA_icon_location1a" x="18" y="14" width="2025" height="2025" />	<!--для статики и динамики-->
+		<texture id="ui_inGame2_PDA_icon_location1b" x="18" y="14" width="1490" height="1490" />	<!--для dx10-11-->
+
+		
+   </file>
+   
 </w>

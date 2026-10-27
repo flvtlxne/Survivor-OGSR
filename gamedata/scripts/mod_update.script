@@ -1,0 +1,617 @@
+
+-- Функционал с постоянной проверкой -----------------------------------------------------------
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+
+
+-- Голод: ----------------------------------------------------
+
+function hunger_control()
+if db.actor:alive() then
+local sat = db.actor.satiety
+	if sat>0 then
+		sat = -0.001
+	end
+end
+end
+
+function hunger_effect()
+if db.actor:alive() then
+local sat = db.actor.satiety
+local hunger_health_factor1 = -0.0001
+local hunger_health_factor2 = -0.0003
+	if sat<1.0 and sat>0.0005 then
+		db.actor.health = hunger_health_factor1
+		hunger_effect_hud_mesg1()	--	"страдаю от голода"
+	elseif sat<0.0005 then
+		db.actor.health = hunger_health_factor2
+		hunger_effect_hud_mesg2()	--	"умираю от голода"
+	end
+end
+end
+
+function hunger_effect_hud_mesg1()
+	local st = get_hud():GetCustomStatic("hunger_effect_hud_mesg1") or get_hud():AddCustomStatic("hunger_effect_hud_mesg1",true)
+	st.m_endTime = time_global()/1000 + 1
+end
+
+function hunger_effect_hud_mesg2()
+	local st = get_hud():GetCustomStatic("hunger_effect_hud_mesg2") or get_hud():AddCustomStatic("hunger_effect_hud_mesg2",true)
+	st.m_endTime = time_global()/1000 + 1
+end
+
+-- тенденция к уменьшению;
+-- 1-0.005 слабый голод
+-- 0.005-0.0 сильный голод
+
+
+-- Критическое ранение: ----------------------------------------------------
+lite_treshold = 0.03    --'насколько должно уменьшиться здоровье с предыдущего обновления, чтобы экран окрасился в красный
+crit_treshold = 0.20    --'насколько должно уменьшиться здоровье с предыдущего обновления, чтобы ГГ начало шатать
+drop_item_on_crit_prob = 0.20    --'вероятность того, что ГГ выронит оружие
+effector_power_coeff = 0.7
+prev_health = -1
+ 
+function wounded_pp_update()
+    if prev_health > (db.actor.health + lite_treshold) then
+      level.add_pp_effector("fire_hit.ppe", 2011, false)
+      local effector_power = (prev_health - db.actor.health)*100*effector_power_coeff
+      level.set_pp_effector_factor(2011, effector_power)
+      if prev_health > db.actor.health + crit_treshold then
+        level.add_cam_effector("camera_effects\\fusker.anm", 999, false, "") 
+		soundtrack.hit_replics()
+        if math.random() < drop_item_on_crit_prob then
+          local active_item = db.actor:active_item()
+          if active_item and active_item:section() ~= "bolt" and active_item:section()~= "wpn_knife" then
+            db.actor:drop_item(active_item)
+          end
+        end
+      end
+    prev_health = db.actor.health
+    end
+end
+
+
+
+-- Нас сильно поранили и пора возвращаться домой: --------------------------------------------
+
+function critical_health_effect()
+local diff = level.get_game_difficulty()
+
+if diff == 0 then health_threasold = 0.05	--	новичок;
+elseif diff == 1 then health_threasold = 0.10 	-- сталкер;
+elseif diff == 2 then health_threasold = 0.15	-- ветеран;
+elseif diff == 3 then health_threasold = 0.20 	-- мастер;
+end
+local hud = get_hud()
+local health = db.actor.health
+local health_screen_effect = health_threasold + 0.25		-- уровень здоровья, при котором экран будет мигать красным;
+if health < health_screen_effect and db.actor:dont_has_info("critical_health") and has_alife_info("stranger_talk1") then
+	level.add_pp_effector("thermal.ppe", 1084, false)
+end
+if db.actor:alive() and has_alife_info("stranger_talk1") and db.actor:dont_has_info("actor_set_maroder") then
+if not xr_conditions.actor_in_zone(nil,nil,{"village_trap_house_room_zone"}) 
+		and not xr_conditions.actor_in_zone(nil,nil,{"village_proval_zone"})
+		and not xr_conditions.actor_in_zone(nil,nil,{"lonl_house_save_zone"})
+		and not xr_conditions.actor_in_zone(nil,nil,{"willage_stranger_trap_zone"})
+		and not xr_conditions.actor_in_zone(nil,nil,{"village_tunnel_zone"}) then	-- проверка, что актор не в сюжетном месте;
+	if health <= health_threasold then 
+	if xr_conditions.actor_in_kpp_fight() == false then	-- проверка, не идёт ли финальная битва;
+	if xr_conditions.actor_in_car1() == false then	-- проверка, не в тачке ли актор;
+	if db.actor:dont_has_info("critical_health") then
+			db.actor:give_info_portion ("critical_health")	-- по инфо переносим лут(кроме костюма) в ящик и удаляем его;
+			hud:HideActorMenu()
+			hud:HidePdaMenu()
+			db.actor:stop_talk()
+			soundtrack.actor_critical_health_replic()
+			critical_health_think()
+			db.actor.health = health + 1.0
+			db.actor.bleeding = 1.0
+			start_real_timer(5, "mod_timer_functions.critical_health_effect_action1")	-- лечим ГГ;
+			start_real_timer(10, "mod_timer_functions.critical_health_effect_action2")	-- шлём типс от Незнакомца; 
+			db.actor:set_actor_position(patrol("lonl_house_bed_point1"):point(0))
+			level.add_pp_effector("deadcity_wake.ppe", 1924, false)
+			level.show_weapon(false)
+		--	xr_effects.forward_game_time(actor, nil, {"1"})		-- перематываем время на час вперёд:
+		-- удаляем все инфопоршены рандомных заданий, т.к. теперь они провалены:
+			disable_info("random_event_helicrash")
+			disable_info("random_event_blokpost")
+			disable_info("random_event_forest")
+			disable_info("random_event_forest_camp")
+			disable_info("random_event_graveyard")
+			disable_info("random_event_razlom")
+			disable_info("random_event_island")
+			disable_info("random_event_rad_hill")
+			disable_info("random_event_willage")
+			disable_info("random_event_workshop")
+			disable_info("random_event_lonl_house")
+			disable_info("courier_task")
+			disable_info("courier_task_fail")
+			xr_effects.delete_maroder_courier()
+		-- а также удаляем квестовые предметы\артефакты, они больше не нужны:
+			rnd_tasks_items_delete()
+			low_health_counter()
+		
+		-- переспавниваем транспорт:
+			mod_functions.reload_car1()
+			mod_functions.reload_car2()
+			mod_functions.reload_car3()
+			mod_functions.reload_car4()
+			
+		-- и выдаём все задания по новой:
+			start_real_timer(15, "mod_timer_functions.critical_health_effect_action3")
+			
+	end
+	end
+	end
+	end
+end
+end
+end
+
+function low_health_counter()
+local counter_name = "low_health"
+	local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
+	if cnt_value < 10 then
+		xr_effects.inc_counter(db.actor, nil, {"low_health",tostring(1)})
+	end
+end
+
+function critical_health_think()
+	local st = get_hud():GetCustomStatic("critical_health_think") or get_hud():AddCustomStatic("critical_health_think",true)
+	st.m_endTime = time_global()/1000 + 5
+end
+
+function rnd_tasks_items_delete()
+if db.actor:object("rnd_task_kpp_item") ~= nil then
+	mod_functions.remove_items("rnd_task_kpp_item", 1)
+end
+if db.actor:object("rnd_task_workshop_item") ~= nil then
+	mod_functions.remove_items("rnd_task_workshop_item", 1)
+end
+if db.actor:object("rnd_task_willage_item") ~= nil then
+	mod_functions.remove_items("rnd_task_willage_item", 1)
+end
+if db.actor:object("rnd_task_graveyard_item") ~= nil then
+	mod_functions.remove_items("rnd_task_graveyard_item", 1)
+end
+if db.actor:object("rnd_task_rad_hill_item") ~= nil then
+	mod_functions.remove_items("rnd_task_rad_hill_item", 1)
+end
+if db.actor:object("rnd_task_razlom_item") ~= nil then
+	mod_functions.remove_items("rnd_task_razlom_item", 1)
+end
+if db.actor:object("kpp_rnd_artefact") ~= nil then
+	mod_functions.remove_items("kpp_rnd_artefact", 1)
+end
+if db.actor:object("willage_rnd_artefact") ~= nil then
+	mod_functions.remove_items("willage_rnd_artefact", 1)
+end
+if db.actor:object("workshop_rnd_artefact") ~= nil then
+	mod_functions.remove_items("workshop_rnd_artefact", 1)
+end
+if db.actor:object("graveyard_rnd_artefact") ~= nil then
+	mod_functions.remove_items("graveyard_rnd_artefact", 1)
+end
+if db.actor:object("rad_hill_rnd_artefact") ~= nil then
+	mod_functions.remove_items("rad_hill_rnd_artefact", 1)
+end
+if db.actor:object("razlom_rnd_artefact") ~= nil then
+	mod_functions.remove_items("razlom_rnd_artefact", 1)
+end
+if db.actor:object("island_rnd_artefact") ~= nil then
+	mod_functions.remove_items("island_rnd_artefact", 1)
+end
+if db.actor:object("rnd_task_island_item") ~= nil then
+	mod_functions.remove_items("rnd_task_island_item", 1)
+end
+if db.actor:object("forest_rnd_artefact") ~= nil then
+	mod_functions.remove_items("forest_rnd_artefact", 1)
+end
+if db.actor:object("rnd_task_forest_item") ~= nil then
+	mod_functions.remove_items("rnd_task_forest_item", 1)
+end
+if db.actor:object("forest_camp_rnd_artefact") ~= nil then
+	mod_functions.remove_items("forest_camp_rnd_artefact", 1)
+end
+if db.actor:object("rnd_task_forest_camp_item") ~= nil then
+	mod_functions.remove_items("rnd_task_forest_camp_item", 1)
+end
+if db.actor:object("rnd_task_helicrash_item") ~= nil then
+	mod_functions.remove_items("rnd_task_helicrash_item", 1)
+end
+if db.actor:object("helicrash_rnd_artefact") ~= nil then
+	mod_functions.remove_items("helicrash_rnd_artefact", 1)
+end
+if db.actor:object("maroder_courier_item") ~= nil then
+	mod_functions.remove_items("maroder_courier_item", 1)
+end
+end
+
+-- Индикация непрочитанного блокнота: --------------------------------------------
+
+function note_using_indication()
+if db.actor:alive() and has_alife_info("note_using") then
+	local st = get_hud():GetCustomStatic("note_using_indicator") or get_hud():AddCustomStatic("note_using_indicator",true)
+	st.m_endTime = time_global()/1000 + 1
+end
+end
+
+
+-- Временная неуязвимость (для теста) -------------------------------------------
+
+function invulnerability()
+if has_alife_info("invulnerability") then
+	db.actor.health = 1.0
+	db.actor.bleeding = 1.0
+end
+end
+
+-- Если актор в машине и низкое здоровье, то удаляем её, ибо смерть в тачке = движковый вылет: -----------------
+
+function car_death_control()
+local health = db.actor.health
+local health_threasold = 0.5
+if ( health <= health_threasold and xr_conditions.actor_in_car1() == true ) then
+		mod_functions.del_car1()
+		local pos = db.actor:position()
+		local fx_particle = particles_object("explosions\\expl_car")
+		fx_particle:play_at_pos(pos)
+		soundtrack.explosion()
+		start_real_timer(1, "mod_timer_functions.kill_actor_timer_action")
+end
+end
+
+
+-- Автоиспользуемые предметы: ---------------------------------------------------------------------------------------
+
+function autousable_items()
+if ( db.actor:object("lonl_house_deadman_diary1") ~= nil and db.actor:dont_has_info("deadman_diary_info1") ) then
+	db.actor:give_info_portion ("deadman_diary_info1")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary1", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary2") ~= nil and db.actor:dont_has_info("deadman_diary_info2") ) then
+	db.actor:give_info_portion ("deadman_diary_info2")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary2", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary3") ~= nil and db.actor:dont_has_info("deadman_diary_info3") ) then
+	db.actor:give_info_portion ("deadman_diary_info3")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary3", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary4") ~= nil and db.actor:dont_has_info("deadman_diary_info4") ) then
+	db.actor:give_info_portion ("deadman_diary_info4")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary4", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary5") ~= nil and db.actor:dont_has_info("deadman_diary_info5") ) then
+	db.actor:give_info_portion ("deadman_diary_info5")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary5", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary6") ~= nil and db.actor:dont_has_info("deadman_diary_info6") ) then
+	db.actor:give_info_portion ("deadman_diary_info6")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary6", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary7") ~= nil and db.actor:dont_has_info("deadman_diary_info7") ) then
+	db.actor:give_info_portion ("deadman_diary_info7")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary7", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary8") ~= nil and db.actor:dont_has_info("deadman_diary_info8") ) then
+	db.actor:give_info_portion ("deadman_diary_info8")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary8", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary9") ~= nil and db.actor:dont_has_info("deadman_diary_info9") ) then
+	db.actor:give_info_portion ("deadman_diary_info9")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary9", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lonl_house_deadman_diary10") ~= nil and db.actor:dont_has_info("deadman_diary_info10") ) then
+	db.actor:give_info_portion ("deadman_diary_info10")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lonl_house_deadman_diary10", 1)
+	soundtrack.papers_use()
+end
+
+-- Дневники пилота МИ-24:
+if ( db.actor:object("lost_soldier_diary1") ~= nil and db.actor:dont_has_info("lost_soldier_info1") ) then
+	db.actor:give_info_portion ("lost_soldier_info1")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lost_soldier_diary1", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lost_soldier_diary2") ~= nil and db.actor:dont_has_info("lost_soldier_info2") ) then
+	db.actor:give_info_portion ("lost_soldier_info2")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lost_soldier_diary2", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lost_soldier_diary3") ~= nil and db.actor:dont_has_info("lost_soldier_info3") ) then
+	db.actor:give_info_portion ("lost_soldier_info3")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lost_soldier_diary3", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lost_soldier_diary4") ~= nil and db.actor:dont_has_info("lost_soldier_info4") ) then
+	db.actor:give_info_portion ("lost_soldier_info4")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lost_soldier_diary4", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("lost_soldier_diary5") ~= nil and db.actor:dont_has_info("lost_soldier_info5") ) then
+	db.actor:give_info_portion ("lost_soldier_info5")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("lost_soldier_diary5", 1)
+	soundtrack.papers_use()
+end
+
+
+-- Дневники ликвидатора:
+if ( db.actor:object("likvidator_diary1") ~= nil and db.actor:dont_has_info("likvidator_info1") ) then
+	db.actor:give_info_portion ("likvidator_info1")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("likvidator_diary1", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("likvidator_diary2") ~= nil and db.actor:dont_has_info("likvidator_info2") ) then
+	db.actor:give_info_portion ("likvidator_info2")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("likvidator_diary2", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("likvidator_diary3") ~= nil and db.actor:dont_has_info("likvidator_info3") ) then
+	db.actor:give_info_portion ("likvidator_info3")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("likvidator_diary3", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("likvidator_diary4") ~= nil and db.actor:dont_has_info("likvidator_info4") ) then
+	db.actor:give_info_portion ("likvidator_info4")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("likvidator_diary4", 1)
+	soundtrack.papers_use()
+end
+
+-- Дневники Прощелыги:
+if ( db.actor:object("personal_dog_note1") ~= nil and db.actor:dont_has_info("personal_dog_note1_info") ) then
+	db.actor:give_info_portion ("personal_dog_note1_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("personal_dog_note1", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("personal_dog_note2") ~= nil and db.actor:dont_has_info("personal_dog_note2_info") ) then
+	db.actor:give_info_portion ("personal_dog_note2_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("personal_dog_note2", 1)
+	soundtrack.papers_use()
+end
+
+
+-- Дневники Учёного:
+if ( db.actor:object("narkoman_note1") ~= nil and db.actor:dont_has_info("narkoman_note1_info") ) then
+	db.actor:give_info_portion ("narkoman_note1_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("narkoman_note1", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("narkoman_note2") ~= nil and db.actor:dont_has_info("narkoman_note2_info") ) then
+	db.actor:give_info_portion ("narkoman_note2_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("narkoman_note2", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("narkoman_note3") ~= nil and db.actor:dont_has_info("narkoman_note3_info") ) then
+	db.actor:give_info_portion ("narkoman_note3_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("narkoman_note3", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("narkoman_note4") ~= nil and db.actor:dont_has_info("narkoman_note4_info") ) then
+	db.actor:give_info_portion ("narkoman_note4_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("narkoman_note4", 1)
+	soundtrack.papers_use()
+end
+
+-- Дневник мародёра-завхоза:
+if ( db.actor:object("maroder_zavhoz_note") ~= nil and db.actor:dont_has_info("maroder_zavhoz_note_info") ) then
+	db.actor:give_info_portion ("maroder_zavhoz_note_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("maroder_zavhoz_note", 1)
+	soundtrack.papers_use()
+end
+
+-- Дневники сталкера-разведчика:
+if ( db.actor:object("arthunter_note1") ~= nil and db.actor:dont_has_info("arthunter_note1_info") ) then
+	db.actor:give_info_portion ("arthunter_note1_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("arthunter_note1", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("arthunter_note2") ~= nil and db.actor:dont_has_info("arthunter_note2_info") ) then
+	db.actor:give_info_portion ("arthunter_note2_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("arthunter_note2", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("arthunter_note3") ~= nil and db.actor:dont_has_info("arthunter_note3_info") ) then
+	db.actor:give_info_portion ("arthunter_note3_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("arthunter_note3", 1)
+	soundtrack.papers_use()
+end
+
+-- Записки самоубийцы-карлика:
+if ( db.actor:object("willage_suicider_diary1") ~= nil and db.actor:dont_has_info("suicider_note1_info") ) then
+	db.actor:give_info_portion ("suicider_note1_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("willage_suicider_diary1", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("willage_suicider_diary2") ~= nil and db.actor:dont_has_info("suicider_note2_info") ) then
+	db.actor:give_info_portion ("suicider_note2_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("willage_suicider_diary2", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("willage_suicider_diary3") ~= nil and db.actor:dont_has_info("suicider_note3_info") ) then
+	db.actor:give_info_portion ("suicider_note3_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("willage_suicider_diary3", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("willage_suicider_diary4") ~= nil and db.actor:dont_has_info("suicider_note4_info") ) then
+	db.actor:give_info_portion ("suicider_note4_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("willage_suicider_diary4", 1)
+	soundtrack.papers_use()
+end
+
+
+-- Записки снайпера:
+if ( db.actor:object("quest_sniper_note1") ~= nil and db.actor:dont_has_info("sniper_note1_info") ) then
+	db.actor:give_info_portion ("sniper_note1_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("quest_sniper_note1", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("quest_sniper_note2") ~= nil and db.actor:dont_has_info("sniper_note2_info") ) then
+	db.actor:give_info_portion ("sniper_note2_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("quest_sniper_note2", 1)
+	soundtrack.papers_use()
+end
+if ( db.actor:object("quest_sniper_note3") ~= nil and db.actor:dont_has_info("sniper_note3_info") ) then
+	db.actor:give_info_portion ("sniper_note3_info")
+	db.actor:give_info_portion ("note_using")
+	mod_functions.remove_items("quest_sniper_note3", 1)
+	soundtrack.papers_use()
+end
+
+
+
+-- Личные ПДА:
+if ( db.actor:object("marouder_lider_3pda") ~= nil and db.actor:dont_has_info("marouder_lider_3pda_info") ) then
+	db.actor:give_info_portion ("marouder_lider_3pda_info")
+	news_manager.send_tip(db.actor, "marouder_lider_3pda_tip", nil, "default", 25000, nil)
+	mod_functions.remove_items("marouder_lider_3pda", 1)
+end
+if ( db.actor:object("lw_stranger_pda") ~= nil and db.actor:dont_has_info("lw_stranger_pda_info") ) then
+	db.actor:give_info_portion ("lw_stranger_pda_info")
+	news_manager.send_tip(db.actor, "lw_stranger_pda_tip", nil, "default", 25000, nil)
+	--mod_functions.remove_items("lw_stranger_pda", 1)
+end
+if ( db.actor:object("shron_merc_lider_pda") ~= nil and db.actor:dont_has_info("shron_merc_lider_pda_info") ) then
+	db.actor:give_info_portion ("shron_merc_lider_pda_info")
+	news_manager.send_tip(db.actor, "shron_merc_lider_pda_tip", nil, "default", 25000, nil)
+	mod_functions.remove_items("shron_merc_lider_pda", 1)
+end
+if ( db.actor:object("scaner_maroder1_pda") ~= nil and db.actor:dont_has_info("scaner_maroder1_pda_info") ) then
+	db.actor:give_info_portion ("scaner_maroder1_pda_info")
+	news_manager.send_tip(db.actor, "scaner_maroder1_pda_tip", nil, "default", 25000, nil)
+	mod_functions.remove_items("scaner_maroder1_pda", 1)
+end
+if ( db.actor:object("anomaly_maroder1_pda") ~= nil and db.actor:dont_has_info("anomaly_maroder1_pda_info") ) then
+	db.actor:give_info_portion ("anomaly_maroder1_pda_info")
+	news_manager.send_tip(db.actor, "anomaly_maroder1_pda_tip", nil, "default", 25000, nil)
+	mod_functions.remove_items("anomaly_maroder1_pda", 1)
+	start_real_timer(3, "mod_timer_functions.anomaly_maroder1_pda_action")
+end
+if ( db.actor:object("btr_maroder_pda") ~= nil and db.actor:dont_has_info("btr_maroder_pda_info") ) then
+	db.actor:give_info_portion ("btr_maroder_pda_info")
+	news_manager.send_tip(db.actor, "btr_maroder_pda_tip", nil, "default", 25000, nil)
+	mod_functions.remove_items("btr_maroder_pda", 1)
+end
+if ( db.actor:object("village_roof_maroder_pda") ~= nil and db.actor:dont_has_info("village_roof_maroder_pda_info") ) then
+	db.actor:give_info_portion ("village_roof_maroder_pda_info")
+	news_manager.send_tip(db.actor, "village_roof_maroder_pda_tip", nil, "default", 25000, nil)
+	mod_functions.remove_items("village_roof_maroder_pda", 1)
+end
+
+
+end
+
+
+
+-- Удаляем лишние ножи, если уже есть хотя-бы 1 ---------------------------------------------
+function knife_count_control()
+if db.actor:object("wpn_knife") ~= nil and sgm_functions.have_item_count("wpn_knife",2) then
+mod_functions.remove_items("wpn_knife", 1)
+end
+end
+
+
+-- Проверка на открытый инвентарь ------------------------------------------------------------
+
+function check_inventory_opened()
+local hud = get_hud()
+if has_alife_info("inventory_wnd_opened") then
+--	hud:AddCustomStatic("maroder_icon", true)	
+end
+if db.actor:dont_has_info("inventory_wnd_opened") then
+--	hud:RemoveCustomStatic("maroder_icon")
+end
+if has_alife_info("actor_set_maroder") then
+	hud:HidePdaMenu()
+	level.add_pp_effector("black_white.ppe", 2111, false)
+	local st = get_hud():GetCustomStatic("actor_maroder_think") or get_hud():AddCustomStatic("actor_maroder_think",true)
+	st.m_endTime = time_global()/1000 + 25
+end
+end
+
+
+-- Фишки для режима Мастер(Соревнование) ------------------------------------------------------------
+
+function mg_game_functions()
+if xr_conditions.master_difficulty() == true then
+
+if db.actor:object("af_electra_sparkler_mg") ~= nil then
+	db.actor.power = 0.001
+end
+if db.actor:object("af_gravi_mg") ~= nil then
+	db.actor.health = 0.0002
+end
+if db.actor:object("af_gold_fish_mg") ~= nil then
+	mod_functions.repair_both_actor_weapons()
+end
+if db.actor:object("af_blood_mg") ~= nil then
+	db.actor.radiation = -1.0
+end
+
+
+end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

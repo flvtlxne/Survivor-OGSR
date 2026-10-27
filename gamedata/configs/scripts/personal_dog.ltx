@@ -1,0 +1,65 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {+wounded_dog_help} mob_move, mob_remark@wounded1
+on_death = mob_death
+
+[mob_remark@wounded1]
+anim = lie_idle_1
+anim_head = lie_idle_1
+combat_ignore_cond = true
+on_game_timer = 15|mob_remark@wounded2 %=play_sound(wounded_dog_snd)%
+on_info = {=npc_in_actor_frustum =dist_to_actor_le(5)} %=personal_dog_commands_hint0%
+on_info2 = {+wounded_dog_help} mob_remark@wounded3 %=disable_ui =run_postprocess(fade_in) =add_self_spot(personal_dog_mark:personal_dog_mark_text) =set_visual_memory_enabled(0)%
+
+[mob_remark@wounded2]
+anim = lie_idle_2
+anim_head = lie_idle_1
+combat_ignore_cond = true
+on_game_timer = 15|mob_remark@wounded1 %=play_sound(wounded_dog_snd)%
+on_info = {=npc_in_actor_frustum =dist_to_actor_le(5)} %=personal_dog_commands_hint0%
+on_info2 = {+wounded_dog_help} mob_remark@wounded3 %=disable_ui =run_postprocess(fade_in) =add_self_spot(personal_dog_mark:personal_dog_mark_text)%
+
+[mob_remark@wounded3]
+anim = lie_idle_0
+combat_ignore_cond = true
+on_game_timer = 15|mob_move %=enable_ui =set_visual_memory_enabled(0)%
+
+
+; Рабочие секции:
+[mob_home@lonl_house]
+path_home = travel_point_lonl_house
+home_min_radius = 3
+home_max_radius = 8
+invulnerable = true
+combat_ignore_cond = {=captured_monster_ignore_precond} true
+on_info = {-personal_dog_gohome} mob_move %-personal_dog_stay =set_visual_memory_enabled(1)%
+on_info2 = {=npc_in_actor_frustum =dist_to_actor_le(5)} %=personal_dog_commands_hint2%
+on_info3 = {!npc_in_actor_frustum =dist_to_actor_ge(25) !npc_in_zone(lonl_house_save_zone)} %=personal_dog_gohome2%
+
+[mob_remark@stay]
+anim = sit_idle_0
+combat_ignore_cond = true
+invulnerable = true
+on_info = {-personal_dog_stay} mob_move %=set_visual_memory_enabled(1)%
+on_info2 = {=npc_in_actor_frustum =dist_to_actor_le(5)} %=personal_dog_commands_hint2%
+
+[mob_move]
+captured_actor = true
+combat_ignore_cond = {=captured_monster_ignore_precond} true
+;invulnerable = true
+on_info = {+personal_dog_gohome} mob_home@lonl_house %=add_self_spot(personal_dog_mark:personal_dog_mark_text) =set_visual_memory_enabled(0)%
+on_info2 = {+personal_dog_stay} mob_remark@stay %=add_self_spot(personal_dog_mark:personal_dog_mark_text) =set_visual_memory_enabled(0)%
+on_info3 = {=npc_in_actor_frustum =dist_to_actor_le(5)} %=personal_dog_commands_hint1%
+
+
+
+[mob_death]
+on_info = %+personal_dog_dead =send_tip(personal_dog_dead:default)%
+
+
+
+
+
+

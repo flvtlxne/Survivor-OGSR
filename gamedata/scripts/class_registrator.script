@@ -129,9 +129,15 @@ function register(object_factory)
 	-- PDA       -------------------------------------------------------------------------------------------------------------------------
 
 	cs_register (object_factory, "CPda",						"se_item.se_pda",						"S_PDA",			"obj_pda_s")
+	
 
 
 	-- ONLINE_OFFLINE_GROUP --------------------------------------------------------------------------------------------------------------
 
 	s_register	(object_factory, 							"sim_squad_scripted.sim_squad_scripted",	"ON_OFF_S",			"online_offline_group_s")
+	--/#+# [se_stor] дополнение для объектов универсального хранилища:
+	if se_stor then
+		cs_register(object_factory, "CGameObject", "se_stor.se_custom_storage", "CUST_ST", "custom_storage")
+	end
+	--/< -------------------------------------------------------------
 end

@@ -1,0 +1,226 @@
+--Уборщик трупов мутантов для Зова Припяти версия 0.1 (4.10.2009)
+local show_detailed_logs = true --отображать подробную статистику в ПДА-Журнал-История
+--схема удаления трупов монстров
+local dist_to_corpses_motstr = 20 --расстояние от ГГ, свыше которого считаются трупы.
+local tabl_monsters_dead={} --все мёртвые монстры
+local summ_dead_monsters = 5 --общее допустимое число трупов монстров на всех локациях (не включая СИД)
+local tabl_monsters_stat_total = {} --статистика по монстрам всего
+local tabl_monsters_stat_live = {} --статистика по монстрам живым
+local tabl_monsters_stat_dead = {} --статистика по монстрам мёртвым
+local tabl_monsters_stat_dead_removed = {} --статистика по монстрам мёртвым убранным
+local tabl_monsters_live_restrict = { --ограничения на количество живых монстров (-1 - без ограничений)
+	[clsid.boar_s] = -1,
+	[clsid.bloodsucker_s] = -1,
+	[clsid.dog_s] = -1,
+	[clsid.flesh_s] = -1,
+	[clsid.psy_dog_s] = -1,
+	[clsid.pseudodog_s] = -1,
+	[clsid.burer_s] = -1,
+	[clsid.cat_s] = -1,
+	[clsid.chimera_s] = -1,
+	[clsid.controller_s] = -1,
+	[clsid.fracture_s] = -1,
+	[clsid.poltergeist_s] = -1,
+	[clsid.gigant_s] = -1,
+	[clsid.zombie_s] = -1,
+	[clsid.tushkano_s] = -1,
+	[clsid.snork_s] = -1
+}
+for m,c in pairs(tabl_monsters_live_restrict) do
+	tabl_monsters_stat_total[m] = 0
+	tabl_monsters_stat_live[m] = 0
+	tabl_monsters_stat_dead[m] = 0
+	tabl_monsters_stat_dead_removed[m] = 0
+end
+
+local monsters_total_count = 0
+local monsters_live_count = 0
+local monsters_dead_count = 0
+local monsters_dead_removed_count = 0
+
+local tabl_monsters_dead_names = {
+	[clsid.boar_s] 		= "кабанов",
+	[clsid.bloodsucker_s] 	= "кровососов",
+	[clsid.dog_s] 		= "собак",
+	[clsid.flesh_s] 	= "плотей",
+	[clsid.psy_dog_s] 	= "пси-собак",
+	[clsid.pseudodog_s] 	= "псевдособак",
+	[clsid.burer_s] 	= "бюреров",
+	[clsid.chimera_s] 	= "химер",
+	[clsid.controller_s] 	= "контролёров",
+	[clsid.poltergeist_s] 	= "полтергейстов",
+	[clsid.gigant_s] 	= "псевдогигантов",
+	[clsid.tushkano_s] 	= "тушканов",
+	[clsid.snork_s]		= "снорков",
+--	Удаленные в ЗП
+	[clsid.cat_s]		= "котов",
+	[clsid.fracture_s]	= "изломов",
+	[clsid.zombie_s]	= "зомби"
+}
+
+
+--список секций оружия, которое остается лежать на земле (поиск как части названия!)
+local tabl_wpn_keep = {
+--надо заполнять
+}
+
+function get_clsid(obj)
+    if obj == nil then return nil end
+
+  return obj:clsid()
+
+--    if is_object_online(npc:id()) then
+--      return npc:clsid()
+--    else
+--        return nil
+--    end
+end
+
+
+function off_corpses()
+	for a=1,65535,1 do
+	local obj = alife():object(a)
+		if obj then
+			local posobj = obj.position
+			local actorpos = db.actor:position()
+			if IsMonster(obj) then
+				local id = get_clsid(obj)
+				if id then --оказывается, тут бывают вылеты - проверим на всякий пожарный, вдруг класса нет??
+					if tabl_monsters_stat_total[id] then
+						tabl_monsters_stat_total[id] = tabl_monsters_stat_total[id] + 1
+					end
+					monsters_total_count = monsters_total_count + 1				
+					if not obj:alive() and
+						posobj:distance_to(actorpos) > dist_to_corpses_motstr then 
+						table.insert(tabl_monsters_dead, obj)
+						tabl_monsters_stat_dead[id] = tabl_monsters_stat_dead[id] + 1
+						monsters_dead_count = monsters_dead_count + 1
+					end
+				else --если монстр, да еще и труп - все равно киляем нахер - чего ему делать в игре, мёртвому тем более без класса?
+					if not obj:alive() then
+						alife():release(obj,true)
+					end
+				end
+			end
+		end
+--На будущее, пока не делаем уборку
+--[[
+		local wpn_name = obj:name()
+		if (obj.parent_id and obj.parent_id == 65535) then
+			if isWeapon(obj) then
+				if obj_protected(wpn_name,tabl_wpn_keep)==false and posobj:distance_to(actorpos) > dist_to_weapons then 
+					table.insert(tabl_weapons, obj)
+				end
+			else
+				get_console():execute("flush")
+			end
+		end
+]]
+	end
+--Формат отсылки ньюсов: send_tip(actor, news_id, timeout, sender, showtime, sender_id)	
+	--зачистка мёртвых монстров
+	if table.getn(tabl_monsters_dead) > summ_dead_monsters then
+		--local before=table.getn(tabl_monsters_dead)
+		--news_manager.send_tip(db.actor,"before.. " - всего трупов мутантов",nil,"Уборщик",nil,nil)
+		table.sort(tabl_monsters_dead,max_comp)
+		if table.getn(tabl_monsters_dead) > summ_dead_monsters then
+			local  b = table.getn(tabl_monsters_dead)
+			local n = b
+			while b > summ_dead_monsters and n > 0 do
+				local corps = tabl_monsters_dead[n]
+				alife():release(corps,true)
+				table.remove(tabl_monsters_dead,n)
+				b=b-1
+				local id = get_clsid(corps)
+				tabl_monsters_stat_dead_removed[id] = tabl_monsters_stat_dead_removed[id] + 1
+				monsters_dead_removed_count = monsters_dead_removed_count + 1
+				n=n-1
+			end
+		end
+		--local removed_all=before-table.getn(tabl_monsters_dead)
+		--news_manager.send_tip(db.actor,"removed_all.. " - удалено тушек мутантов",nil,"Уборщик",nil,nil)
+	end
+	
+--[[	
+	--зачистка оружия
+	if table.getn(tabl_weapons) > summ_weapons then
+		table.sort(tabl_weapons,max_comp)
+		local twa = table.getn(tabl_weapons)
+		while twa > summ_weapons do
+			local wpn = tabl_weapons[twa]
+			local wpn_name = wpn:name()
+			if (get_dist_to_trup_9510(wpn) == true and get_dist_to_trup(wpn) == true) then
+				local weapon = tabl_weapons[twa]
+				alife():release(weapon,true)
+				table.remove(tabl_weapons,twa)
+				weapons_removed = weapons_removed + 1
+			end
+			twa=twa-1
+		end
+	end
+]]
+	-- вывод статистики
+	if show_detailed_logs then
+		local monsters_total = "%c[255,0,255,0]Жили-были зверушки "..monsters_total_count.." шт.:%c[default]"
+		for m,c in pairs(tabl_monsters_stat_total) do
+			if c > 0 then
+				monsters_total = monsters_total.." "..tabl_monsters_dead_names[m].." - "..c..","
+			end
+		end
+		--news_manager.send_tip(db.actor,string.sub(monsters_total, 1, string.len(monsters_total) - 1),nil,"Уборщик",nil,nil)
+
+
+		local monsters_dead = "%c[255,0,255,0]Неживых-мёртвых валялось зверушек "..monsters_dead_count.." шт.:%c[default]"
+		for m,c in pairs(tabl_monsters_stat_dead) do
+			if c > 0 then
+				monsters_dead = monsters_dead.." "..tabl_monsters_dead_names[m].." - "..c..","
+			end
+		end
+		--news_manager.send_tip(db.actor,string.sub(monsters_dead, 1, string.len(monsters_dead) - 1),nil,"Уборщик",nil,nil)
+		
+		if monsters_dead_removed_count > 0 then
+			local monsters_dead_removed = "%c[255,0,255,0]Исчезло-пропало мёртвых зверушек "..monsters_dead_removed_count.." шт.:%c[default]"
+			for m,c in pairs(tabl_monsters_stat_dead_removed) do
+				if c > 0 then
+					monsters_dead_removed = monsters_dead_removed.." "..tabl_monsters_dead_names[m].." - "..c..","
+				end
+			end
+			--news_manager.send_tip(db.actor,string.sub(monsters_dead_removed, 1, string.len(monsters_dead_removed) - 1),nil,"Уборщик",nil,nil)
+		end
+
+--		news_manager.send_tip(db.actor,"%c[255,0,255,0]Исчезло-пропало бесхозного оружия "..weapons_removed.." шт.%c[default]",nil,"Уборщик",nil,nil)
+	else
+--		news_manager.send_tip(db.actor,"%c[255,0,255,0]Прошелся я тут по локам, убрал:%c[default] мёртвых зверушек - "..monsters_dead_removed_count..", бесхозного оружия - "..weapons_removed,nil,"Уборщик",nil,nil)
+--		news_manager.send_tip(db.actor,"%c[255,0,255,0]Прошелся я тут по локам, убрал:%c[default] мёртвых зверушек - "..monsters_dead_removed_count,nil,"Уборщик",nil,nil)
+	end
+end 
+
+	
+function get_dist_to_trup(wpn)
+	for i=1,table.getn(tabl_corpses),1 do
+		local poswpn = wpn.position
+		local npc = tabl_corpses[i]
+		local posnpc = npc.position
+		if (poswpn:distance_to(posnpc) < dist_from_weapons_to_trup) then 
+			return false
+		end
+	end
+	return true
+end
+
+function obj_protected(name,tabl)
+	local output=false
+        for i=1,table.getn(tabl) do
+            if string.find(name, tabl[i]) then
+                output=true
+                break
+            end
+        end
+	return output
+end
+
+
+function max_comp(i1,i2) -- возвращает true если i1 меньше i2
+	local actorpos = db.actor:position()
+	return i1.position:distance_to(actorpos) < i2.position:distance_to(actorpos)
+end

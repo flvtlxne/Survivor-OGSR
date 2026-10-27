@@ -1,0 +1,122 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {+hostg_mardr_on_base} animpoint@1, walker@start
+on_death = death
+trade = misc\trade_maroder.ltx
+
+[walker@start]
+path_walk = hostage_mrdr1_pnt_walk1
+path_look = hostage_mrdr1_pnt_look1
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} walker@1 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_bizon} walker@1 %=give_items(wpn_bizon)%
+on_info6 = {+actor_has_sayga} walker@1 %=give_items(wpn_sayga)%
+on_info7 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_sayga} walker@1
+
+[walker@1]
+path_walk = hostage_mrdr1_pnt_walk1
+path_look = hostage_mrdr1_pnt_look1
+def_state_moving1 = run
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+out_restr = secret_camp_zone
+on_info = {+hostage_scenar_maroder2_dead +hostage_scenar_maroder3_dead} remark@surrendr %=actor_neutral =restore_health =send_tip(maroder_hostage_surrend_tip:default)%
+
+[remark@surrendr]
+anim = hands_up
+target = story | actor
+combat_ignore_cond = true
+meet = meet@1
+invulnerable = true
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+hostage_scenar_maroder_talk1} companion@1 %=actor_neutral%
+on_info2 = {+hostage_scenar_maroder_getlost} walker@away
+
+[walker@away]
+path_walk = maroders_escape_point1
+path_look = maroders_escape_point1
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+can_use_knife = false
+combat_ignore_keep_when_attacked = true
+on_signal       = arriwed|%=destroy_object%
+
+[companion@1]
+meet = meet@1
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+combat_ignore_cond = true
+can_use_knife = false
+on_npc_in_zone = hostage_scenar_maroder1|lonl_house_save_zone|animpoint@1 %+hostg_mardr_on_base%
+
+[animpoint@1]
+use_camp = false
+cover_name = lonl_house_maroder_animpoint1
+avail_animations = animpoint_sit_normal
+reach_distance = 0.5
+meet = meet@2
+combat_ignore_cond = true
+reach_movement = walk
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+lonl_house_marodr_atack} remark@maroders
+on_info2 = {+lonl_house_zomb_atack} remark@zomby
+
+[remark@maroders]
+anim = hands_up
+target = path | lonl_house_bed_point2, 0
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {-lonl_house_marodr_atack} animpoint@1
+
+[remark@zomby]
+anim = hands_up
+target = path | lonl_house_bed_point2, 0
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = true
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {-lonl_house_zomb_atack} animpoint@1
+
+[meet@1]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+[meet@2]
+abuse = false
+use = true
+trade_enable = true
+allow_break = true
+
+[death]
+on_info = %+hostage_scenar_maroder1_dead%

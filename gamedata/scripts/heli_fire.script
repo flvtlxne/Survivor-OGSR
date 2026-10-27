@@ -120,16 +120,21 @@ function heli_fire:set_enemy()
     		        if db.actor then
                         self.enemy = db.actor
                     end
-                else
-                    if self.enemy_ == "all" then
-                        self:update_enemy_arr()
+				else
+				
+                    --if self.enemy_ == "all" then
+                    --    self:update_enemy_arr()
+                    --else
+					if self.enemy_ == "mercs" then
+                        self:update_enemy_arr2()
                     else
-                        if self.enemy_ ~= "nil" then
+                    if self.enemy_ ~= "nil" then
                             self.enemy_id = id_by_sid( tonumber( self.enemy_ ) )
                             self.enemy = level.object_by_id( self.enemy_id )
                         end
                     end
                 end
+		
             end
             if self.enemy then
                 heli:SetEnemy( self.enemy)
@@ -149,6 +154,8 @@ function heli_fire:set_enemy()
         heli:SetEnemy(self.fire_point)
     end
 end
+
+
 
 function heli_fire:update_hit()
     if self.show_health then
@@ -193,6 +200,33 @@ function heli_fire:update_enemy_arr()
         end
     end
 end
+
+
+-- Для боя с наёмниками: ---------------------------------------
+function heli_fire:update_enemy_arr2()
+    --'printf("update_enemy_arr()")
+    local heli = self.obj:get_helicopter()
+    local index = 0
+    local min_dist2D = 65000
+   --' printf("heli_enemy_count=%d", db.heli_enemy_count)
+    while index < db.heli_enemy_count do
+        if db.heli_enemies[index] then
+            if heli:isVisible( db.heli_enemies[index] ) then
+                if distance_2d( self.obj:position(), db.heli_enemies[index]:position() ) < min_dist2D 
+					and db.heli_enemies[index]:character_community() == "killer" 
+					and db.heli_enemies[index]:character_community() ~= "army"
+					and db.heli_enemies[index]:id() ~= db.actor:id() then
+						self.enemy = db.heli_enemies[index]
+						
+						min_dist2D = distance_2d( self.obj:position(), db.heli_enemies[index]:position() )
+						self.flag_by_enemy  = true
+                end
+            end
+        end
+        index = index + 1
+    end
+end
+
 
 function distance_2d( a, b )
 	return math.sqrt( (b.x-a.x)^2 + (b.z-a.z)^2 )

@@ -1,0 +1,461 @@
+
+-- Исполняемый функционал для таймеров ---------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+
+function timer1()
+news_manager.send_tip(db.actor, "game_timer_action", nil, "recent_surge", nil, nil)
+end
+
+function timer2()
+news_manager.send_tip(db.actor, "real_timer_action", nil, "recent_surge", nil, nil)
+end
+
+
+function lonl_house_store_obj_use_action()
+xr_effects.lonl_house_store_obj_use2()
+end
+
+function lonl_house_generator_timer_action()
+disable_info("lonl_house_electricity")
+news_manager.send_tip(db.actor, "lonl_house_generator_off_tip", nil, "recent_surge", nil, nil)
+end
+
+function workshop_generator_timer_action()
+disable_info("workshop_electricity")
+--news_manager.send_tip(db.actor, "lonl_house_generator_off_tip", nil, "recent_surge", nil, nil)
+end
+
+function lonl_house_balon_timer_action()
+disable_info("lab_balon_charged")
+end
+
+
+function critical_health_effect_action1()
+level.show_weapon(true)
+db.actor.bleeding = 1.0
+db.actor.health = 1.0
+db.actor.radiation = -1.0
+db.actor.power = 1.0
+end
+
+function critical_health_effect_action2()
+if db.actor:dont_has_info("marorers_house_trap") then
+	news_manager.send_tip(db.actor, "lw_stranger_critical_health_tip", nil, "default", nil, nil)
+elseif has_alife_info("marorers_house_trap") then
+	news_manager.send_tip(db.actor, "lw_newbie_critical_health_tip", nil, "default", nil, nil)
+end
+end
+
+function critical_health_effect_action3()
+mod_functions.after_sleep_event()
+end
+
+function post_load_game_action()
+mod_functions.post_load_game_action2()
+mod_functions.check_nearest_car()
+end
+
+
+function after_sleep_timer_action()
+mod_functions.random_events_action_general()
+end
+
+function mechanical_npc1use_action()
+xr_effects.use_mechanical_npc1()
+end
+
+
+function mechanical_construction_timer_action()
+soundtrack.good_loot_replics()
+end
+
+
+function rnd_task_default_reward()
+xr_effects.spawn_stranger_reward_in_box(nil, 2, "lonl_house_invbox_3")
+news_manager.send_tip(db.actor, "lw_stranger_reward_tip", nil, "default", nil, nil)
+end
+
+function rnd_task_item_reward()
+if db.actor:dont_has_info("lw_stranger_dead") then
+	xr_effects.spawn_stranger_reward_in_box(nil, 2, "lonl_house_invbox_3")
+	xr_effects.spawn_random_food_in_box(nil, 1, "lonl_house_invbox_3")
+	news_manager.send_tip(db.actor, "lw_stranger_reward_tip", nil, "default", nil, nil)
+end
+if has_alife_info("lw_stranger_dead") then
+	xr_effects.spawn_stranger_reward_in_box(nil, 1, "lonl_house_invbox_3")
+	xr_effects.spawn_random_food_in_box(nil, 1, "lonl_house_invbox_3")
+	news_manager.send_tip(db.actor, "lw_newbie_reward_tip", nil, "default", nil, nil)
+end
+end
+
+function rnd_task_art_reward()
+if db.actor:dont_has_info("lw_stranger_dead") then
+	xr_effects.spawn_stranger_reward_in_box(nil, 2, "lonl_house_invbox_3")
+	xr_effects.spawn_random_food_in_box(nil, 1, "lonl_house_invbox_3")
+	news_manager.send_tip(db.actor, "lw_stranger_reward_tip", nil, "default", nil, nil)
+end
+if has_alife_info("lw_stranger_dead") then
+	xr_effects.spawn_stranger_reward_in_box(nil, 1, "lonl_house_invbox_3")
+	xr_effects.spawn_random_food_in_box(nil, 1, "lonl_house_invbox_3")
+	news_manager.send_tip(db.actor, "lw_newbie_reward_tip", nil, "default", nil, nil)
+end
+end
+
+function spawn_razlom_scenario_maroders_timer_action()
+xr_effects.spawn_object(actor, nil, {"razlom_marouder_guard1","razlom_pnt2_walk"})
+xr_effects.spawn_object(actor, nil, {"razlom_marouder_guard2","razlom_pnt2_walk"})
+xr_effects.spawn_object(actor, nil, {"razlom_marouder_guard3","razlom_pnt2_walk"})
+xr_effects.spawn_object(actor, nil, {"razlom_marouder_guard4","razlom_pnt2_walk"})
+xr_effects.spawn_object(actor, nil, {"razlom_marouder_guard5","razlom_pnt2_walk"})
+xr_effects.spawn_object(actor, nil, {"razlom_marouder_comandr","razlom_pnt2_walk"})
+xr_effects.spawn_object(actor, nil, {"lw_newbie","razlom_pnt2_walk"})
+end
+
+
+function kill_actor_timer_action()
+db.actor:kill(db.actor)
+end
+
+
+
+function maroders_ambush_timer_action1()
+news_manager.send_tip(db.actor, "maroders_ambush_tip1", nil, "default", nil, nil)
+start_real_timer(5, "mod_timer_functions.maroders_ambush_timer_action2")
+end
+
+function maroders_ambush_timer_action2()
+news_manager.send_tip(db.actor, "maroders_ambush_tip2", nil, "default", nil, nil)
+start_real_timer(5, "mod_timer_functions.maroders_ambush_timer_action3")
+end
+
+function maroders_ambush_timer_action3()
+news_manager.send_tip(db.actor, "maroders_ambush_tip3", nil, "default", nil, nil)
+end
+
+
+function spawn_scaner_maroders_action()
+mod_functions.kill_scaner_maroder1()
+mod_functions.kill_scaner_maroder2()
+mod_functions.kill_scaner_maroder3()
+end
+
+
+function artefacts_spawn_timer_action()
+disable_info("artefacts_spawn")
+news_manager.send_tip(db.actor, "artefact_scaner_tip2", nil, "default", nil, nil)
+end
+
+
+
+function kpp_sbu_alarm_tip_action()
+news_manager.send_tip(db.actor, "kpp_sbu_command_tip", nil, "one_of_the_lads", nil, nil)
+end
+
+function kpp_mercs_ambush_tip_action()
+news_manager.send_tip(db.actor, "kpp_mercs_ambush_tip", nil, "battle_systems_master", nil, nil)
+end
+
+
+function kpp_radio_talking_timer_action1()
+local st = get_hud():GetCustomStatic("kpp_radio_talking1") or get_hud():AddCustomStatic("kpp_radio_talking1",true)
+st.m_endTime = time_global()/1000 + 5
+soundtrack.raciya_sounds()
+end
+
+function kpp_radio_talking_timer_action2()
+local st = get_hud():GetCustomStatic("kpp_radio_talking2") or get_hud():AddCustomStatic("kpp_radio_talking2",true)
+st.m_endTime = time_global()/1000 + 5
+soundtrack.raciya_sounds()
+end
+
+function after_vodka_replic_timer_action()
+local counter_name = "vodka"
+	local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
+	if cnt_value > 4 then
+		if db.actor:dont_has_info("vodka_peredoz") then
+			db.actor:give_info_portion ("vodka_peredoz")
+		end
+	elseif cnt_value < 4 then
+		soundtrack.actor_after_vodka_replic()
+	end
+end
+
+function actor_freeplay_timer_action1()
+local st = get_hud():GetCustomStatic("actor_freeplay_think") or get_hud():AddCustomStatic("actor_freeplay_think",true)
+st.m_endTime = time_global()/1000 + 7
+end
+
+
+function samogon_aparat_timer_action()
+disable_info("samogon_aparat_work")
+end
+
+function samogon_aparat_result_timer_action()
+soundtrack.good_loot_replics()
+end
+
+
+function actor_survival_logo_timer_action()
+xr_effects.actor_survival_logo_title2()
+soundtrack.survival_logo_snd()
+end
+
+
+
+function village_anomaly_tunnel_tip1_action()
+news_manager.send_tip(db.actor, "village_anomaly_tunnel_tip1", nil, "maroder", nil, nil)
+end
+
+function village_anomaly_tunnel_tip2_action()
+news_manager.send_tip(db.actor, "village_anomaly_tunnel_tip2", nil, "maroder", nil, nil)
+db.actor:give_info_portion ("tunnel_anomaly_maroder1_go")
+end
+
+function anomaly_maroder1_pda_action()
+soundtrack.refuse_replics()
+end
+
+
+function mark_lonl_house_car_action()
+   local obj = get_story_object("car_buhanka")
+   local obj_id = obj:id()
+   if obj_id then
+   text = "УАЗ"
+	level.map_add_object_spot_ser(obj_id,"alife_presentation_squad_neutral",text)
+   end
+end
+
+function mark_village_car_action()
+   local obj = get_story_object("car_zaz")
+   local obj_id = obj:id()
+   if obj_id then
+   text = "Запорожец"
+	level.map_add_object_spot_ser(obj_id,"alife_presentation_squad_neutral",text)
+   end
+end
+
+function mark_kpp_car_action()
+   local obj = get_story_object("car_niva")
+   local obj_id = obj:id()
+   if obj_id then
+   text = "Нива"
+	level.map_add_object_spot_ser(obj_id,"alife_presentation_squad_neutral",text)
+   end
+end
+
+function mark_workshop_car_action()
+   local obj = get_story_object("car_zil")
+   local obj_id = obj:id()
+   if obj_id then
+   text = "ЗиЛ"
+	level.map_add_object_spot_ser(obj_id,"alife_presentation_squad_neutral",text)
+   end
+end
+
+
+function rnd_tasks_recharge_timer_action()
+news_manager.send_tip(db.actor, "rnd_tasks_recharge_timer_tip", nil, "default", 15000, nil)
+end
+
+
+function lonl_house_chair_timer_action()
+soundtrack.actor_play_guitar()
+end
+
+
+
+function lights1()
+if db.actor:dont_has_info("lonl_house_electricity") then
+	xr_effects.turn_off_lonl_house_lamps()
+elseif has_alife_info("lonl_house_electricity") then
+	xr_effects.turn_on_lonl_house_lamps()
+end
+end
+
+function lights2()
+if db.actor:dont_has_info("workshop_electricity") then
+	xr_effects.turn_off_workshop_lamps()
+elseif has_alife_info("workshop_electricity") then
+	xr_effects.turn_on_workshop_lamps()
+end
+end
+
+function lights3()
+if db.actor:dont_has_info("narkoman_pribor_on") then
+	xr_effects.turn_off_anomal_mushrom_light()
+elseif has_alife_info("narkoman_pribor_on") then
+	xr_effects.turn_on_anomal_mushrom_light()
+end
+end
+
+
+
+function af_teleport_item_action1()
+xr_effects.enable_ui()
+db.actor:set_actor_position(patrol("travel_point_lonl_house"):point(0))
+end
+
+function af_teleport_item_action2()
+disable_info("af_teleport_idle")
+end
+
+function actor_maroder_think()
+	soundtrack.actor_is_maroder_replic()
+end
+
+
+function scenario_save1_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"lost_willage_game_start"})
+end
+
+function scenario_save2_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"lost_willage_stranger_talk2"})
+end
+
+function scenario_save3_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"lost_willage_stranger_talk3"})
+end
+
+function scenario_save4_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"kill_marodr_lider1"})
+end
+
+function scenario_save5_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"kill_marodr_lider2"})
+end
+
+function scenario_save6_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"kill_marodr_liders3_4"})
+end
+
+function scenario_save7_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"maroders_ambush"})
+end
+
+function scenario_save8_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"memory_block_finded"})
+end
+
+function scenario_save9_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"kpp_mercs_randevu"})
+end
+
+function scenario_save10_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"kpp_sbu_mercs_choise"})
+end
+
+function scenario_save11_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"safe_zone_autosave"})
+end
+
+
+function comp_recharge1()
+	
+	start_real_timer(5, "mod_timer_functions.comp_recharge2")
+	disable_info("random_event_helicrash")
+	disable_info("random_event_blokpost")
+	disable_info("random_event_forest")
+	disable_info("random_event_forest_camp")
+	disable_info("random_event_graveyard")
+	disable_info("random_event_razlom")
+	disable_info("random_event_island")
+	disable_info("random_event_rad_hill")
+	disable_info("random_event_willage")
+	disable_info("random_event_workshop")
+	disable_info("random_event_lonl_house")
+	disable_info("courier_task")
+	disable_info("courier_task_fail")
+end
+
+function comp_recharge2()
+	disable_info("critical_health")
+	xr_effects.enable_ui()
+	mod_functions.random_events_action_general()
+	--mod_functions.after_sleep_event()
+end
+
+
+function kill_courier_task_timer()
+	task_manager.get_task_manager():give_task("rnd_task_kill_courier")
+end
+
+
+function actor_helicrash_box_use_timer_action()
+	soundtrack.actor_helicrash_box_use_snd()
+end
+
+function global_respawn_timer_action1()
+	db.actor:give_info_portion ("global_respawn")
+	--start_real_timer(12, "mod_timer_functions.global_respawn_timer_action2")
+end
+
+function global_respawn_timer_action2()
+	disable_info("global_respawn")
+end
+
+function enable_ui()
+xr_effects.enable_ui()
+end
+
+
+function mg_heli_start_move()
+db.actor:give_info_portion ("mg_heli_start_move")
+end
+
+
+function scenario_save_master1_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"scenario_save_master1"})
+end
+
+function mg_autosave1_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"mg_autosave1"})
+end
+
+function mg_autosave2_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"mg_autosave2"})
+end
+
+function mg_autosave3_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"mg_autosave3"})
+end
+
+function mg_autosave4_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"mg_autosave4"})
+end
+
+function mg_autosave5_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"mg_autosave5"})
+end
+
+function mg_autosave6_timer_action()
+	xr_effects.scenario_autosave(db.actor, nil, {"mg_autosave6"})
+end
+
+
+function af_fuzz_kolobok_mg_action()
+	disable_info("invulnerability")
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

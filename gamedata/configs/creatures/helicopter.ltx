@@ -42,7 +42,7 @@ use_rocket					= true			;              использовать ракеты при атаке
 use_mgun					= true			;              использовать пулемет при атаке
 use_aim_bullet				= false			; Использовать ли первую "Сильную" пулю
 min_mgun_attack_dist		= 15 ;30 ;15.0	;m   мин расстояние при котором можно исп пулемет
-max_mgun_attack_dist		= 300			;m   макс расстояние при котором можно исп пулемет
+max_mgun_attack_dist		= 400			;m   макс расстояние при котором можно исп пулемет
 min_rocket_attack_dist		= 100.0	;m   мин расстояние при котором можно исп ракеты
 max_rocket_attack_dist		= 250 ;150.0 ;m   макс расстояние при котором можно исп ракеты
 time_between_rocket_attack	= 1250 ; 1500 ; msec  задержка между ракетами
@@ -54,15 +54,15 @@ barrel_dir_tolerance		= 2 ; degrees. допустимый угол, когда считаем, что дуло на
 death_angular_vel			= 0.1,6.0,0.2  ; при гибели в воздухе дать угловую скорость модели      
 death_lin_vel_koeff			= 1          ; при гибели в воздухе умножить собственную лин скорость на коэфф
 
-flame_start_health			= 0.5  ; уровень здоровья, ниже которого вертолёт начинает дымить
+flame_start_health			= 0.4  ; уровень здоровья, ниже которого вертолёт начинает дымить
 
 fire_time			= 1.5; время очереди, если меньше нуля - таймауты отключаются
 no_fire_time			= 0.3; время таймаута между очередями, если меньше нуля - таймауты отключаются
 
 
 ; ------------------------- параметры для универсальной боевой схемы
-flyby_attack_dist           = 100 ;70
-search_attack_dist          = 100 ;70 ;55 ;80
+flyby_attack_dist           = 300; 200 ;70
+search_attack_dist          = 300; 200 ;70 ;55 ;80
 
 search_velocity				= 5  ; скорость (м/с) облёта врага по кругу в режиме поиска
 round_velocity				= 10 ; скорость (м/с) облёта врага в режиме атаки
@@ -92,7 +92,7 @@ fire_dispersion_base	= 5.0;1.0
 fire_dispersion_null	= 1.0;0.5
 fire_trace_width		= 1.0
 rpm                     = 1000
-hit_power               = 0.5
+hit_power               = 0.4
 hit_impulse		 		= 20
 fire_distance           = 500
 bullet_speed			= 900			;начальная скорость пули
@@ -126,7 +126,7 @@ wound_immunity			= 0.0
 radiation_immunity		= 0.0
 telepatic_immunity		= 0.0
 chemical_burn_immunity	= 0.0
-fire_wound_immunity		= 0.01
+fire_wound_immunity		= 0.04
 explosion_immunity		= 0.1
 
 

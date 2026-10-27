@@ -1,0 +1,173 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = companion@1
+;on_hit = hit
+on_death = death
+
+; Путешествуем по локе:
+[walker@1_1]
+path_walk = forest_pnt1_look
+path_look = forest_pnt1_walk
+def_state_moving1 = run
+invulnerable = false
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+on_actor_dist_le = 80|remark@searching1 %=maroder_killer_see1%
+on_signal       = arriwed|walker@1_2
+
+[walker@1_2]
+path_walk = graveyard_pnt1_look
+path_look = graveyard_pnt1_walk
+def_state_moving1 = run
+invulnerable = false
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+on_actor_dist_le = 80|remark@searching2 %=maroder_killer_see1%
+on_signal       = arriwed|walker@1_3
+
+[walker@1_3]
+path_walk = kolhoz_pnt10_1_walk
+path_look = island_pnt9_3_look
+def_state_moving1 = run
+invulnerable = false
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+on_actor_dist_le = 80|remark@searching3 %=maroder_killer_see1%
+on_signal       = arriwed|walker@1_4
+
+[walker@1_4]
+path_walk = forest_camp_pnt1_look
+path_look = forest_camp_pnt1_walk
+def_state_moving1 = run
+invulnerable = false
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+on_actor_dist_le = 80|remark@searching4 %=maroder_killer_see1%
+on_signal       = arriwed|walker@1_5
+
+[walker@1_5]
+path_walk = willage_killer_walk
+path_look = willage_killer_look
+def_state_moving1 = run
+invulnerable = false
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = true
+corpse_detection_enabled = false
+on_actor_dist_le = 80|remark@searching5 %=maroder_killer_see1%
+on_signal       = arriwed|walker@1_1
+
+
+; Смотрим в бинокль на ГГ:
+[remark@searching1]
+anim = binocular
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_game_timer = 350|walker@1_1
+on_actor_dist_le = 60|companion@1 %=maroder_killer_see2%
+
+[remark@searching2]
+anim = binocular
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_game_timer = 350|walker@1_2
+on_actor_dist_le = 60|companion@1 %=maroder_killer_see2%
+
+[remark@searching3]
+anim = binocular
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_game_timer = 350|walker@1_3
+on_actor_dist_le = 60|companion@1 %=maroder_killer_see2%
+
+[remark@searching4]
+anim = binocular
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_game_timer = 350|walker@1_4
+on_actor_dist_le = 60|companion@1 %=maroder_killer_see2%
+
+[remark@searching5]
+anim = binocular
+target = story | actor
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_game_timer = 350|walker@1_5
+on_actor_dist_le = 60|companion@1 %=maroder_killer_see2%
+
+
+; Бежим к ГГ:
+[companion@1]
+meet = no_meet
+;invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+can_use_knife = false
+on_actor_dist_le = 2|companion@2
+
+[companion@2]
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = true
+
+
+[hit]
+on_info = {=hit_by_actor} companion@2
+
+[death]
+on_info = %+maroder_killer_dead%
+
+
+
+
+
+
+
+
+
+
+

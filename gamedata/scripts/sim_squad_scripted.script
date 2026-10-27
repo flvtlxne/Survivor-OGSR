@@ -168,7 +168,7 @@ function sim_squad_scripted:update()
 	self:check_invulnerability()
 
 	local script_target = self:get_script_target()
-
+	
 	--printf("[%s] SCRIPTED UPDATE. Target[%s]", self.id, tostring(script_target))
 	if script_target == nil then
 		self:generic_update()
@@ -302,7 +302,7 @@ function sim_squad_scripted:generic_update()
 	--printf("Squad[%s] UPDATE", self.id)
 	--' Если у нас есть незавершенное действие - ждем пока оно завершится.
 	self.sound_manager:update()
-	self:refresh()
+--	self:refresh()
 
 	local help_target_id = get_help_target_id(self)
 
@@ -742,7 +742,7 @@ function sim_squad_scripted:STATE_Read(packet, size)
 	else
 		self.smart_id = tonumber(self.smart_id)
 	end
-
+	
 	self:init_squad_on_load()
 	set_save_marker(packet, "load", true, "sim_squad_scripted")
 end
@@ -779,6 +779,18 @@ function sim_squad_scripted:can_switch_offline()
 end
 function sim_squad_scripted:can_switch_online()
 	return cse_alife_online_offline_group.can_switch_online(self)
+end
+function sim_squad_scripted:switch_offline()
+	if rx_ai then
+		rx_ai.squad_switch_offline(self)
+	end
+	cse_alife_online_offline_group.switch_offline(self)
+end
+function sim_squad_scripted:switch_online()
+	if rx_ai then
+		rx_ai.squad_switch_online(self)
+	end
+	cse_alife_online_offline_group.switch_online(self)
 end
 
 --***********************************************************************************************

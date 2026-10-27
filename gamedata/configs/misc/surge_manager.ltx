@@ -3,6 +3,20 @@ condlist = {-pri_a16_kovalski_start =actor_on_level(pripyat)} false, {+pri_a25_r
 survive = {+actor_marked_by_zone_3_times} true, {+anabiotic_in_process} true, false
 
 [list]
+
+;lost willage
+lonl_house_surge_hide_zone1
+lonl_house_surge_hide_zone2
+kolhoz_surge_hide_zone
+kpp_surge_hide_zone
+island_surge_hide_zone
+willage_surge_hide_zone1
+willage_surge_hide_zone2
+willage_surge_hide_zone3
+willage_surge_hide_zone4
+karlik_quest_zone5
+
+
 ;zaton
 zat_surge_hide_a2
 zat_surge_hide_b42
@@ -78,6 +92,39 @@ pri_surge_hide_b36
 ;test
 ;sr_out_1
 ;sr_out_2
+
+[lonl_house_surge_hide_zone1]
+condlist = true
+
+[lonl_house_surge_hide_zone2]
+condlist = true
+
+[kolhoz_surge_hide_zone]
+condlist = true
+
+[kpp_surge_hide_zone]
+condlist = true
+
+[island_surge_hide_zone]
+condlist = true
+
+[willage_surge_hide_zone1]
+condlist = true
+
+[willage_surge_hide_zone2]
+condlist = true
+
+[willage_surge_hide_zone3]
+condlist = true
+
+[willage_surge_hide_zone4]
+condlist = true
+
+[karlik_quest_zone5]
+condlist = {=story_obj_in_zone_by_name(lw_scientist:karlik_quest_zone5)} true, false
+
+
+
 
 [zat_surge_hide_a2]
 condlist = {=check_smart_alarm_status(zat_stalker_base_smart:normal)} true, false

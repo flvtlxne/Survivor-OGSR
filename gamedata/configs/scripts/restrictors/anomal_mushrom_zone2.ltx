@@ -1,0 +1,27 @@
+[logic]
+active = sr_particle@1
+
+[sr_particle@1]
+name = anomaly2\effects\studen_idle_glow_01
+path = anomal_mushrom_point
+mode = 2
+looped = false
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+narkoman_note1_info} sr_particle@2 %=give_task(addtask_mushrom)%
+on_info3 = {=actor_has_item(mushrom)} sr_idle@1
+
+[sr_particle@2]
+name = anomaly2\effects\studen_idle_glow_01
+path = anomal_mushrom_point
+mode = 2
+looped = false
+on_info = {=actor_has_item(mushrom)} sr_idle@nil
+
+[sr_idle@1]
+on_info = {+narkoman_note1_info} sr_idle@nil %=give_task(addtask_mushrom)%
+
+[sr_idle@nil]
+
+
+
+

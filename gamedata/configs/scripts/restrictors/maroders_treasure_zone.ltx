@@ -1,0 +1,25 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+zavhoz_friend_info} sr_particle@1
+
+[sr_particle@1]
+name = anomaly2\anomaly_teleport
+path = maroders_treasure_point0
+mode = 2
+looped = false
+on_info = {+marod_treasure_zone1_on +marod_treasure_zone2_on +marod_treasure_zone3_on +marod_treasure_zone4_on +marod_treasure_zone5_on} sr_idle@nil
+on_actor_inside = sr_idle@3 %=disable_ui =run_postprocess(fade_in)%
+
+[sr_idle@3]
+on_game_timer = 15|sr_idle@4 %=run_postprocess(fade_in) =marod_treasure_actor_teleport1%
+
+[sr_idle@4]
+on_game_timer = 5|sr_particle@1 %=enable_ui%
+
+
+[sr_idle@nil]
+
+

@@ -1,0 +1,27 @@
+[logic]
+active = ph_idle@0
+
+[ph_idle@0]
+on_info = {+likvidator_info2} ph_idle@1
+on_info2 = {=master_difficulty} %=destroy_object%
+
+[ph_idle@1]
+tips      = workshop_vintil_use1
+on_use = {=actor_has_item(car_item_wd40)} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+
+
+; Смазываем вентиль:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(balon_gas_use)%
+
+[ph_idle@3]
+on_game_timer = 15|ph_idle@4 %=remove_item(car_item_wd40) +worksop_vintil_repared =enable_ui%
+
+
+[ph_idle@4]
+
+
+
+
+
+ 

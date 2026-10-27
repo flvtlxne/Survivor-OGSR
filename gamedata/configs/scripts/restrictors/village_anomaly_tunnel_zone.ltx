@@ -1,0 +1,23 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_actor_inside = {+workshop_napilnik} sr_idle@2 %=disable_ui =spawn_tunnel_anomaly_maroders =village_anomaly_tunnel_tips_start%
+
+[sr_idle@2]
+on_game_timer = 1|sr_cutscene@1
+
+[sr_cutscene@1]
+point = village_anomaly_tunnel_pnt1
+look = tunnel_anomaly_door_point
+cam_effector = scenario_cam\village_anomaly_tunnel_cam
+on_signal = cameff_end | sr_idle@nil %=remove_item(item_napilnik)%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+[sr_idle@nil]
+
+

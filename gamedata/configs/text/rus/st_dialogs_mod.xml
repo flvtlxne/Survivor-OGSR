@@ -1,0 +1,1688 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+
+
+	<string id="helicrash_body1_dialog_phrase_1">
+		<text>Твою мать... Как больно...</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_2">
+		<text>Держись!</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_3">
+		<text>Кроме нас никто не уцелел... У меня сломаны рёбра, я не могу... Не могу идти...</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_4">
+		<text>Сейчас, подожди. Я найду аптечку!</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_5">
+		<text>Нет, сперва надо вызвать помощь. Возьми из ящика аварийный передатчик и свяжись с базой. Там ещё медикаменты, припасы, оружие...</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_6">
+		<text>Но он заперт!</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_7">
+		<text>Ёлки, куда я ключ-то дел? Может, он у лейтенанта Щукина, проверь. Вон он лежит.</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_8">
+		<text>Хорошо.</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_9">
+		<text>Поспеши! Мы среди Зоны, кругом мутанты и аномалии, а ты и сам ранен... Стоп, что это? Вроде собаки лают?... Это слепые псы! Беги!</text>
+	</string>
+	<string id="helicrash_body1_dialog_phrase_10">
+		<text>Чёрт!</text>
+	</string>
+
+
+	<string id="lw_stranger_dialog1_phrase_1">
+		<text>Оклемался? Ну наконец-то.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_2">
+		<text>Кто ты? Где я?</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_3">
+		<text>В безопасном месте.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_4">
+		<text>А как же Лыков? Что с ним?</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_5">
+		<text>Увы, мне удалось спасти только тебя, остальным было уже не помочь. Я нашел тебя в поле, обработал раны, сделал перевязку и притащил сюда. Ты провёл здесь три дня.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_6">
+		<text>Хреново дело... Ты, наверное, сталкер? Охотник за артефактами? Благодарю тебя за помощь, но мне надо связаться с базой...</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_7">
+		<text>Не спеши, военный! Ты ещё слишком слаб. К тому же, ты очень кстати здесь очутился.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_8">
+		<text>Что ты имеешь в виду?</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_9">
+		<text>Понимаешь, я здесь обделываю одно дельце... Точнее, дело очень важное и ответственное. Обстоятельства сложились таким образом, что сам я не могу справиться с поставленной передо мной задачей, потому хочу прибегнуть к помощи постороннего лица. То есть тебя.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_10">
+		<text>Вынужден отказаться. Я всё-таки военный инженер на службе, так что моя задача теперь одна: как можно быстрее покинуть Зону отчуждения и доложить командованию о крушении.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_11">
+		<text>Ничего, я подожду. Дело это неспешное... К тому же, у тебя нет выбора, понимаешь?</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_12">
+		<text>Ты как-то мутно говоришь... Кто ты вообще такой?</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_13">
+		<text>Скажем так: я человек, который будет держать тебя здесь до тех пор, пока ты не выполнишь пару заданий.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_14">
+		<text>Блин... Это уже не смешно. Мужик, кто бы ты ни был, знай - я тебе не слуга и не помощник.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_15">
+		<text>Давай так: я пока что уйду и дам тебе время на раздумья и чтобы осмотреться. Когда ты ещё немного поправишься, я вернусь и мы продолжим наш разговор.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_16">
+		<text>Думаешь, что найдешь меня здесь в следующий раз?</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_17">
+		<text>Куда ты денешься? В общем, думай и не спеши с выводами.</text>
+	</string>
+	<string id="lw_stranger_dialog1_phrase_18">
+		<text>Какой-то ты странный.</text>
+	</string>
+
+	<string id="lw_stranger_dialog2_phrase_1">
+		<text>Снова ты.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_2">
+		<text>Собственной персоной! Ты подумал над моим предложением?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_3">
+		<text>Признайся, это ты стащил передатчик из аварийного ящика у вертолёта?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_4">
+		<text>Поспешный вывод. Возможно, это были те парни, которых ты там только что повстречал?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_5">
+		<text>Откуда ты знаешь... И что это были за хмыри с пушками? Вообще объясни, что ты от меня хочешь.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_6">
+		<text>Всё просто: ты работаешь на меня и в качестве награды получаешь свой передатчик, а потом можешь вызывать своих друзей по радио и лететь на все четыре стороны.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_7">
+		<text>Значит, ты забрал его?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_8">
+		<text>Вот заладил: "ты, не ты"... Какая разница? Пойми, я не хочу, чтобы ты погиб, иначе бы не стал тебя спасать. Да, мне пришлось немного тебя испытать, устроив ту встречу с мародёрами. И раз ты вернулся после этого живым, то это значит, что ты прошел испытание. Эти парни, о которых ты спрашивал, называются мародёрами. Они недавно разведали путь сюда и промышляют тем, что рыщут по ключевым точкам и шарят по всем углам в надежде найти кое-что...</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_9">
+		<text>Что именно?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_10">
+		<text>Они тащат разные полезные штуки: материальные ценности, дорогие вещи, редкие материалы... Я планирую избавиться от них с твоей помощью.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_11">
+		<text>Этих мародёров много?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_12">
+		<text>Не очень, но проблема в другом. Их постоянно кто-то вербует в среде маргинальных личностей: отсидевших, безработных, бомжей, психов и сталкеров. Группами по 5-8 человек они проникают сюда регулярно.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_13">
+		<text>Что это вообще за место?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_14">
+		<text>Окрестности деревни Грачи. Один из окраинных регионов Зоны, не представляющий интереса для охотников за артефактами.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_15">
+		<text>Что за работу ты здесь делаешь?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_16">
+		<text>Этого я тебе сказать не могу, по крайней мере пока что... Всё, что ты должен делать - это выполнять мои поручения. Они будут рискованными, но даю честное слово, что после окончания моей миссии ты не только получишь свой передатчик, но и щедрую награду. Кроме того, я подскажу тебе самый безопасный путь отсюда.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_17">
+		<text>Звучит странно.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_18">
+		<text>Понимаю. Однако ситуация именно такая. Что же, теперь я спрашиваю у тебя: задача тебе ясна?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_19">
+		<text>То есть я должен торчать здесь, рыскать по окрестностям, периодически сталкиваясь с какими-то утырками и искать то, не знаю что?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_20">
+		<text>Да.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_21">
+		<text>Выбора нет. Провизией и оружием меня обеспечишь?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_22">
+		<text>А если я просто возьму тебя за горло и заставлю вернуть имущество прямо здесь и сейчас?</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_23">
+		<text>Насчет оружия - только пистолет, ничего лучше дать не могу, увы... Вот несколько советов: \n1) Обыщи этот дом и двор, найдёшь кое-что полезное для выживания; \n2) Здесь есть мастерская, можно починить и модифицировать снаряжение; \n3) Есть место для сна, защита от выбросов, даже печка, в которой можно сжигать ненужный хлам; \n4) Отыщи топливо и заведи генератор, что за сараем - электричество тебе пригодится; \n5) Заряди газовый балон на кухне и активируй лабораторию - штука полезная; \n6) Возьми ПДА на столе, там обозначены ключевые точки; \n7) Здесь встречаются автомобили. Они в плохом состоянии, но их можно починить; \n8) Периодически я буду присылать тебе на ПДА задания, за выполнение которых ты получишь припасы, патроны, прочее; \n А боеприпасы и пищу тебе придётся добывать у мародёров, - ты же военный, тебя этому учили. Ближе к делу: я хочу разведать, что они планируют. Предлагаю начать с лагеря в лесу, что западнее, там должен быть их схрон.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_24">
+		<text>Хорошо.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_25">
+		<text>Ты можешь убить меня, но тогда застрянешь здесь надолго и не факт, что выживешь. А будешь работать на меня, - твои шансы на возвращение домой возрастут в разы.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_26">
+		<text>Резонно.</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_27">
+		<text>И помни: я всё вижу и всё знаю. Не пытайся меня надуть!</text>
+	</string>
+	<string id="lw_stranger_dialog2_phrase_28">
+		<text>Ну-ну...</text>
+	</string>
+
+	<string id="lw_stranger_dialog3_phrase_1">
+		<text>Я осмотрел лагерь. Там кто-то сжигал личные вещи на костре.</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_2">
+		<text>Ещё что нашел?</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_3">
+		<text>Рядом в палатке лежал детектор артефактов. Всё.</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_4">
+		<text>Мои догадки подтверждаются... Я полагаю, что мародёры хотят заняться сталкерским промыслом  - добычей артефактов.</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_5">
+		<text>С чего бы это им делать? Они же специализируются на другом.</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_6">
+		<text>Во-первых, это дело выгодное. Во-вторых, ты не знаешь главного: добывать артефакты из аномалий они собираются не сами, а планируют использовать для этого сталкеров-новичков, "отмычек". Те вещи, сожженные на костре, скорей всего принадлежали одному из таких горемык, попавших в лапы к мародёрам. И детектор был заготовлен для этого дела.</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_7">
+		<text>И что теперь?</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_8">
+		<text>Мы должны выручить этого новичка из беды. И для этого придётся выяснить, где именно мародёры планируют начать добычу артефактов.</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_9">
+		<text>А это нас вообще касается?</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_10">
+		<text>Это касается меня и тебя, соответственно, тоже, ибо ты мне помогаешь. Добровольно, заметь это!</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_11">
+		<text>Лучше не шути так, я нервный...</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_12">
+		<text>Расслабься, вояка. И запиши эти координаты: здесь находится крупная аномалия и, как мне кажется, мародёры начнут именно с неё. Твоей задачей будет освободить "отмычку" - обязательно живым! Если он погибнет, то наше с тобой сотрудничество прекратится. Задача ясна?</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_13">
+		<text>Вполне.</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_14">
+		<text>Потом приведешь его сюда... А детектор оставь себе - используешь его для собственных нужд.</text>
+	</string>
+	<string id="lw_stranger_dialog3_phrase_15">
+		<text>Хорошо.</text>
+	</string>
+
+	<string id="lw_newbie_dialog1_phrase_1">
+		<text>А вот и ты! Идти сможешь?</text>
+	</string>
+	<string id="lw_newbie_dialog1_phrase_2">
+		<text>Конечно!</text>
+	</string>
+	<string id="lw_newbie_dialog1_phrase_3">
+		<text>Тогда следуй за мной.</text>
+	</string>
+
+
+	<string id="lw_stranger_scelet_dialog_phrase_1">
+		<text>Там в сарае чьи-то останки.</text>
+	</string>
+	<string id="lw_stranger_scelet_dialog_phrase_2">
+		<text>И что? Здесь, в Зоне, на такое часто натыкаешься.</text>
+	</string>
+	<string id="lw_stranger_scelet_dialog_phrase_3">
+		<text>Чей это дом? Кто здесь раньше жил?</text>
+	</string>
+	<string id="lw_stranger_scelet_dialog_phrase_4">
+		<text>Понятия не имею. Когда я нашел это место, то здесь всё было как сейчас. Если эти кости тебе мешают, то возьми лопату в подвале и выбери место за домом... А если хочешь поиграть в детектива, то начни с этого самого подвала.</text>
+	</string>
+	<string id="lw_stranger_scelet_dialog_phrase_5">
+		<text>Он заперт.</text>
+	</string>
+	<string id="lw_stranger_scelet_dialog_phrase_6">
+		<text>Ну здесь ничем помочь не могу, ибо ключом не располагаю. Хочешь - ищи сам.</text>
+	</string>
+	<string id="lw_stranger_scelet_dialog_phrase_7">
+		<text>Хорошо.</text>
+	</string>
+	<string id="lw_stranger_scelet_dialog_phrase_8">
+		<text>Чёрт с ним.</text>
+	</string>
+
+	<string id="lw_newbie_dialog2_phrase_1">
+		<text>Не беспокойся, здесь ты в безопасности.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_2">
+		<text>Спасибо вам, товарищ военный, что выручили меня из плена! Я вам заплачу.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_3">
+		<text>Что с тебя взть, с горемыки? Лучше расскажи, как оказался в этой заднице.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_4">
+		<text>Меня зовут Николай и меня обманули... Хотел заработать денег, искал подработку. Связался на двух мужиков, которые пообещали взять меня в поход за металлоломом.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_5">
+		<text>...а привели в Зону.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_6">
+		<text>Верно! Я понял это слишком поздно... Потом на привале они набросились на меня, отобрали вещи, документы и карту, ну и отвели к тому оврагу. Затем пришли вы.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_7">
+		<text>Лох ты, Колян.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_8">
+		<text>Знаю... Но как выберусь - больше сюда ни ногой!</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_9">
+		<text>Я бы и сам не против отсюда свалить, да не всё так просто.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_10">
+		<text>Как вы здесь оказались?</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_11">
+		<text>Я военный, инженер. Мы летели на Янтарь, везли материалы учёным. Вертолёт упал неподалеку отсюда, выжил только я. Теперь мне надо помочь одному человеку, чтобы он помог мне отсюда выбраться.</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_12">
+		<text>А если у вас получится... То меня с собой возьмете?</text>
+	</string>
+	<string id="lw_newbie_dialog2_phrase_13">
+		<text>Будешь вести себя хорошо - тогда конечно.</text>
+	</string>
+
+
+	<string id="lw_stranger_dialog4_phrase_1">
+		<text>Почему ты назначил встречу здесь? В убежище безопаснее.</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_2">
+		<text>Мне не нужны лишние глаза и уши...</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_3">
+		<text>Окей, что ты задумал на сей раз?</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_4">
+		<text>Перед нами... Точнее, перед тобой стоит важная задача: ты должен ликвидировать одного из главарей мародёров по кличке Дед. У него стрелка с одним шнырём на окраине этой деревни, что в ложбине, видишь? Ты должен устроить ему засаду, дождаться, пока он придёт и слить его.</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_5">
+		<text>Это сложное и опасное задание, такое под силу только спецназовцу!</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_6">
+		<text>Не переживай, я тебя подстрахую. Буду наблюдать за ними в бинокль и корректировать твои действия.</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_7">
+		<text>Это издевательство. У главаря, наверное, многочисленная охрана, ты посылаешь меня на верную смерть.</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_8">
+		<text>Выбора у тебя нет. Пойми это. А так, будет хоть какой-то шанс...</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_9">
+		<text>Ну ты и сволочь...</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_10">
+		<text>Будешь действовать так: спрячешься в сторожке, дождёшься их прихода. Сначала явится тот самый шнырь, он нам не нужен. Вторым придёт главарь с двумя или тремя охранниками. Увидишь его - стреляй на поражение, после чего можешь уходить. Если всё пройдёт удачно, я буду ждать тебя в условленном месте.</text>
+	</string>
+	<string id="lw_stranger_dialog4_phrase_11">
+		<text>Хорошо.</text>
+	</string>
+
+
+	<string id="lw_stranger_dialog5_phrase_1">
+		<text>Что на этот раз? В какую задницу ты меня пошлёшь?</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_2">
+		<text>Успокойся, военный. Твоё дело - выполнять поручения, если не нравится, то прошу на выход... Голодные мутанты уже слюнки пускают!</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_3">
+		<text>Ну-ну.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_4">
+		<text>Итак, после того, как ты ликвидировал Деда, мародёры сидеть сложа руки не станут. Он был одним из самых уважаемых их главарей и многие захотят отомстить тебе лично.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_5">
+		<text>Но без лидера они уже не так организованы.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_6">
+		<text>Дед был лидером одной из пяти шаек, которые в совокупности составляют весь мародёрский контингент в данной местности. Другие главари куда более опасны и жестоки. В общем, у меня созрела одна идея... Назовём это "ловлей на живца".</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_7">
+		<text>Только не это!</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_8">
+		<text>Не ссы, вояка. Мародёров хоть и много, но если ухитриться завалить всех без исключения лидеров, то это сыграет свою роль. Как минимум они начнут грызню за общак и власть, что отвлечёт их от промысла здесь надолго. Как максимум - деморализирует гадов, заставить многих свалить из Зоны вообще. Тогда моя цель и будет достигнута.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_9">
+		<text>То есть ты хочешь избавиться от этих мародёров? Но зачем тебе это? Кто ты такой?</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_10">
+		<text>Моё имя для тебя не играет никакой роли. Видишь ли, год назад эти уроды заманили в Зону и угробили моего родного брата Сашку, земля ему пухом... После этого я поклялся отомстить. Кто именно из мародёрских главарей несёт за это ответственность, я не знаю, но по своим каналам получил инфу, что идею использовать "отмычек" выдвинул кто-то из них... Теперь ты меня понимаешь?</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_11">
+		<text>Вон оно что... Сочувствую тебе, но всё же это не повод использовать меня. Почему ты сам не возьмешь автомат и не...</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_12">
+		<text>Ты не знаешь всего, военный. Когда моя миссия здесь будет выполнена, я расскажу тебе всё до конца, а пока что будь добр меня слушаться. Осталось сделать не так много.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_13">
+		<text>Хорошо.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_14">
+		<text>Итак, ты выступишь приманкой для другого лидера по кличке Хирург. Он был приятелем Деда, очень его уважал и точно захочет отомстить. Однако никто из мародёров не знает, где находится твоё убежище, поэтому ты отправишься в известное им место и привлечешь к себе внимание. Затем тебе нужно будет дождаться появления Хирурга и ликвидировать его.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_15">
+		<text>Привлеку к себе внимание и получу пулю в ответку.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_16">
+		<text>Нет, Хирург получил свою кличку за то, что мастерски владеет навыками ножевого боя и любит применять их на деле. Так что он пойдёт к тебе первым... Охранники, конечно, будут его страховать, но и ты не мешкай: завалишь гада и сразу руки в ноги.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_17">
+		<text>Ты понимаешь, на что меня посылаешь? А сам, небось, будешь наблюдать за всем спектаклем издалека.</text>
+	</string>
+	<string id="lw_stranger_dialog5_phrase_18">
+		<text>С удовольствием помог бы тебе, но повторяю: я не могу вмешиваться. Удачи тебе.</text>
+	</string>
+
+
+	<string id="lw_stranger_dialog6_phrase_1">
+		<text>Хирург мёртв.</text>
+	</string>
+	<string id="lw_stranger_dialog6_phrase_2">
+		<text>Замечательно. Понимаю, что тебе пришлось несладко, но не переживай: нам осталось избавиться от двух последних главарей. И если это нам удастся, то обещаю, что не только верну тебе передатчик, но и снабжу хорошей картой Зоны с разведанными тропами, которой пользуюсь сам...</text>
+	</string>
+	<string id="lw_stranger_dialog6_phrase_3">
+		<text>Давай уже покончим с ними. Я хочу домой.</text>
+	</string>
+	<string id="lw_stranger_dialog6_phrase_4">
+		<text>Два последних главных урода - Дерзкий и Башка. Они тусуются вместе за периметром и сюда наведываются редко, но есть один ньюанс: похоже, затронуты финансовые интересы мародёров. Речь идёт о крупной партии артефактов, которую повезло перехватить их подчинённым. Как они это сделали - неизвестно, но скорей всего им просто повезло: тормознули какого-то прихабарённого сталкера или же перехватили курьера от торговца... Неважно. Но и Дерзкий, и Башка по моим данным недавно прибыли сюда для того, чтобы лично разделить жирный кусок. Делаться это будет, разумеется, тайно, так что нам предстоит сначала получить информацию о месте их встречи.</text>
+	</string>
+	<string id="lw_stranger_dialog6_phrase_5">
+		<text>Что ты предлагаешь?</text>
+	</string>
+	<string id="lw_stranger_dialog6_phrase_6">
+		<text>Ты должен сначала "взять языка". У меня на примете есть группа из троих мародёров, которые тусуются вот в этом районе...</text>
+	</string>
+	<string id="lw_stranger_dialog6_phrase_7">
+		<text>Если получу инфу о главарях - грохнуть их сразу?</text>
+	</string>
+	<string id="lw_stranger_dialog6_phrase_8">
+		<text>Разумеется. Потом я свяжусь с тобой.</text>
+	</string>
+
+
+	<string id="hostage_scenar_maroder_dialog1_phrase_1">
+		<text>Руки за голову, шваль!</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_2">
+		<text>Не стреляй, братишка! Я тебе денег дам!</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_3">
+		<text>Где Дерзкий и Башка?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_4">
+		<text>Я таких корешей не знаю ваще.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_5">
+		<text>А если я тебе сейчас ствол в ухо вставлю и на курок нажму?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_6">
+		<text>Всё-всё, типа вспомнил! На рембазе старой стрела у них, отвечаю.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_7">
+		<text>Катись к чертям.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_8">
+		<text>Живи, мародёр.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_9">
+		<text>Браток, спасибо, что не стал мочить! Слыш, а давай я тебе помогать буду? Чисто бесплатно, как пацан пацану...</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog1_phrase_10">
+		<text>Иди за мной. Я за тобой прослежу.</text>
+	</string>
+
+	<string id="hostage_scenar_maroder_dialog2_phrase_1">
+		<text>Ну, что скажешь, мародёрская твоя рожа?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog2_phrase_2">
+		<text>Начальник, да ты чё, я не при делах ваще.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog2_phrase_3">
+		<text>А как же. Скажи ещё, что у тебя руки не по локоть в крови.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog2_phrase_4">
+		<text>Э-э-э, дядя, а ведь у тебя у самого белы ручки-то не чистые совсем...</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog2_phrase_5">
+		<text>Ладно, проехали. Чего в Зону припёрся, говори.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog2_phrase_6">
+		<text>Меня ваще кинули, сказали, что на север на работу отвезут, а привезли сюда... Не суди строго, начальник, лучше дай сигаретку. Курить хочется - пи.дец...</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog2_phrase_7">
+		<text>Потерпишь. Кстати, каким путём ты сюда притопал, помнишь?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog2_phrase_8">
+		<text>Не, нихрена. С памятью голимо в последнее время, особенно после ганджубаса... А покурить ты мне, начальник, всё-же принеси. Я за это тебе что-то прикольное расскажу.</text>
+	</string>
+
+
+
+	<string id="lw_stranger_dialog7_phrase_1">
+		<text>Что скажешь на этот раз, сволочь?</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_2">
+		<text>Ты?? Как тебе удалось?.. Впрочем, неважно. Раз ты здесь, значит либо Ахмет меня обманул, либо он оказался тупее, чем я думал... Что тебе нужно от меня? Передатчик?</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_3">
+		<text>Просто так ты не уйдешь.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_4">
+		<text>Я же оставил тебе нож за плинтусом, ты нашел его?... Вижу, что тебе хочется со мной поквитаться, но выслушай меня в последний раз.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_5">
+		<text>Говори.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_6">
+		<text>Заткнись и сдохни!</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_7">
+		<text>Благодарю. Вся эта история, участником которой ты поневоле стал, является не просто афёрой хитрого сталкера. На самом деле я не сталкер вообще. Уже два года я, сотрудник Службы безопасности Украины, нахожусь здесь и работаю "под прикрытием". Ранее я просто собирал информацию, но месяц назад получил ответственное задание: разыскать и доставить в нужное место одну черезвычайно важную вещь. Важную в первую очередь для безопасности государства.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_8">
+		<text>Продолжай.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_9">
+		<text>Дело в том, что ещё во времена второй катастрофы на ЧАЭС произошло одно ЧП: во время "пробоя" ноосферы Земли над этим местом чернобыльской зоны на орбите находился секретный военный спутник-шпион. Чей он был - лично мне неизвестно, но факт в том, что после аварии он вышел из строя и рухнул где-то здесь - в окрестностях деревни Грачи... Поскольку блок с модулем памяти был хорошо защищён, то уцелел и моей задачей было найти его и доставить в руки наших аналитиков. Задача эта осложнилась тем, что это была территория Зоны, к тому же здесь промышляли банды мародёров. Когда я прибыл сюда, то сразу же определил место падения спутника: это был тот самый "Чёрный овраг", где ты недавно спасал "отмычку". Обследовав это место, я понял, что модуль памяти уцелел, но кто-то нашел его до меня.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_10">
+		<text>Мародёры подсуетились?</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_11">
+		<text>Увы, да. Вскоре мне удалось выйти на связь с тем самым Ахметом, который был лидером одной из местных шаек. Он детально описал нужную мне вещь и дал понять, что в курсе моей миссии здесь. Кто-то "слил" информацию о нашей операции мародёрам...</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_12">
+		<text>Как военный могу сказать, что грош цена такой организации...</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_13">
+		<text>С этим разберутся в штабе. Мне пришлось пойти с ним на сотрудничество. Ахмет поставил одно условие: я должен был помочь ему избавиться от лидеров всех конкурирующих банд, действующих в округе. Таким образом он хотел взять под контроль всю близлежащую территорию.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_14">
+		<text>Зачем?</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_15">
+		<text>Это бизнес. Бригады мародёров тащат не только разнокалиберный хлам, но и ценные артефакты и в их общаках оседают значительные суммы. В принципе, это те же самые сталкеры, только действующие куда более "грязными" методами: если у сталкеров в приоритете добыча артефактов из аномалий, то мародёры не гнушаются ничем. Избавившись от конкурентов, Ахмет через своих людей планировал получить доступ к общакам всех банд. А мне пришлось работать на него и врать тебе.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_16">
+		<text>История с погибшим братом, как я понял, тоже выдумка.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_17">
+		<text>Да. Прошу меня извинить, но я бы вынужден воспользоваться случаем. Тем более, что ты на своём вертолёте рухнул как снег на голову.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_18">
+		<text>Почему упал наш вертолёт?</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_19">
+		<text>Понятия не имею.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_20">
+		<text>Зачем ты сдал меня мародёрам?</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_21">
+		<text>Таково было условие сделки... Я планировал выручить тебя, клянусь! Просто первым делом хотел удостовериться, что Ахмет мне не соврал насчёт модуля... Он дал мне координаты схрона с ним и я спешил проверить информацию.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_22">
+		<text>Непростительная наивность для человека из СБУ. Ладно, где мой передатчик?</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_23">
+		<text>Передатчик, к сожалению, оказался разбит. Не переживай, у меня имеется план отхода, о карте я тебе не врал. И карта тоже есть.</text>
+	</string>
+	<string id="lw_stranger_dialog7_phrase_24">
+		<text>Ну так показывай!</text>
+	</string>
+
+
+	<string id="lw_newbie_dialog3_phrase_1">
+		<text>Можешь вспомнить дорогу сюда? Как тебя вели?</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_2">
+		<text>Вряд ли. Мы шли ночью, а карту у меня отобрали ещё у периметра.</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_3">
+		<text>Скверно.</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_4">
+		<text>Не переживайте, я думаю, что нас не бросят в беде! Вот прям чувство у меня такое.</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_5">
+		<text>Ну если у тебя такое чувство, значит точно не бросят, угу...</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_6">
+		<text>Ой да ладно, чего вы? Давайте я вам один секрет расскажу. Когда я был в плену у мародёров, они привели меня к той аномалии, чтобы...</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_7">
+		<text>Заставить добывать из неё артефакты. Я в курсе.</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_8">
+		<text>Главное, что они возились с каким-то научным прибором, который называли "датчиком". Вроде бы он должен был сигнализировать о том, имеются ли в аномальной зоне артефакты, то есть стоит ли туда лезть вообще. По их разговорам я понял, что обращаться с ним они не умели, потому решили показать прибор какому-то своему "бугру", который должен был находится где-то в этом месте... Не желаете проверить? Такой прибор и нам бы пригодился.</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_9">
+		<text>Конечно, давай координаты.</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_10">
+		<text>В другой раз.</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_11">
+		<text>Другого раза может и не быть, мародёры разгильдяи ещё те.</text>
+	</string>
+	<string id="lw_newbie_dialog3_phrase_12">
+		<text>Вот здесь:</text>
+	</string>
+
+	<string id="kpp_merc_lider_dialog1_phrase_1">
+		<text>Мы люди серьезные, потому сразу к делу. Блок при тебе?</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_2">
+		<text>Нет.</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_3">
+		<text>Знал, что ты не простак... Твои условия.</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_4">
+		<text>Выведете меня из Зоны?</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_5">
+		<text>Соглашайся. Карта у нас хорошая, за неё заплачены большие деньги. Если заблудимся, можно будет выйти на связь со сталкером-проводником, который нанят заранее. Так что не переживай.</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_6">
+		<text>Блок находится в надёжном месте.</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_7">
+		<text>Я передумал.</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_8">
+		<text>Тогда сообщи нам его координаты... Что за... Ты "хвост" притащил??</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_9">
+		<text>...нет!</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_10">
+		<text>Так не пойдёт. Не захочешь отдавать - заставим. У нас есть специалисты по этому делу, так что подумай ещё раз.</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_11">
+		<text>Я не выдаю государственные тайны!</text>
+	</string>
+	<string id="kpp_merc_lider_dialog1_phrase_12">
+		<text>Подумаю...</text>
+	</string>
+
+
+	<string id="sbu_comand_lider_dialog1_phrase_1">
+		<text>Старший лейтенант Дегтярёв, отдел специального назначения службы безопасности Украины. Кто вы есть?</text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_2">
+		<text>[...сообщить имя и звание]</text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_3">
+		<text>В данный момент наше ведомство проводит здесь спецоперацию. Доложите, что вы делаете в данном районе и как связаны с этими неизвестными лицами в бункере?</text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_4">
+		<text>Мы летели на Янтарь, везли материалы учёным. Транспортный МИ-6, Борт№ 77. Потерпели крушение в этом регионе несколько дней назад. </text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_5">
+		<text>Слышал об этом.</text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_6">
+		<text>Я - единственный выживший. Чтобы получить возможность безопасно выбраться из Зоны отчуждения, вступил в контакт с местными сталкерами... Дальнейшие события привели меня сюда.</text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_7">
+		<text>Блок памяти у вас?</text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_8">
+		<text>Никак нет, в надёжном месте. Могу указать на карте.</text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_9">
+		<text>Хорошо. Сейчас мы должны задержать этих вооружённых людей как нарушителей периметра Зоны... Стоп! Внимание, потенциальный противник!! Отряд, боевая готовность!</text>
+	</string>
+	<string id="sbu_comand_lider_dialog1_phrase_10">
+		<text>Вот блин...</text>
+	</string>
+
+	<string id="sbu_comand_lider_dialog2_phrase_1">
+		<text>Похоже, мы в окружении. Какие будут указания?</text>
+	</string>
+	<string id="sbu_comand_lider_dialog2_phrase_2">
+		<text>Не на тех напали! Штурмовой МИ-24 седьмой авиагруппы уже вылетел с военной базы под Черниговом. Всё, что нам нужно - продержаться до его прибытия. Задача ясна?</text>
+	</string>
+	<string id="sbu_comand_lider_dialog2_phrase_3">
+		<text>Так точно.</text>
+	</string>
+
+
+	<string id="sbu_comand_lider_dialog3_phrase_1">
+		<text>Как вы, лейтенант?</text>
+	</string>
+	<string id="sbu_comand_lider_dialog3_phrase_2">
+		<text>Потрепали они нас знатно, хорошо, что я одел усиленный бронекостюм... Наёмники уничтожены? Блок у вас?</text>
+	</string>
+	<string id="sbu_comand_lider_dialog3_phrase_3">
+		<text>Так точно. Координаты схрона с блоком сообщаю вам.</text>
+	</string>
+	<string id="sbu_comand_lider_dialog3_phrase_4">
+		<text>Замечательно, наши аналитики заберут его. Теперь - отход. Присоединяйтесь к моей группе.</text>
+	</string>
+	<string id="sbu_comand_lider_dialog3_phrase_5">
+		<text>Есть! (покинуть Зону)</text>
+	</string>
+	<string id="sbu_comand_lider_dialog3_phrase_6">
+		<text>Товарищ лейтенант, разрешите действовать самостоятельно. (остаться в Зоне)</text>
+	</string>
+	<string id="sbu_comand_lider_dialog3_phrase_7">
+		<text>Разрешаю. Но если передумаете - вот карта. Воспользовавшись ею, вы в любой момент сможете безопасно покинуть Зону. Благодарю за службу и даю вам последнюю команду - выжить.</text>
+	</string>
+	<string id="sbu_comand_lider_dialog3_phrase_8">
+		<text>Будет сделано.</text>
+	</string>
+
+
+	<string id="kpp_merc_lider_dialog2_phrase_1">
+		<text>Агенты СБУ нейтрализированы.</text>
+	</string>
+	<string id="kpp_merc_lider_dialog2_phrase_2">
+		<text>Отличная работа, военный! Мой босс щедро с тобой рассчитается, а я лично помогу тебе с документами, если захочешь податься в эмиграцию. Всё-таки сбить Ми-24 - это не каждый сумеет.</text>
+	</string>
+	<string id="kpp_merc_lider_dialog2_phrase_3">
+		<text>Что теперь?</text>
+	</string>
+	<string id="kpp_merc_lider_dialog2_phrase_4">
+		<text>Всё просто: ты даёшь нам координаты своего схрона с блоком памяти, мы выводим тебя из этого пекла и расстаёмся довольные друг другом. Итак?</text>
+	</string>
+	<string id="kpp_merc_lider_dialog2_phrase_5">
+		<text>Вот координаты. Я готов выдвигаться прямо сейчас. (покинуть Зону).</text>
+	</string>
+	<string id="kpp_merc_lider_dialog2_phrase_6">
+		<text>Вот координаты. Но с вами не пойду - есть ещё дела. (остаться в Зоне).</text>
+	</string>
+	<string id="kpp_merc_lider_dialog2_phrase_7">
+		<text>Как скажешь, военый! Но если всё-таки захочешь отсюда уйти - вот электронная карта местности с безопасными тропами. Кстати, из тебя получился бы неплохой наёмник, если захочешь поработать лично на меня - вот визитка... До встречи в Монако!</text>
+	</string>
+	<string id="kpp_merc_lider_dialog2_phrase_8">
+		<text>До встречи.</text>
+	</string>
+
+
+	<string id="lost_soldier_dialog1_phrase_1">
+		<text>А, это ты! Только не мешай.</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_2">
+		<text>Наконец-то я нашел тебя. Рад, что ты жив, товарищ по несчастью.</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_3">
+		<text>Тихо, не кричи! Разве не видишь - они открываются!</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_4">
+		<text>Что открывается?</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_5">
+		<text>Открываются... Врата... Большие чёрные врата открываются...</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_6">
+		<text>Ты не в себе.</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_7">
+		<text>Голос, он обращается ко мне. Это он, Армадеус! Я слышу тебя, господин! Сейчас я присоединюсь к тебе и покину этот несовершенный мир...</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_8">
+		<text>Ты что, вообще что-ли с катушек съехал или водки обожрался?</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_9">
+		<text>Друг, давай отправимся вместе в чудесный край огненной зари! Во славу Армадеуса! Присоединяйся.</text>
+	</string>
+	<string id="lost_soldier_dialog1_phrase_10">
+		<text>Ну тебя к чёрту!</text>
+	</string>
+
+
+	<string id="hostage_scenar_maroder_dialog3_phrase_1">
+		<text>Ну, что интересного расскажешь?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_2">
+		<text>Слышь, начальник, а хош я тебе инфу прикольную солью?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_3">
+		<text>Полезная информация от мародёра? Не верю.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_4">
+		<text>Да я те атвечаю, там такая маза, что ё.аный в рот! Кароче, месяц назад мы с пацанами раскуривались на одной полянке, а у Пиндоса спички закончились, он и говорит: "щас, типа, пайду принесу". Ну и свалил. Мы ждали-ждали, потом слышим, он орёт типа: "ай, чиста не надо" и вся такая х.йня. Мы на стрёме, волыны расчехлили, потом на полянку к нам такое мурло выскочило, что просто пи.дец! Пацаны шмальнули каждый по разу - ему по.й ваще. Мурло то на пантеру похоже было, стрёмное такое.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_5">
+		<text>Возможно, это была химера?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_6">
+		<text>Химера, ху.ра, - я не заценил, потому что свалил нахрен. Но это всё херня, начальник. Я жеж главного не сказал: у Пиндоса, которого то мурло схавало, крутой артефакт был. Ясен пень, что не помешало бы его запиндюрить себе...</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_7">
+		<text>Согласен. Где это произошло?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_8">
+		<text>Э-э-э, начальник, ты мне - я тебе. Без абид, чисто, это так по-пацански полагается делать: если берешь чё-то с общака, то и подкинуть надо...</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_9">
+		<text>Угу, конечно. Говори цену.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_10">
+		<text>Пять штукарей и всё на мази.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_11">
+		<text>Окей, вот 5000. Показывай место.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog3_phrase_12">
+		<text>Хитрожопым мародёрам, как ты, я ничего не даю.</text>
+	</string>
+
+	<string id="chimera_hunter_dialog1_phrase_1">
+		<text>Приветствую, военный! Не стреляй, я не мародёр.</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_2">
+		<text>Что ты здесь делаешь?</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_3">
+		<text>Охочусь на химеру. Здесь её логово, я нашел его вчера и устроил засаду. Тварь пришла и мне удалось её подранить. Не встречал химеру поблизости?</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_4">
+		<text>Как раз встретил. И добил.</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_5">
+		<text>Ты сделал за меня мою работу... Очень хорошо.</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_6">
+		<text>Я точно знаю, что в этом ящике должен находится ценный артефакт...</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_7">
+		<text>Да, там лежал "Колобок". Я забрал его.</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_8">
+		<text>Верни его мне, я тот, кому он принадлежит.</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_9">
+		<text>Понимаешь, какое дело: как раз на такой артефакт у меня заключён контракт и я не хочу подводить клиента. Однако взамен могу предложить тебе другой, не менее ценный артефакт - "Пламя". Согласен?</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_10">
+		<text>Слушай, это как-то не по чесному. Я убил твою химеру, а ты для меня зажал мой собственный артефакт.</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_11">
+		<text>Военный, я - наёмник и воля клиента для меня закон. Я не отдам тебе "Колобок" и не проси. Лучше возьми то, что я предлагаю взамен, иначе останешься вообще с пустыми руками.</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_12">
+		<text>Нет, так дело не пойдёт. Отдавай мне мой артефакт!</text>
+	</string>
+	<string id="chimera_hunter_dialog1_phrase_13">
+		<text>Хорошо, я возьму "Пламя".</text>
+	</string>
+
+	<string id="zavhoz_friend_dialog1_phrase_1">
+		<text>Внатуре, спасибо за то, что собаку слил.</text>
+	</string>
+	<string id="zavhoz_friend_dialog1_phrase_2">
+		<text>Где вы с Завхозом спрятали "общак"?</text>
+	</string>
+	<string id="zavhoz_friend_dialog1_phrase_3">
+		<text>Короче, вот здесь на карте...</text>
+	</string>
+	<string id="zavhoz_friend_dialog1_phrase_4">
+		<text>Как пройти аномалию, которая его защищает?</text>
+	</string>
+	<string id="zavhoz_friend_dialog1_phrase_5">
+		<text>Пошарься по кустам рядом, послушай, что ворона на кресте каркнет.</text>
+	</string>
+	<string id="zavhoz_friend_dialog1_phrase_6">
+		<text>Что за бред?</text>
+	</string>
+	<string id="zavhoz_friend_dialog1_phrase_7">
+		<text>Не бред, всё пучком... Всё, кароче, мне раскумариться надо.</text>
+	</string>
+	<string id="zavhoz_friend_dialog1_phrase_8">
+		<text>Смотри, если обманул.</text>
+	</string>
+
+
+	<string id="maroder_companion_dialog1_phrase_1">
+		<text>Ништяк, бугор. Командуй.</text>
+	</string>
+	<string id="maroder_companion_dialog1_phrase_2">
+		<text>Я те не мент, чтобы команды раздавать. Просто сливаем этого утырка-инженера и идём бухать.</text>
+	</string>
+	<string id="maroder_companion_dialog1_phrase_3">
+		<text>Всё пучком, бугор! Его уже нет.</text>
+	</string>
+
+
+	<string id="razlom_wound_maroder_dialog1_phrase_1">
+		<text>Бля... Помираю...</text>
+	</string>
+	<string id="razlom_wound_maroder_dialog1_phrase_2">
+		<text>Что случилось?</text>
+	</string>
+	<string id="razlom_wound_maroder_dialog1_phrase_3">
+		<text>Меня кореш подставил... Кароче мы в аномалию залезли, чтоб части спутника пощупать... Он, сука, все таблетки от ридаиции себе загрёб, а мне какие-то левые дал... Я так нахватался, что вырубился прямо здесь, а он свалил...</text>
+	</string>
+	<string id="razlom_wound_maroder_dialog1_phrase_4">
+		<text>Как его звали и куда он ушел?</text>
+	</string>
+	<string id="razlom_wound_maroder_dialog1_phrase_5">
+		<text>Медвежатником кликали этого урода... Он сейфы вскрывал хорошо... Теперь он пошел ящик военных у разбитого БТР-а доламывать... Всё, не могу.</text>
+	</string>
+	<string id="razlom_wound_maroder_dialog1_phrase_6">
+		<text>Надо его опередить.</text>
+	</string>
+
+	<string id="traktor_npc_dialog_phrase_1">
+		<text>Здорово, мужик. Кто ты и что тут делаешь?</text>
+	</string>
+	<string id="traktor_npc_dialog_phrase_2">
+		<text>Да вот, трактор чиню. Слушай, уважаемый, а не подскажешь ли, как мне рощицу вот эту вот обойти? На карте её нету.</text>
+	</string>
+	<string id="traktor_npc_dialog_phrase_3">
+		<text>А в чём проблема? Здесь относительно безопасно, мародёров не видно, монстров тоже.</text>
+	</string>
+	<string id="traktor_npc_dialog_phrase_4">
+		<text>Каких ещё монстров?</text>
+	</string>
+	<string id="traktor_npc_dialog_phrase_5">
+		<text>Ну каких... Кабаны там, псевдопсы. Контролёры одни чего стоят!</text>
+	</string>
+	<string id="traktor_npc_dialog_phrase_6">
+		<text>Эх... Дурак ты. Если б сказал зомби или кровосос, но нас-то, контролёров, за что монстрами обзывать?!</text>
+	</string>
+	<string id="traktor_npc_dialog_phrase_7">
+		<text>Не понял.</text>
+	</string>
+
+
+	<string id="lw_newbie_dialog4_phrase_1">
+		<text>Как дела, салага?</text>
+	</string>
+	<string id="lw_newbie_dialog4_phrase_2">
+		<text>Живот болит, ногу натёр. И домой хочется...</text>
+	</string>
+	<string id="lw_newbie_dialog4_phrase_3">
+		<text>Не вешай нос, боец. Прорвёмся.</text>
+	</string>
+
+
+	<string id="hostage_scenar_maroder_dialog4_phrase_1">
+		<text>Ну что, воровская твоя рожа, небось обратно хочется, в банду?</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog4_phrase_2">
+		<text>Э-э-э, нет, начальник, туда мне уже путь закрыт, потому что по понятиям я типа "сукой" считаюсь. Потому что тебе помогал.</text>
+	</string>
+	<string id="hostage_scenar_maroder_dialog4_phrase_3">
+		<text>Да, ты в ж.пе, мародёр! Раз так, то веди себя смирно.</text>
+	</string>
+
+
+
+
+	<string id="lw_mad_npc_dialog1_phrase_1">
+		<text>Руки вверх!</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_2">
+		<text>Потише, дядя, у тебя ведь даже ствола нет.</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_3">
+		<text>Хи-хи-хи... А ты хитёр. Так далеко забрался!</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_4">
+		<text>Подожди, ты кто такой вообще? Мародёр? Сталкер?</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_5">
+		<text>Не-е-ет, я не такой! Слушай, меня тут попросили тебе кое-что передать.</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_6">
+		<text>Кто тебя попросил?</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_7">
+		<text>Мой хозяин, его зовут Армадеус. Слышал о нём?</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_8">
+		<text>Нет, не слышал.</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_9">
+		<text>Да, слышал. Пилот упоминал это имя, но он сошел с ума и...</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_10">
+		<text>Как так? Ну это неважно, слушай и запоминай: тирлим-бом-бом, тирлим-бом-бом!</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_11">
+		<text>Чего?!</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_12">
+		<text>Ха-ха-ха-ха! Купился, да? Я тоже хитёр.</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_13">
+		<text>Ты ненормальный.</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_14">
+		<text>А между прочим, в шкафу, что в доме, кое-что лежит. И ждёт, пока его найдут.</text>
+	</string>
+	<string id="lw_mad_npc_dialog1_phrase_15">
+		<text>В каком доме?</text>
+	</string>
+
+	
+	<string id="lw_scientist_dialog1_phrase_1">
+		<text>Наконец-то! Приветствую вас, товарищ по несчастью.</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_2">
+		<text>Здравствуйте... Вы заблудились?</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_3">
+		<text>Хуже. Этот психофаг крепко в меня вцепился!</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_4">
+		<text>Психо... кто?</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_5">
+		<text>Психофаг. Это существо, которое питается пси-энергией других существ. Карлик, который заманил вас сюда. Вы же видели его мельком, да? Он очень хитрый и осторожный, если и показывается на глаза, то на короткое время.</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_6">
+		<text>Питается пси-энергией? Как контролёр, что ли?</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_7">
+		<text>Нет, контролёры питаются мясом, а это существо - паразит, не может жить без подпитки от психики других существ, желательно с высшей нервной деятельностью. То есть, людей.</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_8">
+		<text>Стоп... Откуда вы это знаете? И что это за аномальная хрень вокруг нас?</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_9">
+		<text>Извините, я забыл представиться: профессор Каланча, специалист по физике твёрдого тела, нейролог.</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_10">
+		<text>Я уже встречал вас, верно? Возле кладбища, у креста.</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_11">
+		<text>И я там нёс всякую чушь? Это психофаг, он управлял мною. Есть у него такая способность, он может говорить через кого-либо, но полностью под контроль взять не может - центр психостимуляции у него развит хуже, чем у контролёра. Зато интеллект куда выше!</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_12">
+		<text>Что вы вообще здесь делаете, профессор? Как попали в это захолустье?</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_13">
+		<text>Знаете, я... Я с удовольствием расскажу вам свою историю, она довольно интересна, даже более того! Но сейчас неподходящий для этого момент. Эта "аномальная хрень" вокруг нас, о которой вы спрашивали, - локальное защитное поле, сгенерированное моим прибором. Я в нём прячусь от карлика-психофага уже который день. От выбросов он, кстати, тоже защищает... Сам карлик - существо мелкое, физически слабое, но его сила в хитрости. Выйти из этого поля я не могу, иначе он снова меня захватит. Помогите!</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_14">
+		<text>Как я могу это сделать?</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_15">
+		<text>Обождите, профессор, у меня есть незавершенные дела.</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_16">
+		<text>Чёрт, сколько можно терпеть? Этот психофаг рано или поздно найдёт меня.</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_17">
+		<text>Для начала надо его найти. Понятия не имею, где он прячется, но у меня есть догадка. Я заметил, что на одежде у него часто видна грязь и тина, возможно, он обитает у какого-то водоёма. Проверьте окрестности, если найдёте его, то сразу-же уничтожьте.</text>
+	</string>
+	<string id="lw_scientist_dialog1_phrase_18">
+		<text>Так и сделаю.</text>
+	</string>
+	
+	
+	<string id="lw_scientist_dialog2_phrase_1">
+		<text>Профессор, скажите, а кто такой Армадеус?</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_2">
+		<text>Что-то знакомое... Подождите, а где вы такое слышали?</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_3">
+		<text>Нашел часть дневника какого-то человека, жившего здесь до аварии. Вот, посмотрите: (показать дневник самоубийцы).</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_4">
+		<text>Хм... Похоже, этот бедолага сошел с ума на почве пережитого. Но вот это имя, Армадеус. Где же я его слышал? Стоп, вспомнил! В деревне, что неподалёку отсюда, в одном из подвалов, где я прятался от выброса, было нацарапано это имя на запертой двери.</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_5">
+		<text>Кстати, я недавно нашел ключ от какой-то двери. Это подозрительно, вам не кажется?</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_6">
+		<text>Да, как-то странно... Возможно, это ловушка.</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_7">
+		<text>Что вы предлагаете?</text>
+	</string>	
+	<string id="lw_scientist_dialog2_phrase_8">
+		<text>Психофаг любить пить энергию из людей с развитым интеллектом. Но мы должны сами его одурачить. Он хочет, чтобы вы нашли дверь, которую этот ключ отпирает. Она находится где-то в деревне поблизости - там не так много строений, поиск не займёт много времени... Так вот, если найдёте дверь и откроете её, то попадёте внутрь мощной пси-аномалии, которая подавит вашу волю, а Психофаг воспользуется этим, чтобы взять вас под контроль. Вы должны обладать хорошей защитой от пси-излучения, чтобы не позволить ему это сделать. У вас есть экранированный научный костюм или, быть может, артефакт с подобной защитой?</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_9">
+		<text>У меня есть научный костюм(комбинезон "Сева").</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_10">
+		<text>У меня есть мощный артефакт, он защитит меня(артефакт "Прелесть").</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_11">
+		<text>У меня есть неплохой артефакт, он защитит меня(артефакт "Лунный свет").</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_12">
+		<text>У меня есть медикаменты, которые повысят мою пси-устойчивость(препарат "Пси-блокада").</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_13">
+		<text>Такого у меня нет.</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_14">
+		<text>Надеюсь, это вам поможет. Как только вы очнётесь внутри пси-зоны, Карлик набросится на вас. Если вы дадите ему отпор, то он ничего вам не сделает и скорей всего, пустится наутёк. Не дайте ему сбежать и добейте психофага! Помните - он разумен и очень хитёр.</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_15">
+		<text>Постараюсь.</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_16">
+		<text>Если уничтожите его, то спасёте мою жизнь. Я знаком с основами медицины и смогу помочь вам, кроме того, в моём тайнике лежит хорошее снаряжение, которым я с удовольствием поделюсь. Желаю удачи!</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_17">
+		<text>Договорились.</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_18">
+		<text>Плохо, значит придётся обзавестись чем-то подобным, иначе психофга вам не победить. Когда я ещё был свободным, то немного разведал эти окрестности и видел одно место, где военные оставили немного припасов. Возможно, там вы найдёте кое-какие медикаменты с защитой от пси-излучения. Проверьте вот здесь... Как только добудете нужное - ищите дверь. Откроете её и окажетесь внутри пси-зоны - Карлик набросится на вас. Если вы дадите ему отпор, то он ничего вам не сделает и скорей всего, пустится наутёк. Не дайте ему сбежать и добейте психофага! Помните - он разумен и очень хитёр.</text>
+	</string>
+	<string id="lw_scientist_dialog2_phrase_19">
+		<text>Хорошо.</text>
+	</string>
+	
+	
+	<string id="lw_scientist_dialog3_phrase_1">
+		<text>Хорошие новости, профессор: карлик убит.</text>
+	</string>
+	<string id="lw_scientist_dialog3_phrase_2">
+		<text>Победа! Вы - мой спаситель. А мне больше нет смысла сидеть под этим куполом, надо искать место получше.</text>
+	</string>
+	<string id="lw_scientist_dialog3_phrase_3">
+		<text>У меня есть убежище неподалёку отсюда. Перебирайтесь ко мне.</text>
+	</string>
+	<string id="lw_scientist_dialog3_phrase_4">
+		<text>С удовольствием. Сейчас я соберу свои пожитки и отправимся в путь. На месте рассчитаюсь с вами и поведаю историю, как я попал сюда. Здесь, понимаете ли, небезопасно.</text>
+	</string>
+	<string id="lw_scientist_dialog3_phrase_5">
+		<text>Договорились.</text>
+	</string>
+	
+	<string id="lw_scientist_dialog4_phrase_1">
+		<text>Профессор, что с вами?</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_2">
+		<text>[замогильным голосом]: Я не профессор, я - Армадеус! хозяин здешних мест, тот, кто питается чистым разумом!</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_3">
+		<text>Чёрт, неужели этот карлик выжил? Я же убил его...</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_4">
+		<text>Нет, ты не смог убить меня, человек. Ты силён и умён, но я выше тебя.</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_5">
+		<text>Перестань мучить учёного, гад! Покажись мне на глаза и узнаешь, кто сильнее!</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_6">
+		<text>Я отпущу этого человека, он мне надоел. А ты... ведь я мог убить тебя, просто мне нужно было испытать твоё мастерство выживания. Этот профессор обладает хорошим умом, но руки его слабы, оружием он пользуется плохо, Зона быстро его сожрёт без посторонней помощи. Ты же доказал, что не только умён, но и силён и можешь выжить в одиночку. Давай договоримся о сделке: если ты убъешь эту ничтожную личность, то я дам тебе уникальный артефакт, котрого ты не найдешь нигде. Соглашайся!</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_7">
+		<text>Убить ни в чём не виноватого человека?</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_8">
+		<text>А ты уверен в том, что он ни в чём не виновен? Я расскажу тебе его историю: когда-то он был членом правительственной организации, которая заметала следы экспериментов в Зоне, маскируясь под нейтральную группировку. "Чистое небо" - может слышал? Он и ещё один учёный когда-то работали в секретной лаборатории под Припятью и занимались разработкой чудовищного пси-оружия. Из-за него и его подельников произошла вторая катастрофа и образовалась аномальная Зона. Этот человек породил зло, из которого ты не можешь выбраться, его жизнь не стоит и гроша. Убей его и забудь об этом.</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_9">
+		<text>Вот оно что... Из-за этих сволочей я мучаюсь. Пусть сдохнет!</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_10">
+		<text>Я не стану убивать его.</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_11">
+		<text>Тогда берегись. Я приду за тобой.</text>
+	</string>
+	<string id="lw_scientist_dialog4_phrase_12">
+		<text>Приходи. В этот раз я не промахнусь.</text>
+	</string>
+
+	
+	<string id="lw_scientist_dialog5_phrase_1">
+		<text>Вы в порядке?</text>
+	</string>
+	<string id="lw_scientist_dialog5_phrase_2">
+		<text>Вроде да, а... что это было?</text>
+	</string>
+	<string id="lw_scientist_dialog5_phrase_3">
+		<text>Похоже, психофаг выжил. Я не добил его, а следовало бы.</text>
+	</string>
+	<string id="lw_scientist_dialog5_phrase_4">
+		<text>О, нет! Я уже не смогу спрятаться от него под "куполом", в приборе разрядился аккумулятор.</text>
+	</string>
+	<string id="lw_scientist_dialog5_phrase_5">
+		<text>Ладно, будем как-то отбиваться. Он сказал, что ещё вернётся, значит будем ждать нападения.</text>
+	</string>
+	<string id="lw_scientist_dialog5_phrase_6">
+		<text>Да, надо воспользоваться этим и убить его наверняка.</text>
+	</string>
+	<string id="lw_scientist_dialog5_phrase_7">
+		<text>Хорошо, а теперь продолжим путь.</text>
+	</string>
+	
+	<string id="lw_scientist_dialog6_phrase_1">
+		<text>Карлик убит. На этот раз уже точно.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_2">
+		<text>Фу-у-ух, наконец-то! Спасибо вам огромное. Но я забыл спросить вас о том, кто вы и как здесь очутились.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_3">
+		<text>Я - военный инженер, мой вертолёт совершил вынужденную посадку недалеко отсюда, выжил только я.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_4">
+		<text>То есть вы сами очутились в западне? Сочувствую.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_5">
+		<text>Профессор, как вы проникли сюда? Помните дорогу?</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_6">
+		<text>Увы, я просто заблудился. Если б знал, как отсюда выбраться, то не сидел бы здесь и сейчас перед вами. Я из группы по регулярному мониторингу Зоны отчуждения от НИИ "НаучПром". Мы проводили замеры у периметра, но нас атаковали неизвестные, меня похитили видимо, с целью выкупа... Затем я сбежал и забрёл в эту глушь, где меня и захватил психофаг.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_7">
+		<text>Хм... А психофаг рассказал мне свою версию вашего здесь появления.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_8">
+		<text>Чушь собачья! Как вы можете верить этому мутанту? Он был коварным и жестоким существом, наше счастья, что он уничтожен.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_9">
+		<text>Это точно.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_10">
+		<text>Ох, что ж это я, совсем забыл! Вот, обещаное вознаграждение.</text>
+	</string>
+	<string id="lw_scientist_dialog6_phrase_11">
+		<text>Благодарствую.</text>
+	</string>
+	
+	
+	
+	
+	<string id="karlik_dialog1_phrase_1">
+		<text>[Мутат вопросительно смотрит на вас]</text>
+	</string>
+	<string id="karlik_dialog1_phrase_2">
+		<text>Стой на месте.</text>
+	</string>
+	<string id="karlik_dialog1_phrase_3">
+		<text>Убирайся прочь.</text>
+	</string>
+	
+	
+	
+	<string id="lw_scientist_dialog_all_phrase_1">
+		<text>Профессор, есть вопрос.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_2">
+		<text>Да, я вас слушаю.</text>
+	</string>
+	
+	<string id="lw_scientist_dialog_all_phrase_3">
+		<text>Этот дневник самоубийцы, - что вы о нём скажете?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_3_1">
+		<text>Бред сумасшедшего, скорей всего на почве алкоголизма. По официальным данным первая авария произошла по другой причине.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_3_2">
+		<text>Как вы думаете, почему карлик подбрасывал мне эти записи?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_3_3">
+		<text>Чтобы заморочить голову. Вы же не хотите сказать, что считаете его... автором этого дневника?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_3_4">
+		<text>Конечно нет, просто интересно.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_3_5">
+		<text>Возможно.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_3_6">
+		<text>Послушайте, я учёный и верю в науку, а не во всякую мистику и прочую эзотерику! Кем бы не было это существо в прошлом, сейчас оно мертво, а изучать подобные организмы - не моя специализация.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_3_7">
+		<text>Что ж поделаешь.</text>
+	</string>
+	
+	<string id="lw_scientist_dialog_all_phrase_4">
+		<text>Расскажите о себе.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_1">
+		<text>Как я уже говорил, я нейролог, то есть специалист, изучающий физиологию головного мозга человека.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_2">
+		<text>Необычная специализаация для исследования Зоны.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_3">
+		<text>В Зоне есть аномалии, генерирующее так называемую пси-энергию, то есть излучение особого вида, влияющее на человеческий мозг. Я проводил исследования чтобы выяснить, насколько опасны сейчас эти аномалии и как этому фактору можно противостоять.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_4">
+		<text>Пси-энергию могут излучать не только аномалии.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_5">
+		<text>Да, и мутанты, конечно! Мы с вами убедились в этом на примере Психофага. Есть и другие особи.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_6">
+		<text>А техногенные установки?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_7">
+		<text>Что вы имеете в виду?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_8">
+		<text>Я слышал, что в Зоне проводились опыты по изобретению пси-оружия. Это так?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_9">
+		<text>Откуда мне знать? Я, как уже говорил ранее, нейролог и работал в НИИ "НаучПром". Это не секретное предприятие, так что к подобным разработкам я отношения не имею.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_4_10">
+		<text>Понятно.</text>
+	</string>
+	
+	<string id="lw_scientist_dialog_all_phrase_5">
+		<text>Чем могу вам помочь?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_1">
+		<text>Вы и так мне помогли. Хотя... Я бы мог поспособствовать вам в плане сбора полезной информации.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_2">
+		<text>Например?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_3">
+		<text>Здесь обитает много, скажем так... лиц с низким уровнем социальной ответственности, верно?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_4">
+		<text>Имеете в виду мародёров? Да, их хватает.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_5">
+		<text>Я слышал, что у таких людей часто бывают схроны, где они прячут награбленное, а информацию о них шифруют. Если найдёте зашифрованные ПДА, то я, возможно, смог бы вытащить из них координаты парочки тайников. Я когда-то увлекался программированием.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_6">
+		<text>Неплохая идея.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_7">
+		<text>Спасибо, нет.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_8">
+		<text>Но для этого мне нужен хотя-бы какой-то компьютер. У вас, как я вижу, его нет.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_5_9">
+		<text>Возможно, в заброшенных строениях кое-что найдётся.</text>
+	</string>
+	
+	<string id="lw_scientist_dialog_all_phrase_6">
+		<text>Водку будете?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_6_1">
+		<text>Я не пью. И вам не советую! Свежий воздух, утреняя гимнастика и диета - залог успеха и долголетия.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_6_2">
+		<text>С такой программой вам надо было не в Зону переться, а куда-нибудь на телевидение.</text>
+	</string>
+	
+	<string id="lw_scientist_dialog_all_phrase_7">
+		<text>Я собрал компьютер. Он в соседней комнате, можете пользоваться.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_7_1">
+		<text>Замечательно! Надеюсь, электричество здесь есть?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_7_2">
+		<text>Да, конечно.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_7_3">
+		<text>Пока что нет, но я это улажу.</text>
+	</string>
+	
+	<string id="lw_scientist_dialog_all_phrase_8">
+		<text>У меня есть ПДА мародёра, он заблокирован. Сможете вытащить из него полезную инфу?</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_8_1">
+		<text>Почему бы и нет? Давайте его сюда... Моя программа подбора пароля работает безотказно. Вот, пожалуйста: координаты тайника на вашей карте.</text>
+	</string>
+	<string id="lw_scientist_dialog_all_phrase_8_2">
+		<text>Спасибо, проверю.</text>
+	</string>
+	
+	
+	
+	
+	<string id="quest_sniper_maroder2_dialog1_phrase_1">
+		<text>Э-э-э! А ты что за хобот?</text>
+	</string>
+	<string id="quest_sniper_maroder2_dialog1_phrase_2">
+		<text>Сам ты хобот.</text>
+	</string>
+	<string id="quest_sniper_maroder2_dialog1_phrase_3">
+		<text>Какого х.ра припёрся? Я здесь человека жду.</text>
+	</string>
+	<string id="quest_sniper_maroder2_dialog1_phrase_4">
+		<text>Этого человека случайно не Сиплым кличут?</text>
+	</string>
+	<string id="quest_sniper_maroder2_dialog1_phrase_5">
+		<text>Подожди, ты кто, бл.дь, такой, а? Колись, а то корешей свисну и мы тебя на бутылку посадим.</text>
+	</string>
+	<string id="quest_sniper_maroder2_dialog1_phrase_6">
+		<text>Я от Борзого.</text>
+	</string>
+	<string id="quest_sniper_maroder2_dialog1_phrase_7">
+		<text>Просто мимо проходил, уже ухожу.</text>
+	</string>
+	<string id="quest_sniper_maroder2_dialog1_phrase_8">
+		<text>Какой нах.й Борзой? Мы с Сиплым этого уроде полгода тому назад слили и закопали! Говори, шлюха, кто тебя подослал!</text>
+	</string>
+	
+		
+	<string id="quest_sniper_dialog1_phrase_1">
+		<text>О боже... Только не это... Я умираю...</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_2">
+		<text>Ты сильно ранен? Аптечка нужна?</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_3">
+		<text>Не поможет... О, чёрт, кровь ручьем. Этот гад всадил в меня очередь...</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_4">
+		<text>Чем же я могу помочь?</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_5">
+		<text>Просто выслушай... Я не хочу уносить с собой в могилу... Эти сволочи убили моего брата. Он был профессиональным военным, снайпером, служил в горячей точке. Затем его уволили и он связался с плохой компанией... Попал в Зону, взял себе кличку Борзой. Здесь он работал на какого-то главаря, отстреливал людей по его приказу. За это получал много бабок... Ох, не могу...</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_6">
+		<text>Продолжай.</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_7">
+		<text>Сиплый и Хмырь позавидовали ему, подкараулили и убили. Тело просто бросили в канаву... Я узнал об этом и поклялся... Поклялся отомстить. Писал им угрозы от имени брата, будто он выжил... Но вышло вот так...</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_8">
+		<text>Хреново вышло на самом деле.</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_9">
+		<text>Прошу... Не бросай меня здесь! Я не хочу, как брат... Похорони по-человечески...</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_10">
+		<text>Хорошо.</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_11">
+		<text>Спасибо... А моё оружие... Старая, но точная винтовка с прицелом. Это подарок отца... Возьми себе. Вот место, где она спрятана.</text>
+	</string>
+	<string id="quest_sniper_dialog1_phrase_12">
+		<text>Спасибо.</text>
+	</string>
+	
+	
+	
+	<string id="mg_kpp_boss_dialog1_phrase_1">
+		<text>А вот и наше мясцо! Уже не совсем свежее, зато подкопченное и обстрелянное.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_2">
+		<text>Подожди... Какого чёрта? Мне же сказали, что если я сумею выжить, то мне заплатят и отпустят!</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_3">
+		<text>Милый мой, как я могу отпустить такое шустрое и живучее мясцо, как ты? Ведь ты прошел первый круг ада, значит, скорей всего, пройдешь и второй...</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_4">
+		<text>Только не говори, что...</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_5">
+		<text>Да-да, пройдёшь это соревнование ещё раз, куда ты денешься. Моей передаче нужен рейтинг, просмотры, понимаешь? Это же бабло.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_6">
+		<text>Ты вербуешь бывших сталкеров, обманываешь их, стравливаешь между собой... Смотришь, как они истребляют друг друга и думаешь только о просмотрах? Ты ведь сам - бывший сталкер, как ты можешь?!</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_7">
+		<text>А кто такой "сталкер", ты вообще понимаешь? Типа, "охотник за артефактами", да? Чушь собачья. У сталкера идеология одна: хабар - навар. Артефактов я натаскал в своё время достаточно, теперь я исключаю одну переменную из этой формулы и получается просто - "навар". С другой стороны, сталкеры ведь тоже люди, а на людях можно зарабатывать так же, как и на хабаре.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_8">
+		<text>Больная у тебя идеология. И погоняло соответствующее.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_9">
+		<text>Короче, не гони порожняк. Если пройдешь ещё один круг, зрителям это понравится, рейтинг передачи повысится и это будет то, что надо. Всё равно я тебя отсюда не выпущу, так что выбора нет.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_10">
+		<text>Дай мне хотя-бы зализать раны.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_11">
+		<text>Сколько угодно. В этом старом бункере есть медикаменты, пища, место для отдыха - я позаботился об этом. Удрать не получится, мои помощники глаз с тебя не спустят. На всё про всё у тебя не более суток, а затем - снова в бой! Ты понял, чувак? Кстати, как же тебя назвать?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_12">
+		<text>У меня есть имя вообще-то.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_13">
+		<text>На.рать на твоё имя, я дам тебе кличку... Погоди... Француз. Нет, Французик. Будешь Французиком!</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_14">
+		<text>Я не иностранец.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_15">
+		<text>Пофиг, мне главное, чтобы зрителям понравилось. Всё, свободен как сопля в полёте.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog1_phrase_16">
+		<text> [обматерить его мысленно и уйти] </text>
+	</string>
+	
+	
+	<string id="mg_kpp_boss_dialog2_phrase_1">
+		<text>Эй, Волчара!</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_2">
+		<text>Чего тебе, Французик?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_3">
+		<text>Я готов пройти очередной этап Соревнования.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_4">
+		<text>Ничего.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_5">
+		<text>Ты чё, офонарел? Выброс наверху, сиди и жди, пока не закончится. Водки попей или пожри чего, вон на столе лежит.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_6">
+		<text>Замечательно.</text>
+	</string>
+	
+	<string id="mg_kpp_boss_dialog2_phrase_7">
+		<text>Мне нужен компьютер.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_8">
+		<text>Это ещё зачем?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_9">
+		<text>Хочу фото с дома посмотреть, вспомнить о приятном. Каждый раз выхожу отсюда, как в последний.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_10">
+		<text>Бля, ну ты штрих! У меня здесь не дом отдыха, а чисто перевалочная база: отдохнуть там, пожрать-пос.ать, прибухнуть после боя. Может, тебе сюда ещё и тёлку притаранить? Лучше бы к бою подготовился как следует... Короче, я когда места эти осматривал, чуть восточнее в одном доме видел чьи-то пожитки, вроде и комп там был. Что там за деревенских хакер обитал, я не знаю, но если уж так хочется, то как будешь на очередной вылазке - заглянешь.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_11">
+		<text>Окей.</text>
+	</string>
+	
+	<string id="mg_kpp_boss_dialog2_phrase_12">
+		<text>Стопэ, чувак! Слышишь треск? Нет? А я слышу.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_13">
+		<text>Какой ещё треск?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_14">
+		<text>Треск счётчика Гейгера, который у меня в кармане лежит. Ты небось полную пазуху бирюлек-артефактов в Зоне нагрёб? Мне этого не надо, я в своё время их сколько перетаскал, что от облучения все волосы вылезли. Видишь, какая плешь? Так что скидывай лишние артефакты в ящик и тогда поговорим. Больше, чем с одним камушком ко мне не подходи!</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_15">
+		<text>Как скажешь.</text>
+	</string>
+	
+	<string id="mg_kpp_boss_dialog2_phrase_16">
+		<text>Кличка "Миха Северный" тебе о чём-то говорит?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_17">
+		<text>Ну допустим.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_18">
+		<text>Я нашел то, что от него осталось неподалёку от чёрного оврага. Похоже, мутанты постарались.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_19">
+		<text>Да ты что?.. Лады, помяну его свеженьким, как будет время. Ты это... ничего при нём не находил-то?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_20">
+		<text>Его ПДА. Однако он перед смертью почти всё удалил, остался только намёк на его личный схрон. Может знаешь, где он?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_21">
+		<text>Эт хорошо, что удалил-то, хе-хе. Нычка, говоришь? А нахрена она тебе, Французик? Я всех и тебя в том числе, неплохо снабжаю. Надо только успеть забрать, ха-ха-ха!</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_22">
+		<text>В таких условиях лишний хабар не помешает.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_23">
+		<text>Знаю только приблизительно. Вот здесь где-то... Или здесь? Короче, проверишь эти точки, в одной из них точняк надыбаешь.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_24">
+		<text>Понял. Спасибо говорить не буду.</text>
+	</string>
+	
+	<string id="mg_kpp_boss_dialog2_phrase_25">
+		<text>Послушай, я тут во время последней вылазки нашел кое-что интересное.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_26">
+		<text>Что там за ботва, Французик?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_27">
+		<text>Тот самый курьер. Похоже, он был не так прост, как мы думали.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_28">
+		<text>В смысле?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_29">
+		<text>Я покопался в его ПДА, используя тот компьютер, и выудил кое-что интересное(ложь). Похоже, он на самом деле был человеком компании, на которую ты работаешь, прикинь?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_30">
+		<text>Ну-ка, покажи... Вот жеж блин, вот это подстава! Какого хрена им нужно, я тут на них день и ночь вкалываю, как папа Карло, а они ещё и шпионов присылают. Совсем офонарели. Ты, Французик это, спасибо за инфу, конечно, удружил. А чего ещё там раскопал?</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_31">
+		<text>Там много зашифрованных сообщений, но вроде-бы есть инфа о том, что задача у курьера была найти некий схрон с ценным артефактом(ложь).</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_32">
+		<text>Хм, вон какая шняга, а я-то думал. Дык у меня с компанией чёткая договорённость: если брюлики какия надыбаю в Зоне - всё моё, без приколов. Чего они вдруг так забурели? Надо послать своего человека, чтобы он разобрался с этим делом... Лады, Французик, ты молоток, что не слил инфу эту, а мне припёр. Гуляй.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_33">
+		<text>Мог бы хоть полезное что-то дать для выживания в следущем рейде.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_34">
+		<text>Запрещено правилами "Соревнования"! Кроме того, я дам - а ты гробанёшься. Какой толк? Иди уже.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_35">
+		<text>Всё ясно с тобой.</text>
+	</string>
+	
+	<string id="mg_kpp_boss_dialog2_phrase_36">
+		<text>Мне нужен научный костюм.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_37">
+		<text>Французик, ты что, совсем охренел? Я тебя и других участников плохо снабжаю? Прошвырнись по схронам как следует.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_38">
+		<text>В схронах твоих одно барахло. А меня радиация уже заколебала. Ты ведь на своей шкуре знаешь, что это за дрянь.</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_39">
+		<text>Эт да, уже все волосы повылезли, антирад пачками жру... Лады, вот комбезик, прамо со склада:</text>
+	</string>
+	<string id="mg_kpp_boss_dialog2_phrase_40">
+		<text>Так бы и сразу.</text>
+	</string>
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	<string id="mg_companion1_dialog1_phrase_1">
+		<text>Аптечку, пожалуйста! Я ранен...</text>
+	</string>
+	<string id="mg_companion1_dialog1_phrase_2">
+		<text>[дать обычную аптечку]</text>
+	</string>
+	<string id="mg_companion1_dialog1_phrase_3">
+		<text>[дать армейскую аптечку]</text>
+	</string>
+	<string id="mg_companion1_dialog1_phrase_4">
+		<text>[дать научную аптечку]</text>
+	</string>
+	<string id="mg_companion1_dialog1_phrase_5">
+		<text>Ничем не могу помочь.</text>
+	</string>
+	<string id="mg_companion1_dialog1_phrase_6">
+		<text>Благодарю! Я попал сюда случайно, искал артефакты, отбился от своих. Что за фигня происходит вокруг этой деревни? И кто ты?</text>
+	</string>
+	<string id="mg_companion1_dialog1_phrase_7">
+		<text>Военный, пытаюсь выжить под присмотром одного урода. Вон он, на вертушке кружит. Здесь как-бы снимают реалити-шоу.</text>
+	</string>
+	<string id="mg_companion1_dialog1_phrase_8">
+		<text>Значит, это правда, что какие-то деляги выкупили этот район Зоны... Вот жеж блин, и что делать?</text>
+	</string>
+	<string id="mg_companion1_dialog1_phrase_9">
+		<text>Давай пробиваться вместе!</text>
+	</string>
+	
+	
+	<string id="mg_legend_npc_dialog1_phrase_1">
+		<text>Аптечку, пожалуйста! Я ранен...</text>
+	</string>
+	<string id="mg_legend_npc_dialog1_phrase_2">
+		<text>[дать обычную аптечку]</text>
+	</string>
+	<string id="mg_legend_npc_dialog1_phrase_3">
+		<text>[дать армейскую аптечку]</text>
+	</string>
+	<string id="mg_legend_npc_dialog1_phrase_4">
+		<text>[дать научную аптечку]</text>
+	</string>
+	<string id="mg_legend_npc_dialog1_phrase_5">
+		<text>Ничем не могу помочь.</text>
+	</string>
+	<string id="mg_legend_npc_dialog1_phrase_6">
+		<text>Благодарю! Я - сталкер, попал сюда случайно, искал артефакты. Что за фигня происходит вокруг этой деревни? И кто ты?</text>
+	</string>
+	<string id="mg_legend_npc_dialog1_phrase_7">
+		<text>Военный, пытаюсь выжить под присмотром одного урода. Вон он, на вертушке кружит. Здесь как-бы снимают реалити-шоу.</text>
+	</string>
+	<string id="mg_legend_npc_dialog1_phrase_8">
+		<text>Значит, это правда, что какие-то деляги выкупили этот район Зоны... Вот жеж блин, и что делать?</text>
+	</string>
+	<string id="mg_legend_npc_dialog1_phrase_9">
+		<text>Давай пробиваться вместе!</text>
+	</string>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	<string id="hide_from_surge_message">
+		<text>Внимание! До выброса осталось</text>
+	</string>
+	<string id="hide_from_surge_descr_1_a">
+		<text>Необходимо срочно бежать к ближайшему укрытию и спрятаться от выброса.</text>
+	</string>
+	<string id="hide_from_surge_descr_2_a">
+		<text>Во время выброса ни в коем случае нельзя покидать укрытие.</text>
+	</string>
+	<string id="hide_from_surge_name_1">
+		<text>Выброс: найти укрытие</text>
+	</string>
+	<string id="hide_from_surge_name_2">
+		<text>Выброс: переждать в укрытии</text>
+	</string>
+</string_table>

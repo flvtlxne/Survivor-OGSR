@@ -1,0 +1,15 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+on_info = {=master_difficulty} ph_idle@open2
+on_info2 = {+old_army_items_check} ph_idle@open1
+
+[ph_idle@open1]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = ph_idle@open2 %=actor_finds_goodloot_snd =spawn_scientist_kpp_box_mob +undegr_door_check%
+
+[ph_idle@open2]
+nonscript_usable = true
+tips = st_search_treasure

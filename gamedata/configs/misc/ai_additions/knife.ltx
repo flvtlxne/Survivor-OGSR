@@ -1,0 +1,113 @@
+;--------------------------------------
+; Модуль knife
+; Rulix aka Bak
+;--------------------------------------
+
+[main]
+weapon_to_spawn = wpn_knife			; секция ножа для выдачи
+spawn_chance = 1.0			; шанс на выдачу новенькому сталкеру ножа
+forbidden_factions = zombied,ecolog,trader	; группировки, для которых схема будет отключена
+
+[forbidden_npcs]	; имена НПС, для которых схема будет отключена (name,section,profile_name)
+mechanical_npc1,sbu_comand_lider,kpp_merc_lider
+
+;---------------------------------------
+; список классов, на которых разрешено применение
+; тип существа = минимально требуемая величина courage
+
+[attack_courage]
+actor		= 25
+stalker		= 40
+bloodsucker	= 60
+boar		= 40
+burer		= 60
+;cat		= 40
+;chimera	= 90
+;controller	= 80
+dog		= 40
+flesh		= 35
+;fracture	= 50
+giant		= 75
+;poltergeist	= 65
+pseudodog	= 55
+psy_dog		= 45
+;psy_dog_phantom = 40
+snork		= 60
+;tushkano	= 30
+;zombie		= 55
+
+;---------------------------------------
+[mutant_defend] ;классы мутантов, для которых доступна схема mutant_defend
+bloodsucker
+boar
+;cat
+;chimera
+;dog
+flesh
+;fracture
+;giant
+pseudodog
+;psy_dog
+;psy_dog_phantom
+;snork;
+;tushkano
+;zombie
+
+;---------------------------------------
+; настройки для разных рангов НПС
+; добавка урона при ударе
+
+[novice]
+addhit_actor = 0.5
+addhit_stalker = 0
+addhit_mutant = 0.1
+
+[experienced]
+addhit_actor = 1
+addhit_stalker = 0
+addhit_mutant = 0.2
+
+[veteran]
+addhit_actor = 2
+addhit_stalker = 0.1
+addhit_mutant = 0.4
+
+[master]
+addhit_actor = 3
+addhit_stalker = 0.5
+addhit_mutant = 1
+
+;---------------------------------------
+; настройки для разных группировок
+
+[stalker]
+courage = 0.95		; чтобы идти в атаку с ножом, нужна смелость
+mutant_hunt = true	; можно ли охотиться на монстров
+
+[bandit]
+courage = 1.4
+mutant_hunt = true
+
+[freedom]
+courage = 1.3
+mutant_hunt = true
+
+[dolg]
+courage = 1
+mutant_hunt = true
+
+[killer]
+courage = 0.75
+mutant_hunt = true
+
+[army]
+courage = 0.8
+mutant_hunt = true
+
+[monolith]
+courage = 1.4
+mutant_hunt = true
+
+
+; управление из логики:
+; can_use_knife = false в секции схемы или в секции логики

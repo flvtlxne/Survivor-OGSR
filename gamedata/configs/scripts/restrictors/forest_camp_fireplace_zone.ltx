@@ -1,0 +1,28 @@
+[logic]
+active = sr_particle@fire1
+
+[sr_particle@fire1]
+name = explosions\campfire_00
+path = forest_camp_fireplace_point
+mode = 2
+looped = true
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+forest_camp_fireplace} sr_cutscene@1 %=spawn_forest_camp_script_npc%
+
+[sr_cutscene@1]
+point = forest_camp_pnt1_look
+look = forest_camp_fireplace_point
+cam_effector = scenario_cam\forest_camp_script_cam1
+on_signal = cameff_end | sr_particle@fire2 %+forest_camp_fireplace2%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_particle@fire2]
+name = explosions\effects\expl_car_smoke_big_smoke
+path = forest_camp_fireplace_point
+mode = 2
+looped = true
+
+
+[sr_idle@nil]

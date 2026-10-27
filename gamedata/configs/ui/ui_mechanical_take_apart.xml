@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <mechanical_take_apart>
+
+	<table x="200" y="85" width="812" height="450" stretch="1">
+		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+	</table>
+
+	<name x="250" y="95" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Мастерская (разборка оружия):</text>
+	</name>
+
+	<text1 x="270" y="160" width="180" height="230">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Разбирая на запчасти разное оружие, вы получаете наборы ходовых деталей, из которых можно составлять комплекты для первичного ремонта (ремкомплекты). Имея 3 набора деталей, можно собрать их в 1 ремкомплект. Примечание: оружие, расположенное в слотах, разбору не подлежит.</text>
+	</text1>
+
+
+
+
+	<btn_1 x="500" y="130" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">ПМ</text>
+	</btn_1>
+
+	<btn_2 x="500" y="160" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">ПБ-1с</text>
+	</btn_2>
+
+	<btn_3 x="500" y="190" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Обрез</text>
+	</btn_3>
+
+	<btn_4 x="500" y="220" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">УДП "Компакт"</text>
+	</btn_4>
+
+	<btn_5 x="500" y="250" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">ХПСС-1м</text>
+	</btn_5>
+
+	<btn_6 x="500" y="280" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">ТОЗ-34</text>
+	</btn_6>
+
+	<btn_7 x="500" y="310" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">АКСУ</text>
+	</btn_7>
+
+	<btn_8 x="500" y="340" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">АК-74</text>
+	</btn_8>
+
+	<btn_9 x="500" y="370" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">ТРс-301</text>
+	</btn_9>
+
+	<btn_10 x="500" y="400" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Винтарь-ВС</text>
+	</btn_10>
+
+	<btn_11 x="500" y="430" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">ПП "Бизон"</text>
+	</btn_11>
+
+	<btn_12 x="500" y="460" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Сайга-12</text>
+	</btn_12>
+	
+	<btn_13 x="500" y="490" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Винтовка Мосина</text>
+	</btn_13>
+
+
+
+
+	<btn_back x="260" y="480" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Назад</text>
+	</btn_back>
+
+	<btn_exit x="370" y="480" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Выход</text>
+	</btn_exit>
+
+
+    </mechanical_take_apart>
+
+

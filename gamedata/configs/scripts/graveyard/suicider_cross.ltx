@@ -1,0 +1,21 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+on_info = {+map_finded} ph_idle@2 %=add_self_spot(red_location:usefull_place_mark)%
+
+[ph_idle@2]
+tips      = suicider_cross_use
+on_use = ph_idle@3 %=remowe_self_spot(red_location:usefull_place_mark) +suicider_cross_use%
+
+[ph_idle@3]
+on_game_timer = 20|ph_idle@nil %=run_postprocess(fade_in) =play_sound(actor_perplexity) =enable_ui%
+
+[ph_idle@nil]
+
+
+
+
+
+
+ 

@@ -1,3 +1,49 @@
+function dist_to_job_point_le(actor, npc, p)
+	if not (npc) then
+		return false
+	end
+    local smart = xr_gulag.get_npc_smart(npc)
+    if smart == nil then return false end
+
+        local npc_info = smart.npc_info[npc:id()]
+    if npc_info then
+        local npc_job = smart.job_data[npc_info.job_id]
+
+        local alife_task = npc_job.alife_task
+        if alife_task then
+            return npc:position():distance_to_sqr(alife_task:position()) <= p[1]*p[1]
+        end
+    end
+
+    return false
+end
+function dist_to_job_point_ge(actor, npc, p)
+	if not (npc) then
+		return false
+	end
+    local smart = xr_gulag.get_npc_smart(npc)
+    if smart == nil then return false end
+
+        local npc_info = smart.npc_info[npc:id()]
+    if npc_info then
+        local npc_job = smart.job_data[npc_info.job_id]
+
+        local alife_task = npc_job.alife_task
+        if alife_task then
+            return npc:position():distance_to_sqr(alife_task:position()) >= p[1]*p[1]
+        end
+    end
+
+    return false
+end
+
+function is_enemy_fighting_actor(actor,npc,p)
+	local be = npc:best_enemy()
+	if (be and xr_combat_ignore.fighting_with_actor_npcs[be:id()]) then
+		return true
+	end
+	return false
+end
 
 -- Каждая функция в этом файле используется как условие xr_logic: {=функция !функция}
 -- Если в функцию необходимо передавать параметры, то:  {=функция(парам1:парам2:...) !функция(парам1:парам2:...)}
@@ -211,6 +257,25 @@ function npc_in_zone(actor, npc, p)
 	return utils.npc_in_zone(npc_obj, zone)
 end
 
+
+function npc_in_mg_death_zone(actor, npc)
+	if ( utils.npc_in_zone(npc, master_difficulty_death_zone1)
+	or utils.npc_in_zone(npc, master_difficulty_death_zone2)
+	or utils.npc_in_zone(npc, master_difficulty_death_zone3)
+	or utils.npc_in_zone(npc, master_difficulty_death_zone4)
+	or utils.npc_in_zone(npc, master_difficulty_death_zone5)
+	or utils.npc_in_zone(npc, master_difficulty_death_zone6)
+	or utils.npc_in_zone(npc, master_difficulty_death_zone7)
+	or utils.npc_in_zone(npc, master_difficulty_death_zone8)
+	or utils.npc_in_zone(npc, master_difficulty_death_zone9) ) then
+		return true
+	end
+	return false
+end
+
+
+
+
 -- true, если здоровье npc <= заданному значению
 -- false в противном случае
 function health_le(actor, npc, p)
@@ -267,6 +332,10 @@ function gulag_state(actor, npc, p)
 	return false
 end
 ]]--
+
+function heli_health_le(actor, obj, p)
+	return p[1] and obj:get_helicopter():GetfHealth() < p[1]
+end
 
 function npc_community(actor, npc, p)
 	local npc_obj
@@ -1635,6 +1704,14 @@ information_dealer_functor = xr_statistic.information_dealer_functor
 
 friend_of_stalkers_functor = xr_statistic.friend_of_stalkers_functor
 
+lw_achiev1_functor = xr_statistic.lw_achiev1_functor
+lw_achiev2_functor = xr_statistic.lw_achiev2_functor
+lw_achiev3_functor = xr_statistic.lw_achiev3_functor
+lw_achiev4_functor = xr_statistic.lw_achiev4_functor
+lw_achiev5_functor = xr_statistic.lw_achiev5_functor
+lw_achiev6_functor = xr_statistic.lw_achiev6_functor
+lw_achiev7_functor = xr_statistic.lw_achiev7_functor
+lw_achiev8_functor = xr_statistic.lw_achiev8_functor
 
 --------------------------------------------------------------------------------
 function check_deimos_phase(actor, npc, p)
@@ -1729,3 +1806,931 @@ function upgrade_hint_kardan(actor, npc, p)
 
 	return can_upgrade >= 2
 end
+
+
+-------------------------------------------------------------------------------------------------------
+function actor_on_ai_net()
+local lvid = db.actor:level_vertex_id()
+local pos = db.actor:position()
+if level.vertex_position(lvid):distance_to(pos) <= 0.7 then
+		return true
+	end
+	return false
+end
+
+function nightmobs_spawn_time()
+local hours = level.get_time_hours()
+if hours >= 24 or hours < 6 then
+		return true
+	end
+	return false
+end 
+
+function actor_in_camp_zone()
+if ( xr_conditions.actor_in_zone(nil,nil,{"script_zone_blokpost"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_forest_camp"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_graveyard"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_ground_anomaly"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_helicrash"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_island"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_lonl_house"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_rad_hill"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_willage"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_forest"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"village_tunnel_zone"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"anomal_mushrom_zone"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"karlik_quest_zone5"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_workshop"}) ) then
+		return true
+	end
+	return false
+end
+
+
+function actor_armed_knife()
+if db.actor and db.actor:alive() and db.actor:active_item() and db.actor:active_item():section()=="wpn_knife" then
+	return true
+	end
+return false
+end
+
+function actor_armed_bolt()
+if db.actor and db.actor:alive() and db.actor:active_item() and db.actor:active_item():section()=="bolt" then
+	return true
+	end
+return false
+end
+
+
+function actor_in_lonl_house_save_zone()
+if xr_conditions.actor_in_zone(nil,nil,{"script_zone_lonl_house"}) 
+	or ( xr_conditions.actor_in_zone(nil,nil,{"script_zone_blokpost"}) and has_alife_info("kpp_mercs_radio_use") )
+	or ( xr_conditions.actor_in_zone(nil,nil,{"lw_stranger_spec_zone1"}) and has_alife_info("stranger_talk4") )
+	or ( xr_conditions.actor_in_zone(nil,nil,{"lw_stranger_spec_zone2"}) and has_alife_info("stranger_talk4") )
+	or ( xr_conditions.actor_in_zone(nil,nil,{"lw_stranger_spec_zone3"}) and has_alife_info("stranger_talk4") )
+	or ( xr_conditions.actor_in_zone(nil,nil,{"village_trap_house_room_zone"}) and has_alife_info("lw_stranger_after_workshop_call") )
+	or ( xr_conditions.actor_in_zone(nil,nil,{"artefact_spawn_zone1"}) and has_alife_info("village_stranger_controller") )
+	then
+		return true
+	end
+	return false
+end
+
+
+function actor_silencer_use()
+local act_it = db.actor:active_item()
+if act_it then
+local addonf = rx_utils.get_weapon_data(alife():object(act_it:id())).addon_flags
+	if system_ini():line_exist(act_it:section(), "silencer_status") then
+		sil = system_ini():r_u32(act_it:section(), "silencer_status")
+	end
+--if (sil == 1 or (sil == 2 and bit_and(addonf, 1) == 1) or string.find(act_it:section(), "wpn_vintorez") or string.find(act_it:section(), "wpn_pb")) then
+if (sil == 1 or (sil == 2 and get_installed_addon(act_it,"silencer") == true) or string.find(act_it:section(), "wpn_vintorez") or string.find(act_it:section(), "wpn_pb")) then
+		return true
+	end
+	return false
+end
+end
+
+
+
+function weapon_details_collected()
+	local item_sections	= {
+		[1] = "weapon_parts"
+	}
+	local needed = 3
+	local count	= 0
+	local item_section
+
+	local function calc(temp, item)
+		if item:section() == item_section then
+			count = count + 1
+		end
+	end
+
+	for k,v in pairs(item_sections) do
+		item_section = v
+		get_story_object("actor"):iterate_inventory(calc, actor)
+	end
+
+	return count >= needed
+end
+
+
+function has_last_pm()
+	local item_sections	= {
+		[1] = "wpn_pm"
+	}
+	local needed = 1
+	local count	= 0
+	local item_section
+
+	local function calc(temp, item)
+		if item:section() == item_section then
+			count = count + 1
+		end
+	end
+
+	for k,v in pairs(item_sections) do
+		item_section = v
+		get_story_object("actor"):iterate_inventory(calc, actor)
+	end
+
+	return count >= needed
+end
+
+function has_last_obrez()
+	local item_sections	= {
+		[1] = "wpn_bm16"
+	}
+	local needed = 1
+	local count	= 0
+	local item_section
+
+	local function calc(temp, item)
+		if item:section() == item_section then
+			count = count + 1
+		end
+	end
+
+	for k,v in pairs(item_sections) do
+		item_section = v
+		get_story_object("actor"):iterate_inventory(calc, actor)
+	end
+
+	return count >= needed
+end
+
+
+function has_last_knife()
+	local item_sections	= {
+		[1] = "wpn_knife"
+	}
+	local needed = 1
+	local count	= 0
+	local item_section
+
+	local function calc(temp, item)
+		if item:section() == item_section then
+			count = count + 1
+		end
+	end
+
+	for k,v in pairs(item_sections) do
+		item_section = v
+		get_story_object("actor"):iterate_inventory(calc, actor)
+	end
+
+	return count >= needed
+end
+
+
+
+function actor_in_slot_pm()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_pm" ) or ( gun2 and gun2:section() == "wpn_pm" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_pb()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_pb" ) or ( gun2 and gun2:section() == "wpn_pb" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_obrez()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_bm16" ) or ( gun2 and gun2:section() == "wpn_bm16" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_usp()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_usp" ) or ( gun2 and gun2:section() == "wpn_usp" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_hpsa()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_hpsa" ) or ( gun2 and gun2:section() == "wpn_hpsa" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_toz()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_toz34" ) or ( gun2 and gun2:section() == "wpn_toz34" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_aksu()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_ak74u" ) or ( gun2 and gun2:section() == "wpn_ak74u" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_ak74()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_ak74" ) or ( gun2 and gun2:section() == "wpn_ak74" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_lr300()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_lr300" ) or ( gun2 and gun2:section() == "wpn_lr300" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_vintorez()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_vintorez" ) or ( gun2 and gun2:section() == "wpn_vintorez" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_bizon()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_bizon" ) or ( gun2 and gun2:section() == "wpn_bizon" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_sayga()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_sayga" ) or ( gun2 and gun2:section() == "wpn_sayga" ) then
+		return true
+	end
+return false
+end
+
+function actor_in_slot_mosin()
+	local gun1 = db.actor:item_in_slot(2)
+	local gun2 = db.actor:item_in_slot(3)
+	if ( gun1 and gun1:section() == "wpn_m1891" ) or ( gun2 and gun2:section() == "wpn_m1891" ) then
+		return true
+	end
+return false
+end
+
+
+
+function actor_shotguns_use()
+if db.actor and db.actor:alive() and db.actor:active_item() and 
+( db.actor:active_item():section()=="wpn_bm16"
+or db.actor:active_item():section()=="wpn_toz34" 
+or db.actor:active_item():section()=="wpn_spas12" 
+or db.actor:active_item():section()=="wpn_protecta" 
+or db.actor:active_item():section()=="wpn_sayga" 
+or db.actor:active_item():section()=="wpn_wincheaster1300" )  
+and ( db.actor:active_item():section()~="grenade_f1" or db.actor:active_item():section()~="grenade_rgd5" ) then
+	return true
+	end
+end
+
+function actor_in_car1()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_uaz_buhanka") and sobj.position:distance_to_sqr(db.actor:position())  <= 4*4 then
+		return true
+	end
+	return false
+end
+end
+
+
+function actor_dead()
+if not db.actor:alive() then
+		return true
+	end
+	return false
+end
+
+function actor_in_ambush_room_zone()
+if xr_conditions.actor_in_zone(nil,nil,{"village_trap_house_room_zone"}) then
+		return true
+	end
+	return false
+end
+
+
+function scenario_tasks_outdoor_condition()
+if ( has_alife_info("stranger_talk4") and db.actor:dont_has_info("willage_scenar_marod_lider_dead") ) or
+	( has_alife_info("stranger_talk5") and db.actor:dont_has_info("lw_stranger_after_lake_call") ) or
+	( has_alife_info("stranger_talk6") and db.actor:dont_has_info("lw_stranger_after_workshop_call") )	then
+		return true
+	end
+	return false
+end
+
+
+function actor_in_lonl_house_hide_zone()
+if xr_conditions.actor_in_zone(nil,nil,{"lonl_house_surge_hide_zone1"}) then
+		return true
+	end
+	return false
+end
+
+function lonl_house_maroders_atack_condition()
+if ( db.actor:object("rnd_task_kpp_item") ~= nil or
+	db.actor:object("rnd_task_workshop_item") ~= nil or
+	db.actor:object("rnd_task_willage_item") ~= nil or
+	db.actor:object("rnd_task_graveyard_item") ~= nil or
+	db.actor:object("rnd_task_rad_hill_item") ~= nil or
+	db.actor:object("rnd_task_razlom_item") ~= nil or
+	db.actor:object("kpp_rnd_artefact") ~= nil or
+	db.actor:object("willage_rnd_artefact") ~= nil or
+	db.actor:object("workshop_rnd_artefact") ~= nil or
+	db.actor:object("graveyard_rnd_artefact") ~= nil or
+	db.actor:object("rad_hill_rnd_artefact") ~= nil or
+	db.actor:object("razlom_rnd_artefact") ~= nil or
+	db.actor:object("island_rnd_artefact") ~= nil or
+	db.actor:object("rnd_task_island_item") ~= nil or
+	db.actor:object("forest_camp_rnd_artefact") ~= nil or
+	db.actor:object("rnd_task_forest_camp_item") ~= nil or
+	db.actor:object("forest_rnd_artefact") ~= nil or
+	db.actor:object("rnd_task_forest_item") ~= nil ) then
+		return true
+	end
+	return false
+end
+
+function actor_in_kpp_fight()
+if xr_conditions.actor_in_zone(nil,nil,{"script_zone_blokpost"}) and has_alife_info("kpp_sbu_see_ambush") then
+		return true
+	end
+	return false
+end
+
+
+function actor_wears_ecolog_outfit()
+   local scientvisuals =
+   {
+      ["scientific_outfit"] = true,
+      ["ecolog_outfit"] = true
+   }
+local suit = db.actor:item_in_slot(7)
+   if db.actor:item_in_slot(7) and scientvisuals[db.actor:item_in_slot(7):section()] then
+	return true
+	end
+	return false
+end
+
+
+function actor_wears_scient_outfit()
+local suit = db.actor:item_in_slot(7)
+	if suit and suit:section() == "scientific_outfit" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_specops_outfit()
+local suit = db.actor:item_in_slot(7)
+	if suit and suit:section() == "specops_outfit" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_military_outfit()
+local suit = db.actor:item_in_slot(7)
+	if suit and suit:section() == "military_outfit" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_novice_outfit()
+local suit = db.actor:item_in_slot(7)
+	if suit and suit:section() == "novice_outfit" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_exo_outfit()
+local suit = db.actor:item_in_slot(7)
+	if suit and suit:section() == "exo_outfit" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_stalker_outfit()
+local suit = db.actor:item_in_slot(7)
+	if suit and suit:section() == "stalker_outfit" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_helm_hardhat()
+local suit = db.actor:item_in_slot(12)
+	if suit and suit:section() == "helm_hardhat" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_helm_protective()
+local suit = db.actor:item_in_slot(12)
+	if suit and suit:section() == "helm_protective" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_helm_respirator()
+local suit = db.actor:item_in_slot(12)
+	if suit and suit:section() == "helm_respirator" then
+	return true
+	end
+	return false
+end
+
+function actor_wears_helm_tactic()
+local suit = db.actor:item_in_slot(12)
+	if suit and suit:section() == "helm_tactic" then
+	return true
+	end
+	return false
+end
+
+
+function actor_wears_rad_protection()
+local suit = db.actor:item_in_slot(7)
+local helm = db.actor:item_in_slot(12)
+	if ( helm and helm:section() == "helm_respirator" ) or ( helm and helm:section() == "helm_protective" ) or ( suit and suit:section() == "scientific_outfit" ) or ( suit and suit:section() == "neutral_assault_outfit" ) then
+	return true
+	end
+	return false
+end
+
+
+function captured_monster_ignore_precond(actor,npc)
+   local enemy_id = db.storage[npc:id()].enemy_id
+   local enemy = db.storage[enemy_id] and db.storage[enemy_id].object
+   local cond1 = (enemy and enemy:alive() and enemy:id()==db.actor:id() and (sgm_flags.table_m_capture_hits[npc:id()]==nil or sgm_flags.table_m_capture_hits[npc:id()]==false))
+   local cond2 = (enemy and enemy:alive() and enemy:id()~=db.actor:id() and IsStalker(enemy) and check_relation_between(enemy,db.actor)~="enemy" 
+		or find_in_string(enemy:section(),"hostage_scenar_maroder1") 
+		or find_in_string(enemy:section(),"hostage_scenar_maroder2") 
+		or find_in_string(enemy:section(),"hostage_scenar_maroder3") 
+		or find_in_string(enemy:section(),"quest_sniper_maroder2")
+		or find_in_string(enemy:section(),"mg_kpp_boss")
+		or find_in_string(enemy:section(),"mg_kpp_guard1")
+		or find_in_string(enemy:section(),"mg_kpp_guard2")
+		or find_in_string(enemy:section(),"quest_sniper") 
+		or find_in_string(enemy:section(),"zavhoz_friend") )
+   local cond3 = (enemy and enemy:alive() and enemy:id()~=db.actor:id() and IsMonster(enemy) and (check_relation_between(enemy,db.actor)~="enemy" or find_in_string(enemy:section(),"dog_noah")))
+   local cond4 = (enemy and enemy:alive() and enemy:id()~=db.actor:id() and IsMonster(enemy) and check_relation_between(enemy,db.actor)=="enemy" and find_in_string(enemy:section(),"captured") and (sgm_flags.table_m_capture_hits[enemy:id()]==nil or sgm_flags.table_m_capture_hits[enemy:id()]==false))
+   local cond5 = (xr_conditions.actor_in_zone(nil,nil,{"willage_avtoritets_hide_zone"}))
+   if cond1 or cond2 or cond3 or cond4 or cond5 then
+      return true
+   end
+   return false
+end
+
+function captured_stalker_ignore_precond(actor,npc)
+   local enemy_id = db.storage[npc:id()].enemy_id
+   local enemy = db.storage[enemy_id] and db.storage[enemy_id].object
+   local cond1 = (enemy and enemy:alive() and enemy:id()==db.actor:id() and (sgm_flags.table_m_capture_hits[npc:id()]==nil or sgm_flags.table_m_capture_hits[npc:id()]==false))
+   local cond2 = enemy and ( enemy:alive() and enemy:id()~=db.actor:id() and IsStalker(enemy) and check_relation_between(enemy,db.actor)~="enemy" 
+		or find_in_string(enemy:section(),"hostage_scenar_maroder1") 
+		or find_in_string(enemy:section(),"hostage_scenar_maroder2") 
+		or find_in_string(enemy:section(),"hostage_scenar_maroder3") 
+		or find_in_string(enemy:section(),"quest_sniper_maroder2")
+		or find_in_string(enemy:section(),"mg_kpp_boss")
+		or find_in_string(enemy:section(),"mg_kpp_guard1")
+		or find_in_string(enemy:section(),"mg_kpp_guard2")
+		or find_in_string(enemy:section(),"quest_sniper") 
+		or find_in_string(enemy:section(),"zavhoz_friend") )
+   local cond3 = (enemy and enemy:alive() and enemy:id()~=db.actor:id() and IsMonster(enemy) and (check_relation_between(enemy,db.actor)~="enemy" or find_in_string(enemy:section(),"dog_noah")))
+   local cond4 = (enemy and enemy:alive() and enemy:id()~=db.actor:id() and IsMonster(enemy) and check_relation_between(enemy,db.actor)=="enemy" and find_in_string(enemy:section(),"captured") and (sgm_flags.table_m_capture_hits[enemy:id()]==nil or sgm_flags.table_m_capture_hits[enemy:id()]==false))
+   local cond5 = (xr_conditions.actor_in_zone(nil,nil,{"willage_avtoritets_hide_zone"}))
+   local cond6 = (xr_conditions.dist_to_actor_ge(actor,npc,{"25"}))
+   if cond1 or cond2 or cond3 or cond4 or cond5 or cond6 then
+      return true
+   end
+   return false
+end
+
+
+
+function actor_behind_workshop_house_zone(actor, npc)
+	local obj = get_story_object("workshop_house_zone")
+	if distance_between(obj, db.actor) < 40 then
+      return true
+   end
+   return false
+end
+
+		
+function af_treasure_suicide_condition()
+if xr_conditions.actor_in_zone(nil,nil,{"lonl_house_save_zone"}) and db.actor:object("af_treasure") ~= nil then
+		return true
+	end
+	return false
+end		
+		
+	
+
+function maroder_chimera_near()
+local obj = get_story_object("maroder_chimera")
+if obj and distance_between(obj, db.actor) < 5 and npc_in_actor_frustrum(obj) then
+		return true
+	end
+	return false
+end	
+
+function maroder_lider4_near()
+local obj = get_story_object("lake_scenar_marouder_lider")
+if obj and distance_between(obj, db.actor) < 5 then
+		return true
+	end
+	return false
+end	
+		
+		
+function actor_in_maroders_zone()
+if ( xr_conditions.actor_in_zone(nil,nil,{"script_zone_blokpost"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_forest_camp"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_graveyard"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_ground_anomaly"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_island"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_willage"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_forest"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"script_zone_workshop"}) ) then
+		return true
+	end
+	return false
+end		
+		
+		
+function personal_dog_near()
+local obj = get_story_object("personal_dog")
+if obj and distance_between(obj, db.actor) < 10 then
+		return true
+	end
+	return false
+end	
+		
+		
+function lonl_house_box_items_precondition()
+if db.actor:object("rnd_task_kpp_item") ~= nil or
+	db.actor:object("rnd_task_willage_item") ~= nil or
+	db.actor:object("rnd_task_workshop_item") ~= nil or
+	db.actor:object("rnd_task_graveyard_item") ~= nil or
+	db.actor:object("rnd_task_rad_hill_item") ~= nil or
+	db.actor:object("rnd_task_razlom_item") ~= nil or
+	db.actor:object("rnd_task_island_item") ~= nil or
+	db.actor:object("rnd_task_forest_item") ~= nil or
+	db.actor:object("rnd_task_forest_camp_item") ~= nil or
+	db.actor:object("kpp_rnd_artefact") ~= nil or
+	db.actor:object("willage_rnd_artefact") ~= nil or
+	db.actor:object("workshop_rnd_artefact") ~= nil or
+	db.actor:object("graveyard_rnd_artefact") ~= nil or
+	db.actor:object("rad_hill_rnd_artefact") ~= nil or
+	db.actor:object("razlom_rnd_artefact") ~= nil or
+	db.actor:object("island_rnd_artefact") ~= nil or
+	db.actor:object("forest_rnd_artefact") ~= nil or
+	db.actor:object("forest_camp_rnd_artefact") ~= nil or
+	db.actor:object("helicrash_rnd_artefact") ~= nil or
+	db.actor:object("satellite_memory_block") ~= nil then
+		return true
+	end
+	return false
+end	
+
+
+function maroder_killer_near()
+local obj = get_story_object("maroder_killer")
+if obj and distance_between(obj, db.actor) < 40 then
+		return true
+	end
+	return false
+end
+
+
+function low_difficulty()
+local diff = level.get_game_difficulty()
+if diff == 0 or diff == 1 then
+		return true
+	end
+	return false
+end
+
+function high_difficulty()
+local diff = level.get_game_difficulty()
+if diff == 2 or diff == 3 then
+		return true
+	end
+	return false
+end
+
+function master_difficulty()
+local diff = level.get_game_difficulty()
+if diff == 3 then
+		return true
+	end
+	return false
+end
+
+function not_master_difficulty()
+local diff = level.get_game_difficulty()
+if diff == 0 or diff == 1 or diff == 2 then
+		return true
+	end
+	return false
+end
+
+
+function gather_items_box_near()
+	local box1 = get_story_object("lonl_house_store_box")
+	local box2 = get_story_object("lonl_house_invbox_4")
+	local box3 = get_story_object("lonl_house_invbox_3")
+	local box4 = get_story_object("lonl_house_invbox_2")
+	local box5 = get_story_object("lonl_house_invbox_1")
+	if distance_between(box1, db.actor) < 1.7 or distance_between(box2, db.actor) < 1.7 or distance_between(box3, db.actor) < 1.7 or distance_between(box4, db.actor) < 1.7 or distance_between(box5, db.actor) < 1.7 then
+		return true
+	end
+return false
+end
+
+function gather_items_box2_near()
+	local box = get_story_object("lonl_house_invbox_5")
+	if distance_between(box, db.actor) < 1.7 then
+		return true
+	end
+return false
+end
+
+
+function actor_behind_karlik_quest_zone7()
+local obj = get_story_object("karlik_quest_zone7")
+if obj and distance_between(obj, db.actor) < 40 then
+		return true
+	end
+	return false
+end
+
+function actor_behind_sniper_dead_body()
+local obj = get_story_object("quest_sniper2")
+if obj and distance_between(obj, db.actor) < 2 then
+		return true
+	end
+	return false
+end
+
+
+function actor_armed_mosin()
+if db.actor and db.actor:alive() and db.actor:active_item() and 
+ db.actor:active_item():section()=="wpn_m1891"
+and ( db.actor:active_item():section()~="grenade_f1" or db.actor:active_item():section()~="grenade_rgd5" ) then
+		return true
+	end
+	return false
+end
+
+		
+
+function actor_in_mg_death_zone()
+if ( xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone1"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone2"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone3"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone4"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone5"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone6"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone7"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone8"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_death_zone9"}) ) then
+		return true
+	end
+	return false
+end		
+
+function actor_in_mg_start_zone()
+if xr_conditions.actor_in_zone(nil,nil,{"master_difficulty_start_zone"}) then
+		return true
+	end
+	return false
+end	
+
+function actor_in_kpp_surge_hide_zone()
+if xr_conditions.actor_in_zone(nil,nil,{"kpp_surge_hide_zone"}) then
+		return true
+	end
+	return false
+end	
+
+
+function actor_in_heli_evac_zone()
+if ( xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone1"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone2"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone3"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone4"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone5"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone6"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone7"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone8"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone9"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone10"}) or
+	xr_conditions.actor_in_zone(nil,nil,{"mg_start_heli_evac_zone11"}) ) then
+		return true
+	end
+	return false
+end
+
+
+function actor_has_one_mg_art()
+	local item_sections	= {
+		[1] = "af_medusa_mg",
+		[2] = "af_electra_sparkler_mg",
+		[3] = "af_night_star_mg",
+		[4] = "af_ice_mg",
+		[5] = "af_gravi_mg",
+		[6] = "af_gold_fish_mg",
+		[7] = "af_cristall_mg",
+		[8] = "af_dummy_battery_mg",
+		[9] = "af_dummy_glassbeads_mg",
+		[10] = "af_eye_mg",
+		[11] = "af_fire_mg",
+		[12] = "af_blood_mg",
+		[13] = "af_fuzz_kolobok_mg",
+		[14] = "af_soul_mg"
+	}
+	local needed = 1
+	local count	= 0
+	local zero	= 0
+	local item_section
+
+	local function calc(temp, item)
+		if item:section() == item_section then
+			count = count + 1
+		end
+	end
+
+	for k,v in pairs(item_sections) do
+		item_section = v
+		local actor = db.actor
+		actor:iterate_inventory(calc, actor)
+	end
+
+	if count == needed or count == zero then
+		return true
+	end
+	return false
+end
+
+
+function actor_has_more_then_one_mg_art()
+	local item_sections	= {
+		[1] = "af_medusa_mg",
+		[2] = "af_electra_sparkler_mg",
+		[3] = "af_night_star_mg",
+		[4] = "af_ice_mg",
+		[5] = "af_gravi_mg",
+		[6] = "af_gold_fish_mg",
+		[7] = "af_cristall_mg",
+		[8] = "af_dummy_battery_mg",
+		[9] = "af_dummy_glassbeads_mg",
+		[10] = "af_eye_mg",
+		[11] = "af_fire_mg",
+		[12] = "af_blood_mg",
+		[13] = "af_fuzz_kolobok_mg",
+		[14] = "af_soul_mg"
+	}
+	local needed = 1
+	local count	= 0
+	local item_section
+
+	local function calc(temp, item)
+		if item:section() == item_section then
+			count = count + 1
+		end
+	end
+
+	for k,v in pairs(item_sections) do
+		item_section = v
+		local actor = db.actor
+		actor:iterate_inventory(calc, actor)
+	end
+
+	if count > needed then
+		return true
+	end
+	return false
+end
+
+
+function actor_near_mg_courier()
+local obj = get_story_object("mg_courier")
+if obj and distance_between(obj, db.actor) < 4 then
+		return true
+	end
+	return false
+end
+
+
+function actor_near_comp()
+local obj = get_story_object("lonl_house_komp")
+if obj and distance_between(obj, db.actor) < 2 then
+		return true
+	end
+	return false
+end
+		
+
+		
+		
+local renders_tbl = {
+	["renderer_r1"]   = 0,
+	["renderer_r2a"]  = 1,
+	["renderer_r2"]   = 2,
+	["renderer_r2.5"] = 3,
+	["renderer_r3"]   = 4,
+	["renderer_r4"]   = 5,
+}
+
+local function get_current_renderer() 
+return renders_tbl[get_console():get_string("renderer")] 
+end
+		
+		
+function is_render_r1()	-- статика
+if get_current_renderer() == 0 then
+		return true
+	end
+	return false
+end		
+		
+function is_render_r2()
+if ( get_current_renderer() == 1 or get_current_renderer() == 2 or get_current_renderer() == 3 ) then
+		return true
+	end
+	return false
+end	
+
+function is_render_r3()	-- dx10
+if get_current_renderer() == 4 then
+		return true
+	end
+	return false
+end	
+		
+function is_render_r4()	-- dx11
+if get_current_renderer() == 5 then
+		return true
+	end
+	return false
+end		
+	
+
+	
+function is_render_r1or2()
+if xr_conditions.is_render_r1() == true or xr_conditions.is_render_r2() == true then
+		return true
+	end
+	return false
+end	
+
+function is_render_r3or4()
+if xr_conditions.is_render_r3() == true or xr_conditions.is_render_r4() == true then
+		return true
+	end
+	return false
+end
+
+
+		

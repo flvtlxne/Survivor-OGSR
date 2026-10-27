@@ -1,0 +1,188 @@
+[logic]
+active = heli_move@waiting1
+
+; Висим под локацией и ждем, пока пробъет час:
+[heli_move@waiting1]
+path_move = kpp_heli_point1
+path_look = kpp_heli_point3
+engine_sound = false
+combat_ignore = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 100
+on_info = {=master_difficulty} %=destroy_object%
+on_info2 = {+kpp_heli_start} heli_move@waiting2
+
+; Поднимаемся:
+[heli_move@waiting2]
+path_move = kpp_heli_point2
+path_look = kpp_heli_point3
+engine_sound = true
+combat_ignore = true
+combat_ignore_keep_when_attacked = true
+combat_enemy = nil
+invulnerable = true
+immortal = true
+max_velocity = 160
+on_signal = arriwed | heli_move@fly1_1
+
+[heli_move@fly1_1]
+path_move = kpp_heli_point2
+path_look = kpp_heli_point3
+engine_sound = true
+combat_ignore = true
+combat_enemy = nil
+invulnerable = false
+combat_ignore_keep_when_attacked = true
+immortal = true
+max_velocity = 100
+on_info = {+kpp_mercs_ambush_atack} heli_move@fly2
+on_info2 = {+kpp_sbu_atack} heli_move@fly3
+
+
+; Летим к точке:
+[heli_move@fly1]
+path_move = kpp_heli_point3
+path_look = kpp_heli_point3
+engine_sound = true
+combat_ignore = true
+combat_enemy = nil
+combat_use_rocket = false
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+immortal = true
+max_velocity = 100
+on_signal = arriwed | heli_move@fly2
+
+
+
+; Истребляем наёмников:
+[heli_move@fly2]
+path_move = kpp_heli_point3
+path_look = kpp_ambush_merc6_walk1
+engine_sound = true
+enemy = mercs
+combat_use_rocket = false
+invulnerable = false
+immortal = true
+max_velocity = 100
+on_info = {+kpp_mercs_dead} heli_move@fly_away
+on_game_timer = 150|heli_move@fly2_1
+
+[heli_move@fly2_1]
+path_move = kpp_heli_point4
+path_look = kpp_ambush_merc1_walk1
+engine_sound = true
+enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 100
+on_info = {+kpp_mercs_dead} heli_move@fly_away
+on_game_timer = 150|heli_move@fly2_2
+
+[heli_move@fly2_2]
+path_move = kpp_heli_point5
+path_look = kpp_pnt3_walk
+engine_sound = true
+enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 100
+on_info = {+kpp_mercs_dead} heli_move@fly_away
+on_game_timer = 150|heli_move@fly2_3
+
+[heli_move@fly2_3]
+path_move = kpp_heli_point6
+path_look = kpp_ambush_merc7_walk1
+engine_sound = true
+enemy = mercs
+combat_use_rocket = false
+invulnerable = true
+immortal = true
+max_velocity = 100
+on_info = {+kpp_mercs_dead} heli_move@fly_away
+on_game_timer = 150|heli_move@fly2
+
+
+
+; Мочим ГГ:
+[heli_move@fly3]
+path_move = kpp_heli_point3
+path_look = kpp_merc1_walk
+engine_sound = true
+enemy = actor
+combat_use_rocket = false
+invulnerable = false
+immortal = false
+max_velocity = 100
+show_health = true
+on_game_timer = 150|heli_move@fly3_1
+
+[heli_move@fly3_1]
+path_move = kpp_heli_point4
+path_look = kpp_merc1_walk
+engine_sound = true
+enemy = actor
+combat_use_rocket = false
+invulnerable = false
+immortal = false
+max_velocity = 100
+show_health = true
+on_game_timer = 150|heli_move@fly3_2
+
+[heli_move@fly3_2]
+path_move = kpp_heli_point5
+path_look = kpp_merc1_walk
+engine_sound = true
+enemy = actor
+combat_use_rocket = false
+invulnerable = false
+immortal = false
+max_velocity = 100
+show_health = true
+on_game_timer = 150|heli_move@fly3_3
+
+[heli_move@fly3_3]
+path_move = kpp_heli_point6
+path_look = kpp_merc1_walk
+engine_sound = true
+enemy = actor
+combat_use_rocket = false
+invulnerable = false
+immortal = false
+max_velocity = 100
+show_health = true
+on_game_timer = 150|heli_move@fly3
+
+
+
+; Улетаем:
+[heli_move@fly_away]
+path_move = kpp_heli_point2
+path_look = kpp_heli_point1
+engine_sound = true
+combat_use_rocket = false
+combat_ignore = true
+invulnerable = true
+immortal = true
+max_velocity = 100
+on_signal = arriwed | %=destroy_object%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

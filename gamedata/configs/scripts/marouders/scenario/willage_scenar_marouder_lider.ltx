@@ -1,0 +1,115 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+on_death = death
+on_hit = hit
+known_info = known_info
+
+[known_info]
+scenar_maroder_lider1_info
+
+
+[walker@start]
+path_walk = willage_avtoritet2_walk1
+path_look = willage_avtoritet2_look
+on_info = {+actor_has_usp} remark@1 %=give_items(wpn_usp)%
+on_info2 = {+actor_has_hpsa} remark@1 %=give_items(wpn_hpsa)%
+on_info3 = {+actor_has_aksu} remark@1 %=give_items(wpn_ak74u)%
+on_info4 = {-actor_has_aksu -actor_has_usp -actor_has_hpsa} remark@1
+
+; Сначала ждём:
+[remark@1]
+anim = wait
+target = story | script_zone_workshop
+combat_ignore_cond = true
+show_spot = true
+on_actor_dist_le = 40|walker@alarm1 %=willage_scenario_maroders_alarm%
+on_info = {+willage_avtoritet_on_place} walker@1
+
+; Шнырь на месте. Выдвигаемся на точку:
+[walker@1]
+path_walk = willage_avtoritet2_walk1
+path_look = willage_avtoritet2_look
+def_state_moving1 = assault
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+on_info = {+willage_scenario_maroders_alarm} walker@alarm1
+on_actor_dist_le = 25|walker@alarm1 %=willage_scenario_maroders_alarm%
+on_signal       = arriwed|walker@2 %+willage_avtoritet_on_place%
+
+[walker@2]
+path_walk = willage_avtoritet2_walk1
+path_look = willage_avtoritet2_look
+def_state_moving1 = assault
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+on_info = {+willage_scenario_maroders_alarm} walker@alarm1
+on_actor_dist_le = 20|walker@alarm1 %=willage_scenario_maroders_alarm%
+;on_game_timer = 100|walker@3
+
+
+; Стрелка состоялась, время уходить:
+[walker@3]
+path_walk = willage_avtoritet2_walk1
+path_look = willage_avtoritet2_look
+def_state_moving1 = assault
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+on_info = {+willage_scenario_maroders_alarm} walker@alarm1
+on_actor_dist_le = 25|walker@alarm1 %=willage_scenario_maroders_alarm%
+
+
+; Спугнули:
+[walker@alarm1]
+path_walk = willage_avtoritet2_walk2
+path_look = willage_avtoritet2_look
+def_state_moving1 = assault
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+on_signal       = arriwed|walker@alarm2 %=spawn_maroder_boss1ambush =give_items(wpn_pm)%
+
+[walker@alarm2]
+path_walk = willage_avtoritet2_walk2
+path_look = willage_avtoritet2_look
+def_state_moving1 = assault
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+
+
+[hit]
+on_info = {=hit_by_actor} %=willage_scenario_maroders_alarm%
+
+[death]
+on_info = %+willage_scenar_marod_lider_dead =give_items(novice_outfit) =actor_kill_quest_npc_replic%
+
+
+
+
+
+
+
+
+
+
+

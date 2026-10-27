@@ -1,0 +1,39 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = mob_move
+on_death = mob_death
+;on_hit = mob_hit
+
+
+; Нападаем:
+[mob_move]
+captured_actor = true
+;combat_ignore_cond = {=captured_monster_ignore_precond} true
+;invulnerable = true
+on_info = {=actor_in_camp_zone =scenario_tasks_outdoor_condition =nightmobs_spawn_time} mob_home@away
+on_info2 = {=health_le(0.35)} mob_home@away %=bloodsucker_hunter_away_think%
+
+; Сваливаем:
+[mob_home@away]
+path_home = maroders_escape_point1
+home_min_radius = 3
+home_max_radius = 8
+invulnerable = true
+combat_ignore_cond = true
+on_actor_dist_ge_nvis = 50|%=destroy_object +bloodsucker_hunter_away%
+
+
+
+[mob_hit]
+on_info = {=health_le(0.35)} mob_home@away
+
+[mob_death]
+on_info = %+bloodsucker_hunter_dead =bloodsucker_hunter_death_spawn =give_task(addtask_bloodsucker)%
+
+
+
+
+
+

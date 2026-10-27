@@ -1,0 +1,137 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = {+kpp_heli_dead} walker@8, {+kpp_sbu_atack} walker@6, walker@start
+on_death = death
+
+
+[walker@start]
+path_walk = kpp_merc1_walk
+path_look = kpp_merc1_look
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300) =actor_neutral%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74) =actor_neutral%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u) =actor_neutral%
+on_info4 = {-actor_has_lr300 -actor_has_ak74 -actor_has_aksu} walker@1 %=actor_neutral%
+
+[walker@1]
+path_walk = kpp_merc1_walk
+path_look = kpp_merc1_look
+invulnerable = true
+combat_ignore_cond = true
+meet = no_meet
+def_state_moving1 = run
+def_state_moving2 = run
+def_state_moving3 = run
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_signal       = arriwed|walker@2
+
+[walker@2]
+path_walk = kpp_merc1_walk
+path_look = kpp_merc1_look
+invulnerable = true
+meet = meet@merc_lider
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+kpp_mercs_getlost} walker@3
+on_info2 = {+kpp_mercs_agree} walker@4
+
+
+; Обиделись на ГГ:
+[walker@3]
+path_walk = kpp_merc1_walk
+path_look = kpp_merc1_look
+invulnerable = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+
+; Смотрим на агентов СБУ:
+[walker@4]
+path_walk = kpp_merc1_walk
+path_look = kpp_merc1_look2
+invulnerable = true
+meet = no_meet
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_game_timer = 90|walker@5 %=play_sound(kpp_merc_heli_alarm) +kpp_merc_heli_alarm%
+
+
+; Сваливаем в бункер:
+[walker@5]
+path_walk = kpp_merc1_bunker_walk
+path_look = kpp_mercs_bunker_look
+invulnerable = true
+combat_ignore_cond = true
+meet = no_meet
+def_state_moving1 = sprint
+def_state_moving2 = sprint
+def_state_moving3 = sprint
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_signal       = arriwed|walker@6 %=spawn_kpp_sbu_commandos%
+
+
+; В бункере:
+[walker@6]
+path_walk = kpp_merc1_bunker_walk
+path_look = kpp_mercs_bunker_look
+invulnerable = true
+combat_ignore_cond = true
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+kpp_mercs_ambush_atack} walker@7 %=actor_enemy =play_sound(kpp_merc_actor_atack)%
+on_info2 = {+kpp_sbu_atack} walker@7 %=actor_neutral%
+
+
+; Сражаемся против ГГ:
+[walker@7]
+path_walk = kpp_merc1_bunker_walk
+path_look = kpp_mercs_bunker_look
+invulnerable = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+kpp_heli_dead} walker@8 %=play_sound(kpp_merc_victory)%
+
+
+; После боя:
+[walker@8]
+path_walk = sbu_comand1_walk
+path_look = sbu_comand4_walk
+invulnerable = true
+combat_ignore_cond = true
+meet = meet@merc_lider
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+
+[meet@merc_lider]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+[death]
+on_info = %=actor_kill_quest_npc_replic%
+
+
+
+
+
+

@@ -1,0 +1,6148 @@
+
+
+-- Графические интерфейсы и прочая лабуда --------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+
+
+-- Чит-менюшка: -----------------------------------------------
+
+class "secret_interface" (CUIScriptWnd)
+function secret_interface:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function secret_interface:__finalize() end
+
+function secret_interface:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_secret_interface.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)
+	self.btn_5 = xml:Init3tButton("btn_5", self)
+	self:Register(self.btn_5, "btn_5")
+	self.btn_5:Enable(false)
+	self.btn_6 = xml:Init3tButton("btn_6", self)
+	self:Register(self.btn_6, "btn_6")
+	self.btn_6:Enable(false)
+	self.btn_7 = xml:Init3tButton("btn_7", self)
+	self:Register(self.btn_7, "btn_7")
+	self.btn_7:Enable(false)
+	self.btn_8 = xml:Init3tButton("btn_8", self)
+	self:Register(self.btn_8, "btn_8")
+	self.btn_8:Enable(false)
+	self.btn_9 = xml:Init3tButton("btn_9", self)
+	self:Register(self.btn_9, "btn_9")
+	self.btn_9:Enable(false)
+	self.btn_10 = xml:Init3tButton("btn_10", self)
+	self:Register(self.btn_10, "btn_10")
+	self.btn_10:Enable(false)
+	self.btn_11 = xml:Init3tButton("btn_11", self)
+	self:Register(self.btn_11, "btn_11")
+	self.btn_11:Enable(false)
+	self.btn_12 = xml:Init3tButton("btn_12", self)
+	self:Register(self.btn_12, "btn_12")
+	self.btn_12:Enable(false)
+	self.btn_13 = xml:Init3tButton("btn_13", self)
+	self:Register(self.btn_13, "btn_13")
+	self.btn_13:Enable(false)
+	self.btn_14 = xml:Init3tButton("btn_14", self)
+	self:Register(self.btn_14, "btn_14")
+	self.btn_14:Enable(false)
+	self.btn_15 = xml:Init3tButton("btn_15", self)
+	self:Register(self.btn_15, "btn_15")
+	self.btn_15:Enable(false)
+	self.btn_16 = xml:Init3tButton("btn_16", self)
+	self:Register(self.btn_16, "btn_16")
+	self.btn_16:Enable(false)
+	self.btn_17 = xml:Init3tButton("btn_17", self)
+	self:Register(self.btn_17, "btn_17")
+	self.btn_17:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+	self.btn_3:Enable(true)
+	self.btn_4:Enable(true)
+	self.btn_5:Enable(true)
+	self.btn_6:Enable(true)
+	self.btn_7:Enable(true)
+	self.btn_8:Enable(true)
+	self.btn_9:Enable(true)
+	self.btn_10:Enable(true)
+	self.btn_11:Enable(true)
+	self.btn_12:Enable(true)
+	self.btn_13:Enable(true)
+	self.btn_14:Enable(true)
+	self.btn_15:Enable(true)
+	self.btn_16:Enable(true)
+	self.btn_17:Enable(true)
+end
+
+function secret_interface:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
+	self:AddCallback("btn_6", ui_events.BUTTON_CLICKED,  self.btn6, self)
+	self:AddCallback("btn_7", ui_events.BUTTON_CLICKED,  self.btn7, self)
+	self:AddCallback("btn_8", ui_events.BUTTON_CLICKED,  self.btn8, self)
+	self:AddCallback("btn_9", ui_events.BUTTON_CLICKED,  self.btn9, self)
+	self:AddCallback("btn_10", ui_events.BUTTON_CLICKED,  self.btn10, self)
+	self:AddCallback("btn_11", ui_events.BUTTON_CLICKED,  self.btn11, self)
+	self:AddCallback("btn_12", ui_events.BUTTON_CLICKED,  self.btn12, self)
+	self:AddCallback("btn_13", ui_events.BUTTON_CLICKED,  self.btn13, self)
+	self:AddCallback("btn_14", ui_events.BUTTON_CLICKED,  self.btn14, self)
+	self:AddCallback("btn_15", ui_events.BUTTON_CLICKED,  self.btn15, self)
+	self:AddCallback("btn_16", ui_events.BUTTON_CLICKED,  self.btn16, self)
+	self:AddCallback("btn_17", ui_events.BUTTON_CLICKED,  self.btn17, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function secret_interface:btn1()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_helicrash"):point(0))
+end
+
+function secret_interface:btn2()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_lonl_house"):point(0))
+end
+
+function secret_interface:btn3()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_willage"):point(0))
+end
+
+function secret_interface:btn4()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_graveyard"):point(0))
+end
+
+function secret_interface:btn5()
+	self:HideDialog()
+	--db.actor:set_actor_position(patrol("travel_point_kpp"):point(0))
+	--db.actor:set_actor_position(patrol("quest_sniper_zone_point1"):point(0))
+	db.actor:set_actor_position(patrol("kpp_merc1_bunker_walk"):point(0))
+end
+
+function secret_interface:btn6()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_razlom"):point(0))
+end
+
+function secret_interface:btn7()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_kolhoz"):point(0))
+	--db.actor:set_actor_position(patrol("anom_bloodsucker_zone1_point7"):point(0))
+end
+
+function secret_interface:btn8()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_forest_camp"):point(0))
+end
+
+function secret_interface:btn9()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_rad_zone"):point(0))
+end
+
+function secret_interface:btn10()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_lake_island"):point(0))
+end
+
+function secret_interface:btn11()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_forest"):point(0))
+end
+
+
+
+function secret_interface:btn12()
+	self:HideDialog()
+	mod_test.spawn_some()
+	
+end
+
+function secret_interface:btn13()
+	--self:HideDialog()
+	db.actor.health = 1.0
+	db.actor.power = 1.0
+	db.actor.radiation = -1.0
+	db.actor.bleeding = 1.0
+end
+
+function secret_interface:btn14()
+	self:HideDialog()
+	mod_test.give_some_info()
+end
+
+function secret_interface:btn15()
+	self:HideDialog()
+	mod_functions.kill_mutants_around()
+end
+
+function secret_interface:btn16()
+	self:HideDialog()
+	mod_functions.kill_stalkers_around()
+end
+
+function secret_interface:btn17()
+	self:HideDialog()
+	--db.actor:invulnerable(true)	-- не работает;
+	if db.actor:dont_has_info("invulnerability") then
+		db.actor:give_info_portion("invulnerability")
+		news_manager.send_tip(db.actor, "invulnerability_on", nil, "default", nil, nil)
+	elseif has_alife_info("invulnerability") then
+		disable_info("invulnerability")
+		news_manager.send_tip(db.actor, "invulnerability_off", nil, "default", nil, nil)
+	end
+end
+
+
+function secret_interface:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function secret_interface:on_quit()
+	self:HideDialog()
+end
+
+
+
+-- Наш блокнот: -----------------------------------------------
+
+class "actors_note_start" (CUIScriptWnd)
+function actors_note_start:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_start:__finalize() end
+
+function actors_note_start:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_start.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	--self.btn_4 = xml:Init3tButton("btn_4", self)
+	--self:Register(self.btn_4, "btn_4")
+	--self.btn_4:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+	if has_alife_info("stranger_talk2") then
+		self.btn_3:Enable(true)
+	end
+	--self.btn_4:Enable(true)
+
+end
+
+function actors_note_start:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	--self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_start:btn1()	-- заметки;
+	self:HideDialog()
+if ( db.actor:dont_has_info("note_diary1") and 
+	db.actor:dont_has_info("note_diary2") and 
+	db.actor:dont_has_info("note_diary3") and 
+	db.actor:dont_has_info("note_diary4") and 
+	db.actor:dont_has_info("note_diary5") and 
+	db.actor:dont_has_info("note_diary6") and 
+	db.actor:dont_has_info("note_diary7") and 
+	db.actor:dont_has_info("note_diary8") and 
+	db.actor:dont_has_info("note_diary9") and 
+	db.actor:dont_has_info("note_diary10") and 
+	db.actor:dont_has_info("note_diary11") and 
+	db.actor:dont_has_info("note_diary12") and 
+	db.actor:dont_has_info("note_diary13") and 
+	db.actor:dont_has_info("note_diary14") and 
+	db.actor:dont_has_info("note_diary15") ) then
+		run_gui(mod_devices.actors_note_diary0())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and db.actor:dont_has_info("note_diary2") ) then
+		run_gui(mod_devices.actors_note_diary1())	-- сразу после крушения;
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and db.actor:dont_has_info("note_diary3") ) then
+		run_gui(mod_devices.actors_note_diary1())	-- после того, как очнулись в доме отшельника впервые;
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and db.actor:dont_has_info("note_diary4") ) then
+		run_gui(mod_devices.actors_note_diary3())	-- после убийства первого босса;
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and db.actor:dont_has_info("note_diary5") ) then
+		run_gui(mod_devices.actors_note_diary4())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and db.actor:dont_has_info("note_diary6") ) then
+		run_gui(mod_devices.actors_note_diary5())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and db.actor:dont_has_info("note_diary7") ) then
+		run_gui(mod_devices.actors_note_diary6())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and db.actor:dont_has_info("note_diary8") ) then
+		run_gui(mod_devices.actors_note_diary7())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and
+	has_alife_info("note_diary8") and db.actor:dont_has_info("note_diary9") ) then
+		run_gui(mod_devices.actors_note_diary8())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and
+	has_alife_info("note_diary8") and
+	has_alife_info("note_diary9") and db.actor:dont_has_info("note_diary10") ) then
+		run_gui(mod_devices.actors_note_diary9())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and
+	has_alife_info("note_diary8") and
+	has_alife_info("note_diary9") and
+	has_alife_info("note_diary10") and db.actor:dont_has_info("note_diary11") ) then
+		run_gui(mod_devices.actors_note_diary10())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and
+	has_alife_info("note_diary8") and
+	has_alife_info("note_diary9") and
+	has_alife_info("note_diary10") and
+	has_alife_info("note_diary11") and db.actor:dont_has_info("note_diary12") ) then
+		run_gui(mod_devices.actors_note_diary11())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and
+	has_alife_info("note_diary8") and
+	has_alife_info("note_diary9") and
+	has_alife_info("note_diary10") and
+	has_alife_info("note_diary11") and
+	has_alife_info("note_diary12") and db.actor:dont_has_info("note_diary13") ) then
+		run_gui(mod_devices.actors_note_diary12())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and
+	has_alife_info("note_diary8") and
+	has_alife_info("note_diary9") and
+	has_alife_info("note_diary10") and
+	has_alife_info("note_diary11") and
+	has_alife_info("note_diary12") and
+	has_alife_info("note_diary13") and db.actor:dont_has_info("note_diary14") ) then
+		run_gui(mod_devices.actors_note_diary13())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and
+	has_alife_info("note_diary8") and
+	has_alife_info("note_diary9") and
+	has_alife_info("note_diary10") and
+	has_alife_info("note_diary11") and
+	has_alife_info("note_diary12") and
+	has_alife_info("note_diary13") and
+	has_alife_info("note_diary14") and db.actor:dont_has_info("note_diary15") ) then
+		run_gui(mod_devices.actors_note_diary14())
+		disable_info("note_using")
+	elseif ( has_alife_info("note_diary1") and 
+	has_alife_info("note_diary2") and
+	has_alife_info("note_diary3") and
+	has_alife_info("note_diary4") and
+	has_alife_info("note_diary5") and
+	has_alife_info("note_diary6") and
+	has_alife_info("note_diary7") and
+	has_alife_info("note_diary8") and
+	has_alife_info("note_diary9") and
+	has_alife_info("note_diary10") and
+	has_alife_info("note_diary11") and
+	has_alife_info("note_diary12") and
+	has_alife_info("note_diary13") and
+	has_alife_info("note_diary14") and
+	has_alife_info("note_diary15") ) then
+		run_gui(mod_devices.actors_note_diary15())
+		disable_info("note_using")
+end
+	
+end
+
+function actors_note_start:btn2()	-- записки других людей;
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_notes())
+end
+
+function actors_note_start:btn3()	-- полезная инфа;
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_info1())
+end
+
+function actors_note_start:btn4()	-- тайники;
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_treasures1())
+end
+
+
+function actors_note_start:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_start:on_quit()
+	self:HideDialog()
+end
+
+
+-- выбор записей: ----------------
+class "actors_note_notes" (CUIScriptWnd)
+function actors_note_notes:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_notes:__finalize() end
+
+function actors_note_notes:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_notes.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)
+	self.btn_5 = xml:Init3tButton("btn_5", self)
+	self:Register(self.btn_5, "btn_5")
+	self.btn_5:Enable(false)
+	self.btn_6 = xml:Init3tButton("btn_6", self)
+	self:Register(self.btn_6, "btn_6")
+	self.btn_6:Enable(false)
+	self.btn_7 = xml:Init3tButton("btn_7", self)
+	self:Register(self.btn_7, "btn_7")
+	self.btn_7:Enable(false)
+	self.btn_8 = xml:Init3tButton("btn_8", self)
+	self:Register(self.btn_8, "btn_8")
+	self.btn_8:Enable(false)
+	self.btn_9 = xml:Init3tButton("btn_9", self)
+	self:Register(self.btn_9, "btn_9")
+	self.btn_9:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	if has_alife_info("deadman_diary_info1") then
+		self.btn_1:Enable(true)
+	end
+	if has_alife_info("lost_soldier_info1") then
+		self.btn_2:Enable(true)
+	end
+	if has_alife_info("likvidator_info1") then
+		self.btn_3:Enable(true)
+	end
+	if has_alife_info("personal_dog_note1_info") then
+		self.btn_4:Enable(true)
+	end
+	if has_alife_info("narkoman_note1_info") then
+		self.btn_5:Enable(true)
+	end
+	if has_alife_info("maroder_zavhoz_note_info") then
+		self.btn_6:Enable(true)
+	end
+	if has_alife_info("arthunter_note1_info") then
+		self.btn_7:Enable(true)
+	end
+	if has_alife_info("suicider_note1_info") then
+		self.btn_8:Enable(true)
+	end
+	if has_alife_info("sniper_note1_info") then
+		self.btn_9:Enable(true)
+	end
+end
+
+function actors_note_notes:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
+	self:AddCallback("btn_6", ui_events.BUTTON_CLICKED,  self.btn6, self)
+	self:AddCallback("btn_7", ui_events.BUTTON_CLICKED,  self.btn7, self)
+	self:AddCallback("btn_8", ui_events.BUTTON_CLICKED,  self.btn8, self)
+	self:AddCallback("btn_9", ui_events.BUTTON_CLICKED,  self.btn9, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_notes:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note1())
+	disable_info("note_using")
+end
+
+function actors_note_notes:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.lostsold_note1())
+	disable_info("note_using")
+end
+
+function actors_note_notes:btn3()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.likvidator_note1())
+	disable_info("note_using")
+end
+
+function actors_note_notes:btn4()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.personal_dog_note1())
+	disable_info("note_using")
+end
+
+function actors_note_notes:btn5()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.narkoman_note1())
+	disable_info("note_using")
+end
+
+function actors_note_notes:btn6()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.zavhoz_note())
+	disable_info("note_using")
+end
+
+function actors_note_notes:btn7()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.arthunter_note1())
+	disable_info("note_using")
+end
+
+function actors_note_notes:btn8()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.suicider_note1())
+	disable_info("note_using")
+end
+
+function actors_note_notes:btn9()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.sniper_note1())
+	disable_info("note_using")
+end
+
+function actors_note_notes:on_quit()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+
+-- запись бывшего хозяина 1 ----------------
+class "deadman_note1" (CUIScriptWnd)
+function deadman_note1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function deadman_note1:__finalize() end
+
+function deadman_note1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\deadman_note1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("deadman_diary_info2") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function deadman_note1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function deadman_note1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function deadman_note1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note2())
+	disable_info("note_using")
+end
+
+
+function deadman_note1:on_quit()
+	self:HideDialog()
+end
+
+-- запись бывшего хозяина 2 ----------------
+class "deadman_note2" (CUIScriptWnd)
+function deadman_note2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function deadman_note2:__finalize() end
+
+function deadman_note2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\deadman_note2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("deadman_diary_info3") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function deadman_note2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function deadman_note2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note1())
+end
+
+function deadman_note2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note3())
+end
+
+
+function deadman_note2:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись бывшего хозяина 3 ----------------
+class "deadman_note3" (CUIScriptWnd)
+function deadman_note3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function deadman_note3:__finalize() end
+
+function deadman_note3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\deadman_note3.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("deadman_diary_info4") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function deadman_note3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function deadman_note3:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note2())
+end
+
+function deadman_note3:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note4())
+end
+
+
+function deadman_note3:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись бывшего хозяина 4 ----------------
+class "deadman_note4" (CUIScriptWnd)
+function deadman_note4:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function deadman_note4:__finalize() end
+
+function deadman_note4:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\deadman_note4.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("deadman_diary_info5") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function deadman_note4:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function deadman_note4:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note3())
+end
+
+function deadman_note4:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note5())
+end
+
+
+function deadman_note4:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись бывшего хозяина 5 ----------------
+class "deadman_note5" (CUIScriptWnd)
+function deadman_note5:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function deadman_note5:__finalize() end
+
+function deadman_note5:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\deadman_note5.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("deadman_diary_info6") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function deadman_note5:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function deadman_note5:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note4())
+end
+
+function deadman_note5:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note6())
+end
+
+
+function deadman_note5:on_quit()
+	self:HideDialog()
+end
+
+-- запись бывшего хозяина 6 ----------------
+class "deadman_note6" (CUIScriptWnd)
+function deadman_note6:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function deadman_note6:__finalize() end
+
+function deadman_note6:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\deadman_note6.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+
+end
+
+function deadman_note6:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function deadman_note6:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.deadman_note5())
+end
+
+function deadman_note6:on_quit()
+	self:HideDialog()
+end
+
+
+
+-- запись пилота 1 ----------------
+class "lostsold_note1" (CUIScriptWnd)
+function lostsold_note1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function lostsold_note1:__finalize() end
+
+function lostsold_note1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\lostsold_note1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("lost_soldier_info2") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function lostsold_note1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function lostsold_note1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function lostsold_note1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.lostsold_note2())
+	disable_info("note_using")
+end
+
+
+function lostsold_note1:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись пилота 2 ----------------
+class "lostsold_note2" (CUIScriptWnd)
+function lostsold_note2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function lostsold_note2:__finalize() end
+
+function lostsold_note2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\lostsold_note2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("lost_soldier_info3") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function lostsold_note2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function lostsold_note2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.lostsold_note1())
+end
+
+function lostsold_note2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.lostsold_note3())
+	disable_info("note_using")
+end
+
+
+function lostsold_note2:on_quit()
+	self:HideDialog()
+end
+
+-- запись пилота 3 ----------------
+class "lostsold_note3" (CUIScriptWnd)
+function lostsold_note3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function lostsold_note3:__finalize() end
+
+function lostsold_note3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\lostsold_note3.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("lost_soldier_info4") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function lostsold_note3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function lostsold_note3:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.lostsold_note2())
+end
+
+function lostsold_note3:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.lostsold_note4())
+	disable_info("note_using")
+end
+
+
+function lostsold_note3:on_quit()
+	self:HideDialog()
+end
+
+-- запись пилота 4 ----------------
+class "lostsold_note4" (CUIScriptWnd)
+function lostsold_note4:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function lostsold_note4:__finalize() end
+
+function lostsold_note4:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\lostsold_note4.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+end
+
+function lostsold_note4:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function lostsold_note4:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.lostsold_note3())
+end
+
+
+function lostsold_note4:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись ликвидатора 1 ----------------
+class "likvidator_note1" (CUIScriptWnd)
+function likvidator_note1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function likvidator_note1:__finalize() end
+
+function likvidator_note1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\likvidator_note1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("likvidator_info2") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function likvidator_note1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function likvidator_note1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function likvidator_note1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.likvidator_note2())
+end
+
+
+function likvidator_note1:on_quit()
+	self:HideDialog()
+end
+
+-- запись ликвидатора 2 ----------------
+class "likvidator_note2" (CUIScriptWnd)
+function likvidator_note2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function likvidator_note2:__finalize() end
+
+function likvidator_note2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\likvidator_note2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("likvidator_info3") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function likvidator_note2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function likvidator_note2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.likvidator_note1())
+end
+
+function likvidator_note2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.likvidator_note3())
+end
+
+
+function likvidator_note2:on_quit()
+	self:HideDialog()
+end
+
+-- запись ликвидатора 3 ----------------
+class "likvidator_note3" (CUIScriptWnd)
+function likvidator_note3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function likvidator_note3:__finalize() end
+
+function likvidator_note3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\likvidator_note3.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+
+end
+
+function likvidator_note3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function likvidator_note3:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.likvidator_note2())
+end
+
+
+function likvidator_note3:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись Прощелыги 1 ----------------
+class "personal_dog_note1" (CUIScriptWnd)
+function personal_dog_note1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function personal_dog_note1:__finalize() end
+
+function personal_dog_note1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\personal_dog_note1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("personal_dog_note2_info") then
+		self.btn_2:Enable(true)
+	end
+
+end
+
+function personal_dog_note1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function personal_dog_note1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function personal_dog_note1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.personal_dog_note2())
+end
+
+
+function personal_dog_note1:on_quit()
+	self:HideDialog()
+end
+
+-- запись Прощелыги 2 ----------------
+class "personal_dog_note2" (CUIScriptWnd)
+function personal_dog_note2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function personal_dog_note2:__finalize() end
+
+function personal_dog_note2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\personal_dog_note2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	--self.btn_2 = xml:Init3tButton("btn_2", self)
+	--self:Register(self.btn_2, "btn_2")
+	--self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	--if has_alife_info("personal_dog_note3_info") then
+	--	self.btn_2:Enable(true)
+	--end
+
+end
+
+function personal_dog_note2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	--self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function personal_dog_note2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.personal_dog_note1())
+end
+
+function personal_dog_note2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	--run_gui(mod_devices.personal_dog_note3())
+end
+
+
+function personal_dog_note2:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись учёного 1 ----------------
+class "narkoman_note1" (CUIScriptWnd)
+function narkoman_note1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function narkoman_note1:__finalize() end
+
+function narkoman_note1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\narkoman_note1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("narkoman_note2_info") then
+		self.btn_2:Enable(true)
+	end
+
+end
+
+function narkoman_note1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function narkoman_note1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function narkoman_note1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.narkoman_note2())
+end
+
+
+function narkoman_note1:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись учёного 2 ----------------
+class "narkoman_note2" (CUIScriptWnd)
+function narkoman_note2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function narkoman_note2:__finalize() end
+
+function narkoman_note2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\narkoman_note2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("narkoman_note3_info") then
+		self.btn_2:Enable(true)
+	end
+
+end
+
+function narkoman_note2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function narkoman_note2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.narkoman_note1())
+end
+
+function narkoman_note2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.narkoman_note3())
+end
+
+
+function narkoman_note2:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись учёного 3 ----------------
+class "narkoman_note3" (CUIScriptWnd)
+function narkoman_note3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function narkoman_note3:__finalize() end
+
+function narkoman_note3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\narkoman_note3.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("narkoman_note4_info") then
+		self.btn_2:Enable(true)
+	end
+
+end
+
+function narkoman_note3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function narkoman_note3:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.narkoman_note2())
+end
+
+function narkoman_note3:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.narkoman_note4())
+end
+
+
+function narkoman_note3:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись учёного 4 ----------------
+class "narkoman_note4" (CUIScriptWnd)
+function narkoman_note4:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function narkoman_note4:__finalize() end
+
+function narkoman_note4:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\narkoman_note4.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+
+end
+
+function narkoman_note4:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function narkoman_note4:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.narkoman_note3())
+end
+
+function narkoman_note4:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись мародёра-завхоза 1 ----------------
+class "zavhoz_note" (CUIScriptWnd)
+function zavhoz_note:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function zavhoz_note:__finalize() end
+
+function zavhoz_note:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\zavhoz_note.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+end
+
+function zavhoz_note:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function zavhoz_note:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function zavhoz_note:on_quit()
+	self:HideDialog()
+end
+
+
+-- запись искателя 1 ----------------
+class "arthunter_note1" (CUIScriptWnd)
+function arthunter_note1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function arthunter_note1:__finalize() end
+
+function arthunter_note1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\arthunter_note1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("arthunter_note2_info") then
+		self.btn_2:Enable(true)
+	end
+
+end
+
+function arthunter_note1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function arthunter_note1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function arthunter_note1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.arthunter_note2())
+end
+
+
+function arthunter_note1:on_quit()
+	self:HideDialog()
+end
+
+-- запись искателя 2 ----------------
+class "arthunter_note2" (CUIScriptWnd)
+function arthunter_note2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function arthunter_note2:__finalize() end
+
+function arthunter_note2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\arthunter_note2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("arthunter_note3_info") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function arthunter_note2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function arthunter_note2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.arthunter_note1())
+end
+
+function arthunter_note2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.arthunter_note3())
+end
+
+
+function arthunter_note2:on_quit()
+	self:HideDialog()
+end
+
+-- запись искателя 3 ----------------
+class "arthunter_note3" (CUIScriptWnd)
+function arthunter_note3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function arthunter_note3:__finalize() end
+
+function arthunter_note3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\arthunter_note3.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+end
+
+function arthunter_note3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function arthunter_note3:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.arthunter_note2())
+end
+
+
+function arthunter_note3:on_quit()
+	self:HideDialog()
+end
+
+
+-- совет от Незнакомца 1 ----------------
+class "actors_note_info1" (CUIScriptWnd)
+function actors_note_info1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_info1:__finalize() end
+
+function actors_note_info1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_info1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	--self.btn_2 = xml:Init3tButton("btn_2", self)
+	--self:Register(self.btn_2, "btn_2")
+	--self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	--self.btn_2:Enable(true)
+end
+
+function actors_note_info1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	--self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_info1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function actors_note_info1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_info2())
+	disable_info("note_using")
+end
+
+
+function actors_note_info1:on_quit()
+	self:HideDialog()
+end
+
+
+
+
+-- заметка 1 ----------------
+class "actors_note_diary0" (CUIScriptWnd)
+function actors_note_diary0:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary0:__finalize() end
+
+function actors_note_diary0:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary0.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary1") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary0:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary0:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function actors_note_diary0:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary1())
+end
+
+
+function actors_note_diary0:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary0:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 2 ----------------
+class "actors_note_diary1" (CUIScriptWnd)
+function actors_note_diary1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary1:__finalize() end
+
+function actors_note_diary1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary2") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary0())
+end
+
+function actors_note_diary1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary2())
+end
+
+
+function actors_note_diary1:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary1:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 3 ----------------
+class "actors_note_diary2" (CUIScriptWnd)
+function actors_note_diary2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary2:__finalize() end
+
+function actors_note_diary2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary3") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary1())
+end
+
+function actors_note_diary2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary3())
+end
+
+
+function actors_note_diary2:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary2:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 4 ----------------
+class "actors_note_diary3" (CUIScriptWnd)
+function actors_note_diary3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary3:__finalize() end
+
+function actors_note_diary3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary3.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary4") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary3:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary2())
+end
+
+function actors_note_diary3:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary4())
+end
+
+
+function actors_note_diary3:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary3:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 5 ----------------
+class "actors_note_diary4" (CUIScriptWnd)
+function actors_note_diary4:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary4:__finalize() end
+
+function actors_note_diary4:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary4.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary5") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary4:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary4:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary3())
+end
+
+function actors_note_diary4:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary5())
+end
+
+
+function actors_note_diary4:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary4:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 6 ----------------
+class "actors_note_diary5" (CUIScriptWnd)
+function actors_note_diary5:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary5:__finalize() end
+
+function actors_note_diary5:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary5.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary6") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary5:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary5:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary4())
+end
+
+function actors_note_diary5:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary6())
+end
+
+
+function actors_note_diary5:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary5:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 7 ----------------
+class "actors_note_diary6" (CUIScriptWnd)
+function actors_note_diary6:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary6:__finalize() end
+
+function actors_note_diary6:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary6.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary7") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary6:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary6:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary5())
+end
+
+function actors_note_diary6:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary7())
+end
+
+
+function actors_note_diary6:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary6:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 8 ----------------
+class "actors_note_diary7" (CUIScriptWnd)
+function actors_note_diary7:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary7:__finalize() end
+
+function actors_note_diary7:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary7.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary8") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary7:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary7:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary6())
+end
+
+function actors_note_diary7:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary8())
+end
+
+
+function actors_note_diary7:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary7:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 9 ----------------
+class "actors_note_diary8" (CUIScriptWnd)
+function actors_note_diary8:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary8:__finalize() end
+
+function actors_note_diary8:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary8.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary9") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary8:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary8:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary7())
+end
+
+function actors_note_diary8:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary9())
+end
+
+
+function actors_note_diary8:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary8:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 10 ----------------
+class "actors_note_diary9" (CUIScriptWnd)
+function actors_note_diary9:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary9:__finalize() end
+
+function actors_note_diary9:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary9.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary10") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary9:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary9:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary8())
+end
+
+function actors_note_diary9:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary10())
+end
+
+
+function actors_note_diary9:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary9:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 11 ----------------
+class "actors_note_diary10" (CUIScriptWnd)
+function actors_note_diary10:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary10:__finalize() end
+
+function actors_note_diary10:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary10.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary11") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary10:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary10:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary9())
+end
+
+function actors_note_diary10:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary11())
+end
+
+
+function actors_note_diary10:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary10:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 12 ----------------
+class "actors_note_diary11" (CUIScriptWnd)
+function actors_note_diary11:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary11:__finalize() end
+
+function actors_note_diary11:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary11.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary12") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary11:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary11:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary10())
+end
+
+function actors_note_diary11:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary12())
+end
+
+
+function actors_note_diary11:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary11:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 13 ----------------
+class "actors_note_diary12" (CUIScriptWnd)
+function actors_note_diary12:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary12:__finalize() end
+
+function actors_note_diary12:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary12.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary13") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary12:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary12:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary11())
+end
+
+function actors_note_diary12:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary13())
+end
+
+
+function actors_note_diary12:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary12:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 14 ----------------
+class "actors_note_diary13" (CUIScriptWnd)
+function actors_note_diary13:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary13:__finalize() end
+
+function actors_note_diary13:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary13.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary14") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary13:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary13:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary12())
+end
+
+function actors_note_diary13:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary14())
+end
+
+
+function actors_note_diary13:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary13:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 15 ----------------
+class "actors_note_diary14" (CUIScriptWnd)
+function actors_note_diary14:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary14:__finalize() end
+
+function actors_note_diary14:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary14.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("note_diary15") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function actors_note_diary14:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary14:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary13())
+end
+
+function actors_note_diary14:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary15())
+end
+
+
+function actors_note_diary14:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary14:on_quit()
+	self:HideDialog()
+end
+
+-- заметка 16 ----------------
+class "actors_note_diary15" (CUIScriptWnd)
+function actors_note_diary15:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function actors_note_diary15:__finalize() end
+
+function actors_note_diary15:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\actors_note_diary15.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+end
+
+function actors_note_diary15:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function actors_note_diary15:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_diary13())
+end
+
+
+function actors_note_diary15:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function actors_note_diary15:on_quit()
+	self:HideDialog()
+end
+
+
+
+
+-- Мастерская: --------------------------------------------------------------------------
+
+class "mechanical_interface" (CUIScriptWnd)
+function mechanical_interface:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function mechanical_interface:__finalize() end
+
+function mechanical_interface:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_mechanical_interface.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+	self.btn_3:Enable(true)
+	self.btn_4:Enable(true)
+end
+
+function mechanical_interface:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function mechanical_interface:btn1()	-- разобрать оружие;
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+end
+
+function mechanical_interface:btn2()	-- собрать оружие;
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_construct())
+end
+
+function mechanical_interface:btn3()	-- апгрейд\ремонт;
+	self:HideDialog()
+	xr_effects.spawn_mechanical_npc1()
+	start_real_timer(1, "mod_timer_functions.mechanical_npc1use_action")
+end
+
+function mechanical_interface:btn4()	-- прочее;
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_others())
+end
+
+function mechanical_interface:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function mechanical_interface:on_quit()
+	self:HideDialog()
+end
+
+
+-- разборка оружия: --------------------------
+class "mechanical_take_apart" (CUIScriptWnd)
+function mechanical_take_apart:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function mechanical_take_apart:__finalize() end
+
+function mechanical_take_apart:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_mechanical_take_apart.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)
+	self.btn_5 = xml:Init3tButton("btn_5", self)
+	self:Register(self.btn_5, "btn_5")
+	self.btn_5:Enable(false)
+	self.btn_6 = xml:Init3tButton("btn_6", self)
+	self:Register(self.btn_6, "btn_6")
+	self.btn_6:Enable(false)
+	self.btn_7 = xml:Init3tButton("btn_7", self)
+	self:Register(self.btn_7, "btn_7")
+	self.btn_7:Enable(false)
+	self.btn_8 = xml:Init3tButton("btn_8", self)
+	self:Register(self.btn_8, "btn_8")
+	self.btn_8:Enable(false)
+	self.btn_9 = xml:Init3tButton("btn_9", self)
+	self:Register(self.btn_9, "btn_9")
+	self.btn_9:Enable(false)
+	self.btn_10 = xml:Init3tButton("btn_10", self)
+	self:Register(self.btn_10, "btn_10")
+	self.btn_10:Enable(false)
+	self.btn_11 = xml:Init3tButton("btn_11", self)
+	self:Register(self.btn_11, "btn_11")
+	self.btn_11:Enable(false)
+	self.btn_12 = xml:Init3tButton("btn_12", self)
+	self:Register(self.btn_12, "btn_12")
+	self.btn_12:Enable(false)
+	self.btn_13 = xml:Init3tButton("btn_13", self)
+	self:Register(self.btn_13, "btn_13")
+	self.btn_13:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+	-- кнопка назад
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+
+	-- определяем доступность кнопок
+	if db.actor:object("wpn_pm") ~= nil or db.actor:object("pm_wrecked") ~= nil then
+		self.btn_1:Enable(true)
+	end
+	if db.actor:object("wpn_pb") ~= nil then
+		self.btn_2:Enable(true)
+	end
+	if db.actor:object("wpn_bm16") ~= nil then
+		self.btn_3:Enable(true)
+	end
+	if db.actor:object("wpn_usp") ~= nil then
+		self.btn_4:Enable(true)
+	end
+	if db.actor:object("wpn_hpsa") ~= nil then
+		self.btn_5:Enable(true)
+	end
+	if db.actor:object("wpn_toz34") ~= nil then
+		self.btn_6:Enable(true)
+	end
+	if ( db.actor:object("wpn_ak74u") ~= nil or db.actor:object("aksu_wrecked") ~= nil ) then
+		self.btn_7:Enable(true)
+	end
+	if db.actor:object("wpn_ak74") ~= nil then
+		self.btn_8:Enable(true)
+	end
+	if db.actor:object("wpn_lr300") ~= nil then
+		self.btn_9:Enable(true)
+	end
+	if db.actor:object("wpn_vintorez") ~= nil then
+		self.btn_10:Enable(true)
+	end
+	if db.actor:object("wpn_bizon") ~= nil then
+		self.btn_11:Enable(true)
+	end
+	if db.actor:object("wpn_sayga") ~= nil then
+		self.btn_12:Enable(true)
+	end
+	if db.actor:object("wpn_m1891") ~= nil then
+		self.btn_13:Enable(true)
+	end
+end
+
+function mechanical_take_apart:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
+	self:AddCallback("btn_6", ui_events.BUTTON_CLICKED,  self.btn6, self)
+	self:AddCallback("btn_7", ui_events.BUTTON_CLICKED,  self.btn7, self)
+	self:AddCallback("btn_8", ui_events.BUTTON_CLICKED,  self.btn8, self)
+	self:AddCallback("btn_9", ui_events.BUTTON_CLICKED,  self.btn9, self)
+	self:AddCallback("btn_10", ui_events.BUTTON_CLICKED,  self.btn10, self)
+	self:AddCallback("btn_11", ui_events.BUTTON_CLICKED,  self.btn11, self)
+	self:AddCallback("btn_12", ui_events.BUTTON_CLICKED,  self.btn12, self)
+	self:AddCallback("btn_13", ui_events.BUTTON_CLICKED,  self.btn13, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+end
+
+function mechanical_take_apart:btn1()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+	
+	if db.actor:object("wpn_pm") ~= nil then
+		if xr_conditions.actor_in_slot_pm() == false then
+			mod_functions.remove_items("wpn_pm", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_pm() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+	
+	if db.actor:object("pm_wrecked") ~= nil then
+		mod_functions.remove_items("pm_wrecked", 1)
+		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.repair_sounds()
+		xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+end
+
+function mechanical_take_apart:btn2()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_pb") ~= nil then
+		if xr_conditions.actor_in_slot_pb() == false then
+			mod_functions.remove_items("wpn_pb", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_pb() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn3()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_bm16") ~= nil then
+		if xr_conditions.actor_in_slot_obrez() == false then
+			mod_functions.remove_items("wpn_bm16", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_obrez() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn4()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_usp") ~= nil then
+		if xr_conditions.actor_in_slot_usp() == false then
+			mod_functions.remove_items("wpn_usp", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_usp() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn5()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_hpsa") ~= nil then
+		if xr_conditions.actor_in_slot_hpsa() == false then
+			mod_functions.remove_items("wpn_hpsa", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_hpsa() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn6()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_toz34") ~= nil then
+		if xr_conditions.actor_in_slot_toz() == false then
+			mod_functions.remove_items("wpn_toz34", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_toz() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn7()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_ak74u") ~= nil then
+		if xr_conditions.actor_in_slot_aksu() == false then
+			mod_functions.remove_items("wpn_ak74u", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_aksu() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+	
+	if db.actor:object("aksu_wrecked") ~= nil then
+		mod_functions.remove_items("aksu_wrecked", 1)
+		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.repair_sounds()
+		xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+end
+
+function mechanical_take_apart:btn8()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_ak74") ~= nil then
+		if xr_conditions.actor_in_slot_ak74() == false then
+			mod_functions.remove_items("wpn_ak74", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_ak74() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn9()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_lr300") ~= nil then
+		if xr_conditions.actor_in_slot_lr300() == false then
+			mod_functions.remove_items("wpn_lr300", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_lr300() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn10()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_vintorez") ~= nil then
+		if xr_conditions.actor_in_slot_vintorez() == false then
+			mod_functions.remove_items("wpn_vintorez", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_vintorez() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn11()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_bizon") ~= nil then
+		if xr_conditions.actor_in_slot_bizon() == false then
+			mod_functions.remove_items("wpn_bizon", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_bizon() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn12()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_sayga") ~= nil then
+		if xr_conditions.actor_in_slot_sayga() == false then
+			mod_functions.remove_items("wpn_sayga", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_sayga() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+function mechanical_take_apart:btn13()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_take_apart())
+
+	if db.actor:object("wpn_m1891") ~= nil then
+		if xr_conditions.actor_in_slot_mosin() == false then
+			mod_functions.remove_items("wpn_m1891", 1)
+			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			soundtrack.repair_sounds()
+			xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		elseif xr_conditions.actor_in_slot_mosin() == true then
+			news_manager.send_tip(db.actor, "wpn_cant_be_destroyed_tip", nil, "default", nil, nil)
+			soundtrack.no_replics()
+		end
+	end
+end
+
+
+function mechanical_take_apart:on_back()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+end
+
+
+function mechanical_take_apart:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function mechanical_take_apart:on_quit()
+	self:HideDialog()
+end
+
+
+-- сборка оружия: --------------------------
+class "mechanical_construct" (CUIScriptWnd)
+function mechanical_construct:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function mechanical_construct:__finalize() end
+
+function mechanical_construct:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_mechanical_construct.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+	
+	if db.actor:object("usp_part1") ~= nil and db.actor:object("usp_part2") ~= nil and db.actor:object("usp_part3") ~= nil and db.actor:object("usp_part4") ~= nil then
+		xml:InitStatic("indicator1", self)
+	end
+	if db.actor:object("hpsa_part1") ~= nil and db.actor:object("hpsa_part2") ~= nil and db.actor:object("hpsa_part3") ~= nil and db.actor:object("hpsa_part4") ~= nil then
+		xml:InitStatic("indicator2", self)
+	end
+	if db.actor:object("toz_part1") ~= nil and db.actor:object("toz_part3") ~= nil and db.actor:object("toz_part3") ~= nil then
+		xml:InitStatic("indicator3", self)
+	end
+	if db.actor:object("aksu_part1") ~= nil and db.actor:object("aksu_part2") ~= nil and db.actor:object("aksu_part3") ~= nil and db.actor:object("aksu_part4") ~= nil and db.actor:object("aksu_part5") ~= nil then
+		xml:InitStatic("indicator4", self)
+	end
+	if db.actor:object("ak_part1") ~= nil and db.actor:object("ak_part2") ~= nil and db.actor:object("ak_part3") ~= nil and db.actor:object("ak_part4") ~= nil and db.actor:object("aksu_part4") ~= nil then
+		xml:InitStatic("indicator5", self)
+	end
+	if db.actor:object("trs_part1") ~= nil and db.actor:object("trs_part2") ~= nil and db.actor:object("trs_part3") ~= nil and db.actor:object("trs_part4") ~= nil and db.actor:object("trs_part5") ~= nil then
+		xml:InitStatic("indicator6", self)
+	end
+	if db.actor:object("vintorez_part1") ~= nil and db.actor:object("vintorez_part2") ~= nil and db.actor:object("vintorez_part3") ~= nil and db.actor:object("vintorez_part4") ~= nil then
+		xml:InitStatic("indicator7", self)
+	end
+	if db.actor:object("bizon_part_1") ~= nil and db.actor:object("bizon_part_2") ~= nil and db.actor:object("bizon_part_3") ~= nil and db.actor:object("bizon_part_4") ~= nil and db.actor:object("aksu_part4") ~= nil then
+		xml:InitStatic("indicator8", self)
+	end
+	if db.actor:object("sayga_part_1") ~= nil and db.actor:object("sayga_part_2") ~= nil and db.actor:object("sayga_part_3") ~= nil and db.actor:object("sayga_part_4") ~= nil then
+		xml:InitStatic("indicator9", self)
+	end
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)
+	self.btn_5 = xml:Init3tButton("btn_5", self)
+	self:Register(self.btn_5, "btn_5")
+	self.btn_5:Enable(false)
+	self.btn_6 = xml:Init3tButton("btn_6", self)
+	self:Register(self.btn_6, "btn_6")
+	self.btn_6:Enable(false)
+	self.btn_7 = xml:Init3tButton("btn_7", self)
+	self:Register(self.btn_7, "btn_7")
+	self.btn_7:Enable(false)
+	self.btn_8 = xml:Init3tButton("btn_8", self)
+	self:Register(self.btn_8, "btn_8")
+	self.btn_8:Enable(false)
+	self.btn_9 = xml:Init3tButton("btn_9", self)
+	self:Register(self.btn_9, "btn_9")
+	self.btn_9:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+	-- кнопка назад
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+
+	-- определяем доступность кнопок
+	if db.actor:object("usp_part1") ~= nil and db.actor:object("usp_part2") ~= nil and db.actor:object("usp_part3") ~= nil and db.actor:object("usp_part4") ~= nil then
+		self.btn_1:Enable(true)
+	end
+	if db.actor:object("hpsa_part1") ~= nil and db.actor:object("hpsa_part2") ~= nil and db.actor:object("hpsa_part3") ~= nil and db.actor:object("hpsa_part4") ~= nil then
+		self.btn_2:Enable(true)
+	end
+	if db.actor:object("toz_part1") ~= nil and db.actor:object("toz_part3") ~= nil and db.actor:object("toz_part3") ~= nil then
+		self.btn_3:Enable(true)
+	end
+	if db.actor:object("aksu_part1") ~= nil and db.actor:object("aksu_part2") ~= nil and db.actor:object("aksu_part3") ~= nil and db.actor:object("aksu_part4") ~= nil and db.actor:object("aksu_part5") ~= nil then
+		self.btn_4:Enable(true)
+	end
+	if db.actor:object("ak_part1") ~= nil and db.actor:object("ak_part2") ~= nil and db.actor:object("ak_part3") ~= nil and db.actor:object("ak_part4") ~= nil and db.actor:object("aksu_part4") ~= nil then
+		self.btn_5:Enable(true)
+	end
+	if db.actor:object("trs_part1") ~= nil and db.actor:object("trs_part2") ~= nil and db.actor:object("trs_part3") ~= nil and db.actor:object("trs_part4") ~= nil and db.actor:object("trs_part5") ~= nil then
+		self.btn_6:Enable(true)
+	end
+	if db.actor:object("vintorez_part1") ~= nil and db.actor:object("vintorez_part2") ~= nil and db.actor:object("vintorez_part3") ~= nil and db.actor:object("vintorez_part4") ~= nil then
+		self.btn_7:Enable(true)
+	end
+	if db.actor:object("bizon_part_1") ~= nil and db.actor:object("bizon_part_2") ~= nil and db.actor:object("bizon_part_3") ~= nil and db.actor:object("bizon_part_4") ~= nil and db.actor:object("aksu_part4") ~= nil then
+		self.btn_8:Enable(true)
+	end
+	if db.actor:object("sayga_part_1") ~= nil and db.actor:object("sayga_part_2") ~= nil and db.actor:object("sayga_part_3") ~= nil and db.actor:object("sayga_part_4") ~= nil then
+		self.btn_9:Enable(true)
+	end
+end
+
+function mechanical_construct:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
+	self:AddCallback("btn_6", ui_events.BUTTON_CLICKED,  self.btn6, self)
+	self:AddCallback("btn_7", ui_events.BUTTON_CLICKED,  self.btn7, self)
+	self:AddCallback("btn_8", ui_events.BUTTON_CLICKED,  self.btn8, self)
+	self:AddCallback("btn_9", ui_events.BUTTON_CLICKED,  self.btn9, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+end
+
+function mechanical_construct:btn1()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("usp_part1", 1)
+	mod_functions.remove_items("usp_part2", 1)
+	mod_functions.remove_items("usp_part3", 1)
+	mod_functions.remove_items("usp_part4", 1)
+	alife():create('wpn_usp', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	db.actor:give_info_portion("actor_has_usp")
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:btn2()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("hpsa_part1", 1)
+	mod_functions.remove_items("hpsa_part2", 1)
+	mod_functions.remove_items("hpsa_part3", 1)
+	mod_functions.remove_items("hpsa_part4", 1)
+	alife():create('wpn_hpsa', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	--db.actor:give_info_portion("actor_has_hpsa")
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:btn3()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("toz_part1", 1)
+	mod_functions.remove_items("toz_part2", 1)
+	mod_functions.remove_items("toz_part3", 1)
+	alife():create('wpn_toz34', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	--db.actor:give_info_portion("actor_has_toz")
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:btn4()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("aksu_part1", 1)
+	mod_functions.remove_items("aksu_part2", 1)
+	mod_functions.remove_items("aksu_part3", 1)
+	mod_functions.remove_items("aksu_part4", 1)
+	mod_functions.remove_items("aksu_part5", 1)
+	alife():create('wpn_ak74u', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	--db.actor:give_info_portion("actor_has_aksu")
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:btn5()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("aksu_part4", 1)
+	mod_functions.remove_items("ak_part1", 1)
+	mod_functions.remove_items("ak_part2", 1)
+	mod_functions.remove_items("ak_part3", 1)
+	mod_functions.remove_items("ak_part4", 1)
+	alife():create('wpn_ak74', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	--db.actor:give_info_portion("actor_has_ak74")
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:btn6()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("trs_part1", 1)
+	mod_functions.remove_items("trs_part2", 1)
+	mod_functions.remove_items("trs_part3", 1)
+	mod_functions.remove_items("trs_part4", 1)
+	mod_functions.remove_items("trs_part5", 1)
+	alife():create('wpn_lr300', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	--db.actor:give_info_portion("actor_has_lr300")
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:btn7()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("vintorez_part1", 1)
+	mod_functions.remove_items("vintorez_part2", 1)
+	mod_functions.remove_items("vintorez_part3", 1)
+	mod_functions.remove_items("vintorez_part4", 1)
+	alife():create('wpn_vintorez', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	--db.actor:give_info_portion("actor_has_vss")
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:btn8()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("bizon_part_1", 1)
+	mod_functions.remove_items("bizon_part_2", 1)
+	mod_functions.remove_items("bizon_part_3", 1)
+	mod_functions.remove_items("bizon_part_4", 1)
+	mod_functions.remove_items("aksu_part4", 1)
+	alife():create('wpn_bizon', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:btn9()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	mod_functions.remove_items("sayga_part_1", 1)
+	mod_functions.remove_items("sayga_part_2", 1)
+	mod_functions.remove_items("sayga_part_3", 1)
+	mod_functions.remove_items("sayga_part_4", 1)
+	alife():create('wpn_sayga', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
+end
+
+function mechanical_construct:on_back()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+end
+
+
+function mechanical_construct:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function mechanical_construct:on_quit()
+	self:HideDialog()
+end
+
+
+-- прочее: --------------------------
+class "mechanical_others" (CUIScriptWnd)
+function mechanical_others:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function mechanical_others:__finalize() end
+
+function mechanical_others:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_mechanical_others.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+	xml:InitStatic("text2", self)
+	xml:InitStatic("text3", self)
+	
+	if db.actor:object("car_item_bearing") ~= nil and db.actor:object("car_item_avtol") ~= nil and db.actor:object("car_item_litol") ~= nil and db.actor:object("car_item_wrenches") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_domkrat") ~= nil and db.actor:object("car_item_wd40") ~= nil and db.actor:object("car_item_akumulator") ~= nil and db.actor:object("car_item_tyre") ~= nil then
+		xml:InitStatic("indicator1", self)
+	end
+	if db.actor:object("gas_balon") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_akumulator") ~= nil then
+		xml:InitStatic("indicator2", self)
+	end
+	if db.actor:object("maroder_courier_item") ~= nil then
+		xml:InitStatic("indicator3", self)
+	end
+	--if db.actor:object("bread") ~= nil then
+	--	xml:InitStatic("indicator4", self)
+	--end
+	--if db.actor:object("bread") ~= nil then
+	--	xml:InitStatic("indicator5", self)
+	--end
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	--self.btn_4 = xml:Init3tButton("btn_4", self)
+	--self:Register(self.btn_4, "btn_4")
+	--self.btn_4:Enable(false)
+	--self.btn_5 = xml:Init3tButton("btn_5", self)
+	--self:Register(self.btn_5, "btn_5")
+	--self.btn_5:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+	-- кнопка назад
+	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+
+	-- определяем доступность кнопок
+	if db.actor:object("car_item_bearing") ~= nil and db.actor:object("car_item_avtol") ~= nil and db.actor:object("car_item_litol") ~= nil and db.actor:object("car_item_wrenches") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_domkrat") ~= nil and db.actor:object("car_item_wd40") ~= nil and db.actor:object("car_item_akumulator") ~= nil and db.actor:object("car_item_tyre") ~= nil then
+		self.btn_1:Enable(true)
+	end
+	if db.actor:object("gas_balon") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_akumulator") ~= nil then
+		self.btn_2:Enable(true)
+	end
+	if db.actor:object("maroder_courier_item") ~= nil then
+		self.btn_3:Enable(true)
+	end
+	--if db.actor:object("bread") ~= nil then
+	--	self.btn_4:Enable(true)
+	--end
+	--if db.actor:object("bread") ~= nil then
+	--	self.btn_5:Enable(true)
+	--end
+end
+
+function mechanical_others:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	--self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	--self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
+	--self:AddCallback("btn_6", ui_events.BUTTON_CLICKED,  self.btn6, self)
+	--self:AddCallback("btn_7", ui_events.BUTTON_CLICKED,  self.btn7, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
+end
+
+function mechanical_others:btn1()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_others())
+
+	if db.actor:object("car_item_bearing") ~= nil and db.actor:object("car_item_avtol") ~= nil and db.actor:object("car_item_litol") ~= nil and db.actor:object("car_item_wrenches") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_domkrat") ~= nil and db.actor:object("car_item_wd40") ~= nil and db.actor:object("car_item_akumulator") ~= nil and db.actor:object("car_item_tyre") ~= nil then
+		start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
+		soundtrack.repair_sounds()
+		mod_functions.remove_items("car_item_bearing", 1)
+		mod_functions.remove_items("car_item_avtol", 1)
+		mod_functions.remove_items("car_item_litol", 1)
+		mod_functions.remove_items("car_item_wrenches", 1)
+		mod_functions.remove_items("car_item_wiring", 1)
+		mod_functions.remove_items("car_item_domkrat", 1)
+		mod_functions.remove_items("car_item_wd40", 1)
+		mod_functions.remove_items("car_item_akumulator", 1)
+		mod_functions.remove_items("car_item_tyre", 1)
+		alife():create('car_remkit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+end
+
+function mechanical_others:btn2()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_others())
+
+	if db.actor:object("gas_balon") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_akumulator") ~= nil then
+		start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
+		soundtrack.repair_sounds()
+		mod_functions.remove_items("gas_balon", 1)
+		mod_functions.remove_items("car_item_wiring", 1)
+		mod_functions.remove_items("car_item_akumulator", 1)
+		alife():create('item_bomb', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		alife():create('detonator', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		xr_effects.dec_counter(db.actor, nil, {"generator",1})
+	end
+end
+
+function mechanical_others:btn3()
+	self:HideDialog()
+	if db.actor:object("maroder_courier_item") ~= nil then
+		soundtrack.repair_sounds()
+		start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
+		mod_functions.remove_items("maroder_courier_item", 1)
+		xr_effects.dec_counter(db.actor, nil, {"generator",1})
+		mod_functions.maroder_item_reward()
+		xr_effects.delete_maroder_courier()
+		disable_info("courier_task")
+		disable_info("courier_task_fail")
+	end
+end
+
+function mechanical_others:btn4()
+
+end
+
+function mechanical_others:btn5()
+
+end
+
+
+function mechanical_others:on_back()
+	self:HideDialog()
+	run_gui(mod_devices.mechanical_interface())
+end
+
+
+function mechanical_others:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function mechanical_others:on_quit()
+	self:HideDialog()
+end
+
+
+-- Лаборатория: --------------------------------------------------------------------------
+
+class "laboratory_interface" (CUIScriptWnd)
+function laboratory_interface:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function laboratory_interface:__finalize() end
+
+function laboratory_interface:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_laboratory_interface.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+	xml:InitStatic("hint1", self)
+	xml:InitStatic("hint2", self)
+	xml:InitStatic("hint3", self)
+	xml:InitStatic("hint4", self)
+	xml:InitStatic("hint5", self)
+	xml:InitStatic("hint6", self)
+	xml:InitStatic("hint7", self)
+	xml:InitStatic("hint8", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)
+	self.btn_5 = xml:Init3tButton("btn_5", self)
+	self:Register(self.btn_5, "btn_5")
+	self.btn_5:Enable(false)
+	self.btn_6 = xml:Init3tButton("btn_6", self)
+	self:Register(self.btn_6, "btn_6")
+	self.btn_6:Enable(false)
+	self.btn_7 = xml:Init3tButton("btn_7", self)
+	self:Register(self.btn_7, "btn_7")
+	self.btn_7:Enable(false)
+	self.btn_8 = xml:Init3tButton("btn_8", self)
+	self:Register(self.btn_8, "btn_8")
+	self.btn_8:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil then
+		self.btn_1:Enable(true)
+	end
+	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil and db.actor:object("chem_item_harness") ~= nil then
+		self.btn_2:Enable(true)
+	end
+	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("chem_item_rags") ~= nil then
+		self.btn_3:Enable(true)
+	end
+	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_yod") ~= nil then
+		self.btn_4:Enable(true)
+	end
+	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_antiseptic") ~= nil then
+		self.btn_5:Enable(true)
+	end
+	if db.actor:object("chem_item_meldoniy") ~= nil and db.actor:object("chem_item_cofeine") ~= nil and db.actor:object("chem_item_gematogen") ~= nil then
+		self.btn_6:Enable(true)
+	end
+	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_coal") ~= nil then
+		self.btn_7:Enable(true)
+	end
+	if db.actor:object("chem_item_yeast") ~= nil and db.actor:object("chem_item_sugar") ~= nil then
+		self.btn_8:Enable(true)
+	end
+end
+
+function laboratory_interface:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
+	self:AddCallback("btn_6", ui_events.BUTTON_CLICKED,  self.btn6, self)
+	self:AddCallback("btn_7", ui_events.BUTTON_CLICKED,  self.btn7, self)
+	self:AddCallback("btn_8", ui_events.BUTTON_CLICKED,  self.btn8, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function laboratory_interface:btn1()
+	self:HideDialog()
+	run_gui(mod_devices.laboratory_interface())
+	
+	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil then
+		mod_functions.remove_items("chem_item_antiseptic", 1)
+		mod_functions.remove_items("bandage", 1)
+		alife():create('medkit_amateur1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.lab_item_creating()
+		xr_effects.dec_counter(db.actor, nil, {"balon",1})
+	end
+end
+
+function laboratory_interface:btn2()
+	self:HideDialog()
+	run_gui(mod_devices.laboratory_interface())
+	
+	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil and db.actor:object("chem_item_harness") ~= nil then
+		mod_functions.remove_items("chem_item_antiseptic", 1)
+		mod_functions.remove_items("bandage", 1)
+		mod_functions.remove_items("chem_item_harness", 1)
+		alife():create('medkit_amateur2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.lab_item_creating()
+		xr_effects.dec_counter(db.actor, nil, {"balon",1})
+	end
+end
+
+function laboratory_interface:btn3()
+	self:HideDialog()
+	run_gui(mod_devices.laboratory_interface())
+	
+	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("chem_item_rags") ~= nil then
+		mod_functions.remove_items("chem_item_antiseptic", 1)
+		mod_functions.remove_items("chem_item_rags", 1)
+		alife():create('bandage', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.lab_item_creating()
+		xr_effects.dec_counter(db.actor, nil, {"balon",1})
+	end
+end
+
+function laboratory_interface:btn4()
+	self:HideDialog()
+	run_gui(mod_devices.laboratory_interface())
+	
+	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_yod") ~= nil then
+		mod_functions.remove_items("chem_item_injector", 1)
+		mod_functions.remove_items("chem_item_liquor", 1)
+		mod_functions.remove_items("chem_item_yod", 1)
+		alife():create('antirad', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.lab_item_creating()
+		xr_effects.dec_counter(db.actor, nil, {"balon",1})
+	end
+end
+
+function laboratory_interface:btn5()
+	self:HideDialog()
+	run_gui(mod_devices.laboratory_interface())
+	
+	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_antiseptic") ~= nil then
+		mod_functions.remove_items("chem_item_injector", 1)
+		mod_functions.remove_items("chem_item_liquor", 1)
+		mod_functions.remove_items("chem_item_antiseptic", 1)
+		alife():create('drug_serum', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.lab_item_creating()
+		xr_effects.dec_counter(db.actor, nil, {"balon",1})
+	end
+end
+
+function laboratory_interface:btn6()
+	self:HideDialog()
+	run_gui(mod_devices.laboratory_interface())
+	
+	if db.actor:object("chem_item_meldoniy") ~= nil and db.actor:object("chem_item_cofeine") ~= nil and db.actor:object("chem_item_gematogen") ~= nil then
+		mod_functions.remove_items("chem_item_meldoniy", 1)
+		mod_functions.remove_items("chem_item_cofeine", 1)
+		mod_functions.remove_items("chem_item_gematogen", 1)
+		alife():create('drug_steampack', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.lab_item_creating()
+		xr_effects.dec_counter(db.actor, nil, {"balon",1})
+	end
+end
+
+function laboratory_interface:btn7()
+	self:HideDialog()
+	run_gui(mod_devices.laboratory_interface())
+	
+	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_coal") ~= nil then
+		mod_functions.remove_items("chem_item_injector", 1)
+		mod_functions.remove_items("chem_item_liquor", 1)
+		mod_functions.remove_items("chem_item_coal", 1)
+		alife():create('drug_antitoxin', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.lab_item_creating()
+		xr_effects.dec_counter(db.actor, nil, {"balon",1})
+	end
+end
+
+function laboratory_interface:btn8()
+	self:HideDialog()
+	run_gui(mod_devices.laboratory_interface())
+	
+	if db.actor:object("chem_item_yeast") ~= nil and db.actor:object("chem_item_sugar") ~= nil then
+		mod_functions.remove_items("chem_item_yeast", 1)
+		mod_functions.remove_items("chem_item_sugar", 1)
+		alife():create('braga', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		soundtrack.lab_item_creating()
+		xr_effects.dec_counter(db.actor, nil, {"balon",1})
+	end
+end
+
+
+function laboratory_interface:on_quit()
+	self:HideDialog()
+end
+
+
+-- Выход с локации: --------------------------------------------------------------------------
+
+class "exit_location_interface" (CUIScriptWnd)
+function exit_location_interface:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function exit_location_interface:__finalize() end
+
+function exit_location_interface:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_exit_location_interface.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+end
+
+function exit_location_interface:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function exit_location_interface:btn1()
+	self:HideDialog()
+	db.actor:give_info_portion("location_exit_fake")
+end
+
+function exit_location_interface:btn2()
+	self:HideDialog()
+	
+end
+
+
+function exit_location_interface:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function exit_location_interface:on_quit()
+	self:HideDialog()
+end
+
+
+-- Рация наёмников -----------------------------------------------------------
+
+class "merc_radio_interface1" (CUIScriptWnd)
+function merc_radio_interface1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+	--self:OnKeyboard()
+end
+
+function merc_radio_interface1:__finalize() end
+
+function merc_radio_interface1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_merc_radio_interface1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+end
+
+function merc_radio_interface1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+end
+
+function merc_radio_interface1:btn1()
+	self:HideDialog()
+	run_gui(mod_devices.merc_radio_interface2())
+	soundtrack.raciya_sounds()
+end
+
+
+function merc_radio_interface1:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+	  db.actor:give_info_portion ("kpp_mercs_no")
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function merc_radio_interface1:on_quit()
+	self:HideDialog()
+end
+
+----------------------------------------------------
+class "merc_radio_interface2" (CUIScriptWnd)
+function merc_radio_interface2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function merc_radio_interface2:__finalize() end
+
+function merc_radio_interface2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_merc_radio_interface2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+end
+
+function merc_radio_interface2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+end
+
+function merc_radio_interface2:btn1()
+	self:HideDialog()
+	run_gui(mod_devices.merc_radio_interface3())
+	soundtrack.raciya_sounds()
+end
+
+function merc_radio_interface2:btn2()
+	self:HideDialog()
+	run_gui(mod_devices.merc_radio_interface5())
+	soundtrack.raciya_sounds()
+end
+
+
+function merc_radio_interface2:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+	  db.actor:give_info_portion ("kpp_mercs_no")
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function merc_radio_interface2:on_quit()
+	self:HideDialog()
+end
+
+----------------------------------------------------
+class "merc_radio_interface3" (CUIScriptWnd)
+function merc_radio_interface3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function merc_radio_interface3:__finalize() end
+
+function merc_radio_interface3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_merc_radio_interface3.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+end
+
+function merc_radio_interface3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+end
+
+function merc_radio_interface3:btn1()
+	self:HideDialog()
+	run_gui(mod_devices.merc_radio_interface4())
+	soundtrack.raciya_sounds()
+end
+
+function merc_radio_interface3:btn2()
+	self:HideDialog()
+	run_gui(mod_devices.merc_radio_interface5())
+	soundtrack.raciya_sounds()
+end
+
+
+function merc_radio_interface3:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+	  db.actor:give_info_portion ("kpp_mercs_no")
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function merc_radio_interface3:on_quit()
+	self:HideDialog()
+end
+
+----------------------------------------------------
+class "merc_radio_interface4" (CUIScriptWnd)
+function merc_radio_interface4:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function merc_radio_interface4:__finalize() end
+
+function merc_radio_interface4:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_merc_radio_interface4.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+end
+
+function merc_radio_interface4:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+end
+
+function merc_radio_interface4:btn1()
+	self:HideDialog()
+	db.actor:give_info_portion ("kpp_mercs_no")
+	soundtrack.raciya_sounds()
+end
+
+function merc_radio_interface4:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+	  db.actor:give_info_portion ("kpp_mercs_no")
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function merc_radio_interface4:on_quit()
+	self:HideDialog()
+end
+
+----------------------------------------------------
+class "merc_radio_interface5" (CUIScriptWnd)
+function merc_radio_interface5:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function merc_radio_interface5:__finalize() end
+
+function merc_radio_interface5:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_merc_radio_interface5.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+end
+
+function merc_radio_interface5:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+end
+
+function merc_radio_interface5:btn1()
+	self:HideDialog()
+	db.actor:give_info_portion ("kpp_mercs_yes")
+	soundtrack.raciya_sounds()
+end
+
+function merc_radio_interface5:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+	  db.actor:give_info_portion ("kpp_mercs_no")
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function merc_radio_interface5:on_quit()
+	self:HideDialog()
+end
+
+
+-- Иконка мародёра: --------------------------------------------------------------------
+
+class "maroder_icon" (CUIScriptWnd)
+function maroder_icon:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+end
+
+function maroder_icon:__finalize() end
+
+function maroder_icon:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_maroder_icon.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+
+end
+
+function maroder_icon:on_quit()
+	self:HideDialog()
+end
+
+
+
+
+
+-- Комп: --------------------------------------------------------------------------
+
+class "comp_interface" (CUIScriptWnd)
+function comp_interface:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function comp_interface:__finalize() end
+
+function comp_interface:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_comp_interface.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	--if db.actor:dont_has_info("random_event_blokpost") and
+	--	db.actor:dont_has_info("random_event_graveyard") and
+	--	db.actor:dont_has_info("random_event_rad_hill") and
+	--	db.actor:dont_has_info("random_event_willage") and
+	--	db.actor:dont_has_info("random_event_razlom") and
+	--	db.actor:dont_has_info("random_event_island") and
+	--	db.actor:dont_has_info("random_event_forest") and 
+	--	db.actor:dont_has_info("random_event_forest_camp") and 
+	--	db.actor:dont_has_info("random_event_workshop") then
+			self.btn_1:Enable(true)
+	--end
+	self.btn_2:Enable(true)
+end
+
+function comp_interface:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function comp_interface:btn1()
+	self:HideDialog()
+	soundtrack.comp_interface_snd()
+	
+	xr_effects.disable_ui_only()
+	mod_update.rnd_tasks_items_delete()
+	db.actor:give_info_portion ("critical_health")
+	--db.actor:give_info_portion ("random_events_off")
+	start_real_timer(5, "mod_timer_functions.comp_recharge1")
+	level.add_pp_effector("fade_in_out.ppe", 1954, false)
+	
+	xr_effects.delete_maroder_courier()
+end
+
+function comp_interface:btn2()
+	self:HideDialog()
+	soundtrack.comp_interface_snd()
+end
+
+
+function comp_interface:OnKeyboard(dik,keyboard_action)
+   CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+   if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+      if dik == DIK_keys.DIK_ESCAPE then
+      self:on_quit()
+      end	  
+   end
+   return true
+end
+
+function comp_interface:on_quit()
+	self:HideDialog()
+end
+
+
+
+-- дневник самоубийцы 1 ----------------
+class "suicider_note1" (CUIScriptWnd)
+function suicider_note1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function suicider_note1:__finalize() end
+
+function suicider_note1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\suicider_note1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("suicider_note2_info") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function suicider_note1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function suicider_note1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function suicider_note1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.suicider_note2())
+	disable_info("note_using")
+end
+
+
+function suicider_note1:on_quit()
+	self:HideDialog()
+end
+
+
+-- дневник самоубийцы 2 ----------------
+class "suicider_note2" (CUIScriptWnd)
+function suicider_note2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function suicider_note2:__finalize() end
+
+function suicider_note2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\suicider_note2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("suicider_note3_info") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function suicider_note2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function suicider_note2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.suicider_note1())
+end
+
+function suicider_note2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.suicider_note3())
+	disable_info("note_using")
+end
+
+function suicider_note2:on_quit()
+	self:HideDialog()
+end
+
+
+-- дневник самоубийцы 3 ----------------
+class "suicider_note3" (CUIScriptWnd)
+function suicider_note3:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function suicider_note3:__finalize() end
+
+function suicider_note3:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\suicider_note3.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("suicider_note4_info") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function suicider_note3:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function suicider_note3:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.suicider_note2())
+end
+
+function suicider_note3:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.suicider_note4())
+	disable_info("note_using")
+end
+
+
+function suicider_note3:on_quit()
+	self:HideDialog()
+end
+
+
+-- дневник самоубийцы 4 ----------------
+class "suicider_note4" (CUIScriptWnd)
+function suicider_note4:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function suicider_note4:__finalize() end
+
+function suicider_note4:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\suicider_note4.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+end
+
+function suicider_note4:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function suicider_note4:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.suicider_note3())
+end
+
+function suicider_note4:on_quit()
+	self:HideDialog()
+end
+
+
+-- Записка снайпера 1 ----------------
+class "sniper_note1" (CUIScriptWnd)
+function sniper_note1:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function sniper_note1:__finalize() end
+
+function sniper_note1:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\sniper_note1.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	if has_alife_info("sniper_note2_info") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function sniper_note1:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function sniper_note1:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_start())
+end
+
+function sniper_note1:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.sniper_note2())
+	disable_info("note_using")
+end
+
+
+function sniper_note1:on_quit()
+	self:HideDialog()
+end
+
+
+-- Записка снайпера 2 ----------------
+class "sniper_note2" (CUIScriptWnd)
+function sniper_note2:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function sniper_note2:__finalize() end
+
+function sniper_note2:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("actors_note\\sniper_note2.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+
+	-- кнопка офф
+	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
+
+	-- определяем доступность кнопок
+	if has_alife_info("sniper_note1_info") then
+		self.btn_1:Enable(true)
+	end
+	if has_alife_info("sniper_note3_info") then
+		self.btn_2:Enable(true)
+	end
+end
+
+function sniper_note2:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
+end
+
+function sniper_note2:btn1()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.sniper_note1())
+	disable_info("note_using")
+end
+
+function sniper_note2:btn2()
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.sniper_note3())
+	disable_info("note_using")
+end
+
+
+function sniper_note2:on_quit()
+	self:HideDialog()
+end
+
+
+
+
+
+
+
+-- Новая игра на "Мастере": -----------------------------------------------
+
+class "ng_master_interface" (CUIScriptWnd)
+local console = get_console()
+function ng_master_interface:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function ng_master_interface:__finalize() end
+
+function ng_master_interface:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_ng_master_interface.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+	xml:InitStatic("logo", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+end
+
+function ng_master_interface:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+end
+
+function ng_master_interface:btn1()
+	self:HideDialog()
+	local console = get_console()
+	console:execute("g_game_difficulty gd_master")
+	--soundtrack.mg_menu_start_snd()
+	main_menu:StartGame()
+end
+
+function ng_master_interface:btn2()
+	self:HideDialog()
+	--soundtrack.mg_menu_abort_snd()
+	soundtrack.mg_kpp_boss_no()
+end
+
+
+class "main_menu" (CUIScriptWnd)
+
+function main_menu:__init() super()
+	self.mbox_mode = 0
+    self:InitControls()
+    self:InitCallBacks()
+    xr_s.on_main_menu_on()
+end
+
+function main_menu:StartGame()
+	local console = get_console()
+
+	if (alife() ~= nil) then
+		console:execute	("disconnect")
+	end
+	device():pause(false)
+	console:execute("start server(all/single/alife/new) client(localhost)")
+	console:execute("main_menu off")
+end
+
+
+
+-- После гибели на "Мастере": -----------------------------------------------
+
+class "after_death_master_interface" (CUIScriptWnd)
+local console = get_console()
+function after_death_master_interface:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function after_death_master_interface:__finalize() end
+
+function after_death_master_interface:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_after_death_master_interface.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+	xml:InitStatic("logo", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	
+	-- определяем доступность кнопок
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+end
+
+function after_death_master_interface:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+end
+
+function after_death_master_interface:btn1()
+	self:HideDialog()
+	xr_effects.load_master_game_start_save()
+	xr_effects.game_disconnect()
+end
+
+function after_death_master_interface:btn2()
+	self:HideDialog()
+	xr_effects.game_disconnect()
+end
+
+function after_death_master_interface:OnKeyboard(dik, keyboard_action)
+	CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+		if dik == DIK_keys.DIK_SPACE then
+			self:HideDialog()
+			xr_effects.load_master_game_start_save()
+		end
+	end
+	return true
+end
+
+
+
+-- Выбор зоны высадки на "Мастере": -----------------------------------------------
+
+class "mg_start_interface" (CUIScriptWnd)
+local console = get_console()
+function mg_start_interface:__init(owner) super()
+	self.dlg = self
+	self.owner = owner
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function mg_start_interface:__finalize() end
+
+function mg_start_interface:InitControls()
+	-- здесь определяем координаты левого верхнего угла и ширину-высоту
+	self:SetWndRect(Frect():set(0,0,1024,768))
+
+	-- файл-описатель наших элементов
+	local xml = CScriptXmlInit()
+	xml:ParseFile("ui_mg_start_interface.xml")
+
+	xml:InitStatic("table", self)
+	xml:InitStatic("name", self)
+	xml:InitStatic("text1", self)
+	xml:InitStatic("logo", self)
+
+	-- кнопки
+	self.btn_1 = xml:Init3tButton("btn_1", self)
+	self:Register(self.btn_1, "btn_1")
+	self.btn_1:Enable(false)
+	self.btn_2 = xml:Init3tButton("btn_2", self)
+	self:Register(self.btn_2, "btn_2")
+	self.btn_2:Enable(false)
+	self.btn_3 = xml:Init3tButton("btn_3", self)
+	self:Register(self.btn_3, "btn_3")
+	self.btn_3:Enable(false)
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)
+	self.btn_5 = xml:Init3tButton("btn_5", self)
+	self:Register(self.btn_5, "btn_5")
+	self.btn_5:Enable(false)
+	self.btn_6 = xml:Init3tButton("btn_6", self)
+	self:Register(self.btn_6, "btn_6")
+	self.btn_6:Enable(false)
+	self.btn_7 = xml:Init3tButton("btn_7", self)
+	self:Register(self.btn_7, "btn_7")
+	self.btn_7:Enable(false)
+	self.btn_8 = xml:Init3tButton("btn_8", self)
+	self:Register(self.btn_8, "btn_8")
+	self.btn_8:Enable(false)
+	self.btn_9 = xml:Init3tButton("btn_9", self)
+	self:Register(self.btn_9, "btn_9")
+	self.btn_9:Enable(false)
+	self.btn_10 = xml:Init3tButton("btn_10", self)
+	self:Register(self.btn_10, "btn_10")
+	self.btn_10:Enable(false)
+	self.btn_11 = xml:Init3tButton("btn_11", self)
+	self:Register(self.btn_11, "btn_11")
+	self.btn_11:Enable(false)
+	self.btn_12 = xml:Init3tButton("btn_12", self)
+	self:Register(self.btn_12, "btn_12")
+	self.btn_12:Enable(false)
+	--self.btn_13 = xml:Init3tButton("btn_13", self)
+	--self:Register(self.btn_13, "btn_13")
+	--self.btn_13:Enable(false)
+	
+	-- определяем доступность кнопок
+	if db.actor:object("af_soul_mg") ~= nil then
+	self.btn_1:Enable(true)
+	self.btn_2:Enable(true)
+	self.btn_3:Enable(true)
+	self.btn_4:Enable(true)
+	self.btn_5:Enable(true)
+	self.btn_6:Enable(true)
+	self.btn_7:Enable(true)
+	self.btn_8:Enable(true)
+	self.btn_9:Enable(true)
+	self.btn_10:Enable(true)
+	self.btn_11:Enable(true)
+	end
+	self.btn_12:Enable(true)
+	--self.btn_13:Enable(true)
+	
+end
+
+function mg_start_interface:InitCallBacks()
+	-- тут интерактивные элементы, при определенном действии выполняется заданная ф-ия
+	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
+	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
+	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
+	self:AddCallback("btn_6", ui_events.BUTTON_CLICKED,  self.btn6, self)
+	self:AddCallback("btn_7", ui_events.BUTTON_CLICKED,  self.btn7, self)
+	self:AddCallback("btn_8", ui_events.BUTTON_CLICKED,  self.btn8, self)
+	self:AddCallback("btn_9", ui_events.BUTTON_CLICKED,  self.btn9, self)
+	self:AddCallback("btn_10", ui_events.BUTTON_CLICKED,  self.btn10, self)
+	self:AddCallback("btn_11", ui_events.BUTTON_CLICKED,  self.btn11, self)
+	self:AddCallback("btn_12", ui_events.BUTTON_CLICKED,  self.btn12, self)
+	--self:AddCallback("btn_13", ui_events.BUTTON_CLICKED,  self.btn13, self)
+end
+
+function mg_start_interface:btn1()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("helicrash_body1_walk"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near1()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn2()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_lonl_house"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.mg_boss_mobs_start_spawn1()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near2()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn3()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_willage"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near3()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn4()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_graveyard"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near4()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn5()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_kpp"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near5()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+	end
+end
+
+function mg_start_interface:btn6()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_razlom"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.mg_boss_mobs_start_spawn3()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near6()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn7()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_kolhoz"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.mg_boss_mobs_start_spawn2()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near7()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn8()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_forest_camp"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near8()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn9()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_rad_zone"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near9()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn10()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_lake_island"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.mg_boss_mobs_start_spawn4()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near10()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli10()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn11()
+	self:HideDialog()
+	db.actor:set_actor_position(patrol("travel_point_forest"):point(0))
+	--db.actor:set_actor_position(patrol("mg_start_heli_evac_point_forest_land2"):point(0))
+	xr_effects.mg_boxes_random_loot()
+	xr_effects.mg_npc_start_spawn()
+	xr_effects.mg_cars_start_spawn()
+	xr_effects.give_rnd_airdrop_info()
+	xr_effects.mg_boss_mobs_start_spawn5()
+	xr_effects.disable_actor_torch(nil,nil)
+	db.actor:give_info_portion("actor_start_move")
+	if db.actor:object("af_cristall_mg") ~= nil then
+		start_real_timer(2, "xr_effects.spawn_mg_companion_mob")
+	end
+	if has_alife_info("mg_companion1_help_actor") then
+		if db.actor:object("af_soul_mg") == nil then
+			xr_effects.spawn_legendary_npc()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		elseif db.actor:object("af_soul_mg") ~= nil then
+			xr_effects.spawn_legendary_npc_near11()
+			start_real_timer(15, "mod_functions.mg_legend_npc_spawn_tip")
+		end
+	end
+	if db.actor:dont_has_info("mg_phase1_completed") then
+		xr_effects.del_mg_heli1()
+		xr_effects.del_mg_heli2()
+		xr_effects.del_mg_heli3()
+		xr_effects.del_mg_heli4()
+		xr_effects.del_mg_heli5()
+		xr_effects.del_mg_heli6()
+		xr_effects.del_mg_heli7()
+		xr_effects.del_mg_heli8()
+		xr_effects.del_mg_heli9()
+		xr_effects.del_mg_heli11()
+	end
+end
+
+function mg_start_interface:btn12()
+	--self:HideDialog()
+	rnd = math.random(1, 11)
+		if rnd == 1 then 
+			self:btn1()
+		end
+		if rnd == 2 then 
+			self:btn2()
+		end
+		if rnd == 3 then 
+			self:btn3()
+		end
+		if rnd == 4 then 
+			self:btn4()
+		end
+		if rnd == 5 then 
+			self:btn5()
+		end
+		if rnd == 6 then 
+			self:btn6()
+		end
+		if rnd == 7 then 
+			self:btn7()
+		end
+		if rnd == 8 then 
+			self:btn8()
+		end
+		if rnd == 9 then 
+			self:btn9()
+		end
+		if rnd == 10 then 
+			self:btn10()
+		end
+		if rnd == 11 then 
+			self:btn11()
+		end
+	
+end
+
+function mg_start_interface:btn13()
+	self:HideDialog()
+end
+
+
+
+
+
+
+
+
+
+
+

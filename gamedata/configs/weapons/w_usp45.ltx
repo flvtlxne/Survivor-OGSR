@@ -6,7 +6,7 @@ $npc              = on           ; option for Level Editor
 $prefetch               = 8
 scheduled               = off                                ; option for ALife Simulator
 cform                   = skeleton
-class                   = WP_LR300
+class                   = WP_PM
 description          	= st_wpn_usp_descr
 ef_main_weapon_type     = 5
 ef_weapon_type          = 5
@@ -29,7 +29,7 @@ hit_impulse	 		 		= 100
 hit_type 					= fire_wound
 fire_distance           	= 200
 bullet_speed		 		= 195
-rpm                     	= 173
+rpm                     	= 200
 rpm_empty_click 	 		= 250
 
 use_aim_bullet				= false		;Поддерживается ли первая суппер пуля
@@ -121,10 +121,10 @@ inv_grid_height			= 1
 inv_grid_x				= 2
 inv_grid_y				= 25
 
-upgr_icon_x			= 720
-upgr_icon_y			= 270
-upgr_icon_width		= 255
-upgr_icon_height   	= 109
+upgr_icon_x			= 600
+upgr_icon_y			= 800
+upgr_icon_width			= 150
+upgr_icon_height 			= 100
 
 kill_msg_x				= 134
 kill_msg_y				= 177
@@ -171,106 +171,81 @@ silencer_status         = 2                   ; 1 - permanent
 grenade_launcher_status = 0                   ; 2 - attachable
 
 zoom_enabled					= true
-zoom_rotate_time				= 0.25
-scope_zoom_factor	    		= 55                                            ; fov for zoom mode
+zoom_rotate_time				= 0.15
+scope_zoom_factor	    		= 73.3
 
-scope_name              = wpn_addon_scope       ; section name for the attachable scope
-scope_x              	= 47                 ; offset in inventory icon
-scope_y                 = 0
-silencer_name  				= wpn_addon_silencer		; section name for the attachable silencer
-silencer_x 						= 48						; offset in inventory icon
-silencer_y 						= -15
-grenade_launcher_name   = wpn_addon_grenade_launcher; section name for the attachable grenade launcher
-grenade_launcher_x      = 126                ; offset in inventory icon
-grenade_launcher_y      = 24
-
-;звуки
-snd_draw							= weapons\usp_draw
-snd_holster						= weapons\generic_holster
-snd_shoot						= weapons\n_usp_shot
-
-snd_empty						= weapons\pistol_empty
-snd_reload						= weapons\pistol_reload, 0.8
-snd_shoot_grenade       = weapons\gen_grenshoot
-snd_reload_grenade      = weapons\gen_grenload, 1.0, 0.8
-snd_switch              = weapons\groza_switch, 1.0, 0.5
-snd_bore				= weapons\mp5_bore
-snd_bore1				= weapons\draw_silent
+silencer_name				= wpn_addon_silencer
+silencer_x                  				= 71
+silencer_y                  				= -16
 
 ;silencer_flame_particles  = weapons\generic_weapon01
 silencer_smoke_particles 	= weapons\generic_shoot_00
-snd_silncer_shot				= weapons\n_pb_shot
+
 silencer_light_color			= 0.6,0.5,0.3
 silencer_light_range			= 0.01
 silencer_light_var_color	= 0.05
 silencer_light_var_range	= 0.5
 silencer_light_time 			= 0.2
 
+snd_draw						= weapons\usp\usp_draw
+snd_holster					= weapons\pistol_holster
+snd_shoot						= weapons\usp\usp_shoot
+snd_shoot1					= weapons\usp\usp_shoot1
+snd_empty					= weapons\usp\usp_empty
+snd_reload					= weapons\usp\usp_reload
+snd_close						= weapons\usp\usp_close
+snd_silncer_shot					= weapons\usp\usp_shot_sil
 
 [wpn_usp_hud]:hud_base
-zoom_hide_crosshair			= true
-
-hands_position				= -0.021000,-0.160000,0.002500
-hands_orientation			= -0.500000,1.000000,1.149999
-hands_position_16x9				= 0.033000,-0.189500,0.039000
-hands_orientation_16x9			= 2.349998,2.749999,2.849998
-
-
-;hands_position				= -0.022500,-0.159500,0.002500
-;hands_orientation			= 0.350000,1.300000,1.599999
-;hands_position_16x9				= 0.006000,-0.176500,0.039000
-;hands_orientation_16x9			= 0.049999,1.500000,2.949998
-
-item_position					= 0.000746,-0.000321,0.003479
-item_orientation				= 1.239378,-0.134046,-2.052052
-
-item_visual             	= dynamics\weapons\wpn_usp45\wpn_usp45_hud.ogf
+zoom_hide_crosshair				= true
+item_visual             				= dynamics\weapons\wpn_usp45\wpn_usp_hud.ogf
 attach_place_idx				= 0
 
-shell_point						= 0.015,0.048,0.481
-shell_bone              	= wpn_body
+hands_position				= -0.021,-0.15,0.0025
+hands_orientation				= -0.5,1.,1.149999
 
-fire_point			= 0,0.048,0.163
-fire_bone               	= wpn_body
+hands_position_16x9				= -0.021,-0.15,0.0025
+hands_orientation_16x9			= -0.5,1.,1.149999
 
-anm_show						= usp45_draw
-anm_show_empty					= usp45_draw, usp45_opened
+item_position				= 0.000746,-0.000321,0.003479
+item_orientation				= 1.239378,-0.134046,-2.052052
 
-anm_hide             			= usp45_holster
-anm_hide_empty             		= usp45_holster, usp45_opened
+aim_hud_offset_pos 				= -0.108,0.04,-0.0015
+aim_hud_offset_rot 				= 0.0085,0.0055,-0.015
 
-anm_idle             			= usp45_idle
-anm_idle_empty             		= usp45_idle, usp45_opened
+aim_hud_offset_pos_16x9 			= -0.108,0.04,-0.0015
+aim_hud_offset_rot_16x9 			= 0.0085,0.0055,-0.015
 
-anm_shots						= usp45_shoot
-anm_shot_l						= usp45_shoot, usp45_open
+shell_point					= -0.015,0.048,0.071
+shell_bone					= wpn_body
 
-anm_idle_aim					= usp45_idle_aim
-anm_idle_aim_empty				= usp45_idle_aim, usp45_opened
+fire_point					= 0.0,0.034774,0.135694
+fire_bone					= wpn_body
 
-anm_reload						= usp45_reload
-anm_reload_empty				= usp45_reload, usp45_close
-
-anm_idle_moving 				= usp45_idle_moving
-anm_idle_moving_empty 			= usp45_idle_moving, usp45_opened
-
-anm_idle_sprint					= usp45_idle_sprint
-anm_idle_sprint_empty			= usp45_idle_sprint, usp45_opened
-
-anm_bore						= usp45_idle_bore
-anm_bore_empty					= usp45_idle_bore, usp45_opened
-
-aim_hud_offset_pos				= -0.106500,0.032000,0.000000
-aim_hud_offset_rot				= -0.000000,0.007500,-0.035000
+anm_show					= lancew_usp45_draw
+anm_show_empty				= lancew_usp45_draw, idle_2
+anm_hide            				= lancew_usp45_holster
+anm_hide_empty				= lancew_usp45_holster, idle_2
+anm_idle            				= lancew_usp45_idle
+anm_idle_empty      				= lancew_usp45_idle, idle_2
+anm_shots					= lancew_usp45_shoot, shoot
+anm_shot_l					= lancew_usp45_shoot, shoot_2
+anm_idle_aim				= lancew_usp45_idle_aim
+anm_idle_aim_empty				= lancew_usp45_idle_aim, idle_2
+anm_reload					= lancew_usp45_reload, reload
+anm_reload_empty				= lancew_usp45_reload_full, reload_full
+anm_idle_moving				= lancew_usp45_moving
+anm_idle_moving_empty			= lancew_usp45_moving, idle_2
+anm_idle_sprint				= lancew_usp45_sprint
+anm_idle_sprint_empty				= lancew_usp45_sprint, idle_2
+anm_bore					= lancew_usp45_no_reload
+anm_bore_empty				= lancew_usp45_no_reload, idle_2
 
 gl_hud_offset_pos				= 0,0,0
 gl_hud_offset_rot				= 0,0,0
 
-lean_hud_offset_pos			= 0,0,0
-lean_hud_offset_rot			= 0,0,0
-
-aim_hud_offset_pos_16x9				= -0.166000,0.059000,0.000000
-aim_hud_offset_rot_16x9				= 0.025000,0.055000,0.002500
+lean_hud_offset_pos				= 0,0,0
+lean_hud_offset_rot				= 0,0,0
 
 ;-----------------------------------------------------------------------------
 ; Уникальнvе
@@ -278,8 +253,6 @@ aim_hud_offset_rot_16x9				= 0.025000,0.055000,0.002500
 
 [wpn_usp_nimble]:wpn_usp
 $spawn               = "weapons\wpn_usp_nimble"   ; name and section in level editor
-inv_name				= st_wpn_usp_nimble
-description					= st_wpn_usp_nimble_descr
 
 cost					= 3000
 

@@ -1,0 +1,65 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = remark@1
+combat_ignore = combat_ignore
+
+
+[remark@1]
+;snd = 
+anim = sit_ass
+target = story | actor
+;in_restr = mechanical_npc1_zone
+danger = danger_condition
+combat_ignore_cond = always
+meet = meet@2
+show_spot = false
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_game_timer = 10|remark@2
+
+[remark@2]
+;snd = 
+anim = sit_ass
+target = story | actor
+;in_restr = mechanical_npc1_zone
+danger = danger_condition
+combat_ignore_cond = always
+meet = meet@2
+show_spot = false
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {!talking} %=destroy_object -karlik_talk%
+
+
+
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+
+[danger_condition]
+ignore_distance = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse = 0
+ignore_distance_hit = 0
+ignore_distance_sound = 0
+
+[combat_ignore]
+combat_ignore = always
+ 
+
+
+
+
+

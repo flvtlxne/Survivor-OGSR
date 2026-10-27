@@ -1,0 +1,14 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_kanistra_tip
+on_use = %=give_item(kanistra_empty:actor) =destroy_object%
+on_info = {=master_difficulty} ph_idle@2
+
+[ph_idle@2]
+tips      = lonl_house_kanistra_tip
+on_use = {+kpp_boss_komp_info} %=give_item(kanistra_full:actor) =destroy_object%
+
+
+ 

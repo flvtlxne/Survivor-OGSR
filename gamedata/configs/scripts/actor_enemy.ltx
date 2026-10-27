@@ -1,0 +1,133 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+;on_death = death
+
+[walker@start]
+path_walk = forest_pnt2_walk
+path_look = forest_pnt2_look
+on_info = {+actor_has_lr300} walker@1 %=give_items(wpn_lr300)%
+on_info2 = {+actor_has_ak74} walker@1 %=give_items(wpn_ak74)%
+on_info3 = {+actor_has_aksu} walker@1 %=give_items(wpn_ak74u)%
+on_info4 = {+actor_has_toz} walker@1 %=give_items(wpn_toz34)%
+on_info5 = {+actor_has_bizon} walker@1 %=give_items(wpn_bizon)%
+on_info6 = {+actor_has_sayga} walker@1 %=give_items(wpn_sayga)%
+on_info7 = {+actor_has_mosin} walker@1 %=give_items(wpn_m1891)%
+on_info8 = {-actor_has_toz -actor_has_lr300 -actor_has_ak74 -actor_has_aksu -actor_has_bizon -actor_has_sayga -actor_has_mosin} walker@1
+
+[walker@1]
+path_walk = forest_pnt2_walk
+path_look = forest_pnt2_look
+on_info = {=actor_in_zone(script_zone_willage)} walker@willage, {=actor_in_zone(script_zone_blokpost)} walker@blokpost, {=actor_in_zone(script_zone_forest)} walker@forest, {=actor_in_zone(script_zone_forest_camp)} walker@forest_camp, {=actor_in_zone(script_zone_graveyard)} walker@graveyard, {=actor_in_zone(script_zone_ground_anomaly)} walker@ground_anomaly, {=actor_in_zone(script_zone_island)} walker@island, {=actor_in_zone(script_zone_rad_hill)} walker@rad_hill, {=actor_in_zone(script_zone_workshop)} walker@workshop
+
+
+; Деревня:
+[walker@willage]
+path_walk = willage_pnt2_walk
+path_look = willage_pnt2_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Блокпост:
+[walker@blokpost]
+path_walk = kpp_merc_guard1_walk
+path_look = kpp_merc_guard1_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Роща:
+[walker@forest]
+path_walk = forest_pnt1_walk
+path_look = forest_pnt1_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Лагерь:
+[walker@forest_camp]
+path_walk = forest_camp_pnt1_walk
+path_look = forest_camp_pnt1_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Кладбище:
+[walker@graveyard]
+path_walk = graveyard_pnt1_walk
+path_look = graveyard_pnt1_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Разлом:
+[walker@ground_anomaly]
+path_walk = razlom_pnt1_walk
+path_look = razlom_pnt1_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Остров:
+[walker@island]
+path_walk = island_pnt1_walk
+path_look = island_pnt1_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Очаг радиации:
+[walker@rad_hill]
+path_walk = radhill_pnt1_walk
+path_look = radhill_pnt1_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+; Рембаза:
+[walker@workshop]
+path_walk = kolhoz_pnt1_walk
+path_look = kolhoz_pnt1_look
+def_state_moving1 = sprint
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+
+
+
+
+
+[death]
+on_info = %=actor_from_maroder_back%
+
+
+
+
+
+
+
+
+
+
+

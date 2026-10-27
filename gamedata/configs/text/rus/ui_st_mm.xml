@@ -526,7 +526,7 @@
 		<text>Выйти из профиля</text>
 	</string>
 	<string id="ui_mm_master">
-		<text>Мастер</text>
+		<text>Соревнование</text>
 	</string>
 	<string id="ui_mm_master_volume">
 		<text>Громкость</text>
@@ -769,7 +769,7 @@
 		<text>Режим сесть/встать</text>
 	</string>
 	<string id="ui_mm_important_save">
-		<text>Автосохранение</text>
+		<text>Фразы героя</text>
 	</string>
 	<string id="ui_mm_r1_detail_textures">
 		<text>Детальные текстуры</text>

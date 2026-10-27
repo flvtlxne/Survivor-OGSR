@@ -1,0 +1,12 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = showel_name
+on_use = {+stranger_secret_task1_info} %=give_item(showel:actor) =destroy_object%
+on_info = {=master_difficulty} %=destroy_object%
+
+
+
+
+ 

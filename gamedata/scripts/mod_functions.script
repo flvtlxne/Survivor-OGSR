@@ -1,0 +1,2411 @@
+
+
+-- Служебный функционал -----------------------------------------------------------
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+function test()
+--local sat = db.actor.satiety
+--news_manager.send_tip(db.actor, sat, nil, "recent_surge", nil, nil)
+
+--mod_functions.script_spawn("vodka", "derevnya", vector():set(292.70,20.40,-174.70) )
+--run_gui(ui_debug_con.ui_debug_con())	--	отладочная консоль
+end
+
+
+function start_test_interface()
+--run_gui(mod_devices.secret_interface())	
+end
+
+-- Заспавнить чё-то в ящик по его SID:
+--xr_effects.spawn_object_in(actor, npc, {"wpn_saiga","lonl_house_invbox_3"})
+
+--news_manager.send_tip(db.actor, "after_sleep_event_tip", nil, "recent_surge", nil, nil)
+--start_game_timer(3*60, "mod_timer_functions.timer1")
+
+
+
+-- Перезагрузка рандомных заданий:
+function after_sleep_event()
+
+if ( has_alife_info("random_event_blokpost") or
+	has_alife_info("random_event_graveyard") or
+	has_alife_info("random_event_rad_hill") or
+	has_alife_info("random_event_willage") or
+	has_alife_info("random_event_razlom") or
+	has_alife_info("random_event_island") or
+	has_alife_info("random_event_forest") or
+	has_alife_info("random_event_forest_camp") or
+	has_alife_info("random_event_workshop") or
+	has_alife_info("random_event_helicrash") or
+	has_alife_info("courier_task") ) then	-- если хотя-бы один случайный таск не закрыт, то ничего не будет;
+		--news_manager.send_tip(db.actor, "lw_stranger_tasks_not_completed_tip", nil, "default", nil, nil)
+	else
+	
+start_real_timer(1, "mod_timer_functions.after_sleep_timer_action")
+
+disable_info("random_event_helicrash")
+disable_info("helicrash_rnd_artefact_gathered")
+disable_info("rnd_task_helicrash_artefact_in_box")
+disable_info("helicrash_rnd_item_gathered")
+disable_info("rnd_task_helicrash_item_in_box")
+
+disable_info("random_event_blokpost")
+disable_info("kpp_rnd_artefact_gathered")
+disable_info("rnd_task_kpp_artefact_in_box")
+disable_info("kpp_rnd_item_gathered")
+disable_info("rnd_task_item_in_box")
+
+disable_info("random_event_willage")
+disable_info("willage_rnd_artefact_gathered")
+disable_info("rnd_task_willage_artefact_in_box")
+disable_info("willage_rnd_item_gathered")
+disable_info("rnd_task_willage_item_in_box")
+
+disable_info("random_event_workshop")
+disable_info("workshop_rnd_artefact_gathered")
+disable_info("rnd_task_workshop_artefact_in_box")
+disable_info("workshop_rnd_item_gathered")
+disable_info("rnd_task_workshop_item_in_box")
+
+disable_info("random_event_graveyard")
+disable_info("graveyard_rnd_artefact_gathered")
+disable_info("rnd_task_graveyard_artefact_in_box")
+disable_info("graveyard_rnd_item_gathered")
+disable_info("rnd_task_graveyard_item_in_box")
+
+disable_info("random_event_rad_hill")
+disable_info("rad_hill_rnd_artefact_gathered")
+disable_info("rnd_task_rad_hill_artefact_in_box")
+disable_info("rad_hill_rnd_item_gathered")
+disable_info("rnd_task_rad_hill_item_in_box")
+
+disable_info("random_event_razlom")
+disable_info("razlom_rnd_artefact_gathered")
+disable_info("rnd_task_razlom_artefact_in_box")
+disable_info("razlom_rnd_item_gathered")
+disable_info("rnd_task_razlom_item_in_box")
+
+disable_info("random_event_island")
+disable_info("island_rnd_artefact_gathered")
+disable_info("island_rnd_item_gathered")
+disable_info("rnd_task_island_item_in_box")
+disable_info("rnd_task_island_artefact_in_box")
+
+disable_info("random_event_forest")
+disable_info("forest_rnd_artefact_gathered")
+disable_info("forest_rnd_item_gathered")
+disable_info("rnd_task_forest_item_in_box")
+disable_info("rnd_task_forest_artefact_in_box")
+
+disable_info("random_event_forest_camp")
+disable_info("forest_camp_rnd_artefact_gathered")
+disable_info("forest_camp_rnd_item_gathered")
+disable_info("rnd_task_forest_camp_item_in_box")
+disable_info("rnd_task_forest_camp_artefact_in_box")
+
+disable_info("rnd_tasks_helicrash_discard")
+disable_info("rnd_tasks_kpp_discard")
+disable_info("rnd_task_willage_discard")
+disable_info("rnd_task_workshop_discard")
+disable_info("rnd_task_graveyard_discard")
+disable_info("rnd_task_rad_hill_discard")
+disable_info("rnd_task_razlom_discard")
+disable_info("rnd_task_island_discard")
+disable_info("rnd_task_forest_discard")
+disable_info("rnd_task_forest_camp_discard")
+
+disable_info("forest_camp_marod_hit")
+disable_info("forest_marod_hit")
+disable_info("graveyard_marod_hit")
+disable_info("helicrash_marod_hit")
+disable_info("island_marod_hit")
+disable_info("kpp_marod_hit")
+disable_info("radhill_marod_hit")
+disable_info("razlom_marod_hit")
+disable_info("willage_marod_hit")
+disable_info("kolhoz_marod_hit")
+
+disable_info("courier_task")
+disable_info("courier_task_fail")
+
+end
+end
+
+
+function test_tip()
+news_manager.send_tip(db.actor, "test_tip", nil, "recent_surge", nil, nil)
+end
+
+
+-- Система рандомных событий(ивентов) на локации: ------------------------------------
+
+function random_events_action_general()
+if has_alife_info("stranger_talk2") then	--	все ивенты разрешены только после второго разговора с Незнакомцем;
+	-- Вертушка:
+	if has_alife_info("stranger_talk2") then
+		if db.actor:dont_has_info("random_event_helicrash") then
+			db.actor:give_info_portion ("random_event_helicrash")
+		end
+	end
+	-- Блокпост:
+	if db.actor:dont_has_info("shron_merc_lider_pda_info") then
+		if db.actor:dont_has_info("random_event_blokpost") then
+			db.actor:give_info_portion ("random_event_blokpost")
+		end
+	elseif has_alife_info("shron_merc_lider_pda_info") then
+		if has_alife_info("lw_freeplay") then
+			if db.actor:dont_has_info("random_event_blokpost") then
+				db.actor:give_info_portion ("random_event_blokpost")
+			end
+		end
+	end
+	-- Роща:
+	if db.actor:dont_has_info("random_event_forest") then
+		db.actor:give_info_portion ("random_event_forest")
+	end
+	-- Лагерь в лесу:
+	if db.actor:dont_has_info("stranger_talk2") then
+		if db.actor:dont_has_info("random_event_forest_camp") then
+			db.actor:give_info_portion ("random_event_forest_camp")
+		end
+	elseif has_alife_info("stranger_talk2") then
+		if has_alife_info("marodr_camp_done") then
+			if db.actor:dont_has_info("random_event_forest_camp") then
+				db.actor:give_info_portion ("random_event_forest_camp")
+			end
+		end
+	end
+	-- Кладбище:
+	if db.actor:dont_has_info("random_event_graveyard") then
+		db.actor:give_info_portion ("random_event_graveyard")
+	end
+	-- Разлом:
+	if db.actor:dont_has_info("stranger_talk3") then
+		if db.actor:dont_has_info("random_event_razlom") then
+			db.actor:give_info_portion ("random_event_razlom")
+		end
+	elseif has_alife_info("stranger_talk3") then
+		if has_alife_info("lw_newbie_on_base") then
+			if db.actor:dont_has_info("random_event_razlom") then
+				db.actor:give_info_portion ("random_event_razlom")
+			end
+		end
+	end
+	-- Островок:
+	if db.actor:dont_has_info("random_event_island") then
+		db.actor:give_info_portion ("random_event_island")
+	end
+	-- Очаг радиации:
+	if db.actor:dont_has_info("random_event_rad_hill") then
+		db.actor:give_info_portion ("random_event_rad_hill")
+	end
+	-- Деревня:
+	if db.actor:dont_has_info("stranger_talk4") then
+		if db.actor:dont_has_info("random_event_willage") then
+			db.actor:give_info_portion ("random_event_willage")
+		end
+	elseif has_alife_info("stranger_talk4") then
+		if has_alife_info("lw_stranger_after_willage_call") then
+			if db.actor:dont_has_info("random_event_willage") then
+				db.actor:give_info_portion ("random_event_willage")
+			end
+		end
+	end
+	-- Рембаза:
+	if db.actor:dont_has_info("stranger_talk6") then
+		if db.actor:dont_has_info("random_event_workshop") then
+			db.actor:give_info_portion ("random_event_workshop")
+		end
+	elseif has_alife_info("stranger_talk6") then
+		if has_alife_info("marorers_house_trap") then
+			if db.actor:dont_has_info("random_event_workshop") then
+				db.actor:give_info_portion ("random_event_workshop")
+			end
+		end
+	end
+	
+	-- Курьер:
+	if db.actor:dont_has_info("courier_task") then
+		spawn_maroder_courier()
+		--task_manager.get_task_manager():give_task("rnd_task_kill_courier")
+		start_real_timer(2, "mod_timer_functions.kill_courier_task_timer")
+		db.actor:give_info_portion ("courier_task")
+	end
+	
+end
+end
+
+-- Спавним куръера: --------------------------------------------------------------------------------
+
+function spawn_maroder_courier()
+rnd = math.random(1, 4)
+if rnd == 1 then 
+mod_functions.script_spawn("maroder_courier1", "derevnya", vector():set(-218.03,38.12,-377.01) )
+end
+if rnd == 2 then 
+mod_functions.script_spawn("maroder_courier2", "derevnya", vector():set(-395.86,16.70,-3.80) )
+end
+if rnd == 3 then 
+mod_functions.script_spawn("maroder_courier3", "derevnya", vector():set(-646.03,13.54,464.24) )
+end
+if rnd == 4 then 
+mod_functions.script_spawn("maroder_courier4", "derevnya", vector():set(271.30,22.49,222.88) )
+end
+end
+
+
+local random_maroder_item_table = { "upgr_item_novice_outf4",
+						"upgr_item_novice_outf2",
+						"upgr_item_specops_outf8",
+						"upgr_item_scient_outf2",
+						"upgr_item_specops_outf1",
+						"upgr_item_milit_outf2",
+						"upgr_item_specops_outf4",
+						"upgr_item_specops_outf5",
+						"upgr_item_milit_outf9",
+						"upgr_item_specops_outf2",
+						"upgr_item_specops_outf9",
+						"ammo_9x18_pmm",
+						"grenade_f1",
+						"conserva",
+						"grenade_rgd5",
+						"ammo_5.45x39_ap",
+						"ammo_9x39_ap",
+						"ammo_m209",
+						"ammo_11.43x23_hydro",
+						"car_item_avtol",
+						"car_item_litol",
+						"car_item_wrenches",
+						"car_item_wiring",
+						"car_item_domkrat",
+						"car_item_wd40",
+						"car_item_akumulator",
+						"chem_item_liquor",
+						"chem_item_antiseptic",
+						"chem_item_meldoniy",
+						"drug_psy_blockade",
+						"drug_antidot",
+						"drug_booster",
+						"usp_part2",
+						"usp_part3",
+						"usp_part4",
+						"hpsa_part1",
+						"hpsa_part2",
+						"hpsa_part3",
+						"hpsa_part4",
+						"toz_part1",
+						"toz_part2",
+						"toz_part3",
+						"aksu_part1",
+						"aksu_part2",
+						"aksu_part3",
+						"aksu_part4",
+						"aksu_part5",
+						"ak_part1",
+						"ak_part2",
+						"ak_part3",
+						"ak_part4",
+						"trs_part1",
+						"trs_part2",
+						"trs_part3",
+						"trs_part4",
+						"trs_part5",
+						"vintorez_part1",
+						"vintorez_part2",
+						"vintorez_part3",
+						"vintorez_part4",
+						"bizon_part_1",
+						"bizon_part_2",
+						"bizon_part_3",
+						"sayga_part_1",
+						"sayga_part_2",
+						"sayga_part_3",
+						"sayga_part_4",
+						"upgr_item_specops_outf3"}
+
+function maroder_item_reward(items_table, count)
+	--local conut = 7
+	for i = 1,8 do
+		alife():create(random_maroder_item_table[math.random(#random_maroder_item_table)],
+			db.actor:position(),
+			db.actor:level_vertex_id(),
+			db.actor:game_vertex_id(),
+			db.actor:id())
+	end
+end
+
+--------------------------------------------------------------------------------------
+
+function script_spawn(section_name, level_name, position)
+	local level_vertex_id, game_vertex_id = utils2.get_top_graph_ids(level_name)
+	local se_obj = alife():create(section_name, position, level_vertex_id, game_vertex_id)
+	if se_obj == nil then
+		abort("can't create '%s' at (%f,%f,%f)")
+	end
+end
+
+-- пример:
+-- mod_functions.script_spawn("vodka", "derevnya", vector():set(292.70,20.40,-174.70) )
+
+
+-- Мочкануть всех мутантов в радиусе 50м ---------------------------------------------
+function kill_mutants_around()
+for k, v in pairs (db.storage) do
+    local mob = level.object_by_id(k)
+	if ( mob and IsMonster(mob) and mob:alive() and mob:id() ~= db.actor:id() and mob:section() ~= "personal_dog" and mob:section() ~= "karlik_friend" and mob:position():distance_to(db.actor:position()) < 50 )	then
+			local hit = hit()
+			hit.direction = vector():set(0, 1, 0)
+			hit.impulse = 0
+			hit.draftsman = db.actor
+			hit.power = 150.0
+			hit.type = hit.wound
+			mob:hit(hit)
+	end
+end
+end
+
+-- Мочкануть всех сталкеров-врагов в радиусе 50м ---------------------------------------------
+function kill_stalkers_around()
+    for k, v in pairs (db.storage) do
+        local stalker = level.object_by_id(k)
+        if (stalker and IsStalker(stalker) and stalker:id() ~= db.actor:id() and stalker:section() ~= "lw_stranger" and stalker:section() ~= "lw_scientist" and stalker:section() ~= "lw_newbie" and stalker:relation(db.actor) == game_object.enemy ) then
+            if stalker:position():distance_to(db.actor:position()) < 50 then
+				--stalker:kill(stalker)
+				local hit = hit()
+				hit.direction = vector():set(0, 1, 0)
+				hit.impulse = 0
+				hit.draftsman = db.actor
+				hit.power = 50.0
+				hit.type = hit.wound
+				stalker:hit(hit)
+            end
+        end
+    end
+end
+
+-- Мочкануть всех сталкеров-врагов в радиусе 20м ---------------------------------------------
+function kill_stalkers_around20()
+    for k, v in pairs (db.storage) do
+        local stalker = level.object_by_id(k)
+        if (stalker and IsStalker(stalker) and stalker:id() ~= db.actor:id() and stalker:section() ~= "lw_stranger" and stalker:section() ~= "lw_scientist" and stalker:section() ~= "lw_newbie" and stalker:relation(db.actor) == game_object.enemy ) then
+            if stalker:position():distance_to(db.actor:position()) < 30 then
+				--stalker:kill(stalker)
+				local hit = hit()
+				hit.direction = vector():set(0, 1, 0)
+				hit.impulse = 0
+				hit.draftsman = stalker
+				hit.power = 50.0
+				hit.type = hit.wound
+				stalker:hit(hit)
+            end
+        end
+    end
+end
+
+function kill_mutants_around20()
+for k, v in pairs (db.storage) do
+    local mob = level.object_by_id(k)
+	if ( mob and IsMonster(mob) and mob:alive() and mob:id() ~= db.actor:id() and mob:section() ~= "personal_dog" and mob:section() ~= "karlik_friend" and mob:section() ~= "mg_companion_mob1" and mob:section() ~= "mg_companion_mob2" and mob:section() ~= "mg_companion_mob3" and mob:section() ~= "mg_companion_mob4" and mob:position():distance_to(db.actor:position()) < 30 )	then
+			local hit = hit()
+			hit.direction = vector():set(0, 1, 0)
+			hit.impulse = 0
+			hit.draftsman = db.actor
+			hit.power = 150.0
+			hit.type = hit.wound
+			mob:hit(hit)
+	end
+end
+end
+-- Удалить всё оружие в радиусе 20м ---------------------------------------------
+
+function clear_weapons_around()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and isWeapon(sobj) and sobj:name():find("wpn_lr300") and sobj.position:distance_to(db.actor:position()) < 20 then
+		--alife():release(alife():object(db.actor:object(obj):id()), true)
+		alife():release(sobj, true)
+	end
+end
+end
+
+
+function lonl_house_mutants_spawn1()
+
+end
+
+-- Удаление предмета из инвентаря ------------------------------------------------------------
+
+function remove_items(sect, cnt)
+cnt = cnt or 1
+ local actor, sim = db.actor, alife()
+ local i = actor:object_count() - 1
+ while (i>0 and cnt>0) do
+  local item = actor:object(i)
+  if item and item:section()==sect then
+   local soItem = sim:object(item:id())
+   if soItem then
+    cnt = cnt - 1
+    sim:release(soItem, true)
+   end
+  end
+  i = i - 1
+ end
+end
+
+
+function post_load_game_action1()
+start_real_timer(1, "mod_functions.post_load_game_action2")
+end
+
+function post_load_game_action2()
+--if db.actor then
+if xr_conditions.master_difficulty() == true and xr_conditions.actor_in_mg_start_zone() == false and xr_conditions.actor_in_kpp_surge_hide_zone() == false then
+	xr_effects.load_game(actor, nil, {"scenario_save_master1"})
+elseif xr_conditions.master_difficulty() == false then
+	if xr_conditions.actor_in_lonl_house_save_zone() == false and has_alife_info("stranger_talk1") then
+		xr_effects.load_game(actor, nil, {"safe_zone_autosave"})
+	end
+end
+--end
+end
+
+
+function after_surge_think()
+local st = get_hud():GetCustomStatic("after_surge_think") or get_hud():AddCustomStatic("after_surge_think",true)
+st.m_endTime = time_global()/1000 + 7
+end
+
+
+-- xr_effects.spawn_object(actor, nil, {"секция_объекта","вейпоинт","точка_патрул_пути","градус_поворота"})
+
+function load_safe_zone_autosave()
+xr_effects.load_game(actor, nil, {"safe_zone_autosave"})
+end
+
+
+function save_game_action()
+if xr_conditions.master_difficulty() == false then
+if has_alife_info("stranger_talk1") then
+if xr_conditions.actor_in_lonl_house_save_zone() == false then
+	news_manager.send_tip(db.actor, "save_game_incorrect_tip", nil, "recent_surge", nil, nil)
+	save_game_action_no_sounds()
+elseif xr_conditions.actor_in_lonl_house_save_zone() == true then
+	news_manager.send_tip(db.actor, "save_game_correct_tip", nil, "recent_surge", nil, nil)
+	save_game_action_yes_sounds()
+end
+end
+elseif xr_conditions.master_difficulty() == true and xr_conditions.actor_in_mg_start_zone() == false and xr_conditions.actor_in_kpp_surge_hide_zone() == false then
+	news_manager.send_tip(db.actor, "save_game_incorrect_tip2", nil, "recent_surge", nil, nil)
+	soundtrack.no_replics_mg()
+end
+end
+
+function save_game_action_no_sounds()
+if has_alife_info("actor_set_maroder") then
+	soundtrack.no_replics_maroder()
+elseif db.actor:dont_has_info("actor_set_maroder") then
+	soundtrack.no_replics()
+end
+end
+
+function save_game_action_yes_sounds()
+if has_alife_info("actor_set_maroder") then
+	soundtrack.accept_replics_maroder()
+elseif db.actor:dont_has_info("actor_set_maroder") then
+	soundtrack.accept_replics()
+end
+end
+
+
+function lw_stranger_give_weapon(first_speaker, second_speaker)
+    dialogs.relocate_item_section(second_speaker, "wpn_pm", "in")
+	dialogs.relocate_item_section(second_speaker, "ammo_9x18_fmj", "in")
+	dialogs.relocate_item_section(second_speaker, "ammo_9x18_fmj", "in")
+	dialogs.relocate_item_section(second_speaker, "ammo_9x18_fmj", "in")
+	dialogs.relocate_item_section(second_speaker, "ammo_9x18_fmj", "in")
+end
+
+
+function lost_soldier_reward(first_speaker, second_speaker)
+    dialogs.relocate_item_section(second_speaker, "helm_tactic", "in")
+end
+
+-- Если герой в тачке, то удаляем её к чертям, ибо транспорт забагован: ---------------------------------------------
+
+function check_nearest_car()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_uaz_buhanka") and sobj.position:distance_to_sqr(db.actor:position())  <= 4*4 then
+		sim:release(sobj,true)
+		local pos = db.actor:position()
+		alife():create("veh_uaz_buhanka", vector():set(pos.x+1, pos.y, pos.z), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+		db.actor:set_actor_position(vector():set(pos.x, pos.y-1.5, pos.z), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+		return
+	end
+end
+end
+
+
+function reload_car1()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_uaz_buhanka") and sobj.position:distance_to_sqr(db.actor:position())  > 4*4 then
+		start_real_timer(1, "mod_functions.del_car1")
+	end
+end
+end
+
+function del_car1()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_uaz_buhanka") then
+	sim:release(sobj,true)
+	xr_effects.spawn_object(actor, nil, {"veh_uaz_buhanka","lonl_house_car_spawn_point","0","45"})
+	return
+	end
+end
+end
+
+
+function reload_car2()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_zaz") and sobj.position:distance_to_sqr(db.actor:position())  > 4*4 then
+		start_real_timer(1, "mod_functions.del_car2")
+	end
+end
+end
+
+function del_car2()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_zaz") then
+	sim:release(sobj,true)
+	xr_effects.spawn_object(actor, nil, {"veh_zaz","lonl_house_car_spawn_point2","0","45"})
+	return
+	end
+end
+end
+
+
+function reload_car3()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_niva") and sobj.position:distance_to_sqr(db.actor:position())  > 4*4 then
+		start_real_timer(1, "mod_functions.del_car3")
+	end
+end
+end
+
+function del_car3()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_niva") then
+	sim:release(sobj,true)
+	xr_effects.spawn_object(actor, nil, {"veh_niva","lonl_house_car_spawn_point3","0","45"})
+	return
+	end
+end
+end
+
+
+function reload_car4()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_zil_130") and sobj.position:distance_to_sqr(db.actor:position())  > 4*4 then
+		start_real_timer(1, "mod_functions.del_car4")
+	end
+end
+end
+
+function del_car4()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^veh_zil_130") then
+	sim:release(sobj,true)
+	xr_effects.spawn_object(actor, nil, {"veh_zil_130","lonl_house_car_spawn_point4","0","45"})
+	return
+	end
+end
+end
+
+
+
+function hostage_maroder_reward1(first_speaker, second_speaker)
+	dialogs.relocate_money(second_speaker, 3000, "in")
+end
+
+
+function spawn_scaner_maroders()
+task_manager.get_task_manager():give_task("addtask_scaner")
+
+xr_effects.spawn_corpse(actor, nil, {"scaner_maroder1","scaner_maroders_spawn_point1"})
+xr_effects.spawn_corpse(actor, nil, {"scaner_maroder2","scaner_maroders_spawn_point2"})
+xr_effects.spawn_corpse(actor, nil, {"scaner_maroder3","scaner_maroders_spawn_point3"})
+
+xr_effects.spawn_object(actor, nil, {"scaner_mob1","scaner_maroders_spawn_point1"})
+xr_effects.spawn_object(actor, nil, {"scaner_mob2","scaner_maroders_spawn_point1"})
+xr_effects.spawn_object(actor, nil, {"scaner_mob2","scaner_maroders_spawn_point1"})
+end
+
+
+-- Работа сканера артефактов: ---------------------------------------------------------
+
+function artefact_scaner_work()
+if db.actor:dont_has_info("artefacts_spawn") then
+	spawn_location_artefacts1()
+	spawn_location_artefacts2()
+	spawn_location_artefacts3()
+	spawn_location_artefacts4()
+	spawn_location_artefacts5()
+	db.actor:give_info_portion ("artefacts_spawn")
+	start_game_timer(720*60, "mod_timer_functions.artefacts_spawn_timer_action")
+end
+end
+
+function spawn_location_artefacts1()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+xr_effects.spawn_object(actor, nil, {"af_medusa","artefact_spawn_point1"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object(actor, nil, {"af_cristall_flower","artefact_spawn_point2"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object(actor, nil, {"af_night_star","artefact_spawn_point3"})
+end
+end
+
+function spawn_location_artefacts2()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+xr_effects.spawn_object(actor, nil, {"af_vyvert","artefact_spawn_point4"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object(actor, nil, {"af_gravi","artefact_spawn_point5"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object(actor, nil, {"af_gold_fish","artefact_spawn_point6"})
+end
+end
+
+function spawn_location_artefacts3()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+xr_effects.spawn_object(actor, nil, {"af_cristall","artefact_spawn_point7"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object(actor, nil, {"af_fireball","artefact_spawn_point8"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object(actor, nil, {"af_dummy_glassbeads","artefact_spawn_point9"})
+end
+end
+
+function spawn_location_artefacts4()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+xr_effects.spawn_object(actor, nil, {"af_blood","artefact_spawn_point10"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object(actor, nil, {"af_mincer_meat","artefact_spawn_point11"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object(actor, nil, {"af_soul","artefact_spawn_point12"})
+end
+end
+
+function spawn_location_artefacts5()
+rnd = math.random(1, 3)
+if rnd == 1 then 
+xr_effects.spawn_object(actor, nil, {"af_electra_sparkler","artefact_spawn_point13"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object(actor, nil, {"af_electra_flash","artefact_spawn_point14"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object(actor, nil, {"af_electra_moonlight","artefact_spawn_point15"})
+end
+end
+
+
+function kpp_sbu_alarm_tip()
+start_real_timer(2, "mod_timer_functions.kpp_sbu_alarm_tip_action")
+end
+
+function kpp_mercs_ambush_tip()
+start_real_timer(2, "mod_timer_functions.kpp_mercs_ambush_tip_action")
+end
+
+function spawn_kpp_mercs_ambush()
+xr_effects.spawn_object(actor, nil, {"kpp_ambush_merc1","kpp_ambush_merc1_walk1"})
+xr_effects.spawn_object(actor, nil, {"kpp_ambush_merc2","kpp_ambush_merc2_walk1"})
+xr_effects.spawn_object(actor, nil, {"kpp_ambush_merc3","kpp_ambush_merc3_walk1"})
+xr_effects.spawn_object(actor, nil, {"kpp_ambush_merc4","kpp_ambush_merc4_walk1"})
+xr_effects.spawn_object(actor, nil, {"kpp_ambush_merc5","kpp_ambush_merc5_walk1"})
+xr_effects.spawn_object(actor, nil, {"kpp_ambush_merc6","kpp_ambush_merc6_walk1"})
+xr_effects.spawn_object(actor, nil, {"kpp_ambush_merc7","kpp_ambush_merc7_walk1"})
+xr_effects.spawn_object(actor, nil, {"kpp_ambush_merc8","kpp_ambush_merc8_walk1"})
+end
+
+
+--news_manager.send_tip(db.actor, "sanya_about_bobik_tip", nil, "stalker", 5000, nil)
+
+
+
+
+-- Команды суке: ----------------------------------------------------------------
+
+function dog_command1()	-- сидеть на месте(H);
+local dog = get_story_object("personal_dog")
+if dog ~= nil and dog:alive() and dog:position():distance_to(db.actor:position()) < 15 then
+if db.actor:dont_has_info("wounded_dog_help") then
+	if db.actor:object("bandage") ~= nil then
+		db.actor:give_info_portion ("wounded_dog_help")
+		mod_functions.remove_items("bandage", 1)
+		soundtrack.dog_command0()
+	end
+elseif has_alife_info("wounded_dog_help") then
+	if db.actor:dont_has_info("personal_dog_stay") then
+		db.actor:give_info_portion ("personal_dog_stay")
+		disable_info("personal_dog_gohome")
+		soundtrack.dog_command2()	-- личному составу отдыхать;
+	elseif has_alife_info("personal_dog_stay") then
+		disable_info("personal_dog_stay")
+		soundtrack.dog_command3()	-- не спать, осмотреться;
+	end
+end
+end
+end
+
+function dog_command2()	-- домой(J);
+local dog = get_story_object("personal_dog")
+if dog ~= nil and dog:alive() and dog:position():distance_to(db.actor:position()) < 15 then
+	db.actor:give_info_portion ("personal_dog_gohome")
+	disable_info("personal_dog_stay")
+	soundtrack.dog_command1()	-- вольно, разойдись;
+end
+end
+
+
+function dog_command3()	-- лечение;
+local dog = get_story_object("personal_dog")
+if dog ~= nil and dog:alive() and dog:position():distance_to(db.actor:position()) < 15 and db.actor:object("kolbasa") ~= nil then
+	dog.health = 1
+	mod_functions.remove_items("kolbasa", 1)
+	soundtrack.dog_command4()
+end
+end
+
+
+
+-- Заполняем тайники рандомным лутом ----------------------------------------------------------------
+
+
+function random_treasures_spawn_in()
+
+xr_effects.spawn_random_outfit_upgrade_in_box(nil, 10, "maroders_big_treasure")
+xr_effects.spawn_random_wpn_upgrade_in_box(nil, 10, "maroders_big_treasure")
+xr_effects.spawn_random_medicine_in_box(nil, 3, "maroders_big_treasure")
+xr_effects.spawn_random_food_in_box(nil, 4, "maroders_big_treasure")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 4, "maroders_big_treasure")
+
+local b1 = math.random(2,3)
+xr_effects.spawn_random_medicine_in_box(nil, b1, "arthunter_box")
+xr_effects.spawn_random_food_in_box(nil, b1, "arthunter_box")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 1, "arthunter_box")
+xr_effects.spawn_random_ammo_in_box(nil, b1, "arthunter_box")
+
+local c1 = math.random(3,4)
+xr_effects.spawn_random_medicine_in_box(nil, c1, "lake_helicrash_box")
+
+xr_effects.spawn_random_treasure_in_box(nil, 5, "village_roof_maroder_shron")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 1, "village_roof_maroder_shron")
+
+local n1 = math.random(2,3)
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_1")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_1")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_2")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_2")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_3")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_3")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_4")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_4")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_5")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_5")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_6")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_6")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_7")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_7")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_8")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_8")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_9")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_9")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_10")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_10")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_11")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_11")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_12")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_12")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_13")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_13")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_14")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_14")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_15")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_15")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_16")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_16")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_17")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_17")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_18")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_18")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_19")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_19")
+
+xr_effects.spawn_random_treasure_in_box(nil, n1, "random_treasure_20")
+xr_effects.spawn_random_wpn_parts_in_box(nil, 2, "random_treasure_20")
+
+end
+
+
+
+function hostage_maroder_task_give(first_speaker, second_speaker)
+xr_effects.give_task(actor, nil, {"addtask_chimera"})
+dialogs.relocate_money(second_speaker, 5000, "out")
+end
+
+function has5000money(first_speaker, second_speaker)
+	return db.actor:money() >= 5000
+end
+
+function chimera_hunter_reward(first_speaker, second_speaker)
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "af_fire")
+end
+
+
+function reset_vodka_counter()
+local counter_name = "vodka"
+	local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
+	if cnt_value > 1 then
+		xr_effects.set_counter(db.actor, nil, {"vodka",0})
+	end
+end
+
+
+function lw_newbie_dialog_talk()
+xr_effects.play_sound_by_story(actor, nil, {"lw_newbie","lw_newbie_dialog_snd"})
+end
+
+function hostage_maroder_dialog_talk()
+xr_effects.play_sound_by_story(actor, nil, {"hostage_scenar_maroder1","hostage_maroder_dialog_snd"})
+xr_effects.play_sound_by_story(actor, nil, {"hostage_scenar_maroder2","hostage_maroder_dialog_snd"})
+xr_effects.play_sound_by_story(actor, nil, {"hostage_scenar_maroder3","hostage_maroder_dialog_snd"})
+end
+
+
+
+function lider_treasures_spawn_in()
+lider_treasure_set1()
+lider_treasure_set2()
+lider_treasure_set3()
+lider_treasure_set4()
+lider_treasure_set5()
+lider_treasure_set6()
+lider_treasure_set7()
+lider_treasure_set8()
+lider_treasure_set9()
+lider_treasure_set10()
+lider_treasure_set11()
+lider_treasure_set12()
+lider_treasure_set13()
+lider_treasure_set14()
+lider_treasure_set15()
+lider_treasure_set16()
+lider_treasure_set17()
+lider_treasure_set18()
+lider_treasure_set19()
+lider_treasure_set20()
+lider_treasure_set21()
+lider_treasure_set22()
+lider_treasure_set23()
+lider_treasure_set24()
+lider_treasure_set25()
+end
+
+
+
+function lider_treasure_set1()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set2()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set3()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_advanced","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_advanced","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_advanced","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_advanced","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_advanced","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set4()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.45x39_ap","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set5()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_f1","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_f1","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_f1","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_f1","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_f1","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set6()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set7()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_x2.7","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_x2.7","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_x2.7","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_x2.7","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_x2.7","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set8()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher_m203","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher_m203","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher_m203","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher_m203","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_grenade_launcher_m203","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set9()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set10()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"grenade_rgd5","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set11()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_detector","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_detector","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_detector","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_detector","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_detector","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set12()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set13()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x1.6","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x1.6","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x1.6","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x1.6","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x1.6","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set14()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_11.43x23_hydro","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set15()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_5.56x45_ap","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set16()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x3.0","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x3.0","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x3.0","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x3.0","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_x3.0","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set17()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_night","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_night","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_night","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_night","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_night","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set18()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x18_pmm","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set19()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x19_pbp","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set20()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_elite","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_elite","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_elite","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_elite","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"detector_elite","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set21()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_night","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_night","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_night","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_night","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_night","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set22()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_dusk","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_dusk","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_dusk","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_dusk","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_scope_susat_dusk","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set23()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider1_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider2_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider3_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider4_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider5_treasure"})
+xr_effects.spawn_object_in(actor, npc, {"ammo_9x39_ap","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set24()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"wpn_addon_silencer","scenar_maroder_lider5_treasure"})
+end
+end
+
+function lider_treasure_set25()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+xr_effects.spawn_object_in(actor, npc, {"helm_hardhat","scenar_maroder_lider1_treasure"})
+end
+if rnd == 2 then 
+xr_effects.spawn_object_in(actor, npc, {"helm_hardhat","scenar_maroder_lider2_treasure"})
+end
+if rnd == 3 then 
+xr_effects.spawn_object_in(actor, npc, {"helm_hardhat","scenar_maroder_lider3_treasure"})
+end
+if rnd == 4 then 
+xr_effects.spawn_object_in(actor, npc, {"helm_hardhat","scenar_maroder_lider4_treasure"})
+end
+if rnd == 5 then 
+xr_effects.spawn_object_in(actor, npc, {"helm_hardhat","scenar_maroder_lider5_treasure"})
+end
+end
+
+------------------------------------------------------------------------------------------
+
+
+function big_gas_balon_spawn()
+rnd = math.random(1, 5)
+if rnd == 1 then 
+mod_functions.script_spawn("gas_balon_big", "derevnya", vector():set(30.52,15.60,57.42) )
+end
+if rnd == 2 then 
+mod_functions.script_spawn("gas_balon_big", "derevnya", vector():set(88.49,4.47,-36.36) )
+end
+if rnd == 3 then 
+mod_functions.script_spawn("gas_balon_big", "derevnya", vector():set(64.48,4.42,-26.44) )
+end
+if rnd == 4 then 
+mod_functions.script_spawn("gas_balon_big", "derevnya", vector():set(-326.53,15.17,-143.77) )
+end
+if rnd == 5 then 
+mod_functions.script_spawn("gas_balon_big", "derevnya", vector():set(-303.79,15.24,-146.17) )
+end
+end
+
+
+
+-- Подбираем все апгрейды для одетой брони и пушек в слотах из ближайшего ящика:
+
+function gather_outfit_upgrade_items_from_box()
+	--local inv_box_out = get_story_object("lonl_house_store_box")
+	local inv_box1_out = get_story_object("lonl_house_store_box")
+	local inv_box2_out = get_story_object("lonl_house_invbox_4")
+	local inv_box3_out = get_story_object("lonl_house_invbox_3")
+	local inv_box4_out = get_story_object("lonl_house_invbox_2")
+	local inv_box5_out = get_story_object("lonl_house_invbox_1")
+	local obj_in = db.actor
+	local items_to_relocate = {	}
+	
+	if distance_between(inv_box1_out, db.actor) < 1.7 then
+	local function relocate(inv_box1_out, item)
+		if ( xr_conditions.actor_wears_specops_outfit() == true and (system_ini():line_exist(item:section(), "specops_outf_item") and system_ini():r_bool(item:section(), "specops_outf_item")) ) or
+			( xr_conditions.actor_wears_scient_outfit() == true and (system_ini():line_exist(item:section(), "scient_outf_item") and system_ini():r_bool(item:section(), "scient_outf_item")) ) or
+			( xr_conditions.actor_wears_military_outfit() == true and (system_ini():line_exist(item:section(), "military_outf_item") and system_ini():r_bool(item:section(), "military_outf_item")) ) or
+			( xr_conditions.actor_wears_novice_outfit() == true and (system_ini():line_exist(item:section(), "novice_outf_item") and system_ini():r_bool(item:section(), "novice_outf_item")) ) or
+			( xr_conditions.actor_wears_exo_outfit() == true and (system_ini():line_exist(item:section(), "exo_outf_item") and system_ini():r_bool(item:section(), "exo_outf_item")) ) or
+			( xr_conditions.actor_wears_stalker_outfit() == true and (system_ini():line_exist(item:section(), "stalker_outf_item") and system_ini():r_bool(item:section(), "stalker_outf_item")) ) or
+			( xr_conditions.actor_wears_helm_hardhat() == true and (system_ini():line_exist(item:section(), "hardhat_item") and system_ini():r_bool(item:section(), "hardhat_item")) ) or
+			( xr_conditions.actor_wears_helm_protective() == true and (system_ini():line_exist(item:section(), "protective_item") and system_ini():r_bool(item:section(), "protective_item")) ) or
+			( xr_conditions.actor_wears_helm_respirator() == true and (system_ini():line_exist(item:section(), "respirator_item") and system_ini():r_bool(item:section(), "respirator_item")) ) or
+			( xr_conditions.actor_wears_helm_tactic() == true and (system_ini():line_exist(item:section(), "tactic_item") and system_ini():r_bool(item:section(), "tactic_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box1_out:iterate_inventory_box	(relocate, inv_box1_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box1_out:transfer_item(v, obj_in)
+	end
+	end
+	
+	if distance_between(inv_box2_out, db.actor) < 1.7 then
+	local function relocate(inv_box2_out, item)
+		if ( xr_conditions.actor_wears_specops_outfit() == true and (system_ini():line_exist(item:section(), "specops_outf_item") and system_ini():r_bool(item:section(), "specops_outf_item")) ) or
+			( xr_conditions.actor_wears_scient_outfit() == true and (system_ini():line_exist(item:section(), "scient_outf_item") and system_ini():r_bool(item:section(), "scient_outf_item")) ) or
+			( xr_conditions.actor_wears_military_outfit() == true and (system_ini():line_exist(item:section(), "military_outf_item") and system_ini():r_bool(item:section(), "military_outf_item")) ) or
+			( xr_conditions.actor_wears_novice_outfit() == true and (system_ini():line_exist(item:section(), "novice_outf_item") and system_ini():r_bool(item:section(), "novice_outf_item")) ) or
+			( xr_conditions.actor_wears_exo_outfit() == true and (system_ini():line_exist(item:section(), "exo_outf_item") and system_ini():r_bool(item:section(), "exo_outf_item")) ) or
+			( xr_conditions.actor_wears_stalker_outfit() == true and (system_ini():line_exist(item:section(), "stalker_outf_item") and system_ini():r_bool(item:section(), "stalker_outf_item")) ) or
+			( xr_conditions.actor_wears_helm_hardhat() == true and (system_ini():line_exist(item:section(), "hardhat_item") and system_ini():r_bool(item:section(), "hardhat_item")) ) or
+			( xr_conditions.actor_wears_helm_protective() == true and (system_ini():line_exist(item:section(), "protective_item") and system_ini():r_bool(item:section(), "protective_item")) ) or
+			( xr_conditions.actor_wears_helm_respirator() == true and (system_ini():line_exist(item:section(), "respirator_item") and system_ini():r_bool(item:section(), "respirator_item")) ) or
+			( xr_conditions.actor_wears_helm_tactic() == true and (system_ini():line_exist(item:section(), "tactic_item") and system_ini():r_bool(item:section(), "tactic_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box2_out:iterate_inventory_box	(relocate, inv_box2_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box2_out:transfer_item(v, obj_in)
+	end
+	end
+	
+	if distance_between(inv_box3_out, db.actor) < 1.7 then
+	local function relocate(inv_box3_out, item)
+		if ( xr_conditions.actor_wears_specops_outfit() == true and (system_ini():line_exist(item:section(), "specops_outf_item") and system_ini():r_bool(item:section(), "specops_outf_item")) ) or
+			( xr_conditions.actor_wears_scient_outfit() == true and (system_ini():line_exist(item:section(), "scient_outf_item") and system_ini():r_bool(item:section(), "scient_outf_item")) ) or
+			( xr_conditions.actor_wears_military_outfit() == true and (system_ini():line_exist(item:section(), "military_outf_item") and system_ini():r_bool(item:section(), "military_outf_item")) ) or
+			( xr_conditions.actor_wears_novice_outfit() == true and (system_ini():line_exist(item:section(), "novice_outf_item") and system_ini():r_bool(item:section(), "novice_outf_item")) ) or
+			( xr_conditions.actor_wears_exo_outfit() == true and (system_ini():line_exist(item:section(), "exo_outf_item") and system_ini():r_bool(item:section(), "exo_outf_item")) ) or
+			( xr_conditions.actor_wears_stalker_outfit() == true and (system_ini():line_exist(item:section(), "stalker_outf_item") and system_ini():r_bool(item:section(), "stalker_outf_item")) ) or
+			( xr_conditions.actor_wears_helm_hardhat() == true and (system_ini():line_exist(item:section(), "hardhat_item") and system_ini():r_bool(item:section(), "hardhat_item")) ) or
+			( xr_conditions.actor_wears_helm_protective() == true and (system_ini():line_exist(item:section(), "protective_item") and system_ini():r_bool(item:section(), "protective_item")) ) or
+			( xr_conditions.actor_wears_helm_respirator() == true and (system_ini():line_exist(item:section(), "respirator_item") and system_ini():r_bool(item:section(), "respirator_item")) ) or
+			( xr_conditions.actor_wears_helm_tactic() == true and (system_ini():line_exist(item:section(), "tactic_item") and system_ini():r_bool(item:section(), "tactic_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box3_out:iterate_inventory_box	(relocate, inv_box3_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box3_out:transfer_item(v, obj_in)
+	end
+	end
+	
+	if distance_between(inv_box4_out, db.actor) < 1.7 then
+	local function relocate(inv_box4_out, item)
+		if ( xr_conditions.actor_wears_specops_outfit() == true and (system_ini():line_exist(item:section(), "specops_outf_item") and system_ini():r_bool(item:section(), "specops_outf_item")) ) or
+			( xr_conditions.actor_wears_scient_outfit() == true and (system_ini():line_exist(item:section(), "scient_outf_item") and system_ini():r_bool(item:section(), "scient_outf_item")) ) or
+			( xr_conditions.actor_wears_military_outfit() == true and (system_ini():line_exist(item:section(), "military_outf_item") and system_ini():r_bool(item:section(), "military_outf_item")) ) or
+			( xr_conditions.actor_wears_novice_outfit() == true and (system_ini():line_exist(item:section(), "novice_outf_item") and system_ini():r_bool(item:section(), "novice_outf_item")) ) or
+			( xr_conditions.actor_wears_exo_outfit() == true and (system_ini():line_exist(item:section(), "exo_outf_item") and system_ini():r_bool(item:section(), "exo_outf_item")) ) or
+			( xr_conditions.actor_wears_stalker_outfit() == true and (system_ini():line_exist(item:section(), "stalker_outf_item") and system_ini():r_bool(item:section(), "stalker_outf_item")) ) or
+			( xr_conditions.actor_wears_helm_hardhat() == true and (system_ini():line_exist(item:section(), "hardhat_item") and system_ini():r_bool(item:section(), "hardhat_item")) ) or
+			( xr_conditions.actor_wears_helm_protective() == true and (system_ini():line_exist(item:section(), "protective_item") and system_ini():r_bool(item:section(), "protective_item")) ) or
+			( xr_conditions.actor_wears_helm_respirator() == true and (system_ini():line_exist(item:section(), "respirator_item") and system_ini():r_bool(item:section(), "respirator_item")) ) or
+			( xr_conditions.actor_wears_helm_tactic() == true and (system_ini():line_exist(item:section(), "tactic_item") and system_ini():r_bool(item:section(), "tactic_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box4_out:iterate_inventory_box	(relocate, inv_box4_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box4_out:transfer_item(v, obj_in)
+	end
+	end
+	
+	if distance_between(inv_box5_out, db.actor) < 1.7 then
+	local function relocate(inv_box5_out, item)
+		if ( xr_conditions.actor_wears_specops_outfit() == true and (system_ini():line_exist(item:section(), "specops_outf_item") and system_ini():r_bool(item:section(), "specops_outf_item")) ) or
+			( xr_conditions.actor_wears_scient_outfit() == true and (system_ini():line_exist(item:section(), "scient_outf_item") and system_ini():r_bool(item:section(), "scient_outf_item")) ) or
+			( xr_conditions.actor_wears_military_outfit() == true and (system_ini():line_exist(item:section(), "military_outf_item") and system_ini():r_bool(item:section(), "military_outf_item")) ) or
+			( xr_conditions.actor_wears_novice_outfit() == true and (system_ini():line_exist(item:section(), "novice_outf_item") and system_ini():r_bool(item:section(), "novice_outf_item")) ) or
+			( xr_conditions.actor_wears_exo_outfit() == true and (system_ini():line_exist(item:section(), "exo_outf_item") and system_ini():r_bool(item:section(), "exo_outf_item")) ) or
+			( xr_conditions.actor_wears_stalker_outfit() == true and (system_ini():line_exist(item:section(), "stalker_outf_item") and system_ini():r_bool(item:section(), "stalker_outf_item")) ) or
+			( xr_conditions.actor_wears_helm_hardhat() == true and (system_ini():line_exist(item:section(), "hardhat_item") and system_ini():r_bool(item:section(), "hardhat_item")) ) or
+			( xr_conditions.actor_wears_helm_protective() == true and (system_ini():line_exist(item:section(), "protective_item") and system_ini():r_bool(item:section(), "protective_item")) ) or
+			( xr_conditions.actor_wears_helm_respirator() == true and (system_ini():line_exist(item:section(), "respirator_item") and system_ini():r_bool(item:section(), "respirator_item")) ) or
+			( xr_conditions.actor_wears_helm_tactic() == true and (system_ini():line_exist(item:section(), "tactic_item") and system_ini():r_bool(item:section(), "tactic_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box5_out:iterate_inventory_box	(relocate, inv_box5_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box5_out:transfer_item(v, obj_in)
+	end
+	end
+
+end
+
+
+
+
+function gather_weapon_upgrade_items_from_box()
+	local inv_box1_out = get_story_object("lonl_house_store_box")
+	local inv_box2_out = get_story_object("lonl_house_invbox_4")
+	local inv_box3_out = get_story_object("lonl_house_invbox_3")
+	local inv_box4_out = get_story_object("lonl_house_invbox_2")
+	local inv_box5_out = get_story_object("lonl_house_invbox_1")
+	local obj_in = db.actor
+	local items_to_relocate = {	}
+	
+	if distance_between(inv_box1_out, db.actor) < 1.7 then
+	local function relocate(inv_box1_out, item)
+		if ( xr_conditions.actor_in_slot_pm() == true and (system_ini():line_exist(item:section(), "pm_item") and system_ini():r_bool(item:section(), "pm_item")) ) or
+			( xr_conditions.actor_in_slot_pb() == true and (system_ini():line_exist(item:section(), "pb_item") and system_ini():r_bool(item:section(), "pb_item")) ) or
+			( xr_conditions.actor_in_slot_obrez() == true and (system_ini():line_exist(item:section(), "obrez_item") and system_ini():r_bool(item:section(), "obrez_item")) ) or
+			( xr_conditions.actor_in_slot_usp() == true and (system_ini():line_exist(item:section(), "usp_item") and system_ini():r_bool(item:section(), "usp_item")) ) or
+			( xr_conditions.actor_in_slot_hpsa() == true and (system_ini():line_exist(item:section(), "hpsa_item") and system_ini():r_bool(item:section(), "hpsa_item")) ) or
+			( xr_conditions.actor_in_slot_toz() == true and (system_ini():line_exist(item:section(), "toz_item") and system_ini():r_bool(item:section(), "toz_item")) ) or
+			( xr_conditions.actor_in_slot_aksu() == true and (system_ini():line_exist(item:section(), "aksu_item") and system_ini():r_bool(item:section(), "aksu_item")) ) or
+			( xr_conditions.actor_in_slot_ak74() == true and (system_ini():line_exist(item:section(), "ak74_item") and system_ini():r_bool(item:section(), "ak74_item")) ) or
+			( xr_conditions.actor_in_slot_lr300() == true and (system_ini():line_exist(item:section(), "lr300_item") and system_ini():r_bool(item:section(), "lr300_item")) ) or
+			( xr_conditions.actor_in_slot_vintorez() == true and (system_ini():line_exist(item:section(), "vintorez_item") and system_ini():r_bool(item:section(), "vintorez_item")) ) or
+			( xr_conditions.actor_in_slot_bizon() == true and (system_ini():line_exist(item:section(), "bizon_item") and system_ini():r_bool(item:section(), "bizon_item")) ) or
+			( xr_conditions.actor_in_slot_mosin() == true and (system_ini():line_exist(item:section(), "mosin_item") and system_ini():r_bool(item:section(), "mosin_item")) ) or
+			( xr_conditions.actor_in_slot_sayga() == true and (system_ini():line_exist(item:section(), "sayga_item") and system_ini():r_bool(item:section(), "sayga_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box1_out:iterate_inventory_box	(relocate, inv_box1_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box1_out:transfer_item(v, obj_in)
+	end
+	end
+	
+	if distance_between(inv_box2_out, db.actor) < 1.7 then
+	local function relocate(inv_box2_out, item)
+		if ( xr_conditions.actor_in_slot_pm() == true and (system_ini():line_exist(item:section(), "pm_item") and system_ini():r_bool(item:section(), "pm_item")) ) or
+			( xr_conditions.actor_in_slot_pb() == true and (system_ini():line_exist(item:section(), "pb_item") and system_ini():r_bool(item:section(), "pb_item")) ) or
+			( xr_conditions.actor_in_slot_obrez() == true and (system_ini():line_exist(item:section(), "obrez_item") and system_ini():r_bool(item:section(), "obrez_item")) ) or
+			( xr_conditions.actor_in_slot_usp() == true and (system_ini():line_exist(item:section(), "usp_item") and system_ini():r_bool(item:section(), "usp_item")) ) or
+			( xr_conditions.actor_in_slot_hpsa() == true and (system_ini():line_exist(item:section(), "hpsa_item") and system_ini():r_bool(item:section(), "hpsa_item")) ) or
+			( xr_conditions.actor_in_slot_toz() == true and (system_ini():line_exist(item:section(), "toz_item") and system_ini():r_bool(item:section(), "toz_item")) ) or
+			( xr_conditions.actor_in_slot_aksu() == true and (system_ini():line_exist(item:section(), "aksu_item") and system_ini():r_bool(item:section(), "aksu_item")) ) or
+			( xr_conditions.actor_in_slot_ak74() == true and (system_ini():line_exist(item:section(), "ak74_item") and system_ini():r_bool(item:section(), "ak74_item")) ) or
+			( xr_conditions.actor_in_slot_lr300() == true and (system_ini():line_exist(item:section(), "lr300_item") and system_ini():r_bool(item:section(), "lr300_item")) ) or
+			( xr_conditions.actor_in_slot_vintorez() == true and (system_ini():line_exist(item:section(), "vintorez_item") and system_ini():r_bool(item:section(), "vintorez_item")) ) or
+			( xr_conditions.actor_in_slot_bizon() == true and (system_ini():line_exist(item:section(), "bizon_item") and system_ini():r_bool(item:section(), "bizon_item")) ) or
+			( xr_conditions.actor_in_slot_mosin() == true and (system_ini():line_exist(item:section(), "mosin_item") and system_ini():r_bool(item:section(), "mosin_item")) ) or
+			( xr_conditions.actor_in_slot_sayga() == true and (system_ini():line_exist(item:section(), "sayga_item") and system_ini():r_bool(item:section(), "sayga_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box2_out:iterate_inventory_box	(relocate, inv_box2_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box2_out:transfer_item(v, obj_in)
+	end
+	end
+	
+	if distance_between(inv_box3_out, db.actor) < 1.7 then
+	local function relocate(inv_box3_out, item)
+		if ( xr_conditions.actor_in_slot_pm() == true and (system_ini():line_exist(item:section(), "pm_item") and system_ini():r_bool(item:section(), "pm_item")) ) or
+			( xr_conditions.actor_in_slot_pb() == true and (system_ini():line_exist(item:section(), "pb_item") and system_ini():r_bool(item:section(), "pb_item")) ) or
+			( xr_conditions.actor_in_slot_obrez() == true and (system_ini():line_exist(item:section(), "obrez_item") and system_ini():r_bool(item:section(), "obrez_item")) ) or
+			( xr_conditions.actor_in_slot_usp() == true and (system_ini():line_exist(item:section(), "usp_item") and system_ini():r_bool(item:section(), "usp_item")) ) or
+			( xr_conditions.actor_in_slot_hpsa() == true and (system_ini():line_exist(item:section(), "hpsa_item") and system_ini():r_bool(item:section(), "hpsa_item")) ) or
+			( xr_conditions.actor_in_slot_toz() == true and (system_ini():line_exist(item:section(), "toz_item") and system_ini():r_bool(item:section(), "toz_item")) ) or
+			( xr_conditions.actor_in_slot_aksu() == true and (system_ini():line_exist(item:section(), "aksu_item") and system_ini():r_bool(item:section(), "aksu_item")) ) or
+			( xr_conditions.actor_in_slot_ak74() == true and (system_ini():line_exist(item:section(), "ak74_item") and system_ini():r_bool(item:section(), "ak74_item")) ) or
+			( xr_conditions.actor_in_slot_lr300() == true and (system_ini():line_exist(item:section(), "lr300_item") and system_ini():r_bool(item:section(), "lr300_item")) ) or
+			( xr_conditions.actor_in_slot_vintorez() == true and (system_ini():line_exist(item:section(), "vintorez_item") and system_ini():r_bool(item:section(), "vintorez_item")) ) or
+			( xr_conditions.actor_in_slot_bizon() == true and (system_ini():line_exist(item:section(), "bizon_item") and system_ini():r_bool(item:section(), "bizon_item")) ) or
+			( xr_conditions.actor_in_slot_mosin() == true and (system_ini():line_exist(item:section(), "mosin_item") and system_ini():r_bool(item:section(), "mosin_item")) ) or
+			( xr_conditions.actor_in_slot_sayga() == true and (system_ini():line_exist(item:section(), "sayga_item") and system_ini():r_bool(item:section(), "sayga_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box3_out:iterate_inventory_box	(relocate, inv_box3_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box3_out:transfer_item(v, obj_in)
+	end
+	end
+	
+	if distance_between(inv_box4_out, db.actor) < 1.7 then
+	local function relocate(inv_box4_out, item)
+		if ( xr_conditions.actor_in_slot_pm() == true and (system_ini():line_exist(item:section(), "pm_item") and system_ini():r_bool(item:section(), "pm_item")) ) or
+			( xr_conditions.actor_in_slot_pb() == true and (system_ini():line_exist(item:section(), "pb_item") and system_ini():r_bool(item:section(), "pb_item")) ) or
+			( xr_conditions.actor_in_slot_obrez() == true and (system_ini():line_exist(item:section(), "obrez_item") and system_ini():r_bool(item:section(), "obrez_item")) ) or
+			( xr_conditions.actor_in_slot_usp() == true and (system_ini():line_exist(item:section(), "usp_item") and system_ini():r_bool(item:section(), "usp_item")) ) or
+			( xr_conditions.actor_in_slot_hpsa() == true and (system_ini():line_exist(item:section(), "hpsa_item") and system_ini():r_bool(item:section(), "hpsa_item")) ) or
+			( xr_conditions.actor_in_slot_toz() == true and (system_ini():line_exist(item:section(), "toz_item") and system_ini():r_bool(item:section(), "toz_item")) ) or
+			( xr_conditions.actor_in_slot_aksu() == true and (system_ini():line_exist(item:section(), "aksu_item") and system_ini():r_bool(item:section(), "aksu_item")) ) or
+			( xr_conditions.actor_in_slot_ak74() == true and (system_ini():line_exist(item:section(), "ak74_item") and system_ini():r_bool(item:section(), "ak74_item")) ) or
+			( xr_conditions.actor_in_slot_lr300() == true and (system_ini():line_exist(item:section(), "lr300_item") and system_ini():r_bool(item:section(), "lr300_item")) ) or
+			( xr_conditions.actor_in_slot_vintorez() == true and (system_ini():line_exist(item:section(), "vintorez_item") and system_ini():r_bool(item:section(), "vintorez_item")) ) or
+			( xr_conditions.actor_in_slot_bizon() == true and (system_ini():line_exist(item:section(), "bizon_item") and system_ini():r_bool(item:section(), "bizon_item")) ) or
+			( xr_conditions.actor_in_slot_mosin() == true and (system_ini():line_exist(item:section(), "mosin_item") and system_ini():r_bool(item:section(), "mosin_item")) ) or
+			( xr_conditions.actor_in_slot_sayga() == true and (system_ini():line_exist(item:section(), "sayga_item") and system_ini():r_bool(item:section(), "sayga_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box4_out:iterate_inventory_box	(relocate, inv_box4_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box4_out:transfer_item(v, obj_in)
+	end
+	end
+	
+	if distance_between(inv_box5_out, db.actor) < 1.7 then
+	local function relocate(inv_box5_out, item)
+		if ( xr_conditions.actor_in_slot_pm() == true and (system_ini():line_exist(item:section(), "pm_item") and system_ini():r_bool(item:section(), "pm_item")) ) or
+			( xr_conditions.actor_in_slot_pb() == true and (system_ini():line_exist(item:section(), "pb_item") and system_ini():r_bool(item:section(), "pb_item")) ) or
+			( xr_conditions.actor_in_slot_obrez() == true and (system_ini():line_exist(item:section(), "obrez_item") and system_ini():r_bool(item:section(), "obrez_item")) ) or
+			( xr_conditions.actor_in_slot_usp() == true and (system_ini():line_exist(item:section(), "usp_item") and system_ini():r_bool(item:section(), "usp_item")) ) or
+			( xr_conditions.actor_in_slot_hpsa() == true and (system_ini():line_exist(item:section(), "hpsa_item") and system_ini():r_bool(item:section(), "hpsa_item")) ) or
+			( xr_conditions.actor_in_slot_toz() == true and (system_ini():line_exist(item:section(), "toz_item") and system_ini():r_bool(item:section(), "toz_item")) ) or
+			( xr_conditions.actor_in_slot_aksu() == true and (system_ini():line_exist(item:section(), "aksu_item") and system_ini():r_bool(item:section(), "aksu_item")) ) or
+			( xr_conditions.actor_in_slot_ak74() == true and (system_ini():line_exist(item:section(), "ak74_item") and system_ini():r_bool(item:section(), "ak74_item")) ) or
+			( xr_conditions.actor_in_slot_lr300() == true and (system_ini():line_exist(item:section(), "lr300_item") and system_ini():r_bool(item:section(), "lr300_item")) ) or
+			( xr_conditions.actor_in_slot_vintorez() == true and (system_ini():line_exist(item:section(), "vintorez_item") and system_ini():r_bool(item:section(), "vintorez_item")) ) or
+			( xr_conditions.actor_in_slot_bizon() == true and (system_ini():line_exist(item:section(), "bizon_item") and system_ini():r_bool(item:section(), "bizon_item")) ) or
+			( xr_conditions.actor_in_slot_mosin() == true and (system_ini():line_exist(item:section(), "mosin_item") and system_ini():r_bool(item:section(), "mosin_item")) ) or
+			( xr_conditions.actor_in_slot_sayga() == true and (system_ini():line_exist(item:section(), "sayga_item") and system_ini():r_bool(item:section(), "sayga_item")) )	then
+			table.insert(items_to_relocate, item)
+		end
+	end
+	inv_box5_out:iterate_inventory_box	(relocate, inv_box5_out)
+	soundtrack.actor_gather_stuff()
+	for k,v in pairs(items_to_relocate) do
+		inv_box5_out:transfer_item(v, obj_in)
+	end
+	end
+	
+end
+
+
+-- Выгружаем все апгрейды из инвентаря в ближайший ящик: --------------------------------------------------------
+
+function put_all_upgrades_to_box()
+put_all_upgrades_to_box1()
+put_all_upgrades_to_box2()
+end
+
+function put_all_upgrades_to_box1()
+local box1 = get_story_object("lonl_house_store_box")
+local box2 = get_story_object("lonl_house_invbox_4")
+local box3 = get_story_object("lonl_house_invbox_3")
+local box4 = get_story_object("lonl_house_invbox_2")
+local box5 = get_story_object("lonl_house_invbox_1")
+
+	local function transfer_object_item(item)
+		if ( (system_ini():line_exist(item:section(), "specops_outf_item") and system_ini():r_bool(item:section(), "specops_outf_item")) ) or
+			( (system_ini():line_exist(item:section(), "scient_outf_item") and system_ini():r_bool(item:section(), "scient_outf_item")) ) or
+			( (system_ini():line_exist(item:section(), "military_outf_item") and system_ini():r_bool(item:section(), "military_outf_item")) ) or
+			( (system_ini():line_exist(item:section(), "novice_outf_item") and system_ini():r_bool(item:section(), "novice_outf_item")) ) or
+			( (system_ini():line_exist(item:section(), "exo_outf_item") and system_ini():r_bool(item:section(), "exo_outf_item")) ) or
+			( (system_ini():line_exist(item:section(), "stalker_outf_item") and system_ini():r_bool(item:section(), "stalker_outf_item")) ) or
+			( (system_ini():line_exist(item:section(), "hardhat_item") and system_ini():r_bool(item:section(), "hardhat_item")) ) or
+			( (system_ini():line_exist(item:section(), "protective_item") and system_ini():r_bool(item:section(), "protective_item")) ) or
+			( (system_ini():line_exist(item:section(), "respirator_item") and system_ini():r_bool(item:section(), "respirator_item")) ) or
+			( (system_ini():line_exist(item:section(), "tactic_item") and system_ini():r_bool(item:section(), "tactic_item")) )	or
+			( (system_ini():line_exist(item:section(), "pm_item") and system_ini():r_bool(item:section(), "pm_item")) ) or
+			( (system_ini():line_exist(item:section(), "pb_item") and system_ini():r_bool(item:section(), "pb_item")) ) or
+			( (system_ini():line_exist(item:section(), "obrez_item") and system_ini():r_bool(item:section(), "obrez_item")) ) or
+			( (system_ini():line_exist(item:section(), "usp_item") and system_ini():r_bool(item:section(), "usp_item")) ) or
+			( (system_ini():line_exist(item:section(), "hpsa_item") and system_ini():r_bool(item:section(), "hpsa_item")) ) or
+			( (system_ini():line_exist(item:section(), "toz_item") and system_ini():r_bool(item:section(), "toz_item")) ) or
+			( (system_ini():line_exist(item:section(), "aksu_item") and system_ini():r_bool(item:section(), "aksu_item")) ) or
+			( (system_ini():line_exist(item:section(), "ak74_item") and system_ini():r_bool(item:section(), "ak74_item")) ) or
+			( (system_ini():line_exist(item:section(), "lr300_item") and system_ini():r_bool(item:section(), "lr300_item")) ) or
+			( (system_ini():line_exist(item:section(), "vintorez_item") and system_ini():r_bool(item:section(), "vintorez_item")) ) or
+			( (system_ini():line_exist(item:section(), "bizon_item") and system_ini():r_bool(item:section(), "bizon_item")) ) or
+			( (system_ini():line_exist(item:section(), "mosin_item") and system_ini():r_bool(item:section(), "mosin_item")) ) or
+			( (system_ini():line_exist(item:section(), "sayga_item") and system_ini():r_bool(item:section(), "sayga_item")) )	then
+			
+			if distance_between(box1, db.actor) < 1.7 then
+				db.actor:transfer_item(item, box1)
+				soundtrack.actor_gather_stuff2()
+			elseif distance_between(box2, db.actor) < 1.7 then
+				db.actor:transfer_item(item, box2)
+				soundtrack.actor_gather_stuff2()
+			elseif distance_between(box3, db.actor) < 1.7 then
+				db.actor:transfer_item(item, box3)
+				soundtrack.actor_gather_stuff2()
+			elseif distance_between(box4, db.actor) < 1.7 then
+				db.actor:transfer_item(item, box4)
+				soundtrack.actor_gather_stuff2()
+			elseif distance_between(box5, db.actor) < 1.7 then
+				db.actor:transfer_item(item, box5)
+				soundtrack.actor_gather_stuff2()
+			end
+			
+		end
+	end
+	db.actor:inventory_for_each(transfer_object_item)
+end
+
+
+function put_all_upgrades_to_box2()				-- для лабы;
+local box = get_story_object("lonl_house_invbox_5")
+
+	local function transfer_object_item(item)
+		if (system_ini():line_exist(item:section(), "lab_item") and system_ini():r_bool(item:section(), "lab_item")) then
+			
+			if distance_between(box, db.actor) < 1.7 then
+				db.actor:transfer_item(item, box)
+				soundtrack.actor_gather_stuff2()
+			end		
+		end
+	end
+	db.actor:inventory_for_each(transfer_object_item)
+end
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+function have_scientific_outfit()
+    return db.actor:object("scientific_outfit") ~= nil
+end
+
+function have_af_treasure()
+    return db.actor:object("af_treasure") ~= nil
+end
+
+function have_af_electra_moonlight()
+    return db.actor:object("af_electra_moonlight") ~= nil
+end
+
+function have_drug_psy_blockade()
+    return db.actor:object("drug_psy_blockade") ~= nil
+end
+
+
+function scientist_karlik_reward(first_speaker, second_speaker)
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "specops_outfit")
+	delete_karlik_house_zombies()
+end
+
+
+
+function talk_to_karlik()
+local karlik = get_story_object("karlik_friend")
+if karlik ~= nil and karlik:alive() and karlik:position():distance_to(db.actor:position()) < 5 then
+	local pos = karlik:position()
+	alife():create("karlik_npc", vector():set(pos.x+1, pos.y, pos.z), karlik:level_vertex_id(), karlik:game_vertex_id())
+	start_real_timer(1, "mod_functions.use_karlik_npc")
+	db.actor:give_info_portion("karlik_talk")
+	disable_info("karlik_getlost")
+	disable_info("karlik_stay")
+	soundtrack.karlik_command1()
+end
+end
+
+function use_karlik_npc()
+local npc = get_story_object("karlik_npc")
+	if npc ~= nil then
+		db.actor:run_talk_dialog(npc, actor)
+	end
+end
+
+
+
+function karlik_habar_give(first_speaker, second_speaker)
+if has_alife_info("karlik_bandage") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bandage")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_medkit") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "medkit")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_ammo1") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ammo_5.45x39_ap")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_ammo2") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "grenade_f1")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_part1") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "sayga_part_4")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_part2") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "vintorez_part1")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_part3") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "trs_part4")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_part4") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "ak_part4")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_food") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "bread")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_caritem1") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "car_item_wd40")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_meditem1") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "chem_item_liquor")
+	karlik_info_disable()
+end
+if has_alife_info("karlik_meditem2") then
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "chem_item_gematogen")
+	karlik_info_disable()
+end
+end
+
+
+function karlik_habar_random_info()
+rnd = math.random(1, 30)
+if rnd == 1 then 
+db.actor:give_info_portion("karlik_bandage")
+end
+if rnd == 2 then 
+db.actor:give_info_portion("karlik_medkit")
+end
+if rnd == 3 then 
+db.actor:give_info_portion("karlik_ammo1")
+end
+if rnd == 4 then 
+db.actor:give_info_portion("karlik_ammo2")
+end
+if rnd == 5 then 
+db.actor:give_info_portion("karlik_part1")
+end
+if rnd == 6 then 
+db.actor:give_info_portion("karlik_part2")
+end
+if rnd == 7 then 
+db.actor:give_info_portion("karlik_part3")
+end
+if rnd == 8 then 
+db.actor:give_info_portion("karlik_part4")
+end
+if rnd == 9 then 
+db.actor:give_info_portion("karlik_food")
+end
+if rnd == 10 then 
+db.actor:give_info_portion("karlik_caritem1")
+end
+if rnd == 11 then 
+db.actor:give_info_portion("karlik_meditem1")
+end
+if rnd == 12 then 
+db.actor:give_info_portion("karlik_meditem2")
+end
+if rnd == 13 then 
+
+end
+if rnd == 14 then 
+
+end
+if rnd == 15 then 
+
+end
+if rnd == 16 then 
+
+end
+if rnd == 17 then 
+
+end
+if rnd == 18 then 
+
+end
+if rnd == 19 then 
+
+end
+if rnd == 20 then 
+
+end
+if rnd == 21 then 
+
+end
+if rnd == 22 then 
+
+end
+if rnd == 23 then 
+
+end
+if rnd == 24 then 
+
+end
+if rnd == 25 then 
+
+end
+if rnd == 26 then 
+
+end
+if rnd == 27 then 
+
+end
+if rnd == 28 then 
+
+end
+if rnd == 29 then 
+
+end
+if rnd == 30 then 
+
+end
+end
+
+
+function karlik_info_disable()
+disable_info("karlik_bandage")
+disable_info("karlik_medkit")
+disable_info("karlik_ammo1")
+disable_info("karlik_ammo2")
+disable_info("karlik_part1")
+disable_info("karlik_part2")
+disable_info("karlik_part3")
+disable_info("karlik_part4")
+disable_info("karlik_food")
+disable_info("karlik_caritem1")
+disable_info("karlik_meditem1")
+disable_info("karlik_meditem2")
+end
+
+
+
+function delete_karlik_house_zombies()
+delete_karlik_house_zombie1()
+delete_karlik_house_zombie2()
+delete_karlik_house_zombie3()
+delete_karlik_house_karlik()
+end
+
+
+function delete_karlik_house_zombie1()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^karlik_house_zomb1") then
+	sim:release(sobj,true)
+	return
+	end
+end
+end
+
+function delete_karlik_house_zombie2()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^karlik_house_zomb2") then
+	sim:release(sobj,true)
+	return
+	end
+end
+end
+
+function delete_karlik_house_zombie3()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^karlik_house_zomb3") then
+	sim:release(sobj,true)
+	return
+	end
+end
+end
+
+function delete_karlik_house_karlik()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^script_karlik3") then
+	sim:release(sobj,true)
+	return
+	end
+end
+end
+
+
+function has_vodka()
+    return db.actor:object("vodka") ~= nil
+end
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+function mg_start_spawns()
+xr_effects.mg_boxes_random_loot()
+
+end
+
+
+
+function have_medkit()
+    return db.actor:object("medkit") ~= nil
+end
+
+function have_medkit_army()
+    return db.actor:object("medkit_army") ~= nil
+end
+
+function have_medkit_scient()
+    return db.actor:object("medkit_scientic") ~= nil
+end
+
+
+function medkit_out(first_speaker, second_speaker)
+	dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "medkit")
+end
+
+function army_medkit_out(first_speaker, second_speaker)
+	dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "medkit_army")
+end
+
+function scient_medkit_out(first_speaker, second_speaker)
+	dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "medkit_scientic")
+end
+
+
+
+function repair_both_actor_weapons()
+local gun1 = db.actor:item_in_slot(2)
+local gun2 = db.actor:item_in_slot(3)
+	if gun1 then
+		gun1:set_condition(1.0)
+	end
+	if gun2 then
+		gun2:set_condition(1.0)
+	end
+end
+
+
+
+function mg_companion1_note_tip()
+news_manager.send_tip(db.actor, "mg_companion1_note_tip", nil, "stalker", 14000, nil)
+end
+
+function mg_legend_npc_spawn_tip()
+news_manager.send_tip(db.actor, "mg_legend_npc_spawn_tip", nil, "stalker", 14000, nil)
+end
+
+
+
+function del_mg_courier()
+local sim = alife()
+for i=1,65534 do
+local sobj = sim:object(i)
+	if sobj and sobj:name():find("^mg_courier") then
+	sim:release(sobj,true)
+	return
+	end
+end
+end
+
+
+function give_scientific_in(first_speaker, second_speaker)
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "scientific_outfit")
+end
+
+
+
+function spawn_lw_scientist_chair()
+--mod_functions.script_spawn("lw_scientist_chair", "derevnya", vector():set(287.42807006836, 20.101028442383, -189.01161193848) )
+xr_effects.spawn_object(actor, nil, {"lw_scientist_chair","lw_scientist_chair_point", "0","180"})
+end
+
+
+function has_maroder_random_pda()
+    return db.actor:object("maroder_random_pda") ~= nil
+end
+
+function maroder_random_pda_out(first_speaker, second_speaker)
+	dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "maroder_random_pda")
+end
+
+function spawn_maroder_random_pda_shron()
+rnd = math.random(1, 20)
+if rnd == 1 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(454.60610961914, 44.981327056885, -406.4970703125) )
+end
+if rnd == 2 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-0.012121308594942, 11.69731426239, -35.494701385498) )
+end
+if rnd == 3 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-49.890838623047, 10.048898696899, -85.743858337402) )
+end
+if rnd == 4 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-370.87982177734, 16.128089904785, -42.418796539307) )
+end
+if rnd == 5 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-339.41500854492, 15.077389717102, -203.37980651855) )
+end
+if rnd == 6 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-111.73442077637, 23.21181678772, -373.05001831055) )
+end
+if rnd == 7 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-236.15071105957, 9.5344362258911, 249.82229614258) )
+end
+if rnd == 8 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-330.75830078125, 12.504306793213, 286.0700378418) )
+end
+if rnd == 9 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-486.04852294922, 7.0937104225159, 520.58819580078) )
+end
+if rnd == 10 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-362.17349243164, 7.7216100692749, 614.83801269531) )
+end
+if rnd == 11 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-378.7829284668, 4.4404125213623, 571.16369628906) )
+end
+if rnd == 12 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-536.76867675781, 44.407821655273, -335.0263671875) )
+end
+if rnd == 13 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(197.51895141602, 21.622428894043, 102.71577453613) )
+end
+if rnd == 14 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(357.70919799805, 16.204879760742, 300.87689208984) )
+end
+if rnd == 15 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(255.78833007813, 13.931854248047, 649.60955810547) )
+end
+if rnd == 16 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(283.74221801758, 24.137838363647, 713.98883056641) )
+end
+if rnd == 17 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(35.887874603271, 23.270137786865, 322.26727294922) )
+end
+if rnd == 18 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(67.164367675781, 16.431684494019, 228.67538452148) )
+end
+if rnd == 19 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-368.04937744141, 14.334921836853, 43.272666931152) )
+end
+if rnd == 20 then 
+mod_functions.script_spawn("random_pda_shron", "derevnya", vector():set(-457.32745361328, 20.044689178467, -27.92226600647) )
+end
+end
+
+
+
+
+function clear_all_lw_smarts()
+--disable_info("global_respawn")
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart1"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart2"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart3"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart4"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart5"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart6"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart7"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart8"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart9"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart10"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart11"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart12"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart13"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart14"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart15"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart16"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart17"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart18"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart19"})
+xr_effects.clear_smart_terrain(nil, nil, {"lw_mobs_smart20"})
+end
+
+
+
+
+function mark_helicrash_rnd_artefact()
+   local obj = get_story_object("helicrash_rnd_artefact")
+   local obj_id = obj:id()
+   if obj_id then
+   text = "Артефакт"
+	level.map_add_object_spot_ser(obj_id,"alife_presentation_squad_neutral",text)
+   end
+end
+
+

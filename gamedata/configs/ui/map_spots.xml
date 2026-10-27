@@ -4,6 +4,256 @@
 #include "ui\map_spots_relations.xml"
 #include "ui\map_spots_complex.xml"
 
+		
+		<mg_airdrop_mark>
+                <level_map spot="mg_airdrop_mark_spot"  pointer="quest_pointer"/>
+				<mini_map  spot="mg_airdrop_mark_spot_mini"/>
+        </mg_airdrop_mark>
+        <mg_airdrop_mark_spot  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="858" y="817" width="20" height="20">ui\ui_common</texture>
+        </mg_airdrop_mark_spot>
+		<mg_airdrop_mark_spot_mini width="12" height="12" alignment="c" stretch="1">
+                <texture x="858" y="817" width="20" height="20">ui\ui_common</texture>
+        </mg_airdrop_mark_spot_mini>
+		
+
+		<mg_npc_killer_mark>
+                <level_map spot="mg_npc_killer_mark_spot"  pointer="quest_pointer"/>
+        </mg_npc_killer_mark>
+        <mg_npc_killer_mark_spot  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="858" y="955" width="20" height="20">ui\ui_common</texture>
+        </mg_npc_killer_mark_spot>
+		
+		<mg_npc_bomber_mark>
+                <level_map spot="mg_npc_bomber_mark_spot"  pointer="quest_pointer"/>
+        </mg_npc_bomber_mark>
+        <mg_npc_bomber_mark_spot  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="858" y="998" width="20" height="20">ui\ui_common</texture>
+        </mg_npc_bomber_mark_spot>
+		
+		<mg_npc_shooter_mark>
+                <level_map spot="mg_npc_shooter_mark_spot"  pointer="quest_pointer"/>
+        </mg_npc_shooter_mark>
+        <mg_npc_shooter_mark_spot  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="858" y="915" width="20" height="20">ui\ui_common</texture>
+        </mg_npc_shooter_mark_spot>
+		
+		<mg_mob_actor_killer_mark>
+                <level_map spot="mg_mob_actor_killer_mark_spot"  pointer="quest_pointer"/>
+        </mg_mob_actor_killer_mark>
+        <mg_mob_actor_killer_mark_spot  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="859" y="937" width="20" height="20">ui\ui_common</texture>
+        </mg_mob_actor_killer_mark_spot>
+		
+		<mg_npc_tank_mark>
+                <level_map spot="mg_npc_tank_mark_spot"  pointer="quest_pointer"/>
+        </mg_npc_tank_mark>
+        <mg_npc_tank_mark_spot  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="859" y="897" width="20" height="20">ui\ui_common</texture>
+        </mg_npc_tank_mark_spot>
+		
+		<mg_npc_companion_mark>
+                <level_map spot="mg_npc_companion_mark_spot"  pointer="quest_pointer"/>
+        </mg_npc_companion_mark>
+        <mg_npc_companion_mark_spot  width="10" height="10" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="720" y="909" width="30" height="30">ui\ui_common</texture>
+        </mg_npc_companion_mark_spot>
+		
+		<mg_car_mark>
+                <level_map spot="mg_car_mark_spot"  pointer="quest_pointer"/>
+        </mg_car_mark>
+        <mg_car_mark_spot  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="460" y="971" width="20" height="20">ui\ui_common</texture>
+        </mg_car_mark_spot>
+		
+		<mg_npc_scav_mark>
+                <level_map spot="mg_npc_scav_mark_spot"  pointer="quest_pointer"/>
+        </mg_npc_scav_mark>
+        <mg_npc_scav_mark_spot  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="859" y="977" width="20" height="20">ui\ui_common</texture>
+        </mg_npc_scav_mark_spot>
+
+		
+		
+		
+		<mg_heli_mark>
+                <level_map spot="mg_heli_mark_spot"  pointer="quest_pointer"/>
+        </mg_heli_mark>
+        <mg_heli_mark_spot  width="12" height="12" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="671" y="793" width="23" height="23">ui\ui_common</texture>
+        </mg_heli_mark_spot>
+
+
+
+		<mg_deathzone_mark1a>
+                <level_map spot="mg_deathzone_mark1a_spot"/>
+        </mg_deathzone_mark1a>
+        <mg_deathzone_mark1a_spot width="230" height="230" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark1a_spot>
+		
+		<mg_deathzone_mark2a>
+                <level_map spot="mg_deathzone_mark2a_spot"/>
+        </mg_deathzone_mark2a>
+        <mg_deathzone_mark2a_spot width="208" height="208" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark2a_spot>
+		
+		<mg_deathzone_mark3a>
+                <level_map spot="mg_deathzone_mark3a_spot"/>
+        </mg_deathzone_mark3a>
+        <mg_deathzone_mark3a_spot width="186" height="186" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark3a_spot>
+		
+		<mg_deathzone_mark4a>
+                <level_map spot="mg_deathzone_mark4a_spot"/>
+        </mg_deathzone_mark4a>
+        <mg_deathzone_mark4a_spot width="164" height="164" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark4a_spot>
+		
+		<mg_deathzone_mark5a>
+                <level_map spot="mg_deathzone_mark5a_spot"/>
+        </mg_deathzone_mark5a>
+        <mg_deathzone_mark5a_spot width="142" height="142" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark5a_spot>
+		
+		<mg_deathzone_mark6a>
+                <level_map spot="mg_deathzone_mark6a_spot"/>
+        </mg_deathzone_mark6a>
+        <mg_deathzone_mark6a_spot width="120" height="120" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark6a_spot>
+		
+		<mg_deathzone_mark7a>
+                <level_map spot="mg_deathzone_mark7a_spot"/>
+        </mg_deathzone_mark7a>
+        <mg_deathzone_mark7a_spot width="88" height="88" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark7a_spot>
+		
+		<mg_deathzone_mark8a>
+                <level_map spot="mg_deathzone_mark8a_spot"/>
+        </mg_deathzone_mark8a>
+        <mg_deathzone_mark8a_spot width="46" height="46" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark8a_spot>
+		
+		<mg_deathzone_mark9a>
+                <level_map spot="mg_deathzone_mark9a_spot"/>
+        </mg_deathzone_mark9a>
+        <mg_deathzone_mark9a_spot width="26" height="26" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1a</texture>
+        </mg_deathzone_mark9a_spot>
+		
+		
+		
+		<mg_deathzone_mark1b>
+                <level_map spot="mg_deathzone_mark1b_spot"/>
+        </mg_deathzone_mark1b>
+        <mg_deathzone_mark1b_spot width="230" height="230" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark1b_spot>
+		
+		<mg_deathzone_mark2b>
+                <level_map spot="mg_deathzone_mark2b_spot"/>
+        </mg_deathzone_mark2b>
+        <mg_deathzone_mark2b_spot width="208" height="208" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark2b_spot>
+		
+		<mg_deathzone_mark3b>
+                <level_map spot="mg_deathzone_mark3b_spot"/>
+        </mg_deathzone_mark3b>
+        <mg_deathzone_mark3b_spot width="186" height="186" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark3b_spot>
+		
+		<mg_deathzone_mark4b>
+                <level_map spot="mg_deathzone_mark4b_spot"/>
+        </mg_deathzone_mark4b>
+        <mg_deathzone_mark4b_spot width="164" height="164" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark4b_spot>
+		
+		<mg_deathzone_mark5b>
+                <level_map spot="mg_deathzone_mark5b_spot"/>
+        </mg_deathzone_mark5b>
+        <mg_deathzone_mark5b_spot width="142" height="142" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark5b_spot>
+		
+		<mg_deathzone_mark6b>
+                <level_map spot="mg_deathzone_mark6b_spot"/>
+        </mg_deathzone_mark6b>
+        <mg_deathzone_mark6b_spot width="120" height="120" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark6b_spot>
+		
+		<mg_deathzone_mark7b>
+                <level_map spot="mg_deathzone_mark7b_spot"/>
+        </mg_deathzone_mark7b>
+        <mg_deathzone_mark7b_spot width="88" height="88" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark7b_spot>
+		
+		<mg_deathzone_mark8b>
+                <level_map spot="mg_deathzone_mark8b_spot"/>
+        </mg_deathzone_mark8b>
+        <mg_deathzone_mark8b_spot width="46" height="46" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark8b_spot>
+		
+		<mg_deathzone_mark9b>
+                <level_map spot="mg_deathzone_mark9b_spot"/>
+        </mg_deathzone_mark9b>
+        <mg_deathzone_mark9b_spot width="26" height="26" stretch="1" alignment="c" location_level="-3" scale="1" scale_min="1" scale_max="6">
+                <texture>ui_inGame2_PDA_icon_location1b</texture>
+        </mg_deathzone_mark9b_spot>
+		
+		
+
+
+		
+
+		
+		
+
+        <personal_dog_mark>
+                <level_map spot="personal_dog_mark_spot"                pointer="quest_pointer"/>
+				<mini_map  spot="personal_dog_mark_spot_mini"/>
+        </personal_dog_mark>
+        <personal_dog_mark_spot  width="10" height="10" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="720" y="967" width="27" height="27">ui\ui_common</texture>
+        </personal_dog_mark_spot>
+		<personal_dog_mark_spot_mini  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="720" y="967" width="27" height="27">ui\ui_common</texture>
+        </personal_dog_mark_spot_mini>
+		
+		<karlik_friend_mark>
+                <level_map spot="karlik_friend_mark_spot"                pointer="quest_pointer"/>
+				<mini_map  spot="karlik_friend_mark_spot_mini"/>
+        </karlik_friend_mark>
+        <karlik_friend_mark_spot  width="10" height="10" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="527" y="874" width="27" height="27">ui\ui_common</texture>
+        </karlik_friend_mark_spot>
+		<karlik_friend_mark_spot_mini  width="11" height="11" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="527" y="874" width="27" height="27">ui\ui_common</texture>
+        </karlik_friend_mark_spot_mini>
+		
+
+        <alife_presentation_smart_target>
+                <level_map spot="alife_presentation_smart_target_spot"                pointer="quest_pointer"/>
+        </alife_presentation_smart_target>
+        <alife_presentation_smart_target_spot  width="15" height="15" alignment="c" scale="1" scale_min="1" scale_max="3" stretch = "1">
+                <texture x="493" y="936" width="32" height="32">ui\ui_common</texture>
+        </alife_presentation_smart_target_spot>
+
+
+
+
         <quest_pointer width="11" height="24" heading="1" alignment="c">
                 <texture a="255" r="255" g="255" b="255">ui_hud_map_arrow</texture>
         </quest_pointer>
@@ -174,6 +424,18 @@
         <treasure_spot_mini width="17" height="17" alignment="c" stretch="1">
                 <texture>ui_inGame2_PDA_icon_secret</texture>
         </treasure_spot_mini>
+		
+		
+		<treasure2 hint="st_ui_pda_secret">
+                <level_map spot="treasure_spot2" pointer="quest_pointer"/>
+                <mini_map  spot="treasure_spot_mini2"/>
+        </treasure2>
+        <treasure_spot2 width="20" height="20" alignment="c" stretch="1">
+                <texture x="719" y="794" width="30" height="30">ui\ui_common</texture>
+        </treasure_spot2>
+        <treasure_spot_mini2 width="12" height="12" alignment="c" stretch="1">
+                <texture x="719" y="794" width="30" height="30">ui\ui_common</texture>
+        </treasure_spot_mini2>
 
 
         <alife_combat_fight>

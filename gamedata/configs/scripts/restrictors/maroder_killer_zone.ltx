@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+achivement_2_info} sr_idle@2 %=spawn_maroder_killer%
+
+
+; Обрабатываем респавн маньяков с ножами:
+[sr_idle@2]
+on_info = {+maroder_killer_dead} sr_idle@3
+
+[sr_idle@3]
+on_info = {+global_respawn} sr_idle@4 %-maroder_killer_dead =delete_maroder_killers%
+
+[sr_idle@4]
+on_game_timer = 1|sr_idle@2 %=spawn_maroder_killer%
+
+
+[sr_idle@nil]

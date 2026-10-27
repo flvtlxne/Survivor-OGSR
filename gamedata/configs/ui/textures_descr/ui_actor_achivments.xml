@@ -1,5 +1,16 @@
 <w>
     <file name="ui\ui_actor_achivments">
+
+	    <texture id="lw_achiev_treasures_icon" x="397" y="0" width="85" height="50" />
+	    <texture id="lw_achiev_maroders_icon" x="395" y="59" width="85" height="50" />
+	    <texture id="lw_achiev_mutants_icon" x="395" y="123" width="85" height="50" />
+	    <texture id="lw_achiev_weapons_icon" x="395" y="188" width="85" height="50" />
+	    <texture id="lw_achiev_tasks_icon" x="395" y="254" width="85" height="50" />
+	    <texture id="lw_achiev_noob_icon" x="395" y="319" width="85" height="50" />
+	    <texture id="lw_achiev_alco_icon" x="392" y="385" width="85" height="50" />
+	    <texture id="lw_achiev_knife_icon" x="391" y="452" width="85" height="50" />
+
+
 	    <texture id="ui_inGame2_Drug_stalkerov" x="0" y="0" width="121" height="121" />
 	    <texture id="ui_inGame2_Torgovets_informatsiey" x="0" y="121" width="121" height="121" />
 	    <texture id="ui_inGame2_Otmecheniy_zonoy" x="0" y="242" width="121" height="121" />

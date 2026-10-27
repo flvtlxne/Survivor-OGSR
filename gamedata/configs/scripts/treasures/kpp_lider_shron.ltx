@@ -1,0 +1,7 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=give_item(mg_wolf_map:actor) =send_tip(mg_wolf_map_finded_tip:default) +mg_wolf_map_info =actor_finds_goodloot_snd =destroy_object%

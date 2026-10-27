@@ -1,0 +1,22 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+nonscript_usable = false
+on_info = {=master_difficulty +master_game -mg_heli_evac_sucess} ph_idle@2 %=add_self_spot(treasure:random_treasure_mark)%
+on_info2 = {!master_difficulty -master_game} ph_idle@3
+
+; В режиме Мастера:
+[ph_idle@2]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = %=remowe_self_spot(treasure:random_treasure_mark)%
+on_info = {+mg_heli_evac_sucess} ph_idle@1 %=remowe_self_spot(treasure:random_treasure_mark)%
+
+; В сюжетном режиме:
+[ph_idle@3]
+nonscript_usable = true
+tips = st_search_treasure
+
+
+ 

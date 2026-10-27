@@ -1,0 +1,88 @@
+[smart_terrains]
+none = true
+
+[dont_spawn_loot]
+
+[logic]
+active = walker@1
+;on_hit = hit
+on_death = death
+
+
+[walker@1]
+path_walk = mg_companion1_walk1
+path_look = mg_companion1_look1
+def_state_moving1 = walk
+invulnerable = true
+can_use_knife = false
+meet = meet@2
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_companion1_saved} companion@1 %=add_self_spot(mg_npc_companion_mark:mg_npc_companion_mark_text)%
+on_info2 = {!actor_in_camp_zone !actor_in_zone(kpp_surge_hide_zone)} walker@2 %=mg_companion1_tip1 =give_task(mg_task_companion1)%
+
+[walker@2]
+path_walk = mg_companion1_walk1
+path_look = mg_companion1_look1
+def_state_moving1 = walk
+invulnerable = true
+can_use_knife = false
+meet = meet@2
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_companion1_saved} companion@1 %=add_self_spot(mg_npc_companion_mark:mg_npc_companion_mark_text)%
+
+
+; На услужении у ГГ:
+[companion@1]
+;meet = no_meet
+meet = meet@2
+invulnerable = true
+combat_ignore_cond = {=captured_stalker_ignore_precond} true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = true
+on_info = {=health_le(0.25)} remark@wounded %=mg_companion1_tip2%
+
+
+; Подранили:
+[remark@wounded]
+anim = wounded
+target = story | heli_evac_zone11
+combat_ignore_cond = true
+meet = no_meet
+can_use_knife = false
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+
+
+
+
+
+
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+[hit]
+on_info = companion@2
+
+[death]
+on_info = %=remowe_self_spot(mg_npc_companion_mark:mg_npc_companion_mark_text) =mg_companion1_tip3 +mg_companion1_dead%
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+[smart_terrains]
+none = true
+
+[dont_spawn_loot]
+
+[logic]
+active = remark@wounded1
+;on_hit = hit
+;on_death = death
+
+
+; Сидим, ждём:
+[remark@wounded1]
+anim = wounded
+;anim = wounded_heavy
+target = story | heli_evac_zone11
+combat_ignore_cond = true
+meet = meet@2
+can_use_knife = false
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_game_timer = 1|remark@wounded2 %=add_self_spot(mg_npc_companion_mark:mg_npc_legend_mark_text)%
+
+[remark@wounded2]
+anim = wounded
+;anim = wounded_heavy
+target = story | heli_evac_zone11
+combat_ignore_cond = true
+meet = meet@2
+can_use_knife = false
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {+mg_legend_npc_saved} companion@1
+
+
+; На услужении у ГГ:
+[companion@1]
+;meet = no_meet
+meet = meet@2
+invulnerable = true
+combat_ignore_cond = {=captured_stalker_ignore_precond} true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = true
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+;on_info = {=health_le(0.25)} remark@wounded %=mg_companion1_tip2%
+
+
+
+
+
+
+
+
+; диалог обычный(без торговли):
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+[hit]
+on_info = companion@2
+
+[death]
+on_info = %=remowe_self_spot(mg_npc_companion_mark:mg_npc_legend_mark_text) =mg_companion1_tip3 +mg_companion1_dead%
+
+
+
+
+
+

@@ -1,6 +1,12 @@
 <w>
     <file name="ui\ui_actor_portrets">
 
+	<texture id="ui_masterskaya" x="739" y="265" width="123" height="87" />
+	<texture id="ui_lw_mad_npc_icon" x="738" y="435" width="123" height="87" />
+	<texture id="ui_kalancha_icon" x="738" y="347" width="123" height="87" />
+
+
+
 	<texture id="ui_inGame2_Sich" x="0" y="0" width="123" height="87" />
 	<texture id="ui_inGame2_Noy" x="0" y="87" width="123" height="87" />
 	<texture id="ui_inGame2_Sultan" x="0" y="174" width="123" height="87" />

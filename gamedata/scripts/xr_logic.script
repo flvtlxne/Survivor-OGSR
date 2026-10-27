@@ -237,6 +237,7 @@ end
 function disable_generic_schemes(npc, stype)
 	if stype == modules.stype_stalker then
 		xr_combat.disable_scheme(npc, "combat")
+		if rx_ai then rx_ai.disable_schemes(npc) end
 		xr_hit.disable_scheme(npc, "hit")
 		xr_meet.disable_scheme(npc, "actor_dialogs")
 		--'xr_heli_hunter.disable_scheme(npc, "heli_hunter")
@@ -306,6 +307,7 @@ end
 		xr_combat_ignore.set_combat_ignore_checker(npc, ini, "combat_ignore")
 		xr_reach_task.set_reach_task(npc, ini, "reach_task")
 
+		if rx_ai then rx_ai.enable_schemes(ini,npc,section) end
 	elseif stype == modules.stype_mobile then
 		local combat_section = utils.cfg_get_string(ini, section, "on_combat", npc, false, "")
 		if combat_section then
@@ -453,8 +455,10 @@ function reset_generic_schemes_on_scheme_switch(npc, scheme, section)
 		stalker_generic.reset_group(npc, st.ini, section)
 		stalker_generic.take_items_enabled(npc, scheme, st, section)
 		stalker_generic.can_select_weapon(npc, scheme, st, section)
+		stalker_generic.can_throw_grenades(npc, scheme, st, section)
 		restrictor_manager.get_restrictor_manager(npc):reset_restrictions(st, section)
 		xr_hear.reset_hear_callback(st, section)
+		if rx_ai then rx_ai.reset_schemes(npc, scheme, st, section) end
 
 	elseif st.stype == modules.stype_mobile then
 		--printf("_bp: disabling talk")
@@ -1147,7 +1151,7 @@ function cfg_get_overrides(ini, section, npc)
 	local st = db.storage[npc:id()]
 	if ini:line_exist(st.section_logic, "post_combat_time") then
 		l.min_post_combat_time,l.max_post_combat_time = utils.r_2nums( ini, st.section_logic, "post_combat_time", 10, 15 )
-	else
+	elseif ini:line_exist(section, "post_combat_time") then
 		l.min_post_combat_time,l.max_post_combat_time = utils.r_2nums( ini, section, "post_combat_time", 10, 15 )
 	end
 	if ini:line_exist(section, "on_offline") then
@@ -1345,6 +1349,19 @@ function save_obj(obj, packet)
 	set_save_marker(packet, "save", false, "object"..obj:name())
 	local npc_id = obj:id()
 	local st = db.storage[npc_id]
+	
+	  --// сообщение по побившейся логике физобъектов и вертолетов
+  local s_ini = obj:spawn_ini()
+  if not st.ini_filename and s_ini and logic_not_empty(obj, s_ini) then
+	if obj:clsid() == clsid.script_phys or obj:clsid() == clsid.script_heli or obj:clsid() == clsid.script_restr --or obj:clsid() == clsid.script_stalker
+--		or ((IAmAStalker[obj:clsid()] or IAmAMonster[obj:clsid()]) and obj:alive())
+	then
+		news_manager.send_tip(db.actor, "У объекта "..obj:name().." повисла логика.", nil, "default", 15000, nil)
+		-- log( "Завис логики у объекта ".. obj:name() )			
+		 printf( "Завис логики у объекта ".. obj:name() )			
+	end
+  end	
+   --// 
 
 	--printf("save_obj: ini_filename='%s'", utils.to_str(st.ini_filename))
 	--printf("save_obj: section_logic='%s'", utils.to_str(st.section_logic))
@@ -1509,3 +1526,10 @@ function initialize_obj(obj, st, loaded, actor, stype)
 --		end
 	end
 end
+
+function logic_not_empty(npc, ini)
+	return ini:section_exist("logic") and (
+		ini:line_exist("logic", "cfg") or (ini:line_exist("logic", "active") and ini:r_string("logic", "active") ~= "nil")
+	)
+end	
+

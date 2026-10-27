@@ -1,0 +1,8 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+on_game_timer = 45|ph_idle@2 %=play_sound(actor_play_guitar1)%
+
+[ph_idle@2]
+on_info = {-lonl_house_guitar_rest} %=stop_sound(actor_play_guitar1) =destroy_object%

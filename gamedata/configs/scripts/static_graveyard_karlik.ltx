@@ -1,0 +1,27 @@
+[logic]
+active = ph_button@1
+
+
+[ph_button@1]
+anim_blend = true
+anim = hit_aidl_4_long
+tooltip = static_bloodsucker_use
+on_info = {+stranger_talk1} %=destroy_object%
+on_info2 = {=master_difficulty} %=destroy_object%
+on_game_timer = 70|ph_button@2
+
+[ph_button@2]
+anim_blend = true
+anim = stand_look_around_0
+tooltip = static_bloodsucker_use
+on_info = {+stranger_talk1} %=destroy_object%
+on_game_timer = 70|ph_button@1
+
+
+
+
+
+[ph_idle@1]
+tips = static_bloodsucker_use
+;on_use = 
+ 

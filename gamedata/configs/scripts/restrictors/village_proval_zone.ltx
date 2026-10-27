@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {!actor_wears_scient_outfit =npc_in_actor_frustum =dist_to_actor_le(15)} %=village_proval_zone_think%
+on_actor_inside = {!actor_wears_scient_outfit} %=hit_obj(actor:bip01_spine:1.5:0)%, {=actor_wears_scient_outfit} %=hit_obj(actor:bip01_spine:0.005:0)%
+
+[sr_idle@2]

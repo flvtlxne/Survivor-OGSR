@@ -1,0 +1,20 @@
+[logic]
+active = ph_idle@1
+
+[ph_idle@1]
+tips      = lonl_house_scaner_use
+on_use = {+lonl_house_electricity -artefacts_spawn} ph_idle@2
+
+
+; Сканируем на арты:
+[ph_idle@2]
+on_game_timer = 20|ph_idle@3 %=artefact_scaner_work%
+
+[ph_idle@3]
+on_game_timer = 15|ph_idle@4 %=send_tip(artefact_scaner_tip1:default)%
+
+[ph_idle@4]
+on_info = {-artefacts_spawn} ph_idle@1
+
+
+ 

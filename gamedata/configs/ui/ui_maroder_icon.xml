@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <maroder_icon>
+
+	<table x="850" y="50" width="164" height="108" stretch="1">
+		<texture x="0" y="0" width="164" height="108">ui\maroder_icon1</texture>
+	</table>
+
+	<name x="250" y="95" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Мародёр</text>
+	</name>
+
+
+    </maroder_icon>
+
+

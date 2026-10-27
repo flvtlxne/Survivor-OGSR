@@ -1,0 +1,68 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+stranger_talk1} sr_idle@5
+on_timer = 10|sr_cutscene@start %=actor_start_action =spawn_helicrash_script_npc%
+
+[sr_cutscene@start]
+point = helicrash_body1_look
+look = helicrash_body1_walk
+cam_effector = scenario_cam\helicrash_startgame_fly
+on_signal = cameff_end | sr_idle@1_1 %=teleport_npc_by_story_id(village_roof_maroder:village_roof_maroder_pnt2) =enable_ui +game_start%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+[sr_idle@1_1]
+on_timer = 1|sr_idle@2 %=helicrash_survivals_think%
+
+[sr_idle@2]
+on_info = {+helicrash_pilot_talk} sr_idle@3 %=spawn_helicrash_mobs =give_task(lwtask_find_radio)%
+on_actor_dist_ge_nvis = 45|%=hit_obj(actor:bip01_spine:5.0:0)%
+
+[sr_idle@3]
+on_actor_dist_ge_nvis = 25|sr_idle@4 %=disable_ui =kill_npc(helicrash_body1) =run_postprocess(fade_in_out) =run_cam_effector(dream) =play_sound_by_story(actor:actor_moan) =forward_game_time(1) =actor_survival_logo_title1%
+
+[sr_idle@4]
+on_game_timer = 35|sr_cutscene@1 %=heal_actor%
+
+[sr_cutscene@1]
+point = lonl_house_bed_point1
+look = lonl_house_bed_point2
+cam_effector = scenario_cam\location_fly_script_cam1, scenario_cam\location_fly_script_cam2, scenario_cam\location_fly_script_cam3, scenario_cam\location_fly_script_cam4, scenario_cam\location_fly_script_cam5, scenario_cam\anom_mushrom_script_cam, scenario_cam\death_maroder_script_cam, scenario_cam\graveyard_startgame_fly, scenario_cam\sniper_tree_quest_fly1
+on_signal = cameff_end | sr_idle@5 %=run_postprocess(fade_in) =actor_teleport_to_lonl_house =turn_off_lonl_house_lamps%
+global_cameffect = true
+outdoor = true
+enable_ui_on_end = true
+
+
+; Удаляем лут при крит. ранении:
+[sr_idle@5]
+on_info = {+critical_health !actor_near_comp} sr_idle@6
+on_info2 = {+stranger_talk1 =gather_items_box_near} %=gather_items_box_static1 =gather_items_box_static2 =gather_items_box_static3%
+on_info3 = {+stranger_talk1 =gather_items_box2_near} %=gather_items_box_static4%
+
+[sr_idle@6]
+on_game_timer = 10|sr_idle@7 %=relocate_actor_inventory_to_box_without_outfits(location_box_utilizator)%
+
+[sr_idle@7]
+on_game_timer = 25|sr_idle@5 %-critical_health =clear_box(location_box_utilizator)%
+
+
+
+[sr_idle@nil]
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+tips      = locked_door_need_key_tip
+on_use = {=actor_has_item(village_seif1_key)} ph_idle@open %=play_sound(metal_small_open) +village_seif1_opened%
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+
+
+
+
+ 

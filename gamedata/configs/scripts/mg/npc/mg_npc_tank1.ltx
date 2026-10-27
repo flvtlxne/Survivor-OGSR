@@ -1,0 +1,86 @@
+[smart_terrains]
+none = true
+
+[dont_spawn_loot]
+
+[logic]
+active = walker@start
+on_death = death
+
+
+[walker@start]
+path_walk = mg_npc_tank1_walk1
+path_look = mg_npc_tank1_look1
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+combat_ignore_cond = true
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_info2 = {=actor_has_item(af_fire_mg)} walker@1 %=add_self_spot(mg_npc_tank_mark:mg_npc_tank_mark_text)%, {!actor_has_item(af_fire_mg)} walker@1
+
+
+[walker@1]
+path_walk = mg_npc_tank1_walk1
+path_look = mg_npc_tank1_look1
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_actor_dist_le_nvis = 40|%=mg_npc_tank_indicator%
+on_actor_dist_ge_nvis = 41|%=mg_npc_tank_indicator_off%
+on_signal       = arriwed|walker@2
+
+[walker@2]
+path_walk = mg_npc_tank1_walk2
+path_look = mg_npc_tank1_look2
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_actor_dist_le_nvis = 40|%=mg_npc_tank_indicator%
+on_actor_dist_ge_nvis = 41|%=mg_npc_tank_indicator_off%
+on_signal       = arriwed|walker@3
+
+[walker@3]
+path_walk = mg_npc_tank1_walk3
+path_look = mg_npc_tank1_look3
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_actor_dist_le_nvis = 40|%=mg_npc_tank_indicator%
+on_actor_dist_ge_nvis = 41|%=mg_npc_tank_indicator_off%
+on_signal       = arriwed|walker@4
+
+[walker@4]
+path_walk = mg_npc_tank1_walk4
+path_look = mg_npc_tank1_look4
+;invulnerable = true
+can_use_knife = false
+meet = no_meet
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info = {+mg_heli_evac_sucess} %=destroy_object%
+on_actor_dist_le_nvis = 40|%=mg_npc_tank_indicator%
+on_actor_dist_ge_nvis = 41|%=mg_npc_tank_indicator_off%
+on_signal       = arriwed|walker@1
+
+
+
+
+[death]
+on_info = %=mg_npc_tank_indicator_off =remowe_self_spot(mg_npc_tank_mark:mg_npc_tank_mark_text) =mg_npc_tank_spawn_in =mg_npc_tank_spawn_in =mg_npc_tank_spawn_in =mg_npc_tank_spawn_in =mg_npc_tank_spawn_in =mg_npc_tank_spawn_in =give_items(exo_outfit)%
+

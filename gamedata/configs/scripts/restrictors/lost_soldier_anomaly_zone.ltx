@@ -1,0 +1,18 @@
+[logic]
+active = sr_idle@0
+
+[sr_idle@0]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+lost_soldier_info4 +workshop_house_search} sr_particle
+
+[sr_particle]
+name = anomaly2\teleport_idle
+path = lost_soldier_end_pnt2
+mode = 2
+looped = false
+on_actor_inside = {+lost_sold_talk} sr_idle@2 %=run_postprocess(fade_in) =disable_ui%
+
+[sr_idle@2]
+on_game_timer = 15|sr_idle@nil %=lost_soldier_actor_teleport =enable_ui%
+
+[sr_idle@nil]

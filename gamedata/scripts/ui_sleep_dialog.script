@@ -153,6 +153,12 @@ function dream_callback2()
 	db.actor:give_info_portion("tutorial_sleep")
 	disable_info("actor_is_sleeping")
 	disable_info("sleep_active")
+	
+	-- SurvivalMod--
+	if has_alife_info("stranger_talk2") then
+		mod_functions.after_sleep_event()
+		mod_functions.reset_vodka_counter()
+	end
 end
 
 function sleep()

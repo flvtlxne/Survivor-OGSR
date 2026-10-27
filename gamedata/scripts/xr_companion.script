@@ -4,7 +4,8 @@ local min_distance = 1
 local keep_state_min_time = 1000 -- переключившись в состояние (бег, ходьба, спринт), не переключаться в другое N ms
 
 local dist_walk = 4 -- < dist_run
-local dist_run = 20
+local dist_run = 12
+local dist_sprint = 120
 -- otherwise - sprint
 
 local sound_wait = "weather,state"
@@ -47,7 +48,8 @@ function action_companion_activity:initialize()
 	self.object:set_desired_direction()
 	self.object:enable_talk()
 	self.assist_point = nil
-	self.last_state = "guard_na"
+	--self.last_state = "guard_na"
+	self.last_state = "wait"
 	state_mgr.set_state(self.object, self.last_state, nil, nil, nil, { animation = true })
 	self.keep_state_until = time_global()
 end
@@ -94,7 +96,8 @@ function action_companion_activity:beh_walk_simple()
 		-- (случай, когда игрок подошел слишком близко к ассистенту)
 		--self.dir_approaching = true
 
-		new_state = "threat"
+		--new_state = "threat"
+		new_state = "wait"
 		target = {look_object = get_story_object("actor")}
 	else
 		local t = time_global()
@@ -107,8 +110,11 @@ function action_companion_activity:beh_walk_simple()
 				target = {look_object = get_story_object("actor")}
 			elseif dist_to_assist_pt <= dist_run then
 				new_state = "rush"
+			elseif dist_to_assist_pt <= dist_sprint then
+				new_state = "sprint"
 			else
-				new_state = "assault"
+				--new_state = "assault"
+				new_state = "sprint"
 			end
 		end
 	end
@@ -125,7 +131,8 @@ end
 
 function action_companion_activity:beh_wait_simple()
 	local actor = db.actor
-	local new_state = "threat"
+	--local new_state = "threat"
+	local new_state = "wait"
 	if new_state ~= self.last_state then
 		state_mgr.set_state(self.object, new_state,
 			nil, nil, {look_object = get_story_object("actor")}, { animation = true })

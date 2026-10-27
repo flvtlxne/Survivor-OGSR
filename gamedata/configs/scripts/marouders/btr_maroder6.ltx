@@ -1,0 +1,48 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = remark@wounded1
+
+[remark@wounded1]
+anim = wounded_heavy
+target = path | lonl_house_pnt5_1_look, 0
+combat_ignore_cond = true
+meet = meet@2
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_info = {+razlom_wound_maroder_info} remark@wounded2
+
+[remark@wounded2]
+anim = wounded_heavy
+target = path | lonl_house_pnt5_1_look, 0
+combat_ignore_cond = true
+meet = no_meet
+invulnerable = false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+can_use_knife = false
+on_game_timer = 100|%=kill_npc(btr_maroder6)%
+
+
+[meet@2]
+abuse = false
+use = true
+trade_enable = false
+allow_break = true
+
+
+
+
+
+
+
+
+
+
+
+

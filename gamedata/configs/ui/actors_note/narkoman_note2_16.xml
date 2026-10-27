@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+ 
+
+    <narkoman_note2>
+
+	<table x="350" y="100" width="270" height="500" stretch="1">
+		<texture x="0" y="0" width="750" height="1020">ui\actors_note\actors_note_blank_squares</texture>
+	</table>
+
+	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Запись учёного 2</text>
+	</name>
+
+	<text1 x="380" y="140" width="240" height="300">
+		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">Я на месте и всё необходимое оборудование со мной. Глухомань жуткая, но чем не пожертвуешь ради науки? Зато происки соперников не помешают мне завершить свои ииследования! Теперь они переходят в фазу полевых испытаний. С точки зрения любого уважающего себя биохимика, состав X-222 не может проявить весь спектр свойств в лабораторных условиях. Завтра приступлю к проведению цепи реакций. Однако придётся обезопасить себя... Что-нибудь придумаю. Если получится испытать изобретённый мной реагент в условиях повышенной радиоактивности непосредственно на живом существе, то это будет большой удачей. Место для проведения опыта я уже присмотрел.</text>
+	</text1>
+
+
+
+
+	<btn_1 x="360" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> {{{ </text>
+	</btn_1>
+
+	<btn_2 x="460" y="560" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0"> }}} </text>
+	</btn_2>
+
+
+
+
+	<btn_exit x="570" y="560" width="25" height="25">
+	      	<texture_e>ui\button_invisible</texture_e>
+		<texture_t>ui\button_invisible</texture_t>
+		<texture_h>ui\button_invisible</texture_h>
+	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
+	</btn_exit>
+
+    </narkoman_note2>
+
+

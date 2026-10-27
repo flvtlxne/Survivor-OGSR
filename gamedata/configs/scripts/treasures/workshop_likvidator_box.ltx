@@ -1,0 +1,15 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+tips = workshop_likvidator_box_use
+on_info = {=master_difficulty} ph_idle@open
+on_info2 = {+likvidator_info2 +workshop_electricity +worksop_vintil_repared} ph_idle@open
+
+[ph_idle@open]
+nonscript_usable = true
+tips = st_search_treasure
+
+
+
+ 

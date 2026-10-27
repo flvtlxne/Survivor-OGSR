@@ -1,0 +1,17 @@
+;--------------------------------------
+; Rulix aka Bak
+; Настройки модуля rx_bandage
+;--------------------------------------
+
+[main]
+enabled = true			; схема вкючена
+medkit_health = 75		; использовать аптечку если здоровье меньше, %
+bandage_bleeding = 0.07		; использовать бинт, если кровотечение больше
+medkits = medkit,medkit_army,medkit_scientic	; аптечки или то чем можно лечиться
+bandages = bandage,drug_coagulant		; список бинтов, предметы, останавливающие кровотечение
+spawn_medkits = 0		;сек; время спавна аптечек, 0 - отключить спавн
+spawn_bandages = 20		;сек; время спавна бинтов, 0 - отключить спавн
+spawn_random = false		; спавнить случайный предмет или первый из списка?
+
+forbidden_npcs	= mechanical_npc1,sbu_comand_lider,maroder_killer1,maroder_killer2,maroder_killer3,maroder_killer4,maroder_courier1,maroder_courier2,maroder_courier3,maroder_courier4,btr_maroder7,marouder_lider3,lake_scenar_marouder_lider,willage_scenar_marouder_lider		;имена, профили НПС, для которых схема будет отключена (name,profile_name)
+forbidden_factions = zombied	; группировки, для которых схема будет отключена (community)

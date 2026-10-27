@@ -1,0 +1,97 @@
+--[[ ----------------------------------------------------------------------------------------------
+ File       : module_callbacks.script
+ Description: "Модуль скриптовых колбэков"
+ Copyright  : 2009-2010 ARS Team
+ Author     : Red75, sokol_jack & xStream, слямзил на свой лад Vampirnik77
+ Editors    : Vampirnik77
+ Last edit  : 15.07.2017 (by Vampirnik77)
+--]] ----------------------------------------------------------------------------------------------
+-- Всякие таблицы
+local item_take = {}
+local item_drop = {}
+local item_use = {}
+--Регистрируем колбэки
+-----------------------------------------------------------------------------------------------
+function RegTake(func)
+	if not ExistFieldTbl(item_take, func) then
+		table.insert(item_take, func)
+	end
+end
+
+function RegDrop(func)
+	if not ExistFieldTbl(item_drop, func) then
+		table.insert(item_drop, func)
+	end
+end
+
+function RegUse(func)
+	if not ExistFieldTbl(item_use, func) then
+		table.insert(item_use, func)
+	end
+end
+--Удаляем колбэки
+------------------------------------------------------------------------------------------------
+function UnRegTake(func)
+for index, fun in ipairs(item_take) do
+		if fun == func then
+			table.remove(item_take, index)
+		end
+	end
+end
+
+function UnRegDrop(func)
+	for index, fun in ipairs(item_drop) do
+		if fun == func then
+			table.remove(item_drop, index)
+		end
+	end
+end
+
+function UnRegUse(func)
+for index, fun in ipairs(item_use) do
+		if fun == func then
+			table.remove(item_use, index)
+		end
+	end
+end
+-------------------------------------------------------------------------------------------------
+-- колбек на дроп итема
+function OnItemDrop(obj)
+  for _, func in ipairs(item_drop) do
+   Get_CheckedFunc(func)(obj)
+  end
+end
+
+-- колбэк на взятие предмета актором
+function OnItemTake(obj)
+  for _, func in ipairs(item_take) do
+   Get_CheckedFunc(func)(obj)
+  end
+end
+
+-- колбек на юзанье итема
+function OnItemUse(obj)
+  for _, func in ipairs(item_use) do
+   Get_CheckedFunc(func)(obj)
+  end
+end
+--Тут сохраняем\грузим всякие таблицы
+--------------------------------------------------------------------------------------
+function SaveCallbacks()
+se_stor.set("item_take", item_take)
+
+se_stor.set("item_drop", item_drop)
+
+se_stor.set("item_use", item_use)
+end
+
+function LoadCallbacks()
+item_take = se_stor.get("item_take", {})
+se_stor.set("item_take", nil)
+
+item_drop = se_stor.get("item_drop", {})
+se_stor.set("item_drop", nil)
+
+item_use = se_stor.get("item_use", {})
+se_stor.set("item_use", nil)
+end

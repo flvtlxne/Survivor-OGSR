@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {=master_difficulty} sr_idle@nil
+on_info2 = {+personal_dog_note1_info} sr_particle@1
+
+[sr_particle@1]
+name = anomaly2\anomaly_shift
+path = village_blackhole_zone_point1
+mode = 2
+looped = false
+on_info = {+anomaly_maroder2_dead} sr_idle@nil
+
+[sr_idle@nil]
+
