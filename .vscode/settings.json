@@ -1,0 +1,19 @@
+{
+    "files.encoding": "windows1251",
+    "files.autoGuessEncoding": false,
+    "files.insertFinalNewline": false,
+    "files.trimTrailingWhitespace": false,
+    "files.trimFinalNewlines": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "files.associations": {
+        "*.script": "lua",
+        "*.ltx": "ini"
+    },
+    "Lua.runtime.version": "LuaJIT",
+    "Lua.runtime.fileEncoding": "ansi",
+    "Lua.diagnostics.disable": [
+        "undefined-global",
+        "lowercase-global"
+    ]
+}
