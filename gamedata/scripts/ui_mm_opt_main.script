@@ -9,7 +9,6 @@ function options_dialog:__init() super()
 end
 
 function options_dialog:__finalize()
-
 end
 
 function options_dialog:InitControls()
@@ -21,8 +20,6 @@ function options_dialog:InitControls()
 
 	xml:InitStatic				("background", self)
 	self.dialog					= xml:InitStatic("main_dialog:dialog", self)
-
---	xml:InitStatic				("main_dialog:cap_options", self.dialog)
 
 	self.dlg_video				= ui_mm_opt_video.opt_video()
 	self.dlg_video:InitControls	(0,0, xml, self)
@@ -47,13 +44,7 @@ function options_dialog:InitControls()
 	self.dlg_controls:Show		(false)
 	self.dialog:AttachChild		(self.dlg_controls)
 	xml:InitWindow				("tab_size", 0, self.dlg_controls)
---[[
-	self.dlg_con_cmd			= ui_mm_opt_con_cmd.opt_con_cmd()
-	self.dlg_con_cmd:InitControls(0,0, xml, self)
-	self.dlg_con_cmd:Show		(false)
-	self.dialog:AttachChild		(self.dlg_con_cmd)
-	xml:InitWindow				("tab_size", 0, self.dlg_con_cmd)
-]]
+
 	self.dlg_video_adv			= ui_mm_opt_video_adv.opt_video_adv()
 	self.dlg_video_adv:InitControls(0,0, xml, self)
 	self.dlg_video_adv:Show		(false)
@@ -69,19 +60,11 @@ function options_dialog:InitControls()
 	self.tab					= xml:InitTab("main_dialog:tab", self.dialog)
 	self:Register				(self.tab, "tab")
 
-
 	self.message_box			= CUIMessageBoxEx()
 	self:Register				(self.message_box, "mb")
 
 	self.b_restart_system_shown	= false
 	self.timer					= nil
-
-	self.cap_download			= xml:InitStatic		("download_static",self)
-	self.text_download			= xml:InitStatic		("download_text",self)
-	self.download_progress		= xml:InitProgressBar	("progress_download", self)
-	self.btn_cancel_download	= xml:Init3tButton		("btn_cancel_download", self)
-	self:Register				(self.btn_cancel_download, "btn_cancel_download")
-
 end
 
 function options_dialog:SetCurrentValues()
@@ -107,32 +90,6 @@ function options_dialog:SetCurrentValues()
 
 	opt:SetCurrentValues("key_binding")
 	opt:SaveBackupValues("key_binding")
-
-	self:UpdateDependControls()
-end
-
-function options_dialog:UpdateDependControls()
-	self.scroll_v:Clear()
-	local _current_id = self.combo_renderer:CurrentID()
-
-	for i,j in pairs(self.m_preconditions) do
-		if(j.func(_current_id)) then
-			self.scroll_v:AddWindow(j.control, true)
-			j.control:SetAutoDelete(false)
-		end
-	end
-
-	local max_texture_lod = 4
-	local min_texture_lod = 0
-
-	if _current_id ~= 0 then
-		if not is_enough_address_space_available()	then
-			min_texture_lod = 1
-		end
-	end
-
-	self.texture_lod_track:SetOptIBounds(min_texture_lod, max_texture_lod)
-	self:OnAOOptionChange()
 end
 
 function options_dialog:InitCallBacks()
@@ -145,21 +102,9 @@ function options_dialog:InitCallBacks()
 	self:AddCallback("combo_preset",		ui_events.LIST_ITEM_SELECT,	self.OnPresetChanged,		self)
 	self:AddCallback("btn_simply_graphic",	ui_events.BUTTON_CLICKED,	self.OnSimplyGraphic,		self)
 	self:AddCallback("btn_keyb_default",	ui_events.BUTTON_CLICKED,	self.OnBtnKeybDefault,		self)
-	self:AddCallback("btn_check_updates",	ui_events.BUTTON_CLICKED,	self.OnBtnCheckUpdates,		self)
-	self:AddCallback("combo_renderer",		ui_events.LIST_ITEM_SELECT,	self.UpdateDependControls,	self)
-	self:AddCallback("btn_cancel_download",	ui_events.BUTTON_CLICKED,	self.OnBtn_CancelDownload,	self)
-	self:AddCallback("tab_ao_opt",			ui_events.TAB_CHANGED,		self.OnAOOptionChange,		self)
 
 	self:AddCallback("mb",					ui_events.MESSAGE_BOX_YES_CLICKED, self.OnApplyChanges, self)
 	self:AddCallback("mb",					ui_events.MESSAGE_BOX_NO_CLICKED, self.OnDiscardChanges,self)
---	self:AddCallback("trb_ssample",			ui_events.BUTTON_CLICKED,	self.UpdateDependControls,	self)
---	self:AddCallback("cb_ssample",			ui_events.LIST_ITEM_SELECT,	self.UpdateDependControls,	self)
-
-end
-
-function options_dialog:OnBtnCheckUpdates()
-	local console			= get_console()
-	console:execute			("check_for_updates 1")
 end
 
 function options_dialog:OnBtnKeybDefault()
@@ -173,7 +118,12 @@ end
 
 function options_dialog:OnPresetChanged()
 	local opt					= COptionsManager()
+	opt:SetCurrentValues("mm_opt_video")
 	opt:SetCurrentValues		("mm_opt_video_adv")
+
+    if self.dlg_video_adv and self.dlg_video_adv.UpdateUpscalerQualityRows then
+		self.dlg_video_adv:UpdateUpscalerQualityRows()
+	end
 end
 
 
@@ -249,17 +199,6 @@ function options_dialog:OnTabChange()
 
 end
 
-function options_dialog:OnAOOptionChange()
-	local ao_opt_id = self.tab_ao_opt:GetActiveId()
-	local render_id = self.combo_renderer:CurrentID()
-	if(render_id>=4) and (ao_opt_id=="hdao") then
-		self.combo_ssao:enable_id(4)
-	else
-		self.combo_ssao:disable_id(4)
-	end
-	self.combo_ssao:SetCurrentOptValue()
-end
-
 function options_dialog:OnBtnAdvGraphic()
 	self.dlg_video:Show		(false)
 	self.dlg_video_adv:Show	(true)
@@ -273,10 +212,7 @@ end
 function options_dialog:OnKeyboard(dik, keyboard_action)
 	local res = CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
 
-	if res==false then
-
-		local bind = dik_to_bind(dik)
-
+	if not res then
 		if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
 			if dik == DIK_keys.DIK_ESCAPE then
 				if self.dlg_video_adv:IsShown() then
@@ -298,24 +234,6 @@ end
 function options_dialog:Update()
 	CUIScriptWnd.Update(self)
 
-	local mm = main_menu.get_main_menu()
-	local sss = mm:GetPatchProgress()
-
-	if sss:GetInProgress() then
-		self.text_download:Show					(true)
-		self.cap_download:Show					(true)
-		self.download_progress:Show				(true)
-		local _progr							= sss:GetProgress()
-		self.download_progress:SetProgressPos	(_progr)
-		local str								= string.format("%.0f%%(%s)",_progr,sss:GetFlieName())
-		self.text_download:TextControl():SetText				(str)
-		self.btn_cancel_download:Show			(true)
-	else
-		self.text_download:Show					(false)
-		self.cap_download:Show					(false)
-		self.download_progress:Show				(false)
-		self.btn_cancel_download:Show			(false)
-	end
 	if(_G.b_discard_settings_shown) then
 		local tg = math.floor(time_global_async()/1000)
 		if(self.timer==nil) then
@@ -327,11 +245,6 @@ function options_dialog:Update()
 			self:OnDiscardChanges()
 		end
 	end
-end
-
-function options_dialog:OnBtn_CancelDownload()
-	local mm = main_menu.get_main_menu()
-	mm:CancelDownload()
 end
 
 function options_dialog:OnApplyChanges()

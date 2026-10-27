@@ -1,12 +1,80 @@
---[[
-r1		= 0
-r2a		= 1
-r2		= 2
-r2.5	= 3
-r3		= 4
-r4		= 5
-������� ���������� r2_ssao. ��� DX10 � DX11 ������� ������ ���� ����� - st_opt_ultra, ��� ���� ���� r2_ssao_mode==hdao.
-]]
+
+local hint_colors = {
+	["green"]  = { 255, 153, 255, 153 }, --{ 255, 0, 128, 0 },
+	["yellow"] = { 255, 237, 118, 14 }, --{ 255, 186, 149, 0 },
+	["red"]    = { 255, 238, 32, 77 }, --{ 255, 255, 0, 0 },
+}
+
+local opt_types = {
+    track = "InitTrackBar",
+    list  = "InitComboBox",
+    check = "InitCheck",
+    separator = "InitFrameLine"
+}
+
+local adv_vid_opt_params = { --имя статика, тип статика, нужен ли рестарт игры (0/1), цвет текста, текст всплывающей подсказки, заблокирована ли настройка (true/false, по дефолту false)
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_1"  },
+    { "fov",                     "track",     0, hint_colors.green , "video_settings_desc_61"         },
+    { "hud_fov",                 "track",     0, hint_colors.green , "video_settings_desc_62"         },
+    { "vis_dist",                "track",     0, hint_colors.yellow, "video_settings_desc_2"          },
+    { "geometry_lod",            "track",     0, hint_colors.yellow, "video_settings_desc_3"          },
+    { "mt_texload",              "check",     0, hint_colors.green                                    },
+    { "shadercache",             "check",     0, hint_colors.green                                    },
+    { "tessellation",            "check",     1, hint_colors.yellow, "video_settings_desc_52"         },
+
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_5"  },
+    { "aa",                      "list",      0, hint_colors.green , "video_settings_desc_19"         },
+	{ "dlss_quality",            "list",      0, hint_colors.green , "video_settings_desc_70"         },
+	{ "dlss_preset",             "list",      0, hint_colors.green , "video_settings_desc_72"         },
+	{ "fsr3_quality",            "list",      0, hint_colors.green , "video_settings_desc_71"         },
+    { "cas",                     "track",     0, hint_colors.green , "video_settings_desc_20"         },
+
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_2"  },
+    { "detail_density",          "track",     0, hint_colors.red,    "video_settings_desc_4"          },
+    { "detail_distance",         "track",     0, hint_colors.red,    "video_settings_desc_5"          },
+    { "detail_scale",            "track",     0, hint_colors.yellow                                   },
+
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_3"  },
+    { "smap_size",               "list",      1, hint_colors.red,    "video_settings_desc_59"         },
+    { "sun_quality",             "list",      1, hint_colors.red                                      },
+    { "ao_mode",                 "list",      0, hint_colors.red,    "video_settings_desc_38"         },
+    { "ssao",                    "list",      0, hint_colors.red,    "video_settings_desc_37"         },
+    { "sun_details",             "check",     0, hint_colors.red,    "video_settings_desc_12"         },
+    { "actor_shadow",            "check",     0, hint_colors.green                                    },
+
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_8"  },
+    { "sun_shafts",              "list",      0, hint_colors.yellow, "video_settings_desc_29"         },
+    { "lens_flare",              "check",     0, hint_colors.green                                    },
+    { "volumetric_light",        "check",     0, hint_colors.yellow, "video_settings_desc_50"         },
+    { "npc_torch",               "check",     0, hint_colors.yellow, "video_settings_desc_14"         },
+
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_9"  },
+    { "dynamic_wet_surfaces",    "check",     0, hint_colors.yellow, "video_settings_desc_49"         },
+    { "sslr",                    "check",     1, hint_colors.red,    "video_settings_desc_51"         },
+
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_4"  },
+    { "steep_parallax",          "check",     0, hint_colors.yellow, "video_settings_desc_39"         },
+    { "terrain_parallax",        "check",     1, hint_colors.yellow, "video_settings_desc_24"         --[[, true]]}, --на модах с ориг текстурами лучше заблокировать эту опцию но релизы двига же типа для разрабов, потому я не решил пока как быть.
+
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_7"  },
+    --{ "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_6"  },
+	--TODO: Доф надо переделать в новом виде, когда переделаю - раскомментирую
+    --{ "dof_reload",              "check",     0, hint_colors.green, "video_settings_desc_41"          },
+    --{ "dof_zoom",                "check",     0, hint_colors.green, "video_settings_desc_42"          },
+    --{ "dof_zoom_param",          "track",     0, hint_colors.green                                    },
+    { "mblur",                   "check",     0, hint_colors.green , "video_settings_desc_1"          },
+    { "mblur_param",             "track",     0, hint_colors.green                                    },
+    --Для работы настроек шлема требуется управление со скриптов, надо же как то определять на каком костюме надо маски и капли, а на каком нет.
+	--Когда надо - надо со скрипта выставить консольки r2_mask_control и соотв. r2_rain_drops_control в on, когда не надо - в off
+	--Возможно по дефолту лучше заблокировать эти опции тут, но я не решил пока как быть
+    { "mask",                    "check",     0, hint_colors.green , ""                               --[[, true]]},
+    { "visor_refl",              "check",     0, hint_colors.green , ""                               --[[, true]]},
+    { "rain_drops",              "check",     0, hint_colors.green, "video_settings_desc_47"          --[[, true]]},
+    --
+    { "volumetric_smoke",        "check",     0, hint_colors.green                                    },
+}
+
+
 class "opt_video_adv" (CUIWindow)
 function opt_video_adv:__init() super()
 end
@@ -14,196 +82,122 @@ end
 function opt_video_adv:__finalize()
 end
 
-function all_modes(render_id)
-	return true
-end
-
-function mode_1(render_id)
-	return render_id==0
-end
-
-function mode_ge_2a(render_id)
-	return render_id>=1
-end
-
-function mode_ge_2(render_id)
-	return render_id>=2
-end
-
-function mode_ge_25(render_id)
-	return render_id>=3
-end
-
-function mode_less_3(render_id)
-	return render_id<4
-end
-
-function mode_ge_3(render_id)
-	return render_id>=4
-end
-
-function mode_4(render_id)
-	return render_id==5
-end
-
 function opt_video_adv:InitControls(x, y, xml, handler)
-	local ctl
-    local _st
+    self:SetWndPos(vector2():set(x,y))
+    --self:SetWndSize(vector2():set(738,416))
+    self:SetAutoDelete(true)
 
-	self:SetWndPos(vector2():set(x,y))
-	self:SetWndSize(vector2():set(738,416))
-	self:SetAutoDelete(true)
-
-	self.scroll_v = xml:InitScrollView("video_adv:scroll_v", self)
+    self.scroll_v = xml:InitScrollView("video_adv:scroll_v", self)
     handler.scroll_v = self.scroll_v
+    self.upscaler_rows = {}
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_vis_dist", _st)
-	xml:InitTrackBar("video_adv:track_vis_dist", _st)
-	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+    for i = 1, #adv_vid_opt_params do
+        local _st = xml:InitStatic("video_adv:templ_item", self.scroll_v)
 
-	_st	= xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_geometry_lod", _st)
-	xml:InitTrackBar("video_adv:track_geometry_lod", _st)
-	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+        local opt, type, need_restart, color, hint, disabled = unpack(adv_vid_opt_params[i])
 
-	_st	= xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_texture_lod",	_st)
-	ctl = xml:InitTrackBar("video_adv:track_texture_lod", _st)
-	handler.texture_lod_track = ctl
-	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+        -- caption
+        local cap = xml:InitStatic("video_adv:cap_" .. opt, _st)
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_aniso", _st)
-	xml:InitTrackBar("video_adv:track_aniso", _st)
-	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+        -- control
+        local stl_name = "video_adv:" .. type .. "_" .. opt
+        local ctl = xml[opt_types[type]](xml, stl_name, _st)
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_ssample", _st)
-	ctl = xml:InitTrackBar("video_adv:track_ssample", _st)
-	table.insert(handler.m_preconditions, {func=mode_less_3, control=_st})
+        if type == "separator" then
+            cap:SetText(game.translate_string(hint))
+        else
+            if hint and hint ~= "" then
+                --[=[if opt == "dlss_preset" then --SIMP: не вижу смысла ещё и тут писать версию
+                    hint = game.translate_string(hint)
+                    local ver = get_console():get_string("r_aa_dlss_version") or ""
+                    if ver ~= "" then
+                        hint = hint .. "\nDLL: " .. ver
+                    end
+					cap:SetHint(hint)
+                else--]=]
+                    cap:SetHint(hint)
+                --end
+            end
+            if disabled then
+                cap:Enable(false)
+                ctl:Enable(false)
+            elseif color then
+                cap:SetTextColor(unpack(color))
+            end
+			
+            if opt == "aa" then
+                self.aa_list = ctl
+            elseif opt == "dlss_quality" then
+                self.upscaler_rows[opt] = _st
+                self.dlss_quality_list = ctl
+            elseif opt == "dlss_preset" then
+                self.upscaler_rows[opt] = _st
+                self.dlss_preset_list = ctl
+                self.dlss_preset_cap = cap
+		    elseif opt == "fsr3_quality" then
+                self.upscaler_rows[opt] = _st
+            end
+        end
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_ssample", _st)
-	ctl = xml:InitComboBox("video_adv:combo_ssample", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_3, control=_st})
+        if need_restart == 1 then
+            handler:Register(ctl, stl_name)
+            handler:AddCallback(
+                stl_name,
+                type == "list" and ui_events.LIST_ITEM_SELECT or ui_events.BUTTON_CLICKED,
+                handler.show_need_restart_wnd, handler
+            )
+        end
+    end
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_detail_density", _st)
-	xml:InitTrackBar("video_adv:track_detail_density", _st)
-	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+    if self.aa_list then
+		handler:Register(self.aa_list, "video_adv:list_aa")
+		handler:AddCallback("video_adv:list_aa", ui_events.LIST_ITEM_SELECT, function()
+			self:UpdateUpscalerQualityRows(true)
+		end)
+	end
+	--[=[--не понятно зачем это надо
+	if self.dlss_quality_list then
+		handler:Register(self.dlss_quality_list, "video_adv:list_dlss_quality")
+		handler:AddCallback("video_adv:list_dlss_quality", ui_events.LIST_ITEM_SELECT, function()
+			if self.dlss_preset_list then
+				self.dlss_preset_list:SetCurrentOptValue()
+			end
+		end)
+	end--]=]
+	self:UpdateUpscalerQualityRows()
 
+    local btn = xml:Init3tButton("video_adv:btn_to_simply", self)
+    handler:Register(btn, "btn_simply_graphic")
+end
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r2_sun", _st)
-	ctl = xml:InitCheck("video_adv:check_r2_sun", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
+function opt_video_adv:UpdateUpscalerQualityRows(after_click)
+	local mode = (after_click and self.aa_list:GetCurrentValueName() or get_console():get_string("r_aa_mode")) or ""
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_light_distance", _st)
-	ctl = xml:InitTrackBar("video_adv:track_light_distance", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_2a, control=_st})
+	if self.upscaler_rows.dlss_quality then
+		self.upscaler_rows.dlss_quality:Show(mode == "st_opt_dlss")
+	end
+	if self.upscaler_rows.dlss_preset then
+		self.upscaler_rows.dlss_preset:Show(mode == "st_opt_dlss")
+	end
+	if mode == "st_opt_dlss" and self.dlss_preset_list then
+		--self.dlss_preset_list:SetCurrentOptValue() --не понятно зачем это надо
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_particles_distance", _st)
-	ctl = xml:InitTrackBar("video_adv:track_particles_distance", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_2a, control=_st})
+	    if self.dlss_preset_cap then
+		    local name = game.translate_string("ui_mm_dlss_preset")
+		    local ver = get_console():get_string("r_aa_dlss_version") or ""
+		    if mode == "st_opt_dlss" and ver ~= "" then
+                self.dlss_preset_cap:SetText(name .. "  " .. ver)
+		    else
+                self.dlss_preset_cap:SetText(name)
+		    end
+        end
+    end
 
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_npc_torch", _st)
-	xml:InitCheck("video_adv:check_npc_torch", _st)
-	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
+	if self.upscaler_rows.fsr3_quality then
+		self.upscaler_rows.fsr3_quality:Show(mode == "st_opt_fsr3")
+	end
 
--- r1_detail_textures	r1 only
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r1_detail_textures", _st)
-	ctl = xml:InitCheck("video_adv:check_r1_detail_textures", _st)
-	table.insert(handler.m_preconditions, {func=mode_1, control=_st})
-
--- r2_detail_bump			=>r2
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r2_detail_bump", _st)
-	ctl = xml:InitCheck("video_adv:check_r2_detail_bump", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})
-
--- r2_steep_parallax		>r2
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r2_steep_parallax", _st)
-	ctl = xml:InitCheck("video_adv:check_r2_steep_parallax", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r2_sun_quality", _st)
-	ctl = xml:InitComboBox("video_adv:list_r2_sun_quality", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_sun_shafts", _st)
-	ctl = xml:InitComboBox("video_adv:combo_sun_shafts", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	_st:SetWndSize(vector2():set(_st:GetWidth(), 106))
-	xml:InitStatic("video_adv:cap_ao", _st)
-	ctl = xml:InitTab("video_adv:radio_tab_ao_options", _st)
-	handler.tab_ao_opt = ctl
-	handler:Register(ctl, "tab_ao_opt")
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_ssao", _st)
-	ctl = xml:InitComboBox("video_adv:combo_ssao", _st)
-	handler.combo_ssao = ctl
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_soft_water", _st)
-	ctl = xml:InitCheck("video_adv:check_soft_water", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_soft_particles", _st)
-	ctl = xml:InitCheck("video_adv:check_soft_particles", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_dof", _st)
-	ctl = xml:InitCheck("video_adv:check_dof", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_volumetric_light", _st)
-	ctl = xml:InitCheck("video_adv:check_volumetric_light", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_25, control=_st})
-
--- r3_dynamic_wet_surfaces	>r25
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r3_dynamic_wet_surfaces", _st)
-	ctl = xml:InitCheck ("video_adv:check_r3_dynamic_wet_surfaces", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_3, control=_st})
-
--- r3_volumetric_smoke		>r25
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r3_volumetric_smoke", _st)
-	ctl = xml:InitCheck("video_adv:check_r3_volumetric_smoke", _st)
-	table.insert(handler.m_preconditions, {func=mode_ge_3, control=_st})
-
--- r4_enable_tessellation		only r4
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r4_tessellation", _st)
-	ctl = xml:InitCheck("video_adv:check_r4_tessellation", _st)
-	table.insert(handler.m_preconditions, {func=mode_4, control=_st})
----------
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_vsync", _st)
-	xml:InitCheck("video_adv:check_vsync", _st)
-	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_60hz", _st)
-	xml:InitCheck("video_adv:check_60hz", _st)
-	table.insert(handler.m_preconditions, {func=all_modes, control=_st})
-
-	btn = xml:Init3tButton("video_adv:btn_to_simply", self)
-	handler:Register(btn, "btn_simply_graphic")
+	if self.scroll_v then
+		self.scroll_v:ForceUpdate()
+	end
 end

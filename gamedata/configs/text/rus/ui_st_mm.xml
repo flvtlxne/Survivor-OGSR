@@ -561,9 +561,6 @@
 	<string id="ui_mm_novice">
 		<text>Новичок</text>
 	</string>
-	<string id="ui_mm_npc_torch">
-		<text>Свет фонариков NPC</text>
-	</string>
 	<string id="ui_mm_options">
 		<text>ОПЦИИ</text>
 	</string>
@@ -933,4 +930,384 @@
 	<string id="ui_mm_confirm_changes">
 		<text>Применить сделанные изменения? Все изменения будут отменены через</text>
 	</string>
+	<string id="ui_st_money_descr">
+		<text>RU</text>
+	</string>
+
+	<!-- ADVANCED VIDEO SETTINGS LOCALE -->
+	<string id="ui_mm_fps_lock">
+		<text>Лимит FPS</text>
+	</string>
+	<string id="nofpslock">
+		<text>Без ограничения</text>
+	</string>
+	<string id="fpslock60">
+		<text>60 кадров</text>
+	</string>
+	<string id="fpslock120">
+		<text>120 кадров</text>
+	</string>
+	<string id="fpslock144">
+		<text>144 кадра</text>
+	</string>
+	<string id="fpslock240">
+		<text>240 кадров</text>
+	</string>
+	<string id="ui_mm_always_active">
+		<text>Откл. паузу при Alt+Tab</text>
+	</string>
+
+	<string id="ui_mm_fov">
+		<text>Угол обзора (fov)</text>
+	</string>
+	<string id="ui_mm_hud_fov">
+		<text>Угол обзора ГГ (hud_fov)</text>
+	</string>
+	<string id="ui_mm_aa">
+		<text>Тип сглаживания</text>
+	</string>
+	<string id="st_opt_dlss">
+		<text>NVIDIA DLSS</text>
+	</string>
+	<string id="st_opt_fsr3">
+		<text>AMD FSR3</text>
+	</string>
+	<string id="ui_mm_dlss_quality">
+		<text>Качество DLSS</text>
+	</string>
+	<string id="ui_mm_dlss_preset">
+		<text>Пресет DLSS</text>
+	</string>
+	<string id="ui_mm_fsr3_quality">
+		<text>Качество FSR 3</text>
+	</string>
+	<string id="st_opt_dlaa">
+		<text>DLAA</text>
+	</string>
+	<string id="st_opt_dlss_default">
+		<text>Default</text>
+	</string>
+	<string id="st_opt_dlss_f">
+		<text>F (CNN)</text>
+	</string>
+	<string id="st_opt_dlss_j">
+		<text>J (Transformer)</text>
+	</string>
+	<string id="st_opt_dlss_k">
+		<text>K (Transformer)</text>
+	</string>
+	<string id="st_opt_dlss_l">
+		<text>L (Transformer)</text>
+	</string>
+	<string id="st_opt_dlss_m">
+		<text>M (Transformer)</text>
+	</string>
+	<string id="st_opt_dlss_quality">
+		<text>Качество</text>
+	</string>
+	<string id="st_opt_dlss_balanced">
+		<text>Баланс</text>
+	</string>
+	<string id="st_opt_dlss_performance">
+		<text>Производительность</text>
+	</string>
+	<string id="st_opt_dlss_ultra_performance">
+		<text>Ультрапроизводительность</text>
+	</string>
+	<string id="st_opt_fsr3_native_aa">
+		<text>Сглаживание в нативном разрешении</text>
+	</string>
+	<string id="st_opt_fsr3_quality">
+		<text>Качество</text>
+	</string>
+	<string id="st_opt_fsr3_balanced">
+		<text>Баланс</text>
+	</string>
+	<string id="st_opt_fsr3_performance">
+		<text>Производительность</text>
+	</string>
+	<string id="st_opt_fsr3_ultra_performance">
+		<text>Ультрапроизводительность</text>
+	</string>
+	<string id="st_opt_taa">
+		<text>TAA</text>
+	</string>
+	<string id="st_opt_smaa">
+		<text>SMAA</text>
+	</string>
+	<string id="ui_mm_cas">
+		<text>CAS (Резкость после сглаживания)</text>
+	</string>
+	<string id="ui_mm_vis_dist">
+		<text>Дальность видимости</text>
+	</string>
+	<string id="ui_mm_geometry_lod">
+		<text>Детализация объектов</text>
+	</string>
+	<string id="ui_mm_smap_size">
+		<text>Разрешение карт теней</text>
+	</string>
+	<string id="ui_mm_sun_quality">
+		<text>Мягкие тени от солнца</text>
+	</string>
+	<string id="ui_mm_sun_shafts">
+		<text>Тип солнечных лучей</text>
+	</string>
+	<string id="volumetric">
+		<text>Volumetric</text>
+	</string>
+	<string id="ss_ogse">
+		<text>Screen space (OGSE)</text>
+	</string>
+	<string id="ss_manowar">
+		<text>Screen space (Mrmnwar)</text>
+	</string>
+	<string id="combined_ogse">
+		<text>Volumetric + Screen space (OGSE)</text>
+	</string>
+	<string id="combined_manowar">
+		<text>Volumetric + Screen space (Mrmnwar)</text>
+	</string>
+	<string id="ui_mm_actor_shadow">
+		<text>Тень от главного героя</text>
+	</string>
+	<string id="ui_mm_lens_flare">
+		<text>Блики от солнца</text>
+	</string>
+	<string id="ui_mm_ao_mode">
+		<text>Тип AO</text>
+	</string>
+	<string id="st_gtao">
+		<text>GTAO</text>
+	</string>
+	<string id="st_ssdo">
+		<text>SSDO</text>
+	</string>
+	<string id="ui_mm_ssao">
+		<text>Качество AO</text>
+	</string>
+	<string id="ui_mm_dynamic_wet_surfaces">
+		<text>Намокание поверхностей</text>
+	</string>
+	<string id="ui_mm_sslr">
+		<text>Лужи и отражения в них</text>
+	</string>
+	<string id="ui_mm_tessellation">
+		<text>Тесселяция</text>
+	</string>
+	<string id="ui_mm_vsync">
+		<text>Вертикальная синхронизация</text>
+	</string>
+	<string id="ui_mm_mt_texload">
+		<text>MT загрузка текстур</text>
+	</string>
+	<string id="ui_mm_shadercache">
+		<text>Кэш шейдеров</text>
+	</string>
+	<string id="ui_mm_detail_density">
+		<text>Плотность травы</text>
+	</string>
+	<string id="ui_mm_detail_distance">
+		<text>Дальность травы</text>
+	</string>
+	<string id="ui_mm_detail_scale">
+		<text>Высота травы</text>
+	</string>
+	<string id="ui_mm_sun_details">
+		<text>Тени от травы</text>
+	</string>
+	<string id="ui_mm_steep_parallax">
+		<text>Steep parallax</text>
+	</string>
+	<string id="ui_mm_terrain_parallax">
+		<text>Parallax на земле</text>
+	</string>
+	<string id="ui_mm_volumetric_light">
+		<text>Объемный свет</text>
+	</string>
+	<string id="ui_mm_npc_torch">
+		<text>Объёмный свет фонариков NPC</text>
+	</string>
+	<string id="ui_mm_dof_reload">
+		<text>DOF при перезарядке</text>
+	</string>
+	<string id="ui_mm_dof_zoom">
+		<text>DOF при прицеливании</text>
+	</string>
+	<string id="ui_mm_dof_zoom_param">
+		<text>Интенс. DOF в прицеле</text>
+	</string>
+	<string id="ui_mm_mblur">
+        <text>Размытие в движении</text>
+    </string>
+    <string id="ui_mm_mblur_param">
+        <text>Интенс. размытия в движении</text>
+    </string>
+	<string id="ui_mm_mask">
+        <text>Шейдерный эффект шлема</text>
+    </string>
+	<string id="ui_mm_visor_refl">
+        <text>Блики по краям шлема</text>
+    </string>
+	<string id="ui_mm_rain_drops">
+        <text>Капли на стекле</text>
+    </string>
+	<string id="ui_mm_volumetric_smoke">
+        <text>Объемный дым</text>
+    </string>
+
+	<string id="ui_mm_font_scale_x">
+		<text>Ширина шрифтов</text>
+	</string>
+	<string id="ui_mm_font_scale_y">
+		<text>Высота шрифтов</text>
+	</string>
+	<string id="ui_mm_exclusive_input">
+		<text>Exclusive Input (блокирует горячие клавиши Windows)</text>
+	</string>
+	<string id="ui_st_weapon_bobbing">
+		<text>Раскачка оружия</text>
+	</string>
+	<string id="ui_mm_switch_slot">
+		<text>Переключение слота колесиком мыши</text>
+	</string>
+
+	<string id="kb_hide_hud">
+		<text>Скрыть HUD</text>
+	</string>
+	<string id="kb_show_hud">
+		<text>Показать HUD</text>
+	</string>
+	
+	<string id="ui_mm_opt_caption_video_1">
+		<text>Параметры экрана</text>
+	</string>
+	<string id="ui_mm_opt_caption_video_2">
+		<text>Настройка фильтров</text>
+	</string>
+	<string id="ui_mm_opt_caption_video_3">
+		<text>Базовые параметры окна</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_1">
+		<text>Общие параметры</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_2">
+		<text>Растительность</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_3">
+		<text>Тени</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_4">
+		<text>Parallax</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_5">
+		<text>Сглаживание</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_6">
+		<text>Depth of Field и Motion Blur</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_7">
+		<text>Screen Space Shaders и постобработка</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_8">
+		<text>Солнечные лучи и объёмный свет</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_9">
+		<text>Намокание и отражения</text>
+	</string>
+	<string id="ui_mm_opt_caption_gameplay_1">
+		<text>Параметры игры</text>
+	</string>
+	<string id="ui_mm_opt_caption_gameplay_2">
+		<text>Настройка прицела</text>
+	</string>
+	<string id="ui_mm_opt_caption_gameplay_3">
+		<text>Параметры HUD</text>
+	</string>
+
+	<string id="video_settings_desc_61">
+		<text>Имеет смысл увеличивать угол обзора для широких мониторов и в зависимости от индвивидуальных предпочтений.</text>
+	</string>
+	<string id="video_settings_desc_62">
+		<text>Угол обзора игрока. Если значение, например 0.45 и меньше (меньше середины ползунка), то оружие будет ближе, если же стоит значение 0.65 и больше (больше середины ползунка), то оружие при игре будет казаться дальше. Имеет смысл индивидуально настраивать для широких мониторов и в зависимости от FOV.</text>
+	</string>
+	<string id="video_settings_desc_2">
+		<text>Эта настройка регулирует величину, на которую умножается предельное расстояние видимости, установленное в профиле текущей погоды. Диапазон значений этой величины - от 0.4 (минимум ползунка) до 1 (максимум ползунка). Например, в погоде установлена дальность обзора 150 метров. На минимуме ползунка вы будете видеть на 60 метров, на максимуме на 150.</text>
+	</string>
+	<string id="video_settings_desc_3">
+		<text>Эта настройка регулирует детализацию прорисовки и освещения моделей людей, монстров и оружия, находящихся вдалеке от игрока. Чем дальше ползунок, тем более детализованными они будут.</text>
+	</string>
+	<string id="video_settings_desc_52">
+		<text>Тесселяция увеличивает качество низкополигональных моделей НПС, монстров, рук актора, анимированных предметов (бутылок и тп). Угловатые модели становятся более сглаженными.</text>
+	</string>
+	<string id="video_settings_desc_19">
+		<text>Эта настройка переключает тип сглаживания. Доступны NVIDIA DLSS (Deep learning super sampling), AMD FSR3 (FidelityFX Super Resolution 3), TAA (Temporal anti-aliasing), SMAA (Subpixel Morphological AntiAliasing). \n \nNVIDIA DLSS (сглаживание с алгоритмами глубокого обучения) - это революционная технология рендеринга на базе искусственного интеллекта, которая улучшает качество графики благодаря использованию специализированных тензорных ядер в видеокартах GeForce RTX. В десктопных и мобильных видеокартах технология стала доступна с приходом серии RTX20. Сглаживание с использованием DLSS даёт результат превосходящий по качеству MSAA 8x, при этом не вызывает просадок производительности. \n \nFSR - менее требовательный и менее качественный аналог от AMD. FSR 3.0 поддерживают все видеокарты AMD от RX 590 и новее (архитектура Polaris и выше), а также видеокарты NVIDIA от серии GTX 10 (например, GTX 1060) и новее.</text>
+	</string>
+	<string id="video_settings_desc_20">
+		<text>Contrast Adaptive Sharpening (CAS) — это технология компании AMD из набора FidelityFX. Часто используется вместе с технологиями масштабирования (например, AMD FSR), чтобы компенсировать легкое мыло после рендеринга в низком разрешени. Чем больше значение ползунка - тем более резким будет изображение после сглаживания. При минимуме ползука (значение 0) - CAS не применяется вообще.</text>
+	</string>
+	<string id="video_settings_desc_4">
+		<text>Эта настройка регулирует насколько плотно отрисовываются кустики травы в игре. Чем дальше ползунок, тем ближе друг к другу будут отрисовываться элементы травы и тем гуще она будет. ВНИМАНИЕ! Чрезмерная густота травы приводит к сильным тормозам, если хотите отрегулировать этот параметр, делайте это понемногу, каждый раз проверяя что получилось.</text>
+	</string>
+	<string id="video_settings_desc_5">
+		<text>Эта настройка регулирует максимальное расстояние, на котором отрисовывается трава. Чем дальше ползунок, тем дальше будет край травы. Ползунок позволяет регулировать расстояние в диапазоне от 48 (стандартная дальность) до 240 метров. ВНИМАНИЕ! Алгоритм отрисовки травы игрой такой, что при увеличении радиуса травы нагрузка на видеокарту увеличивается в геометрической прогресии. Более-менее приемлемые величины лежат в пределах 150-200 метров (середина ползунка).</text>
+	</string>
+	<string id="video_settings_desc_59">
+		<text>Чем выше разрешение карт теней - тем более чёткие тени будут вдали (более ~15-20 метров от ГГ - за границей ближнего каскада теней). Чтобы не было заметного ухудшения качества теней на этой границе - рекомендуется выставлять разрешение не ниже 4096x4096. Настройка очень сильно влияет на производительность.</text>
+	</string>
+	<string id="video_settings_desc_29">
+		<text>Эта настройка переключает тип солнечных лучей. Выберите тот, который больше понравится.</text>
+	</string>
+	<string id="video_settings_desc_37">
+		<text>Эта настройка регулирует качество AO в игре. Этот эффект, при включении, производит расчет дополнительно затеняемых геометрией моделей областей, делая освещение более похожим на освещение в реальном мире, на моделях появляются полутени и затенения от элементов снаряжения, одежды, деталей машин, травы и других небольших частей геометрии.</text>
+	</string>
+	<string id="video_settings_desc_38">
+		<text>Эта настройка регулирует режим работы эффекта глобального освещения в игре. Доступны для выбора GTAO (Ground Truth-based Ambient Occlusion) и SSDO (ScreenSpace Directional Occlusion)</text>
+	</string>
+	<string id="video_settings_desc_12">
+		<text>Эта настройка включает отбрасывание травой теней от солнечного света</text>
+	</string>
+	<string id="video_settings_desc_50">
+		<text>Настройка включает объемный свет для многих ламп.</text>
+	</string>
+	<string id="video_settings_desc_14">
+		<text>Эта настройка разрешает игре обрабатывать объёмный свет фонариков NPC как источники динамического света. На слабых ПК отключение этой настройки может дать серьезный прирост скорости ночью, в лагерях с большим числом NPC.</text>
+	</string>
+	<string id="video_settings_desc_39">
+		<text>Эта настройка регулирует эффект улучшенной рельефности поверхностей с использованием алгоритма Steep parallax mapping. Этот алгоритм использует для расчета рельефности трассировку лучей в пространтсве карты высот, что дает более реалистичный и качественный эффект.</text>
+	</string>
+	<string id="video_settings_desc_24">
+		<text>Включает эффект параллакса на террейне с лужами в углублениях. %c[red] Для правильной работы надо повозиться с настройками террейна, текстур, их бампов и подобрать ssfx_terrain_offset для каждой текстуры. Подробности см. в OGSR WIKI.</text>
+	</string>
+	<string id="video_settings_desc_1">
+		<text>Motion blur - размытие изображения при повороте камеры, воспроизведении сцен движения или быстро движущихся объектов.</text>
+	</string>
+	<string id="video_settings_desc_49">
+		<text>Настройка включает намокание поверхностей во время дождя.</text>
+	</string>
+	<string id="video_settings_desc_51">
+		<text>Настройка включает лужи и отражения в них во время дождя.</text>
+	</string>
+	<string id="video_settings_desc_41">
+		<text>Эта настройка включает компонент эффекта глубины поля зрения - фокусировку глаз на оружии при перезарядке.</text>
+	</string>
+	<string id="video_settings_desc_42">
+		<text>Эта настройка включает компонент эффекта глубины поля зрения - размытие краев экрана при прицеливании.</text>
+	</string>
+	<string id="video_settings_desc_47">
+		<text>Эта настройка включает появление капель на стекле шлемов и противогазов во время дождя.</text>
+	</string>
+	<string id="video_settings_desc_70">
+		<text>Задаёт внутреннее разрешение NVIDIA DLSS. DLAA рендерит в нативном разрешении для максимального качества. Quality, Balanced, Performance и Ultra Performance постепенно снижают внутреннее разрешение ради FPS. После изменения примените видео настройки (vid_restart).</text>
+	</string>
+	<string id="video_settings_desc_71">
+		<text>Задаёт внутреннее разрешение AMD FSR 3. Нативное сглаживание рендерит в нативном разрешении для максимального качества. Quality, Balanced, Performance и Ultra Performance постепенно снижают внутреннее разрешение ради FPS. После изменения примените видео настройки (vid_restart).</text>
+	</string>
+	<string id="video_settings_desc_72">
+		<text>Выбор модели NVIDIA DLSS. Пресеты, которые не поддерживает загруженная библиотека DLSS, отображаются серым.
+%c[yellow] \nCNN:\nF — устаревшая CNN-модель (deprecated).
+%c[green] \nTransformer:\nJ — меньше шлейфов, больше мерцания (NVIDIA рекомендует K).\nK — трансформер 1-го поколения, по умолчанию для DLAA / Quality / Balanced.\nL — трансформер 2-го поколения, четче и медленнее, по умолчанию для Ultra Performance (RTX 40+).\nM — трансформер 2-го поколения, качество как у L, но быстрее, по умолчанию для Performance (RTX 40+).
+Default следует за NVIDIA / OTA драйвера.</text>
+	</string>
+
 </string_table>

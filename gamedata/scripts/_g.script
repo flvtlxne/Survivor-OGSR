@@ -1,6 +1,106 @@
-if (jit == nil) then
-	profiler.setup_hook	()
+--=======================================================================================================================================
+if not _G["editor"] or not _G["editor"]() then --костыль чтоб этот скрипт работал с SDK нормально, а не только с OGSR двигом.
+--=======================================================================================================================================
+log1("--LUA version: [" .. (jit.version or _VERSION) .. "]")
+--======================================[FS Extension]==========================================
+-- Возвращение метода getFS():file_rename, который вырезан из движка
+function FS:file_rename(src, dest, bOwerwrite)
+	if bOwerwrite then
+		os.remove(dest)
+	end
+	os.rename(src, dest)
 end
+--=========================================================================================================
+local tostring_all_tbl = {
+    ["table"] = function(table, ind) --Распечатка таблиц
+        local res = "{" --Начало
+        local end_res = ind and "\n" .. ind .. "}" or "\n}" --Конец
+        local def_ind = "  " --Отступ от начала строки
+        ind = ind and ind .. def_ind or def_ind --Для каждой "таблицы внутри таблицы" отступ увеличивается в 2 раза
+        for k, v in pairs(table) do
+            res = res .. "\n" .. ind .. "[" .. tostring_all(k, ind) .. "] = " .. tostring_all(v, ind) .. ","
+        end
+        return res .. end_res
+    end,
+    ["string"] = function(v)
+        return "'" .. v .. "'"
+    end, --Строки берём в кавычки. Это нужно, чтобы можно было отличить строку "123" от числа 123, "nil" от nil и тд...
+    ["number"] = function(v)
+        return tostring(v)
+    end,
+    ["boolean"] = function(v)
+        return tostring(v)
+    end,
+    ["nil"] = function(v)
+        return tostring(v)
+    end,
+    ["function"] = function()
+        return "[[FUNCTION]]"
+    end, --Function, Userdata и Thread распечатать нельзя, просто заменим на строки
+    ["userdata"] = function()
+        return "[[USERDATA]]"
+    end,
+    ["thread"] = function()
+        return "[[THREAD]]"
+    end,
+}
+--Конвертирование чего угодно в строку. Использовать только для вывода в лог!
+function tostring_all(obj, ind) --ind - служебный аргумент для распечатки "таблиц в таблицах".
+    return tostring_all_tbl[type(obj)](obj, ind)
+end
+
+--Функциональная обёртка для log1.
+--Делает дополнительную работу по конвертации параметров, которые не воспринимаются родной функцией string.format.
+--Параметры можно передавать ЛЮБОГО ТИПА! В строке формата они должны стоять как %s (потому, что будут сконвертированы в строки).
+function log3(fmt, ...)
+    local args = { ... }
+    for i = 1, #args do
+        args[i] = tostring_all(args[i])
+    end
+    local res, msg = pcall(string.format, fmt, unpack(args))
+    if not res then --Если произошла ошибка
+        msg = "!!log3 failed for string[" .. tostring(fmt) .. "]: " .. msg .. "\n" .. debug.traceback()
+    end
+    log1(msg)
+	return msg --может быть полезно использовать где-то отформатированный текст лога
+end
+--=========================================================================================================
+function abort(...)
+    log1("!!****************************[ABORT]*********************************")
+    log1(debug.traceback())
+    local err = log3(...)
+    log1("!!********************************************************************")
+    --error(err) --в ориг ЗП abort не вылетал, пусть тогда и тут не вылетает, просто пишет в лог.
+end
+
+function ASSERT(cond, ...)
+    if not cond then
+        abort(...)
+    end
+end
+--=========================================================================================================
+function cmd(scmd, ...)
+    ASSERT(scmd, "[cmd] scmd is a nil reference")
+    local args = { ... }
+    if #args > 0 then
+        scmd = scmd .. " " .. table.concat(args, " ")
+    end
+    get_console():execute(scmd)
+end
+--=========================================================================================================
+log = function(...) --[[log1(...)]]
+end
+--=========================================================================================================
+function editor()
+	return false
+end
+--=======================================================================================================================================
+else --Конец костыля чтоб этот скрипт работал с SDK нормально, а не только с OGSR двигом.
+
+function abort(...) end
+
+end
+--=======================================================================================================================================
 
 
 function empty	(container)
@@ -472,12 +572,6 @@ function id_by_sid( sid )
 		end
 	end
 	return nil
-end
-
--- Крешнуть игру (после вывода сообщения об ошибке в лог)
-function abort(fmt, ...)
-	local reason = string.format(fmt, ...)
-	--error_log(reason)
 end
 
 function set_inactivate_input_time(delta)

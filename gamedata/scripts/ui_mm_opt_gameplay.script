@@ -1,41 +1,69 @@
-class "opt_gameplay" (CUIWindow)
+local opt_types = {
+    track = "InitTrackBar",
+    list  = "InitComboBox",
+    check = "InitCheck",
+    separator = "InitFrameLine"
+}
 
+local vid_opt_params = {
+    { "separator",               "separator", 0, "ui_mm_opt_caption_gameplay_1" },
+    { "difficulty",                  "list",  0 },
+    { "important_save",              "check", 0 },
+
+    { "separator",               "separator", 0, "ui_mm_opt_caption_gameplay_2" },
+    { "crosshair",                "check",  0 },
+    { "dyn_crosshair",                "check", 0 },
+    { "tips",            "check",  0 },
+    { "dist",                   "check", 0 },
+
+    { "separator",               "separator", 0, "ui_mm_opt_caption_gameplay_3" },
+    { "crouch_toggle",              "check", 0 },
+    { "hud_draw",           "check", 0 },
+    { "weapon_bobbing",           "check", 0 },
+    { "switch_slot",           "check", 0 },
+}
+
+
+class "opt_gameplay" (CUIWindow)
 function opt_gameplay:__init() super()
 end
 
 function opt_gameplay:__finalize()
-
 end
 
 function opt_gameplay:InitControls(x, y, xml, handler)
+    self:SetWndPos(vector2():set(x,y))
+    --self:SetWndSize(vector2():set(738,416))
+    self:SetAutoDelete(true)
 
-	self:SetWndPos(vector2():set(x,y))
-	self:SetWndSize(vector2():set(738,416))
-	self:SetAutoDelete(true)
+    self.scroll_v = xml:InitScrollView("tab_gameplay:scroll_v", self)
+    handler.scroll_v = self.scroll_v
 
---	self.bk = xml:InitFrame("frame_gameplay", self)
+    for i = 1, #vid_opt_params do
+        local _st = xml:InitStatic("tab_gameplay:templ_item", self.scroll_v)
 
-	xml:InitStatic("tab_gameplay:cap_difficulty",			self)
-	xml:InitStatic("tab_gameplay:cap_check_tips",			self)
-	xml:InitStatic("tab_gameplay:cap_check_crosshair",		self)
-	xml:InitStatic("tab_gameplay:cap_check_dyn_crosshair",	self)
-	xml:InitStatic("tab_gameplay:cap_check_show_weapon",	self)
-	xml:InitStatic("tab_gameplay:cap_check_dist",			self)
-	xml:InitStatic("tab_gameplay:cap_check_important_save",	self)
-	xml:InitStatic("tab_gameplay:cap_check_crouch_toggle",	self)
-	xml:InitStatic("tab_gameplay:cap_check_hud_draw",	self)
+        local opt, type, need_restart, hint_caption = unpack(vid_opt_params[i])
+        
+        -- caption
+        local cap = xml:InitStatic("tab_gameplay:cap_" .. opt, _st)
+        --cap:SetTextColor(255, 170, 170, 170)
+        --cap:SetFont(GetFontLetterica16Russian())
 
-	xml:InitCheck("tab_gameplay:check_tips",			self)
-	xml:InitCheck("tab_gameplay:check_crosshair",		self)
-	xml:InitCheck("tab_gameplay:check_dyn_crosshair", 	self)
-	xml:InitCheck("tab_gameplay:check_show_weapon", 	self)
-	xml:InitCheck("tab_gameplay:check_dist", 			self)
-	xml:InitCheck("tab_gameplay:check_important_save", 	self)
-	xml:InitCheck("tab_gameplay:check_crouch_toggle",	self)
-	xml:InitCheck("tab_gameplay:check_hud_draw",	self)
-	xml:InitComboBox("tab_gameplay:list_difficulty",	self)
-
-	local btn
-	btn = xml:Init3tButton	("tab_gameplay:btn_check_updates", self)
-	handler:Register		(btn, "btn_check_updates")
+        -- control
+		local ctl_name = "tab_gameplay:" .. type .. "_" .. opt
+        local ctl = xml[opt_types[type]](xml, ctl_name, _st)
+        
+        if type == "separator" then
+            cap:SetText(game.translate_string(hint_caption))
+        end
+        
+        if need_restart == 1 then
+            handler:Register(ctl, ctl_name)
+            handler:AddCallback(
+                ctl_name,
+                type == "list" and ui_events.LIST_ITEM_SELECT or ui_events.BUTTON_CLICKED,
+                handler.show_need_restart_wnd, handler
+            )
+        end
+    end
 end
