@@ -20,12 +20,12 @@
 
 	<btn_1 x="360" y="560" width="108" height="24">
 	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0"> {{{ </text>
+	        <text font="letterica16" align="c" complex_mode="0">Назад</text>
 	</btn_1>
 
 	<btn_2 x="460" y="560" width="108" height="24">
 	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0"> }}} </text>
+	        <text font="letterica16" align="c" complex_mode="0">Далее</text>
 	</btn_2>
 
 
