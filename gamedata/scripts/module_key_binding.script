@@ -59,6 +59,32 @@ local function init()
 	log3("module_key_binding: key_state() returns %s", type(key_state(DIK_keys.DIK_H)))
 end
 
+-- Блокнот открывается клавишей 7.
+-- Настраиваемую клавишу (custom_keyboard_action) вернём, когда в OGSR поправят этот механизм.
+local NOTEBOOK_KEY = DIK_keys.DIK_7
+local note_pressed = false
+
+local function open_notebook()
+	if not (db.actor and db.actor:alive()) then
+		return
+	end
+	if level.main_input_receiver() then
+		return -- уже открыто какое-то окно: инвентарь, КПК, диалог
+	end
+	if not db.actor:object("actors_note") then
+		return -- блокнота нет (например, в "Соревновании")
+	end
+	run_gui(mod_devices.actors_note_start())
+end
+
+local function update_notebook_key()
+	local down = key_down(NOTEBOOK_KEY)
+	if down and not note_pressed then
+		open_notebook()
+	end
+	note_pressed = down
+end
+
 function update()
 	if not handlers then
 		init()
@@ -69,5 +95,8 @@ function update()
 			f()
 		end
 		pressed[dik] = down
+	end
+	if type(key_state) == "function" then
+		update_notebook_key()
 	end
 end
