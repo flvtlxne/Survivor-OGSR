@@ -6136,13 +6136,82 @@ function mg_start_interface:btn13()
 	self:HideDialog()
 end
 
+-- Блокнот: управление с клавиатуры (порт на OGSR) --------------------------------
+-- Esc закрывает блокнот с любого экрана.
+-- В меню (разделы, список записок) цифры 1-9 нажимают соответствующую кнопку.
+-- На страницах стрелки Влево/Вправо делают то же, что кнопки внизу страницы.
 
+local nb_digit = {}
+for i = 1, 9 do
+	nb_digit[DIK_keys["DIK_" .. i]] = i
+	nb_digit[DIK_keys["DIK_NUMPAD" .. i]] = i
+end
 
+-- Нажать кнопку btn_N окна, если она есть и доступна
+local function nb_press(wnd, n)
+	local btn = wnd["btn_" .. n]
+	local fn = wnd["btn" .. n]
+	if btn and fn and btn:IsEnabled() then
+		fn(wnd)
+	end
+end
 
+local function nb_menu_keyboard(self, dik, keyboard_action)
+	CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
+	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+		if dik == DIK_keys.DIK_ESCAPE then
+			self:HideDialog()
+		elseif nb_digit[dik] then
+			nb_press(self, nb_digit[dik])
+		end
+	end
+	return true
+end
 
+local function nb_page_keyboard(self, dik, keyboard_action)
+	CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
+	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+		if dik == DIK_keys.DIK_ESCAPE then
+			self:HideDialog()
+		elseif dik == DIK_keys.DIK_LEFT then
+			nb_press(self, 1)
+		elseif dik == DIK_keys.DIK_RIGHT then
+			nb_press(self, 2)
+		end
+	end
+	return true
+end
 
+local nb_menus = { "actors_note_start", "actors_note_notes" }
 
+local nb_pages = { "actors_note_info1", "zavhoz_note" }
+local nb_series = {
+	actors_note_diary = { 0, 15 },
+	deadman_note      = { 1, 6 },
+	lostsold_note     = { 1, 4 },
+	likvidator_note   = { 1, 3 },
+	personal_dog_note = { 1, 2 },
+	narkoman_note     = { 1, 4 },
+	arthunter_note    = { 1, 3 },
+	suicider_note     = { 1, 4 },
+	sniper_note       = { 1, 2 },
+}
+for prefix, range in pairs(nb_series) do
+	for i = range[1], range[2] do
+		table.insert(nb_pages, prefix .. i)
+	end
+end
 
+local function nb_attach(names, handler)
+	for _, name in ipairs(names) do
+		local cls = this[name]
+		if cls then
+			cls.OnKeyboard = handler
+		else
+			log3("!!notebook: class [%s] not found", name)
+		end
+	end
+end
 
-
-
+nb_attach(nb_menus, nb_menu_keyboard)
+nb_attach(nb_pages, nb_page_keyboard)
