@@ -19,17 +19,17 @@
 
 	<btn_1 x="500" y="330" width="108" height="24">
 	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Личные заметки</text>
+	        <text font="letterica16" align="c" complex_mode="0">1. Личные заметки</text>
 	</btn_1>
 
 	<btn_2 x="495" y="360" width="108" height="24">
 	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Найденные записки</text>
+	        <text font="letterica16" align="c" complex_mode="0">2. Найденные записки</text>
 	</btn_2>
 
 	<btn_3 x="490" y="390" width="108" height="24">
 	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Советы</text>
+	        <text font="letterica16" align="c" complex_mode="0">3. Советы</text>
 	</btn_3>
 
 	<btn_4 x="485" y="420" width="108" height="24">
@@ -40,13 +40,9 @@
 
 
 
-	<btn_exit x="470" y="480" width="25" height="25">
-	      	<texture_e>ui\button_invisible</texture_e>
-		<texture_t>ui\button_invisible</texture_t>
-		<texture_h>ui\button_invisible</texture_h>
-	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >закрыть</text>
-	</btn_exit>
+	<btn_exit x="485" y="420" width="108" height="24">
+   		<texture>ui_inGame2_button</texture>
+   		<text font="letterica16" align="c" complex_mode="0">Закрыть</text>
+   	</btn_exit>
 
     </actors_note_start>
-
-
