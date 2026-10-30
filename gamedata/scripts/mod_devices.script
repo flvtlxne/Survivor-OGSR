@@ -328,7 +328,7 @@ if ( db.actor:dont_has_info("note_diary1") and
 		disable_info("note_using")
 	elseif ( has_alife_info("note_diary1") and 
 	has_alife_info("note_diary2") and db.actor:dont_has_info("note_diary3") ) then
-		run_gui(mod_devices.actors_note_diary1())	-- после того, как очнулись в доме отшельника впервые;
+		run_gui(mod_devices.actors_note_diary2())	-- после того, как очнулись в доме отшельника впервые;
 		disable_info("note_using")
 	elseif ( has_alife_info("note_diary1") and 
 	has_alife_info("note_diary2") and
@@ -6215,3 +6215,21 @@ end
 
 nb_attach(nb_menus, nb_menu_keyboard)
 nb_attach(nb_pages, nb_page_keyboard)
+
+-- Первые страницы найденных записок: "Назад" ведёт в список записок, а не на титульную
+local nb_first_notes = {
+	"deadman_note1", "lostsold_note1", "likvidator_note1", "personal_dog_note1",
+	"narkoman_note1", "zavhoz_note", "arthunter_note1", "suicider_note1", "sniper_note1",
+}
+
+local function nb_back_to_notes(self)
+	self:HideDialog()
+	soundtrack.papers_use()
+	run_gui(mod_devices.actors_note_notes())
+end
+
+for _, name in ipairs(nb_first_notes) do
+	if this[name] then
+		this[name].btn1 = nb_back_to_notes
+	end
+end
