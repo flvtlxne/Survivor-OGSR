@@ -3,26 +3,26 @@
 
     <actors_note_diary0>
 
-	<table x="340" y="100" width="280" height="500" stretch="1">
-		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_list_1</texture>
+	<table x="350" y="100" width="270" height="500" stretch="1">
+		<texture x="0" y="0" width="750" height="1020">ui\actors_note\actors_note_list_1</texture>
 	</table>
 
 	<name x="430" y="110" width="480" height="500" stretch="1" complex_mode="1">
 		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Советы по выживанию:</text>
 	</name>
 
-	<text1 x="370" y="140" width="250" height="300">
+	<text1 x="380" y="140" width="240" height="300">
 		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">actors_note_info_text_1</text>
 	</text1>
 
 
 
-	<btn_1 x="360" y="560" width="108" height="24">
+	<btn_1 x="370" y="560" width="108" height="24">
 	        <texture>ui_inGame2_button</texture>
 	        <text font="letterica16" align="c" complex_mode="0">Назад</text>
 	</btn_1>
 
-	<btn_2 x="460" y="560" width="108" height="24">
+	<btn_2 x="490" y="560" width="108" height="24">
 	        <texture>ui_inGame2_button</texture>
 	        <text font="letterica16" align="c" complex_mode="0">Далее</text>
 	</btn_2>
@@ -30,7 +30,7 @@
 
 
 
-	<btn_exit x="570" y="560" width="25" height="25">
+	<btn_exit x="570" y="-1000" width="25" height="25">
 	      	<texture_e>ui\button_invisible</texture_e>
 		<texture_t>ui\button_invisible</texture_t>
 		<texture_h>ui\button_invisible</texture_h>
@@ -38,5 +38,3 @@
 	</btn_exit>
 
     </actors_note_diary0>
-
-

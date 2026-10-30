@@ -59,7 +59,7 @@
 		<text font="letterica16" align="c" complex_mode="0">9. Снайпер</text>
 	</btn_9>
 
-	<btn_exit x="360" y="560" width="108" height="24">
+	<btn_exit x="370" y="560" width="108" height="24">
 		<texture>ui_inGame2_button</texture>
 		<text font="letterica16" align="c" complex_mode="0">Назад</text>
 	</btn_exit>
