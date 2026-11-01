@@ -59,9 +59,8 @@ local function init()
 	log3("module_key_binding: key_state() returns %s", type(key_state(DIK_keys.DIK_H)))
 end
 
--- Блокнот открывается клавишей 7.
--- Настраиваемую клавишу (custom_keyboard_action) вернём, когда в OGSR поправят этот механизм.
-local NOTEBOOK_KEY = DIK_keys.DIK_7
+-- Блокнот: своё действие из custom_keyboard_action (system.ltx).
+-- Клавишу можно переназначить в настройках управления, по умолчанию 7.
 local note_pressed = false
 
 local function open_notebook()
@@ -78,7 +77,12 @@ local function open_notebook()
 end
 
 local function update_notebook_key()
-	local down = key_down(NOTEBOOK_KEY)
+	local action = key_bindings.kACTORS_NOTE
+	if not action then
+		return
+	end
+	local dik = bind_to_dik(action)
+	local down = (dik and dik ~= 0 and key_down(dik)) or false
 	if down and not note_pressed then
 		open_notebook()
 	end
