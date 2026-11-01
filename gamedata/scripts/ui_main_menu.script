@@ -32,8 +32,6 @@ function main_menu:InitControls()
 
     -- Survivor: надписи с названием и версией мода
     xml:InitStatic("mod_name", self)
-    xml:InitStatic("mod_ver1", self)
-    xml:InitStatic("mod_ver2", self)
 
     local _ver = xml:InitStatic("static_version", self)
     local mm = _G.main_menu.get_main_menu()

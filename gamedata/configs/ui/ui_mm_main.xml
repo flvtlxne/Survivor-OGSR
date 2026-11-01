@@ -101,7 +101,7 @@
 		<menu_music>music\menu</menu_music>
     </menu_sound>
 
-	<static_version x="15" y="710" width="100" height="30">
+	<static_version x="15" y="740" width="100" height="30">
 		<text align="l" font="graffiti19" r="135" g="123" b="116" complex_mode="0"/>
 	</static_version>
 
@@ -109,18 +109,5 @@
 		<!--text x="0" y="0" r="235" g="10" b="10" a="250" font="letterica25">Выживший: Побег из Зоны</text-->
 		<text x="0" y="0" r="235" g="10" b="10" a="250" font="graffiti32">Выживший: Побег из Зоны</text>
 	</mod_name>
-	
-	
-	<mod_ver1 x="15" y="725" width="100" height="30">
-		<text x="0" y="0" r="255" g="255" b="255" a="250" font="letterica16">+ "Additional quests" DLC</text>
-	</mod_ver1>
-	<mod_ver2 x="15" y="740" width="100" height="30">
-		<text x="0" y="0" r="255" g="255" b="255" a="250" font="letterica16">+ "The Competition" DLC</text>
-	</mod_ver2>
-
-
-
-
-
 
 </w>
