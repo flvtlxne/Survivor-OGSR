@@ -201,6 +201,7 @@ end
 ----------------------------------------------------------------------------------------------------------------------
 function actor_binder:on_item_take (obj)
 	module_callbacks.OnItemTake(obj) --/ Система колбэков
+	mod_update.note_added_tip(obj)
 	printf("on_item_take [%s]", obj:name())
 	if isArtefact(obj) then
 		local anomal_zone = bind_anomaly_zone.parent_zones_by_artefact_id[obj:id()]

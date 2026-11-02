@@ -2435,4 +2435,13 @@
 	<string id="st_save_pri_a28_evacuation_heli">
 		<text>отлёт вертолётов эвакуации</text>
 	</string>
+	<string id="st_note_added_caption">
+		<text>Блокнот</text>
+	</string>
+	<string id="st_note_added_text">
+		<text>Добавлена запись: %s</text>
+	</string>
+	<string id="st_note_added_unknown">
+		<text>записка</text>
+	</string>
 </string_table>

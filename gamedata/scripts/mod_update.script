@@ -598,20 +598,65 @@ end
 end
 
 
+-- Survivor: подсказка о том, какая записка попала в блокнот.
+-- Секция предмета-записки -> инфопоршн, который выдаёт autousable_items().
+local note_infos = {
+	lonl_house_deadman_diary1  = "deadman_diary_info1",
+	lonl_house_deadman_diary2  = "deadman_diary_info2",
+	lonl_house_deadman_diary3  = "deadman_diary_info3",
+	lonl_house_deadman_diary4  = "deadman_diary_info4",
+	lonl_house_deadman_diary5  = "deadman_diary_info5",
+	lonl_house_deadman_diary6  = "deadman_diary_info6",
+	lonl_house_deadman_diary7  = "deadman_diary_info7",
+	lonl_house_deadman_diary8  = "deadman_diary_info8",
+	lonl_house_deadman_diary9  = "deadman_diary_info9",
+	lonl_house_deadman_diary10 = "deadman_diary_info10",
+	lost_soldier_diary1        = "lost_soldier_info1",
+	lost_soldier_diary2        = "lost_soldier_info2",
+	lost_soldier_diary3        = "lost_soldier_info3",
+	lost_soldier_diary4        = "lost_soldier_info4",
+	lost_soldier_diary5        = "lost_soldier_info5",
+	likvidator_diary1          = "likvidator_info1",
+	likvidator_diary2          = "likvidator_info2",
+	likvidator_diary3          = "likvidator_info3",
+	likvidator_diary4          = "likvidator_info4",
+	personal_dog_note1         = "personal_dog_note1_info",
+	personal_dog_note2         = "personal_dog_note2_info",
+	narkoman_note1             = "narkoman_note1_info",
+	narkoman_note2             = "narkoman_note2_info",
+	narkoman_note3             = "narkoman_note3_info",
+	narkoman_note4             = "narkoman_note4_info",
+	maroder_zavhoz_note        = "maroder_zavhoz_note_info",
+	arthunter_note1            = "arthunter_note1_info",
+	arthunter_note2            = "arthunter_note2_info",
+	arthunter_note3            = "arthunter_note3_info",
+	willage_suicider_diary1    = "suicider_note1_info",
+	willage_suicider_diary2    = "suicider_note2_info",
+	willage_suicider_diary3    = "suicider_note3_info",
+	willage_suicider_diary4    = "suicider_note4_info",
+	quest_sniper_note1         = "sniper_note1_info",
+	quest_sniper_note2         = "sniper_note2_info",
+	quest_sniper_note3         = "sniper_note3_info",
+}
 
+function note_added_tip(item)
+	local section = item:section()
+	local info = note_infos[section]
+	if info == nil or has_alife_info(info) then
+		return
+	end
 
+	local name = game.translate_string("st_note_added_unknown")
+	local ini = system_ini()
+	if ini:line_exist(section, "inv_name") then
+		local inv_name = ini:r_string(section, "inv_name")
+		local translated = game.translate_string(inv_name)
+		if translated ~= inv_name then
+			name = translated
+		end
+	end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	db.actor:give_game_news(game.translate_string("st_note_added_caption"),
+		string.format(game.translate_string("st_note_added_text"), name),
+		"ui_iconsTotal_found_thing", 0, 7000, 0)
+end
