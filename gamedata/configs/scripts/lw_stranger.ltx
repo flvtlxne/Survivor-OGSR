@@ -34,9 +34,28 @@ gather_items_enabled = false
 help_wounded_enabled = false
 corpse_detection_enabled = false
 ;on_info = {+stranger_talk1} walker@2 %=disable_ui%
-on_info = {+stranger_talk1} remark@1 %=disable_ui%
+on_info = {+stranger_talk1} walker@fade %=disable_ui =run_postprocess(fade_in_out)%
 
 ;=play_sound(jup_a12_bandits_bodyguard_warning_actor)
+; Survivor: после первого разговора Незнакомец исчезает в затемнении экрана
+[walker@fade]
+path_walk = lw_stranger1_walk1
+path_look = lonl_house_bed_point1
+meet = no_meet
+invulnerable = true
+combat_ignore_keep_when_attacked = true
+danger = danger_condition
+combat_ignore_cond = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_timer = 1000 | walker@gone %=destroy_object =enable_ui +note_diary1 +note_using =scenario_save1%
+
+[walker@gone]
+path_walk = lw_stranger1_walk1
+path_look = lonl_house_bed_point1
+meet = no_meet
+invulnerable = true
 
 [remark@1]
 snd = stranger_phrase1
