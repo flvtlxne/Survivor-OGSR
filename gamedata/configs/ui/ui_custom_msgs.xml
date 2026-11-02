@@ -72,22 +72,22 @@
 
 <note_using_indicator x="27" y="400" width="22" height="34" stretch="1" light_anim="ui_slow_blinking_alpha" la_cyclic="1" la_texture="1" la_text="1" la_alpha="1">
 	<texture>ui\actors_note\note_using_indicator</texture>
-	 <text x="0" y="32" r="255" g="0" b="0" a="80" font="letterica16">Note</text>
+	 <text x="0" y="32" align="c" r="225" g="225" b="250" a="255" font="graffiti19">Блокнот</text>
 </note_using_indicator>
 
 <stress_indicator1 x="27" y="450" width="22" height="34" stretch="1">
 	<texture>act\act_controller_hit</texture>
-	 <text x="0" y="32" r="255" g="0" b="0" a="80" font="letterica16">Worry</text>
+	 <text x="0" y="32" align="c" r="225" g="225" b="250" a="255" font="graffiti19">Тревожность</text>
 </stress_indicator1>
 
 <stress_indicator2 x="27" y="450" width="22" height="34" stretch="1">
 	<texture>act\act_controller_hit</texture>
-	 <text x="0" y="32" r="255" g="0" b="0" a="80" font="letterica16">Stress</text>
+	 <text x="0" y="32" align="c" r="255" g="210" b="40" a="255" font="graffiti19">Стресс</text>
 </stress_indicator2>
 
 <stress_indicator3 x="27" y="450" width="22" height="34" stretch="1">
 	<texture>act\act_controller_hit1</texture>
-	 <text x="0" y="32" r="255" g="0" b="0" a="80" font="letterica16">Depression</text>
+	 <text x="0" y="32" align="c" r="255" g="35" b="35" a="255" font="graffiti19">Депрессия</text>
 </stress_indicator3>
 
 <actor_on_mine_blow_think x="570" y="10" width="105" height="160" stretch="1">
@@ -120,16 +120,16 @@
 	<text x="-130" y="160" r="255" g="225" b="118" a="158" font="graffiti22">village_proval_zone_think_text</text>
 </village_proval_zone_think>
 
-<personal_dog_commands_hint0 x="530" y="10" width="105" height="160" stretch="1">
-	<text x="-130" y="590" r="255" g="225" b="118" a="158" font="graffiti22">personal_dog_commands_hint0_text</text>
+<personal_dog_commands_hint0 x="1" y="645" width="1022" height="24" stretch="1">
+	<text align="c" r="225" g="225" b="250" a="255" font="graffiti22">personal_dog_commands_hint0_text</text>
 </personal_dog_commands_hint0>
 
-<personal_dog_commands_hint1 x="530" y="10" width="105" height="160" stretch="1">
-	<text x="-130" y="610" r="255" g="225" b="118" a="158" font="graffiti22">personal_dog_commands_hint1_text</text>
+<personal_dog_commands_hint1 x="1" y="645" width="1022" height="24" stretch="1">
+	<text align="c" r="225" g="225" b="250" a="255" font="graffiti22">personal_dog_commands_hint1_text</text>
 </personal_dog_commands_hint1>
 
-<personal_dog_commands_hint2 x="530" y="10" width="105" height="160" stretch="1">
-	<text x="-130" y="620" r="255" g="225" b="118" a="158" font="graffiti22">personal_dog_commands_hint2_text</text>
+<personal_dog_commands_hint2 x="1" y="645" width="1022" height="24" stretch="1">
+	<text align="c" r="225" g="225" b="250" a="255" font="graffiti22">personal_dog_commands_hint2_text</text>
 </personal_dog_commands_hint2>
 
 <wounded_dog_meet_think x="530" y="10" width="105" height="160" stretch="1">
@@ -215,20 +215,20 @@
 	<text x="-130" y="160" r="255" g="225" b="118" a="158" font="graffiti22">field_tree_think_text</text>
 </field_tree_think>
 
-<gather_items_box_static1 x="330" y="20" width="105" height="160" stretch="1">
-	<text x="-130" y="600" r="255" g="225" b="118" a="158" font="letterica16">gather_items_box_static1_text</text>
+<gather_items_box_static1 x="1" y="595" width="1022" height="24" stretch="1">
+	<text align="c" r="225" g="225" b="250" a="255" font="graffiti22">gather_items_box_static1_text</text>
 </gather_items_box_static1>
 
-<gather_items_box_static2 x="330" y="40" width="105" height="160" stretch="1">
-	<text x="-130" y="600" r="255" g="225" b="118" a="158" font="letterica16">gather_items_box_static2_text</text>
+<gather_items_box_static2 x="1" y="620" width="1022" height="24" stretch="1">
+	<text align="c" r="225" g="225" b="250" a="255" font="graffiti22">gather_items_box_static2_text</text>
 </gather_items_box_static2>
 
-<gather_items_box_static3 x="330" y="60" width="105" height="160" stretch="1">
-	<text x="-130" y="600" r="255" g="225" b="118" a="158" font="letterica16">gather_items_box_static3_text</text>
+<gather_items_box_static3 x="1" y="645" width="1022" height="24" stretch="1">
+	<text align="c" r="225" g="225" b="250" a="255" font="graffiti22">gather_items_box_static3_text</text>
 </gather_items_box_static3>
 
-<gather_items_box_static4 x="330" y="60" width="105" height="160" stretch="1">
-	<text x="-130" y="600" r="255" g="225" b="118" a="158" font="letterica16">gather_items_box_static4_text</text>
+<gather_items_box_static4 x="1" y="645" width="1022" height="24" stretch="1">
+	<text align="c" r="225" g="225" b="250" a="255" font="graffiti22">gather_items_box_static4_text</text>
 </gather_items_box_static4>
 
 <lake_stone_think1 x="530" y="10" width="105" height="160" stretch="1">
