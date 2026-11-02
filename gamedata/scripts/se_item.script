@@ -403,6 +403,10 @@ function se_invbox:on_register()
 	cse_alife_inventory_box.on_register( self )
 	-- Проверяем кастомдату обьекта на наличие стори айди.
 	story_objects.check_spawn_ini_for_story_id(self)
+	-- Survivor: у тайника ликвидатора в озере нет story_id в all.spawn, а он нужен для метки задания.
+	if self:name() == "lake_likvidator_box" then
+		story_objects.get_story_objects_registry():register(self.id, "lake_likvidator_box")
+	end
 
 	self.secret_item = treasure_manager.get_treasure_manager():register_item(self)
 end
