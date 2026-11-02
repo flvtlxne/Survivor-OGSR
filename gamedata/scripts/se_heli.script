@@ -7,7 +7,13 @@ end
 
 function se_heli:on_register()
 	cse_alife_helicopter.on_register(self)
-	-- Проверяем кастомдату обьекта на наличие стори айди.
+	-- Survivor: у всех вертолётов mg_start_heli* в all.spawn один story_id.
+	-- Как и раньше, он достаётся последнему зарегистрированному, только без ABORT в логе.
+	local registry = story_objects.get_story_objects_registry()
+	local old_id = registry.id_by_story_id["mg_start_heli"]
+	if old_id ~= nil and old_id ~= self.id and string.find(self:name(), "^mg_start_heli") then
+		registry:unregister_by_story_id("mg_start_heli")
+	end
 	story_objects.check_spawn_ini_for_story_id(self)
 end
 
