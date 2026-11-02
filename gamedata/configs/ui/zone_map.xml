@@ -1,5 +1,5 @@
 <window>
-	<minimap>
+	<minimap alpha="255">
 		<level_frame x="0.15" y="0.15" width="0.217" height="0.217" stretch="1" alignment="c"/>
 
 		<background width="0.30" height="0.30" stretch="1" alignment="c">
