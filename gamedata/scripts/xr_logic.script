@@ -1356,7 +1356,7 @@ function save_obj(obj, packet)
 	if obj:clsid() == clsid.script_phys or obj:clsid() == clsid.script_heli or obj:clsid() == clsid.script_restr --or obj:clsid() == clsid.script_stalker
 --		or ((IAmAStalker[obj:clsid()] or IAmAMonster[obj:clsid()]) and obj:alive())
 	then
-		news_manager.send_tip(db.actor, "У объекта "..obj:name().." повисла логика.", nil, "default", 15000, nil)
+		log3("~ [xr_logic] logic not started before save: %s", obj:name())
 		-- log( "Завис логики у объекта ".. obj:name() )			
 		 printf( "Завис логики у объекта ".. obj:name() )			
 	end
