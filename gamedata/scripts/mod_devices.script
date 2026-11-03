@@ -3384,6 +3384,13 @@ end
 
 -- Мастерская: --------------------------------------------------------------------------
 
+-- Survivor: открыть окно мастерской, не переставляя курсор в центр:
+-- при переходе между окнами курсор остаётся там, где был.
+local function run_gui_keep_cursor(wnd)
+	wnd:AllowCenterCursor(false)
+	run_gui(wnd)
+end
+
 class "mechanical_interface" (CUIScriptWnd)
 function mechanical_interface:__init(owner) super()
 	self.dlg = self
@@ -3441,12 +3448,12 @@ end
 
 function mechanical_interface:btn1()	-- разобрать оружие;
 	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
+	run_gui_keep_cursor(mod_devices.mechanical_take_apart())
 end
 
 function mechanical_interface:btn2()	-- собрать оружие;
 	self:HideDialog()
-	run_gui(mod_devices.mechanical_construct())
+	run_gui_keep_cursor(mod_devices.mechanical_construct())
 end
 
 function mechanical_interface:btn3()	-- апгрейд\ремонт;
@@ -3457,7 +3464,7 @@ end
 
 function mechanical_interface:btn4()	-- прочее;
 	self:HideDialog()
-	run_gui(mod_devices.mechanical_others())
+	run_gui_keep_cursor(mod_devices.mechanical_others())
 end
 
 function mechanical_interface:OnKeyboard(dik,keyboard_action)
@@ -3519,6 +3526,23 @@ function mechanical_take_apart:__init(owner) super()
 	self.owner = owner
 	self:InitControls()
 	self:InitCallBacks()
+end
+
+-- Survivor: разобрать один ствол этой секции. Сначала разряжаем - патроны остаются у ГГ.
+local function take_apart_remove(sect)
+	for i = 0, db.actor:object_count() - 1 do
+		local item = db.actor:object(i)
+		if item and item:section() == sect then
+			if isWeapon(item) then
+				item:unload_magazine(true)
+			end
+			local se = alife():object(item:id())
+			if se then
+				alife():release(se, true)
+			end
+			return
+		end
+	end
 end
 
 function mechanical_take_apart:__finalize() end
@@ -3635,7 +3659,7 @@ function mechanical_take_apart:btn1()
 	
 	if db.actor:object("wpn_pm") ~= nil then
 		if xr_conditions.actor_in_slot_pm() == false then
-			mod_functions.remove_items("wpn_pm", 1)
+			take_apart_remove("wpn_pm")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -3646,7 +3670,7 @@ function mechanical_take_apart:btn1()
 	end
 	
 	if db.actor:object("pm_wrecked") ~= nil then
-		mod_functions.remove_items("pm_wrecked", 1)
+		take_apart_remove("pm_wrecked")
 		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.repair_sounds()
 		xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -3657,7 +3681,7 @@ function mechanical_take_apart:btn2()
 
 	if db.actor:object("wpn_pb") ~= nil then
 		if xr_conditions.actor_in_slot_pb() == false then
-			mod_functions.remove_items("wpn_pb", 1)
+			take_apart_remove("wpn_pb")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -3672,7 +3696,7 @@ function mechanical_take_apart:btn3()
 
 	if db.actor:object("wpn_bm16") ~= nil then
 		if xr_conditions.actor_in_slot_obrez() == false then
-			mod_functions.remove_items("wpn_bm16", 1)
+			take_apart_remove("wpn_bm16")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -3687,7 +3711,7 @@ function mechanical_take_apart:btn4()
 
 	if db.actor:object("wpn_usp") ~= nil then
 		if xr_conditions.actor_in_slot_usp() == false then
-			mod_functions.remove_items("wpn_usp", 1)
+			take_apart_remove("wpn_usp")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -3702,7 +3726,7 @@ function mechanical_take_apart:btn5()
 
 	if db.actor:object("wpn_hpsa") ~= nil then
 		if xr_conditions.actor_in_slot_hpsa() == false then
-			mod_functions.remove_items("wpn_hpsa", 1)
+			take_apart_remove("wpn_hpsa")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -3717,7 +3741,7 @@ function mechanical_take_apart:btn6()
 
 	if db.actor:object("wpn_toz34") ~= nil then
 		if xr_conditions.actor_in_slot_toz() == false then
-			mod_functions.remove_items("wpn_toz34", 1)
+			take_apart_remove("wpn_toz34")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
@@ -3733,7 +3757,7 @@ function mechanical_take_apart:btn7()
 
 	if db.actor:object("wpn_ak74u") ~= nil then
 		if xr_conditions.actor_in_slot_aksu() == false then
-			mod_functions.remove_items("wpn_ak74u", 1)
+			take_apart_remove("wpn_ak74u")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
@@ -3745,7 +3769,7 @@ function mechanical_take_apart:btn7()
 	end
 	
 	if db.actor:object("aksu_wrecked") ~= nil then
-		mod_functions.remove_items("aksu_wrecked", 1)
+		take_apart_remove("aksu_wrecked")
 		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.repair_sounds()
@@ -3757,7 +3781,7 @@ function mechanical_take_apart:btn8()
 
 	if db.actor:object("wpn_ak74") ~= nil then
 		if xr_conditions.actor_in_slot_ak74() == false then
-			mod_functions.remove_items("wpn_ak74", 1)
+			take_apart_remove("wpn_ak74")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
@@ -3773,7 +3797,7 @@ function mechanical_take_apart:btn9()
 
 	if db.actor:object("wpn_lr300") ~= nil then
 		if xr_conditions.actor_in_slot_lr300() == false then
-			mod_functions.remove_items("wpn_lr300", 1)
+			take_apart_remove("wpn_lr300")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
@@ -3789,7 +3813,7 @@ function mechanical_take_apart:btn10()
 
 	if db.actor:object("wpn_vintorez") ~= nil then
 		if xr_conditions.actor_in_slot_vintorez() == false then
-			mod_functions.remove_items("wpn_vintorez", 1)
+			take_apart_remove("wpn_vintorez")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
@@ -3805,7 +3829,7 @@ function mechanical_take_apart:btn11()
 
 	if db.actor:object("wpn_bizon") ~= nil then
 		if xr_conditions.actor_in_slot_bizon() == false then
-			mod_functions.remove_items("wpn_bizon", 1)
+			take_apart_remove("wpn_bizon")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -3820,7 +3844,7 @@ function mechanical_take_apart:btn12()
 
 	if db.actor:object("wpn_sayga") ~= nil then
 		if xr_conditions.actor_in_slot_sayga() == false then
-			mod_functions.remove_items("wpn_sayga", 1)
+			take_apart_remove("wpn_sayga")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
@@ -3836,7 +3860,7 @@ function mechanical_take_apart:btn13()
 
 	if db.actor:object("wpn_m1891") ~= nil then
 		if xr_conditions.actor_in_slot_mosin() == false then
-			mod_functions.remove_items("wpn_m1891", 1)
+			take_apart_remove("wpn_m1891")
 			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -3861,6 +3885,9 @@ function mechanical_take_apart:btn_take_all()
 		if se then
 			count = count + 1
 			parts = parts + take_apart_parts[item:section()]
+			if isWeapon(item) then
+				item:unload_magazine(true)
+			end
 			sim:release(se, true)
 			xr_effects.dec_counter(db.actor, nil, {"generator", 1})
 		end
@@ -3877,7 +3904,7 @@ end
 
 function mechanical_take_apart:on_back()
 	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
+	run_gui_keep_cursor(mod_devices.mechanical_interface())
 end
 
 
@@ -4115,7 +4142,7 @@ end
 
 function mechanical_construct:on_back()
 	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
+	run_gui_keep_cursor(mod_devices.mechanical_interface())
 end
 
 
@@ -4279,7 +4306,7 @@ end
 
 function mechanical_others:on_back()
 	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
+	run_gui_keep_cursor(mod_devices.mechanical_interface())
 end
 
 

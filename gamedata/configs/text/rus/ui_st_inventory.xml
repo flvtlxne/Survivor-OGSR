@@ -96,6 +96,9 @@
 	<string id="st_unload_magazine">
 		<text>разрядить</text>
 	</string>
+	<string id="st_unload_all_weapons">
+		<text>разрядить всё оружие</text>
+	</string>
 	<string id="st_use">
 		<text>использовать</text>
 	</string>
