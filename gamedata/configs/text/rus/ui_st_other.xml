@@ -217,6 +217,12 @@
 		<text>%c[255,255,118,118]Говорит офицер службы безопасности. Все находящиеся на блокпосту - артестованы! Предлагаю сложить оружие и не оказывать сопротивления.%c[default]</text>
 	</string>
 
+	<string id="st_take_apart_all_caption">
+		<text>Мастерская</text>
+	</string>
+	<string id="st_take_apart_all_text">
+		<text>Разобрано оружия: %d. Получено наборов деталей: %d.</text>
+	</string>
 
 	<string id="balon_timer_tip">
 		<text>Газа хватит на 12 часов</text>

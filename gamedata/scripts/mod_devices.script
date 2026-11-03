@@ -3474,6 +3474,33 @@ function mechanical_interface:on_quit()
 	self:HideDialog()
 end
 
+-- Survivor: кнопка "Разобрать всё". Сколько наборов деталей даёт каждый
+-- ствол - так же, как у кнопок для отдельного оружия.
+local take_apart_parts = {
+	wpn_pm = 1, pm_wrecked = 1, wpn_pb = 1, wpn_bm16 = 1, wpn_usp = 1,
+	wpn_hpsa = 1, wpn_toz34 = 2, wpn_ak74u = 2, aksu_wrecked = 2,
+	wpn_ak74 = 2, wpn_lr300 = 2, wpn_vintorez = 2, wpn_bizon = 1,
+	wpn_sayga = 2, wpn_m1891 = 1,
+}
+
+-- Всё оружие в рюкзаке, которое можно разобрать. Оружие в слотах пропускаем.
+local function take_apart_all_list()
+	local skip = {}
+	for _, slot in ipairs({2, 3}) do
+		local item = db.actor:item_in_slot(slot)
+		if item then
+			skip[item:id()] = true
+		end
+	end
+	local list = {}
+	for i = 0, db.actor:object_count() - 1 do
+		local item = db.actor:object(i)
+		if item and take_apart_parts[item:section()] and not skip[item:id()] then
+			table.insert(list, item)
+		end
+	end
+	return list
+end
 
 -- разборка оружия: --------------------------
 class "mechanical_take_apart" (CUIScriptWnd)
@@ -3543,6 +3570,10 @@ function mechanical_take_apart:InitControls()
 	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
 	-- кнопка назад
 	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
+	-- кнопка "Разобрать всё"
+	self.btn_all = xml:Init3tButton("btn_all", self)
+	self:Register(self.btn_all, "btn_all")
+	self.btn_all:Enable(#take_apart_all_list() > 0)
 
 	-- определяем доступность кнопок
 	if db.actor:object("wpn_pm") ~= nil or db.actor:object("pm_wrecked") ~= nil then
@@ -3601,6 +3632,7 @@ function mechanical_take_apart:InitCallBacks()
 	self:AddCallback("btn_11", ui_events.BUTTON_CLICKED,  self.btn11, self)
 	self:AddCallback("btn_12", ui_events.BUTTON_CLICKED,  self.btn12, self)
 	self:AddCallback("btn_13", ui_events.BUTTON_CLICKED,  self.btn13, self)
+	self:AddCallback("btn_all", ui_events.BUTTON_CLICKED, self.btn_take_all, self)
 	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
 	self:AddCallback("btn_back", ui_events.BUTTON_CLICKED, self.on_back, self)
 end
@@ -3847,6 +3879,40 @@ function mechanical_take_apart:btn13()
 	end
 end
 
+function mechanical_take_apart:btn_take_all()
+	self:HideDialog()
+
+	local list = take_apart_all_list()
+	if #list == 0 then
+		soundtrack.no_replics()
+		run_gui(mod_devices.mechanical_take_apart())
+		return
+	end
+
+	local sim = alife()
+	local count, parts = 0, 0
+	for _, item in ipairs(list) do
+		local se = sim:object(item:id())
+		if se then
+			count = count + 1
+			parts = parts + take_apart_parts[item:section()]
+			sim:release(se, true)
+			xr_effects.dec_counter(db.actor, nil, {"generator", 1})
+		end
+	end
+	for i = 1, parts do
+		sim:create("weapon_parts", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	end
+	soundtrack.repair_sounds()
+
+	db.actor:give_game_news(game.translate_string("st_take_apart_all_caption"),
+		string.format(game.translate_string("st_take_apart_all_text"), count, parts),
+		"ui_iconsTotal_found_thing", 0, 7000, 0)
+
+	-- Разобранное пропадает из инвентаря только на следующем кадре,
+	-- поэтому возвращаемся в меню мастерской, а не в разборку.
+	run_gui(mod_devices.mechanical_interface())
+end
 
 function mechanical_take_apart:on_back()
 	self:HideDialog()

@@ -83,8 +83,10 @@
 	        <text font="letterica16" align="c" complex_mode="0">Винтовка Мосина</text>
 	</btn_13>
 
-
-
+	<btn_all x="315" y="450" width="108" height="24">
+	        <texture>ui_inGame2_button</texture>
+	        <text font="letterica16" align="c" complex_mode="0">Разобрать всё</text>
+	</btn_all>
 
 	<btn_back x="260" y="480" width="108" height="24">
 	        <texture>ui_inGame2_button</texture>
@@ -98,5 +100,3 @@
 
 
     </mechanical_take_apart>
-
-
