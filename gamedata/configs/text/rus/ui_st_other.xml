@@ -462,10 +462,19 @@
 		<text>Пустое ведро</text>
 	</string>
 	<string id="lonl_house_balon_tip">
-		<text>Зарядить газ\n(нужен балон)</text>
+		<text>Зарядить газ\n(нужен баллон)</text>
 	</string>
 	<string id="lonl_house_balon_tip2">
-		<text>Портативный газовый балон</text>
+		<text>Портативный газовый баллон</text>
+	</string>
+	<string id="lonl_house_generator_fuel_tip">
+		<text>Генератор работает\nТоплива: %d из 25</text>
+	</string>
+	<string id="lonl_house_balon_gas_tip">
+		<text>Газ в баллоне: %d из 25</text>
+	</string>
+	<string id="lonl_house_balon_big_tip">
+		<text>Подключён большой газовый баллон\nГаза хватит навсегда</text>
 	</string>
 
 	<string id="lonl_house_deadman_box_use">

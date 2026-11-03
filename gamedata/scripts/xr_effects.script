@@ -11715,8 +11715,16 @@ function inc_lonl_house_balon_counter2()
 	xr_effects.set_counter(db.actor, nil, {"balon",500})
 end	
 
+-- Survivor: остаток топлива генератора и газа в баллоне - в подсказке при наведении.
+function show_lonl_house_generator_fuel(actor, npc)
+	local fuel = xr_logic.pstor_retrieve(db.actor, "generator", 0)
+	npc:set_tip_text(string.format(game.translate_string("lonl_house_generator_fuel_tip"), fuel))
+end
 
-
+function show_lonl_house_balon_gas(actor, npc)
+	local gas = xr_logic.pstor_retrieve(db.actor, "balon", 0)
+	npc:set_tip_text(string.format(game.translate_string("lonl_house_balon_gas_tip"), gas))
+end
 
 function maroders_atack_task_give()
 rnd = math.random(1, 3)
