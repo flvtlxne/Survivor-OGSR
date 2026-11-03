@@ -3502,6 +3502,16 @@ local function take_apart_all_list()
 	return list
 end
 
+-- Survivor: есть ли у ГГ хотя бы по одному предмету каждой из секций.
+local function actor_has_all(...)
+	for _, sect in ipairs({...}) do
+		if db.actor:object(sect) == nil then
+			return false
+		end
+	end
+	return true
+end
+
 -- разборка оружия: --------------------------
 class "mechanical_take_apart" (CUIScriptWnd)
 function mechanical_take_apart:__init(owner) super()
@@ -3573,48 +3583,32 @@ function mechanical_take_apart:InitControls()
 	-- кнопка "Разобрать всё"
 	self.btn_all = xml:Init3tButton("btn_all", self)
 	self:Register(self.btn_all, "btn_all")
-	self.btn_all:Enable(#take_apart_all_list() > 0)
 
-	-- определяем доступность кнопок
-	if db.actor:object("wpn_pm") ~= nil or db.actor:object("pm_wrecked") ~= nil then
-		self.btn_1:Enable(true)
-	end
-	if db.actor:object("wpn_pb") ~= nil then
-		self.btn_2:Enable(true)
-	end
-	if db.actor:object("wpn_bm16") ~= nil then
-		self.btn_3:Enable(true)
-	end
-	if db.actor:object("wpn_usp") ~= nil then
-		self.btn_4:Enable(true)
-	end
-	if db.actor:object("wpn_hpsa") ~= nil then
-		self.btn_5:Enable(true)
-	end
-	if db.actor:object("wpn_toz34") ~= nil then
-		self.btn_6:Enable(true)
-	end
-	if ( db.actor:object("wpn_ak74u") ~= nil or db.actor:object("aksu_wrecked") ~= nil ) then
-		self.btn_7:Enable(true)
-	end
-	if db.actor:object("wpn_ak74") ~= nil then
-		self.btn_8:Enable(true)
-	end
-	if db.actor:object("wpn_lr300") ~= nil then
-		self.btn_9:Enable(true)
-	end
-	if db.actor:object("wpn_vintorez") ~= nil then
-		self.btn_10:Enable(true)
-	end
-	if db.actor:object("wpn_bizon") ~= nil then
-		self.btn_11:Enable(true)
-	end
-	if db.actor:object("wpn_sayga") ~= nil then
-		self.btn_12:Enable(true)
-	end
-	if db.actor:object("wpn_m1891") ~= nil then
-		self.btn_13:Enable(true)
-	end
+	self:refresh_buttons()
+end
+
+-- Survivor: доступность кнопок пересчитываем каждый кадр, а не только при
+-- открытии окна: разобранное оружие пропадает из инвентаря с задержкой.
+function mechanical_take_apart:refresh_buttons()
+	self.btn_1:Enable(actor_has_all("wpn_pm") or actor_has_all("pm_wrecked"))
+	self.btn_2:Enable(actor_has_all("wpn_pb"))
+	self.btn_3:Enable(actor_has_all("wpn_bm16"))
+	self.btn_4:Enable(actor_has_all("wpn_usp"))
+	self.btn_5:Enable(actor_has_all("wpn_hpsa"))
+	self.btn_6:Enable(actor_has_all("wpn_toz34"))
+	self.btn_7:Enable(actor_has_all("wpn_ak74u") or actor_has_all("aksu_wrecked"))
+	self.btn_8:Enable(actor_has_all("wpn_ak74"))
+	self.btn_9:Enable(actor_has_all("wpn_lr300"))
+	self.btn_10:Enable(actor_has_all("wpn_vintorez"))
+	self.btn_11:Enable(actor_has_all("wpn_bizon"))
+	self.btn_12:Enable(actor_has_all("wpn_sayga"))
+	self.btn_13:Enable(actor_has_all("wpn_m1891"))
+	self.btn_all:Enable(#take_apart_all_list() > 0)
+end
+
+function mechanical_take_apart:Update()
+	CUIScriptWnd.Update(self)
+	self:refresh_buttons()
 end
 
 function mechanical_take_apart:InitCallBacks()
@@ -4449,31 +4443,25 @@ function laboratory_interface:InitControls()
 	-- кнопка офф
 	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
 
-	-- определяем доступность кнопок
-	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil then
-		self.btn_1:Enable(true)
-	end
-	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil and db.actor:object("chem_item_harness") ~= nil then
-		self.btn_2:Enable(true)
-	end
-	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("chem_item_rags") ~= nil then
-		self.btn_3:Enable(true)
-	end
-	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_yod") ~= nil then
-		self.btn_4:Enable(true)
-	end
-	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_antiseptic") ~= nil then
-		self.btn_5:Enable(true)
-	end
-	if db.actor:object("chem_item_meldoniy") ~= nil and db.actor:object("chem_item_cofeine") ~= nil and db.actor:object("chem_item_gematogen") ~= nil then
-		self.btn_6:Enable(true)
-	end
-	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_coal") ~= nil then
-		self.btn_7:Enable(true)
-	end
-	if db.actor:object("chem_item_yeast") ~= nil and db.actor:object("chem_item_sugar") ~= nil then
-		self.btn_8:Enable(true)
-	end
+	self:refresh_buttons()
+end
+
+-- Survivor: доступность кнопок пересчитываем каждый кадр, а не только при
+-- открытии окна: израсходованные материалы пропадают из инвентаря с задержкой.
+function laboratory_interface:refresh_buttons()
+	self.btn_1:Enable(actor_has_all("chem_item_antiseptic", "bandage"))
+	self.btn_2:Enable(actor_has_all("chem_item_antiseptic", "bandage", "chem_item_harness"))
+	self.btn_3:Enable(actor_has_all("chem_item_antiseptic", "chem_item_rags"))
+	self.btn_4:Enable(actor_has_all("chem_item_injector", "chem_item_liquor", "chem_item_yod"))
+	self.btn_5:Enable(actor_has_all("chem_item_injector", "chem_item_liquor", "chem_item_antiseptic"))
+	self.btn_6:Enable(actor_has_all("chem_item_meldoniy", "chem_item_cofeine", "chem_item_gematogen"))
+	self.btn_7:Enable(actor_has_all("chem_item_injector", "chem_item_liquor", "chem_item_coal"))
+	self.btn_8:Enable(actor_has_all("chem_item_yeast", "chem_item_sugar"))
+end
+
+function laboratory_interface:Update()
+	CUIScriptWnd.Update(self)
+	self:refresh_buttons()
 end
 
 function laboratory_interface:InitCallBacks()
