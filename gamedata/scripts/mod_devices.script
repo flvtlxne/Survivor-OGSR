@@ -3632,8 +3632,6 @@ function mechanical_take_apart:InitCallBacks()
 end
 
 function mechanical_take_apart:btn1()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 	
 	if db.actor:object("wpn_pm") ~= nil then
 		if xr_conditions.actor_in_slot_pm() == false then
@@ -3656,8 +3654,6 @@ function mechanical_take_apart:btn1()
 end
 
 function mechanical_take_apart:btn2()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_pb") ~= nil then
 		if xr_conditions.actor_in_slot_pb() == false then
@@ -3673,8 +3669,6 @@ function mechanical_take_apart:btn2()
 end
 
 function mechanical_take_apart:btn3()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_bm16") ~= nil then
 		if xr_conditions.actor_in_slot_obrez() == false then
@@ -3690,8 +3684,6 @@ function mechanical_take_apart:btn3()
 end
 
 function mechanical_take_apart:btn4()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_usp") ~= nil then
 		if xr_conditions.actor_in_slot_usp() == false then
@@ -3707,8 +3699,6 @@ function mechanical_take_apart:btn4()
 end
 
 function mechanical_take_apart:btn5()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_hpsa") ~= nil then
 		if xr_conditions.actor_in_slot_hpsa() == false then
@@ -3724,8 +3714,6 @@ function mechanical_take_apart:btn5()
 end
 
 function mechanical_take_apart:btn6()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_toz34") ~= nil then
 		if xr_conditions.actor_in_slot_toz() == false then
@@ -3742,8 +3730,6 @@ function mechanical_take_apart:btn6()
 end
 
 function mechanical_take_apart:btn7()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_ak74u") ~= nil then
 		if xr_conditions.actor_in_slot_aksu() == false then
@@ -3768,8 +3754,6 @@ function mechanical_take_apart:btn7()
 end
 
 function mechanical_take_apart:btn8()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_ak74") ~= nil then
 		if xr_conditions.actor_in_slot_ak74() == false then
@@ -3786,8 +3770,6 @@ function mechanical_take_apart:btn8()
 end
 
 function mechanical_take_apart:btn9()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_lr300") ~= nil then
 		if xr_conditions.actor_in_slot_lr300() == false then
@@ -3804,8 +3786,6 @@ function mechanical_take_apart:btn9()
 end
 
 function mechanical_take_apart:btn10()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_vintorez") ~= nil then
 		if xr_conditions.actor_in_slot_vintorez() == false then
@@ -3822,8 +3802,6 @@ function mechanical_take_apart:btn10()
 end
 
 function mechanical_take_apart:btn11()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_bizon") ~= nil then
 		if xr_conditions.actor_in_slot_bizon() == false then
@@ -3839,8 +3817,6 @@ function mechanical_take_apart:btn11()
 end
 
 function mechanical_take_apart:btn12()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_sayga") ~= nil then
 		if xr_conditions.actor_in_slot_sayga() == false then
@@ -3857,8 +3833,6 @@ function mechanical_take_apart:btn12()
 end
 
 function mechanical_take_apart:btn13()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_take_apart())
 
 	if db.actor:object("wpn_m1891") ~= nil then
 		if xr_conditions.actor_in_slot_mosin() == false then
@@ -3874,12 +3848,9 @@ function mechanical_take_apart:btn13()
 end
 
 function mechanical_take_apart:btn_take_all()
-	self:HideDialog()
-
 	local list = take_apart_all_list()
 	if #list == 0 then
 		soundtrack.no_replics()
-		run_gui(mod_devices.mechanical_take_apart())
 		return
 	end
 
@@ -3902,10 +3873,6 @@ function mechanical_take_apart:btn_take_all()
 	db.actor:give_game_news(game.translate_string("st_take_apart_all_caption"),
 		string.format(game.translate_string("st_take_apart_all_text"), count, parts),
 		"ui_iconsTotal_found_thing", 0, 7000, 0)
-
-	-- –азобранное пропадает из инвентар€ только на следующем кадре,
-	-- поэтому возвращаемс€ в меню мастерской, а не в разборку.
-	run_gui(mod_devices.mechanical_interface())
 end
 
 function mechanical_take_apart:on_back()
@@ -3952,32 +3919,9 @@ function mechanical_construct:InitControls()
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 	
-	if db.actor:object("usp_part1") ~= nil and db.actor:object("usp_part2") ~= nil and db.actor:object("usp_part3") ~= nil and db.actor:object("usp_part4") ~= nil then
-		xml:InitStatic("indicator1", self)
-	end
-	if db.actor:object("hpsa_part1") ~= nil and db.actor:object("hpsa_part2") ~= nil and db.actor:object("hpsa_part3") ~= nil and db.actor:object("hpsa_part4") ~= nil then
-		xml:InitStatic("indicator2", self)
-	end
-	if db.actor:object("toz_part1") ~= nil and db.actor:object("toz_part3") ~= nil and db.actor:object("toz_part3") ~= nil then
-		xml:InitStatic("indicator3", self)
-	end
-	if db.actor:object("aksu_part1") ~= nil and db.actor:object("aksu_part2") ~= nil and db.actor:object("aksu_part3") ~= nil and db.actor:object("aksu_part4") ~= nil and db.actor:object("aksu_part5") ~= nil then
-		xml:InitStatic("indicator4", self)
-	end
-	if db.actor:object("ak_part1") ~= nil and db.actor:object("ak_part2") ~= nil and db.actor:object("ak_part3") ~= nil and db.actor:object("ak_part4") ~= nil and db.actor:object("aksu_part4") ~= nil then
-		xml:InitStatic("indicator5", self)
-	end
-	if db.actor:object("trs_part1") ~= nil and db.actor:object("trs_part2") ~= nil and db.actor:object("trs_part3") ~= nil and db.actor:object("trs_part4") ~= nil and db.actor:object("trs_part5") ~= nil then
-		xml:InitStatic("indicator6", self)
-	end
-	if db.actor:object("vintorez_part1") ~= nil and db.actor:object("vintorez_part2") ~= nil and db.actor:object("vintorez_part3") ~= nil and db.actor:object("vintorez_part4") ~= nil then
-		xml:InitStatic("indicator7", self)
-	end
-	if db.actor:object("bizon_part_1") ~= nil and db.actor:object("bizon_part_2") ~= nil and db.actor:object("bizon_part_3") ~= nil and db.actor:object("bizon_part_4") ~= nil and db.actor:object("aksu_part4") ~= nil then
-		xml:InitStatic("indicator8", self)
-	end
-	if db.actor:object("sayga_part_1") ~= nil and db.actor:object("sayga_part_2") ~= nil and db.actor:object("sayga_part_3") ~= nil and db.actor:object("sayga_part_4") ~= nil then
-		xml:InitStatic("indicator9", self)
+	-- значки "детали есть": создаЄм сразу, а показываем в refresh_buttons()
+	for i = 1, 9 do
+		self["ind_" .. i] = xml:InitStatic("indicator" .. i, self)
 	end
 
 	-- кнопки
@@ -4014,34 +3958,35 @@ function mechanical_construct:InitControls()
 	-- кнопка назад
 	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
 
-	-- определ€ем доступность кнопок
-	if db.actor:object("usp_part1") ~= nil and db.actor:object("usp_part2") ~= nil and db.actor:object("usp_part3") ~= nil and db.actor:object("usp_part4") ~= nil then
-		self.btn_1:Enable(true)
+	self:refresh_buttons()
+end
+
+-- Survivor: детали дл€ сборки каждого ствола, по пор€дку кнопок.
+-- ” “ќ«-34 в оригинале провер€лись части 1, 3, 3 - теперь 1, 2, 3.
+local construct_recipes = {
+	{"usp_part1", "usp_part2", "usp_part3", "usp_part4"},
+	{"hpsa_part1", "hpsa_part2", "hpsa_part3", "hpsa_part4"},
+	{"toz_part1", "toz_part2", "toz_part3"},
+	{"aksu_part1", "aksu_part2", "aksu_part3", "aksu_part4", "aksu_part5"},
+	{"ak_part1", "ak_part2", "ak_part3", "ak_part4", "aksu_part4"},
+	{"trs_part1", "trs_part2", "trs_part3", "trs_part4", "trs_part5"},
+	{"vintorez_part1", "vintorez_part2", "vintorez_part3", "vintorez_part4"},
+	{"bizon_part_1", "bizon_part_2", "bizon_part_3", "bizon_part_4", "aksu_part4"},
+	{"sayga_part_1", "sayga_part_2", "sayga_part_3", "sayga_part_4"},
+}
+
+-- Survivor: доступность кнопок и значки деталей пересчитываем каждый кадр.
+function mechanical_construct:refresh_buttons()
+	for i, parts in ipairs(construct_recipes) do
+		local ok = actor_has_all(unpack(parts))
+		self["btn_" .. i]:Enable(ok)
+		self["ind_" .. i]:Show(ok)
 	end
-	if db.actor:object("hpsa_part1") ~= nil and db.actor:object("hpsa_part2") ~= nil and db.actor:object("hpsa_part3") ~= nil and db.actor:object("hpsa_part4") ~= nil then
-		self.btn_2:Enable(true)
-	end
-	if db.actor:object("toz_part1") ~= nil and db.actor:object("toz_part3") ~= nil and db.actor:object("toz_part3") ~= nil then
-		self.btn_3:Enable(true)
-	end
-	if db.actor:object("aksu_part1") ~= nil and db.actor:object("aksu_part2") ~= nil and db.actor:object("aksu_part3") ~= nil and db.actor:object("aksu_part4") ~= nil and db.actor:object("aksu_part5") ~= nil then
-		self.btn_4:Enable(true)
-	end
-	if db.actor:object("ak_part1") ~= nil and db.actor:object("ak_part2") ~= nil and db.actor:object("ak_part3") ~= nil and db.actor:object("ak_part4") ~= nil and db.actor:object("aksu_part4") ~= nil then
-		self.btn_5:Enable(true)
-	end
-	if db.actor:object("trs_part1") ~= nil and db.actor:object("trs_part2") ~= nil and db.actor:object("trs_part3") ~= nil and db.actor:object("trs_part4") ~= nil and db.actor:object("trs_part5") ~= nil then
-		self.btn_6:Enable(true)
-	end
-	if db.actor:object("vintorez_part1") ~= nil and db.actor:object("vintorez_part2") ~= nil and db.actor:object("vintorez_part3") ~= nil and db.actor:object("vintorez_part4") ~= nil then
-		self.btn_7:Enable(true)
-	end
-	if db.actor:object("bizon_part_1") ~= nil and db.actor:object("bizon_part_2") ~= nil and db.actor:object("bizon_part_3") ~= nil and db.actor:object("bizon_part_4") ~= nil and db.actor:object("aksu_part4") ~= nil then
-		self.btn_8:Enable(true)
-	end
-	if db.actor:object("sayga_part_1") ~= nil and db.actor:object("sayga_part_2") ~= nil and db.actor:object("sayga_part_3") ~= nil and db.actor:object("sayga_part_4") ~= nil then
-		self.btn_9:Enable(true)
-	end
+end
+
+function mechanical_construct:Update()
+	CUIScriptWnd.Update(self)
+	self:refresh_buttons()
 end
 
 function mechanical_construct:InitCallBacks()
@@ -4060,8 +4005,6 @@ function mechanical_construct:InitCallBacks()
 end
 
 function mechanical_construct:btn1()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("usp_part1", 1)
@@ -4074,8 +4017,6 @@ function mechanical_construct:btn1()
 end
 
 function mechanical_construct:btn2()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("hpsa_part1", 1)
@@ -4088,8 +4029,6 @@ function mechanical_construct:btn2()
 end
 
 function mechanical_construct:btn3()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("toz_part1", 1)
@@ -4101,8 +4040,6 @@ function mechanical_construct:btn3()
 end
 
 function mechanical_construct:btn4()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("aksu_part1", 1)
@@ -4116,8 +4053,6 @@ function mechanical_construct:btn4()
 end
 
 function mechanical_construct:btn5()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("aksu_part4", 1)
@@ -4131,8 +4066,6 @@ function mechanical_construct:btn5()
 end
 
 function mechanical_construct:btn6()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("trs_part1", 1)
@@ -4146,8 +4079,6 @@ function mechanical_construct:btn6()
 end
 
 function mechanical_construct:btn7()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("vintorez_part1", 1)
@@ -4160,8 +4091,6 @@ function mechanical_construct:btn7()
 end
 
 function mechanical_construct:btn8()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("bizon_part_1", 1)
@@ -4174,8 +4103,6 @@ function mechanical_construct:btn8()
 end
 
 function mechanical_construct:btn9()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_interface())
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
 	mod_functions.remove_items("sayga_part_1", 1)
@@ -4232,21 +4159,10 @@ function mechanical_others:InitControls()
 	xml:InitStatic("text2", self)
 	xml:InitStatic("text3", self)
 	
-	if db.actor:object("car_item_bearing") ~= nil and db.actor:object("car_item_avtol") ~= nil and db.actor:object("car_item_litol") ~= nil and db.actor:object("car_item_wrenches") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_domkrat") ~= nil and db.actor:object("car_item_wd40") ~= nil and db.actor:object("car_item_akumulator") ~= nil and db.actor:object("car_item_tyre") ~= nil then
-		xml:InitStatic("indicator1", self)
-	end
-	if db.actor:object("gas_balon") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_akumulator") ~= nil then
-		xml:InitStatic("indicator2", self)
-	end
-	if db.actor:object("maroder_courier_item") ~= nil then
-		xml:InitStatic("indicator3", self)
-	end
-	--if db.actor:object("bread") ~= nil then
-	--	xml:InitStatic("indicator4", self)
-	--end
-	--if db.actor:object("bread") ~= nil then
-	--	xml:InitStatic("indicator5", self)
-	--end
+	-- значки "материалы есть": создаЄм сразу, а показываем в refresh_buttons()
+	self.ind_1 = xml:InitStatic("indicator1", self)
+	self.ind_2 = xml:InitStatic("indicator2", self)
+	self.ind_3 = xml:InitStatic("indicator3", self)
 
 	-- кнопки
 	self.btn_1 = xml:Init3tButton("btn_1", self)
@@ -4270,22 +4186,26 @@ function mechanical_others:InitControls()
 	-- кнопка назад
 	self:Register(xml:Init3tButton("btn_back", self),"btn_back")
 
-	-- определ€ем доступность кнопок
-	if db.actor:object("car_item_bearing") ~= nil and db.actor:object("car_item_avtol") ~= nil and db.actor:object("car_item_litol") ~= nil and db.actor:object("car_item_wrenches") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_domkrat") ~= nil and db.actor:object("car_item_wd40") ~= nil and db.actor:object("car_item_akumulator") ~= nil and db.actor:object("car_item_tyre") ~= nil then
-		self.btn_1:Enable(true)
-	end
-	if db.actor:object("gas_balon") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_akumulator") ~= nil then
-		self.btn_2:Enable(true)
-	end
-	if db.actor:object("maroder_courier_item") ~= nil then
-		self.btn_3:Enable(true)
-	end
-	--if db.actor:object("bread") ~= nil then
-	--	self.btn_4:Enable(true)
-	--end
-	--if db.actor:object("bread") ~= nil then
-	--	self.btn_5:Enable(true)
-	--end
+	self:refresh_buttons()
+end
+
+-- Survivor: доступность кнопок и значки материалов пересчитываем каждый кадр.
+function mechanical_others:refresh_buttons()
+	local remkit = actor_has_all("car_item_bearing", "car_item_avtol", "car_item_litol", "car_item_wrenches",
+		"car_item_wiring", "car_item_domkrat", "car_item_wd40", "car_item_akumulator", "car_item_tyre")
+	local bomb = actor_has_all("gas_balon", "car_item_wiring", "car_item_akumulator")
+	local courier = actor_has_all("maroder_courier_item")
+	self.btn_1:Enable(remkit)
+	self.btn_2:Enable(bomb)
+	self.btn_3:Enable(courier)
+	self.ind_1:Show(remkit)
+	self.ind_2:Show(bomb)
+	self.ind_3:Show(courier)
+end
+
+function mechanical_others:Update()
+	CUIScriptWnd.Update(self)
+	self:refresh_buttons()
 end
 
 function mechanical_others:InitCallBacks()
@@ -4302,8 +4222,6 @@ function mechanical_others:InitCallBacks()
 end
 
 function mechanical_others:btn1()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_others())
 
 	if db.actor:object("car_item_bearing") ~= nil and db.actor:object("car_item_avtol") ~= nil and db.actor:object("car_item_litol") ~= nil and db.actor:object("car_item_wrenches") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_domkrat") ~= nil and db.actor:object("car_item_wd40") ~= nil and db.actor:object("car_item_akumulator") ~= nil and db.actor:object("car_item_tyre") ~= nil then
 		start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
@@ -4323,8 +4241,6 @@ function mechanical_others:btn1()
 end
 
 function mechanical_others:btn2()
-	self:HideDialog()
-	run_gui(mod_devices.mechanical_others())
 
 	if db.actor:object("gas_balon") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_akumulator") ~= nil then
 		start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
@@ -4478,8 +4394,6 @@ function laboratory_interface:InitCallBacks()
 end
 
 function laboratory_interface:btn1()
-	self:HideDialog()
-	run_gui(mod_devices.laboratory_interface())
 	
 	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil then
 		mod_functions.remove_items("chem_item_antiseptic", 1)
@@ -4491,8 +4405,6 @@ function laboratory_interface:btn1()
 end
 
 function laboratory_interface:btn2()
-	self:HideDialog()
-	run_gui(mod_devices.laboratory_interface())
 	
 	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil and db.actor:object("chem_item_harness") ~= nil then
 		mod_functions.remove_items("chem_item_antiseptic", 1)
@@ -4505,8 +4417,6 @@ function laboratory_interface:btn2()
 end
 
 function laboratory_interface:btn3()
-	self:HideDialog()
-	run_gui(mod_devices.laboratory_interface())
 	
 	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("chem_item_rags") ~= nil then
 		mod_functions.remove_items("chem_item_antiseptic", 1)
@@ -4518,8 +4428,6 @@ function laboratory_interface:btn3()
 end
 
 function laboratory_interface:btn4()
-	self:HideDialog()
-	run_gui(mod_devices.laboratory_interface())
 	
 	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_yod") ~= nil then
 		mod_functions.remove_items("chem_item_injector", 1)
@@ -4532,8 +4440,6 @@ function laboratory_interface:btn4()
 end
 
 function laboratory_interface:btn5()
-	self:HideDialog()
-	run_gui(mod_devices.laboratory_interface())
 	
 	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_antiseptic") ~= nil then
 		mod_functions.remove_items("chem_item_injector", 1)
@@ -4546,8 +4452,6 @@ function laboratory_interface:btn5()
 end
 
 function laboratory_interface:btn6()
-	self:HideDialog()
-	run_gui(mod_devices.laboratory_interface())
 	
 	if db.actor:object("chem_item_meldoniy") ~= nil and db.actor:object("chem_item_cofeine") ~= nil and db.actor:object("chem_item_gematogen") ~= nil then
 		mod_functions.remove_items("chem_item_meldoniy", 1)
@@ -4560,8 +4464,6 @@ function laboratory_interface:btn6()
 end
 
 function laboratory_interface:btn7()
-	self:HideDialog()
-	run_gui(mod_devices.laboratory_interface())
 	
 	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_coal") ~= nil then
 		mod_functions.remove_items("chem_item_injector", 1)
@@ -4574,8 +4476,6 @@ function laboratory_interface:btn7()
 end
 
 function laboratory_interface:btn8()
-	self:HideDialog()
-	run_gui(mod_devices.laboratory_interface())
 	
 	if db.actor:object("chem_item_yeast") ~= nil and db.actor:object("chem_item_sugar") ~= nil then
 		mod_functions.remove_items("chem_item_yeast", 1)
