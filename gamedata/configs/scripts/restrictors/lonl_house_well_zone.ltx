@@ -3,22 +3,9 @@ active = sr_idle@1
 
 [sr_idle@1]
 on_info = {=master_difficulty} sr_idle@nil
-on_actor_inside = sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_lonl_house_well_npc%
+on_actor_inside = sr_idle@3 %=lonl_house_well_think =actor_finds_something_replic +well_finded%
 
-[sr_idle@2]
-on_game_timer = 40|sr_cutscene@1 %=lonl_house_well_think%
-
-[sr_cutscene@1]
-point = lonl_house_script_npc_point5
-look = lonl_house_script_npc_point6
-cam_effector = scenario_cam\lonl_house_script_cam4
-on_signal = cameff_end | sr_idle@3 %+well_finded%
-global_cameffect = true
-outdoor = true
-enable_ui_on_end = true
-
-
-; Реализуем атаки мародёров на убежище:
+; –еализуем атаки мародЄров на убежище:
 [sr_idle@3]
 ;on_info = {+stranger_talk2 =lonl_house_maroders_atack_condition !actor_in_camp_zone} sr_idle@4 %=spawn_lonl_house_maroders +lonl_house_marodr_atack =give_task(rnd_task_marodr_atack)%
 on_info = {+stranger_talk2 =lonl_house_maroders_atack_condition !actor_in_camp_zone -lonl_house_marodr_atack} sr_idle@4 %+lonl_house_marodr_atack =maroders_atack_task_give%

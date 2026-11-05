@@ -3,28 +3,9 @@ active = ph_idle@1
 
 [ph_idle@1]
 tips      = lonl_house_logs_place_use
-on_use = {!actor_has_item(wood_log)} ph_idle@2 %=disable_ui =run_postprocess(fade_in) =play_sound(actor_finds_something2)%
+on_use = {!actor_has_item(wood_log)} ph_idle@2 %=play_sound(actor_finds_something2) =give_item(wood_log:actor)%
 on_info = {=master_difficulty} %=destroy_object%
 
-
-; Берём бревно:
+; Берём бревно сразу, без затемнения. Полсекунды паузы, чтобы двойное нажатие не дало два бревна:
 [ph_idle@2]
-on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in)%
-
-[ph_idle@3]
-on_game_timer = 15|ph_idle@1 %=enable_ui =give_item(wood_log:actor)%
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
+on_timer = 500 | ph_idle@1

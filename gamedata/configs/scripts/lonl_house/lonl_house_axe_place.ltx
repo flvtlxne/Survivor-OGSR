@@ -3,37 +3,9 @@ active = ph_idle@1
 
 [ph_idle@1]
 tips      = lonl_house_axe_place_use
-on_use = {=actor_has_item(wood_log)} ph_idle@2 %=disable_ui =run_postprocess(fade_in) =play_sound(actor_axeplace_use)%
+on_use = {=actor_has_item(wood_log)} ph_idle@2 %=remove_item(wood_log) =play_sound(actor_axeplace_use)%
 on_info = {=master_difficulty} %=destroy_object%
 
-
-; Рубим:
+; Рубим без затемнения, ГГ может двигаться. Дрова - когда доиграет звук:
 [ph_idle@2]
-on_game_timer = 20|ph_idle@3 %=run_postprocess(fade_in) =play_sound(wood_strike)%
-
-[ph_idle@3]
-on_game_timer = 15|ph_idle@4 %=run_postprocess(fade_in) =play_sound(wood_strike)%
-
-[ph_idle@4]
-on_game_timer = 16|ph_idle@5 %=run_postprocess(fade_in) =play_sound(wood_strike)%
-
-[ph_idle@5]
-on_game_timer = 16|ph_idle@6 %=run_postprocess(fade_in) =play_sound(wood_strike)%
-
-[ph_idle@6]
-on_game_timer = 15|ph_idle@1 %=enable_ui =play_sound(wood_strike) =give_item(firewood:actor) =remove_item(wood_log) =axe_place_think%
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
+on_timer = 3300 | ph_idle@1 %=play_sound(wood_strike) =give_item(firewood:actor) =axe_place_think%
