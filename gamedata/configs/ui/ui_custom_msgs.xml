@@ -141,7 +141,7 @@
 </workshop_house_think>
 
 
-<actor_survival_logo_title x="112" y="40" width="800" height="40" stretch="1">
+<actor_survival_logo_title x="112" y="364" width="800" height="40" stretch="1">
 	<text align="c" r="210" g="210" b="210" a="255" font="graffiti32">actor_survival_logo_title_text</text>
 </actor_survival_logo_title>
 
