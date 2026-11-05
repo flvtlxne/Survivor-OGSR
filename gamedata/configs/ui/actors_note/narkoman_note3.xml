@@ -4,7 +4,7 @@
     <narkoman_note3>
 
 	<table x="350" y="100" width="270" height="500" stretch="1">
-		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_blank_squares</texture>
+		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_list_1</texture>
 	</table>
 
 	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
@@ -38,5 +38,3 @@
 	</btn_exit>
 
     </narkoman_note3>
-
-
