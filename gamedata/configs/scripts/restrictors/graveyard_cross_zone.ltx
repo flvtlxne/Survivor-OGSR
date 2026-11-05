@@ -3,28 +3,16 @@ active = sr_idle@1
 
 [sr_idle@1]
 on_info = {=master_difficulty} sr_idle@nil
-on_info2 = {+suicider_cross_use} sr_idle@2 %=disable_ui =run_postprocess(fade_in) =spawn_graveyard_cross_script_npc%
+on_info2 = {+suicider_cross_use} sr_idle@2 %=disable_ui =run_postprocess(fade_in_out)%
 on_info3 = {+suicider_note3_info} sr_particle@fire1
-
 
 ; Осматриваем крест:
 [sr_idle@2]
-on_game_timer = 40|sr_cutscene@1 %=graveyard_cross_think%
-
-[sr_cutscene@1]
-point = graveyard_cross_point1
-look = graveyard_cross_point2
-cam_effector = scenario_cam\graveyard_arouncross_fly
-on_signal = cameff_end | sr_idle@3 %+suicider_grave_check =spawn_willage_suicider_mobs =spawn_mad_npc_graveyard =run_postprocess(fade_in)%
-global_cameffect = true
-outdoor = true
-enable_ui_on_end = true
-
+on_timer = 1000 | sr_idle@3 %=graveyard_cross_think +suicider_grave_check =spawn_willage_suicider_mobs =spawn_mad_npc_graveyard =enable_ui%
 
 ; Первый разговор с психом:
 [sr_idle@3]
 on_info = {+mad_npc_info1} sr_idle@4 %=give_task(addtask_suicider)%
-
 
 ; Видим карлика из окна:
 [sr_idle@4]
@@ -83,7 +71,6 @@ looped = true
 ;on_info = {+222} sr_idle@11 %-lw_smart1_work%
 on_info2 = {+actor_teleport_to_karlik_trap =actor_in_zone(karlik_quest_zone7)} sr_cutscene@5 %=spawn_karlik_psyzone_script_npc =karlik_psyzone_think%
 
-
 [sr_cutscene@5]
 point = karlik_trap_psyzone_point_0
 look = karlik_trap_psyzone_point_1
@@ -138,7 +125,6 @@ global_cameffect = true
 outdoor = true
 enable_ui_on_end = true
 
-
 [sr_idle@17]
 on_info = {+lw_scientist_dead +karlik_house_atack} sr_idle@nil
 on_info2 = {+karlik_real_death +karlik_house_atack} sr_idle@19 %+karlik_task_end -lonl_house_zomb_atack%
@@ -151,11 +137,7 @@ stereo = false
 on_info = {+lw_scientist_dead +karlik_house_atack} sr_idle@nil
 on_info2 = {+karlik_real_death +karlik_house_atack} sr_idle@19 %+karlik_task_end -lonl_house_zomb_atack%
 
-
 [sr_idle@19]
 on_info = {+scientist_komp_task} sr_idle@nil %=give_task(addtask_comp)%
 
-
 [sr_idle@nil]
-
-

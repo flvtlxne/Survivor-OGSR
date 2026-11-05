@@ -9,18 +9,9 @@ on_actor_inside = {+kill_himera_task} sr_idle@2 %=spawn_maroder_chimera%
 on_info = {+maroder_chimera_dead} sr_idle@3
 
 [sr_idle@3]
-on_info = {=maroder_chimera_near} sr_idle@4 %=spawn_kill_chimera_npc =run_postprocess(fade_in) =disable_ui%
+on_info = {=maroder_chimera_near} sr_idle@4 %=disable_ui =run_postprocess(fade_in_out)%
 
 [sr_idle@4]
-on_game_timer = 15|sr_cutscene@1 %=delete_maroder_chimera =maroder_chimera_think%
-
-[sr_cutscene@1]
-point = maroder_chimera_pnt2
-look = maroder_chimera_pnt3
-cam_effector = scenario_cam\maroder_chimera_script_cam
-on_signal = cameff_end | sr_idle@nil %+maroder_chimera_search%
-global_cameffect = true
-outdoor = true
-enable_ui_on_end = true
+on_timer = 1000 | sr_idle@nil %=delete_maroder_chimera =spawn_corpse(maroder_chimera2:maroder_chimera_pnt3) =maroder_chimera_think +maroder_chimera_search =enable_ui%
 
 [sr_idle@nil]

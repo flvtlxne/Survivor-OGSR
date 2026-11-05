@@ -9,20 +9,10 @@ on_info2 = {+map_finded} sr_idle@1 %=add_self_spot(red_location:usefull_place_ma
 on_info = {+btr_maroder_pda_info} sr_idle@2 %=remowe_self_spot(red_location:usefull_place_mark) =spawn_btr_maroders2 =give_task(addtask_btr)%
 
 [sr_idle@2]
-on_info = {=is_dead(btr_maroder3) =story_object_exist(btr_maroder3) =is_dead(btr_maroder4) =story_object_exist(btr_maroder4) =is_dead(btr_maroder5) =story_object_exist(btr_maroder5) =actor_in_zone(forest_btr_maroders_zone_2)} sr_idle@3 %=run_postprocess(fade_in) =disable_ui =spawn_forest_btr_npc =delete_btr_maroder1 =delete_btr_maroder2%
+on_info = {=is_dead(btr_maroder3) =story_object_exist(btr_maroder3) =is_dead(btr_maroder4) =story_object_exist(btr_maroder4) =is_dead(btr_maroder5) =story_object_exist(btr_maroder5) =actor_in_zone(forest_btr_maroders_zone_2)} sr_idle@3 %=disable_ui =run_postprocess(fade_in_out)%
 
 [sr_idle@3]
-on_game_timer = 40|sr_cutscene@1 %=forest_btr_think%
-
-[sr_cutscene@1]
-point = forest_btr_pnt3
-look = forest_btr_fireplace_point
-cam_effector = scenario_cam\forest_btr_camp_cam
-on_signal = cameff_end | sr_idle@4 %+forest_btr_maroders_off =spawn_btr_maroders3%
-global_cameffect = true
-outdoor = true
-enable_ui_on_end = true
-
+on_timer = 1000 | sr_idle@4 %=delete_btr_maroder1 =delete_btr_maroder2 =forest_btr_think +forest_btr_maroders_off =spawn_btr_maroders3 =enable_ui%
 
 [sr_idle@4]
 on_info = {+razlom_wound_maroder_info} sr_idle@nil %=spawn_btr_maroders4%

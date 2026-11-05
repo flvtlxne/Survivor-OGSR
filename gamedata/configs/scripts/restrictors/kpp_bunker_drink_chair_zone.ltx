@@ -3,20 +3,9 @@ active = sr_idle@1
 
 [sr_idle@1]
 on_info = {!master_difficulty} sr_idle@nil
-on_info2 = {+kpp_bunker_chair_rest} sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_kpp_bunker_chair_npc%
+on_info2 = {+kpp_bunker_chair_rest} sr_idle@2 %=disable_ui =run_postprocess(fade_in_out)%
 
 [sr_idle@2]
-on_game_timer = 10|sr_cutscene@1 %=kpp_bunker_drink_think%
-
-[sr_cutscene@1]
-point = kpp_bunker_drink_chair_point1
-look = mg_kpp_guard1_walk1
-cam_effector = scenario_cam\kpp_bunker_drink_place_fly
-on_signal = cameff_end | sr_idle@1 %-kpp_bunker_chair_rest =actor_after_vodka_rest_action2%
-global_cameffect = true
-outdoor = true
-enable_ui_on_end = true
-
-
+on_timer = 1000 | sr_idle@1 %-kpp_bunker_chair_rest =actor_after_vodka_rest_action2 =kpp_bunker_drink_think =enable_ui%
 
 [sr_idle@nil]

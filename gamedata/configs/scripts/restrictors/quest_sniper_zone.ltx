@@ -6,19 +6,10 @@ on_info = {=master_difficulty} sr_idle@nil
 on_info2 = {+map_finded} sr_idle@2 %=add_self_spot(red_location:usefull_place_mark)%
 
 [sr_idle@2]
-on_actor_inside = sr_idle@3 %=disable_ui =run_postprocess(fade_in) =spawn_sniper_tree_script_npc =remowe_self_spot(red_location:usefull_place_mark)%
+on_actor_inside = sr_idle@3 %=disable_ui =run_postprocess(fade_in_out) =remowe_self_spot(red_location:usefull_place_mark)%
 
 [sr_idle@3]
-on_game_timer = 40|sr_cutscene@1 %=sniper_quest_tree_think1%
-
-[sr_cutscene@1]
-point = quest_sniper_zone_point1
-look = quest_sniper_zone_point2
-cam_effector = scenario_cam\sniper_tree_quest_fly2
-on_signal = cameff_end | sr_idle@4 %+sniper_tree_check =give_task(addtask_sniper) =spawn_sniper_quest_chimera%
-global_cameffect = true
-outdoor = true
-enable_ui_on_end = true
+on_timer = 1000 | sr_idle@4 %=sniper_quest_tree_think1 +sniper_tree_check =give_task(addtask_sniper) =spawn_sniper_quest_chimera =enable_ui%
 
 [sr_idle@4]
 on_info = {+sniper_note1_info} sr_idle@5 %=spawn_sniper_quest_maroder2%
@@ -51,24 +42,9 @@ outdoor = true
 enable_ui_on_end = true
 
 [sr_idle@8]
-on_info = {+quest_sniper_reward =is_dead(quest_sniper2) =actor_has_item(showel) =actor_behind_sniper_dead_body} sr_idle@9 %=disable_ui =run_postprocess(fade_in) =spawn_sniper_dead_script_npc%
+on_info = {+quest_sniper_reward =is_dead(quest_sniper2) =actor_has_item(showel) =actor_behind_sniper_dead_body} sr_idle@9 %=disable_ui =run_postprocess(fade_in_out)%
 
 [sr_idle@9]
-on_game_timer = 40|sr_cutscene@4 %=sniper_dead_think%
-
-[sr_cutscene@4]
-point = quest_sniper_zone_point15
-look = quest_sniper_zone_point14
-cam_effector = scenario_cam\sniper_tree_quest_fly5
-on_signal = cameff_end | sr_idle@nil %+sniper_last_wish%
-global_cameffect = true
-outdoor = true
-enable_ui_on_end = true
-
-
-
-
+on_timer = 1000 | sr_idle@nil %=delete_maroder_sniper =spawn_object(dead_sniper_cross:quest_sniper_zone_point14) =sniper_dead_think +sniper_last_wish =enable_ui%
 
 [sr_idle@nil]
-
-
