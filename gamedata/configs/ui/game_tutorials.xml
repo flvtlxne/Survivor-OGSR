@@ -1189,13 +1189,20 @@
 			<auto_static width="1024" height="768" stretch="1">
 				<texture x="1" y="1" width="1024" height="758">intro\survival_mod_intro</texture>
 			</auto_static>
+			<!-- Survivor: одинаковые полосы у всех слайдов, текст всегда на чёрном -->
+			<auto_static x="0" y="0" width="1024" height="74" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
+			<auto_static x="0" y="694" width="1024" height="74" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
 		</global_wnd_16>
 		<item>
 			<length_sec>9</length_sec>
 			<grab_input>on</grab_input>
 			<function_check_start>xr_conditions.not_master_difficulty</function_check_start>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_mod_intro_text1</text>
 				</auto_static>
 			</main_wnd>
@@ -1205,7 +1212,7 @@
 			<grab_input>on</grab_input>
 			<function_check_start>xr_conditions.not_master_difficulty</function_check_start>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="11" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="11" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_mod_intro_text2</text>
 				</auto_static>
 			</main_wnd>
@@ -1215,7 +1222,7 @@
 			<grab_input>on</grab_input>
 			<function_check_start>xr_conditions.not_master_difficulty</function_check_start>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="11" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="11" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_mod_intro_text3</text>
 				</auto_static>
 			</main_wnd>
@@ -1225,7 +1232,7 @@
 			<grab_input>on</grab_input>
 			<function_check_start>xr_conditions.not_master_difficulty</function_check_start>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="8" x="500" y="980" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="8" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_mod_intro_text4</text>
 				</auto_static>
 			</main_wnd>
@@ -1235,7 +1242,7 @@
 			<grab_input>on</grab_input>
 			<function_check_start>xr_conditions.not_master_difficulty</function_check_start>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_mod_intro_text5</text>
 				</auto_static>
 			</main_wnd>
@@ -1245,7 +1252,7 @@
 			<grab_input>on</grab_input>
 			<function_check_start>xr_conditions.not_master_difficulty</function_check_start>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_mod_intro_text6</text>
 				</auto_static>
 			</main_wnd>
@@ -1255,7 +1262,7 @@
 			<grab_input>on</grab_input>
 			<function_check_start>xr_conditions.not_master_difficulty</function_check_start>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="950" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_mod_intro_text7</text>
 				</auto_static>
 			</main_wnd>
