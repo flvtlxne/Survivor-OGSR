@@ -185,6 +185,10 @@
 		<texture a="180">ui_upgrade_arrow2</texture>
 	</cell_item_upgrade>
 
+	<cell_item_unloaded x="0" y="0" width="12" height="12" stretch="1">
+		<texture a="220">ui_inGame2_upgrade_on_weapon_lamp_red_disabled</texture>
+	</cell_item_unloaded>
+
     <condition_progess_bar x="1" y="1" width="38" height="5" horz="1" min="0" max="1" pos="1">
 	    <background x="0" y="0" width="38" height="5">
             <texture r="62" g="74" b="74">ui_inGame2_inventory_item_status_bar</texture>
