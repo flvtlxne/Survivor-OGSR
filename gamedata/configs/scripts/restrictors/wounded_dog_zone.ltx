@@ -6,19 +6,7 @@ on_info = {=master_difficulty} sr_idle@nil
 on_info2 = {+map_finded} sr_idle@1 %=add_self_spot(red_location:usefull_place_mark)%
 
 [sr_idle@1]
-on_actor_inside = sr_idle@2 %=stop_sound_looped(wounded_dog_snd) =run_postprocess(fade_in) =disable_ui =spawn_wounded_dog_npc =remowe_self_spot(red_location:usefull_place_mark)%
-
-[sr_idle@2]
-on_game_timer = 40|sr_cutscene@1 %=wounded_dog_meet_think%
-
-[sr_cutscene@1]
-point = personal_dog_spawn_pnt1
-look = personal_dog_spawn_pnt2
-cam_effector = scenario_cam\wounded_dog_script_cam
-on_signal = cameff_end | sr_idle@3 %+wounded_dog_meet%
-global_cameffect = true
-outdoor = true
-enable_ui_on_end = true
+on_actor_inside = sr_idle@3 %=stop_sound_looped(wounded_dog_snd) =remowe_self_spot(red_location:usefull_place_mark) =wounded_dog_meet_think +wounded_dog_meet%
 
 [sr_idle@3]
 on_info = {+personal_dog_note1_info} sr_idle@nil %=give_task(addtask_dog)%

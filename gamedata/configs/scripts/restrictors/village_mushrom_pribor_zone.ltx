@@ -3,19 +3,7 @@ active = sr_idle@1
 
 [sr_idle@1]
 on_info = {=master_difficulty} sr_idle@nil
-on_actor_inside = {+narkoman_note1_info} sr_idle@2 %=run_postprocess(fade_in) =disable_ui =spawn_village_mushrm_pribor_npc%
-
-[sr_idle@2]
-on_game_timer = 40|sr_cutscene@1 %=village_mushrm_pribor_think%
-
-[sr_cutscene@1]
-point = village_mushrom_pribor_pnt1
-look = village_mushrom_pribor_pnt2
-cam_effector = scenario_cam\village_mushrom_pribor_script_cam
-on_signal = cameff_end|sr_idle@nil %+village_mushrom_pribor_finded%
-global_cameffect = true
-outdoor = false
-enable_ui_on_end = true
+on_actor_inside = {+narkoman_note1_info} sr_idle@nil %=village_mushrm_pribor_think +village_mushrom_pribor_finded%
 
 [sr_idle@nil]
 
