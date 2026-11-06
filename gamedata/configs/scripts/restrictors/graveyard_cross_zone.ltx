@@ -22,7 +22,7 @@ on_info = {+suicider_note1_info =actor_in_zone(karlik_quest_zone1)} sr_cutscene@
 point = magazin_window_point1
 look = magazin_window_point2
 cam_effector = scenario_cam\magazin_window_fly
-on_signal = cameff_end | sr_sound_act@1 %+willage_magaz_check%
+on_signal = cameff_end | sr_idle@5_2 %+willage_magaz_check%
 global_cameffect = true
 outdoor = true
 enable_ui_on_end = true
@@ -81,13 +81,17 @@ outdoor = true
 enable_ui_on_end = true
 
 [sr_idle@11]
-on_info = {!actor_in_zone(karlik_quest_zone7)} sr_sound_act@2 %=spawn_karlik_psyzone_zombies%
+on_info = {!actor_in_zone(karlik_quest_zone7)} sr_idle@12 %=spawn_karlik_psyzone_zombies%
 
 [sr_sound_act@2]
 snd = scenario\karlik_quest_music2
 delay = 0
 delay_max = 100
 stereo = false
+on_info = {+karlik_fake_death} sr_idle@13
+on_info2 = {!actor_behind_karlik_quest_zone7} %=actor_teleport_to_karlik_trap%
+
+[sr_idle@12]
 on_info = {+karlik_fake_death} sr_idle@13
 on_info2 = {!actor_behind_karlik_quest_zone7} %=actor_teleport_to_karlik_trap%
 
