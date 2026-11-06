@@ -1,0 +1,43 @@
+-- Survivor: save helpers (autosaves, save rules)
+
+local SLEEP_SAVES_KEEP = 3
+
+-- true if a save made here survives the reload check in mod_functions.post_load_game_action2
+function save_is_valid_here()
+	if xr_conditions.master_difficulty() then
+		return xr_conditions.actor_in_mg_start_zone() or xr_conditions.actor_in_kpp_surge_hide_zone()
+	end
+	return xr_conditions.actor_in_lonl_house_save_zone() or not has_alife_info("stranger_talk1")
+end
+
+-- delete saves whose name starts with prefix, keeping the newest ones
+local function rotate_saves(prefix, keep)
+	local flags = FS.FS_ListFiles + FS.FS_ClampExt + FS.FS_RootOnly + FS.FS_NoLower
+	local flist = getFS():file_list_open_ex("$game_saves$", flags, "*"..ui_load_dialog.saved_game_extension)
+	flist:Sort(FS.FS_sort_by_modif_down)
+	local found = 0
+	for file in flist:GetAll() do
+		local name = file:NameFull()
+		if string.sub(name, 1, string.len(prefix)) == prefix then
+			found = found + 1
+			if found > keep then
+				ui_load_dialog.delete_save_game(name)
+			end
+		end
+	end
+end
+
+-- called from ui_sleep_dialog.dream_callback2 when the actor wakes up
+function sleep_autosave()
+	start_quick_timer(2, "mod_saves.sleep_autosave_action")
+end
+
+function sleep_autosave_action()
+	if not (db.actor and db.actor:alive()) or not save_is_valid_here() then
+		return
+	end
+	local prefix = user_name().." - "..game.translate_string("sleep_autosave").." - "
+	rotate_saves(prefix, SLEEP_SAVES_KEEP - 1)
+	local y, m, d, h, mi = game.get_game_time():get(0, 0, 0, 0, 0, 0, 0)
+	get_console():execute("save "..prefix..string.format("%02d.%02d, %02d.%02d", d, m, h, mi))
+end

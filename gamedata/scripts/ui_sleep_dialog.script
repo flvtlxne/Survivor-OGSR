@@ -159,6 +159,7 @@ function dream_callback2()
 		mod_functions.after_sleep_event()
 		mod_functions.reset_vodka_counter()
 	end
+	mod_saves.sleep_autosave()
 end
 
 function sleep()

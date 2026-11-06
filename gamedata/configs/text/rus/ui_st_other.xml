@@ -115,6 +115,9 @@
 	<string id="safe_zone_autosave">
 		<text>Выживший. Выход из безопасной зоны</text>
 	</string>
+	<string id="sleep_autosave">
+		<text>Выживший. После сна</text>
+	</string>
 	<string id="lost_willage_stranger_talk3">
 		<text>Выживший. Спасение отмычки</text>
 	</string>
