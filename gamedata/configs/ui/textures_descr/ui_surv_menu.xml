@@ -27,9 +27,18 @@
 		<texture id="surv_discord_h" x="260" y="292" width="120" height="120"/>
 		<texture id="surv_discord_t" x="260" y="292" width="120" height="120"/>
 		<texture id="surv_discord_d" x="260" y="164" width="120" height="120"/>
+
+		<texture id="surv_msg_btn_e" x="400" y="160" width="280" height="60"/>
+		<texture id="surv_msg_btn_h" x="400" y="230" width="280" height="60"/>
+		<texture id="surv_msg_btn_t" x="400" y="230" width="280" height="60"/>
+		<texture id="surv_msg_btn_d" x="400" y="300" width="280" height="60"/>
 	</file>
 
 	<file name="ui\surv_logo">
 		<texture id="surv_logo" x="0" y="0" width="1187" height="355"/>
+	</file>
+
+	<file name="ui\surv_msgbox">
+		<texture id="surv_msgbox" x="0" y="0" width="1120" height="400"/>
 	</file>
 </w>

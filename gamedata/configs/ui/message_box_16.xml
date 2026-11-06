@@ -1,430 +1,430 @@
 <w>
-	<message_box_change_level type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-		<texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">level_changer_invitation</text>
+	<message_box_change_level type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+		<texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">level_changer_invitation</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_change_level>
-	<message_box_change_level_disabled type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">level_changer_invitation</text>
+	<message_box_change_level_disabled type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">level_changer_invitation</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_change_level_disabled>
-	<message_box_error type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_error</text>
+	<message_box_error type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_error</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_error>
-	<message_box_empty_file_name type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_file_name_is_empty</text>
+	<message_box_empty_file_name type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_file_name_is_empty</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_empty_file_name>
-	<message_box_delete_file_name type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_mm_delete_existing_file_q</text>
+	<message_box_delete_file_name type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_mm_delete_existing_file_q</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_delete_file_name>
-	<message_box_file_already_exist type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_file_exist_owerwrite_q</text>
+	<message_box_file_already_exist type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_file_exist_owerwrite_q</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
     </message_box_file_already_exist>
-	<message_box_buy_spawn type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">You can buy a spawn for 1000 $. Press Yes to pay</text>
+	<message_box_buy_spawn type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">You can buy a spawn for 1000 $. Press Yes to pay</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_buy_spawn>
-	<message_box_quit_windows type="quit_windows" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-	        <text align="c" vert_align="c" font="letterica18">ui_mm_quit_windows_message</text>
+	<message_box_quit_windows type="quit_windows" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+	        <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_mm_quit_windows_message</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_quit_windows>
-	<message_box_quit_game type="quit_game" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_want_to_leave_game_q</text>
+	<message_box_quit_game type="quit_game" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_want_to_leave_game_q</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_quit_game>
-	<message_box_confirm_load_save type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_load_game_confirm</text>
+	<message_box_confirm_load_save type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_load_game_confirm</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_confirm_load_save>
-	<message_box_invalid_saved_game type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_invalid_saved_game</text>
+	<message_box_invalid_saved_game type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_invalid_saved_game</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_invalid_saved_game>
-	<message_box_invalid_host type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_invalid_host</text>
+	<message_box_invalid_host type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_invalid_host</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_invalid_host>
-	<message_box_invalid_pass type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_invalid_pass</text>
+	<message_box_invalid_pass type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_invalid_pass</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_invalid_pass>
-	<message_box_session_full type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_sess_full</text>
+	<message_box_session_full type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_sess_full</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_session_full>
-	<message_box_server_reject type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_rejected_server</text>
+	<message_box_server_reject type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_rejected_server</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_server_reject>
-    <message_box_cdkey_invalid type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_cdkey_invalid</text>
+    <message_box_cdkey_invalid type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_cdkey_invalid</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
     </message_box_cdkey_invalid>
-	<message_box_cdkey_in_use type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_cdkey_in_use</text>
+	<message_box_cdkey_in_use type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_cdkey_in_use</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_cdkey_in_use>
-	<message_box_cdkey_disabled type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-	        <text align="c" vert_align="c" font="letterica18">ui_st_conn_cdkey_disabled</text>
+	<message_box_cdkey_disabled type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+	        <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_cdkey_disabled</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_cdkey_disabled>
-    <message_box_different_version type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_version_differs</text>
+    <message_box_different_version type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_version_differs</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_different_version>
-	<message_box_gs_service_not_available type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_err_gs_not_available</text>
+	<message_box_gs_service_not_available type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_err_gs_not_available</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_gs_service_not_available>
-	<message_box_sb_master_server_connect_failed type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-	        <text align="c" vert_align="c" font="letterica18">ui_st_err_sb_master_server_conn_fail</text>
+	<message_box_sb_master_server_connect_failed type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+	        <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_err_sb_master_server_conn_fail</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_sb_master_server_connect_failed>
-	<msg_box_new_patch type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_new_patch</text>
+	<msg_box_new_patch type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_new_patch</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</msg_box_new_patch>
-	<msg_box_no_new_patch type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_conn_no_new_patch</text>
+	<msg_box_no_new_patch type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_conn_no_new_patch</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</msg_box_no_new_patch>
 	<cant_vote type="ok" x="200" y="250" width="510" height="206">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_voting_disabled</text>
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_voting_disabled</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</cant_vote>
-	<select_map type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_select_one_map</text>
+	<select_map type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_select_one_map</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</select_map>
-	<message_box_restart_game type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_mm_need_restart</text>
+	<message_box_restart_game type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_mm_need_restart</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_restart_game>
-	<message_box_check_r2 type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_cant_run_r2</text>
+	<message_box_check_r2 type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_cant_run_r2</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_check_r2>
-	<msg_box_patch_download_error type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_patch_download_error</text>
+	<msg_box_patch_download_error type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_patch_download_error</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</msg_box_patch_download_error>
-	<msg_box_patch_download_success type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_patch_download_success</text>
+	<msg_box_patch_download_success type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_patch_download_success</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</msg_box_patch_download_success>
-	<msg_box_connect_to_master_server type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_connecting_to_masterserver</text>
+	<msg_box_connect_to_master_server type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_connecting_to_masterserver</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">ui_mm_cancel</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">ui_mm_cancel</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</msg_box_connect_to_master_server>
-	<msg_box_kicked_by_server type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_kicked_by_server</text>
+	<msg_box_kicked_by_server type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_kicked_by_server</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</msg_box_kicked_by_server>
-	<msg_box_error_loading type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">ui_st_error_loading</text>
+	<msg_box_error_loading type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">ui_st_error_loading</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</msg_box_error_loading>
-    <message_box_yes_no type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">a</text>
+    <message_box_yes_no type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">a</text>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
     </message_box_yes_no>
-	<message_box_ok type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-		    <text align="c" vert_align="c" font="letterica18">a</text>
+	<message_box_ok type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+		    <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">a</text>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_ok>
-	<message_box_direct_ip type="direct_ip" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
+	<message_box_direct_ip type="direct_ip" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
 	    <cap_host x="192" y="30" width="89" height="25">
 	        <text font="letterica16" vert_align="c">mm_mp_host_port</text>
 	    </cap_host>
@@ -439,19 +439,19 @@
 	        <text x="3" font="letterica16" vert_align="c"></text>
 	        <texture>ui_inGame2_edit_box_1</texture>
 	    </edit_password>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_Cancel</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Cancel</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_direct_ip>
-	<message_box_password type="password" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
+	<message_box_password type="password" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
 	    <cap_user_password x="192" y="30" width="89" height="25">
 	        <text font="letterica16" vert_align="c">mm_mp_userpassword</text>
 	    </cap_user_password>
@@ -466,21 +466,21 @@
 	        <text x="3" font="letterica16" vert_align="c"></text>
 	        <texture>ui_inGame2_edit_box_1</texture>
 	    </edit_password>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_Cancel</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Cancel</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_password>
-	<message_box_download_level type="yes_no_copy" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
-	        <text align="c" vert_align="c" font="letterica18">download_map</text>
+	<message_box_download_level type="yes_no_copy" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
+	        <text align="c" vert_align="c" font="ui_font_surv_small" r="214" g="209" b="196">download_map</text>
 	    </message_text>
 	    <edit_url x="192" y="70" width="216" height="25" read_only="1" max_symb_count="110">
 	        <text x="3" font="letterica16" vert_align="c"></text>
@@ -488,77 +488,77 @@
 	    </edit_url>
 	    <button_copy x="145" y="212" width="127" height="28" check_mode="0">
 	        <window_name>button_copy</window_name>
-	        <text font="letterica18">ui_st_btn_copy_url</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">ui_st_btn_copy_url</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_copy>
 	    <button_yes x="275" y="212" width="127" height="28" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">ui_st_btn_download_map</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">ui_st_btn_download_map</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
 	    <button_no x="405" y="212" width="127" height="28" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_Cancel</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Cancel</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_download_level>
 
-	<message_box_gs_info type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
+	<message_box_gs_info type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
 		    <text align="c" vert_align="c" font="letterica18"/>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_cancel_login</window_name>
-	        <text font="letterica18">Btn_Cancel</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Cancel</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_gs_info>
 
-	<message_box_gs_acc_creation type="info" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
+	<message_box_gs_acc_creation type="info" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
 		    <text align="c" vert_align="c" font="letterica18"/>
 	    </message_text>
 	</message_box_gs_acc_creation>
-	<message_box_gs_changing_unick type="info" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
+	<message_box_gs_changing_unick type="info" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
 		    <text align="c" vert_align="c" font="letterica18"/>
 	    </message_text>
 	</message_box_gs_changing_unick>
 
-	<message_box_gs_result type="ok" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
+	<message_box_gs_result type="ok" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
 		    <text align="c" vert_align="c" font="letterica18"/>
 	    </message_text>
-	    <button_ok x="220" y="212" width="101" height="28" check_mode="0">
+	    <button_ok x="157" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_ok</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_ok>
 	</message_box_gs_result>
 
-    <message_box_gs_question type="yes_no" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
-	    <message_text x="49" y="28" width="461" height="150" complex_mode="1">
+    <message_box_gs_question type="yes_no" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
+	    <message_text x="22" y="22" width="376" height="112" complex_mode="1">
 		    <text align="c" vert_align="c" font="letterica18"/>
 	    </message_text>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_Yes</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Yes</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_No</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_No</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
     </message_box_gs_question>
 
-	<message_box_ra_login type="ra_login" x="240" y="256" width="541" height="255" stretch="1">
-	    <texture>ui_inGame2_message_box</texture>
+	<message_box_ra_login type="ra_login" x="302" y="284" width="420" height="200" stretch="1">
+	    <texture>surv_msgbox</texture>
 	    <cap_login x="226" y="30" width="89" height="25">
 	        <text font="letterica16" vert_align="c" align="c">mm_mp_login</text>
 	    </cap_login>
@@ -573,15 +573,15 @@
 	        <text x="3" font="letterica16" vert_align="c"></text>
 	        <texture>ui_inGame2_edit_box_1</texture>
 	    </edit_password>
-	    <button_yes x="167" y="212" width="101" height="28" check_mode="0">
+	    <button_yes x="99" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_yes</window_name>
-	        <text font="letterica18">Btn_OK</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_OK</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_yes>
-	    <button_no x="272" y="212" width="101" height="28" check_mode="0">
+	    <button_no x="216" y="150" width="105" height="30" check_mode="0">
 	        <window_name>button_no</window_name>
-	        <text font="letterica18">Btn_Cancel</text>
-	        <texture>ui_inGame2_Mp_bigbuttone</texture>
+	        <text font="ui_font_surv_btn_s">Btn_Cancel</text>
+	        <texture>surv_msg_btn</texture><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color><sound_t>device\power_switch</sound_t>
 	    </button_no>
 	</message_box_ra_login>
 </w>
