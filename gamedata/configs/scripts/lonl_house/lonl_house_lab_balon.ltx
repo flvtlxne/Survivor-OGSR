@@ -3,7 +3,7 @@ active = ph_idle@1
 
 [ph_idle@1]
 tips      = lonl_house_balon_tip
-on_use = {=actor_has_item(gas_balon_big)} ph_idle@5 %=disable_ui =run_postprocess(fade_in)%, {=actor_has_item(gas_balon)} ph_idle@2 %=disable_ui =run_postprocess(fade_in)%
+on_use = {=actor_has_item(gas_balon_big)} ph_idle@7 %=play_sound(balon_gas_use) =remove_item(gas_balon_big) +lab_balon_charged =inc_lonl_house_balon_counter2%, {=actor_has_item(gas_balon)} ph_idle@4 %=play_sound(balon_gas_use) =remove_item(gas_balon) +lab_balon_charged =inc_lonl_house_balon_counter%
 on_info = {=master_difficulty} %=destroy_object%
 
 ; Закачиваем газ:
