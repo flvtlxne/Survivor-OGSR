@@ -17182,14 +17182,25 @@ end
 end
 
 
+-- Survivor: escorts skip the walk - short fade, then the actor and the escorted npc are at the base
+local escort_npc_id = nil
 
+function escort_to_base(actor, npc, p)
+	escort_npc_id = npc and npc:id() or nil
+	disable_ui(db.actor, nil)
+	run_postprocess(db.actor, db.actor, {"fade_in_out"})
+	start_quick_timer(1, "xr_effects.escort_to_base_teleport")
+end
 
-
-
-
-
-
-
-
-
-
+function escort_to_base_teleport()
+	local pos = patrol("travel_point_lonl_house"):point(0)
+	db.actor:set_actor_position(pos)
+	local npc = escort_npc_id and level.object_by_id(escort_npc_id)
+	if npc and npc:alive() then
+		reset_animation(npc)
+		local vid = level.vertex_in_direction(level.vertex_id(pos), vector():set(1, 0, 1), 2)
+		npc:set_npc_position(level.vertex_position(vid))
+	end
+	escort_npc_id = nil
+	enable_ui(db.actor, nil)
+end
