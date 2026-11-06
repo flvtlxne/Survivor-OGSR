@@ -768,6 +768,9 @@
 	<string id="ui_mm_important_save">
 		<text>Фразы героя</text>
 	</string>
+	<string id="ui_mm_base_save_only">
+		<text>Сохранение только на базе</text>
+	</string>
 	<string id="ui_mm_r1_detail_textures">
 		<text>Детальные текстуры</text>
 	</string>

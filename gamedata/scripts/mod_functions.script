@@ -460,17 +460,15 @@ start_real_timer(1, "mod_functions.post_load_game_action2")
 end
 
 function post_load_game_action2()
---if db.actor then
-if xr_conditions.master_difficulty() == true and xr_conditions.actor_in_mg_start_zone() == false and xr_conditions.actor_in_kpp_surge_hide_zone() == false then
-	xr_effects.load_game(actor, nil, {"scenario_save_master1"})
-elseif xr_conditions.master_difficulty() == false then
-	if xr_conditions.actor_in_lonl_house_save_zone() == false and has_alife_info("stranger_talk1") then
-		xr_effects.load_game(actor, nil, {"safe_zone_autosave"})
+	if mod_saves.save_is_valid_here() then
+		return
+	end
+	if xr_conditions.master_difficulty() then
+		xr_effects.load_game(db.actor, nil, {"scenario_save_master1"})
+	else
+		xr_effects.load_game(db.actor, nil, {"safe_zone_autosave"})
 	end
 end
---end
-end
-
 
 function after_surge_think()
 local st = get_hud():GetCustomStatic("after_surge_think") or get_hud():AddCustomStatic("after_surge_think",true)
@@ -486,6 +484,9 @@ end
 
 
 function save_game_action()
+if xr_conditions.master_difficulty() == false and mod_saves.base_save_only() == false then
+	return
+end
 if xr_conditions.master_difficulty() == false then
 if has_alife_info("stranger_talk1") then
 if xr_conditions.actor_in_lonl_house_save_zone() == false then

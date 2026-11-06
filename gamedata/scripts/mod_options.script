@@ -1,0 +1,53 @@
+-- Survivor: mod options stored in <app_data_root>\survivor_options.ltx
+
+local FILE_NAME = "survivor_options.ltx"
+local values = nil
+
+local function file_path()
+	return getFS():update_path("$app_data_root$", FILE_NAME)
+end
+
+local function load_values()
+	values = {}
+	local f = io.open(file_path(), "r")
+	if not f then
+		return
+	end
+	for line in f:lines() do
+		local key, val = string.match(line, "^%s*([%w_]+)%s*=%s*(%S+)")
+		if key then
+			values[key] = val
+		end
+	end
+	f:close()
+end
+
+local function save_values()
+	local f = io.open(file_path(), "w")
+	if not f then
+		return
+	end
+	for key, val in pairs(values) do
+		f:write(key.." = "..val.."\n")
+	end
+	f:close()
+end
+
+function get_bool(key, default)
+	if not values then
+		load_values()
+	end
+	local val = values[key]
+	if val == nil then
+		return default
+	end
+	return val == "1"
+end
+
+function set_bool(key, value)
+	if not values then
+		load_values()
+	end
+	values[key] = value and "1" or "0"
+	save_values()
+end

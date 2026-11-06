@@ -90,6 +90,10 @@ function options_dialog:SetCurrentValues()
 
 	opt:SetCurrentValues("key_binding")
 	opt:SaveBackupValues("key_binding")
+
+	if self.check_base_save_only then
+		self.check_base_save_only:SetCheck(mod_options.get_bool("base_save_only", false))
+	end
 end
 
 function options_dialog:InitCallBacks()
@@ -151,6 +155,10 @@ function options_dialog:OnBtnAccept()
 	opt:SaveValues("mm_opt_gameplay")
 	opt:SaveValues("mm_opt_sound")
 	opt:SaveValues("mm_opt_controls")
+
+	if self.check_base_save_only then
+		mod_options.set_bool("base_save_only", self.check_base_save_only:GetCheck())
+	end
 
 	if opt:NeedVidRestart() then
 		_G.b_discard_settings_shown = true

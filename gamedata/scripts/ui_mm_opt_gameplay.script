@@ -9,6 +9,7 @@ local vid_opt_params = {
     { "separator",               "separator", 0, "ui_mm_opt_caption_gameplay_1" },
     { "difficulty",                  "list",  0 },
     { "important_save",              "check", 0 },
+    { "base_save_only",              "check", 0 },
 
     { "separator",               "separator", 0, "ui_mm_opt_caption_gameplay_2" },
     { "crosshair",                "check",  0 },
@@ -57,6 +58,10 @@ function opt_gameplay:InitControls(x, y, xml, handler)
             cap:SetText(game.translate_string(hint_caption))
         end
         
+        if opt == "base_save_only" then
+            handler.check_base_save_only = ctl
+        end
+
         if need_restart == 1 then
             handler:Register(ctl, ctl_name)
             handler:AddCallback(

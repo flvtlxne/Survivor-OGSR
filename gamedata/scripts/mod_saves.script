@@ -2,10 +2,18 @@
 
 local SLEEP_SAVES_KEEP = 3
 
+-- option "save only at base" (original mod behaviour), off by default
+function base_save_only()
+	return mod_options.get_bool("base_save_only", false)
+end
+
 -- true if a save made here survives the reload check in mod_functions.post_load_game_action2
 function save_is_valid_here()
 	if xr_conditions.master_difficulty() then
 		return xr_conditions.actor_in_mg_start_zone() or xr_conditions.actor_in_kpp_surge_hide_zone()
+	end
+	if not base_save_only() then
+		return true
 	end
 	return xr_conditions.actor_in_lonl_house_save_zone() or not has_alife_info("stranger_talk1")
 end

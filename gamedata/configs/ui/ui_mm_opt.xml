@@ -701,6 +701,12 @@
 	        <texture>ui_inGame2_checkbox</texture>
             <options_item entry="g_important_save" group="mm_opt_gameplay"/>
         </check_important_save>
+        <cap_base_save_only width="120" height="21">
+            <text r="170" g="170" b="170" font="letterica16" align="r" vert_align="c">ui_mm_base_save_only</text>
+        </cap_base_save_only>
+        <check_base_save_only x="122" width="24" height="21" stretch="1">
+	        <texture>ui_inGame2_checkbox</texture>
+        </check_base_save_only>
 
 		<cap_hud_draw width="120" height="21">
 			<text r="170" g="170" b="170" font="letterica16" align="r" vert_align="c">ui_st_disable_hud</text>
