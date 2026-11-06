@@ -953,9 +953,11 @@
 	<string id="lw_achiev_knife_descr">
 		<text>Этот ваш хвалёный Хирург, видимо, имел липовый диплом.\n%c[100,50,250,50]Бонус: урон ножом в два раза выше.%c[default]</text>
 	</string>
-
-		<string id="st_achievement_got">
+	<string id="st_achievement_got">
 		<text>Достижение получено:</text>
+	</string>
+	<string id="st_achievement_progress">
+		<text>Прогресс:</text>
 	</string>
 	<string id="lw_achiev_treasures_bonus">
 		<text>В тайниках иногда находится ещё кое-что</text>

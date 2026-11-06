@@ -10,6 +10,7 @@ local vid_opt_params = {
     { "difficulty",                  "list",  0 },
     { "important_save",              "check", 0 },
     { "base_save_only",              "check", 0 },
+    { "achievement_progress",        "check", 0 },
 
     { "separator",               "separator", 0, "ui_mm_opt_caption_gameplay_2" },
     { "crosshair",                "check",  0 },
@@ -60,6 +61,10 @@ function opt_gameplay:InitControls(x, y, xml, handler)
         
         if opt == "base_save_only" then
             handler.check_base_save_only = ctl
+        end
+
+        if opt == "achievement_progress" then
+              handler.check_achievement_progress = ctl
         end
 
         if need_restart == 1 then

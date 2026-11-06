@@ -94,6 +94,10 @@ function options_dialog:SetCurrentValues()
 	if self.check_base_save_only then
 		self.check_base_save_only:SetCheck(mod_options.get_bool("base_save_only", false))
 	end
+
+	if self.check_achievement_progress then
+  		self.check_achievement_progress:SetCheck(mod_options.get_bool("achievement_progress", false))
+  	end
 end
 
 function options_dialog:InitCallBacks()
@@ -159,6 +163,10 @@ function options_dialog:OnBtnAccept()
 	if self.check_base_save_only then
 		mod_options.set_bool("base_save_only", self.check_base_save_only:GetCheck())
 	end
+
+	if self.check_achievement_progress then
+  		mod_options.set_bool("achievement_progress", self.check_achievement_progress:GetCheck())
+  	end
 
 	if opt:NeedVidRestart() then
 		_G.b_discard_settings_shown = true

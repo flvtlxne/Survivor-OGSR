@@ -136,3 +136,49 @@ function treasure_bonus()
 		news_manager.send_tip(db.actor, "lw_achiev_treasures_bonus_tip", nil, "stalker", 5000, nil)
 	end
 end
+
+-- PDA progress hints (engine: progress_functor in configs\misc\achievements.ltx),
+-- only with the "achievement progress" option on
+local function counter(name)
+	return xr_logic.pstor_retrieve(db.actor, name, 0)
+end
+
+local function infos_count(list)
+	local n = 0
+	for _, info in ipairs(list) do
+		if has_alife_info(info) then
+			n = n + 1
+		end
+	end
+	return n
+end
+
+local weapon_infos = {
+	"actor_has_aksu", "actor_has_ak74", "actor_has_toz", "actor_has_lr300", "actor_has_vss",
+	"actor_has_usp", "actor_has_hpsa", "actor_has_bizon", "actor_has_sayga", "actor_has_mosin",
+}
+
+local task_infos = {
+	"deadman_diary_info6", "artefacts_spawn", "lost_soldier_info", "likvidator_treasure_finded",
+	"anomaly_maroder1_pda_info", "scientist_seif_open", "maroder_chimera_end", "maroders_big_treasure_finded",
+	"af_teleport_finded", "btr_seif_maroder_dead", "lake_art_gathered", "karlik_task_end", "quest_sniper_end",
+}
+
+local function progress(hint, cur, max)
+	if xr_conditions.master_difficulty() or not mod_options.get_bool("achievement_progress", false) then
+		return ""
+	end
+	if cur > max then
+		cur = max
+	end
+	return game.translate_string(hint) .. "\\n" .. game.translate_string("st_achievement_progress") .. " " .. cur .. "/" .. max
+end
+
+function progress_1() return progress("lw_achiev_treasures_hint", counter("treasure"), 20) end
+function progress_2() return progress("lw_achiev_maroders_hint", counter("kill_maroder"), 50) end
+function progress_3() return progress("lw_achiev_mutants_hint", counter("kill_mutant"), 50) end
+function progress_4() return progress("lw_achiev_weapons_hint", infos_count(weapon_infos), #weapon_infos) end
+function progress_5() return progress("lw_achiev_tasks_hint", infos_count(task_infos), #task_infos) end
+function progress_6() return progress("lw_achiev_noob_hint", counter("low_health"), 10) end
+function progress_7() return progress("lw_achiev_alco_hint", counter("alco"), 5) end
+function progress_8() return progress("lw_achiev_knife_hint", counter("knife"), 1) end
