@@ -970,12 +970,19 @@
 			<auto_static width="1024" height="768" stretch="1">
 				<texture x="1" y="1" width="1024" height="758">intro\endgame_sbu</texture>
 			</auto_static>
+		<!-- Survivor: одинаковые полосы у всех слайдов, текст всегда на чёрном -->
+			<auto_static x="0" y="0" width="1024" height="74" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
+			<auto_static x="0" y="694" width="1024" height="74" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
 		</global_wnd_16>
 		<item>
 			<length_sec>12</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_sbu_text1</text>
 				</auto_static>
 			</main_wnd>
@@ -984,7 +991,7 @@
 			<length_sec>18</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="960" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_sbu_text2</text>
 				</auto_static>
 			</main_wnd>
@@ -993,7 +1000,7 @@
 			<length_sec>10</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_sbu_text3</text>
 				</auto_static>
 			</main_wnd>
@@ -1002,7 +1009,7 @@
 			<length_sec>10</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="960" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_sbu_text4</text>
 				</auto_static>
 			</main_wnd>
@@ -1011,7 +1018,7 @@
 			<length_sec>13</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_sbu_text5</text>
 				</auto_static>
 			</main_wnd>
@@ -1021,7 +1028,7 @@
 			<function_on_stop>xr_effects.game_disconnect</function_on_stop>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="960" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_sbu_text6</text>
 				</auto_static>
 			</main_wnd>
@@ -1043,12 +1050,19 @@
 			<auto_static width="1024" height="768" stretch="1">
 				<texture x="1" y="1" width="1024" height="758">intro\endgame_mercs</texture>
 			</auto_static>
+		<!-- Survivor: одинаковые полосы у всех слайдов, текст всегда на чёрном -->
+			<auto_static x="0" y="0" width="1024" height="74" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
+			<auto_static x="0" y="694" width="1024" height="74" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
 		</global_wnd_16>
 		<item>
 			<length_sec>11</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="940" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_mercs_text1</text>
 				</auto_static>
 			</main_wnd>
@@ -1057,7 +1071,7 @@
 			<length_sec>10</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="980" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_mercs_text2</text>
 				</auto_static>
 			</main_wnd>
@@ -1066,7 +1080,7 @@
 			<length_sec>10</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="960" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_mercs_text3</text>
 				</auto_static>
 			</main_wnd>
@@ -1075,7 +1089,7 @@
 			<length_sec>16</length_sec>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="960" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_mercs_text4</text>
 				</auto_static>
 			</main_wnd>
@@ -1085,7 +1099,7 @@
 			<function_on_stop>xr_effects.game_disconnect</function_on_stop>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="940" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_endgame_mercs_text5</text>
 				</auto_static>
 			</main_wnd>
@@ -1107,13 +1121,20 @@
 			<auto_static width="1024" height="768" stretch="1">
 				<texture x="1" y="1" width="1024" height="758">intro\survival_mod_outro_fake</texture>
 			</auto_static>
+		<!-- Survivor: одинаковые полосы у всех слайдов, текст всегда на чёрном -->
+			<auto_static x="0" y="0" width="1024" height="74" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
+			<auto_static x="0" y="694" width="1024" height="74" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
 		</global_wnd_16>
 		<item>
 			<length_sec>12</length_sec>
 			<function_on_stop>xr_effects.game_disconnect</function_on_stop>
 			<grab_input>on</grab_input>
 			<main_wnd>
-				<auto_static start_time="0" length_sec="9" x="500" y="920" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
+				<auto_static start_time="0" length_sec="9" x="500" y="970" width="890" height="500" alignment="c" stretch="1" light_anim="zat_a1_phrase_1" la_cyclic="0" la_texture="1" la_alpha="1">
 					<text align="c" font="graffiti22" color="tut_gray">survival_mod_fake_outro_text1</text>
 				</auto_static>
 			</main_wnd>
@@ -1143,8 +1164,12 @@
 			<main_wnd>
 				<auto_static  start_time="0" length_sec="10" x="0" y="32" width="1024" height="576" stretch="1">
 					<widescreen_rect width="1024" height="768"/>
-          			<texture width="1024" height="768">intro\mg_game_outro_1</texture>
-					<text x="180" y="700" r="220" g="25" b="20" a="225" font="graffiti22">survival_mod_mg_outro_text1</text>
+					<texture width="1024" height="768">intro\mg_game_outro_1</texture>
+				</auto_static>
+				<auto_static start_time="0" length_sec="10" x="0" y="694" width="1024" height="74" stretch="1">
+					<widescreen_rect x="0" y="694" width="1024" height="74"/>
+					<texture>intro\intro_back</texture>
+					<text x="0" y="26" align="c" r="225" g="225" b="250" a="255" font="graffiti22">survival_mod_mg_outro_text1</text>
 				</auto_static>
 			</main_wnd>
 		</item>
@@ -1154,8 +1179,12 @@
 			<main_wnd>
 				<auto_static  start_time="0" length_sec="10" x="0" y="32" width="1024" height="576" stretch="1">
 					<widescreen_rect width="1024" height="768"/>
-          			<texture width="1024" height="768">intro\mg_game_outro_2</texture>
-					<text x="290" y="700" r="100" g="195" b="100" a="225" font="graffiti22">survival_mod_mg_outro_text2</text>
+					<texture width="1024" height="768">intro\mg_game_outro_2</texture>
+				</auto_static>
+				<auto_static start_time="0" length_sec="10" x="0" y="694" width="1024" height="74" stretch="1">
+					<widescreen_rect x="0" y="694" width="1024" height="74"/>
+					<texture>intro\intro_back</texture>
+					<text x="0" y="26" align="c" r="225" g="225" b="250" a="255" font="graffiti22">survival_mod_mg_outro_text2</text>
 				</auto_static>
 			</main_wnd>
 		</item>
@@ -1166,8 +1195,12 @@
 			<main_wnd>
 				<auto_static  start_time="0" length_sec="10" x="0" y="32" width="1024" height="576" stretch="1">
 					<widescreen_rect width="1024" height="768"/>
-          			<texture width="1024" height="768">intro\mg_game_outro_3</texture>
-					<text x="190" y="700" r="100" g="195" b="100" a="225" font="graffiti22">survival_mod_mg_outro_text3</text>
+					<texture width="1024" height="768">intro\mg_game_outro_3</texture>
+				</auto_static>
+				<auto_static start_time="0" length_sec="10" x="0" y="694" width="1024" height="74" stretch="1">
+					<widescreen_rect x="0" y="694" width="1024" height="74"/>
+					<texture>intro\intro_back</texture>
+					<text x="0" y="26" align="c" r="225" g="225" b="250" a="255" font="graffiti22">survival_mod_mg_outro_text3</text>
 				</auto_static>
 			</main_wnd>
 		</item>
