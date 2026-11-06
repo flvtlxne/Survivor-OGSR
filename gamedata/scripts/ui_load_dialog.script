@@ -6,7 +6,7 @@ function load_item:__init(height) super(height)
 	printf("%f",height)
 	self.file_name		= "filename"
 
-		self:SetTextColor(GetARGB(255, 170, 170, 170))
+		self:SetTextColor(GetARGB(255, 190, 184, 170))
 
 		self.fn = self:GetTextItem()
 		self.fn:SetFont(GetFontLetterica18Russian())
@@ -68,6 +68,8 @@ function load_dialog:InitControls()
 
 	self.file_caption 		= xml:InitTextWnd("form:file_caption",self.form)
 	self.file_data			= xml:InitTextWnd("form:file_data",self.form)
+
+	self.item_font			= xml:InitTextWnd("form:item_font",self.form):GetFont()
 
 	xml:InitFrame			("form:list_frame",self.form)
 
@@ -316,12 +318,13 @@ function load_dialog:AddItemToList(file_name, date_time)
 
 	_itm:SetWndSize		(self.file_item_main_sz)
 
-	_itm.fn:SetWndPos	(vector2():set(0,0))
+	_itm.fn:SetWndPos	(vector2():set(8,0))
 	_itm.fn:SetWndSize	(self.file_item_fn_sz)
 	_itm.fn:SetText		(file_name)
+	_itm.fn:SetFont		(self.item_font)
 
 	_itm.fage			= _itm:AddTextField(date_time, self.file_item_fd_sz.x)
-	_itm.fage:SetFont	(GetFontLetterica16Russian())
+	_itm.fage:SetFont (self.item_font)
 	_itm.fage:SetWndPos	(vector2():set(self.file_item_fn_sz.x+4, 0))
 	_itm.fage:SetWndSize(self.file_item_fd_sz)
 

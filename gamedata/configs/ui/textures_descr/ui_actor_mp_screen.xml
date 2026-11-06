@@ -49,9 +49,5 @@
 	    <texture id="ui_inGame2_demo_player_info_window_b" x="739" y="501" width="36" height="11" />
 	    <texture id="ui_inGame2_demo_player_info_window_rb" x="938" y="501" width="11" height="11" />
 
-		<texture id="ui_listline_b" 	x="907" y="380" width="4" height="18" />
-		<texture id="ui_listline_back" 	x="911" y="380" width="28" height="18" />
-		<texture id="ui_listline_e" 	x="939" y="380" width="4" height="18" />
    </file>
 </w>
-

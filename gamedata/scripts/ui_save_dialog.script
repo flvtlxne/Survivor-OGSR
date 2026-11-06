@@ -10,7 +10,7 @@ local saved_game_extension = ui_load_dialog.saved_game_extension
 class "save_item" (CUIListBoxItem)
 
 function save_item:__init(height) super(height)
-	self:SetTextColor	(GetARGB(255, 170, 170, 170))
+	self:SetTextColor	(GetARGB(255, 190, 184, 170))
 	self.fn				= self:GetTextItem()
 	self.fn:SetFont		(GetFontLetterica18Russian())
 	self.fn:SetEllipsis	(true)
@@ -50,7 +50,7 @@ function save_dialog:InitControls()
 
 	local ctrl
 
-	xml:InitWindow					("background", 0, self)
+	xml:InitStatic 					("background", self)
 
 	ctrl							= CUIWindow()
 	xml:InitWindow					("file_item:main", 0, ctrl)
@@ -67,6 +67,8 @@ function save_dialog:InitControls()
 	self.form = xml:InitStatic		("form", self)
 
 	xml:InitTextWnd					("form:caption", self.form)
+
+	self.item_font					= xml:InitTextWnd("form:item_font", self.form):GetFont()
 
 	self.editbox					= xml:InitEditBox("form:edit", self.form)
 	self:Register					(self.editbox, "edit_filename")
@@ -209,12 +211,13 @@ function save_dialog:AddItemToList(file_name, date_time)
 	local _itm			= save_item(self.file_item_main_sz.y)
 	_itm:SetWndSize		(self.file_item_main_sz)
 
-	_itm.fn:SetWndPos	(vector2():set(0,0))
+	_itm.fn:SetWndPos	(vector2():set(8,0))
 	_itm.fn:SetWndSize	(self.file_item_fn_sz)
 	_itm.fn:SetText		(file_name)
+	_itm.fn:SetFont		(self.item_font)
 
 	_itm.fage			= _itm:AddTextField(date_time, self.file_item_fd_sz.x)
-	_itm.fage:SetFont	(GetFontLetterica16Russian())
+	_itm.fage:SetFont (self.item_font)
 	_itm.fage:SetWndPos	(vector2():set(self.file_item_fn_sz.x+4, 0))
 
 	self.list_box:AddExistingItem(_itm)

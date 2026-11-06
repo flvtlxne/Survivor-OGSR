@@ -32,6 +32,28 @@
 		<texture id="surv_msg_btn_h" x="400" y="230" width="280" height="60"/>
 		<texture id="surv_msg_btn_t" x="400" y="230" width="280" height="60"/>
 		<texture id="surv_msg_btn_d" x="400" y="300" width="280" height="60"/>
+
+		
+		<texture id="surv_dim" x="700" y="370" width="16" height="16"/>
+		<texture id="surv_rule" x="720" y="370" width="64" height="4"/>
+
+		<texture id="surv_frame_lt" x="700" y="160" width="24" height="24"/>
+		<texture id="surv_frame_t" x="724" y="160" width="24" height="24"/>
+		<texture id="surv_frame_rt" x="748" y="160" width="24" height="24"/>
+		<texture id="surv_frame_l" x="700" y="184" width="24" height="24"/>
+		<texture id="surv_frame_back" x="724" y="184" width="24" height="24"/>
+		<texture id="surv_frame_r" x="748" y="184" width="24" height="24"/>
+		<texture id="surv_frame_lb" x="700" y="208" width="24" height="24"/>
+		<texture id="surv_frame_b" x="724" y="208" width="24" height="24"/>
+		<texture id="surv_frame_rb" x="748" y="208" width="24" height="24"/>
+
+		<texture id="surv_edit_b" x="790" y="160" width="4" height="24"/>
+		<texture id="surv_edit_back" x="794" y="160" width="32" height="24"/>
+		<texture id="surv_edit_e" x="826" y="160" width="4" height="24"/>
+
+		<texture id="ui_listline_b" x="790" y="200" width="4" height="28"/>
+		<texture id="ui_listline_back" x="794" y="200" width="28" height="28"/>
+		<texture id="ui_listline_e" x="822" y="200" width="4" height="28"/>
 	</file>
 
 	<file name="ui\surv_logo">
