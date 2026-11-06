@@ -774,6 +774,30 @@
 	<string id="ui_mm_achievement_progress">
 		<text>Прогресс достижений</text>
 	</string>
+		<string id="ui_mm_press_any_key">
+		<text>НАЖМИТЕ ЛЮБУЮ КЛАВИШУ</text>
+	</string>
+	<string id="ui_mm_continue">
+		<text>Продолжить</text>
+	</string>
+	<string id="ui_mm_load_short">
+		<text>Загрузить</text>
+	</string>
+	<string id="ui_mm_save_short">
+		<text>Сохранить</text>
+	</string>
+	<string id="ui_mm_last_save_full">
+		<text>Последнее сохранение</text>
+	</string>
+	<string id="ui_mm_options_short">
+		<text>Настройки</text>
+	</string>
+	<string id="ui_mm_main_menu">
+		<text>Главное меню</text>
+	</string>
+	<string id="ui_mm_exit">
+		<text>Выход</text>
+	</string>
 	<string id="ui_mm_r1_detail_textures">
 		<text>Детальные текстуры</text>
 	</string>

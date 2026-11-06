@@ -1,0 +1,35 @@
+<w>
+	<!-- Survivor: main menu textures -->
+	<file name="ui\surv_menu">
+		<texture id="surv_shade" x="0" y="0" width="512" height="16"/>
+
+		<texture id="surv_btn_e" x="1000" y="0" width="8" height="8"/>
+		<texture id="surv_btn_h" x="0" y="32" width="800" height="100"/>
+		<texture id="surv_btn_t" x="0" y="32" width="800" height="100"/>
+		<texture id="surv_btn_d" x="1000" y="0" width="8" height="8"/>
+
+		<texture id="surv_blank_e" x="1000" y="0" width="8" height="8"/>
+		<texture id="surv_blank_h" x="1000" y="0" width="8" height="8"/>
+		<texture id="surv_blank_t" x="1000" y="0" width="8" height="8"/>
+		<texture id="surv_blank_d" x="1000" y="0" width="8" height="8"/>
+
+		<texture id="surv_steam_e" x="4" y="164" width="120" height="120"/>
+		<texture id="surv_steam_h" x="4" y="292" width="120" height="120"/>
+		<texture id="surv_steam_t" x="4" y="292" width="120" height="120"/>
+		<texture id="surv_steam_d" x="4" y="164" width="120" height="120"/>
+
+		<texture id="surv_github_e" x="132" y="164" width="120" height="120"/>
+		<texture id="surv_github_h" x="132" y="292" width="120" height="120"/>
+		<texture id="surv_github_t" x="132" y="292" width="120" height="120"/>
+		<texture id="surv_github_d" x="132" y="164" width="120" height="120"/>
+
+		<texture id="surv_discord_e" x="260" y="164" width="120" height="120"/>
+		<texture id="surv_discord_h" x="260" y="292" width="120" height="120"/>
+		<texture id="surv_discord_t" x="260" y="292" width="120" height="120"/>
+		<texture id="surv_discord_d" x="260" y="164" width="120" height="120"/>
+	</file>
+
+	<file name="ui\surv_logo">
+		<texture id="surv_logo" x="0" y="0" width="1187" height="355"/>
+	</file>
+</w>

@@ -5,8 +5,91 @@
 -- Copyright:   2004 GSC Game World
 -- Author:      Serhiy Vynnychenko (narrator@gsc-game.kiev.ua)
 -- Version:     2.0
+-- Survivor:    SFZ Project style menu: title screen, flat buttons, links
 
 class("main_menu")(CUIScriptWnd)
+
+local MAX_BUTTONS = 7
+local BUTTON_STEP = 50
+
+-- the title screen is shown once per game launch
+local title_done = false
+
+local links = {
+    steam = "https://store.steampowered.com/app/41700/",
+    github = "https://github.com/flvtlxne/Survivor-OGSR",
+    discord = "https://discord.com/servers/ogsr-508530704674455562",
+}
+
+-- button sets: { action, caption }
+local menus = {
+    main = {
+        { "continue", "ui_mm_continue" },
+        { "new_game", "ui_mm_newgame" },
+        { "load", "ui_mm_load_short" },
+        { "options", "ui_mm_options_short" },
+        { "credits", "ui_mm_credits" },
+        { "quit", "ui_mm_exit" },
+    },
+    single = {
+        { "return", "ui_mm_continue" },
+        { "save", "ui_mm_save_short" },
+        { "load", "ui_mm_load_short" },
+        { "last_save", "ui_mm_last_save_full" },
+        { "options", "ui_mm_options_short" },
+        { "quit_to_mm", "ui_mm_main_menu" },
+        { "quit", "ui_mm_exit" },
+    },
+    single_dead = {
+        { "last_save", "ui_mm_last_save_full" },
+        { "load", "ui_mm_load_short" },
+        { "options", "ui_mm_options_short" },
+        { "quit_to_mm", "ui_mm_main_menu" },
+        { "quit", "ui_mm_exit" },
+    },
+    new_game = {
+        { "novice", "ui_mm_novice" },
+        { "stalker", "ui_mm_stalker" },
+        { "veteran", "ui_mm_veteran" },
+        { "master", "ui_mm_master" },
+        { "back", "ui_mm_back" },
+    },
+}
+
+local handlers = {
+    continue = "OnButton_continue",
+    ["return"] = "OnButton_return_game",
+    new_game = "OnButton_new_game",
+    load = "OnButton_load_clicked",
+    save = "OnButton_save_clicked",
+    last_save = "OnButton_last_save",
+    options = "OnButton_options_clicked",
+    credits = "OnButton_credits_clicked",
+    quit_to_mm = "OnButton_disconnect_clicked",
+    quit = "OnButton_quit_clicked",
+    novice = "OnButton_new_novice_game",
+    stalker = "OnButton_new_stalker_game",
+    veteran = "OnButton_new_veteran_game",
+    master = "OnButton_new_master_game",
+    back = "OnButton_back",
+}
+
+-- newest valid save for the "continue" button outside the game
+local function newest_save()
+    local flist = getFS():file_list_open_ex("$game_saves$", FS.FS_ListFiles + FS.FS_ClampExt + FS.FS_RootOnly + FS.FS_NoLower, "*.scop")
+    flist:Sort(FS.FS_sort_by_modif_down)
+    for i = 0, flist:Size() - 1 do
+        local name = flist:GetAt(i):NameFull()
+        if valid_saved_game(name) then
+            return name
+        end
+    end
+    return nil
+end
+
+local function open_url(url)
+    os.execute('start "" "' .. url .. '"')
+end
 
 function main_menu:__init()
     super()
@@ -25,43 +108,150 @@ function main_menu:InitControls()
     xml:ParseFile("ui_mm_main.xml")
 
     xml:InitStatic("background", self)
+
+    -- vanilla menu is kept offscreen: it plays the menu music
     self.shniaga = xml:InitMMShniaga("shniaga_wnd", self)
+
+    -- dark gradient under the menu column
+    self.shade = xml:InitStatic("shade", self)
+
+    -- title screen
+    self.title_logo = xml:InitStatic("title_logo", self)
+    self.title_text = xml:InitStatic("title_text", self)
+    self.title_btn = xml:Init3tButton("title_btn", self)
+    self:Register(self.title_btn, "title_btn")
+
+    -- menu
+    self.logo = xml:InitStatic("logo", self)
+
+    self.buttons = {}
+    for i = 1, MAX_BUTTONS do
+        local btn = xml:Init3tButton("menu_btn", self)
+        self:Register(btn, "menu_btn_" .. i)
+        self.buttons[i] = btn
+    end
+    local pos = self.buttons[1]:GetWndPos()
+    self.btn_x, self.btn_y = pos.x, pos.y
+
+    self.link_btns = {}
+    for _, name in ipairs({ "steam", "github", "discord" }) do
+        local btn = xml:Init3tButton("btn_" .. name, self)
+        self:Register(btn, "btn_" .. name)
+        table.insert(self.link_btns, btn)
+    end
+
+    self.version = xml:InitStatic("static_version", self)
+    local mm = _G.main_menu.get_main_menu()
+    self.version:TextControl():SetText("Engine version: " .. mm:GetEngineVersion())
 
     self.message_box = CUIMessageBoxEx()
     self:Register(self.message_box, "msg_box")
 
-    -- Survivor: надписи с названием и версией мода
-    xml:InitStatic("mod_name", self)
+    if not level.present() then
+        self.continue_save = newest_save()
+    end
 
-    local _ver = xml:InitStatic("static_version", self)
-    local mm = _G.main_menu.get_main_menu()
-
-    _ver:TextControl():SetText("Engine version: " .. mm:GetEngineVersion())
+    if level.present() or title_done then
+        self:ShowMenu(self:MainSet())
+    else
+        self:ShowTitle()
+    end
 end
 
-function main_menu:Show(f)
-    self.shniaga:SetVisibleMagnifier(f)
+function main_menu:Show(f) end
+
+function main_menu:MainSet()
+    if level.present() and db.actor then
+        return db.actor:alive() and "single" or "single_dead"
+    end
+    return "main"
+end
+
+function main_menu:ShowTitle()
+    self.in_title = true
+    self.shade:Show(false)
+    self.title_logo:Show(true)
+    self.title_text:Show(true)
+    self.title_btn:Show(true)
+    self.logo:Show(false)
+    self.version:Show(false)
+    for _, btn in ipairs(self.buttons) do
+        btn:Show(false)
+    end
+    for _, btn in ipairs(self.link_btns) do
+        btn:Show(false)
+    end
+end
+
+function main_menu:LeaveTitle()
+    if not self.in_title then
+        return
+    end
+    title_done = true
+    self:ShowMenu(self:MainSet())
+end
+
+-- the title prompt slowly pulses
+function main_menu:Update()
+    CUIScriptWnd.Update(self)
+    if self.in_title then
+        local a = math.floor(140 + 115 * math.abs(math.sin(time_global() / 800)))
+        self.title_text:TextControl():SetTextColor(GetARGB(a, 200, 195, 184))
+    end
+end
+
+function main_menu:ShowMenu(set)
+    self.in_title = false
+    self.menu_set = set
+    self.shade:Show(true)
+    self.title_logo:Show(false)
+    self.title_text:Show(false)
+    self.title_btn:Show(false)
+    self.logo:Show(true)
+    self.version:Show(true)
+    for _, btn in ipairs(self.link_btns) do
+        btn:Show(true)
+    end
+
+    self.actions = {}
+    for _, item in ipairs(menus[set]) do
+        if item[1] ~= "continue" or self.continue_save then
+            table.insert(self.actions, item)
+        end
+    end
+
+    for i, btn in ipairs(self.buttons) do
+        local item = self.actions[i]
+        btn:Show(item ~= nil)
+        if item then
+            btn:TextControl():SetTextST(item[2])
+            btn:SetWndPos(vector2():set(self.btn_x, self.btn_y + (i - 1) * BUTTON_STEP))
+        end
+    end
+end
+
+function main_menu:OnMenuButton(i)
+    local item = self.actions and self.actions[i]
+    if item then
+        self[handlers[item[1]]](self)
+    end
+end
+
+for i = 1, MAX_BUTTONS do
+    main_menu["OnMenuButton" .. i] = function(self)
+        self:OnMenuButton(i)
+    end
 end
 
 function main_menu:InitCallBacks()
-    -- new game
-    self:AddCallback("btn_novice", ui_events.BUTTON_CLICKED, self.OnButton_new_novice_game, self)
-    self:AddCallback("btn_stalker", ui_events.BUTTON_CLICKED, self.OnButton_new_stalker_game, self)
-    self:AddCallback("btn_veteran", ui_events.BUTTON_CLICKED, self.OnButton_new_veteran_game, self)
-    self:AddCallback("btn_master", ui_events.BUTTON_CLICKED, self.OnButton_new_master_game, self)
-    -- options
-    self:AddCallback("btn_options", ui_events.BUTTON_CLICKED, self.OnButton_options_clicked, self)
-    -- load
-    self:AddCallback("btn_load", ui_events.BUTTON_CLICKED, self.OnButton_load_clicked, self)
-    -- save
-    self:AddCallback("btn_save", ui_events.BUTTON_CLICKED, self.OnButton_save_clicked, self)
-
-    -- quit
-    self:AddCallback("btn_quit", ui_events.BUTTON_CLICKED, self.OnButton_quit_clicked, self)
-    self:AddCallback("btn_quit_to_mm", ui_events.BUTTON_CLICKED, self.OnButton_disconnect_clicked, self)
-    self:AddCallback("btn_ret", ui_events.BUTTON_CLICKED, self.OnButton_return_game, self)
-    self:AddCallback("btn_lastsave", ui_events.BUTTON_CLICKED, self.OnButton_last_save, self)
-    self:AddCallback("btn_credits", ui_events.BUTTON_CLICKED, self.OnButton_credits_clicked, self)
+    self:AddCallback("title_btn", ui_events.BUTTON_CLICKED, self.LeaveTitle, self)
+    for i = 1, MAX_BUTTONS do
+        self:AddCallback("menu_btn_" .. i, ui_events.BUTTON_CLICKED, self["OnMenuButton" .. i], self)
+    end
+    -- links
+    self:AddCallback("btn_steam", ui_events.BUTTON_CLICKED, self.OnButton_steam, self)
+    self:AddCallback("btn_github", ui_events.BUTTON_CLICKED, self.OnButton_github, self)
+    self:AddCallback("btn_discord", ui_events.BUTTON_CLICKED, self.OnButton_discord, self)
     -- message box
     self:AddCallback("msg_box", ui_events.MESSAGE_BOX_OK_CLICKED, self.OnMsgOk, self)
     self:AddCallback("msg_box", ui_events.MESSAGE_BOX_CANCEL_CLICKED, self.OnMsgCancel, self)
@@ -73,6 +263,7 @@ function main_menu:InitCallBacks()
     self:Register(self, "self")
     self:AddCallback("self", ui_events.MAIN_MENU_RELOADED, self.OnMenuReloaded, self)
 end
+
 function main_menu:OnMsgOk()
     self.mbox_mode = 0
 end
@@ -91,6 +282,38 @@ end
 
 function main_menu:OnMsgNo()
     self.mbox_mode = 0
+end
+
+function main_menu:OnButton_steam()
+    open_url(links.steam)
+end
+
+function main_menu:OnButton_github()
+    open_url(links.github)
+end
+
+function main_menu:OnButton_discord()
+    open_url(links.discord)
+end
+
+function main_menu:OnButton_new_game()
+    self:ShowMenu("new_game")
+end
+
+function main_menu:OnButton_back()
+    self:ShowMenu(self:MainSet())
+end
+
+function main_menu:OnButton_continue()
+    -- the save could be deleted in the load dialog meanwhile
+    self.continue_save = newest_save()
+    if not self.continue_save then
+        self:ShowMenu(self:MainSet())
+        return
+    end
+    local console = get_console()
+    console:execute("disconnect")
+    console:execute("start server(" .. self.continue_save .. "/single/alife/load) client(localhost)")
 end
 
 function main_menu:LoadLastSave()
@@ -164,12 +387,6 @@ function main_menu:OnButton_new_veteran_game()
     self:StartGame()
 end
 
---function main_menu:OnButton_new_master_game()
---	local console = get_console()
---	console:execute("g_game_difficulty gd_master")
---	self:StartGame()
---end
-
 function main_menu:OnButton_new_master_game()
     run_gui(mod_devices.ng_master_interface())
     soundtrack.mg_menu_start_snd()
@@ -222,25 +439,23 @@ function main_menu:OnButton_load_clicked()
     self:Show(false)
 end
 
--- РџСЂРѕРІРµСЂРєР°, Р·Р°РїСѓС‰РµРЅР° Р»Рё РёРіСЂР°
+-- is the game running
 function check_game()
     return level.present() and db.actor and db.actor:alive() and device().precache_frame < 1
 end
 
 function main_menu:OnKeyboard(dik, keyboard_action)
     CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
-    local bind = dik_to_bind(dik)
-    local console = get_console()
 
     if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
-        if dik == DIK_keys.DIK_ESCAPE then
-            if check_game() then
+        if self.in_title then
+            self:LeaveTitle()
+        elseif dik == DIK_keys.DIK_ESCAPE then
+            if self.menu_set == "new_game" then
+                self:OnButton_back()
+            elseif check_game() then
                 self:OnButton_return_game()
             end
-        end
-
-        if dik == DIK_keys.DIK_Q then
-            self:OnMessageQuitWin()
         end
     end
 
@@ -248,15 +463,14 @@ function main_menu:OnKeyboard(dik, keyboard_action)
 end
 
 function main_menu:show_position_informer_window()
-	if self.cheat_dlg == nil then
-	    --dbglog("M1") 
-		self.cheat_dlg = positioninformer.pi()
-		self.cheat_dlg.owner = self
-	end
-	self.cheat_dlg:ShowDialog(true)
-	self:HideDialog()
-	self:Show(true)
- end
+    if self.cheat_dlg == nil then
+        self.cheat_dlg = positioninformer.pi()
+        self.cheat_dlg.owner = self
+    end
+    self.cheat_dlg:ShowDialog(true)
+    self:HideDialog()
+    self:Show(true)
+end
 
 function main_menu:OnMenuReloaded()
     self:OnButton_options_clicked()
