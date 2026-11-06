@@ -235,6 +235,8 @@ end
 
 
 function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_index)
+
+	mod_achievements.on_hit(obj, amount, who, bone_index, false)
 	-- FIXME: коллбеки неплохо было бы регистрировать в общем storage, а не посхемно...
 	-- просто всегда ставить их при включении схемы и снимать при отключении.
 	

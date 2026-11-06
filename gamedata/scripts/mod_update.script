@@ -77,6 +77,7 @@ end
 -- Нас сильно поранили и пора возвращаться домой: --------------------------------------------
 
 function critical_health_effect()
+mod_achievements.update()
 local diff = level.get_game_difficulty()
 
 if diff == 0 then health_threasold = 0.05	--	новичок;

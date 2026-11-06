@@ -860,7 +860,7 @@
 		<text>Ищейка</text>
 	</string>
 	<string id="lw_achiev_treasures_descr">
-		<text>За нахождение 20 необозначенных тайников в окрестностях деревни Грачи.</text>
+		<text>Нюх как у собаки: то, что другие проходят мимо, само просится в руки.\n%c[100,50,250,50]Бонус: в тайниках иногда находится ещё кое-что.%c[default]</text>
 	</string>
 
 	<string id="achivement2_tip">
@@ -873,7 +873,7 @@
 		<text>Душегуб</text>
 	</string>
 	<string id="lw_achiev_maroders_descr">
-		<text>"Я этих уродов гнобил, гноблю и гнобить буду!" (с) E_f_T.</text>
+		<text>Мародёры приходят в эти места за лёгкой наживой. Полсотни из них нашли здесь только пулю.\n%c[100,50,250,50]Бонус: +33% урона по людям.%c[default]</text>
 	</string>
 
 	<string id="achivement3_tip">
@@ -886,7 +886,7 @@
 		<text>Живодёр</text>
 	</string>
 	<string id="lw_achiev_mutants_descr">
-		<text>"Мы тварей душили-душили, душили-душили..." (с) Шариков.</text>
+		<text>Поначалу местные твари видели во мне обед. Полсотни из них успели понять, что ошиблись.\n%c[100,50,250,50]Бонус: +33% урона по мутантам.%c[default]</text>
 	</string>
 
 	<string id="achivement4_tip">
@@ -899,7 +899,7 @@
 		<text>Конструктор</text>
 	</string>
 	<string id="lw_achiev_weapons_descr">
-		<text>Торговцев здесь нет, так что стрелять приходится из того, что сам нашел и собрал.</text>
+		<text>Торговцев здесь нет, так что стрелять приходится из того, что сам нашел и собрал.\n%c[100,50,250,50]Бонус: вдвое больше деталей при разборке оружия.%c[default]</text>
 	</string>
 
 	<string id="achivement5_tip">
@@ -912,7 +912,7 @@
 		<text>Любопытный</text>
 	</string>
 	<string id="lw_achiev_tasks_descr">
-		<text>Всюду лазил и совал свой нос, в результате вытащил на свет божий такое, чего лучше было и не знать.</text>
+		<text>Всюду лазил и совал свой нос, в результате вытащил на свет божий такое, чего лучше было и не знать.\n%c[100,50,250,50]Бонус: двойная награда за случайные задания.%c[default]</text>
 	</string>
 
 	<string id="achivement6_tip">
@@ -925,7 +925,7 @@
 		<text>Слабак</text>
 	</string>
 	<string id="lw_achiev_noob_descr">
-		<text>Достала эта Зона! То мутанты за пятки цапают, то мародёры отметелить пытаются. Измотали до невозможности, просто с ног падаю.</text>
+		<text>Достала эта Зона! То мутанты за пятки цапают, то мародёры отметелить пытаются. Измотали до невозможности, просто с ног падаю.\n%c[100,50,250,50]Бонус: здоровье понемногу восстанавливается само.%c[default]</text>
 	</string>
 
 	<string id="achivement7_tip">
@@ -938,7 +938,7 @@
 		<text>Алкаш</text>
 	</string>
 	<string id="lw_achiev_alco_descr">
-		<text>Это ж надо так нажраться! Мало того, что валялся без сознания полдня, так ещё такое почудилось, что лучше не вспоминать.</text>
+		<text>Это ж надо так нажраться! Мало того, что валялся без сознания полдня, так ещё такое почудилось, что лучше не вспоминать.\n%c[100,50,250,50]Бонус: водка снимает вдвое больше стресса и подлечивает.%c[default]</text>
 	</string>
 
 	<string id="achivement8_tip">
@@ -951,9 +951,39 @@
 		<text>Головорез</text>
 	</string>
 	<string id="lw_achiev_knife_descr">
-		<text>Этот ваш хвалёный Хирург, видимо, имел липовый диплом.</text>
+		<text>Этот ваш хвалёный Хирург, видимо, имел липовый диплом.\n%c[100,50,250,50]Бонус: урон ножом в два раза выше.%c[default]</text>
 	</string>
 
+		<string id="st_achievement_got">
+		<text>Достижение получено:</text>
+	</string>
+	<string id="lw_achiev_treasures_bonus">
+		<text>В тайниках иногда находится ещё кое-что</text>
+	</string>
+	<string id="lw_achiev_treasures_bonus_tip">
+		<text>%c[100,50,250,50]Ищейка: в тайнике нашлось ещё кое-что.%c[default]</text>
+	</string>
+	<string id="lw_achiev_maroders_bonus">
+		<text>+33% урона по людям</text>
+	</string>
+	<string id="lw_achiev_mutants_bonus">
+		<text>+33% урона по мутантам</text>
+	</string>
+	<string id="lw_achiev_weapons_bonus">
+		<text>Вдвое больше деталей при разборке оружия</text>
+	</string>
+	<string id="lw_achiev_tasks_bonus">
+		<text>Двойная награда за случайные задания</text>
+	</string>
+	<string id="lw_achiev_noob_bonus">
+		<text>Здоровье понемногу восстанавливается само</text>
+	</string>
+	<string id="lw_achiev_alco_bonus">
+		<text>Водка снимает вдвое больше стресса и подлечивает</text>
+	</string>
+	<string id="lw_achiev_knife_bonus">
+		<text>Урон ножом в два раза выше</text>
+	</string>
 
 	<string id="actor_vodka_overdose_think_text">
 		<text>Перебрал...</text>

@@ -11,6 +11,7 @@ end
 
 t['vodka'] = function()
 stress_counter()	-- понижаем стресс;
+mod_achievements.on_vodka()
 vodka_counter()		-- повышаем опъ€нение;
 if xr_conditions.master_difficulty() == true then
 	if xr_conditions.actor_in_kpp_surge_hide_zone() == false then

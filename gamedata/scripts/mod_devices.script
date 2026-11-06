@@ -3660,7 +3660,7 @@ function mechanical_take_apart:btn1()
 	if db.actor:object("wpn_pm") ~= nil then
 		if xr_conditions.actor_in_slot_pm() == false then
 			take_apart_remove("wpn_pm")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_pm() == true then
@@ -3671,7 +3671,7 @@ function mechanical_take_apart:btn1()
 	
 	if db.actor:object("pm_wrecked") ~= nil then
 		take_apart_remove("pm_wrecked")
-		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		mod_achievements.give_parts()
 		soundtrack.repair_sounds()
 		xr_effects.dec_counter(db.actor, nil, {"generator",1})
 	end
@@ -3682,7 +3682,7 @@ function mechanical_take_apart:btn2()
 	if db.actor:object("wpn_pb") ~= nil then
 		if xr_conditions.actor_in_slot_pb() == false then
 			take_apart_remove("wpn_pb")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_pb() == true then
@@ -3697,7 +3697,7 @@ function mechanical_take_apart:btn3()
 	if db.actor:object("wpn_bm16") ~= nil then
 		if xr_conditions.actor_in_slot_obrez() == false then
 			take_apart_remove("wpn_bm16")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_obrez() == true then
@@ -3712,7 +3712,7 @@ function mechanical_take_apart:btn4()
 	if db.actor:object("wpn_usp") ~= nil then
 		if xr_conditions.actor_in_slot_usp() == false then
 			take_apart_remove("wpn_usp")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_usp() == true then
@@ -3727,7 +3727,7 @@ function mechanical_take_apart:btn5()
 	if db.actor:object("wpn_hpsa") ~= nil then
 		if xr_conditions.actor_in_slot_hpsa() == false then
 			take_apart_remove("wpn_hpsa")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_hpsa() == true then
@@ -3742,8 +3742,8 @@ function mechanical_take_apart:btn6()
 	if db.actor:object("wpn_toz34") ~= nil then
 		if xr_conditions.actor_in_slot_toz() == false then
 			take_apart_remove("wpn_toz34")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_toz() == true then
@@ -3758,8 +3758,8 @@ function mechanical_take_apart:btn7()
 	if db.actor:object("wpn_ak74u") ~= nil then
 		if xr_conditions.actor_in_slot_aksu() == false then
 			take_apart_remove("wpn_ak74u")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_aksu() == true then
@@ -3770,8 +3770,8 @@ function mechanical_take_apart:btn7()
 	
 	if db.actor:object("aksu_wrecked") ~= nil then
 		take_apart_remove("aksu_wrecked")
-		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
-		alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		mod_achievements.give_parts()
+		mod_achievements.give_parts()
 		soundtrack.repair_sounds()
 		xr_effects.dec_counter(db.actor, nil, {"generator",1})
 	end
@@ -3782,8 +3782,8 @@ function mechanical_take_apart:btn8()
 	if db.actor:object("wpn_ak74") ~= nil then
 		if xr_conditions.actor_in_slot_ak74() == false then
 			take_apart_remove("wpn_ak74")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_ak74() == true then
@@ -3798,8 +3798,8 @@ function mechanical_take_apart:btn9()
 	if db.actor:object("wpn_lr300") ~= nil then
 		if xr_conditions.actor_in_slot_lr300() == false then
 			take_apart_remove("wpn_lr300")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_lr300() == true then
@@ -3814,8 +3814,8 @@ function mechanical_take_apart:btn10()
 	if db.actor:object("wpn_vintorez") ~= nil then
 		if xr_conditions.actor_in_slot_vintorez() == false then
 			take_apart_remove("wpn_vintorez")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_vintorez() == true then
@@ -3830,7 +3830,7 @@ function mechanical_take_apart:btn11()
 	if db.actor:object("wpn_bizon") ~= nil then
 		if xr_conditions.actor_in_slot_bizon() == false then
 			take_apart_remove("wpn_bizon")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_bizon() == true then
@@ -3845,8 +3845,8 @@ function mechanical_take_apart:btn12()
 	if db.actor:object("wpn_sayga") ~= nil then
 		if xr_conditions.actor_in_slot_sayga() == false then
 			take_apart_remove("wpn_sayga")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_sayga() == true then
@@ -3861,7 +3861,7 @@ function mechanical_take_apart:btn13()
 	if db.actor:object("wpn_m1891") ~= nil then
 		if xr_conditions.actor_in_slot_mosin() == false then
 			take_apart_remove("wpn_m1891")
-			alife():create('weapon_parts', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+			mod_achievements.give_parts()
 			soundtrack.repair_sounds()
 			xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		elseif xr_conditions.actor_in_slot_mosin() == true then
@@ -3892,6 +3892,7 @@ function mechanical_take_apart:btn_take_all()
 			xr_effects.dec_counter(db.actor, nil, {"generator", 1})
 		end
 	end
+	parts = mod_achievements.parts_count(parts)
 	for i = 1, parts do
 		sim:create("weapon_parts", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	end

@@ -6,14 +6,14 @@ nonscript_usable = true
 tips = st_search_treasure
 on_info = {=master_difficulty} ph_idle@3
 on_info2 = {+wounded_dog_meet -personal_dog_dead =personal_dog_near =dist_to_actor_le(10)} ph_idle@2 %=add_self_spot(treasure:random_treasure_mark) =send_tip(random_treasure_finded_tip:default)%
-on_use = {-achivement_1_info} ph_idle@3 %=inc_counter(treasure) =actor_finds_goodloot_snd =random_treasure_use%
+on_use = {-achivement_1_info} ph_idle@3 %=inc_counter(treasure) =actor_finds_goodloot_snd =random_treasure_use%, ph_idle@3 %=actor_finds_goodloot_snd =treasure_hunter_bonus%
 
 ; После обнаружения собакой:
 [ph_idle@2]
 nonscript_usable = true
 tips = st_search_treasure
 ;on_use = {-achivement_1_info} ph_idle@3 %=inc_counter(treasure) =play_sound(actor_finds_something2) =random_treasure_use =remowe_self_spot(treasure:random_treasure_mark)%
-on_use = {-achivement_1_info} ph_idle@3 %=inc_counter(treasure) =actor_finds_goodloot_snd =random_treasure_use =remowe_self_spot(treasure:random_treasure_mark)%
+on_use = {-achivement_1_info} ph_idle@3 %=inc_counter(treasure) =actor_finds_goodloot_snd =random_treasure_use =remowe_self_spot(treasure:random_treasure_mark)%, ph_idle@3 %=actor_finds_goodloot_snd =treasure_hunter_bonus =remowe_self_spot(treasure:random_treasure_mark)%
 
 
 [ph_idle@3]

@@ -587,5 +587,17 @@
   <blackscreen width="1024" height="768" stretch="1">
     <texture>intro\intro_back</texture>
   </blackscreen>
-
+  
+  <achievement_icon x="13" y="300" width="64" height="50" stretch="1">
+    <texture>lw_achiev_treasures_icon</texture>
+  </achievement_icon>
+  <achievement_text x="84" y="298" width="330" height="60" complex_mode="1">
+    <text x="0" y="0" font="letterica16" r="200" g="200" b="200" a="255" align="l" complex_mode="1"/>
+  </achievement_text>
+  <achievement_icon_43 x="13" y="300" width="85" height="50" stretch="1">
+    <texture>lw_achiev_treasures_icon</texture>
+  </achievement_icon_43>
+  <achievement_text_43 x="105" y="298" width="330" height="60" complex_mode="1">
+    <text x="0" y="0" font="letterica16" r="200" g="200" b="200" a="255" align="l" complex_mode="1"/>
+  </achievement_text_43>
 </header>

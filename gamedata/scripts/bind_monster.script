@@ -214,6 +214,7 @@ function generic_object_binder:death_callback(victim, who)
 end
 
 function generic_object_binder:hit_callback(obj, amount, local_direction, who, bone_index)
+	mod_achievements.on_hit(obj, amount, who, bone_index, true)
 --	printf("HIT_CALLBACK: [%s] amount[%s]", obj:name(), amount)
 
 	if(who:id()==db.actor:id()) then

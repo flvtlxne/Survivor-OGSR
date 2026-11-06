@@ -10423,7 +10423,7 @@ end
 	
 	
 function give_achivement1()
-news_manager.send_tip(db.actor, "achivement1_tip", nil, "stalker", 10000, nil)
+mod_achievements.show(1)
 soundtrack.happy_replics()
 end		
 	
@@ -10436,37 +10436,37 @@ end
 	
 
 function give_achivement2()
-news_manager.send_tip(db.actor, "achivement2_tip", nil, "stalker", 10000, nil)
+mod_achievements.show(2)
 soundtrack.happy_replics()
 end		
 	
 function give_achivement3()
-news_manager.send_tip(db.actor, "achivement3_tip", nil, "stalker", 10000, nil)
+mod_achievements.show(3)
 soundtrack.happy_replics()
 end		
 	
 function give_achivement4()
-news_manager.send_tip(db.actor, "achivement4_tip", nil, "stalker", 10000, nil)
+mod_achievements.show(4)
 soundtrack.happy_replics()
 end		
 	
 function give_achivement5()
-news_manager.send_tip(db.actor, "achivement5_tip", nil, "stalker", 10000, nil)
+mod_achievements.show(5)
 soundtrack.happy_replics()
 end		
 
 function give_achivement6()
-news_manager.send_tip(db.actor, "achivement6_tip", nil, "stalker", 10000, nil)
+mod_achievements.show(6)
 soundtrack.refuse_replics()
 end	
 
 function give_achivement7()
-news_manager.send_tip(db.actor, "achivement7_tip", nil, "stalker", 10000, nil)
+mod_achievements.show(7)
 soundtrack.refuse_replics()
 end	
 
 function give_achivement8()
-news_manager.send_tip(db.actor, "achivement8_tip", nil, "stalker", 10000, nil)
+mod_achievements.show(8)
 soundtrack.happy_replics()
 end			
 	
@@ -17203,4 +17203,9 @@ function escort_to_base_teleport()
 	end
 	escort_npc_id = nil
 	enable_ui(db.actor, nil)
+end
+
+-- Survivor: Sleuth bonus for random treasures (configs\scripts\treasures\random_treasure.ltx)
+function treasure_hunter_bonus(actor, npc, p)
+	mod_achievements.treasure_bonus()
 end

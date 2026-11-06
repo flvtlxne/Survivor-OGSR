@@ -1,0 +1,138 @@
+-- Survivor: achievements - toast on unlock and bonuses for the unlocked ones
+
+-- index = N in achivement_N_info
+local achievements = {
+	{name = "lw_achiev_treasures_name", icon = "lw_achiev_treasures_icon", bonus = "lw_achiev_treasures_bonus"},
+	{name = "lw_achiev_maroders_name",  icon = "lw_achiev_maroders_icon",  bonus = "lw_achiev_maroders_bonus"},
+	{name = "lw_achiev_mutants_name",   icon = "lw_achiev_mutants_icon",   bonus = "lw_achiev_mutants_bonus"},
+	{name = "lw_achiev_weapons_name",   icon = "lw_achiev_weapons_icon",   bonus = "lw_achiev_weapons_bonus"},
+	{name = "lw_achiev_tasks_name",     icon = "lw_achiev_tasks_icon",     bonus = "lw_achiev_tasks_bonus"},
+	{name = "lw_achiev_noob_name",      icon = "lw_achiev_noob_icon",      bonus = "lw_achiev_noob_bonus"},
+	{name = "lw_achiev_alco_name",      icon = "lw_achiev_alco_icon",      bonus = "lw_achiev_alco_bonus"},
+	{name = "lw_achiev_knife_name",     icon = "lw_achiev_knife_icon",     bonus = "lw_achiev_knife_bonus"},
+}
+
+local TOAST_TIME = 8
+
+function has(n)
+	return has_alife_info("achivement_" .. n .. "_info")
+end
+
+-- toast at the left of the screen, called from xr_effects.give_achivementN
+function show(n)
+	local a = achievements[n]
+	if not a then
+		return
+	end
+	local hud = get_hud()
+	local suffix = ""
+	if device().width / device().height < 1.5 then
+		suffix = "_43"
+	end
+	hud:RemoveCustomStatic("achievement_icon" .. suffix)
+	hud:RemoveCustomStatic("achievement_text" .. suffix)
+
+	local icon = hud:AddCustomStatic("achievement_icon" .. suffix, true)
+	icon:wnd():InitTexture(a.icon)
+	icon.m_endTime = time_global() / 1000 + TOAST_TIME
+
+	local text = hud:AddCustomStatic("achievement_text" .. suffix, true)
+	text:wnd():TextControl():SetText(
+		"%c[255,200,200,200]" .. game.translate_string("st_achievement_got") .. "\\n" ..
+		"%c[255,255,255,255]" .. game.translate_string(a.name) .. "\\n" ..
+		"%c[255,100,230,100]" .. game.translate_string(a.bonus) .. "%c[default]")
+	text.m_endTime = time_global() / 1000 + TOAST_TIME
+end
+
+-- 2 Butcher: +33% to people, 3 Flayer: +33% to mutants, 8 Cutthroat: knife x2
+-- called from the hit callbacks of npcs (xr_motivator) and monsters (bind_monster)
+function on_hit(obj, amount, who, bone_index, is_monster)
+	if bone_index == "from_death_callback" or not (obj and who and db.actor) then
+		return
+	end
+	if who:id() ~= db.actor:id() or obj:id() == who:id() or not obj:alive() or amount <= 0 then
+		return
+	end
+	local bonus = 0
+	if (is_monster and has(3)) or (not is_monster and has(2)) then
+		bonus = bonus + 0.33
+	end
+	if has(8) then
+		local wpn = db.actor:active_item()
+		if wpn and wpn:section() == "wpn_knife" then
+			bonus = bonus + 1
+		end
+	end
+	if bonus > 0 then
+		obj.health = -amount * bonus
+	end
+end
+
+-- 4 Constructor: twice the weapon parts from disassembly
+function parts_count(n)
+	if has(4) then
+		return n * 2
+	end
+	return n
+end
+
+function give_parts()
+	for i = 1, parts_count(1) do
+		alife():create("weapon_parts", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	end
+end
+
+-- 5 Curious: double reward for the random tasks
+local function reward_factor()
+	if has(5) then
+		return 2
+	end
+	return 1
+end
+
+function reward_in_box(items, count, box)
+	xr_effects.spawn_stranger_reward_in_box(items, count * reward_factor(), box)
+end
+
+function food_in_box(items, count, box)
+	xr_effects.spawn_random_food_in_box(items, count * reward_factor(), box)
+end
+
+-- 6 Weakling: slow health regeneration, called every frame from mod_update.critical_health_effect
+local next_regen = 0
+
+function update()
+	if not has(6) then
+		return
+	end
+	local now = time_global()
+	if now < next_regen then
+		return
+	end
+	next_regen = now + 1000
+	if db.actor:alive() and db.actor.health < 1 then
+		db.actor.health = 0.002
+	end
+end
+
+-- 7 Alcoholic: vodka relieves twice the stress and heals a little
+function on_vodka()
+	if has(7) then
+		mod_items_using.stress_counter()
+		db.actor.health = 0.15
+	end
+end
+
+-- 1 Sleuth: a random treasure may hold one more useful item
+local treasure_items = {
+	"ammo_9x18_fmj", "ammo_9x19_fmj", "ammo_5.45x39_fmj", "ammo_12x70_buck",
+	"bandage", "medkit", "conserva", "bread", "kolbasa",
+}
+
+function treasure_bonus()
+	if has(1) and math.random() < 0.5 then
+		local sect = treasure_items[math.random(#treasure_items)]
+		alife():create(sect, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		news_manager.send_tip(db.actor, "lw_achiev_treasures_bonus_tip", nil, "stalker", 5000, nil)
+	end
+end

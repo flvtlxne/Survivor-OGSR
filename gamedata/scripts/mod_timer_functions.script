@@ -72,32 +72,32 @@ end
 
 
 function rnd_task_default_reward()
-xr_effects.spawn_stranger_reward_in_box(nil, 2, "lonl_house_invbox_3")
+mod_achievements.reward_in_box(nil, 2, "lonl_house_invbox_3")
 news_manager.send_tip(db.actor, "lw_stranger_reward_tip", nil, "default", nil, nil)
 end
 
 function rnd_task_item_reward()
 if db.actor:dont_has_info("lw_stranger_dead") then
-	xr_effects.spawn_stranger_reward_in_box(nil, 2, "lonl_house_invbox_3")
-	xr_effects.spawn_random_food_in_box(nil, 1, "lonl_house_invbox_3")
+	mod_achievements.reward_in_box(nil, 2, "lonl_house_invbox_3")
+	mod_achievements.food_in_box(nil, 1, "lonl_house_invbox_3")
 	news_manager.send_tip(db.actor, "lw_stranger_reward_tip", nil, "default", nil, nil)
 end
 if has_alife_info("lw_stranger_dead") then
-	xr_effects.spawn_stranger_reward_in_box(nil, 1, "lonl_house_invbox_3")
-	xr_effects.spawn_random_food_in_box(nil, 1, "lonl_house_invbox_3")
+	mod_achievements.reward_in_box(nil, 1, "lonl_house_invbox_3")
+	mod_achievements.food_in_box(nil, 1, "lonl_house_invbox_3")
 	news_manager.send_tip(db.actor, "lw_newbie_reward_tip", nil, "default", nil, nil)
 end
 end
 
 function rnd_task_art_reward()
 if db.actor:dont_has_info("lw_stranger_dead") then
-	xr_effects.spawn_stranger_reward_in_box(nil, 2, "lonl_house_invbox_3")
-	xr_effects.spawn_random_food_in_box(nil, 1, "lonl_house_invbox_3")
+	mod_achievements.reward_in_box(nil, 2, "lonl_house_invbox_3")
+	mod_achievements.food_in_box(nil, 1, "lonl_house_invbox_3")
 	news_manager.send_tip(db.actor, "lw_stranger_reward_tip", nil, "default", nil, nil)
 end
 if has_alife_info("lw_stranger_dead") then
-	xr_effects.spawn_stranger_reward_in_box(nil, 1, "lonl_house_invbox_3")
-	xr_effects.spawn_random_food_in_box(nil, 1, "lonl_house_invbox_3")
+	mod_achievements.reward_in_box(nil, 1, "lonl_house_invbox_3")
+	mod_achievements.food_in_box(nil, 1, "lonl_house_invbox_3")
 	news_manager.send_tip(db.actor, "lw_newbie_reward_tip", nil, "default", nil, nil)
 end
 end
