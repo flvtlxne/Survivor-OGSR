@@ -2583,7 +2583,7 @@
 
 	<specific_character id="actor" no_random = "1">
 		<name>st_actor_name</name>
-		<icon>ui_inGame2_Soldier_1</icon>
+		<icon>ui_inGame2_Soldier_2</icon>
 		<map_icon x="2" y="5"></map_icon>
 
 		<team>Actor</team>
@@ -2599,7 +2599,7 @@
 
 		<rank>0</rank>
 		<reputation>0</reputation>
-		<visual>actors\hero\actor_soldier_1</visual>
+		<visual>actors\hero\actor_soldier_2</visual>
 	</specific_character>
 
 
