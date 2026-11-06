@@ -12,29 +12,29 @@
 	</name>
 
 	<text1 x="270" y="130" width="380" height="230">
-		<text x="0" y="0" r="135" g="235" b="118" a="158" font="letterica18"  complex_mode="1">С помощью имеющихся химикатов и других веществ, вы можете изготовлять медицинские препараты для лечения и улучшения своих способностей:</text>
+		<text x="0" y="0" r="135" g="235" b="118" a="158" font="letterica18"  complex_mode="1">С помощью имеющихся химикатов и других веществ вы можете изготавливать медицинские препараты для лечения и улучшения своих способностей:</text>
 	</text1>
 
 	<hint1 x="250" y="205" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">антиспетик + бинт = </text>
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">антисептик + бинт = </text>
 	</hint1>
 	<hint2 x="250" y="235" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">антиспетик + бинт + жгут = </text>
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">антисептик + бинт + жгут = </text>
 	</hint2>
 	<hint3 x="250" y="265" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">ветошь + антиспетик = </text>
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">ветошь + антисептик = </text>
 	</hint3>
 	<hint4 x="250" y="295" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для иньекций + йод = </text>
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для инъекций + йод = </text>
 	</hint4>
 	<hint5 x="250" y="325" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для иньекций + антисептик = </text>
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для инъекций + антисептик = </text>
 	</hint5>
 	<hint6 x="250" y="355" width="280" height="230">
 		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">кофеин + мельдоний + гематоген = </text>
 	</hint6>
 	<hint7 x="250" y="385" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для иньекций + уголь = </text>
+		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для инъекций + уголь = </text>
 	</hint7>
 	<hint8 x="250" y="415" width="280" height="230">
 		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">дрожжи + сахар = </text>

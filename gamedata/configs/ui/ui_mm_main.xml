@@ -106,7 +106,7 @@
 	</static_version>
 
 	<mod_name x="200" y="40" width="300" height="30">
-		<text x="0" y="0" r="225" g="225" b="250" a="255" font="graffiti32">Выживший: Побег из Зоны</text>
+		<text x="0" y="0" r="225" g="225" b="250" a="255" font="graffiti32">Выживший. Побег из Зоны</text>
 	</mod_name>
 
 </w>
