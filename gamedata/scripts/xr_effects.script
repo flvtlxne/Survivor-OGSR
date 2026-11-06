@@ -11744,7 +11744,6 @@ function survival_title_screen_start()
 	hud:AddCustomStatic("blackscreen", true)
 	local st = hud:GetCustomStatic("actor_survival_logo_title") or hud:AddCustomStatic("actor_survival_logo_title", true)
 	st.m_endTime = time_global()/1000 + 10
-	soundtrack.survival_logo_snd()
 end
 
 function survival_title_screen_stop()

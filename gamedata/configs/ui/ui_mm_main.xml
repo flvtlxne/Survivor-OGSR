@@ -61,7 +61,7 @@
 	</menu_main_last_save>
 
 	<!--menu_new_game btn_height="34" font="graffiti22"-->
-	<menu_new_game btn_height="34" font="graffiti22" a="255" r="235" g="235" b="118">
+	<menu_new_game btn_height="34" font="graffiti22">
 	    <btn name="btn_novice"		caption="ui_mm_novice" />
 		<btn name="btn_stalker"		caption="ui_mm_stalker" />
 		<btn name="btn_veteran"		caption="ui_mm_veteran" />
