@@ -1268,7 +1268,7 @@
 		<text>Взять апгрейды для экипированного оружия (B)</text>
 	</string>
 	<string id="gather_items_box_static3_text">
-		<text>Сгрузить все апгрейды (U)</text>
+		<text>Сгрузить апгрейды и запчасти (U)</text>
 	</string>
 	<string id="gather_items_box_static4_text">
 		<text>Сгрузить все расходники (U)</text>

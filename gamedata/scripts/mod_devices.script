@@ -4005,7 +4005,7 @@ local construct_recipes = {
 -- Survivor: доступность кнопок и значки деталей пересчитываем каждый кадр.
 function mechanical_construct:refresh_buttons()
 	for i, parts in ipairs(construct_recipes) do
-		local ok = actor_has_all(unpack(parts))
+		local ok = mod_craft.has_all(unpack(parts))
 		self["btn_" .. i]:Enable(ok)
 		self["ind_" .. i]:Show(ok)
 	end
@@ -4034,10 +4034,10 @@ end
 function mechanical_construct:btn1()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("usp_part1", 1)
-	mod_functions.remove_items("usp_part2", 1)
-	mod_functions.remove_items("usp_part3", 1)
-	mod_functions.remove_items("usp_part4", 1)
+	mod_craft.take("usp_part1", 1)
+	mod_craft.take("usp_part2", 1)
+	mod_craft.take("usp_part3", 1)
+	mod_craft.take("usp_part4", 1)
 	alife():create('wpn_usp', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	db.actor:give_info_portion("actor_has_usp")
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -4046,10 +4046,10 @@ end
 function mechanical_construct:btn2()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("hpsa_part1", 1)
-	mod_functions.remove_items("hpsa_part2", 1)
-	mod_functions.remove_items("hpsa_part3", 1)
-	mod_functions.remove_items("hpsa_part4", 1)
+	mod_craft.take("hpsa_part1", 1)
+	mod_craft.take("hpsa_part2", 1)
+	mod_craft.take("hpsa_part3", 1)
+	mod_craft.take("hpsa_part4", 1)
 	alife():create('wpn_hpsa', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	--db.actor:give_info_portion("actor_has_hpsa")
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -4058,9 +4058,9 @@ end
 function mechanical_construct:btn3()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("toz_part1", 1)
-	mod_functions.remove_items("toz_part2", 1)
-	mod_functions.remove_items("toz_part3", 1)
+	mod_craft.take("toz_part1", 1)
+	mod_craft.take("toz_part2", 1)
+	mod_craft.take("toz_part3", 1)
 	alife():create('wpn_toz34', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	--db.actor:give_info_portion("actor_has_toz")
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -4069,11 +4069,11 @@ end
 function mechanical_construct:btn4()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("aksu_part1", 1)
-	mod_functions.remove_items("aksu_part2", 1)
-	mod_functions.remove_items("aksu_part3", 1)
-	mod_functions.remove_items("aksu_part4", 1)
-	mod_functions.remove_items("aksu_part5", 1)
+	mod_craft.take("aksu_part1", 1)
+	mod_craft.take("aksu_part2", 1)
+	mod_craft.take("aksu_part3", 1)
+	mod_craft.take("aksu_part4", 1)
+	mod_craft.take("aksu_part5", 1)
 	alife():create('wpn_ak74u', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	--db.actor:give_info_portion("actor_has_aksu")
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -4082,11 +4082,11 @@ end
 function mechanical_construct:btn5()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("aksu_part4", 1)
-	mod_functions.remove_items("ak_part1", 1)
-	mod_functions.remove_items("ak_part2", 1)
-	mod_functions.remove_items("ak_part3", 1)
-	mod_functions.remove_items("ak_part4", 1)
+	mod_craft.take("aksu_part4", 1)
+	mod_craft.take("ak_part1", 1)
+	mod_craft.take("ak_part2", 1)
+	mod_craft.take("ak_part3", 1)
+	mod_craft.take("ak_part4", 1)
 	alife():create('wpn_ak74', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	--db.actor:give_info_portion("actor_has_ak74")
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -4095,11 +4095,11 @@ end
 function mechanical_construct:btn6()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("trs_part1", 1)
-	mod_functions.remove_items("trs_part2", 1)
-	mod_functions.remove_items("trs_part3", 1)
-	mod_functions.remove_items("trs_part4", 1)
-	mod_functions.remove_items("trs_part5", 1)
+	mod_craft.take("trs_part1", 1)
+	mod_craft.take("trs_part2", 1)
+	mod_craft.take("trs_part3", 1)
+	mod_craft.take("trs_part4", 1)
+	mod_craft.take("trs_part5", 1)
 	alife():create('wpn_lr300', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	--db.actor:give_info_portion("actor_has_lr300")
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -4108,10 +4108,10 @@ end
 function mechanical_construct:btn7()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("vintorez_part1", 1)
-	mod_functions.remove_items("vintorez_part2", 1)
-	mod_functions.remove_items("vintorez_part3", 1)
-	mod_functions.remove_items("vintorez_part4", 1)
+	mod_craft.take("vintorez_part1", 1)
+	mod_craft.take("vintorez_part2", 1)
+	mod_craft.take("vintorez_part3", 1)
+	mod_craft.take("vintorez_part4", 1)
 	alife():create('wpn_vintorez', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	--db.actor:give_info_portion("actor_has_vss")
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -4120,11 +4120,11 @@ end
 function mechanical_construct:btn8()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("bizon_part_1", 1)
-	mod_functions.remove_items("bizon_part_2", 1)
-	mod_functions.remove_items("bizon_part_3", 1)
-	mod_functions.remove_items("bizon_part_4", 1)
-	mod_functions.remove_items("aksu_part4", 1)
+	mod_craft.take("bizon_part_1", 1)
+	mod_craft.take("bizon_part_2", 1)
+	mod_craft.take("bizon_part_3", 1)
+	mod_craft.take("bizon_part_4", 1)
+	mod_craft.take("aksu_part4", 1)
 	alife():create('wpn_bizon', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
 end
@@ -4132,10 +4132,10 @@ end
 function mechanical_construct:btn9()
 	start_real_timer(2, "mod_timer_functions.mechanical_construction_timer_action")
 	soundtrack.repair_sounds()
-	mod_functions.remove_items("sayga_part_1", 1)
-	mod_functions.remove_items("sayga_part_2", 1)
-	mod_functions.remove_items("sayga_part_3", 1)
-	mod_functions.remove_items("sayga_part_4", 1)
+	mod_craft.take("sayga_part_1", 1)
+	mod_craft.take("sayga_part_2", 1)
+	mod_craft.take("sayga_part_3", 1)
+	mod_craft.take("sayga_part_4", 1)
 	alife():create('wpn_sayga', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 	xr_effects.dec_counter(db.actor, nil, {"generator",1})
 end
@@ -4218,10 +4218,10 @@ end
 
 -- Survivor: доступность кнопок и значки материалов пересчитываем каждый кадр.
 function mechanical_others:refresh_buttons()
-	local remkit = actor_has_all("car_item_bearing", "car_item_avtol", "car_item_litol", "car_item_wrenches",
+	local remkit = mod_craft.has_all("car_item_bearing", "car_item_avtol", "car_item_litol", "car_item_wrenches",
 		"car_item_wiring", "car_item_domkrat", "car_item_wd40", "car_item_akumulator", "car_item_tyre")
-	local bomb = actor_has_all("gas_balon", "car_item_wiring", "car_item_akumulator")
-	local courier = actor_has_all("maroder_courier_item")
+	local bomb = mod_craft.has_all("gas_balon", "car_item_wiring", "car_item_akumulator")
+	local courier = mod_craft.has_all("maroder_courier_item")
 	self.btn_1:Enable(remkit)
 	self.btn_2:Enable(bomb)
 	self.btn_3:Enable(courier)
@@ -4250,18 +4250,18 @@ end
 
 function mechanical_others:btn1()
 
-	if db.actor:object("car_item_bearing") ~= nil and db.actor:object("car_item_avtol") ~= nil and db.actor:object("car_item_litol") ~= nil and db.actor:object("car_item_wrenches") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_domkrat") ~= nil and db.actor:object("car_item_wd40") ~= nil and db.actor:object("car_item_akumulator") ~= nil and db.actor:object("car_item_tyre") ~= nil then
+	if mod_craft.has("car_item_bearing") ~= nil and mod_craft.has("car_item_avtol") ~= nil and mod_craft.has("car_item_litol") ~= nil and mod_craft.has("car_item_wrenches") ~= nil and mod_craft.has("car_item_wiring") ~= nil and mod_craft.has("car_item_domkrat") ~= nil and mod_craft.has("car_item_wd40") ~= nil and mod_craft.has("car_item_akumulator") ~= nil and mod_craft.has("car_item_tyre") ~= nil then
 		start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
 		soundtrack.repair_sounds()
-		mod_functions.remove_items("car_item_bearing", 1)
-		mod_functions.remove_items("car_item_avtol", 1)
-		mod_functions.remove_items("car_item_litol", 1)
-		mod_functions.remove_items("car_item_wrenches", 1)
-		mod_functions.remove_items("car_item_wiring", 1)
-		mod_functions.remove_items("car_item_domkrat", 1)
-		mod_functions.remove_items("car_item_wd40", 1)
-		mod_functions.remove_items("car_item_akumulator", 1)
-		mod_functions.remove_items("car_item_tyre", 1)
+		mod_craft.take("car_item_bearing", 1)
+		mod_craft.take("car_item_avtol", 1)
+		mod_craft.take("car_item_litol", 1)
+		mod_craft.take("car_item_wrenches", 1)
+		mod_craft.take("car_item_wiring", 1)
+		mod_craft.take("car_item_domkrat", 1)
+		mod_craft.take("car_item_wd40", 1)
+		mod_craft.take("car_item_akumulator", 1)
+		mod_craft.take("car_item_tyre", 1)
 		alife():create('car_remkit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		xr_effects.dec_counter(db.actor, nil, {"generator",1})
 	end
@@ -4269,12 +4269,12 @@ end
 
 function mechanical_others:btn2()
 
-	if db.actor:object("gas_balon") ~= nil and db.actor:object("car_item_wiring") ~= nil and db.actor:object("car_item_akumulator") ~= nil then
+	if mod_craft.has("gas_balon") ~= nil and mod_craft.has("car_item_wiring") ~= nil and mod_craft.has("car_item_akumulator") ~= nil then
 		start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
 		soundtrack.repair_sounds()
-		mod_functions.remove_items("gas_balon", 1)
-		mod_functions.remove_items("car_item_wiring", 1)
-		mod_functions.remove_items("car_item_akumulator", 1)
+		mod_craft.take("gas_balon", 1)
+		mod_craft.take("car_item_wiring", 1)
+		mod_craft.take("car_item_akumulator", 1)
 		alife():create('item_bomb', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		alife():create('detonator', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		xr_effects.dec_counter(db.actor, nil, {"generator",1})
@@ -4283,10 +4283,10 @@ end
 
 function mechanical_others:btn3()
 	self:HideDialog()
-	if db.actor:object("maroder_courier_item") ~= nil then
+	if mod_craft.has("maroder_courier_item") ~= nil then
 		soundtrack.repair_sounds()
 		start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
-		mod_functions.remove_items("maroder_courier_item", 1)
+		mod_craft.take("maroder_courier_item", 1)
 		xr_effects.dec_counter(db.actor, nil, {"generator",1})
 		mod_functions.maroder_item_reward()
 		xr_effects.delete_maroder_courier()
@@ -4392,14 +4392,14 @@ end
 -- Survivor: доступность кнопок пересчитываем каждый кадр, а не только при
 -- открытии окна: израсходованные материалы пропадают из инвентаря с задержкой.
 function laboratory_interface:refresh_buttons()
-	self.btn_1:Enable(actor_has_all("chem_item_antiseptic", "bandage"))
-	self.btn_2:Enable(actor_has_all("chem_item_antiseptic", "bandage", "chem_item_harness"))
-	self.btn_3:Enable(actor_has_all("chem_item_antiseptic", "chem_item_rags"))
-	self.btn_4:Enable(actor_has_all("chem_item_injector", "chem_item_liquor", "chem_item_yod"))
-	self.btn_5:Enable(actor_has_all("chem_item_injector", "chem_item_liquor", "chem_item_antiseptic"))
-	self.btn_6:Enable(actor_has_all("chem_item_meldoniy", "chem_item_cofeine", "chem_item_gematogen"))
-	self.btn_7:Enable(actor_has_all("chem_item_injector", "chem_item_liquor", "chem_item_coal"))
-	self.btn_8:Enable(actor_has_all("chem_item_yeast", "chem_item_sugar"))
+	self.btn_1:Enable(mod_craft.has_all("chem_item_antiseptic", "bandage"))
+	self.btn_2:Enable(mod_craft.has_all("chem_item_antiseptic", "bandage", "chem_item_harness"))
+	self.btn_3:Enable(mod_craft.has_all("chem_item_antiseptic", "chem_item_rags"))
+	self.btn_4:Enable(mod_craft.has_all("chem_item_injector", "chem_item_liquor", "chem_item_yod"))
+	self.btn_5:Enable(mod_craft.has_all("chem_item_injector", "chem_item_liquor", "chem_item_antiseptic"))
+	self.btn_6:Enable(mod_craft.has_all("chem_item_meldoniy", "chem_item_cofeine", "chem_item_gematogen"))
+	self.btn_7:Enable(mod_craft.has_all("chem_item_injector", "chem_item_liquor", "chem_item_coal"))
+	self.btn_8:Enable(mod_craft.has_all("chem_item_yeast", "chem_item_sugar"))
 end
 
 function laboratory_interface:Update()
@@ -4422,9 +4422,9 @@ end
 
 function laboratory_interface:btn1()
 	
-	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil then
-		mod_functions.remove_items("chem_item_antiseptic", 1)
-		mod_functions.remove_items("bandage", 1)
+	if mod_craft.has("chem_item_antiseptic") ~= nil and mod_craft.has("bandage") ~= nil then
+		mod_craft.take("chem_item_antiseptic", 1)
+		mod_craft.take("bandage", 1)
 		alife():create('medkit_amateur1', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.lab_item_creating()
 		xr_effects.dec_counter(db.actor, nil, {"balon",1})
@@ -4433,10 +4433,10 @@ end
 
 function laboratory_interface:btn2()
 	
-	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("bandage") ~= nil and db.actor:object("chem_item_harness") ~= nil then
-		mod_functions.remove_items("chem_item_antiseptic", 1)
-		mod_functions.remove_items("bandage", 1)
-		mod_functions.remove_items("chem_item_harness", 1)
+	if mod_craft.has("chem_item_antiseptic") ~= nil and mod_craft.has("bandage") ~= nil and mod_craft.has("chem_item_harness") ~= nil then
+		mod_craft.take("chem_item_antiseptic", 1)
+		mod_craft.take("bandage", 1)
+		mod_craft.take("chem_item_harness", 1)
 		alife():create('medkit_amateur2', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.lab_item_creating()
 		xr_effects.dec_counter(db.actor, nil, {"balon",1})
@@ -4445,9 +4445,9 @@ end
 
 function laboratory_interface:btn3()
 	
-	if db.actor:object("chem_item_antiseptic") ~= nil and db.actor:object("chem_item_rags") ~= nil then
-		mod_functions.remove_items("chem_item_antiseptic", 1)
-		mod_functions.remove_items("chem_item_rags", 1)
+	if mod_craft.has("chem_item_antiseptic") ~= nil and mod_craft.has("chem_item_rags") ~= nil then
+		mod_craft.take("chem_item_antiseptic", 1)
+		mod_craft.take("chem_item_rags", 1)
 		alife():create('bandage', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.lab_item_creating()
 		xr_effects.dec_counter(db.actor, nil, {"balon",1})
@@ -4456,10 +4456,10 @@ end
 
 function laboratory_interface:btn4()
 	
-	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_yod") ~= nil then
-		mod_functions.remove_items("chem_item_injector", 1)
-		mod_functions.remove_items("chem_item_liquor", 1)
-		mod_functions.remove_items("chem_item_yod", 1)
+	if mod_craft.has("chem_item_injector") ~= nil and mod_craft.has("chem_item_liquor") ~= nil and mod_craft.has("chem_item_yod") ~= nil then
+		mod_craft.take("chem_item_injector", 1)
+		mod_craft.take("chem_item_liquor", 1)
+		mod_craft.take("chem_item_yod", 1)
 		alife():create('antirad', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.lab_item_creating()
 		xr_effects.dec_counter(db.actor, nil, {"balon",1})
@@ -4468,10 +4468,10 @@ end
 
 function laboratory_interface:btn5()
 	
-	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_antiseptic") ~= nil then
-		mod_functions.remove_items("chem_item_injector", 1)
-		mod_functions.remove_items("chem_item_liquor", 1)
-		mod_functions.remove_items("chem_item_antiseptic", 1)
+	if mod_craft.has("chem_item_injector") ~= nil and mod_craft.has("chem_item_liquor") ~= nil and mod_craft.has("chem_item_antiseptic") ~= nil then
+		mod_craft.take("chem_item_injector", 1)
+		mod_craft.take("chem_item_liquor", 1)
+		mod_craft.take("chem_item_antiseptic", 1)
 		alife():create('drug_serum', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.lab_item_creating()
 		xr_effects.dec_counter(db.actor, nil, {"balon",1})
@@ -4480,10 +4480,10 @@ end
 
 function laboratory_interface:btn6()
 	
-	if db.actor:object("chem_item_meldoniy") ~= nil and db.actor:object("chem_item_cofeine") ~= nil and db.actor:object("chem_item_gematogen") ~= nil then
-		mod_functions.remove_items("chem_item_meldoniy", 1)
-		mod_functions.remove_items("chem_item_cofeine", 1)
-		mod_functions.remove_items("chem_item_gematogen", 1)
+	if mod_craft.has("chem_item_meldoniy") ~= nil and mod_craft.has("chem_item_cofeine") ~= nil and mod_craft.has("chem_item_gematogen") ~= nil then
+		mod_craft.take("chem_item_meldoniy", 1)
+		mod_craft.take("chem_item_cofeine", 1)
+		mod_craft.take("chem_item_gematogen", 1)
 		alife():create('drug_steampack', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.lab_item_creating()
 		xr_effects.dec_counter(db.actor, nil, {"balon",1})
@@ -4492,10 +4492,10 @@ end
 
 function laboratory_interface:btn7()
 	
-	if db.actor:object("chem_item_injector") ~= nil and db.actor:object("chem_item_liquor") ~= nil and db.actor:object("chem_item_coal") ~= nil then
-		mod_functions.remove_items("chem_item_injector", 1)
-		mod_functions.remove_items("chem_item_liquor", 1)
-		mod_functions.remove_items("chem_item_coal", 1)
+	if mod_craft.has("chem_item_injector") ~= nil and mod_craft.has("chem_item_liquor") ~= nil and mod_craft.has("chem_item_coal") ~= nil then
+		mod_craft.take("chem_item_injector", 1)
+		mod_craft.take("chem_item_liquor", 1)
+		mod_craft.take("chem_item_coal", 1)
 		alife():create('drug_antitoxin', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.lab_item_creating()
 		xr_effects.dec_counter(db.actor, nil, {"balon",1})
@@ -4504,9 +4504,9 @@ end
 
 function laboratory_interface:btn8()
 	
-	if db.actor:object("chem_item_yeast") ~= nil and db.actor:object("chem_item_sugar") ~= nil then
-		mod_functions.remove_items("chem_item_yeast", 1)
-		mod_functions.remove_items("chem_item_sugar", 1)
+	if mod_craft.has("chem_item_yeast") ~= nil and mod_craft.has("chem_item_sugar") ~= nil then
+		mod_craft.take("chem_item_yeast", 1)
+		mod_craft.take("chem_item_sugar", 1)
 		alife():create('braga', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
 		soundtrack.lab_item_creating()
 		xr_effects.dec_counter(db.actor, nil, {"balon",1})

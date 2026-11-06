@@ -1882,7 +1882,7 @@ local box4 = get_story_object("lonl_house_invbox_2")
 local box5 = get_story_object("lonl_house_invbox_1")
 
 	local function transfer_object_item(item)
-		if ( (system_ini():line_exist(item:section(), "specops_outf_item") and system_ini():r_bool(item:section(), "specops_outf_item")) ) or
+		if mod_craft.is_workshop_part(item:section()) or ( (system_ini():line_exist(item:section(), "specops_outf_item") and system_ini():r_bool(item:section(), "specops_outf_item")) ) or
 			( (system_ini():line_exist(item:section(), "scient_outf_item") and system_ini():r_bool(item:section(), "scient_outf_item")) ) or
 			( (system_ini():line_exist(item:section(), "military_outf_item") and system_ini():r_bool(item:section(), "military_outf_item")) ) or
 			( (system_ini():line_exist(item:section(), "novice_outf_item") and system_ini():r_bool(item:section(), "novice_outf_item")) ) or

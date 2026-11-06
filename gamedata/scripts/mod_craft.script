@@ -1,0 +1,89 @@
+-- Survivor: crafting at the base also uses items stored in the base containers
+
+local base_boxes = {
+	"lonl_house_store_box",
+	"lonl_house_invbox_1",
+	"lonl_house_invbox_2",
+	"lonl_house_invbox_3",
+	"lonl_house_invbox_4",
+	"lonl_house_invbox_5",
+	"lonl_house_invbox_6",
+	"lonl_house_telega_box",
+}
+
+-- section -> list of item ids in the base containers, rebuilt at most twice a second
+local cache = nil
+local cache_time = 0
+
+local function box_items()
+	local now = time_global()
+	if cache and now - cache_time < 500 then
+		return cache
+	end
+	cache = {}
+	cache_time = now
+	for _, sid in ipairs(base_boxes) do
+		local box = get_story_object(sid)
+		if box then
+			box:iterate_inventory_box(function(b, item)
+				local sect = item:section()
+				cache[sect] = cache[sect] or {}
+				table.insert(cache[sect], item:id())
+			end, box)
+		end
+	end
+	return cache
+end
+
+-- true if the actor or a base container has the section, nil otherwise
+function has(sect)
+	if db.actor:object(sect) then
+		return true
+	end
+	local ids = box_items()[sect]
+	if ids and #ids > 0 then
+		return true
+	end
+	return nil
+end
+
+function has_all(...)
+	for _, sect in ipairs({...}) do
+		if not has(sect) then
+			return false
+		end
+	end
+	return true
+end
+
+-- removes cnt items of the section: the actor's inventory first, then the base containers
+function take(sect, cnt)
+	cnt = cnt or 1
+	local sim = alife()
+	for i = db.actor:object_count() - 1, 0, -1 do
+		if cnt == 0 then
+			return
+		end
+		local item = db.actor:object(i)
+		if item and item:section() == sect then
+			local se = sim:object(item:id())
+			if se then
+				sim:release(se, true)
+				cnt = cnt - 1
+			end
+		end
+	end
+	local ids = box_items()[sect] or {}
+	while cnt > 0 and #ids > 0 do
+		local se = sim:object(table.remove(ids))
+		if se then
+			sim:release(se, true)
+			cnt = cnt - 1
+		end
+	end
+end
+
+-- weapon parts and car repair items: "U" unloads them into the workshop box together with the upgrades
+function is_workshop_part(sect)
+	return string.find(sect, "^%a+_part_?%d$") ~= nil or string.find(sect, "^car_item_") ~= nil
+end

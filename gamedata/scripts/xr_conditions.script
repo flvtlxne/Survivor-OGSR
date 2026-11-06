@@ -2732,5 +2732,7 @@ if xr_conditions.is_render_r3() == true or xr_conditions.is_render_r4() == true 
 	return false
 end
 
-
-		
+-- Survivor: the item is on the actor or in a base container (workshop upgrades and repair)
+function craft_has_item(actor, npc, p)
+	return p[1] ~= nil and mod_craft.has(p[1]) == true
+end
