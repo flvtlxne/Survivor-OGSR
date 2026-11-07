@@ -649,8 +649,8 @@
       <grab_input>1</grab_input>
       <main_wnd>
 
-        <auto_static start_time="0" length_sec="10000" alignment="c" x="512" y="545" width="600" height="30" light_anim="ui_slow_blinking_alpha" la_cyclic="1" la_text="1" la_alpha="1">
-          <text font="letterica18"  r="180" g="180" b="180" a="255" align="c">st_press_any_key</text>
+        <auto_static start_time="0" length_sec="10000" x="40" y="698" width="600" height="22" light_anim="ui_slow_blinking_alpha" la_cyclic="1" la_text="1" la_alpha="1">
+          <text font="ui_font_surv_btn_s" r="201" g="168" b="76" a="255" align="l" vert_align="c">st_press_any_key</text>
         </auto_static>
       </main_wnd>
     </item>
