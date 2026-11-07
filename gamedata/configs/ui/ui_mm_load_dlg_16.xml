@@ -10,9 +10,9 @@
 		</auto_static>
 	</background>
 	<file_item>
-		<main width="344" height="28"/>
-		<fn width="212" height="28"/>
-		<fd width="120" height="28"/>
+		<main width="332" height="28"/>
+		<fn width="224" height="28"/>
+		<fd width="80" height="28"/>
 	</file_item>
 	<form x="0" y="0" width="1024" height="768">
 		<caption x="40" y="46" width="900" height="40">
@@ -24,22 +24,22 @@
 		<item_font x="0" y="0" width="1" height="1">
 			<text font="ui_font_surv_small"/>
 		</item_font>
-		<picture x="430" y="116" width="180" height="240" stretch="1">
-			<texture width="128" height="128">ui\ui_noise</texture>
+		<picture x="430" y="116" width="260" height="195" stretch="1">
+			<texture>ui\ui_noise</texture>
 		</picture>
-		<auto_static x="430" y="360" width="180" height="2" stretch="1">
+		<auto_static x="430" y="315" width="260" height="2" stretch="1">
 			<texture>surv_rule</texture>
 		</auto_static>
-		<file_caption x="430" y="372" width="420" height="30">
+		<file_caption x="430" y="327" width="420" height="30">
 			<text font="ui_font_surv_small" r="201" g="168" b="76" vert_align="c"/>
 		</file_caption>
-		<file_data x="430" y="404" width="420" height="120" complex_mode="1">
+		<file_data x="430" y="359" width="420" height="120" complex_mode="1">
 			<text font="ui_font_surv_small" r="214" g="209" b="196"/>
 		</file_data>
 		<list_frame x="40" y="116" width="360" height="520">
 			<texture>surv_frame</texture>
 		</list_frame>
-		<list x="48" y="124" width="344" height="504" item_height="28" can_select="1">
+		<list x="48" y="124" width="332" height="504" item_height="28" can_select="1" scroll_profile="surv">
 			<font font="ui_font_surv_small" r="190" g="184" b="170"/>
 		</list>
 		<btn_load x="430" y="596" width="125" height="36" stretch="1">

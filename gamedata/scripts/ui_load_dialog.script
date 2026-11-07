@@ -1,5 +1,14 @@
 saved_game_extension	= ".scop"
 
+-- Survivor: "dd:mm:yyyy hh:mm" -> "dd.mm.yy hh:mm"
+function short_date(s)
+	local d, m, y, hm = string.match(s, "(%d+):(%d+):%d%d(%d%d) (%d+:%d+)")
+	if d then
+		return d .. "." .. m .. "." .. y .. " " .. hm
+	end
+	return s
+end
+
 class "load_item" (CUIListBoxItem)
 
 function load_item:__init(height) super(height)
@@ -33,7 +42,7 @@ function load_dialog:FillList()
 	flist:Sort(FS.FS_sort_by_modif_down)
 
 	for file in flist:GetAll() do
-		self:AddItemToList( file:NameFull(), file:Modif() )
+		self:AddItemToList( file:NameFull(), file:ModifDigitOnly() )
 	end
 end
 
@@ -169,11 +178,7 @@ function load_dialog:OnListItemClicked()
 	if item == nil then
 		self.file_caption:SetText	("")
 		self.file_data:SetText		("")
-
-		local r = self.picture:GetTextureRect()
-		self.picture:InitTexture						("ui\\ui_noise")
-		self.picture:SetTextureRect(Frect():set(r.x1,r.y1,r.x2,r.y2))
-
+		self.picture:InitTexture	("ui\\ui_noise")
 		return
 	end
 	local item_text				= item.fn:GetText()
@@ -186,13 +191,12 @@ function load_dialog:OnListItemClicked()
 		return
 	end
 
-	local r = self.picture:GetTextureRect()
+	-- Survivor: the picture takes the whole texture, any size of the save preview
 	if getFS():exist("$game_saves$", item_text .. ".dds") then
 		self.picture:InitTexture(item_text)
 	else
 		self.picture:InitTexture("ui\\ui_noise")
 	end
-	self.picture:SetTextureRect(Frect():set(r.x1,r.y1,r.x2,r.y2))
 end
 
 function load_dialog:OnListItemDbClicked()
@@ -313,7 +317,6 @@ function load_dialog:OnKeyboard(dik, keyboard_action)  --virtual function
 end
 
 function load_dialog:AddItemToList(file_name, date_time)
-
 	local _itm			= load_item(self.file_item_main_sz.y)
 
 	_itm:SetWndSize		(self.file_item_main_sz)
@@ -323,13 +326,12 @@ function load_dialog:AddItemToList(file_name, date_time)
 	_itm.fn:SetText		(file_name)
 	_itm.fn:SetFont		(self.item_font)
 
-	_itm.fage			= _itm:AddTextField(date_time, self.file_item_fd_sz.x)
-	_itm.fage:SetFont (self.item_font)
-	_itm.fage:SetWndPos	(vector2():set(self.file_item_fn_sz.x+4, 0))
+	_itm.fage			= _itm:AddTextField(short_date(date_time), self.file_item_fd_sz.x)
+	_itm.fage:SetFont	(self.item_font)
+	_itm.fage:SetTextColor(GetARGB(255, 150, 145, 134))
+	_itm.fage:SetWndPos	(vector2():set(self.file_item_fn_sz.x+12, 0))
 	_itm.fage:SetWndSize(self.file_item_fd_sz)
+	_itm.fage:SetTextAlignment(CGameFont.alRight)
 
 	self.list_box:AddExistingItem(_itm)
 end
-
-
-

@@ -35,7 +35,7 @@ function save_dialog:FillList()
 	flist:Sort(FS.FS_sort_by_modif_down)
 
 	for file in flist:GetAll() do
-		self:AddItemToList( file:NameFull(), file:Modif() )
+		self:AddItemToList( file:NameFull(), file:ModifDigitOnly() )
 	end
 end
 
@@ -209,6 +209,7 @@ end
 
 function save_dialog:AddItemToList(file_name, date_time)
 	local _itm			= save_item(self.file_item_main_sz.y)
+
 	_itm:SetWndSize		(self.file_item_main_sz)
 
 	_itm.fn:SetWndPos	(vector2():set(8,0))
@@ -216,9 +217,12 @@ function save_dialog:AddItemToList(file_name, date_time)
 	_itm.fn:SetText		(file_name)
 	_itm.fn:SetFont		(self.item_font)
 
-	_itm.fage			= _itm:AddTextField(date_time, self.file_item_fd_sz.x)
-	_itm.fage:SetFont (self.item_font)
-	_itm.fage:SetWndPos	(vector2():set(self.file_item_fn_sz.x+4, 0))
+	_itm.fage			= _itm:AddTextField(ui_load_dialog.short_date(date_time), self.file_item_fd_sz.x)
+	_itm.fage:SetFont	(self.item_font)
+	_itm.fage:SetTextColor(GetARGB(255, 150, 145, 134))
+	_itm.fage:SetWndPos	(vector2():set(self.file_item_fn_sz.x+12, 0))
+	_itm.fage:SetWndSize(self.file_item_fd_sz)
+	_itm.fage:SetTextAlignment(CGameFont.alRight)
 
 	self.list_box:AddExistingItem(_itm)
 end

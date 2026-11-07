@@ -54,6 +54,17 @@
 		<texture id="ui_listline_b" x="790" y="200" width="4" height="28"/>
 		<texture id="ui_listline_back" x="794" y="200" width="28" height="28"/>
 		<texture id="ui_listline_e" x="822" y="200" width="4" height="28"/>
+		
+		<texture id="surv_scb_back_b" x="850" y="160" width="12" height="12"/>
+		<texture id="surv_scb_back_back" x="850" y="172" width="12" height="12"/>
+		<texture id="surv_scb_back_e" x="850" y="184" width="12" height="12"/>
+		<texture id="surv_scb_box_b" x="866" y="160" width="12" height="6"/>
+		<texture id="surv_scb_box_back" x="866" y="166" width="12" height="12"/>
+		<texture id="surv_scb_box_e" x="866" y="178" width="12" height="6"/>
+		<texture id="surv_scb_up_e" x="882" y="160" width="12" height="12"/>
+		<texture id="surv_scb_up_h" x="896" y="160" width="12" height="12"/>
+		<texture id="surv_scb_down_e" x="882" y="176" width="12" height="12"/>
+		<texture id="surv_scb_down_h" x="896" y="176" width="12" height="12"/>
 	</file>
 
 	<file name="ui\surv_logo">

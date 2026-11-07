@@ -73,4 +73,23 @@
 			<texture_h>ui_inGame2_pda_map_scrollbar_vertical_box_H_T</texture_h>
 		</box_v>
 	</pda_logs>
+
+	<surv height="12" height_v="12" hold_delay="40">
+		<up_arrow width="12" height="12" stretch="1">
+			<texture_e>surv_scb_up_e</texture_e>
+			<texture_h>surv_scb_up_h</texture_h>
+			<texture_t>surv_scb_up_h</texture_t>
+		</up_arrow>
+		<down_arrow width="12" height="12" stretch="1">
+			<texture_e>surv_scb_down_e</texture_e>
+			<texture_h>surv_scb_down_h</texture_h>
+			<texture_t>surv_scb_down_h</texture_t>
+		</down_arrow>
+		<back_v width="12" height="12">
+			<texture>surv_scb_back</texture>
+		</back_v>
+		<box_v frame_mode="0" vertical="1">
+			<texture>surv_scb_box</texture>
+		</box_v>
+	</surv>
 </scroll_bar>

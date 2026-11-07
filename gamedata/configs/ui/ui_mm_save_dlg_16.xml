@@ -10,9 +10,9 @@
 		</auto_static>
 	</background>
 	<file_item>
-		<main width="344" height="28"/>
-		<fn width="212" height="28"/>
-		<fd width="120" height="28"/>
+		<main width="332" height="28"/>
+		<fn width="224" height="28"/>
+		<fd width="80" height="28"/>
 	</file_item>
 	<form x="0" y="0" width="1024" height="768">
 		<caption x="40" y="46" width="900" height="40">
@@ -31,7 +31,7 @@
 		<list_frame x="40" y="116" width="360" height="520">
 			<texture>surv_frame</texture>
 		</list_frame>
-		<list x="48" y="124" width="344" height="504" item_height="28" can_select="1">
+		<list x="48" y="124" width="332" height="504" item_height="28" can_select="1" scroll_profile="surv">
 			<font font="ui_font_surv_small" r="190" g="184" b="170"/>
 		</list>
 		<btn_save x="430" y="596" width="125" height="36" stretch="1">
