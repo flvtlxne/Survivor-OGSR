@@ -65,6 +65,29 @@
 		<texture id="surv_scb_up_h" x="896" y="160" width="12" height="12"/>
 		<texture id="surv_scb_down_e" x="882" y="176" width="12" height="12"/>
 		<texture id="surv_scb_down_h" x="896" y="176" width="12" height="12"/>
+
+		<texture id="surv_tab_e" x="364" y="416" width="16" height="64"/>
+		<texture id="surv_tab_h" x="384" y="416" width="16" height="64"/>
+		<texture id="surv_tab_t" x="404" y="416" width="16" height="64"/>
+		<texture id="surv_tab_d" x="364" y="416" width="16" height="64"/>
+
+		<texture id="surv_sep_b" x="424" y="416" width="4" height="32"/>
+		<texture id="surv_sep_back" x="428" y="416" width="16" height="32"/>
+		<texture id="surv_sep_e" x="444" y="416" width="4" height="32"/>
+
+		<texture id="surv_head_b" x="452" y="416" width="4" height="24"/>
+		<texture id="surv_head_back" x="456" y="416" width="16" height="24"/>
+		<texture id="surv_head_e" x="472" y="416" width="4" height="24"/>
+
+		<texture id="surv_box_lt" x="480" y="416" width="4" height="4"/>
+		<texture id="surv_box_t" x="484" y="416" width="16" height="4"/>
+		<texture id="surv_box_rt" x="500" y="416" width="4" height="4"/>
+		<texture id="surv_box_l" x="480" y="420" width="4" height="16"/>
+		<texture id="surv_box_back" x="484" y="420" width="16" height="16"/>
+		<texture id="surv_box_r" x="500" y="420" width="4" height="16"/>
+		<texture id="surv_box_lb" x="480" y="436" width="4" height="4"/>
+		<texture id="surv_box_b" x="484" y="436" width="16" height="4"/>
+		<texture id="surv_box_rb" x="500" y="436" width="4" height="4"/>
 	</file>
 
 	<file name="ui\surv_logo">

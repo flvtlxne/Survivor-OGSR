@@ -20,6 +20,7 @@ function options_dialog:InitControls()
 
 	xml:InitStatic				("background", self)
 	self.dialog					= xml:InitStatic("main_dialog:dialog", self)
+	xml:InitFrame				("main_dialog:panel", self.dialog)
 
 	self.dlg_video				= ui_mm_opt_video.opt_video()
 	self.dlg_video:InitControls	(0,0, xml, self)

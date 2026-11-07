@@ -1,0 +1,40 @@
+<w>
+	<!-- Survivor: stencil-style overrides of engine widget textures.
+	     Loaded before the vanilla descriptors (files are read by name, first id wins). -->
+	<file name="ui\surv_menu">
+		<!-- combobox field, dropdown frame and selection -->
+		<texture id="ui_inGame2_combobox_linetext_b" x="0" y="416" width="4" height="32"/>
+		<texture id="ui_inGame2_combobox_linetext_back" x="4" y="416" width="32" height="32"/>
+		<texture id="ui_inGame2_combobox_linetext_e" x="36" y="416" width="32" height="32"/>
+		<texture id="ui_inGame2_combobox_lt" x="72" y="416" width="4" height="4"/>
+		<texture id="ui_inGame2_combobox_t" x="76" y="416" width="16" height="4"/>
+		<texture id="ui_inGame2_combobox_rt" x="92" y="416" width="4" height="4"/>
+		<texture id="ui_inGame2_combobox_l" x="72" y="420" width="4" height="16"/>
+		<texture id="ui_inGame2_combobox_back" x="76" y="420" width="16" height="16"/>
+		<texture id="ui_inGame2_combobox_r" x="92" y="420" width="4" height="16"/>
+		<texture id="ui_inGame2_combobox_lb" x="72" y="436" width="4" height="4"/>
+		<texture id="ui_inGame2_combobox_b" x="76" y="436" width="16" height="4"/>
+		<texture id="ui_inGame2_combobox_rb" x="92" y="436" width="4" height="4"/>
+		<texture id="ui_inGame2_combobox_line_b" x="100" y="416" width="4" height="24"/>
+		<texture id="ui_inGame2_combobox_line_back" x="104" y="416" width="24" height="24"/>
+		<texture id="ui_inGame2_combobox_line_e" x="128" y="416" width="4" height="24"/>
+
+		<!-- slider: rail and knob -->
+		<texture id="ui_inGame2_opt_slider_bar_b" x="140" y="416" width="2" height="32"/>
+		<texture id="ui_inGame2_opt_slider_bar_back" x="142" y="416" width="32" height="32"/>
+		<texture id="ui_inGame2_opt_slider_bar_e" x="174" y="416" width="2" height="32"/>
+		<texture id="ui_inGame2_opt_slider_box_e" x="180" y="416" width="6" height="16"/>
+		<texture id="ui_inGame2_opt_slider_box_h" x="190" y="416" width="6" height="16"/>
+		<texture id="ui_inGame2_opt_slider_box_t" x="190" y="416" width="6" height="16"/>
+		<texture id="ui_inGame2_opt_slider_box_d" x="200" y="416" width="6" height="16"/>
+
+		<!-- checkbox -->
+		<texture id="ui_inGame2_checkbox_e" x="220" y="416" width="32" height="32"/>
+		<texture id="ui_inGame2_checkbox_h" x="256" y="416" width="32" height="32"/>
+		<texture id="ui_inGame2_checkbox_t" x="292" y="416" width="32" height="32"/>
+		<texture id="ui_inGame2_checkbox_d" x="328" y="416" width="32" height="32"/>
+
+		<!-- key binding edit highlight -->
+		<texture id="ui_listline2" x="510" y="416" width="32" height="16"/>
+	</file>
+</w>
