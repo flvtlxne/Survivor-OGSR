@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<!-- Survivor HUD -->
+	<string id="st_surv_hud_dog">
+		<text>Собака</text>
+	</string>
+	<string id="st_surv_hud_gren_key">
+		<text>$$ACTION_WPN_4$$</text>
+	</string>
+	<!-- fire mode in the weapon frame (static_fire_mode), st_fire_mode_<mode> -->
+	<string id="st_fire_mode_1">
+		<text>Одиночный</text>
+	</string>
+	<string id="st_fire_mode_2">
+		<text>Отсечка 2</text>
+	</string>
+	<string id="st_fire_mode_3">
+		<text>Отсечка 3</text>
+	</string>
+	<string id="st_fire_mode_A">
+		<text>Автомат</text>
+	</string>
+</string_table>

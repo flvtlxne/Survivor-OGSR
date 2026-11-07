@@ -1,28 +1,16 @@
 <window>
-	<minimap alpha="255">
-		<level_frame x="0.1125" y="0.15" width="0.217" height="0.217" stretch="1" alignment="c"/>
-
-		<background width="0.30" height="0.30" stretch="1" alignment="c">
-			<texture>ui_inGame2_Radar_main_window</texture>
+	<!-- Survivor: square minimap in the top left corner, frame drawn over the map -->
+	<minimap alpha="255" rounded="0" use_cop_sizes="0">
+		<level_frame x="12" y="16" width="112.5" height="150" stretch="1"/>
+		<background x="9.0" y="12" width="118.5" height="158" stretch="1">
+			<texture>surv_hud_minimap</texture>
 		</background>
-
-	    <clock_wnd x="0.15" y="0.86" width="39" height="16" alignment="c">
-	        <text x="0" y="0" font="letterica16" color="ui_7" align="c" vert_align="c"/>
-	    </clock_wnd>
-
-		<compass x="0.15" y="0.11" width="9" height="30" heading="1" alignment="c">
-			<texture>ui_inGame2_Radar_compass</texture>
-		</compass>
-
-		<center width="4" height="4" alignment="c" stretch="1">
-			<texture >ui_minimap_point</texture>
+		<clock_wnd x="3.0" y="162" width="60" height="20">
+			<text font="ui_font_surv_btn_s" r="214" g="209" b="196" align="l" vert_align="c"/>
+		</clock_wnd>
+		<compass x="0" y="0" width="0" height="0"/>
+		<center width="10.5" height="14" alignment="c" stretch="1">
+			<texture>surv_hud_player</texture>
 		</center>
-
-		<static_counter x="0.94" y="0.5" width="18" height="17" alignment="c">
-			<text_static width="18" height="17">
-				<text  align="c" font="graffiti19" color="ui_7"/>
-			</text_static>
-		</static_counter>
-
 	</minimap>
 </window>

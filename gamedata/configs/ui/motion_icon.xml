@@ -1,6 +1,7 @@
 
 <window>
-	<window rel_size="1.25" width="10" height="10" alignment="c"/>
+	<!-- Survivor: no luminosity/noise arcs around the square minimap (rel_size 0) -->
+	<window rel_size="0" width="10" height="10" alignment="c"/>
 	<luminosity_progress x="10" y="10" width="10" height="10" alignment="c" stretch="1" sector_count="24" clockwise="1" begin_angle="-0.227" end_angle="0.835" blend="0">
 		<texture>ui_inGame2_Radar_green_bar</texture>
 	</luminosity_progress>

@@ -14,7 +14,8 @@ local static_funcrion_tbl = {
 							[5] = mod_update.invulnerability,
 							[6] = mod_update.knife_count_control,
 							[7] = mod_update.check_inventory_opened,
-							[8] = mod_update.mg_game_functions
+							[8] = mod_update.mg_game_functions,
+							[9] = surv_hud.update
 							
 							} --/Статичные данные, ЗДЕСЬ ССЫЛКИ ФУНКЦИЙ, КОТОРЫЕ ВСЕГДА НА АПДЕЙТЕ(!), 
 							  --- если хотите повесить на постоянный апдейт, то вписывайте в таблицу ручками.

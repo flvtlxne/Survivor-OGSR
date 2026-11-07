@@ -1,0 +1,249 @@
+--[[ ----------------------------------------------------------------------------------------------
+ File       : surv_hud.script
+ Description: Survivor HUD parts that the engine HUD has no place for:
+              - title of the active task right of the minimap (always on screen); the task
+                description (engine static "secondary_task", shown while Tab is held) is moved
+                under it;
+              - health number right of the health bar;
+              - the dog block above the state icons while the dog is near;
+              - grenade frame left of the weapon frame (knife, gun or grenade in the hands):
+                grenade in slot 4, count, key.
+              The parts are described in ui_surv_hud(_16).xml and hang on the custom static
+              "surv_hud" (ui_custom_msgs.xml). update() runs every frame from
+              module_dynamic_update.script.
+--]] ----------------------------------------------------------------------------------------------
+
+local XML_FILE  = "ui_surv_hud.xml"
+local HOLDER    = "surv_hud"
+local SLOW_MS   = 250          -- heavier lookups (task, dog, grenades) run this often
+local DOG_DIST2 = 30 * 30      -- the dog block is shown closer than this (squared metres)
+local GREN_SLOT = 4
+local GRID      = 50           -- inventory icon cell in ui_icon_equipment, pixels
+
+local C_TITLE   = {255, 238, 198, 86}
+local C_NOTASK  = {255, 165, 160, 148}
+local C_TEXT    = {255, 214, 209, 196}
+local C_LOW     = {255, 196, 82, 66}
+local C_DOG     = {{0.5, {146, 170, 116}}, {0.25, {214, 140, 64}}, {-1, {196, 82, 66}}}
+
+local PARTS = {"task_diamond", "task_title", "task_descr", "health_num",
+               "dog_name", "dog_bar_back", "dog_bar",
+               "gren_frame", "gren_icon", "gren_count", "gren_key"}
+
+local ui            -- the statics; nil until built and again when the engine drops custom statics
+local cache = {}    -- last values given to the statics, so they are touched only on change
+local next_slow = 0
+local task_title    -- title of the active task, nil when there is none
+local gren_ready    -- a grenade is in slot 4 and its frame is filled in
+local WEAPON_SLOTS = {[1] = true, [2] = true, [3] = true, [4] = true}   -- knife, pistol, rifle, grenade
+
+local function set_text(key, st, text)
+	if cache[key] ~= text then
+		cache[key] = text
+		st:TextControl():SetText(text)
+	end
+end
+
+local function set_text_color(key, st, c)
+	if cache[key] ~= c then
+		cache[key] = c
+		st:SetTextColor(c[1], c[2], c[3], c[4])
+	end
+end
+
+local function show(st, on)
+	if st:IsShown() ~= on then
+		st:Show(on)
+	end
+end
+
+local function build(hud)
+	if hud:GetCustomStatic(HOLDER) then
+		hud:RemoveCustomStatic(HOLDER)   -- left from before a script reload: its parts are not ours
+	end
+	local holder = hud:AddCustomStatic(HOLDER, true):wnd()
+	local xml = CScriptXmlInit()
+	xml:ParseFile(XML_FILE)
+	ui = {holder = holder}
+	for _, name in ipairs(PARTS) do
+		ui[name] = xml:InitStatic(name, holder)
+	end
+
+	local p = ui.task_descr:GetWndPos()
+	ui.descr_pos = vector2():set(p.x, p.y)
+	ui.task_descr:Show(false)
+
+	ui.dog_w, ui.dog_h = ui.dog_bar:GetWidth(), ui.dog_bar:GetHeight()
+
+	p = ui.gren_icon:GetWndPos()
+	ui.icon_box = {x = p.x, y = p.y, w = ui.gren_icon:GetWidth(), h = ui.gren_icon:GetHeight()}
+	ui.gren_icon:InitTexture("ui\\ui_icon_equipment")
+	ui.gren_icon:SetStretchTexture(true)
+
+	for _, name in ipairs(PARTS) do
+		if name ~= "task_descr" then
+			ui[name]:Show(false)
+		end
+	end
+	cache = {}
+	next_slow = 0
+end
+
+local function hud_visible()
+	if not (db.actor and db.actor:alive()) then
+		return false
+	end
+	if not get_console():get_bool("hud_draw") then
+		return false
+	end
+	if level.game_indicators_shown and not level.game_indicators_shown() then
+		return false
+	end
+	return level.main_input_receiver() == nil
+end
+
+-------------------------------------------------------------------------------------------------
+-- slow part
+
+local function active_task()
+	local tm = task_manager.get_task_manager()
+	for _, v in pairs(tm.task_info) do
+		if v.t and db.actor:is_active_task(v.t) then
+			return v
+		end
+	end
+end
+
+local function update_dog()
+	local dog = get_story_object("personal_dog")
+	local near = dog ~= nil and dog:alive() and dog:position():distance_to_sqr(db.actor:position()) <= DOG_DIST2
+	show(ui.dog_name, near)
+	show(ui.dog_bar_back, near)
+	show(ui.dog_bar, near)
+	if not near then
+		return
+	end
+	local hp = math.max(0, math.min(1, dog.health))
+	ui.dog_bar:SetWndSize(vector2():set(ui.dog_w * hp, ui.dog_h))
+	for _, lvl in ipairs(C_DOG) do
+		if hp > lvl[1] then
+			if cache.dog_col ~= lvl then
+				cache.dog_col = lvl
+				ui.dog_bar:SetTextureColor(GetARGB(255, lvl[2][1], lvl[2][2], lvl[2][3]))
+			end
+			break
+		end
+	end
+end
+
+local function set_grenade_icon(sect)
+	local ini = system_ini()
+	local gx, gy = ini:r_float(sect, "inv_grid_x"), ini:r_float(sect, "inv_grid_y")
+	local gw = ini:line_exist(sect, "inv_grid_width") and ini:r_float(sect, "inv_grid_width") or 1
+	local gh = ini:line_exist(sect, "inv_grid_height") and ini:r_float(sect, "inv_grid_height") or 1
+	ui.gren_icon:SetTextureRect(Frect():set(gx * GRID, gy * GRID, (gx + gw) * GRID, (gy + gh) * GRID))
+	-- keep the icon's proportions inside its box
+	local b = ui.icon_box
+	local w, h = b.w, b.h
+	if gw > gh then
+		h = b.h * gh / gw
+	elseif gh > gw then
+		w = b.w * gw / gh
+	end
+	ui.gren_icon:SetWndPos(vector2():set(b.x + (b.w - w) / 2, b.y + (b.h - h) / 2))
+	ui.gren_icon:SetWndSize(vector2():set(w, h))
+end
+
+local function update_grenade()
+	local item = db.actor:item_in_slot(GREN_SLOT)
+	gren_ready = item ~= nil
+	if not gren_ready then
+		cache.gren_sect = nil
+		return
+	end
+	local sect = item:section()
+	if cache.gren_sect ~= sect then
+		cache.gren_sect = sect
+		set_grenade_icon(sect)
+	end
+	local n = 0
+	db.actor:iterate_inventory(function(_, obj)
+		if obj:section() == sect then
+			n = n + 1
+		end
+	end, db.actor)
+	set_text("gren_n", ui.gren_count, "x" .. n)
+	set_text("gren_key", ui.gren_key, game.translate_string("st_surv_hud_gren_key"))
+end
+
+local function slow_update()
+	local v = active_task()
+	task_title = v and game.translate_string(v.t:get_title()) or nil
+	update_dog()
+	update_grenade()
+end
+
+-------------------------------------------------------------------------------------------------
+-- every frame
+
+local function update_task(hud)
+	local tab = hud:GetCustomStatic("main_task") ~= nil   -- the engine adds it while Tab is held
+	if task_title then
+		set_text("title", ui.task_title, task_title)
+		set_text_color("title_c", ui.task_title, C_TITLE)
+	elseif tab then
+		set_text("title", ui.task_title, game.translate_string("st_no_active_task"))
+		set_text_color("title_c", ui.task_title, C_NOTASK)
+	end
+	show(ui.task_diamond, task_title ~= nil)
+	show(ui.task_title, task_title ~= nil or tab)
+
+	local descr = hud:GetCustomStatic("secondary_task")
+	if descr then
+		descr:wnd():SetWndPos(ui.descr_pos)
+	end
+end
+
+-- the grenade frame goes with the weapon frame, only while a weapon is in the hands
+local function update_grenade_frame()
+	local on = gren_ready and WEAPON_SLOTS[db.actor:active_slot()] == true
+	show(ui.gren_frame, on)
+	show(ui.gren_icon, on)
+	show(ui.gren_count, on)
+	show(ui.gren_key, on)
+end
+
+local function update_health()
+	local hp = math.floor(db.actor.health * 100 + 0.5)
+	if hp < 1 then
+		hp = 1
+	end
+	set_text("hp", ui.health_num, tostring(hp))
+	set_text_color("hp_c", ui.health_num, hp <= 25 and C_LOW or C_TEXT)
+	show(ui.health_num, true)
+end
+
+function update()
+	local hud = get_hud()
+	if not hud then
+		return
+	end
+	if not (ui and hud:GetCustomStatic(HOLDER)) then
+		build(hud)
+	end
+
+	local on = hud_visible()
+	show(ui.holder, on)
+	if not on then
+		return
+	end
+
+	local now = time_global()
+	if now >= next_slow then
+		next_slow = now + SLOW_MS
+		slow_update()
+	end
+	update_task(hud)
+	update_health()
+	update_grenade_frame()
+end

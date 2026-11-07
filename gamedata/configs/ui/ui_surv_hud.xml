@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<w>
+	<!-- Survivor HUD: parts shown by surv_hud.script -->
+	<!-- active task, always on screen; the description (Tab) goes to task_descr -->
+	<task_diamond x="178.0" y="20" width="14.0" height="14" stretch="1">
+		<texture>surv_hud_diamond</texture>
+	</task_diamond>
+	<task_title x="198.0" y="15" width="600" height="22">
+		<text font="ui_font_surv_btn_s" r="238" g="198" b="86" align="l" vert_align="c"/>
+	</task_title>
+	<task_descr x="198.0" y="37" width="600" height="40"/>
+
+	<!-- health number right of the health bar -->
+	<health_num x="292.0" y="731" width="40" height="22">
+		<text font="ui_font_surv_btn_s" r="214" g="209" b="196" align="l" vert_align="c"/>
+	</health_num>
+
+	<!-- the dog, when it is near: above the state icons -->
+	<dog_name x="12" y="676" width="120" height="18">
+		<text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">st_surv_hud_dog</text>
+	</dog_name>
+	<dog_bar_back x="12" y="696" width="92" height="3" stretch="1">
+		<texture>surv_hud_track</texture>
+	</dog_bar_back>
+	<dog_bar x="12" y="696" width="92" height="3" stretch="1">
+		<texture>surv_hud_white</texture>
+	</dog_bar>
+
+	<!-- grenade frame left of the weapon frame: icon of the grenade in slot 4, count, key -->
+	<gren_frame x="750.0" y="696" width="56.0" height="56" stretch="1">
+		<texture>surv_hud_gframe</texture>
+	</gren_frame>
+	<gren_icon x="760.0" y="705" width="36.0" height="36" stretch="1"/>
+	<gren_count x="750.0" y="733" width="51.0" height="18">
+		<text font="ui_font_surv_small" r="214" g="209" b="196" align="r" vert_align="c"/>
+	</gren_count>
+	<gren_key x="755.0" y="697" width="30" height="16">
+		<text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c"/>
+	</gren_key>
+</w>

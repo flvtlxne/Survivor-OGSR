@@ -1,0 +1,69 @@
+<w>
+	<!-- Survivor: HUD textures. Read before the vanilla descriptors (files go by name, first id wins),
+	     so the ui_inGame2_* ids here replace the vanilla state icons. -->
+	<file name="ui\surv_hud">
+		<texture id="ui_inGame2_circle_bloodloose_green" x="0" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_bloodloose_yellow" x="64" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_bloodloose_red" x="128" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_radiation_green" x="192" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_radiation_yellow" x="256" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_radiation_red" x="320" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_hunger_green" x="384" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_hunger_yellow" x="448" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_hunger_red" x="512" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Armorbroken_green" x="576" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Armorbroken_yellow" x="640" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Armorbroken_red" x="704" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Helmetbroken_green" x="768" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Helmetbroken_yellow" x="832" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Helmetbroken_red" x="896" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Gunbroken_green" x="960" y="0" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Gunbroken_yellow" x="0" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Gunbroken_red" x="64" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Overweight_yellow" x="128" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_circle_Overweight_red" x="192" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Radiation_green" x="256" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Radiation_yellow" x="320" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Radiation_red" x="384" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Fire_green" x="448" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Fire_yellow" x="512" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Fire_red" x="576" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Biological_green" x="640" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Biological_yellow" x="704" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Biological_red" x="768" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Psy_green" x="832" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Psy_yellow" x="896" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_triangle_Psy_red" x="960" y="64" width="64" height="64"/>
+		<texture id="ui_inGame2_shield_Psy" x="0" y="128" width="64" height="64"/>
+		<texture id="ui_inGame2_shield_Radiation" x="64" y="128" width="64" height="64"/>
+		<texture id="ui_inGame2_shield_biological" x="128" y="128" width="64" height="64"/>
+		<texture id="ui_inGame2_shield_blood" x="192" y="128" width="64" height="64"/>
+		<texture id="ui_inGame2_shield_force" x="256" y="128" width="64" height="64"/>
+		<texture id="ui_inGame2_shield_health" x="320" y="128" width="64" height="64"/>
+		<texture id="ui_inGame2_shield_stamina" x="384" y="128" width="64" height="64"/>
+		<texture id="ui_inGame2_shield_radiation_cleanup" x="448" y="128" width="64" height="64"/>
+		<texture id="surv_ind_stress_1" x="512" y="128" width="64" height="64"/>
+		<texture id="surv_ind_stress_2" x="576" y="128" width="64" height="64"/>
+		<texture id="surv_ind_stress_3" x="640" y="128" width="64" height="64"/>
+		<texture id="surv_ind_hunger_1" x="704" y="128" width="64" height="64"/>
+		<texture id="surv_ind_hunger_2" x="768" y="128" width="64" height="64"/>
+		<texture id="surv_ind_note" x="832" y="128" width="64" height="64"/>
+		<texture id="surv_ind_jammed" x="896" y="128" width="64" height="64"/>
+		<texture id="surv_ind_godmode" x="960" y="128" width="64" height="64"/>
+		<texture id="surv_ind_deathzone_red" x="0" y="192" width="64" height="64"/>
+		<texture id="surv_ind_deathzone_green" x="64" y="192" width="64" height="64"/>
+		<texture id="surv_ind_enemy_tank" x="128" y="192" width="64" height="64"/>
+		<texture id="surv_ind_enemy_scav" x="192" y="192" width="64" height="64"/>
+		<texture id="surv_hud_white" x="1" y="257" width="6" height="6"/>
+		<texture id="surv_hud_track" x="17" y="257" width="6" height="6"/>
+		<texture id="surv_hud_player" x="32" y="256" width="32" height="32"/>
+		<texture id="surv_hud_diamond" x="64" y="256" width="32" height="32"/>
+		<texture id="surv_hud_arrow_l" x="96" y="256" width="32" height="32"/>
+		<texture id="surv_hud_arrow_r" x="128" y="256" width="32" height="32"/>
+		<texture id="surv_hud_health" x="160" y="256" width="64" height="64"/>
+		<texture id="surv_hud_slot" x="224" y="256" width="64" height="64"/>
+		<texture id="surv_hud_wframe" x="288" y="256" width="256" height="72"/>
+		<texture id="surv_hud_gframe" x="544" y="256" width="128" height="128"/>
+		<texture id="surv_hud_minimap" x="672" y="256" width="256" height="256"/>
+	</file>
+</w>
