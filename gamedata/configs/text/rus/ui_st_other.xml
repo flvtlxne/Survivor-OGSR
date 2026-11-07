@@ -2008,11 +2008,20 @@
 	<string id="st_level">
 		<text>Уровень</text>
 	</string>
+	<string id="st_client_spawning">
+		<text>Создание объектов</text>
+	</string>
+	<string id="st_client_synchronising">
+		<text>Синхронизация</text>
+	</string>
+	<string id="st_creating_new_game">
+		<text>Создание новой игры</text>
+	</string>
 	<string id="st_loading_ai_objects">
 		<text>Загрузка ИИ объектов</text>
 	</string>
 	<string id="st_loading_alife_simulator">
-		<text>Сервер: Загрузка симуляции жизни</text>
+		<text>Загрузка симуляции жизни</text>
 	</string>
 	<string id="st_loading_cform">
 		<text>Загрузка формы объектов</text>
@@ -2060,10 +2069,10 @@
 		<text>рублей.</text>
 	</string>
 	<string id="st_server_connecting">
-		<text>Сервер: Соединение</text>
+		<text>Подключение</text>
 	</string>
 	<string id="st_server_starting">
-		<text>Сервер: Старт</text>
+		<text>Запуск игры</text>
 	</string>
 	<string id="st_validating_cdkey">
 		<text>Проверка ключа</text>
