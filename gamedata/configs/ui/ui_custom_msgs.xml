@@ -385,7 +385,7 @@
 		<text font="ui_font_surv_btn_s" r="238" g="198" b="86" a="0"/>
 	</main_task>
 
-	<secondary_task x="151" y="36" width="600" height="40" complex_mode="1">
+	<secondary_task x="151" y="36" width="600" height="40" complex_mode="1" light_anim="ui_tesk_description" la_cyclic="0" la_text="1" la_alpha="1">
 		<text font="ui_font_surv_small" r="214" g="209" b="196" a="255" align="l"/>
 	</secondary_task>
 
@@ -428,12 +428,12 @@
     <text font="graffiti32"  r="240" g="217" b="182" a="255" align="l"/>
   </cs_arena_kills>
 
-		<game_saved x="100" y="590" width="800" height="30" ttl="3">
-			<text font="graffiti22" r="240" g="217" b="182" a="255" align="c"/>
+		<game_saved x="112" y="724" width="800" height="32" ttl="3">
+			<text font="graffiti32" r="240" g="217" b="182" a="255" align="c"/>
 		</game_saved>
 
-        <autosave  x="100" y="590" width="800" height="30" ttl="3">
-                <text font="graffiti22"  r="240" g="217" b="182" a="255" align="c">st_autosave</text>
+        <autosave  x="112" y="724" width="800" height="32" ttl="3">
+                <text font="graffiti32"  r="240" g="217" b="182" a="255" align="c">st_autosave</text>
         </autosave>
 
         <item_used  x="100" y="590" width="800" height="30" ttl="3">

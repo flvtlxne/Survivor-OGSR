@@ -11,7 +11,7 @@
 	<task_descr x="198.0" y="37" width="600" height="40"/>
 
 	<!-- health number right of the health bar -->
-	<health_num x="292.0" y="731" width="40" height="22">
+	<health_num x="216.0" y="731" width="40" height="22">
 		<text font="ui_font_surv_btn_s" r="214" g="209" b="196" align="l" vert_align="c"/>
 	</health_num>
 

@@ -1,7 +1,7 @@
 --[[ ----------------------------------------------------------------------------------------------
  File       : surv_hud.script
  Description: Survivor HUD parts that the engine HUD has no place for:
-              - title of the active task right of the minimap (always on screen); the task
+              - title of the active task right of the minimap (while Tab is held); the task
                 description (engine static "secondary_task", shown while Tab is held) is moved
                 under it;
               - health number right of the health bar;
@@ -186,17 +186,21 @@ end
 -------------------------------------------------------------------------------------------------
 -- every frame
 
+-- title of the active task only while Tab is held (the engine adds "main_task" then);
+-- the description is the engine's "secondary_task", it fades in by its light anim
 local function update_task(hud)
-	local tab = hud:GetCustomStatic("main_task") ~= nil   -- the engine adds it while Tab is held
-	if task_title then
-		set_text("title", ui.task_title, task_title)
-		set_text_color("title_c", ui.task_title, C_TITLE)
-	elseif tab then
-		set_text("title", ui.task_title, game.translate_string("st_no_active_task"))
-		set_text_color("title_c", ui.task_title, C_NOTASK)
+	local tab = hud:GetCustomStatic("main_task") ~= nil
+	if tab then
+		if task_title then
+			set_text("title", ui.task_title, task_title)
+			set_text_color("title_c", ui.task_title, C_TITLE)
+		else
+			set_text("title", ui.task_title, game.translate_string("st_no_active_task"))
+			set_text_color("title_c", ui.task_title, C_NOTASK)
+		end
 	end
-	show(ui.task_diamond, task_title ~= nil)
-	show(ui.task_title, task_title ~= nil or tab)
+	show(ui.task_diamond, tab and task_title ~= nil)
+	show(ui.task_title, tab)
 
 	local descr = hud:GetCustomStatic("secondary_task")
 	if descr then

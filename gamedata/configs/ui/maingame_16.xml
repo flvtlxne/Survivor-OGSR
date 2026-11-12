@@ -11,7 +11,7 @@
 	</quick_info>
 
 	<!-- god mode icon (engine warning icons): right of the health number -->
-	<icons_scroll_view x="248.5" y="732" width="15.0" height="20" right_ident="0" always_show_scroll="0" vert_interval="0" inverse_dir="1" flip_vert="0"/>
+	<icons_scroll_view x="188.5" y="732" width="15.0" height="20" right_ident="0" always_show_scroll="0" vert_interval="0" inverse_dir="1" flip_vert="0"/>
 	<weapon_jammed_static x="0" y="0" width="15.0" height="20" stretch="1">
 		<texture>surv_ind_jammed</texture>
 	</weapon_jammed_static>
@@ -132,7 +132,7 @@
 		<auto_static x="12" y="733" width="14.25" height="19" stretch="1">
 			<texture>surv_hud_health</texture>
 		</auto_static>
-		<progress_bar_health x="30.0" y="737" width="190" height="6" horz="1" min="0" max="100" pos="0">
+		<progress_bar_health x="30.0" y="737" width="130" height="6" horz="1" min="0" max="100" pos="0">
 			<background stretch="1">
 				<texture>surv_hud_track</texture>
 			</background>
@@ -140,7 +140,7 @@
 				<texture r="214" g="209" b="196">surv_hud_white</texture>
 			</progress>
 		</progress_bar_health>
-		<progress_bar_stamina x="30.0" y="746" width="190" height="3" horz="1" min="0" max="100" pos="0">
+		<progress_bar_stamina x="30.0" y="746" width="130" height="3" horz="1" min="0" max="100" pos="0">
 			<background stretch="1">
 				<texture>surv_hud_track</texture>
 			</background>
