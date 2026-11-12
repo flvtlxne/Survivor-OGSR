@@ -9,6 +9,13 @@
 			<text font="ui_font_surv_btn_s" r="214" g="209" b="196" align="l" vert_align="c"/>
 		</clock_wnd>
 		<compass x="0" y="0" width="0" height="0"/>
+		<!-- PDA contacts: icon and number at the right of the clock row (the engine hides it at 0) -->
+		<static_counter x="124.0" y="166" width="12.0" height="12" stretch="1">
+			<texture>surv_hud_contacts</texture>
+			<text_static x="14.0" y="-4" width="24" height="20" light_anim="ui_slow_blinking_alpha" la_cyclic="0" la_text="1" la_alpha="1">
+				<text font="ui_font_surv_btn_s" r="214" g="209" b="196" align="l" vert_align="c"/>
+			</text_static>
+		</static_counter>
 		<center width="14.0" height="14" alignment="c" stretch="1">
 			<texture>surv_hud_player</texture>
 		</center>

@@ -10,10 +10,11 @@
 
 
 [global_map]
-        ;
-        bound_rect                       = 0.0, 0.0, 1024, 1024.0
-        max_zoom                         = 6.0
-        texture                          = ui\ui_global_map
+        ; Survivor: one location only. The global map is a dark field around Derevnya: the same
+        ; height as its global_rect (730,70,930,270), wide enough to fill the PDA map on 16:9.
+        bound_rect                       = 642.0, 70.0, 1018.0, 270.0
+        max_zoom                         = 16.0
+        texture                          = map\map_global_survivor
 
 
 [level_maps_single]

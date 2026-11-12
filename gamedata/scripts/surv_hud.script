@@ -7,7 +7,9 @@
               - health number right of the health bar;
               - the dog block above the state icons while the dog is near;
               - grenade frame left of the weapon frame (knife, gun or grenade in the hands):
-                grenade in slot 4, count, key.
+                grenade in slot 4, count, key;
+              - compass at the bottom centre: heading, cardinal letters, ticks and the target of
+                the active task (marker, distance, the name when the target is a person).
               The parts are described in ui_surv_hud(_16).xml and hang on the custom static
               "surv_hud" (ui_custom_msgs.xml). update() runs every frame from
               module_dynamic_update.script.
@@ -36,6 +38,17 @@ local next_slow = 0
 local task_title    -- title of the active task, nil when there is none
 local gren_ready    -- a grenade is in slot 4 and its frame is filled in
 local WEAPON_SLOTS = {[1] = true, [2] = true, [3] = true, [4] = true}   -- knife, pistol, rifle, grenade
+
+local CMP_FOV     = 120        -- degrees shown across the compass line
+local CMP_STEP    = 15         -- a tick every 15 degrees, taller every 45
+local CMP_TICKS   = 10         -- pools: ticks and letters that can be on the line at once
+local CMP_LETTERS = 3
+local CMP_CARDINAL = {[0] = "N", [90] = "E", [180] = "S", [270] = "W"}
+local C_ARROW     = 0          -- texture colours, set in build()
+local C_ARROW_HI  = 0
+local cmp_target  -- {pos = vector, name = string or nil} of the active task's target
+local cmp_dist_fmt = "%d"   -- "%d m", from the string table
+local V = vector2()            -- reused for SetWndPos / SetWndSize
 
 local function set_text(key, st, text)
 	if cache[key] ~= text then
@@ -79,6 +92,36 @@ local function build(hud)
 	ui.icon_box = {x = p.x, y = p.y, w = ui.gren_icon:GetWidth(), h = ui.gren_icon:GetHeight()}
 	ui.gren_icon:InitTexture("ui\\ui_icon_equipment")
 	ui.gren_icon:SetStretchTexture(true)
+
+	-- compass: fixed parts, then pools of ticks and letters, the target parts on top
+	for _, name in ipairs({"compass_line", "compass_cap_l", "compass_cap_r", "compass_arrow_l", "compass_arrow_r"}) do
+		ui[name] = xml:InitStatic(name, holder)
+	end
+	ui.cmp_ticks, ui.cmp_letters = {}, {}
+	for i = 1, CMP_TICKS do
+		ui.cmp_ticks[i] = xml:InitStatic("compass_tick", holder)
+		ui.cmp_ticks[i]:Show(false)
+	end
+	for i = 1, CMP_LETTERS do
+		ui.cmp_letters[i] = xml:InitStatic("compass_letter", holder)
+		ui.cmp_letters[i]:Show(false)
+	end
+	for _, name in ipairs({"compass_center", "compass_marker", "compass_name", "compass_dist"}) do
+		ui[name] = xml:InitStatic(name, holder)
+	end
+	p = ui.compass_line:GetWndPos()
+	ui.cmp_x0, ui.cmp_w, ui.cmp_y = p.x, ui.compass_line:GetWidth(), p.y
+	ui.cmp_tick_w, ui.cmp_tick_h = ui.cmp_ticks[1]:GetWidth(), ui.cmp_ticks[1]:GetHeight()
+	ui.cmp_tick_y = ui.cmp_ticks[1]:GetWndPos().y
+	ui.cmp_letter_w, ui.cmp_letter_y = ui.cmp_letters[1]:GetWidth(), ui.cmp_letters[1]:GetWndPos().y
+	ui.cmp_marker_w, ui.cmp_marker_y = ui.compass_marker:GetWidth(), ui.compass_marker:GetWndPos().y
+	ui.cmp_name_w, ui.cmp_name_y = ui.compass_name:GetWidth(), ui.compass_name:GetWndPos().y
+	ui.cmp_dist_w, ui.cmp_dist_y = ui.compass_dist:GetWidth(), ui.compass_dist:GetWndPos().y
+	C_ARROW = ui.compass_arrow_l:GetTextureColor()
+	C_ARROW_HI = GetARGB(255, 238, 198, 86)
+	ui.compass_marker:Show(false)
+	ui.compass_name:Show(false)
+	ui.compass_dist:Show(false)
 
 	for _, name in ipairs(PARTS) do
 		if name ~= "task_descr" then
@@ -176,9 +219,29 @@ local function update_grenade()
 	set_text("gren_key", ui.gren_key, game.translate_string("st_surv_hud_gren_key"))
 end
 
+-- position (and the name, for a person) of the active task's target
+local function update_target(v)
+	cmp_target = nil
+	local id = v and v.current_target
+	if not id then
+		return
+	end
+	local obj = level.object_by_id(id)
+	if obj then
+		cmp_target = {pos = obj:position(), name = IsStalker(obj) and obj:alive() and obj:character_name() or nil}
+		return
+	end
+	local se = alife():object(id)
+	if se then
+		cmp_target = {pos = se.position}
+	end
+end
+
 local function slow_update()
 	local v = active_task()
 	task_title = v and game.translate_string(v.t:get_title()) or nil
+	update_target(v)
+	cmp_dist_fmt = game.translate_string("st_surv_hud_dist")
 	update_dog()
 	update_grenade()
 end
@@ -217,6 +280,83 @@ local function update_grenade_frame()
 	show(ui.gren_key, on)
 end
 
+-- degrees from north (+z) clockwise, as on the map
+local function bearing(dx, dz)
+	return math.deg(math.atan2(dx, dz)) % 360
+end
+
+local function update_compass()
+	local dir = device().cam_dir
+	local heading = bearing(dir.x, dir.z)
+	local half, cx, half_w = CMP_FOV / 2, ui.cmp_x0 + ui.cmp_w / 2, ui.cmp_w / 2
+
+	-- ticks and cardinal letters inside the field of view
+	local ti, li = 0, 0
+	local d = math.ceil((heading - half) / CMP_STEP) * CMP_STEP
+	while d <= heading + half do
+		local x = cx + (d - heading) / half * half_w
+		local deg = d % 360
+		local letter = CMP_CARDINAL[deg]
+		if letter then
+			li = li + 1
+			local st = ui.cmp_letters[li]
+			if st then
+				st:SetWndPos(V:set(x - ui.cmp_letter_w / 2, ui.cmp_letter_y))
+				set_text("cmp_l" .. li, st, letter)
+				show(st, true)
+			end
+		else
+			ti = ti + 1
+			local st = ui.cmp_ticks[ti]
+			if st then
+				local h = deg % 45 == 0 and ui.cmp_tick_h * 2 or ui.cmp_tick_h
+				st:SetWndPos(V:set(x - ui.cmp_tick_w / 2, ui.cmp_y - h))
+				if cache["cmp_t" .. ti] ~= h then
+					cache["cmp_t" .. ti] = h
+					st:SetWndSize(V:set(ui.cmp_tick_w, h))
+				end
+				show(st, true)
+			end
+		end
+		d = d + CMP_STEP
+	end
+	for i = ti + 1, CMP_TICKS do
+		show(ui.cmp_ticks[i], false)
+	end
+	for i = li + 1, CMP_LETTERS do
+		show(ui.cmp_letters[i], false)
+	end
+
+	-- the task target: on the line, or held at the end the target is behind (that arrow lights up)
+	local side = 0
+	if cmp_target then
+		local me = db.actor:position()
+		local dx, dz = cmp_target.pos.x - me.x, cmp_target.pos.z - me.z
+		local delta = (bearing(dx, dz) - heading + 540) % 360 - 180
+		if delta > half then
+			delta, side = half, 1
+		elseif delta < -half then
+			delta, side = -half, -1
+		end
+		local x = cx + delta / half * half_w
+		ui.compass_marker:SetWndPos(V:set(x - ui.cmp_marker_w / 2, ui.cmp_marker_y))
+		ui.compass_dist:SetWndPos(V:set(x - ui.cmp_dist_w / 2, ui.cmp_dist_y))
+		set_text("cmp_dist", ui.compass_dist, string.format(cmp_dist_fmt, math.floor(math.sqrt(dx * dx + dz * dz) + 0.5)))
+		if cmp_target.name then
+			ui.compass_name:SetWndPos(V:set(x - ui.cmp_name_w / 2, ui.cmp_name_y))
+			set_text("cmp_name", ui.compass_name, cmp_target.name)
+		end
+	end
+	show(ui.compass_marker, cmp_target ~= nil)
+	show(ui.compass_dist, cmp_target ~= nil)
+	show(ui.compass_name, cmp_target ~= nil and cmp_target.name ~= nil)
+	if cache.cmp_side ~= side then
+		cache.cmp_side = side
+		ui.compass_arrow_l:SetTextureColor(side == -1 and C_ARROW_HI or C_ARROW)
+		ui.compass_arrow_r:SetTextureColor(side == 1 and C_ARROW_HI or C_ARROW)
+	end
+end
+
 local function update_health()
 	local hp = math.floor(db.actor.health * 100 + 0.5)
 	if hp < 1 then
@@ -250,4 +390,5 @@ function update()
 	update_task(hud)
 	update_health()
 	update_grenade_frame()
+	update_compass()
 end

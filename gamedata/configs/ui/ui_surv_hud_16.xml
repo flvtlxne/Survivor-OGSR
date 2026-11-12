@@ -37,4 +37,39 @@
 	<gren_key x="819.25" y="697" width="30" height="16">
 		<text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c"/>
 	</gren_key>
+
+	<!-- compass, bottom centre: line, caps, arrows, ticks/letters (pools), centre mark, task target -->
+	<compass_line x="362.0" y="740" width="300" height="1" stretch="1">
+		<texture r="214" g="209" b="196" a="190">surv_hud_white</texture>
+	</compass_line>
+	<compass_cap_l x="362.0" y="733" width="1.12" height="15" stretch="1">
+		<texture r="214" g="209" b="196" a="190">surv_hud_white</texture>
+	</compass_cap_l>
+	<compass_cap_r x="660.88" y="733" width="1.12" height="15" stretch="1">
+		<texture r="214" g="209" b="196" a="190">surv_hud_white</texture>
+	</compass_cap_r>
+	<compass_arrow_l x="353.0" y="736" width="6.75" height="9" stretch="1">
+		<texture r="214" g="209" b="196" a="190">surv_hud_arrow_l</texture>
+	</compass_arrow_l>
+	<compass_arrow_r x="664.25" y="736" width="6.75" height="9" stretch="1">
+		<texture r="214" g="209" b="196" a="190">surv_hud_arrow_r</texture>
+	</compass_arrow_r>
+	<compass_tick x="0" y="736" width="0.9" height="4" stretch="1">
+		<texture r="214" g="209" b="196" a="170">surv_hud_white</texture>
+	</compass_tick>
+	<compass_letter x="0" y="721" width="30" height="16">
+		<text font="ui_font_surv_btn_s" r="214" g="209" b="196" align="c" vert_align="c"/>
+	</compass_letter>
+	<compass_center x="511.25" y="742" width="1.5" height="5" stretch="1">
+		<texture r="238" g="198" b="86">surv_hud_white</texture>
+	</compass_center>
+	<compass_marker x="0" y="724" width="8.25" height="11" stretch="1">
+		<texture>surv_hud_diamond</texture>
+	</compass_marker>
+	<compass_name x="0" y="704" width="240" height="16">
+		<text font="ui_font_surv_small" r="238" g="198" b="86" align="c" vert_align="c"/>
+	</compass_name>
+	<compass_dist x="0" y="744" width="120" height="16">
+		<text font="ui_font_surv_small" r="214" g="209" b="196" align="c" vert_align="c"/>
+	</compass_dist>
 </w>

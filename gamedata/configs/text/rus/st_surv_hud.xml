@@ -7,6 +7,9 @@
 	<string id="st_surv_hud_gren_key">
 		<text>$$ACTION_WPN_4$$</text>
 	</string>
+	<string id="st_surv_hud_dist">
+		<text>%d м</text>
+	</string>
 	<!-- fire mode in the weapon frame (static_fire_mode), st_fire_mode_<mode> -->
 	<string id="st_fire_mode_1">
 		<text>Одиночный</text>
