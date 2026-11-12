@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<!-- Survivor: game windows -->
+	<string id="st_surv_upgr_no_part">
+		<text>Нет детали</text>
+	</string>
+	<string id="st_surv_upgr_no_parts">
+		<text>Нет подходящих деталей</text>
+	</string>
+</string_table>

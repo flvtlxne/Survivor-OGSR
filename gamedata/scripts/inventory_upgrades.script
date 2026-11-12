@@ -37,22 +37,11 @@ function precondition_functor_a( param1, section )
 			end
 		end
 	end
-	if(db.actor) then
-		local price = math.floor(char_ini:r_u32(section, "cost")*cur_price_percent)
-		local cash = db.actor:money()
-		if(cash<price) then
-			return 2
-		end
-	end
+	-- Survivor: no money in the game, an upgrade takes only its part
 	return 0
 end
 
 function effect_functor_a( param2, section, loading ) --( string, string, int )
-	if loading == 0 then
-		local money = char_ini:r_u32(section, "cost")
-		db.actor:give_money(math.floor(money*-1*cur_price_percent))
-	end
-
 	if loading == 0 and 
 	( section ~= "up_sect_firsta_bm16" and 
 	section ~= "up_sect_secona_bm16" and 
@@ -73,52 +62,45 @@ function effect_functor_a( param2, section, loading ) --( string, string, int )
 end
 
 function get_upgrade_cost(section)
-	if db.actor then
-		local price = math.floor(char_ini:r_u32(section, "cost")*cur_price_percent)
-				return game.translate_string("st_upgr_cost")..": "..price
-	end
-	return " "
+	return ""   -- Survivor: no money, no cost line
 end
 
-function get_possibility_string(mechanic_name, possibility_table)
-		local str = ""
-	if(cur_hint) then
-		for k,v in pairs(cur_hint) do
-			str = str.."\\n - "..game.translate_string(v)
+-- Survivor: name the parts the upgrade needs and the actor does not have
+local function missing_parts_string(param)
+	local ini = system_ini()
+	local str = ""
+	for item in string.gmatch(param, "craft_has_item%(([%w_]+)%)") do
+		if mod_craft.has(item) == nil then
+			local name = item
+			if ini:section_exist(item) and ini:line_exist(item, "inv_name") then
+				name = game.translate_string(ini:r_string(item, "inv_name"))
+			end
+			if str ~= "" then
+				str = str.."\\n"
+			end
+			str = str.." - "..game.translate_string("st_surv_upgr_no_part")..": "..name
 		end
-	end
-	if(str=="") then
-		--str = " - add hints for this upgrade"
-		--str = "upgrade_material_needed"
-		str = "Необходим расходный материал"
-		--soundtrack.no_replics()
 	end
 	return str
 end
 
 function prereq_functor_a( param3, section )
-	local str = ""
-	if(param_ini:line_exist(mechanic_name.."_upgr", section)) then
-		local param = param_ini:r_string(mechanic_name.."_upgr", section)
-		if(param) then
-			if(param=="false") then
-				return str
-			else
-				cur_hint = nil
-				local possibility_table = xr_logic.parse_condlist(victim, mechanic_name.."_upgr", section, param)
-				local possibility = xr_logic.pick_section_from_condlist(db.actor, victim, possibility_table)
-				if not(possibility) or (possibility=="false") then
-					str = str..get_possibility_string(mechanic_name, possibility_table)
-				end
-			end
-		end
+	if not param_ini:line_exist(mechanic_name.."_upgr", section) then
+		return ""
 	end
-	if(db.actor) then
-		local price = math.floor(char_ini:r_u32(section, "cost")*cur_price_percent)
-		local cash = db.actor:money()
-		if(cash<price) then
-			return str.."\\n - "..game.translate_string("st_upgr_enough_money")--.." "..price-cash.." RU"
-		end
+	local param = param_ini:r_string(mechanic_name.."_upgr", section)
+	if not param or param == "false" then
+		return ""
+	end
+	cur_hint = nil
+	local possibility_table = xr_logic.parse_condlist(victim, mechanic_name.."_upgr", section, param)
+	local possibility = xr_logic.pick_section_from_condlist(db.actor, victim, possibility_table)
+	if possibility and possibility ~= "false" then
+		return ""
+	end
+	local str = missing_parts_string(param)
+	if str == "" then
+		str = " - "..game.translate_string("st_surv_upgr_no_parts")
 	end
 	return str
 end
