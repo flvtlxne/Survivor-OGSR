@@ -965,7 +965,8 @@ function actor_punch(npc)
 
 	local active_slot = db.actor:active_slot()
 	if active_slot ~= 2 and
-		 active_slot ~= 3
+		 active_slot ~= 3 and
+		 active_slot ~= 13
 	then
 		return
 	end
@@ -3383,7 +3384,7 @@ function create_cutscene_actor_with_weapon(actor, npc, p)
 
 	if slot_override == 0 then
 		slot = db.actor:active_slot()
-		if(slot~=2 and slot~=3) then
+		if(slot~=2 and slot~=3 and slot~=13) then
 			return
 		end
 		active_item = db.actor:active_item()
@@ -3395,6 +3396,8 @@ function create_cutscene_actor_with_weapon(actor, npc, p)
 				active_item = db.actor:item_in_slot(3)
 			elseif db.actor:item_in_slot(2) ~= nil then
 				active_item = db.actor:item_in_slot(2)
+			elseif db.actor:item_in_slot(13) ~= nil then
+				active_item = db.actor:item_in_slot(13)
 			else
 				return
 			end

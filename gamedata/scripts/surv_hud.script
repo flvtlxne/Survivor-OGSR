@@ -37,7 +37,7 @@ local cache = {}    -- last values given to the statics, so they are touched onl
 local next_slow = 0
 local task_title    -- title of the active task, nil when there is none
 local gren_ready    -- a grenade is in slot 4 and its frame is filled in
-local WEAPON_SLOTS = {[1] = true, [2] = true, [3] = true, [4] = true}   -- knife, pistol, rifle, grenade
+local WEAPON_SLOTS = {[1] = true, [2] = true, [3] = true, [4] = true, [13] = true}   -- knife, weapon 1, weapon 2, grenade, pistol
 
 local CMP_FOV     = 120        -- degrees shown across the compass line
 local CMP_STEP    = 15         -- a tick every 15 degrees, taller every 45

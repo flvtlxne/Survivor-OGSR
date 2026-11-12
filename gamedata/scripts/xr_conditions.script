@@ -1986,121 +1986,67 @@ end
 
 
 
-function actor_in_slot_pm()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_pm" ) or ( gun2 and gun2:section() == "wpn_pm" ) then
-		return true
+-- Survivor: the weapon is in one of the actor's weapon slots (2, 3 and the pistol slot 13)
+function actor_weapon_in_slots(section)
+	for _, slot in ipairs({2, 3, 13}) do
+		local gun = db.actor:item_in_slot(slot)
+		if gun and gun:section() == section then
+			return true
+		end
 	end
-return false
+	return false
+end
+
+function actor_in_slot_pm()
+	return actor_weapon_in_slots("wpn_pm")
 end
 
 function actor_in_slot_pb()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_pb" ) or ( gun2 and gun2:section() == "wpn_pb" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_pb")
 end
 
 function actor_in_slot_obrez()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_bm16" ) or ( gun2 and gun2:section() == "wpn_bm16" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_bm16")
 end
 
 function actor_in_slot_usp()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_usp" ) or ( gun2 and gun2:section() == "wpn_usp" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_usp")
 end
 
 function actor_in_slot_hpsa()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_hpsa" ) or ( gun2 and gun2:section() == "wpn_hpsa" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_hpsa")
 end
 
 function actor_in_slot_toz()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_toz34" ) or ( gun2 and gun2:section() == "wpn_toz34" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_toz34")
 end
 
 function actor_in_slot_aksu()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_ak74u" ) or ( gun2 and gun2:section() == "wpn_ak74u" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_ak74u")
 end
 
 function actor_in_slot_ak74()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_ak74" ) or ( gun2 and gun2:section() == "wpn_ak74" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_ak74")
 end
 
 function actor_in_slot_lr300()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_lr300" ) or ( gun2 and gun2:section() == "wpn_lr300" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_lr300")
 end
 
 function actor_in_slot_vintorez()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_vintorez" ) or ( gun2 and gun2:section() == "wpn_vintorez" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_vintorez")
 end
 
 function actor_in_slot_bizon()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_bizon" ) or ( gun2 and gun2:section() == "wpn_bizon" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_bizon")
 end
 
 function actor_in_slot_sayga()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_sayga" ) or ( gun2 and gun2:section() == "wpn_sayga" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_sayga")
 end
 
 function actor_in_slot_mosin()
-	local gun1 = db.actor:item_in_slot(2)
-	local gun2 = db.actor:item_in_slot(3)
-	if ( gun1 and gun1:section() == "wpn_m1891" ) or ( gun2 and gun2:section() == "wpn_m1891" ) then
-		return true
-	end
-return false
+	return actor_weapon_in_slots("wpn_m1891")
 end
 
 

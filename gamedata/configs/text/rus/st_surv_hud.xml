@@ -5,7 +5,7 @@
 		<text>Собака</text>
 	</string>
 	<string id="st_surv_hud_gren_key">
-		<text>$$ACTION_WPN_4$$</text>
+		<text>$$ACTION_WPN_GRENADE$$</text>
 	</string>
 	<string id="st_surv_hud_dist">
 		<text>%d м</text>

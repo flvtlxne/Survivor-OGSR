@@ -3493,7 +3493,7 @@ local take_apart_parts = {
 -- Всё оружие в рюкзаке, которое можно разобрать. Оружие в слотах пропускаем.
 local function take_apart_all_list()
 	local skip = {}
-	for _, slot in ipairs({2, 3}) do
+	for _, slot in ipairs({2, 3, 13}) do
 		local item = db.actor:item_in_slot(slot)
 		if item then
 			skip[item:id()] = true

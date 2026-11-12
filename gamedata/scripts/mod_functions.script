@@ -2252,13 +2252,11 @@ end
 
 
 function repair_both_actor_weapons()
-local gun1 = db.actor:item_in_slot(2)
-local gun2 = db.actor:item_in_slot(3)
-	if gun1 then
-		gun1:set_condition(1.0)
-	end
-	if gun2 then
-		gun2:set_condition(1.0)
+	for _, slot in ipairs({2, 3, 13}) do   -- weapon 1, weapon 2, pistol
+		local gun = db.actor:item_in_slot(slot)
+		if gun then
+			gun:set_condition(1.0)
+		end
 	end
 end
 

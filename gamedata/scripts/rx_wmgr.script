@@ -727,7 +727,7 @@ function weapon_manager:update_weapon_list(skip_ammo)
 			local slot = cini:r_s32(w.sec,"slot")	-- read_from_ini(nil,w.sec,"slot",1) --read_if_exist_float(w.sec,"slot",1) --weapon_params[w.sec].slt
 			if slot1 and slot2 then
 				break
-			elseif not slot1 and slot == 1  then
+			elseif not slot1 and (slot == 1 or slot == 12) then   -- Survivor: pistols have their own slot
 				slot1 = true
 				wbst[#wbst+1] = w
 			elseif not slot2 and slot == 2  then

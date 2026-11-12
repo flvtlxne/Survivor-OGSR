@@ -9,7 +9,6 @@ local tbinding = {
 	h   = "mod_functions.dog_command1",
 	j   = "mod_functions.dog_command2",
 	k   = "mod_functions.dog_command3",
-	t   = "mod_functions.start_test_interface",
 	z   = "mod_functions.gather_outfit_upgrade_items_from_box",
 	b   = "mod_functions.gather_weapon_upgrade_items_from_box",
 	u   = "mod_functions.put_all_upgrades_to_box",
