@@ -7,4 +7,40 @@
 	<string id="st_surv_upgr_no_parts">
 		<text>Нет подходящих деталей</text>
 	</string>
+	<string id="st_surv_inv_equipment">
+		<text>СНАРЯЖЕНИЕ</text>
+	</string>
+	<string id="st_surv_inv_backpack">
+		<text>РЮКЗАК</text>
+	</string>
+	<string id="st_surv_inv_loot">
+		<text>СОДЕРЖИМОЕ</text>
+	</string>
+	<string id="st_surv_inv_weapon1">
+		<text>ОРУЖИЕ 1</text>
+	</string>
+	<string id="st_surv_inv_weapon2">
+		<text>ОРУЖИЕ 2</text>
+	</string>
+	<string id="st_surv_inv_helmet">
+		<text>ШЛЕМ</text>
+	</string>
+	<string id="st_surv_inv_detector">
+		<text>ДЕТЕКТОР</text>
+	</string>
+	<string id="st_surv_inv_outfit">
+		<text>БРОНЯ</text>
+	</string>
+	<string id="st_surv_inv_pistol">
+		<text>ПИСТОЛЕТ</text>
+	</string>
+	<string id="st_surv_inv_health">
+		<text>ЗДОРОВЬЕ</text>
+	</string>
+	<string id="st_surv_inv_weight">
+		<text>Вес</text>
+	</string>
+	<string id="st_surv_condition">
+		<text>Состояние</text>
+	</string>
 </string_table>

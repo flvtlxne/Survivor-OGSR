@@ -1,0 +1,29 @@
+<w>
+	<!-- Survivor: actor menu (inventory, loot) -->
+	<file name="ui\surv_inv">
+		<texture id="surv_inv_equip" x="0" y="0" width="920" height="1234"/>
+		<texture id="surv_inv_side" x="928" y="0" width="710" height="1234"/>
+		<texture id="surv_inv_white" x="1650" y="2" width="4" height="4"/>
+		<texture id="surv_inv_blocked" x="1664" y="0" width="64" height="64"/>
+		<texture id="surv_inv_seg_back" x="1648" y="80" width="378" height="10"/>
+		<texture id="surv_inv_seg" x="1648" y="96" width="378" height="10"/>
+		<texture id="surv_inv_bleeding_1" x="1648" y="120" width="48" height="48"/>
+		<texture id="surv_inv_bleeding_2" x="1700" y="120" width="48" height="48"/>
+		<texture id="surv_inv_bleeding_3" x="1752" y="120" width="48" height="48"/>
+		<texture id="surv_inv_radiation_1" x="1804" y="120" width="48" height="48"/>
+		<texture id="surv_inv_radiation_2" x="1856" y="120" width="48" height="48"/>
+		<texture id="surv_inv_radiation_3" x="1908" y="120" width="48" height="48"/>
+		<texture id="surv_pbox_lt" x="1648" y="180" width="8" height="8"/>
+		<texture id="surv_pbox_t" x="1656" y="180" width="8" height="8"/>
+		<texture id="surv_pbox_rt" x="1664" y="180" width="8" height="8"/>
+		<texture id="surv_pbox_l" x="1648" y="188" width="8" height="8"/>
+		<texture id="surv_pbox_back" x="1656" y="188" width="8" height="8"/>
+		<texture id="surv_pbox_r" x="1664" y="188" width="8" height="8"/>
+		<texture id="surv_pbox_lb" x="1648" y="196" width="8" height="8"/>
+		<texture id="surv_pbox_b" x="1656" y="196" width="8" height="8"/>
+		<texture id="surv_pbox_rb" x="1664" y="196" width="8" height="8"/>
+	</file>
+	<file name="ui\surv_cursor">
+		<texture id="surv_cursor" x="0" y="0" width="128" height="128"/>
+	</file>
+</w>

@@ -1,16 +1,20 @@
 <scroll_bar>
-	<default height="15" height_v="15" hold_delay="40">
-		<up_arrow width="15" height="16">
-			<texture_e>ui_scroll_btn_up</texture_e>
+	<default height="7" height_v="7" hold_delay="40">
+		<up_arrow width="7" height="7" stretch="1">
+			<texture_e>surv_scb_up_e</texture_e>
+			<texture_h>surv_scb_up_h</texture_h>
+			<texture_t>surv_scb_up_h</texture_t>
 		</up_arrow>
-		<down_arrow width="15" height="16">
-			<texture_e>ui_scroll_btn_down</texture_e>
+		<down_arrow width="7" height="7" stretch="1">
+			<texture_e>surv_scb_down_e</texture_e>
+			<texture_h>surv_scb_down_h</texture_h>
+			<texture_t>surv_scb_down_h</texture_t>
 		</down_arrow>
-		<back_v width="15" height="15">
-			<texture>ui_scroll_back</texture>
+		<back_v width="7" height="12">
+			<texture>surv_scb_back</texture>
 		</back_v>
 		<box_v frame_mode="0" vertical="1">
-			<texture>ui_scroll_box</texture>
+			<texture>surv_scb_box</texture>
 		</box_v>
 	</default>
 
