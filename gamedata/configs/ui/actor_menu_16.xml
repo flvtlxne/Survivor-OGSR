@@ -55,7 +55,7 @@
 		<name_static x="0" y="30" width="170" height="18">
 			<text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="c"/>
 		</name_static>
-		<icon x="213.56" y="0" width="52.44" height="46" stretch="1">
+		<icon x="-2000" y="0" width="52.44" height="46" stretch="1"><!-- Survivor: no partner portrait in loot and upgrade -->
 			<deadbody r="200" g="190" b="180" a="230"/>
 		</icon>
 	</partner_ch_info>
@@ -220,22 +220,22 @@
 		cell_width="31" cell_height="41" rows_num="14" cols_num="8"
 		unlimited="1" group_similar="1" always_show_scroll="1" condition_progress_bar="1"/>
 	<dragdrop_pistol x="341" y="126" width="64" height="300"
-		cell_width="31" cell_height="41" rows_num="7" cols_num="2" custom_placement="0" vertical_placement="1" a="0"
+		cell_width="31" cell_height="41" rows_num="7" cols_num="3" custom_placement="0" vertical_placement="1" a="0"
 		virtual_cells="1" vc_vert_align="c" vc_horiz_align="c"/>
 	<dragdrop_automatic x="619" y="126" width="64" height="300"
-		cell_width="31" cell_height="41" rows_num="7" cols_num="2" custom_placement="0" vertical_placement="1" a="0"
+		cell_width="31" cell_height="41" rows_num="7" cols_num="3" custom_placement="0" vertical_placement="1" a="0"
 		virtual_cells="1" vc_vert_align="c" vc_horiz_align="c"/>
 	<dragdrop_sidearm x="420.5" y="390" width="183" height="41"
-		cell_width="31" cell_height="41" rows_num="1" cols_num="2" custom_placement="0" a="0"
+		cell_width="31" cell_height="41" rows_num="1" cols_num="6" custom_placement="0" a="0"
 		virtual_cells="1" vc_vert_align="c" vc_horiz_align="c"/>
 	<dragdrop_helmet x="420.5" y="126" width="84.5" height="84"
-		cell_width="31" cell_height="41" rows_num="2" cols_num="2" custom_placement="0" a="0"
+		cell_width="31" cell_height="41" rows_num="2" cols_num="3" custom_placement="0" a="0"
 		virtual_cells="1" vc_vert_align="c" vc_horiz_align="c"/>
 	<dragdrop_detector x="519" y="126" width="84.5" height="84"
-		cell_width="31" cell_height="41" rows_num="2" cols_num="2" custom_placement="0" a="0"
+		cell_width="31" cell_height="41" rows_num="2" cols_num="3" custom_placement="0" a="0"
 		virtual_cells="1" vc_vert_align="c" vc_horiz_align="c"/>
 	<dragdrop_outfit x="420.5" y="240" width="183" height="124"
-		cell_width="31" cell_height="41" rows_num="3" cols_num="2" custom_placement="0" a="0"
+		cell_width="31" cell_height="41" rows_num="3" cols_num="6" custom_placement="0" a="0"
 		virtual_cells="1" vc_vert_align="c" vc_horiz_align="c"/>
 	<dragdrop_belt x="354" y="507.5" width="315" height="41"
 		cell_width="31" cell_height="41" rows_num="1" cols_num="5"

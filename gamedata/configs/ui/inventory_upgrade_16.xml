@@ -51,8 +51,8 @@
 		</state>
 		<state>
 			<type>disabled_group</type>
-			<back_texture>surv_upg_s_dark</back_texture>
-			<point_texture>surv_upg_dot_grey</point_texture>
+			<back_texture>surv_upg_s_red</back_texture>
+			<point_texture>surv_upg_dot_red</point_texture>
 		</state>
 		<state>
 			<type>disabled_money</type>
