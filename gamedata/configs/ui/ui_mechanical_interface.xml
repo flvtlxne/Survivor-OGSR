@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <mechanical_interface>
 	<table x="228.27" y="206.16" width="567.47" height="357.2"><texture>surv_frame</texture>
-		<auto_static x="12.16" y="36.48" width="506.67" height="13.68"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Верстак</text></auto_static>
 		<auto_static x="12.16" y="53.2" width="543.15" height="0.81" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="12.16" y="36.48" width="506.67" height="13.68"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Верстак</text></auto_static>
 	</table>
 	<name x="240.43" y="216.8" width="506.67" height="25.84"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">МАСТЕРСКАЯ</text></name>
 	<text1 x="240.43" y="273.04" width="304" height="152"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Здесь можно чинить, модифицировать, собирать и разбирать на запчасти имеющееся оружие. Запчасти потом пригодятся для ремонта поврежденных образцов. Апгрейды ставятся при наличии расходных материалов.</text></text1>

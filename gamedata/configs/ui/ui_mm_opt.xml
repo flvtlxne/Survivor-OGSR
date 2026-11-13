@@ -12,11 +12,11 @@
 
 	<main_dialog>
 		<dialog x="0" y="0" width="1024" height="768">
-			<auto_static x="40" y="46" width="900" height="40">
-				<text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">ui_mm_options_short</text>
-			</auto_static>
 			<auto_static x="40" y="92" width="944" height="2" stretch="1">
 				<texture>surv_rule</texture>
+			</auto_static>
+			<auto_static x="40" y="46" width="900" height="40">
+				<text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">ui_mm_options_short</text>
 			</auto_static>
 		</dialog>
 		<panel x="40" y="146" width="944" height="430">

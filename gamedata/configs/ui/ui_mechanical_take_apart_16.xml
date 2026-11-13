@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <mechanical_take_apart>
 	<table x="232" y="150" width="560" height="470"><texture>surv_frame</texture>
-		<auto_static x="12" y="48" width="500" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Разборка оружия</text></auto_static>
 		<auto_static x="12" y="70" width="536" height="1.07" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
 		<auto_static x="16.5" y="144" width="9" height="12" stretch="1"><texture>surv_mark_off</texture></auto_static>
 		<auto_static x="16.5" y="174" width="9" height="12" stretch="1"><texture>surv_mark_off</texture></auto_static>
@@ -16,6 +15,7 @@
 		<auto_static x="290.5" y="234" width="9" height="12" stretch="1"><texture>surv_mark_off</texture></auto_static>
 		<auto_static x="290.5" y="264" width="9" height="12" stretch="1"><texture>surv_mark_off</texture></auto_static>
 		<auto_static x="290.5" y="294" width="9" height="12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="12" y="48" width="500" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Разборка оружия</text></auto_static>
 	</table>
 	<name x="244" y="164" width="500" height="34"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">МАСТЕРСКАЯ</text></name>
 	<text1 x="244" y="234" width="536" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Разобрав оружие, вы получите наборы деталей. Три набора собираются в один ремкомплект. Оружие в слотах разборке не подлежит.</text></text1>
