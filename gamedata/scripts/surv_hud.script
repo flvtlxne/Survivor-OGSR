@@ -367,6 +367,21 @@ local function update_health()
 	show(ui.health_num, true)
 end
 
+-- The mod's action hints (gather items, dog, dwarf) are custom statics too: the engine draws them
+-- under the open windows, so they are hidden while the HUD is.
+local HINTS = {"gather_items_box_static1", "gather_items_box_static2", "gather_items_box_static3",
+	"gather_items_box_static4", "karlik_friend_commands_hint", "personal_dog_commands_hint0",
+	"personal_dog_commands_hint1", "personal_dog_commands_hint2"}
+
+local function show_hints(hud, on)
+	for _, name in ipairs(HINTS) do
+		local st = hud:GetCustomStatic(name)
+		if st then
+			st:wnd():Show(on)
+		end
+	end
+end
+
 function update()
 	local hud = get_hud()
 	if not hud then
@@ -378,6 +393,7 @@ function update()
 
 	local on = hud_visible()
 	show(ui.holder, on)
+	show_hints(hud, on)
 	if not on then
 		return
 	end
