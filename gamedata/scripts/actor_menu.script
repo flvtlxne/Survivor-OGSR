@@ -62,10 +62,19 @@ function upgrade_wnd_opened()
 	printf("---:>Upgrade opened")
 end
 
+-- Survivor: апгрейд открыт с верстака (xr_effects.use_mechanical_npc1), разговор под ним закрываем вместе с ним
+close_talk_after_upgrade = false
+
 function upgrade_wnd_closed()
         disable_info("inventory_wnd_opened")
 	printf("---:>Upgrade closed")
 	xr_meet_upgrade_closed = true
+	if close_talk_after_upgrade then
+		close_talk_after_upgrade = false
+		if db.actor and db.actor:is_talking() then
+			db.actor:stop_talk()
+		end
+	end
 end
 
 function dead_body_search_wnd_opened()

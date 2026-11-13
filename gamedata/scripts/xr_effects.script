@@ -3706,6 +3706,12 @@ function use_mechanical_npc1()
 local npc = get_story_object("mechanical_npc1")
 	if npc ~= nil then
 		db.actor:run_talk_dialog(npc, actor)
+		-- Survivor: сразу в окно апгрейда, без окна разговора. Разговор остается открытым под ним
+		-- (по нему логика механика понимает, что он занят) и закрывается вместе с апгрейдом.
+		if db.actor:is_talking() then
+			actor_menu.close_talk_after_upgrade = true
+			db.actor:switch_to_upgrade()
+		end
 	end
 end
 
