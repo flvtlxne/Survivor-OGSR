@@ -1,87 +1,77 @@
 <w>
-
-  <main x="0" y="0" width="1024" height="768">
-    <auto_static x="195" y="4" width="634" height="760">
-      <texture>ui_inGame2_dialog_main_window</texture>
-    </auto_static>
-  </main>
-
-  <button x="353" y="734" width="320" height="24" stretch="1" hint="ui_st_exit_hint">
-    <texture>ui_inGame2_big_inventory_button</texture>
-    <text font="graffiti22" align="c">ui_st_trade</text>
-    <text_color>
-      <e color ="ui_6"/>
-      <t color ="ui_black"/>
-      <d color ="ui_5"/>
-      <h color ="ui_black"/>
-    </text_color>
-  </button>
-
-  <answers_list	  x="242" y="63" width="546" height="423" always_show_scroll="1"/>
-  <questions_list x="242" y="542" width="546" height="166" always_show_scroll="0"/>
-
-  <question_item width="527" height="20" min_height="13">
-    <num_text x="0" y="3" width="10" height="20">
-      <text font="letterica18" color="ui_2"/>
-    </num_text>
-    <content_text x="20" y="3" width="490" height="20">
-		  <text font="letterica18" color="ui_2"  align="l" complex_mode="1"/>
-		  <text_color>
-			  <t r="231" g="168" b="12"/> <e color="ui_2"/> <h color="ui_1"/>
-      </text_color>
-		</content_text>
-	</question_item>
-
-	<other_answer_item width="527" height="0" min_height="13" bottom_footer="5">
-		<name_caption x="0" y="3" width="510" height="10">
-			<text font="graffiti22" color="ui_7"  complex_mode="0"/>
-		</name_caption>
-
-		<content_text x="20" y="22" width="490" height="10" complex_mode="1">
-			<text font="letterica18" color="ui_8"/>
-    </content_text>
-	</other_answer_item>
-
-	<actor_answer_item x="0" y="0" width="527" height="0" min_height="13" bottom_footer="10">
-		<name_caption x="0" y="3" width="510" height="10">
-			<text font="graffiti22" color="ui_lime"  complex_mode="0"/>
-		</name_caption>
-
-		<content_text x="20" y="22" width="490" height="10" complex_mode="1">
-			<text font="letterica18" color="ui_2"/>
-    </content_text>
-	</actor_answer_item>
-
-	<iconed_answer_item x="0" y="0" width="527" height="0" min_height="30" bottom_footer="5">
-		<name_caption x="0" y="0" width="0" height="0"/>
-
-		<content_text x="75" y="0" width="450" height="29" complex_mode="1">
-			<text font="letterica18" color="ui_1"/>
-    </content_text>
-		<msg_icon x="20" y="3" width="49" height="29">
-		</msg_icon>
-	</iconed_answer_item>
-
-	<simple_answer_item x="0" y="0" width="527" height="0" min_height="13" bottom_footer="5">
-		<name_caption x="0" y="0" width="0" height="0"/>
-
-		<content_text x="50" y="0" width="450" height="29" complex_mode="1">
-			<text font="letterica18" color="ui_1"/>
-    	</content_text>
-
-		<msg_icon x="20" y="3" width="0" height="0">
-		</msg_icon>
-	</simple_answer_item>
-
-	<iconed_trade_info x="0" y="0" width="527" height="0" min_height="20" bottom_footer="5">
-		<name_caption x="0" y="0" width="0" height="0"/>
-
-		<content_text x="65" y="2" width="460" height="20" complex_mode="1">
-			<text font="letterica18" color="ui_8"/>
-    </content_text>
-
-		<msg_icon x="20" y="0" width="34" height="20">
-		</msg_icon>
-	</iconed_trade_info>
-
+<main x="0" y="0" width="1024" height="768">
+	<auto_static x="33.71" y="149.92" width="956.59" height="0.81" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+	<auto_static x="33.71" y="162.08" width="12.8" height="12.8" stretch="1"><texture>surv_frame_lt</texture></auto_static>
+	<auto_static x="46.51" y="162.08" width="930.99" height="12.8" stretch="1"><texture>surv_frame_t</texture></auto_static>
+	<auto_static x="977.49" y="162.08" width="12.8" height="12.8" stretch="1"><texture>surv_frame_rt</texture></auto_static>
+	<auto_static x="33.71" y="174.88" width="12.8" height="299.68" stretch="1"><texture>surv_frame_l</texture></auto_static>
+	<auto_static x="46.51" y="174.88" width="930.99" height="299.68" stretch="1"><texture>surv_frame_back</texture></auto_static>
+	<auto_static x="977.49" y="174.88" width="12.8" height="299.68" stretch="1"><texture>surv_frame_r</texture></auto_static>
+	<auto_static x="33.71" y="474.56" width="12.8" height="12.8" stretch="1"><texture>surv_frame_lb</texture></auto_static>
+	<auto_static x="46.51" y="474.56" width="930.99" height="12.8" stretch="1"><texture>surv_frame_b</texture></auto_static>
+	<auto_static x="977.49" y="474.56" width="12.8" height="12.8" stretch="1"><texture>surv_frame_rb</texture></auto_static>
+	<auto_static x="33.71" y="498" width="12.8" height="12.8" stretch="1"><texture>surv_frame_lt</texture></auto_static>
+	<auto_static x="46.51" y="498" width="930.99" height="12.8" stretch="1"><texture>surv_frame_t</texture></auto_static>
+	<auto_static x="977.49" y="498" width="12.8" height="12.8" stretch="1"><texture>surv_frame_rt</texture></auto_static>
+	<auto_static x="33.71" y="510.8" width="12.8" height="79.28" stretch="1"><texture>surv_frame_l</texture></auto_static>
+	<auto_static x="46.51" y="510.8" width="930.99" height="79.28" stretch="1"><texture>surv_frame_back</texture></auto_static>
+	<auto_static x="977.49" y="510.8" width="12.8" height="79.28" stretch="1"><texture>surv_frame_r</texture></auto_static>
+	<auto_static x="33.71" y="590.08" width="12.8" height="12.8" stretch="1"><texture>surv_frame_lb</texture></auto_static>
+	<auto_static x="46.51" y="590.08" width="930.99" height="12.8" stretch="1"><texture>surv_frame_b</texture></auto_static>
+	<auto_static x="977.49" y="590.08" width="12.8" height="12.8" stretch="1"><texture>surv_frame_rb</texture></auto_static>
+</main>
+<left_character_icon x="33.71" y="114.96" width="608" height="30.4"/>
+<button x="390.4" y="616.56" width="243.2" height="25.84" stretch="1" hint="ui_st_exit_hint">
+	<texture>surv_msg_btn</texture>
+	<text font="ui_font_surv_btn_s" align="c" vert_align="c">ui_st_trade</text>
+	<text_color><e r="165" g="160" b="148"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/><h r="201" g="168" b="76"/></text_color>
+</button>
+<answers_list x="52.96" y="171.2" width="918.08" height="307.04" always_show_scroll="1"/>
+<questions_list x="52.96" y="507.12" width="918.08" height="86.64" always_show_scroll="0"/>
+<question_item x="0" y="0" width="899.84" height="22" min_height="22">
+	<num_text x="0" y="0" width="14.19" height="22">
+		<text font="ui_font_surv_small" r="201" g="168" b="76"/>
+	</num_text>
+	<content_text x="16.21" y="0" width="879.57" height="22">
+		<text font="ui_font_surv_small" r="201" g="168" b="76" align="l" complex_mode="1"/>
+		<text_color><t r="240" g="226" b="176"/><e r="201" g="168" b="76"/><h r="240" g="226" b="176"/></text_color>
+	</content_text>
+</question_item>
+<other_answer_item x="0" y="0" width="899.84" height="0" min_height="22" bottom_footer="8">
+	<name_caption x="0" y="0" width="889.71" height="20">
+		<text font="ui_font_surv_small" r="201" g="168" b="76" complex_mode="0"/>
+	</name_caption>
+	<content_text x="17.23" y="22" width="872.48" height="20" complex_mode="1">
+		<text font="ui_font_surv_small" r="214" g="209" b="196"/>
+	</content_text>
+</other_answer_item>
+<actor_answer_item x="0" y="0" width="899.84" height="0" min_height="22" bottom_footer="12">
+	<name_caption x="0" y="0" width="889.71" height="20">
+		<text font="ui_font_surv_small" r="146" g="170" b="116" complex_mode="0"/>
+	</name_caption>
+	<content_text x="17.23" y="22" width="872.48" height="20" complex_mode="1">
+		<text font="ui_font_surv_small" r="165" g="160" b="148"/>
+	</content_text>
+</actor_answer_item>
+<iconed_answer_item x="0" y="0" width="899.84" height="0" min_height="32" bottom_footer="6">
+	<name_caption x="0" y="0" width="0" height="0"/>
+	<content_text x="66.88" y="0" width="822.83" height="32" complex_mode="1">
+		<text font="ui_font_surv_small" r="214" g="209" b="196"/>
+	</content_text>
+	<msg_icon x="17.23" y="2" width="41.55" height="29" stretch="1"/>
+</iconed_answer_item>
+<simple_answer_item x="0" y="0" width="899.84" height="0" min_height="22" bottom_footer="6">
+	<name_caption x="0" y="0" width="0" height="0"/>
+	<content_text x="50.67" y="0" width="839.04" height="22" complex_mode="1">
+		<text font="ui_font_surv_small" r="214" g="209" b="196"/>
+	</content_text>
+	<msg_icon x="17.23" y="2" width="0" height="0" stretch="1"/>
+</simple_answer_item>
+<iconed_trade_info x="0" y="0" width="899.84" height="0" min_height="22" bottom_footer="6">
+	<name_caption x="0" y="0" width="0" height="0"/>
+	<content_text x="54.72" y="0" width="834.99" height="22" complex_mode="1">
+		<text font="ui_font_surv_small" r="165" g="160" b="148"/>
+	</content_text>
+	<msg_icon x="17.23" y="2" width="28.37" height="20" stretch="1"/>
+</iconed_trade_info>
 </w>
