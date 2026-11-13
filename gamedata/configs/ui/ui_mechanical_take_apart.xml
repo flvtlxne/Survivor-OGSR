@@ -1,102 +1,51 @@
 <?xml version="1.0" encoding="windows-1251" ?>
- 
-
-    <mechanical_take_apart>
-
-	<table x="200" y="85" width="812" height="450" stretch="1">
-		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+<mechanical_take_apart>
+	<table x="228.27" y="206.16" width="567.47" height="357.2"><texture>surv_frame</texture>
+		<auto_static x="12.16" y="36.48" width="506.67" height="13.68"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Разборка оружия</text></auto_static>
+		<auto_static x="12.16" y="53.2" width="543.15" height="0.81" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="16.72" y="109.44" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="132.24" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="155.04" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="177.84" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="200.64" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="223.44" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="246.24" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="294.37" y="109.44" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="294.37" y="132.24" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="294.37" y="155.04" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="294.37" y="177.84" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="294.37" y="200.64" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="294.37" y="223.44" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
 	</table>
-
-	<name x="250" y="95" width="480" height="500" stretch="1" complex_mode="1">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Мастерская (разборка оружия):</text>
-	</name>
-
-	<text1 x="270" y="160" width="180" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Разбирая на запчасти разное оружие, вы получаете наборы ходовых деталей, из которых можно составлять комплекты для первичного ремонта (ремкомплекты). Имея 3 набора деталей, можно собрать их в 1 ремкомплект. Примечание: оружие, расположенное в слотах, разбору не подлежит.</text>
-	</text1>
-
-
-
-
-	<btn_1 x="500" y="130" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">ПМ</text>
-	</btn_1>
-
-	<btn_2 x="500" y="160" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">ПБ-1с</text>
-	</btn_2>
-
-	<btn_3 x="500" y="190" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Обрез</text>
-	</btn_3>
-
-	<btn_4 x="500" y="220" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">УДП "Компакт"</text>
-	</btn_4>
-
-	<btn_5 x="500" y="250" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">ХПСС-1м</text>
-	</btn_5>
-
-	<btn_6 x="500" y="280" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">ТОЗ-34</text>
-	</btn_6>
-
-	<btn_7 x="500" y="310" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">АКСУ</text>
-	</btn_7>
-
-	<btn_8 x="500" y="340" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">АК-74</text>
-	</btn_8>
-
-	<btn_9 x="500" y="370" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">ТРс-301</text>
-	</btn_9>
-
-	<btn_10 x="500" y="400" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Винтарь-ВС</text>
-	</btn_10>
-
-	<btn_11 x="500" y="430" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">ПП "Бизон"</text>
-	</btn_11>
-
-	<btn_12 x="500" y="460" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Сайга-12</text>
-	</btn_12>
-	
-	<btn_13 x="500" y="490" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Винтовка Мосина</text>
-	</btn_13>
-
-	<btn_all x="315" y="450" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Разобрать всё</text>
-	</btn_all>
-
-	<btn_back x="260" y="480" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Назад</text>
-	</btn_back>
-
-	<btn_exit x="370" y="480" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Выход</text>
-	</btn_exit>
-
-
-    </mechanical_take_apart>
+	<name x="240.43" y="216.8" width="506.67" height="25.84"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">МАСТЕРСКАЯ</text></name>
+	<text1 x="240.43" y="270" width="543.15" height="33.44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Разобрав оружие, вы получите наборы деталей. Три набора собираются в один ремкомплект. Оружие в слотах разборке не подлежит.</text></text1>
+	<indicator1 x="244.99" y="315.6" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator1>
+	<indicator2 x="244.99" y="338.4" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator2>
+	<indicator3 x="244.99" y="361.2" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator3>
+	<indicator4 x="244.99" y="384" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator4>
+	<indicator5 x="244.99" y="406.8" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator5>
+	<indicator6 x="244.99" y="429.6" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator6>
+	<indicator7 x="244.99" y="452.4" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator7>
+	<indicator8 x="522.64" y="315.6" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator8>
+	<indicator9 x="522.64" y="338.4" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator9>
+	<indicator10 x="522.64" y="361.2" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator10>
+	<indicator11 x="522.64" y="384" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator11>
+	<indicator12 x="522.64" y="406.8" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator12>
+	<indicator13 x="522.64" y="429.6" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator13>
+	<btn_1 x="240.43" y="309.52" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">ПМ</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_1>
+	<btn_2 x="240.43" y="332.32" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">ПБ-1с</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_2>
+	<btn_3 x="240.43" y="355.12" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">Обрез</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_3>
+	<btn_4 x="240.43" y="377.92" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">УДП "Компакт"</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_4>
+	<btn_5 x="240.43" y="400.72" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">ХПСС-1м</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_5>
+	<btn_6 x="240.43" y="423.52" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">ТОЗ-34</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_6>
+	<btn_7 x="240.43" y="446.32" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">АКСУ</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_7>
+	<btn_8 x="518.08" y="309.52" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">АК-74</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_8>
+	<btn_9 x="518.08" y="332.32" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">ТРс-301</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_9>
+	<btn_10 x="518.08" y="355.12" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">Винтарь-ВС</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_10>
+	<btn_11 x="518.08" y="377.92" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">ПП "Бизон"</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_11>
+	<btn_12 x="518.08" y="400.72" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">Сайга-12</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_12>
+	<btn_13 x="518.08" y="423.52" width="265.49" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="16.72">Винтовка Мосина</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_13>
+	<btn_all x="240.43" y="525.36" width="172.27" height="25.84" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">РАЗОБРАТЬ ВСЕ</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_all>
+	<btn_back x="514.03" y="525.36" width="131.73" height="25.84" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">НАЗАД</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_back>
+	<btn_exit x="651.84" y="525.36" width="131.73" height="25.84" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ВЫХОД</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_exit>
+</mechanical_take_apart>

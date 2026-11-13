@@ -1,0 +1,13 @@
+<w>
+	<!-- Survivor: script windows (gen_wnd.py) -->
+	<file name="ui\surv_wnd">
+		<texture id="surv_mark_on" x="0" y="0" width="32" height="32"/>
+		<texture id="surv_mark_off" x="32" y="0" width="32" height="32"/>
+	</file>
+	<file name="ui\surv_menu">
+		<texture id="surv_row_e" x="1000" y="0" width="8" height="8"/>
+		<texture id="surv_row_h" x="794" y="200" width="28" height="28"/>
+		<texture id="surv_row_t" x="794" y="200" width="28" height="28"/>
+		<texture id="surv_row_d" x="1000" y="0" width="8" height="8"/>
+	</file>
+</w>

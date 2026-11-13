@@ -1,96 +1,42 @@
 <?xml version="1.0" encoding="windows-1251" ?>
- 
-
-    <laboratory_interface>
-
-	<table x="200" y="85" width="812" height="450" stretch="1">
-		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+<laboratory_interface>
+	<table x="228.27" y="206.16" width="567.47" height="357.2"><texture>surv_frame</texture>
+		<auto_static x="12.16" y="36.48" width="506.67" height="13.68"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Химический стол</text></auto_static>
+		<auto_static x="12.16" y="53.2" width="543.15" height="0.81" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="16.72" y="107.16" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="131.48" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="155.8" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="180.12" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="204.44" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="228.76" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="253.08" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="16.72" y="277.4" width="9.12" height="9.12" stretch="1"><texture>surv_mark_off</texture></auto_static>
 	</table>
-
-	<name x="250" y="95" width="480" height="500" stretch="1" complex_mode="1">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Лаборатория</text>
-	</name>
-
-	<text1 x="270" y="130" width="380" height="230">
-		<text x="0" y="0" r="135" g="235" b="118" a="158" font="letterica18"  complex_mode="1">С помощью имеющихся химикатов и других веществ вы можете изготавливать медицинские препараты для лечения и улучшения своих способностей:</text>
-	</text1>
-
-	<hint1 x="250" y="205" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">антисептик + бинт = </text>
-	</hint1>
-	<hint2 x="250" y="235" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">антисептик + бинт + жгут = </text>
-	</hint2>
-	<hint3 x="250" y="265" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">ветошь + антисептик = </text>
-	</hint3>
-	<hint4 x="250" y="295" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для инъекций + йод = </text>
-	</hint4>
-	<hint5 x="250" y="325" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для инъекций + антисептик = </text>
-	</hint5>
-	<hint6 x="250" y="355" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">кофеин + мельдоний + гематоген = </text>
-	</hint6>
-	<hint7 x="250" y="385" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">шприц + раствор для инъекций + уголь = </text>
-	</hint7>
-	<hint8 x="250" y="415" width="280" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">дрожжи + сахар = </text>
-	</hint8>
-
-
-
-
-	<btn_1 x="530" y="200" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Аптечка самодельная</text>
-	</btn_1>
-
-	<btn_2 x="530" y="230" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Аптечка улучшенная</text>
-	</btn_2>
-
-	<btn_3 x="530" y="260" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Бинт</text>
-	</btn_3>
-
-	<btn_4 x="530" y="290" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Антирад</text>
-	</btn_4>
-
-	<btn_5 x="530" y="320" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Сыворотка</text>
-	</btn_5>
-
-	<btn_6 x="530" y="350" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Стимулятор</text>
-	</btn_6>
-
-	<btn_7 x="530" y="380" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Нейтрализатор</text>
-	</btn_7>
-
-	<btn_8 x="530" y="410" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Брага</text>
-	</btn_8>
-
-
-
-	<btn_exit x="550" y="480" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Выход</text>
-	</btn_exit>
-
-
-    </laboratory_interface>
-
-
+	<name x="240.43" y="216.8" width="506.67" height="25.84"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">ЛАБОРАТОРИЯ</text></name>
+	<text1 x="240.43" y="270" width="543.15" height="33.44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Из химикатов и других веществ можно изготовить медицинские препараты. Нажмите на строку, чтобы изготовить; квадрат горит, когда все нужное есть в рюкзаке.</text></text1>
+	<hint1 x="451.2" y="306.48" width="324.27" height="22.8"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">антисептик + бинт</text></hint1>
+	<hint2 x="451.2" y="330.8" width="324.27" height="22.8"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">антисептик + бинт + жгут</text></hint2>
+	<hint3 x="451.2" y="355.12" width="324.27" height="22.8"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">ветошь + антисептик</text></hint3>
+	<hint4 x="451.2" y="379.44" width="324.27" height="22.8"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">шприц + раствор для инъекций + йод</text></hint4>
+	<hint5 x="451.2" y="403.76" width="324.27" height="22.8"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">шприц + раствор для инъекций + антисептик</text></hint5>
+	<hint6 x="451.2" y="428.08" width="324.27" height="22.8"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">кофеин + мельдоний + гематоген</text></hint6>
+	<hint7 x="451.2" y="452.4" width="324.27" height="22.8"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">шприц + раствор для инъекций + уголь</text></hint7>
+	<hint8 x="451.2" y="476.72" width="324.27" height="22.8"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">дрожжи + сахар</text></hint8>
+	<indicator1 x="244.99" y="313.32" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator1>
+	<indicator2 x="244.99" y="337.64" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator2>
+	<indicator3 x="244.99" y="361.96" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator3>
+	<indicator4 x="244.99" y="386.28" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator4>
+	<indicator5 x="244.99" y="410.6" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator5>
+	<indicator6 x="244.99" y="434.92" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator6>
+	<indicator7 x="244.99" y="459.24" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator7>
+	<indicator8 x="244.99" y="483.56" width="9.12" height="9.12" stretch="1"><texture>surv_mark_on</texture></indicator8>
+	<btn_1 x="240.43" y="306.48" width="543.15" height="22.8" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="18.24">Аптечка самодельная</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_1>
+	<btn_2 x="240.43" y="330.8" width="543.15" height="22.8" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="18.24">Аптечка улучшенная</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_2>
+	<btn_3 x="240.43" y="355.12" width="543.15" height="22.8" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="18.24">Бинт</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_3>
+	<btn_4 x="240.43" y="379.44" width="543.15" height="22.8" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="18.24">Антирад</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_4>
+	<btn_5 x="240.43" y="403.76" width="543.15" height="22.8" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="18.24">Сыворотка</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_5>
+	<btn_6 x="240.43" y="428.08" width="543.15" height="22.8" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="18.24">Стимулятор</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_6>
+	<btn_7 x="240.43" y="452.4" width="543.15" height="22.8" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="18.24">Нейтрализатор</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_7>
+	<btn_8 x="240.43" y="476.72" width="543.15" height="22.8" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="18.24">Брага</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_8>
+	<btn_exit x="651.84" y="525.36" width="131.73" height="25.84" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ВЫХОД</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_exit>
+</laboratory_interface>

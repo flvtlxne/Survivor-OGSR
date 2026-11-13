@@ -3409,7 +3409,7 @@ function mechanical_interface:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_mechanical_interface.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -3555,9 +3555,14 @@ function mechanical_take_apart:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_mechanical_take_apart.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
+
+	-- Survivor: квадраты "можно сделать": создаем сразу, а показываем в refresh_buttons()
+	for i = 1, 13 do
+		self["ind_" .. i] = xml:InitStatic("indicator" .. i, self)
+	end
 
 	-- кнопки
 	self.btn_1 = xml:Init3tButton("btn_1", self)
@@ -3627,6 +3632,9 @@ function mechanical_take_apart:refresh_buttons()
 	self.btn_11:Enable(actor_has_all("wpn_bizon"))
 	self.btn_12:Enable(actor_has_all("wpn_sayga"))
 	self.btn_13:Enable(actor_has_all("wpn_m1891"))
+	for i = 1, 13 do
+		self["ind_" .. i]:Show(self["btn_" .. i]:IsEnabled())
+	end
 	self.btn_all:Enable(#take_apart_all_list() > 0)
 end
 
@@ -3943,7 +3951,7 @@ function mechanical_construct:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_mechanical_construct.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 	
@@ -4181,7 +4189,7 @@ function mechanical_others:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_mechanical_others.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 	xml:InitStatic("text2", self)
@@ -4346,7 +4354,7 @@ function laboratory_interface:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_laboratory_interface.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 	xml:InitStatic("hint1", self)
@@ -4357,6 +4365,11 @@ function laboratory_interface:InitControls()
 	xml:InitStatic("hint6", self)
 	xml:InitStatic("hint7", self)
 	xml:InitStatic("hint8", self)
+
+	-- Survivor: квадраты "можно сделать": создаем сразу, а показываем в refresh_buttons()
+	for i = 1, 8 do
+		self["ind_" .. i] = xml:InitStatic("indicator" .. i, self)
+	end
 
 	-- кнопки
 	self.btn_1 = xml:Init3tButton("btn_1", self)
@@ -4401,6 +4414,9 @@ function laboratory_interface:refresh_buttons()
 	self.btn_6:Enable(mod_craft.has_all("chem_item_meldoniy", "chem_item_cofeine", "chem_item_gematogen"))
 	self.btn_7:Enable(mod_craft.has_all("chem_item_injector", "chem_item_liquor", "chem_item_coal"))
 	self.btn_8:Enable(mod_craft.has_all("chem_item_yeast", "chem_item_sugar"))
+	for i = 1, 8 do
+		self["ind_" .. i]:Show(self["btn_" .. i]:IsEnabled())
+	end
 end
 
 function laboratory_interface:Update()

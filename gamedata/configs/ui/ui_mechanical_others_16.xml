@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<mechanical_others>
+	<table x="232" y="150" width="560" height="470"><texture>surv_frame</texture>
+		<auto_static x="12" y="48" width="500" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Прочее</text></auto_static>
+		<auto_static x="12" y="70" width="536" height="1.07" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="12" y="151" width="9" height="12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="12" y="213" width="9" height="12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="12" y="263" width="9" height="12" stretch="1"><texture>surv_mark_off</texture></auto_static>
+		<auto_static x="25.5" y="256" width="330" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Кейс курьера</text></auto_static>
+	</table>
+	<name x="244" y="164" width="500" height="34"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">МАСТЕРСКАЯ</text></name>
+	<text1 x="244" y="234" width="536" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Сборка комплектов для ремонта транспорта и прочего. Квадрат горит, когда все детали есть в рюкзаке.</text></text1>
+	<indicator1 x="244" y="301" width="9" height="12" stretch="1"><texture>surv_mark_on</texture></indicator1>
+	<text2 x="257.5" y="294" width="330" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Подшипники + масло + литол + набор ключей + проводка + домкрат + WD-40 + аккумулятор + покрышка</text></text2>
+	<btn_1 x="580" y="290" width="200" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">РЕМКОМПЛЕКТ ДЛЯ АВТО</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_1>
+	<indicator2 x="244" y="363" width="9" height="12" stretch="1"><texture>surv_mark_on</texture></indicator2>
+	<text3 x="257.5" y="356" width="330" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Газовый баллон + аккумулятор + проводка</text></text3>
+	<btn_2 x="580" y="352" width="200" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">САМОДЕЛЬНАЯ БОМБА</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_2>
+	<indicator3 x="244" y="413" width="9" height="12" stretch="1"><texture>surv_mark_on</texture></indicator3>
+	<btn_3 x="580" y="402" width="200" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ВЗЛОМАТЬ КЕЙС КУРЬЕРА</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_3>
+	<btn_back x="514" y="570" width="130" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">НАЗАД</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_back>
+	<btn_exit x="650" y="570" width="130" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ВЫХОД</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_exit>
+</mechanical_others>
