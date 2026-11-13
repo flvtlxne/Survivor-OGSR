@@ -43,4 +43,10 @@
 	<string id="st_surv_condition">
 		<text>Состояние</text>
 	</string>
+	<string id="st_surv_upg_title">
+		<text>МОДИФИКАЦИЯ</text>
+	</string>
+	<string id="st_surv_upg_repair">
+		<text>РЕМОНТ</text>
+	</string>
 </string_table>
