@@ -10,7 +10,7 @@ function sleep_dialog:__init() super()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_sleep_dialog.xml")
 
-	self.back = xml:InitStatic("background", self)
+	self.back = xml:InitFrame("background", self) -- Survivor: рамка, см. ui_sleep_dialog(_16).xml
 --	self.sleep_static = xml:InitSleepStatic("sleep_static", self.back)
 
 	self.sleep_static = xml:InitStatic("sleep_static", self.back)
@@ -122,6 +122,15 @@ function sleep_dialog:OnButtonCancel()
 	self:HideDialog()
 	db.actor:give_info_portion("tutorial_sleep")
 	disable_info("sleep_active")
+end
+
+-- Survivor: Esc закрывает окно отдыха, как кнопка "Отмена"
+function sleep_dialog:OnKeyboard(dik, keyboard_action)
+	CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
+	if keyboard_action == ui_events.WINDOW_KEY_PRESSED and dik == DIK_keys.DIK_ESCAPE then
+		self:OnButtonCancel()
+	end
+	return true
 end
 
 function sleep_dialog:OnMessageBoxOk()

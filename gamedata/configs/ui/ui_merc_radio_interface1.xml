@@ -1,31 +1,10 @@
 <?xml version="1.0" encoding="windows-1251" ?>
- 
-
-    <merc_radio_interface1>
-
-	<table x="200" y="85" width="812" height="450" stretch="1">
-		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+<merc_radio_interface1>
+	<table x="228.27" y="270" width="567.47" height="228"><texture>surv_frame</texture>
+		<auto_static x="12.16" y="53.2" width="543.15" height="0.81" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="12.16" y="36.48" width="543.15" height="13.68"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Входящий вызов</text></auto_static>
 	</table>
-
-	<name x="250" y="95" width="480" height="500" stretch="1" complex_mode="1">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Рация</text>
-	</name>
-
-	<text1 x="270" y="160" width="180" height="230">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Приветствую тебя, военный. Как самочувствие?</text>
-	</text1>
-
-
-
-	<btn_1 x="500" y="180" width="108" height="24">
-	        	<texture_e>ui\button_invisible</texture_e>
-		<texture_t>ui\button_invisible</texture_t>
-		<texture_h>ui\button_invisible</texture_h>
-	        <text font="letterica16" align="c" complex_mode="0">Нормально. С кем имею честь?</text>
-	</btn_1>
-
-
-
-    </merc_radio_interface1>
-
-
+	<name x="240.43" y="280.64" width="543.15" height="25.84"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">РАЦИЯ</text></name>
+	<text1 x="240.43" y="336.88" width="543.15" height="91.2"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Приветствую тебя, военный. Как самочувствие?</text></text1>
+	<btn_1 x="240.43" y="464.56" width="543.15" height="21.28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="10.64">1. Нормально. С кем имею честь?</text><text_color><e r="201" g="168" b="76"/><h r="240" g="226" b="176"/><t r="240" g="226" b="176"/><d r="110" g="106" b="98"/></text_color></btn_1>
+</merc_radio_interface1>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<comp_interface>
+	<table x="282" y="279" width="460" height="210"><texture>surv_frame</texture>
+		<auto_static x="12" y="70" width="436" height="1.07" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="12" y="48" width="436" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Случайные задания</text></auto_static>
+	</table>
+	<name x="294" y="293" width="436" height="34"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">КОМПЬЮТЕР</text></name>
+	<text1 x="294" y="367" width="436" height="62"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Отменить текущие случайные задания и получить порцию новых?</text></text1>
+	<btn_1 x="424" y="439" width="150" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ДА</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_1>
+	<btn_2 x="580" y="439" width="150" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">НЕТ</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_2>
+	<btn_exit x="-2000" y="0" width="10" height="10" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c"></text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_exit>
+</comp_interface>

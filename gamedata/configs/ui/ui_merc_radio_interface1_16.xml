@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<merc_radio_interface1>
+	<table x="232" y="234" width="560" height="300"><texture>surv_frame</texture>
+		<auto_static x="12" y="70" width="536" height="1.07" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="12" y="48" width="536" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Входящий вызов</text></auto_static>
+	</table>
+	<name x="244" y="248" width="536" height="34"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">РАЦИЯ</text></name>
+	<text1 x="244" y="322" width="536" height="120"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Приветствую тебя, военный. Как самочувствие?</text></text1>
+	<btn_1 x="244" y="490" width="536" height="28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="10.5">1. Нормально. С кем имею честь?</text><text_color><e r="201" g="168" b="76"/><h r="240" g="226" b="176"/><t r="240" g="226" b="176"/><d r="110" g="106" b="98"/></text_color></btn_1>
+</merc_radio_interface1>

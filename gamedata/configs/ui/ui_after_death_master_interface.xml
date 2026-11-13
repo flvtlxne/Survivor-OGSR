@@ -1,38 +1,12 @@
 <?xml version="1.0" encoding="windows-1251" ?>
- 
-
-    <after_death_master_interface>
-
-	<table x="290" y="100" width="780" height="450" stretch="1">
-		<texture x="0" y="0" width="932" height="460">ui\spec_intrface</texture>
+<after_death_master_interface>
+	<table x="278.93" y="300.4" width="466.13" height="167.2"><texture>surv_frame</texture>
+		<auto_static x="12.16" y="53.2" width="441.81" height="0.81" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="12.16" y="36.48" width="441.81" height="13.68"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Режим «Мастер»</text></auto_static>
 	</table>
-
-	<name x="340" y="115" width="480" height="500" stretch="1" complex_mode="1">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Вы погибли</text>
-	</name>
-
-	<text1 x="350" y="160" width="380" height="230">
-		<text x="0" y="0" r="135" g="235" b="118" a="158" font="letterica18"  complex_mode="1">блаблаблаблаблабла</text>
-	</text1>
-	
-	<logo x="350" y="230" width="330" height="230" stretch="1">
-		<texture x="0" y="0" width="1027" height="515">ui\ui_ng_master_logo</texture>
-	</logo>
-
-	
-
-	<btn_1 x="390" y="490" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Ещё попытка</text>
-	</btn_1>
-
-	<btn_2 x="540" y="490" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Отмена</text>
-	</btn_2>
-
-	
-
-    </after_death_master_interface>
-
-
+	<name x="291.09" y="311.04" width="441.81" height="25.84"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">ВЫ ПОГИБЛИ</text></name>
+	<text1 x="291.09" y="367.28" width="441.81" height="45.6"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Попытка окончена. Можно начать режим заново или выйти в главное меню.</text></text1>
+	<logo x="-2033.49" y="92.16" width="10.13" height="7.6" stretch="1"><texture>ui\ui_ng_master_logo</texture></logo>
+	<btn_1 x="321.49" y="429.6" width="202.67" height="25.84" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ЕЩЕ ПОПЫТКА</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_1>
+	<btn_2 x="530.24" y="429.6" width="202.67" height="25.84" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">В ГЛАВНОЕ МЕНЮ</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_2>
+</after_death_master_interface>

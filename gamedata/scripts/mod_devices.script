@@ -24,7 +24,7 @@ function secret_interface:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_secret_interface.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -4556,7 +4556,7 @@ function exit_location_interface:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_exit_location_interface.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -4630,7 +4630,7 @@ function merc_radio_interface1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_merc_radio_interface1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -4689,7 +4689,7 @@ function merc_radio_interface2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_merc_radio_interface2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -4759,7 +4759,7 @@ function merc_radio_interface3:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_merc_radio_interface3.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -4829,7 +4829,7 @@ function merc_radio_interface4:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_merc_radio_interface4.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -4887,7 +4887,7 @@ function merc_radio_interface5:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_merc_radio_interface5.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -4979,7 +4979,7 @@ function comp_interface:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_comp_interface.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -5549,7 +5549,7 @@ function after_death_master_interface:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_after_death_master_interface.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 	xml:InitStatic("logo", self)
@@ -5618,7 +5618,7 @@ function mg_start_interface:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("ui_mg_start_interface.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 	xml:InitStatic("logo", self)
