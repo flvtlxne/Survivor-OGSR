@@ -525,8 +525,11 @@
 	<string id="ui_mm_logout">
 		<text>Выйти из профиля</text>
 	</string>
+	<string id="ui_mm_new_game_confirm">
+		<text>Выбраться из Зоны удавалось немногим. Начать новую игру?</text>
+	</string>
 	<string id="ui_mm_master">
-		<text>Соревнование</text>
+		<text>Мастер</text>
 	</string>
 	<string id="ui_mm_master_volume">
 		<text>Громкость</text>

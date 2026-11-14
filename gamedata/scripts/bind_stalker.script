@@ -549,9 +549,10 @@ module_save_load.loadEvent()
 	set_save_marker(reader, "load", false, "actor_binder")
 	object_binder.load(self, reader)
 	--' «агружаем уровень сложности
+	-- Survivor: сложность одна ("ћастер"), на ней груз€тс€ и старые сохранени€
 	local game_difficulty = reader:r_u8()
-	printf("load game_difficulty %s", tostring(game_difficulty))
-	get_console():execute("g_game_difficulty "..game_difficulty_by_num[game_difficulty])
+	printf("load game_difficulty %s, use gd_master", tostring(game_difficulty))
+	get_console():execute("g_game_difficulty gd_master")
 	local stored_input_time = reader:r_u8()
 	if stored_input_time == true then
 		self.st.disable_input_time = utils.r_CTime(reader)

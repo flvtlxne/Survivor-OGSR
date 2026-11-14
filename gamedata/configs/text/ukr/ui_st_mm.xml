@@ -525,6 +525,9 @@
 	<string id="ui_mm_logout">
 		<text>Вийти з профілю</text>
 	</string>
+	<string id="ui_mm_new_game_confirm">
+		<text>Вибратися із Зони вдавалося небагатьом. Почати нову гру?</text>
+	</string>
 	<string id="ui_mm_master">
 		<text>Майстер</text>
 	</string>

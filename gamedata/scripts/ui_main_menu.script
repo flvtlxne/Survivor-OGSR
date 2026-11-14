@@ -47,13 +47,6 @@ local menus = {
         { "quit_to_mm", "ui_mm_main_menu" },
         { "quit", "ui_mm_exit" },
     },
-    new_game = {
-        { "novice", "ui_mm_novice" },
-        { "stalker", "ui_mm_stalker" },
-        { "veteran", "ui_mm_veteran" },
-        { "master", "ui_mm_master" },
-        { "back", "ui_mm_back" },
-    },
 }
 
 local handlers = {
@@ -67,11 +60,6 @@ local handlers = {
     credits = "OnButton_credits_clicked",
     quit_to_mm = "OnButton_disconnect_clicked",
     quit = "OnButton_quit_clicked",
-    novice = "OnButton_new_novice_game",
-    stalker = "OnButton_new_stalker_game",
-    veteran = "OnButton_new_veteran_game",
-    master = "OnButton_new_master_game",
-    back = "OnButton_back",
 }
 
 -- newest valid save for the "continue" button outside the game
@@ -275,6 +263,8 @@ end
 function main_menu:OnMsgYes()
     if self.mbox_mode == 1 then
         self:LoadLastSave()
+    elseif self.mbox_mode == 2 then
+        self:StartNewGame()
     end
 
     self.mbox_mode = 0
@@ -296,12 +286,12 @@ function main_menu:OnButton_discord()
     open_url(links.discord)
 end
 
+-- Survivor: сложность одна ("Мастер"), поэтому вместо ее выбора - подтверждение
 function main_menu:OnButton_new_game()
-    self:ShowMenu("new_game")
-end
-
-function main_menu:OnButton_back()
-    self:ShowMenu(self:MainSet())
+    self.mbox_mode = 2
+    self.message_box:InitMessageBox("message_box_confirm_load_save")
+    self.message_box:SetText("ui_mm_new_game_confirm")
+    self.message_box:ShowDialog(true)
 end
 
 function main_menu:OnButton_continue()
@@ -369,27 +359,10 @@ function main_menu:OnButton_return_game()
     xr_s.on_main_menu_off()
 end
 
-function main_menu:OnButton_new_novice_game()
+function main_menu:StartNewGame()
     local console = get_console()
-    console:execute("g_game_difficulty gd_novice")
+    console:execute("g_game_difficulty gd_master")
     self:StartGame()
-end
-
-function main_menu:OnButton_new_stalker_game()
-    local console = get_console()
-    console:execute("g_game_difficulty gd_stalker")
-    self:StartGame()
-end
-
-function main_menu:OnButton_new_veteran_game()
-    local console = get_console()
-    console:execute("g_game_difficulty gd_veteran")
-    self:StartGame()
-end
-
-function main_menu:OnButton_new_master_game()
-    run_gui(mod_devices.ng_master_interface())
-    soundtrack.mg_menu_start_snd()
 end
 
 function main_menu:StartGame()

@@ -2405,20 +2405,14 @@ if diff == 2 or diff == 3 then
 	return false
 end
 
+-- Survivor: режим "Соревнование" вырезан. Эти две проверки означали именно его, а "Мастер"
+-- теперь обычная четвертая сложность сюжета, поэтому "Соревнования" не бывает никогда.
 function master_difficulty()
-local diff = level.get_game_difficulty()
-if diff == 3 then
-		return true
-	end
 	return false
 end
 
 function not_master_difficulty()
-local diff = level.get_game_difficulty()
-if diff == 0 or diff == 1 or diff == 2 then
-		return true
-	end
-	return false
+	return true
 end
 
 

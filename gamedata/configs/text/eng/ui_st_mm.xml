@@ -525,6 +525,9 @@
 	<string id="ui_mm_logout">
 		<text>Quit profile</text>
 	</string>
+	<string id="ui_mm_new_game_confirm">
+		<text>Few have ever made it out of the Zone. Start a new game?</text>
+	</string>
 	<string id="ui_mm_master">
 		<text>Master</text>
 	</string>
