@@ -853,32 +853,6 @@ s_play([[characters_voice\scenario\disbelief_4]])
 end
 end
 
-function mg_menu_start_snd()
-rnd = math.random(1, 5)
-if rnd == 1 then 
---s_play([[characters_voice\human_01\military\fight\threat\threat_close_2]])
-s_play([[characters_voice\scenario\mg_boss_phrase1]])
-end
-if rnd == 2 then 
---s_play([[characters_voice\human_01\military\fight\threat\threat_close_3]])
-s_play([[characters_voice\scenario\mg_boss_phrase2]])
-end
-if rnd == 3 then 
---s_play([[characters_voice\human_01\military\fight\threat\threat_close_6]])
-s_play([[characters_voice\scenario\mg_boss_phrase3]])
-end
-if rnd == 4 then 
---s_play([[characters_voice\human_01\military\fight\attack\script_attack_6]])
-s_play([[characters_voice\scenario\mg_boss_phrase4]])
-end
-if rnd == 5 then 
---s_play([[characters_voice\human_01\military\fight\attack\script_attack_6]])
-s_play([[characters_voice\scenario\mg_boss_phrase5]])
-end
-end
-
-
-
 function mg_kpp_boss_letsgo()
 s_play([[characters_voice\scenario\mg_boss_letsgo_1]])
 end

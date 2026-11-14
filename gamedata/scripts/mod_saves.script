@@ -9,9 +9,6 @@ end
 
 -- true if a save made here survives the reload check in mod_functions.post_load_game_action2
 function save_is_valid_here()
-	if xr_conditions.master_difficulty() then
-		return xr_conditions.actor_in_mg_start_zone() or xr_conditions.actor_in_kpp_surge_hide_zone()
-	end
 	if not base_save_only() then
 		return true
 	end

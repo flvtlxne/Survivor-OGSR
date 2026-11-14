@@ -165,7 +165,7 @@ local task_infos = {
 }
 
 local function progress(hint, cur, max)
-	if xr_conditions.master_difficulty() or not mod_options.get_bool("achievement_progress", false) then
+	if not mod_options.get_bool("achievement_progress", false) then
 		return ""
 	end
 	if cur > max then

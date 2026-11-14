@@ -84,12 +84,10 @@ function actor_binder:net_spawn(data)
 	mod_functions.post_load_game_action1()
 	
 	-- Переспавниваем имеющиеся тачки:
-	if xr_conditions.master_difficulty() == false then
-		mod_functions.reload_car1()
-		mod_functions.reload_car2()
-		mod_functions.reload_car3()
-		mod_functions.reload_car4()
-	end
+	mod_functions.reload_car1()
+	mod_functions.reload_car2()
+	mod_functions.reload_car3()
+	mod_functions.reload_car4()
 	
 	start_real_timer(1, "mod_timer_functions.lights1")
 	start_real_timer(1, "mod_timer_functions.lights2")

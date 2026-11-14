@@ -576,29 +576,6 @@ end
 end
 
 
--- Фишки для режима Мастер(Соревнование) ------------------------------------------------------------
-
-function mg_game_functions()
-if xr_conditions.master_difficulty() == true then
-
-if db.actor:object("af_electra_sparkler_mg") ~= nil then
-	db.actor.power = 0.001
-end
-if db.actor:object("af_gravi_mg") ~= nil then
-	db.actor.health = 0.0002
-end
-if db.actor:object("af_gold_fish_mg") ~= nil then
-	mod_functions.repair_both_actor_weapons()
-end
-if db.actor:object("af_blood_mg") ~= nil then
-	db.actor.radiation = -1.0
-end
-
-
-end
-end
-
-
 -- Survivor: подсказка о том, какая записка попала в блокнот.
 -- Секция предмета-записки -> инфопоршн, который выдаёт autousable_items().
 local note_infos = {

@@ -240,32 +240,6 @@ function motivator_binder:hit_callback(obj, amount, local_direction, who, bone_i
 	-- FIXME: коллбеки неплохо было бы регистрировать в общем storage, а не посхемно...
 	-- просто всегда ставить их при включении схемы и снимать при отключении.
 	
--- эффект артефактов в режиме Соревнования:
-if who and who:id()==db.actor:id() and who:id()~=obj:id() and xr_conditions.master_difficulty() == true and db.actor:object("af_dummy_battery_mg") ~= nil 
-	--and  ( string.find(obj:name(), "mg_scavenger") 
-	--or string.find(obj:name(), "mg_scavenger_strong")
-	--or string.find(obj:name(), "mg_art_robber_npc")
-	--or string.find(obj:name(), "mg_npc_tank1")
-	--or string.find(obj:name(), "maroder_assault1")
-	--or string.find(obj:name(), "maroder_assault2")
-	--or string.find(obj:name(), "mg_kpp_boss")
-	--or string.find(obj:name(), "test_marouder7")
-	--or string.find(obj:name(), "test_marouder10")
-	--or string.find(obj:name(), "maroder_killer1")
-	--or string.find(obj:name(), "maroder_killer2")
-	--or string.find(obj:name(), "maroder_killer3")
-	--or string.find(obj:name(), "maroder_killer4")	) then
-	and amount > 0.1 then
-		local h = hit()
-		h.type = hit.fire_wound
-		h.power = 0.25
-		h.impulse = 0
-		h.draftsman = obj
-		h.direction = obj:position():sub(db.actor:position())
-		obj:hit(h)
-		--news_manager.send_tip(db.actor, "obj_hit_with_silencer", nil, "default", nil, nil)
-end
-	
 -- стрельба в глову боссам:
 if bone_index == 15 and  ( string.find(obj:name(), "marouder_lider1") 
 	or string.find(obj:name(), "marouder_lider2")
@@ -524,17 +498,6 @@ function motivator_binder:death_callback(victim, who)
 		who = npc
 	end
 	
-	-- эффект артефактов в режиме Соревнования:
-if who and who:id()==db.actor:id() and xr_conditions.master_difficulty() == true and xr_conditions.actor_armed_knife() == true and db.actor:object("af_fuzz_kolobok_mg") ~= nil and has_alife_info("invulnerability") then
-	local target_dist = victim:position():distance_to(db.actor:position())
-	if target_dist < 3 then
-		mod_functions.kill_stalkers_around20()
-		mod_functions.kill_mutants_around20()
-		soundtrack.script_monster_hit_snd()
-	end
-end
-	
-
 	--' Загрузка историй для лагеря.
 	local known_info = utils.cfg_get_string(st.ini,st.section_logic , "known_info", self.object, false, "", nil)
 	printf("xr_info from death loaded!!!")

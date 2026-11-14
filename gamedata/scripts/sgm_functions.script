@@ -1158,12 +1158,7 @@ end
 function mob_teleport_to_actor(mob_obj)
   if db.actor~=nil then
      if distance_between_safe(db.actor,mob_obj)>60 and db.actor:dont_has_info("personal_dog_stay") and db.actor:dont_has_info("personal_dog_gohome") then
-		if xr_conditions.master_difficulty() == false then
-			mob_obj:set_npc_position(vector():set(db.actor:position().x,db.actor:position().y,db.actor:position().z))
-		elseif xr_conditions.master_difficulty() == true then
-		local n = math.random(-50,50)
-			mob_obj:set_npc_position(vector():set(db.actor:position().x+40,db.actor:position().y,db.actor:position().z+40))
-		end
+		mob_obj:set_npc_position(vector():set(db.actor:position().x,db.actor:position().y,db.actor:position().z))
      end
   end
 end

@@ -120,7 +120,6 @@ function drop_manager:create_release_item()
 
 	--' Запускаем итератор на удаление предметов
 	self.npc:iterate_inventory(keep_item, self.npc)
-	--self.npc:iterate_inventory(keep_item2, self.npc)
 
 	--' Проверка на отсутствие спауна лута
 	local ini = self.npc:spawn_ini()
@@ -156,20 +155,6 @@ function drop_manager:create_release_item()
 
 end
 
-
-function keep_item2(npc, item)
-	local section = item:section()
-	local ini = npc:spawn_ini()
-	if ini and ini:section_exist("mg_bad_items") and xr_conditions.master_difficulty() == true
-	--and ( section == "upgr_item_specops_outf1"
-	--or section == "upgr_item_specops_outf2"
-	--or section == "upgr_item_specops_outf3" ) 
-	then
-		alife():release(alife():object(item:id()), true)
-		news_manager.send_tip(db.actor, "bad_item_deleted", nil, "recent_surge", nil, nil)
-			--return
-	end
-end
 
 --' Функция вызывается для каждого предмета, если вернет false то предмет удалится.
 function keep_item(npc, item)

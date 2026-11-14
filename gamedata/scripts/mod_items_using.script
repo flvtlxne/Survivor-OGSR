@@ -13,22 +13,6 @@ t['vodka'] = function()
 stress_counter()	-- понижаем стресс;
 mod_achievements.on_vodka()
 vodka_counter()		-- повышаем опъ€нение;
-if xr_conditions.master_difficulty() == true then
-	if xr_conditions.actor_in_kpp_surge_hide_zone() == false then
-		if db.actor:object("af_fuzz_kolobok_mg") ~= nil then
-			start_real_timer(20, "mod_timer_functions.af_fuzz_kolobok_mg_action")
-			db.actor:give_info_portion("invulnerability")
-			soundtrack.actor_go_on_fight()
-		end
-		if db.actor:object("af_medusa_mg") ~= nil then
-			db.actor.health = 1.0
-			db.actor.radiation = -1.0
-			db.actor.bleeding = 1.0
-		end
-	elseif xr_conditions.actor_in_kpp_surge_hide_zone() == true then
-		db.actor:give_info_portion("kpp_bunker_chair_rest")
-	end
-end
 end
 
 function stress_counter()
@@ -40,55 +24,12 @@ local counter_name = "stress"
 end	
 
 function vodka_counter()
-if xr_conditions.master_difficulty() == false then
 local counter_name = "vodka"
 	local cnt_value = xr_logic.pstor_retrieve(db.actor, counter_name, 0)
 	if cnt_value < 6 then
 		xr_effects.inc_counter(db.actor, nil, {"vodka",1})
 	end
-elseif xr_conditions.master_difficulty() == true then
-	if db.actor:object("af_night_star_mg") ~= nil then
-		db.actor.health = 1.0
-		db.actor.radiation = -1.0
-		db.actor.bleeding = 1.0
-		mod_functions.repair_both_actor_weapons()
-	end
-end
 end	
-
-
-t['bread'] = function()
-if xr_conditions.master_difficulty() == true and db.actor:object("af_medusa_mg") ~= nil then
-	db.actor.health = 1.0
-	db.actor.radiation = -1.0
-	db.actor.bleeding = 1.0
-end
-end
-
-t['kolbasa'] = function()
-if xr_conditions.master_difficulty() == true and db.actor:object("af_medusa_mg") ~= nil then
-	db.actor.health = 1.0
-	db.actor.radiation = -1.0
-	db.actor.bleeding = 1.0
-end
-end
-
-t['conserva'] = function()
-if xr_conditions.master_difficulty() == true and db.actor:object("af_medusa_mg") ~= nil then
-	db.actor.health = 1.0
-	db.actor.radiation = -1.0
-	db.actor.bleeding = 1.0
-end
-end
-
-t['energy_drink'] = function()
-if xr_conditions.master_difficulty() == true and db.actor:object("af_medusa_mg") ~= nil then
-	db.actor.health = 1.0
-	db.actor.radiation = -1.0
-	db.actor.bleeding = 1.0
-end
-end
-
 
 
 t['item_bomb'] = function()
@@ -150,17 +91,3 @@ local counter_name = "stress"
 		xr_effects.inc_counter(db.actor, nil, {"stress",2})
 	end
 end
-
-t['mg_repair_kit'] = function()
-if xr_conditions.master_difficulty() == true then
-	mod_functions.repair_both_actor_weapons()
-end
-end
-
-
-
-
-
-
-
-

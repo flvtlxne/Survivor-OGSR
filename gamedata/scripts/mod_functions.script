@@ -463,11 +463,7 @@ function post_load_game_action2()
 	if mod_saves.save_is_valid_here() then
 		return
 	end
-	if xr_conditions.master_difficulty() then
-		xr_effects.load_game(db.actor, nil, {"scenario_save_master1"})
-	else
-		xr_effects.load_game(db.actor, nil, {"safe_zone_autosave"})
-	end
+	xr_effects.load_game(db.actor, nil, {"safe_zone_autosave"})
 end
 
 function after_surge_think()
@@ -484,10 +480,9 @@ end
 
 
 function save_game_action()
-if xr_conditions.master_difficulty() == false and mod_saves.base_save_only() == false then
+if mod_saves.base_save_only() == false then
 	return
 end
-if xr_conditions.master_difficulty() == false then
 if has_alife_info("stranger_talk1") then
 if xr_conditions.actor_in_lonl_house_save_zone() == false then
 	news_manager.send_tip(db.actor, "save_game_incorrect_tip", nil, "recent_surge", nil, nil)
@@ -496,10 +491,6 @@ elseif xr_conditions.actor_in_lonl_house_save_zone() == true then
 	news_manager.send_tip(db.actor, "save_game_correct_tip", nil, "recent_surge", nil, nil)
 	save_game_action_yes_sounds()
 end
-end
-elseif xr_conditions.master_difficulty() == true and xr_conditions.actor_in_mg_start_zone() == false and xr_conditions.actor_in_kpp_surge_hide_zone() == false then
-	news_manager.send_tip(db.actor, "save_game_incorrect_tip2", nil, "recent_surge", nil, nil)
-	soundtrack.no_replics_mg()
 end
 end
 
