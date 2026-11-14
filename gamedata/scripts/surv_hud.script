@@ -20,7 +20,9 @@ local HOLDER    = "surv_hud"
 local SLOW_MS   = 250          -- heavier lookups (task, dog, grenades) run this often
 local DOG_DIST2 = 30 * 30      -- the dog block is shown closer than this (squared metres)
 local GREN_SLOT = 4
-local GRID      = 50           -- inventory icon cell in ui_icon_equipment, pixels
+-- inventory icon cell in ui_icon_equipment, pixels: [features] icon_equipments_cell_size, as in the engine
+local GRID      = system_ini():line_exist("features", "icon_equipments_cell_size")
+                  and system_ini():r_float("features", "icon_equipments_cell_size") or 50
 
 local C_TITLE   = {255, 238, 198, 86}
 local C_NOTASK  = {255, 165, 160, 148}
