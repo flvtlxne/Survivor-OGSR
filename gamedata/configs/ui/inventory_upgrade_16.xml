@@ -6,9 +6,9 @@
 		</auto_static>
 	</main>
 	<!-- lamps on the item picture: point_x/y of the schemes are relative to the mod's picture centre -->
-	<back x="7" y="-82" width="284" height="658"/>
+	<back x="7" y="-70" width="284" height="658"/>
 	<scheme x="30" y="205" width="224" height="398.62"/>
-	<item_static x="142" y="132" width="249" height="135" stretch="1" align="c" alignment="c"/>
+	<item_static x="142" y="144" width="260" height="162" helmet_scale="0.7" stretch="1" align="c" alignment="c"/>
 	<repair_button x="94" y="611.62" width="96" height="24" hint="ui_repair_button_hint" stretch="1">
 		<window_name>repair_button</window_name>
 		<texture>surv_msg_btn</texture>

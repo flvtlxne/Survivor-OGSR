@@ -8,7 +8,7 @@
 	<!-- lamps on the item picture: point_x/y of the schemes are relative to the mod's picture centre -->
 	<back x="-25.11" y="-83.34" width="287.79" height="643.44"/>
 	<scheme x="18.89" y="203.66" width="250" height="398.62"/>
-	<item_static x="143.89" y="130.66" width="249" height="135" stretch="1" align="c" alignment="c"/>
+	<item_static x="143.89" y="130.66" width="303" height="162" helmet_scale="0.7" stretch="1" align="c" alignment="c"/>
 	<repair_button x="182.67" y="606.28" width="96" height="24" hint="ui_repair_button_hint" stretch="1">
 		<window_name>repair_button</window_name>
 		<texture>surv_msg_btn</texture>
