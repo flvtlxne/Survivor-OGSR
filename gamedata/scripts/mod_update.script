@@ -83,7 +83,7 @@ local diff = level.get_game_difficulty()
 if diff == 0 then health_threasold = 0.05	--	новичок;
 elseif diff == 1 then health_threasold = 0.10 	-- сталкер;
 elseif diff == 2 then health_threasold = 0.15	-- ветеран;
-elseif diff == 3 then health_threasold = 0.20 	-- мастер;
+elseif diff == 3 then health_threasold = 0.15 	-- мастер (Survivor: ниже last_chance_health = 0.2 из actor_thd_gd_master);
 end
 local hud = get_hud()
 local health = db.actor.health
