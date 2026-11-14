@@ -452,6 +452,7 @@ jupiter = "jup_b217_stalker_tech",	-- јзот
 pripyat = "pri_a22_army_signaller",	--  ирилов
 jupiter_underground = false,		-- на этом уровне апгрейд запрещЄн
 labx8 = false,						-- на этом уровне апгрейд запрещЄн
+derevnya = false,					-- Survivor: no NPC upgrades here, as before, without log spam
 --jupiter = "jup_b6_scientist_tech",-- Ќовиков
 --jupiter = "jup_b19_freedom_yar",	-- ƒ€дька яр
 --pripyat = "jup_b19_freedom_yar",	-- ƒ€дька яр
