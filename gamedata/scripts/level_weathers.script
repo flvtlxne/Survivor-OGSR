@@ -1,16 +1,18 @@
 local weather_manager = nil
---18.02.2008 - added dynamic weather
+
+local WEATHER_SAVE_VERSION = 2 -- раньше на этом месте в сохранении писался неиспользуемый update_time (всегда 0)
+local HISTORY_SIZE = 12 -- сколько недавних циклов помним, чтобы не ходить по кругу из одних и тех же
+local DEFAULT_DWELL_MIN, DEFAULT_DWELL_MAX = 1, 2 -- сколько игровых часов держится цикл, если группа не описана в конфиге (min, max)
 
 class "WeatherManager"
 function WeatherManager:__init()
-	self.wfx_time = 0
-	self.weather_fx = nil
-	self.update_time = 0
-	self.update_level = ""
-	self.forced_weather_change_on_time_change = false
 	self.last_hour = 0
-		self.state={}
-	self.graphs={}
+	self.last_tick = nil
+	self.forced_weather_change_on_time_change = false
+	self.restore_envs = nil
+	self.state = {}
+	self.graphs = {}
+	self.rules = {}
 	self.graphs_ini = ini_file("environment\\dynamic_weather_graphs.ltx")
 	if not self.graphs_ini then
 		abort("error when open weather_dynamic_graphs.ltx")
@@ -19,16 +21,16 @@ end
 
 -- Вызывается после load(). Состояние погоды уже загружено.
 function WeatherManager:reset()
-	printf("WeatherManager:WeatherManager():Reset()")
+	-- log3("WeatherManager:WeatherManager():Reset()")
 	-- Загрузить кондлист с погодой.
 	local ini = ini_file("game.ltx")
 	local weather = utils.cfg_get_string(ini, level.name(), "weathers", db.actor, false, "", "[default]")
 	local postprocess = utils.cfg_get_string(ini, level.name(), "postprocess", db.actor, false, "")
 	if postprocess ~= nil then
-		printf("LEVEL POSTPROCESS: level: [%s], postprocess: [%s]", level.name(), postprocess)
+		-- log3("LEVEL POSTPROCESS: level: [%s], postprocess: [%s]", level.name(), postprocess)
 		level.add_pp_effector(postprocess, 999, true)
 	else
-		printf("LEVEL POSTPROCESS: level: [%s], postprocess: [none]", level.name())
+		-- log3("LEVEL POSTPROCESS: level: [%s], postprocess: [none]", level.name())
 		level.remove_pp_effector(999)
 	end
 	if weather == "[default]" then
@@ -37,93 +39,221 @@ function WeatherManager:reset()
 	else
 		self.weather_list = xr_logic.parse_condlist(db.actor, level.name(), "weather", weather)
 	end
-    self:select_weather(true)
-	self.last_hour=level.get_time_hours()
+	self:select_weather(true)
+	self.last_hour = level.get_time_hours()
+	self.last_tick = game.get_game_time()
 end
+
+-- Время перемотано (сон, анабиотик, скрипт): на следующем апдейте погода применится сразу, без плавного перехода.
 function WeatherManager:forced_weather_change()
 	self.forced_weather_change_on_time_change = true
 end
--- Обновляем погоду раз в час.
+
+-- Обновляем погоду раз в час, либо сразу после перемотки времени.
 function WeatherManager:update()
-	if(level.is_wfx_playing()) then
-		self.weather_fx = level.get_weather()
-	else
-		self.weather_fx = nil
-	end
-	if not benchmark.weather then
-		if self.last_hour~=level.get_time_hours() then
-				self.last_hour=level.get_time_hours()
-				for lvl,st in pairs(self.state) do
-				st.current_state=st.next_state
-				st.next_state=get_next_state(st.graph,st.current_state)
-				end
-				-- Устанавливаем погоду на текущем уровне
-				self:select_weather(false)
+	local hour = level.get_time_hours()
+	local hour_changed = self.last_hour ~= hour
+	if hour_changed or self.forced_weather_change_on_time_change then
+		self.last_hour = hour
+		local now = game.get_game_time()
+		-- Сколько часов прошло на самом деле: сон на 24 часа не меняет номер часа, а сон на 8 должен прокрутить погоду на 8.
+		local hours = math.floor(now:diffSec(self.last_tick) / 3600 + 0.5)
+		if hour_changed and hours < 1 then
+			hours = 1
 		end
+		self.last_tick = now
+		for lvl, st in pairs(self.state) do
+			self:advance_state(st, hours)
+		end
+		-- Устанавливаем погоду на текущем уровне
+		self:select_weather(false)
 	end
 end
 
 function WeatherManager:select_weather(now)
 	local weather = xr_logic.pick_section_from_condlist(db.actor, db.actor, self.weather_list)
-	local graph=self:get_graph_by_name(weather)
-	local weather_section_name=""
+	local graph = self:get_graph_by_name(weather)
+	local weather_section_name = ""
 	-- Проверим, совпадает ли текущий граф уровня с полученным по кондлисту...
-	if graph==nil then
+	if graph == nil then
 		-- Переходим на статику
-		self.state[weather]=nil
-			weather_section_name=weather
+		self.state[weather] = nil
+		weather_section_name = weather
 	else
 		-- Новая погода - динамическая. Проверим, нужно ли менять/устанавливать граф
-			if self.state[weather]==nil or self.state[weather].graph_name~=weather then
+		if self.state[weather] == nil or self.state[weather].graph_name ~= weather then
 			-- Граф изменился. Переходим на него.
-			self.state[weather]=self:init_by_graph(graph,weather)
-		-- else
-			-- now = false
-			end
-			-- Получаем название секции по текущему состоянию.
-			local st=self.state[weather]
-			--weather_section_name="dw_"..st.current_state.."_"..st.next_state.."_"..level.get_time_hours()
-			weather_section_name="default_"..st.current_state
+			self.state[weather] = self:init_by_graph(graph, weather)
+		end
+		-- Получаем название секции по текущему состоянию.
+		local st = self.state[weather]
+		weather_section_name = st.current_state
 	end
 	if now then
-		self.last_hour=level.get_time_hours()
+		self.last_hour = level.get_time_hours()
 	end
 	if self.forced_weather_change_on_time_change then
 		now = true
 		self.forced_weather_change_on_time_change = false
 	end
-	if not(self.weather_fx) then
-		level.set_weather(weather_section_name,now)
-	else
-		level.start_weather_fx_from_time(self.weather_fx, self.wfx_time)
+	-- Форсированная смена погоды обрывает погодный эффект выброса. Пока он играет, цикл меняем отложенно:
+	-- движок перейдёт на него сам, когда эффект закончится.
+	if now and level.is_wfx_playing() then
+		now = false
 	end
-	printf("WEATHER: '%s' now '%s'", weather_section_name, tostring(now))
-	-- if xrs_news then
-		-- xrs_news.news_call(1,1,nil,nil,weather_section_name,nil)
-	-- end
+	-- После загрузки сохранения возвращаем погоду ровно такой, какой она была на экране.
+	local envs = self.restore_envs
+	self.restore_envs = nil
+	if now and envs and level.restore_weather_envs(weather_section_name, envs.cycle0, envs.id0, envs.cycle1, envs.id1) then
+		log3("WEATHER: restored '%s', blend %s[%s] -> %s[%s]", weather_section_name, envs.cycle0, envs.id0, envs.cycle1, envs.id1)
+		return
+	end
+	level.set_weather(weather_section_name, now)
+	-- log3("WEATHER: '%s' now '%s'", weather_section_name, tostring(now))
 end
 
 -- Возвращает начальное состояние погоды.
-function WeatherManager:init_by_graph(graph,graph_name)
-	local cur_state=get_next_state(graph,"")
-	local next_state=get_next_state(graph,cur_state)
-	return {current_state=cur_state,next_state=next_state,graph_name=graph_name,graph=graph}
+function WeatherManager:init_by_graph(graph, graph_name)
+	local cur_state = get_next_state(graph, "")
+	local st = {current_state = cur_state, graph_name = graph_name, graph = graph, history = {}}
+	st.next_state = self:pick_next_state(st)
+	st.hours_left = self:pick_dwell(graph_name, cur_state)
+	return st
 end
 
--- Возвращает одно из следующих состояний графа, согласно прописанным вероятностям.
-function get_next_state(graph,state)
-	local sum=0
-	for st,prob in pairs(graph) do
-		--if state==st then prob=prob*2 end
-		sum=sum+prob
+-- Продвигает состояние графа на указанное число игровых часов.
+function WeatherManager:advance_state(st, hours)
+	local guard = 0
+	while hours > 0 and guard < 64 do
+		guard = guard + 1
+		if st.hours_left > hours then
+			st.hours_left = st.hours_left - hours
+			return
+		end
+		hours = hours - st.hours_left
+		table.insert(st.history, 1, st.current_state)
+		st.history[HISTORY_SIZE + 1] = nil
+		st.current_state = st.next_state
+		st.next_state = self:pick_next_state(st)
+		st.hours_left = self:pick_dwell(st.graph_name, st.current_state)
+		log3("WEATHER: cycle '%s' for %d h, next '%s'", st.current_state, st.hours_left, st.next_state)
 	end
-	local rnd=math.random()*sum
+end
+
+
+--обрезаем пробельные символы в начале и в конце строки
+local function trim(s)
+	return string.gsub(s, "^%s*(.-)%s*$", "%1")
+end
+
+--выпарсиваем секцию инифайла в табличку
+local function parse_ini_section_to_array(ini,section)
+	local tmp=nil
+	if ini and ini:section_exist(section) then
+		tmp={}
+		local result, id, value = nil, nil, nil
+		for a=0,ini:line_count(section)-1 do
+			result, id, value = ini:r_line(section,a,"","")
+			if id~=nil and trim(id)~="" and trim(id)~=nil then
+				tmp[trim(id)]=trim(value)
+			end
+		end
+	end
+	return tmp
+end
+
+
+-- Правила переходов графа: группы циклов, разрешённые переходы между группами и длительность цикла.
+function WeatherManager:get_rules(graph_name)
+	local rules = self.rules[graph_name]
+	if rules then
+		return rules
+	end
+	rules = {groups = {}, group_sizes = {}, moves = {}, dwell = {}}
+	for cycle, group in pairs(parse_ini_section_to_array(self.graphs_ini, graph_name .. "_groups") or {}) do
+		rules.groups[cycle] = group
+		rules.group_sizes[group] = (rules.group_sizes[group] or 0) + 1
+	end
+	for group, line in pairs(parse_ini_section_to_array(self.graphs_ini, graph_name .. "_moves") or {}) do
+		local moves = {}
+		for to, weight in string.gmatch(line, "([%w_]+)%s*:%s*([%d%.]+)") do
+			moves[to] = tonumber(weight)
+		end
+		rules.moves[group] = moves
+	end
+	for group, line in pairs(parse_ini_section_to_array(self.graphs_ini, graph_name .. "_dwell") or {}) do
+		local min_h, max_h = string.match(line, "(%d+)%s*,%s*(%d+)")
+		if min_h then
+			rules.dwell[group] = {tonumber(min_h), tonumber(max_h)}
+		end
+	end
+	self.rules[graph_name] = rules
+	return rules
+end
+
+-- Сколько игровых часов продержится цикл.
+function WeatherManager:pick_dwell(graph_name, cycle)
+	local rules = self:get_rules(graph_name)
+	local dwell = rules.dwell[rules.groups[cycle]]
+	if dwell then
+		return math.random(dwell[1], dwell[2])
+	end
+	return math.random(DEFAULT_DWELL_MIN, DEFAULT_DWELL_MAX)
+end
+
+-- Выбирает следующий цикл: только из соседних по погоде групп (чтобы не было резких переходов),
+-- с учётом весов и с сильным штрафом для недавно бывших циклов (чтобы погода была разнообразной).
+function WeatherManager:pick_next_state(st)
+	local rules = self:get_rules(st.graph_name)
+	local moves = rules.moves[rules.groups[st.current_state]]
+	local recency = {}
+	for i, cycle in ipairs(st.history) do
+		recency[cycle] = recency[cycle] or (i / (HISTORY_SIZE + 1)) ^ 2
+	end
+	local candidates, sum = {}, 0
+	for cycle, base in pairs(st.graph) do
+		if cycle ~= st.current_state then
+			local group = rules.groups[cycle]
+			local weight = tonumber(base) or 0
+			if moves then
+				-- Вес группы делим на её размер, иначе группа с большим числом циклов выпадала бы чаще, чем задано в конфиге.
+				weight = weight * (moves[group] or 0) / (rules.group_sizes[group] or 1)
+			end
+			weight = weight * (recency[cycle] or 1)
+			if weight > 0 then
+				sum = sum + weight
+				candidates[cycle] = weight
+			end
+		end
+	end
+	if sum > 0 then
+		return get_next_state(candidates, st.current_state)
+	end
+	-- Переходов в конфиге нет (например, цикл без группы): берём любой другой цикл по весам графа.
+	local fallback = {}
+	for cycle, base in pairs(st.graph) do
+		if cycle ~= st.current_state then
+			fallback[cycle] = base
+		end
+	end
+	if next(fallback) then
+		return get_next_state(fallback, st.current_state)
+	end
+	return st.current_state
+end
+
+-- Возвращает одно из состояний, согласно прописанным вероятностям.
+function get_next_state(graph, state)
+	local sum = 0
+	for st, prob in pairs(graph) do
+		sum = sum + prob
+	end
+	local rnd = math.random() * sum
 	local next_state
-	for st,prob in pairs(graph) do
-		--if state==st then prob=prob*2 end
-		next_state=st
-		rnd=rnd-prob
-		if (rnd<=0) then
+	for st, prob in pairs(graph) do
+		next_state = st
+		rnd = rnd - prob
+		if (rnd <= 0) then
 			break
 		end
 	end
@@ -132,42 +262,71 @@ end
 
 -- Устанавливаем состояние менеджера, распарсивая строку состояния
 function WeatherManager:set_state_as_string(ss)
-	self.state={}
-		for lvlstring in string.gmatch(ss,"[^;]+") do
-		local i,j,grname,curs,nexs=string.find(lvlstring,"([^=]+)=([^,]+),([^,]+)")
+	self.state = {}
+	for lvlstring in string.gmatch(ss, "[^;]+") do
+		-- Сохранения старого формата содержат только "граф=текущий,следующий".
+		local i, j, grname, curs, nexs, left, hist = string.find(lvlstring, "([^=]+)=([^,]+),([^,]+),?(%d*),?([^,]*)")
 		if not grname then
-			abort("WeatherManager:set_state_as_string: malformed state string. "..ss)
+			abort("WeatherManager:set_state_as_string: malformed state string. " .. ss)
 		end
-		--local lvl_name=self:unpack_level(lvl)
-		local current_state=self:unpack_state(curs)
-		local next_state=self:unpack_state(nexs)
-		local graph_name=self:unpack_graph_name(grname)
-		local graph=self:get_graph_by_name(graph_name)
-		if graph==nil then
-		-- Старая сохранёнка? Будем считать что на этом уровне - статическая погода
+		local current_state = self:unpack_state(curs)
+		local next_state = self:unpack_state(nexs)
+		local graph_name = self:unpack_graph_name(grname)
+		local graph = self:get_graph_by_name(graph_name)
+		if graph == nil then
+			-- Старая сохранёнка? Будем считать что на этом уровне - статическая погода
+		elseif graph[current_state] == nil then
+			-- Цикл убрали из графа: он не загрузится, поэтому начинаем граф заново.
+			log3("! WEATHER: saved cycle '%s' is not in graph '%s'", current_state, graph_name)
 		else
-			self.state[graph_name]={current_state=current_state,next_state=next_state,graph_name=graph_name,graph=graph}
+			local st = {current_state = current_state, next_state = next_state, graph_name = graph_name, graph = graph, history = {}}
+			for cycle in string.gmatch(hist, "[^:]+") do
+				table.insert(st.history, cycle)
+			end
+			if graph[next_state] == nil then
+				st.next_state = self:pick_next_state(st)
+			end
+			st.hours_left = tonumber(left) or self:pick_dwell(graph_name, current_state)
+			self.state[graph_name] = st
 		end
 	end
 end
 
 -- Преобразуем текущее состояние менеджера в строку
 function WeatherManager:get_state_as_string()
-	local lvlstrings={}
-	for lvl_name,st in pairs(self.state) do
-		--local lvl=self:pack_level(lvl_name)
-		local curs=self:pack_state(st.current_state)
-		local nexs=self:pack_state(st.next_state)
-		local grn=self:pack_graph_name(st.graph_name)
-		table.insert(lvlstrings,grn.."="..curs..","..nexs)
+	local lvlstrings = {}
+	for lvl_name, st in pairs(self.state) do
+		local curs = self:pack_state(st.current_state)
+		local nexs = self:pack_state(st.next_state)
+		local grn = self:pack_graph_name(st.graph_name)
+		table.insert(lvlstrings, grn .. "=" .. curs .. "," .. nexs .. "," .. st.hours_left .. "," .. table.concat(st.history, ":"))
 	end
-	return table.concat(lvlstrings,";")
+	return table.concat(lvlstrings, ";")
+end
+
+-- Что сейчас смешивает движок: на экране погода может отставать от текущего цикла на пару ключевых кадров.
+-- Во время эффекта выброса строка будет пустой: цикл восстановится по current_state, а эффект - менеджером выброса.
+local function get_envs_as_string()
+	local cycle0, id0 = level.get_weather_env_cycle(0), level.get_weather_env_id(0)
+	local cycle1, id1 = level.get_weather_env_cycle(1), level.get_weather_env_id(1)
+	if cycle0 == "" or id0 == "" or cycle1 == "" or id1 == "" then
+		return ""
+	end
+	return cycle0 .. "|" .. id0 .. "|" .. cycle1 .. "|" .. id1
+end
+
+local function parse_envs_string(s)
+	local cycle0, id0, cycle1, id1 = string.match(s, "^([^|]+)|([^|]+)|([^|]+)|([^|]+)$")
+	if cycle0 then
+		return {cycle0 = cycle0, id0 = id0, cycle1 = cycle1, id1 = id1}
+	end
+	return nil
 end
 
 -- Получить граф (таблицу переходов состояний погоды) по его названию и названию игрового уровня
 function WeatherManager:get_graph_by_name(name)
 	if not self.graphs[name] then
-		self.graphs[name] = xr_s.parse_ini_section_to_array(self.graphs_ini,name)
+		self.graphs[name] = parse_ini_section_to_array(self.graphs_ini, name)
 	end
 	return self.graphs[name]
 end
@@ -197,42 +356,43 @@ function WeatherManager:unpack_graph_name(grn)
 end
 
 function WeatherManager:load(F)
-	set_save_marker(F, "load", false, "WeatherManager")
-	printf("WEATHER LOAD")
-	--self.update_level  = F:r_stringZ();
-	local state_string = F:r_stringZ();
-	printf("str = "..state_string)
-	if state_string == "" then
-		printf("str = empty string")
+	if set_save_marker then
+		set_save_marker(F, "load", false, "WeatherManager")
 	end
-	self:set_state_as_string(state_string)
-	self.update_time = F:r_u32();
-	local str = F:r_stringZ()
-	if(str~="nil") then
-		self.weather_fx = str
-		self.wfx_time = F:r_float()
+
+	local state_string = F:r_stringZ()
+	self.restore_envs = nil
+
+	if F:r_u32() >= WEATHER_SAVE_VERSION then
+	    self:set_state_as_string(state_string)
+		self.restore_envs = parse_envs_string(F:r_stringZ())
+	else --for save compatibility
+		local str = F:r_stringZ()
+		if str ~= "nil" then
+			F:r_float()
+		end
 	end
-	set_save_marker(F, "load", true, "WeatherManager")
+
+	if set_save_marker then
+		set_save_marker(F, "load", true, "WeatherManager")
+	end
 end
 
 function WeatherManager:save(F)
-	set_save_marker(F, "save", false, "WeatherManager")
-	printf("WEATHER SAVE")
-	--F:w_stringZ(self.update_level);
-	printf("str = "..tostring(self:get_state_as_string()))
-	if self:get_state_as_string() == "" then
-		printf("str = empty string")
+	if set_save_marker then
+		set_save_marker(F, "save", false, "WeatherManager")
 	end
+
 	F:w_stringZ(self:get_state_as_string())
-	F:w_u32(self.update_time)
-	F:w_stringZ(tostring(self.weather_fx))
-	if(self.weather_fx) then
-		F:w_float(level.get_wfx_time())
+	F:w_u32(WEATHER_SAVE_VERSION)
+	F:w_stringZ(get_envs_as_string())
+
+	if set_save_marker then
+		set_save_marker(F, "save", true, "WeatherManager")
 	end
-	set_save_marker(F, "save", true, "WeatherManager")
 end
 
-function get_weather_manager ()
+function get_weather_manager()
 	if weather_manager == nil then
 		weather_manager = WeatherManager()
 	end
