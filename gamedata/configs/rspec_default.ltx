@@ -1,8 +1,9 @@
 r__smap_cascade0_size 2048x2048
+r__smap_cascade2_size 1536x1536
 r2_ssao st_opt_off
-r2_volumetric_lights on
+r2_volumetric_lights off
 ai_use_torch_dynamic_lights off
-r_sunshafts_mode ss_ogse
+r_sunshafts_mode volumetric
 r_sslr_enable on
 r4_enable_tessellation off
 r3_dynamic_wet_surfaces on
@@ -12,12 +13,37 @@ r_lens_flare on
 ssfx_inter_grass on
 r2_smap_low_lod off
 ssfx_hud_raindrops on
+r__geometry_lod 1.5
 
-ssfx_shadows (1024, 1536, 0)
-r__smap_lights_size 3072x3072
+r__smap_lights_min 128
+r__smap_lights_max 1280
+r__smap_lights_size 2560x2560
 
 snd_efx off
 
 r__detail_density 0.5
 r__detail_radius 100
 r__detail_scale 1.2
+
+r_SunShafts_Radius 2.5
+r_SunShafts_Blend 0.01
+
+ssfx_saturation 1.2
+
+ssfx_shadow_bias (0.400000, 0.030000, 0.000000)
+r2_tonemap on
+r2_tonemap_amount 1
+r2_tonemap_adaptation 3.5
+r2_tonemap_lowlum 0.32
+r2_tonemap_middlegray 2.0
+r2_sun_lumscale 2.6
+r2_sun_lumscale_hemi 1.0
+r2_sun_lumscale_amb 1.0
+
+ssfx_gloss_method 0
+r2_gloss_factor 0.001
+r2_gloss_min 0.5
+
+ssfx_color_grading (0.1, 0.1, 0.1)
+;Atmos_Warm:
+;ssfx_color_grading (0.6250, 0.6250, 0.4750)

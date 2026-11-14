@@ -1198,6 +1198,9 @@
 	<string id="ui_mm_exclusive_input">
 		<text>Exclusive Input (блокирует горячие клавиши Windows)</text>
 	</string>
+	<string id="ui_mm_exclusive_input_hint">
+		<text>Блокирует горячие клавиши Windows</text>
+	</string>
 	<string id="ui_st_weapon_bobbing">
 		<text>Раскачка оружия</text>
 	</string>
@@ -1210,6 +1213,28 @@
 	</string>
 	<string id="kb_show_hud">
 		<text>Показать HUD</text>
+	</string>
+	<string id="kb_turn_engine">
+		<text>Запустить двигатель</text>
+	</string>
+	<string id="kb_cam_1">
+		<text>Вид от 1-го лица</text>
+	</string>
+	<string id="kb_cam_2">
+		<text>Вид от 3-го лица</text>
+	</string>
+
+	<string id="ui_mm_st_check_btn_on">
+		<text>Включено</text>
+	</string>
+	<string id="ui_mm_st_check_btn_off">
+		<text>Отключено</text>
+	</string>
+	<string id="ui_mm_opt_warn_red">
+		<text>Опция с очень высокой нагрузкой на компьютер!</text>
+	</string>
+	<string id="ui_mm_opt_warn_yellow">
+		<text>Опция с повышенной нагрузкой на компьютер</text>
 	</string>
 	
 	<string id="ui_mm_opt_caption_video_1">

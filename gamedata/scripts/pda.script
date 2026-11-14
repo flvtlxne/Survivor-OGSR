@@ -208,6 +208,10 @@ function get_monster_icon()
 	end
 		return tostring(killed_monsters_tbl[xr_statistic.actor_statistic.best_monster].icon)
 end
+function get_monster_section()
+    return xr_statistic.actor_statistic.best_monster or ""
+end
+
 function get_favorite_weapon()
 	if not(xr_statistic.actor_statistic.favorite_weapon_sect) then
 		return "wpn_knife"

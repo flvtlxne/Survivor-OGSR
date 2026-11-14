@@ -214,6 +214,13 @@
 			<texture>surv_sep</texture>
 		</separator_separator>
 
+		<warning x="746" y="11" width="17" height="12" stretch="1">
+			<texture r="195" g="255" b="110">ui_inGame2_lamp_RED</texture>
+		</warning>
+		<warning_red x="746" y="11" width="17" height="12" stretch="1">
+			<texture>ui_inGame2_lamp_RED</texture>
+		</warning_red>
+
 		<cap_fov x="8" y="0" width="330" height="34">
 			<text font="ui_font_surv_small" r="190" g="184" b="170" align="l" vert_align="c">ui_mm_fov</text>
 		</cap_fov>

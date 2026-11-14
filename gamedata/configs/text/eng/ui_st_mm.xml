@@ -1173,6 +1173,9 @@
 	<string id="ui_mm_exclusive_input">
 		<text>Exclusive Input (blocks Windows hotkeys)</text>
 	</string>
+	<string id="ui_mm_exclusive_input_hint">
+		<text>Blocks Windows hotkeys</text>
+	</string>
 	<string id="ui_st_weapon_bobbing">
 		<text>Weapon bobbing</text>
 	</string>
@@ -1186,7 +1189,29 @@
 	<string id="kb_show_hud">
 		<text>Show HUD</text>
 	</string>
+	<string id="kb_turn_engine">
+		<text>Start engine</text>
+	</string>
+	<string id="kb_cam_1">
+		<text>First-person view</text>
+	</string>
+	<string id="kb_cam_2">
+		<text>Third-person view</text>
+	</string>
 
+	<string id="ui_mm_st_check_btn_on">
+		<text>Enabled</text>
+	</string>
+	<string id="ui_mm_st_check_btn_off">
+		<text>Disabled</text>
+	</string>
+	<string id="ui_mm_opt_warn_red">
+		<text>Option with a very high load load on the hardware!</text>
+	</string>
+	<string id="ui_mm_opt_warn_yellow">
+		<text>Option with increased load on the hardware</text>
+	</string>
+	
 	<string id="ui_mm_opt_caption_video_1">
 		<text>Screen parameters</text>
 	</string>

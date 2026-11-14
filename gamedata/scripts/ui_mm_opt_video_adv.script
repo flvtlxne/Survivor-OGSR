@@ -103,6 +103,11 @@ function opt_video_adv:InitControls(x, y, xml, handler)
         local stl_name = "video_adv:" .. type .. "_" .. opt
         local ctl = xml[opt_types[type]](xml, stl_name, _st)
 
+        local _st_warn_red = xml:InitStatic("video_adv:warning_red", _st)
+        _st_warn_red:Show(false)
+        local _st_warn = xml:InitStatic("video_adv:warning", _st)
+        _st_warn:Show(false)
+
         if type == "separator" then
             cap:SetText(game.translate_string(hint))
         else
@@ -121,8 +126,8 @@ function opt_video_adv:InitControls(x, y, xml, handler)
             if disabled then
                 cap:Enable(false)
                 ctl:Enable(false)
-            elseif color then
-                cap:SetTextColor(unpack(color))
+            --elseif color then
+            --    cap:SetTextColor(unpack(color))
             end
 			
             if opt == "aa" then
@@ -136,6 +141,16 @@ function opt_video_adv:InitControls(x, y, xml, handler)
                 self.dlss_preset_cap = cap
 		    elseif opt == "fsr3_quality" then
                 self.upscaler_rows[opt] = _st
+            end
+        end
+
+        if color and not disabled then
+            if (color == hint_colors.red) then
+                _st_warn_red:Show(true)
+            	_st_warn_red:SetHint("ui_mm_opt_warn_red")
+            elseif (color == hint_colors.yellow) then
+                _st_warn:Show(true)
+            	_st_warn:SetHint("ui_mm_opt_warn_yellow")
             end
         end
 

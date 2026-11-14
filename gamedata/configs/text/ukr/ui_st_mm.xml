@@ -40,7 +40,7 @@
 		<text>ветеран</text>
 	</string>
 	<string id="icon">
-		<text>ПОЗНАЧКИ</text>
+		<text>ЗНАЧКИ</text>
 	</string>
 	<string id="map">
 		<text>КАРТА</text>
@@ -67,19 +67,19 @@
 		<text>Час артефакту</text>
 	</string>
 	<string id="mm_mp_artret_time">
-		<text>Поверн. артефакту</text>
+		<text>Повернення артефакту</text>
 	</string>
 	<string id="mm_mp_autoteambalance">
 		<text>Автобаланс команд</text>
 	</string>
 	<string id="mm_mp_autoteamswap">
-		<text>Автозаміна команд</text>
+		<text>Автозміна команд</text>
 	</string>
 	<string id="mm_mp_avail_maps">
-		<text>ДОСТУПНІ МАПИ</text>
+		<text>ДОСТУПНІ КАРТИ</text>
 	</string>
 	<string id="mm_mp_cancel">
-		<text>Відмінити</text>
+		<text>Скасувати</text>
 	</string>
 	<string id="mm_mp_cd_key">
 		<text>CD-key</text>
@@ -124,7 +124,7 @@
 		<text>Фільтри</text>
 	</string>
 	<string id="mm_mp_forcerespawn">
-		<text>Народження (с.)</text>
+		<text>Відродження (сек.)</text>
 	</string>
 	<string id="mm_mp_fraglimit">
 		<text>Ліміт фрагів</text>
@@ -157,7 +157,7 @@
 		<text>Інтернет</text>
 	</string>
 	<string id="mm_mp_join">
-		<text>З'єднатися</text>
+		<text>Приєднатися</text>
 	</string>
 	<string id="mm_mp_lan">
 		<text>Локальна мережа</text>
@@ -166,16 +166,16 @@
 		<text>Не виділені</text>
 	</string>
 	<string id="mm_mp_load_demo">
-		<text>Програти</text>
+		<text>Відтворити</text>
 	</string>
 	<string id="mm_mp_mapratation">
-		<text>Список мап</text>
+		<text>Список карт</text>
 	</string>
 	<string id="mm_mp_maxplayers">
 		<text>Макс. гравців</text>
 	</string>
 	<string id="mm_mp_network_connection">
-		<text>З'єднання по мережі</text>
+		<text>Мережеве з'єднання</text>
 	</string>
 	<string id="mm_mp_noanomalies">
 		<text>Без аномалій</text>
@@ -187,7 +187,7 @@
 		<text>Пароль</text>
 	</string>
 	<string id="mm_mp_player_name">
-		<text>Ім'я гравця</text>
+		<text>Ім'я гравця:</text>
 	</string>
 	<string id="mm_mp_players">
 		<text>Гравці</text>
@@ -208,13 +208,13 @@
 		<text>Оновити все</text>
 	</string>
 	<string id="mm_mp_reinforcement">
-		<text>Підкріплення (с.)</text>
+		<text>Підкріплення (сек.)</text>
 	</string>
 	<string id="mm_mp_respawnoptions">
-		<text>Опції народження</text>
+		<text>Опції відродження</text>
 	</string>
 	<string id="mm_mp_sel_maps">
-		<text>ВИБРАНІ МАПИ</text>
+		<text>ВИБРАНІ КАРТИ</text>
 	</string>
 	<string id="mm_mp_server">
 		<text>Сервер</text>
@@ -256,7 +256,7 @@
 		<text>Налаштування спостерігача</text>
 	</string>
 	<string id="mm_mp_spectator_teamonly">
-		<text>Лише для команди</text>
+		<text>Тільки для команди</text>
 	</string>
 	<string id="mm_mp_startweather">
 		<text>Погода</text>
@@ -277,13 +277,13 @@
 		<text>Без вогню по своїх</text>
 	</string>
 	<string id="mm_mp_withoutpassword">
-		<text>Без паролю</text>
+		<text>Без пароля</text>
 	</string>
 	<string id="mm_mp_withoutpunkbuster">
 		<text>Без Punk Buster</text>
 	</string>
 	<string id="mm_mp_withpassword">
-		<text>Із паролем</text>
+		<text>З паролем</text>
 	</string>
 	<string id="mm_offline_mode">
 		<text>Локальна мережа</text>
@@ -301,7 +301,7 @@
 		<text>Басейн</text>
 	</string>
 	<string id="mp_change_unick_success">
-		<text>Успішна зміна унікального ніку!</text>
+		<text>Успішна зміна унікального ніка!</text>
 	</string>
 	<string id="mp_darkvalley">
 		<text>Темна Долина</text>
@@ -310,10 +310,10 @@
 		<text>Завод «Янтар»</text>
 	</string>
 	<string id="mp_gamespy_atlas_error">
-		<text>помилка з'єднання із сервером статистики</text>
+		<text>помилка з'єднання з сервером статистики</text>
 	</string>
 	<string id="mp_gamespy_ws_login_error">
-		<text>помилка з'єднання із логін-сервером</text>
+		<text>помилка з'єднання з логін-сервером</text>
 	</string>
 	<string id="mp_login_success">
 		<text>Ви успішно авторизувалися</text>
@@ -331,7 +331,7 @@
 		<text>Басейн</text>
 	</string>
 	<string id="mp_railroad">
-		<text>Зал. станція</text>
+		<text>Залізнична станція</text>
 	</string>
 	<string id="mp_rostok">
 		<text>Завод «Росток»</text>
@@ -340,7 +340,7 @@
 		<text>неправильний унікальний нік</text>
 	</string>
 	<string id="mp_want_to_delete_demo">
-		<text>Ви справді хочете видалити</text>
+		<text>Ви дійсно хочете видалити</text>
 	</string>
 	<string id="mp_workshop">
 		<text>Покинута фабрика</text>
@@ -388,10 +388,10 @@
 		<text>низько</text>
 	</string>
 	<string id="st_opt_medium">
-		<text>посередньо</text>
+		<text>середньо</text>
 	</string>
 	<string id="st_opt_off">
-		<text>відключено</text>
+		<text>вимкнено</text>
 	</string>
 	<string id="st_rank_experienced">
 		<text>досвідчений</text>
@@ -412,7 +412,7 @@
 		<text>Команда проти команди</text>
 	</string>
 	<string id="ui_mm_60_hz">
-		<text>Частота 60 Гц</text>
+		<text>Частота 60Гц</text>
 	</string>
 	<string id="ui_mm_action">
 		<text>Дія</text>
@@ -439,7 +439,7 @@
 		<text>Яскравість</text>
 	</string>
 	<string id="ui_mm_cancel">
-		<text>Відмінити</text>
+		<text>Скасувати</text>
 	</string>
 	<string id="ui_mm_check_updates">
 		<text>Оновлення</text>
@@ -454,28 +454,28 @@
 		<text>Титри</text>
 	</string>
 	<string id="ui_mm_crosshair_distance">
-		<text>Відстань до цілі</text>
+		<text>Дистанція до цілі</text>
 	</string>
 	<string id="ui_mm_default">
-		<text>До замовчувань</text>
+		<text>За замовчуванням</text>
 	</string>
 	<string id="ui_mm_delete">
 		<text>Видалити</text>
 	</string>
 	<string id="ui_mm_delete_existing_file_q">
-		<text>Ви справді хочете видалити файл?</text>
+		<text>Ви дійсно хочете видалити файл?</text>
 	</string>
 	<string id="ui_mm_detail_density">
 		<text>Щільність трави</text>
 	</string>
 	<string id="ui_mm_difficulty">
-		<text>Важкість</text>
+		<text>Складність</text>
 	</string>
 	<string id="ui_mm_disconnect">
 		<text>Від'єднатися</text>
 	</string>
 	<string id="ui_mm_disconnect_message">
-		<text>Ви справді хочете від'єднатися?</text>
+		<text>Ви дійсно бажаєте від'єднатися?</text>
 	</string>
 	<string id="ui_mm_dof">
 		<text>Глибина різкості</text>
@@ -496,7 +496,7 @@
 		<text>Гра</text>
 	</string>
 	<string id="ui_mm_gamma">
-		<text>Гама</text>
+		<text>Гамма</text>
 	</string>
 	<string id="ui_mm_geometry_lod">
 		<text>Деталізація об'єктів</text>
@@ -544,19 +544,19 @@
 		<text>Оптимізувати згладжування</text>
 	</string>
 	<string id="ui_mm_multiplayer">
-		<text>ГРА ПО МЕРЕЖІ</text>
+		<text>МЕРЕЖЕВА ГРА</text>
 	</string>
 	<string id="ui_mm_multiplayer_n">
-		<text>Гра по мережі</text>
+		<text>Мережева гра</text>
 	</string>
 	<string id="ui_mm_music_volume">
 		<text>Гучність музики</text>
 	</string>
 	<string id="ui_mm_need_restart">
-		<text>Зміни набудуть чинності лише після перезавантаження гри</text>
+		<text>Зміни набудуть чинності тільки після перезавантаження гри</text>
 	</string>
 	<string id="ui_mm_network_game">
-		<text>Гра по мережі</text>
+		<text>Мережева гра</text>
 	</string>
 	<string id="ui_mm_newgame">
 		<text>Нова гра</text>
@@ -571,22 +571,22 @@
 		<text>Опції</text>
 	</string>
 	<string id="ui_mm_particles_distance">
-		<text>Дальність часток</text>
+		<text>Дальність частинок</text>
 	</string>
 	<string id="ui_mm_quality_presets">
-		<text>Налаштування якості</text>
+		<text>Установки якості</text>
 	</string>
 	<string id="ui_mm_quit2windows">
-		<text>Вийти до Windows</text>
+		<text>Вийти в Windows</text>
 	</string>
 	<string id="ui_mm_quit_game">
-		<text>Скінчити гру</text>
+		<text>Завершити гру</text>
 	</string>
 	<string id="ui_mm_quit_game_message">
-		<text>Ви справді бажаєте вийти із гри?</text>
+		<text>Ви дійсно бажаєте покинути гру?</text>
 	</string>
 	<string id="ui_mm_quit_windows_message">
-		<text>Ви справді хочете вийти до Windows?</text>
+		<text>Ви дійсно хочете вийти в Windows?</text>
 	</string>
 	<string id="ui_mm_r2_detail_bump">
 		<text>Детальний рельєф</text>
@@ -622,13 +622,13 @@
 		<text>Рендер-2</text>
 	</string>
 	<string id="ui_mm_renderer">
-		<text>Тип рендеру</text>
+		<text>Тип рендера</text>
 	</string>
 	<string id="ui_mm_resolution">
 		<text>Роздільна здатність</text>
 	</string>
 	<string id="ui_mm_return_game">
-		<text>Повернення до гри</text>
+		<text>Повернутися до гри</text>
 	</string>
 	<string id="ui_mm_save">
 		<text>Зберегти</text>
@@ -667,7 +667,7 @@
 		<text>Якість тіней</text>
 	</string>
 	<string id="ui_mm_sun_shafts">
-		<text>Сонячне проміння</text>
+		<text>Сонячні промені</text>
 	</string>
 	<string id="ui_mm_supersample">
 		<text>Згладжування</text>
@@ -697,10 +697,10 @@
 		<text>Верт. синхронізація</text>
 	</string>
 	<string id="ui_mp_gamespy_changing_unique_nick">
-		<text>Зміна унікального імені... </text>
+		<text>Зміна унікального імені...</text>
 	</string>
 	<string id="ui_mp_gamespy_email_already_exist">
-		<text>такий E-mail уже використовується</text>
+		<text>такий e-mail вже використовується</text>
 	</string>
 	<string id="ui_mp_internet">
 		<text>Через Інтернет</text>
@@ -721,10 +721,10 @@
 		<text>в око</text>
 	</string>
 	<string id="ui_st_headshots_in_row">
-		<text>у голову</text>
+		<text>в голову</text>
 	</string>
 	<string id="ui_st_invalid_saved_game">
-		<text>Версія збереженого файлу не збігається із версією гри</text>
+		<text>Версія збереженого файлу не збігається з версією гри</text>
 	</string>
 	<string id="ui_st_kills_in_row">
 		<text>вбивств поспіль</text>
@@ -736,7 +736,7 @@
 		<text>Ост. набір</text>
 	</string>
 	<string id="ui_st_mp_local_network_login_page">
-		<text>Вхід до гри у мережі</text>
+		<text>Вхід у мережеву гру</text>
 	</string>
 	<string id="ui_st_mp_nickname">
 		<text>Ім'я</text>
@@ -787,7 +787,7 @@
 		<text>Створити</text>
 	</string>
 	<string id="mp_gp_unknown_email_or_bad_password">
-		<text>Неправильний E-mail або пароль</text>
+		<text>Неправильний e-mail або пароль</text>
 	</string>
 	<string id="mp_gp_parameter_error">
 		<text>Неправильний профіль</text>
@@ -799,7 +799,7 @@
 		<text>Сервер тимчасово недоступний</text>
 	</string>
 	<string id="mp_gp_unknown_error_2">
-		<text>Необхідно увійти у профіль</text>
+		<text>Необхідно увійти в профіль</text>
 	</string>
 	<string id="mp_gp_unknown_error_6">
 		<text>Помилка з'єднання</text>
@@ -820,16 +820,16 @@
 		<text>Неправильний унікальний нік</text>
 	</string>
 	<string id="mp_gp_unknown_error_516">
-		<text>Унікальний нік уже використовується</text>
+		<text>Унікальний нік вже використовується</text>
 	</string>
 	<string id="mp_first_need_to_login">
-		<text>Необхідно спочатку увійти до профілю</text>
+		<text>Необхідно спочатку увійти в профіль</text>
 	</string>
 	<string id="mp_first_need_to_logout">
-		<text>Необхідно спочатку вийти з профілю</text>
+		<text>Необхідно спершу вийти з профілю</text>
 	</string>
 	<string id="mp_gamespy_http_error">
-		<text>Помилка з'єднання із сервером профілів</text>
+		<text>Помилка з'єднання з сервером профілів</text>
 	</string>
 	<string id="ui_st_you_cannot_delete_profile_after_creation">
 		<text>Ви не зможете видалити профіль після його створення</text>
@@ -871,19 +871,19 @@
 		<text>Будь ласка, авторизуйтеся для входу на зовнішній сервер.</text>
 	</string>
 	<string id="mp_already_logged_in">
-		<text>Зазначений профіль GameSpy ID на цей момент використовується. Будь ласка, використайте інший профіль GameSpy ID.</text>
+		<text>Цей профіль GameSpy ID наразі використовується. Будь ласка, використовуйте інший профіль GameSpy ID.</text>
 	</string>
 	<string id="mp_gp_unknown_email">
-		<text>Неправильний E-mail</text>
+		<text>Неправильний Email</text>
 	</string>
 	<string id="mp_gp_bad_password">
 		<text>Неправильний пароль</text>
 	</string>
 	<string id="mp_use_offline_mode">
-		<text>Ви не можете використати профіль GameSpy ID для входу на локальний сервер. Будь ласка, використайте режим гри через локальну мережу.</text>
+		<text>Ви не можете використовувати профіль GameSpy ID для входу на локальний сервер. Будь ласка, використовуйте режим гри у локальній мережі.</text>
 	</string>
 	<string id="st_kicked_by_server">
-		<text>Вас було викинуто сервером</text>
+		<text>Вас було викинуто сервером.</text>
 	</string>
 	<string id="mp_you_have_been_banned_by">
 		<text>Вас було заблоковано адміністратором: </text>
@@ -895,16 +895,16 @@
 		<text>Інформація про сервер</text>
 	</string>
 	<string id="mp_gp_email_is_too_big">
-		<text>E-mail надто довгий. Ви можете ввести максимум 50 символів.</text>
+		<text>E-mail занадто довгий. Ви можете ввести максимум 50 символів.</text>
 	</string>
 	<string id="mp_gp_bad_email">
-		<text>Некоректний E-mail</text>
+		<text>Некоректний e-mail</text>
 	</string>
 	<string id="mp_gp_password_is_too_small">
-		<text>Пароль надто короткий</text>
+		<text>Пароль занадто короткий</text>
 	</string>
 	<string id="mp_gp_password_is_too_big">
-		<text>Пароль надто довгий</text>
+		<text>Пароль занадто довгий</text>
 	</string>
 	<string id="mp_gp_no_email">
 		<text>E-mail не знайдено</text>
@@ -913,25 +913,25 @@
 		<text>Унікальний нік не задано</text>
 	</string>
 	<string id="mp_gp_unique_nick_is_too_big">
-		<text>Унікальний нік надто довгий. Ви можете ввести максимум 30 символів.</text>
+		<text>Унікальний нік занадто довгий. Ви можете ввести максимум 30 символів.</text>
 	</string>
 	<string id="mp_gp_unique_nick_must_contain_only">
-		<text>Унікальний нік може містити лише цифри, літери латиниці та спеціальні символи: "#$&'()*+-./:;<=>?@[]^_`{|}~</text>
+		<text>Унікальний нік може містити тільки цифри, літери латиниці та спеціальні символи: "#$&'()*+-./:;<=>?@[]^_`{|}~</text>
 	</string>
 	<string id="mp_gp_unique_nick_must_contain_nospaces">
-		<text>Унікальний нік не може містити пропуски</text>
+		<text>Унікальний нік не може містити пробіли</text>
 	</string>
 	<string id="mp_gp_unique_nick_bad_first_symbol">
-		<text>Унікальний нік не може починатися із цифри або символів ''@'', ''+'', '':'' або ''#''</text>
+		<text>Унікальний нік не може починатися з цифри або символів: '@', '+', ':' або '#'</text>
 	</string>
 	<string id="st_opt_ultra">
 		<text>дуже високо</text>
 	</string>
 	<string id="ui_mm_r4_enable_tessellation">
-		<text>Тесселяція</text>
+		<text>Теселяція</text>
 	</string>
 	<string id="ui_mm_confirm_changes">
-		<text>Застосувати зроблені зміни? Усі зміни будуть скасовані через</text>
+		<text>Застосувати зроблені зміни? Усі зміни буде скасовано через</text>
 	</string>
 	<string id="ui_st_money_descr">
 		<text>RU</text>
@@ -951,7 +951,7 @@
 		<text>120 кадрів</text>
 	</string>
 	<string id="fpslock144">
-		<text>144 кадру</text>
+		<text>144 кадри</text>
 	</string>
 	<string id="fpslock240">
 		<text>240 кадрів</text>
@@ -975,6 +975,63 @@
 	<string id="st_opt_fsr3">
 		<text>AMD FSR3</text>
 	</string>
+	<string id="ui_mm_dlss_quality">
+		<text>Якість DLSS</text>
+	</string>
+	<string id="ui_mm_dlss_preset">
+		<text>Пресет DLSS</text>
+	</string>
+	<string id="ui_mm_fsr3_quality">
+		<text>Якість FSR 3</text>
+	</string>
+	<string id="st_opt_dlaa">
+		<text>DLAA</text>
+	</string>
+	<string id="st_opt_dlss_default">
+		<text>Default</text>
+	</string>
+	<string id="st_opt_dlss_f">
+		<text>F (CNN)</text>
+	</string>
+	<string id="st_opt_dlss_j">
+		<text>J (Transformer)</text>
+	</string>
+	<string id="st_opt_dlss_k">
+		<text>K (Transformer)</text>
+	</string>
+	<string id="st_opt_dlss_l">
+		<text>L (Transformer)</text>
+	</string>
+	<string id="st_opt_dlss_m">
+		<text>M (Transformer)</text>
+	</string>
+	<string id="st_opt_dlss_quality">
+		<text>Якість</text>
+	</string>
+	<string id="st_opt_dlss_balanced">
+		<text>Баланс</text>
+	</string>
+	<string id="st_opt_dlss_performance">
+		<text>Продуктивність</text>
+	</string>
+	<string id="st_opt_dlss_ultra_performance">
+		<text>Ультрапродуктивність</text>
+	</string>
+	<string id="st_opt_fsr3_native_aa">
+		<text>Згладжування в нативній роздільній здатності</text>
+	</string>
+	<string id="st_opt_fsr3_quality">
+		<text>Якість</text>
+	</string>
+	<string id="st_opt_fsr3_balanced">
+		<text>Баланс</text>
+	</string>
+	<string id="st_opt_fsr3_performance">
+		<text>Продуктивність</text>
+	</string>
+	<string id="st_opt_fsr3_ultra_performance">
+		<text>Ультрапродуктивність</text>
+	</string>
 	<string id="st_opt_taa">
 		<text>TAA</text>
 	</string>
@@ -982,7 +1039,7 @@
 		<text>SMAA</text>
 	</string>
 	<string id="ui_mm_cas">
-		<text>Різкість після згладжування</text>
+		<text>CAS (Різкість після згладжування)</text>
 	</string>
 	<string id="ui_mm_vis_dist">
 		<text>Дальність видимості</text>
@@ -991,7 +1048,7 @@
 		<text>Деталізація об'єктів</text>
 	</string>
 	<string id="ui_mm_smap_size">
-		<text>Роздільна здатнісь карт тіней</text>
+		<text>Роздільна здатність карт тіней</text>
 	</string>
 	<string id="ui_mm_sun_quality">
 		<text>М'які тіні від сонця</text>
@@ -1018,7 +1075,7 @@
 		<text>Тінь від головного героя</text>
 	</string>
 	<string id="ui_mm_lens_flare">
-		<text>Блики від сонця</text>
+		<text>Відблиски від сонця</text>
 	</string>
 	<string id="ui_mm_ao_mode">
 		<text>Тип AO</text>
@@ -1072,10 +1129,10 @@
 		<text>Об'ємне світло</text>
 	</string>
 	<string id="ui_mm_npc_torch">
-		<text>Світло ліхтариків NPC</text>
+		<text>Об'ємне світло ліхтариків NPC</text>
 	</string>
 	<string id="ui_mm_dof_reload">
-		<text>DOF під час перезаряджання</text>
+		<text>DOF при перезаряджанні</text>
 	</string>
 	<string id="ui_mm_dof_zoom">
 		<text>DOF при прицілюванні</text>
@@ -1093,7 +1150,7 @@
         <text>Шейдерний ефект шолома</text>
     </string>
 	<string id="ui_mm_visor_refl">
-        <text>Блики по краях шолома</text>
+        <text>Відблиски по краях шолома</text>
     </string>
 	<string id="ui_mm_rain_drops">
         <text>Краплі на склі</text>
@@ -1114,6 +1171,9 @@
 	<string id="ui_st_weapon_bobbing">
 		<text>Розгойдування зброї</text>
 	</string>
+	<string id="ui_mm_switch_slot">
+		<text>Перемикання слота коліщатком миші</text>
+	</string>
 
 	<string id="kb_hide_hud">
 		<text>Приховати HUD</text>
@@ -1121,9 +1181,18 @@
 	<string id="kb_show_hud">
 		<text>Показати HUD</text>
 	</string>
-	
+	<string id="kb_turn_engine"> 
+		<text>Запустити двигун</text> 
+	</string> 
+	<string id="kb_cam_1"> 
+		<text>Вигляд від однієї особи</text> 
+	</string> 
+	<string id="kb_cam_2"> 
+		<text>Вигляд від 3-ї особи</text> 
+	</string>
+
 	<string id="ui_mm_opt_caption_video_1">
-		<text>Параметри екрану</text>
+		<text>Параметри екрана</text>
 	</string>
 	<string id="ui_mm_opt_caption_video_2">
 		<text>Налаштування фільтрів</text>
@@ -1138,7 +1207,7 @@
 		<text>Рослинність</text>
 	</string>
 	<string id="ui_mm_opt_caption_adv_video_3">
-		<text>Освітлення</text>
+		<text>Тіні</text>
 	</string>
 	<string id="ui_mm_opt_caption_adv_video_4">
 		<text>Parallax</text>
@@ -1147,10 +1216,16 @@
 		<text>Згладжування</text>
 	</string>
 	<string id="ui_mm_opt_caption_adv_video_6">
-		<text>Depth of Field та Motion Blur</text>
+		<text>Depth of Field і Motion Blur</text>
 	</string>
 	<string id="ui_mm_opt_caption_adv_video_7">
-		<text>Screen Space Shaders та постобробка</text>
+		<text>Screen Space Shaders і постобробка</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_8">
+		<text>Сонячні промені та об'ємне світло</text>
+	</string>
+	<string id="ui_mm_opt_caption_adv_video_9">
+		<text>Намокання та відображення</text>
 	</string>
 	<string id="ui_mm_opt_caption_gameplay_1">
 		<text>Параметри гри</text>
@@ -1162,4 +1237,88 @@
 		<text>Параметри HUD</text>
 	</string>
 
+	<string id="video_settings_desc_61">
+		<text>Має сенс збільшувати кут огляду для широких моніторів та залежно від індивідуальних вподобань.</text>
+	</string>
+	<string id="video_settings_desc_62">
+		<text>Кут огляду гравця. Якщо значення, наприклад, 0.45 і менше (менше середини повзунка), то зброя буде ближче, якщо ж стоїть значення 0.65 і більше (більше середини повзунка), то зброя під час гри здаватиметься далі. Має сенс індивідуально налаштовувати для широких моніторів та залежно від FOV.</text>
+	</string>
+	<string id="video_settings_desc_2">
+		<text>Це налаштування регулює величину, на яку множиться гранична відстань видимості, встановлена в профілі поточної погоди. Діапазон значень цієї величини - від 0.4 (мінімум повзунка) до 1 (максимум повзунка). Наприклад, у погоді встановлено дальність огляду 150 метрів. На мінімумі повзунка ви бачитимете на 60 метрів, на максимумі — на 150.</text>
+	</string>
+	<string id="video_settings_desc_3">
+		<text>Це налаштування регулює деталізацію промальовування та освітлення моделей людей, монстрів і зброї, що знаходяться вдалечині від гравця. Чим далі повзунок, тим більш деталізованими вони будуть.</text>
+	</string>
+	<string id="video_settings_desc_52">
+		<text>Теселяція збільшує якість низькополігональних моделей НПС, монстрів, рук актора, анімованих предметів (пляшок тощо). Незграбні моделі стають більш згладженими.</text>
+	</string>
+	<string id="video_settings_desc_19">
+		<text>Це налаштування перемикає тип згладжування. Доступні NVIDIA DLSS (Deep learning super sampling), AMD FSR3 (FidelityFX Super Resolution 3), TAA (Temporal anti-aliasing), SMAA (Subpixel Morphological AntiAliasing). \n \nNVIDIA DLSS (згладжування з алгоритмами глибокого навчання) - це революційна технологія рендерингу на базі штучного інтелекту, яка покращує якість графіки завдяки використанню спеціалізованих тензорних ядер у відеокартах GeForce RTX. У десктопних і мобільних відеокартах технологія стала доступною з приходом серії RTX20. Згладжування з використанням DLSS дає результат, що перевершує за якістю MSAA 8x, при цьому не викликає просідань продуктивності. \n \nFSR - менш вимогливий і менш якісний аналог від AMD. FSR 3.0 підтримують усі відеокарти AMD від RX 590 і новіші (архітектура Polaris і вище), а також відеокарти NVIDIA від серії GTX 10 (наприклад, GTX 1060) і новіші.</text>
+	</string>
+	<string id="video_settings_desc_20">
+		<text>Contrast Adaptive Sharpening (CAS) — це технологія компанії AMD з набору FidelityFX. Часто використовується разом із технологіями масштабування (наприклад, AMD FSR), щоб компенсувати легке мило після рендерингу в низькій роздільній здатності. Чим більше значення повзунка - тим різкішим буде зображення після згладжування. При мінімумі повзунка (значення 0) - CAS не застосовується взагалі.</text>
+	</string>
+	<string id="video_settings_desc_4">
+		<text>Це налаштування регулює, наскільки щільно промальовуються кущики трави в грі. Чим далі повзунок, тим ближче один до одного промальовуватимуться елементи трави і тим густішою вона буде. УВАГА! Надмірна густота трави призводить до сильних гальмувань; якщо хочете відрегулювати цей параметр, робіть це потроху, щоразу перевіряючи, що вийшло.</text>
+	</string>
+	<string id="video_settings_desc_5">
+		<text>Це налаштування регулює максимальну відстань, на якій промальовується трава. Чим далі повзунок, тим далі буде край трави. Повзунок дозволяє регулювати відстань у діапазоні від 48 (стандартна дальність) до 240 метрів. УВАГА! Алгоритм промальовування трави грою такий, що при збільшенні радіуса трави навантаження на відеокарту зростає в геометричній прогресії. Більш-менш прийнятні величини лежать у межах 150-200 метрів (середина повзунка).</text>
+	</string>
+	<string id="video_settings_desc_59">
+		<text>Чим вища роздільна здатність карт тіней - тим чіткішими будуть тіні вдалечині (понад ~15-20 метрів від ГГ - за межею ближнього каскаду тіней). Щоб не було помітного погіршення якості тіней на цій межі - рекомендується виставляти роздільну здатність не нижче 4096x4096. Налаштування дуже сильно впливає на продуктивність.</text>
+	</string>
+	<string id="video_settings_desc_29">
+		<text>Це налаштування перемикає тип сонячних променів. Виберіть той, який більше сподобається.</text>
+	</string>
+	<string id="video_settings_desc_37">
+		<text>Це налаштування регулює якість AO в грі. Цей ефект, при увімкненні, виконує розрахунок додатково затінюваних геометрією моделей областей, роблячи освітлення більш схожим на освітлення в реальному світі; на моделях з'являються напівтіні та затінення від елементів спорядження, одягу, деталей машин, трави та інших невеликих частин геометрії.</text>
+	</string>
+	<string id="video_settings_desc_38">
+		<text>Це налаштування регулює режим роботи ефекту глобального освітлення в грі. Доступні для вибору GTAO (Ground Truth-based Ambient Occlusion) та SSDO (ScreenSpace Directional Occlusion)</text>
+	</string>
+	<string id="video_settings_desc_12">
+		<text>Це налаштування вмикає відкидання травою тіней від сонячного світла</text>
+	</string>
+	<string id="video_settings_desc_50">
+		<text>Налаштування вмикає об'ємне світло для багатьох ламп.</text>
+	</string>
+	<string id="video_settings_desc_14">
+		<text>Це налаштування дозволяє грі обробляти об'ємне світло ліхтариків NPC як джерела динамічного світла. На слабких ПК вимкнення цього налаштування може дати серйозний приріст швидкості вночі, у таборах з великою кількістю NPC.</text>
+	</string>
+	<string id="video_settings_desc_39">
+		<text>Це налаштування регулює ефект покращеної рельєфності поверхонь із використанням алгоритму Steep parallax mapping. Цей алгоритм використовує для розрахунку рельєфності трасування променів у просторі карти висот, що дає більш реалістичний та якісний ефект.</text>
+	</string>
+	<string id="video_settings_desc_24">
+		<text>Вмикає ефект паралакса на терейні з калюжами в заглибленнях. %c[red] Для правильної роботи треба повозитися з налаштуваннями терейну, текстур, їхніх бампів та підібрати ssfx_terrain_offset для кожної текстури. Подробиці див. в OGSR WIKI.</text>
+	</string>
+	<string id="video_settings_desc_1">
+		<text>Motion blur - розмиття зображення при повороті камери, відтворенні сцен руху або об'єктів, що швидко рухаються.</text>
+	</string>
+	<string id="video_settings_desc_49">
+		<text>Налаштування вмикає намокання поверхонь під час дощу.</text>
+	</string>
+	<string id="video_settings_desc_51">
+		<text>Налаштування вмикає калюжі та відображення в них під час дощу.</text>
+	</string>
+	<string id="video_settings_desc_41">
+		<text>Це налаштування вмикає компонент ефекту глибини поля зору - фокусування очей на зброї під час перезаряджання.</text>
+	</string>
+	<string id="video_settings_desc_42">
+		<text>Це налаштування вмикає компонент ефекту глибини поля зору - розмиття країв екрана під час прицілювання.</text>
+	</string>
+	<string id="video_settings_desc_47">
+		<text>Це налаштування вмикає появу крапель на склі шоломів та протигазів під час дощу.</text>
+	</string>
+	<string id="video_settings_desc_70">
+		<text>Задає внутрішню роздільну здатність NVIDIA DLSS. DLAA рендерить у нативній роздільній здатності для максимальної якості. Quality, Balanced, Performance та Ultra Performance поступово знижують внутрішню роздільну здатність заради FPS. Після зміни застосуйте налаштування відео (vid_restart).</text>
+	</string>
+	<string id="video_settings_desc_71">
+		<text>Задає внутрішню роздільну здатність AMD FSR 3. Нативне згладжування рендерить у нативній роздільній здатності для максимальної якості. Quality, Balanced, Performance та Ultra Performance поступово знижують внутрішню роздільну здатність заради FPS. Після зміни застосуйте налаштування відео (vid_restart).</text>
+	</string>
+	<string id="video_settings_desc_72">
+		<text>Вибір моделі NVIDIA DLSS. Пресети, які не підтримує завантажена бібліотека DLSS, відображаються сірим.
+%c[yellow] \nCNN:\nF — застаріла CNN-модель (deprecated).
+%c[green] \nTransformer:\nJ — менше шлейфів, більше мерехтіння (NVIDIA рекомендує K).\nK — трансформер 1-го покоління, за замовчуванням для DLAA / Quality / Balanced.\nL — трансформер 2-го покоління, чіткіше і повільніше, за замовчуванням для Ultra Performance (RTX 40+).\nM — трансформер 2-го покоління, якість як у L, але швидше, за замовчуванням для Performance (RTX 40+).
+Default слідує за NVIDIA / OTA драйвера.</text>
+	</string>
 </string_table>

@@ -2,6 +2,8 @@
 if not _G["editor"] or not _G["editor"]() then --костыль чтоб этот скрипт работал с SDK нормально, а не только с OGSR двигом.
 --=======================================================================================================================================
 log1("--LUA version: [" .. (jit.version or _VERSION) .. "]")
+--=========================================================================================================
+math.random = xoshiro128.xoshiro128()
 --======================================[FS Extension]==========================================
 -- ¬озвращение метода getFS():file_rename, который вырезан из движка
 function FS:file_rename(src, dest, bOwerwrite)
@@ -308,7 +310,6 @@ function set_current_time (hour, min, sec)
 end
 
 function random_number (min_value, max_value)
-	math.randomseed (device ():time_global ())
 	if min_value == nil and max_value == nil then
 		return math.random ()
 	else
