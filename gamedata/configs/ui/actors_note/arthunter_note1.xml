@@ -1,40 +1,12 @@
 <?xml version="1.0" encoding="windows-1251" ?>
- 
-
-    <arthunter_note1>
-
-	<table x="350" y="100" width="270" height="500" stretch="1">
-		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_list_1</texture>
+<arthunter_note1>
+	<table x="178.67" y="154" width="666.67" height="460"><texture>surv_frame</texture>
+		<auto_static x="16" y="70" width="634.67" height="1.07" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="16" y="48" width="634.67" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Найденная записка</text></auto_static>
 	</table>
-
-	<name x="410" y="110" width="480" height="500" stretch="1" complex_mode="1">
-		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Дневник искателя 1</text>
-	</name>
-
-	<text1 x="380" y="140" width="240" height="300">
-		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">Выгодный контракт привёл меня сюда. К сожалению, меня опередили: клиент прислал сообщение, что где-то здесь уже орудует мой конкурент-искатель артефактов. Очень не хотелось бы встретить его, тем более упустить ценный артефакт, ведь его свойство поистине уникально! На кону такие деньги, каких я не зарабатывал за все годы моего искательского ремесла. Кто же это может быть? Думаю, что Ворон сюда не полезет, он ещё не отошел от ранения. Нюхача вроде посадили в тюрьму, а Шмыгу, по слухам, убили на периметре. Остаётся Шурик из Бердичева. Он ещё зелёный, хотя учил его сам Калган... Не знаю, чего ожидать от этого салабона, но оружие завтра в ходку возьму. А идти недалеко: подходящие условия для возникновения "Трамплина" могут быть только в одном определённом месте. Главное - успеть первым.</text>
-	</text1>
-
-
-
-	<btn_1 x="370" y="560" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Назад</text>
-	</btn_1>
-
-	<btn_2 x="490" y="560" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Далее</text>
-	</btn_2>
-
-
-
-
-	<btn_exit x="570" y="-1000" width="25" height="25">
-	      	<texture_e>ui\button_invisible</texture_e>
-		<texture_t>ui\button_invisible</texture_t>
-		<texture_h>ui\button_invisible</texture_h>
-	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
-	</btn_exit>
-
-    </arthunter_note1>
+	<name x="194.67" y="168" width="634.67" height="34"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">Дневник искателя 1</text></name>
+	<text1 x="194.67" y="240" width="634.67" height="312"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Выгодный контракт привёл меня сюда. К сожалению, меня опередили: клиент прислал сообщение, что где-то здесь уже орудует мой конкурент-искатель артефактов. Очень не хотелось бы встретить его, тем более упустить ценный артефакт, ведь его свойство поистине уникально! На кону такие деньги, каких я не зарабатывал за все годы моего искательского ремесла. Кто же это может быть? Думаю, что Ворон сюда не полезет, он ещё не отошел от ранения. Нюхача вроде посадили в тюрьму, а Шмыгу, по слухам, убили на периметре. Остаётся Шурик из Бердичева. Он ещё зелёный, хотя учил его сам Калган... Не знаю, чего ожидать от этого салабона, но оружие завтра в ходку возьму. А идти недалеко: подходящие условия для возникновения "Трамплина" могут быть только в одном определённом месте. Главное - успеть первым.</text></text1>
+	<btn_1 x="194.67" y="564" width="200" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">НАЗАД</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_1>
+	<btn_2 x="629.33" y="564" width="200" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ДАЛЕЕ</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_2>
+	<btn_exit x="-2837.33" y="0" width="13.33" height="10" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c"></text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_exit>
+</arthunter_note1>

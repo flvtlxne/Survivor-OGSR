@@ -264,7 +264,7 @@ function actors_note_start:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_start.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -530,7 +530,7 @@ function actors_note_notes:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_notes.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -699,7 +699,7 @@ function deadman_note1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\deadman_note1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -765,7 +765,7 @@ function deadman_note2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\deadman_note2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -831,7 +831,7 @@ function deadman_note3:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\deadman_note3.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -897,7 +897,7 @@ function deadman_note4:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\deadman_note4.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -963,7 +963,7 @@ function deadman_note5:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\deadman_note5.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1028,7 +1028,7 @@ function deadman_note6:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\deadman_note6.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1082,7 +1082,7 @@ function lostsold_note1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\lostsold_note1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1149,7 +1149,7 @@ function lostsold_note2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\lostsold_note2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1215,7 +1215,7 @@ function lostsold_note3:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\lostsold_note3.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1281,7 +1281,7 @@ function lostsold_note4:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\lostsold_note4.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1337,7 +1337,7 @@ function likvidator_note1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\likvidator_note1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1402,7 +1402,7 @@ function likvidator_note2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\likvidator_note2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1467,7 +1467,7 @@ function likvidator_note3:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\likvidator_note3.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1521,7 +1521,7 @@ function personal_dog_note1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\personal_dog_note1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1587,7 +1587,7 @@ function personal_dog_note2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\personal_dog_note2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1654,7 +1654,7 @@ function narkoman_note1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\narkoman_note1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1721,7 +1721,7 @@ function narkoman_note2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\narkoman_note2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1788,7 +1788,7 @@ function narkoman_note3:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\narkoman_note3.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1855,7 +1855,7 @@ function narkoman_note4:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\narkoman_note4.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1908,7 +1908,7 @@ function zavhoz_note:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\zavhoz_note.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -1960,7 +1960,7 @@ function arthunter_note1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\arthunter_note1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2026,7 +2026,7 @@ function arthunter_note2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\arthunter_note2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2091,7 +2091,7 @@ function arthunter_note3:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\arthunter_note3.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2144,7 +2144,7 @@ function actors_note_info1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_info1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2211,7 +2211,7 @@ function actors_note_diary0:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_diary0.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2286,7 +2286,7 @@ function actors_note_diary1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_diary1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2361,7 +2361,7 @@ function actors_note_diary2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_diary2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2436,7 +2436,7 @@ function actors_note_diary3:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_diary3.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2511,7 +2511,7 @@ function actors_note_diary4:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_diary4.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2586,7 +2586,7 @@ function actors_note_diary5:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_diary5.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -2661,7 +2661,7 @@ function actors_note_diary6:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\actors_note_diary6.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -5071,7 +5071,7 @@ function suicider_note1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\suicider_note1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -5138,7 +5138,7 @@ function suicider_note2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\suicider_note2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -5204,7 +5204,7 @@ function suicider_note3:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\suicider_note3.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -5271,7 +5271,7 @@ function suicider_note4:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\suicider_note4.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -5323,7 +5323,7 @@ function sniper_note1:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\sniper_note1.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -5390,7 +5390,7 @@ function sniper_note2:InitControls()
 	local xml = CScriptXmlInit()
 	xml:ParseFile("actors_note\\sniper_note2.xml")
 
-	xml:InitStatic("table", self)
+	xml:InitFrame("table", self)
 	xml:InitStatic("name", self)
 	xml:InitStatic("text1", self)
 
@@ -5443,88 +5443,6 @@ end
 
 
 
-
-
-
--- Ќова€ игра на "ћастере": -----------------------------------------------
-
-class "ng_master_interface" (CUIScriptWnd)
-local console = get_console()
-function ng_master_interface:__init(owner) super()
-	self.dlg = self
-	self.owner = owner
-	self:InitControls()
-	self:InitCallBacks()
-end
-
-function ng_master_interface:__finalize() end
-
-function ng_master_interface:InitControls()
-	-- здесь определ€ем координаты левого верхнего угла и ширину-высоту
-	self:SetWndRect(Frect():set(0,0,1024,768))
-
-	-- файл-описатель наших элементов
-	local xml = CScriptXmlInit()
-	xml:ParseFile("ui_ng_master_interface.xml")
-
-	xml:InitStatic("table", self)
-	xml:InitStatic("name", self)
-	xml:InitStatic("text1", self)
-	xml:InitStatic("logo", self)
-
-	-- кнопки
-	self.btn_1 = xml:Init3tButton("btn_1", self)
-	self:Register(self.btn_1, "btn_1")
-	self.btn_1:Enable(false)
-	self.btn_2 = xml:Init3tButton("btn_2", self)
-	self:Register(self.btn_2, "btn_2")
-	self.btn_2:Enable(false)
-	
-	-- определ€ем доступность кнопок
-	self.btn_1:Enable(true)
-	self.btn_2:Enable(true)
-end
-
-function ng_master_interface:InitCallBacks()
-	-- тут интерактивные элементы, при определенном действии выполн€етс€ заданна€ ф-и€
-	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
-	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
-end
-
-function ng_master_interface:btn1()
-	self:HideDialog()
-	local console = get_console()
-	console:execute("g_game_difficulty gd_master")
-	--soundtrack.mg_menu_start_snd()
-	main_menu:StartGame()
-end
-
-function ng_master_interface:btn2()
-	self:HideDialog()
-	--soundtrack.mg_menu_abort_snd()
-	soundtrack.mg_kpp_boss_no()
-end
-
-
-class "main_menu" (CUIScriptWnd)
-
-function main_menu:__init() super()
-	self.mbox_mode = 0
-    self:InitControls()
-    self:InitCallBacks()
-    xr_s.on_main_menu_on()
-end
-
-function main_menu:StartGame()
-	local console = get_console()
-
-	if (alife() ~= nil) then
-		console:execute	("disconnect")
-	end
-	device():pause(false)
-	console:execute("start server(all/single/alife/new) client(localhost)")
-	console:execute("main_menu off")
-end
 
 
 

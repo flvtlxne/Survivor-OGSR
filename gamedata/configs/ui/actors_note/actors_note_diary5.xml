@@ -1,42 +1,12 @@
 <?xml version="1.0" encoding="windows-1251" ?>
- 
-
-    <actors_note_diary5>
-
-	<table x="350" y="100" width="340" height="500" stretch="1">
-		<texture x="0" y="0" width="1030" height="1020">ui\actors_note\actors_note_list_1</texture>
+<actors_note_diary5>
+	<table x="178.67" y="154" width="666.67" height="460"><texture>surv_frame</texture>
+		<auto_static x="16" y="70" width="634.67" height="1.07" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="16" y="48" width="634.67" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Личные заметки</text></auto_static>
 	</table>
-
-	<name x="450" y="110" width="480" height="500" stretch="1" complex_mode="1">
-		<text x="0" y="0" r="0" g="0" b="0" a="250" font="graffiti22">Запись 6</text>
-	</name>
-
-	<text1 x="380" y="140" width="290" height="300">
-		<text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica16"  complex_mode="1">Перед смертью незнакомец не успел поделиться со мной нужной информацией... Что теперь мне делать с этим секретным блоком памяти? И кто были эти наёмники, атаковавшие меня у тайника? Всё это подозрительно напоминает происки спецслужб. Выбросить бы эту железяку подальше, но подозреваю, что именно она поможет выйти на тех людей, которые выведут меня отсюда. Главное, чтобы эти люди не пустили мне пулю в лоб. Но я не идиот, чтобы идти с ними на контакт с этим блоком в кармане! Сначала спрячу его в укромном месте, а потом уж использую как козырь в переговорах, хотя... Не даёт покоя мысль: что это был за спутник и чем так ценен этот блок? Не стоит ли вопрос о государственной безопасности? Не наломать бы дров...</text>
-	</text1>
-
-
-
-	<btn_1 x="370" y="560" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Назад</text>
-	</btn_1>
-
-	<btn_2 x="490" y="560" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Далее</text>
-	</btn_2>
-
-
-
-
-	<btn_exit x="570" y="-1000" width="25" height="25">
-	      	<texture_e>ui\button_invisible</texture_e>
-		<texture_t>ui\button_invisible</texture_t>
-		<texture_h>ui\button_invisible</texture_h>
-	        <text x="0" y="0" r="0" g="0" b="0" a="250" font="letterica18" >Х</text>
-	</btn_exit>
-
-    </actors_note_diary5>
-
-
+	<name x="194.67" y="168" width="634.67" height="34"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">Запись 6</text></name>
+	<text1 x="194.67" y="240" width="634.67" height="312"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Перед смертью незнакомец не успел поделиться со мной нужной информацией... Что теперь мне делать с этим секретным блоком памяти? И кто были эти наёмники, атаковавшие меня у тайника? Всё это подозрительно напоминает происки спецслужб. Выбросить бы эту железяку подальше, но подозреваю, что именно она поможет выйти на тех людей, которые выведут меня отсюда. Главное, чтобы эти люди не пустили мне пулю в лоб. Но я не идиот, чтобы идти с ними на контакт с этим блоком в кармане! Сначала спрячу его в укромном месте, а потом уж использую как козырь в переговорах, хотя... Не даёт покоя мысль: что это был за спутник и чем так ценен этот блок? Не стоит ли вопрос о государственной безопасности? Не наломать бы дров...</text></text1>
+	<btn_1 x="194.67" y="564" width="200" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">НАЗАД</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_1>
+	<btn_2 x="629.33" y="564" width="200" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ДАЛЕЕ</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_2>
+	<btn_exit x="-2837.33" y="0" width="13.33" height="10" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c"></text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_exit>
+</actors_note_diary5>

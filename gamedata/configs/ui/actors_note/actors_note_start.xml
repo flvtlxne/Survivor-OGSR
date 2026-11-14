@@ -1,48 +1,14 @@
 <?xml version="1.0" encoding="windows-1251" ?>
- 
-
-    <actors_note_start>
-
-	<table x="350" y="200" width="372" height="380" stretch="1">
-		<texture x="0" y="0" width="932" height="890">ui\actors_note\actors_note_title</texture>
+<actors_note_start>
+	<table x="258.67" y="265" width="506.67" height="238"><texture>surv_frame</texture>
+		<auto_static x="16" y="70" width="474.67" height="1.07" stretch="1"><texture r="201" g="168" b="76" a="170">surv_inv_white</texture></auto_static>
+		<auto_static x="16" y="48" width="474.67" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Разделы</text></auto_static>
 	</table>
-
-	<name x="510" y="300" width="480" height="500" stretch="1" complex_mode="1">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="graffiti22">Блокнот</text>
-	</name>
-
-	<text1 x="250" y="-1140" width="392" height="30">
-		<text x="0" y="0" r="235" g="235" b="118" a="158" font="letterica18"  complex_mode="1">Разделы:</text>
-	</text1>
-
-
-
-	<btn_1 x="500" y="330" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">1. Личные заметки</text>
-	</btn_1>
-
-	<btn_2 x="495" y="360" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">2. Найденные записки</text>
-	</btn_2>
-
-	<btn_3 x="490" y="390" width="108" height="24">
-	        <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">3. Советы</text>
-	</btn_3>
-
-	<btn_4 x="485" y="420" width="108" height="24">
-	         <texture>ui_inGame2_button</texture>
-	        <text font="letterica16" align="c" complex_mode="0">Тайники</text>
-	</btn_4>
-
-
-
-
-	<btn_exit x="485" y="420" width="108" height="24">
-   		<texture>ui_inGame2_button</texture>
-   		<text font="letterica16" align="c" complex_mode="0">Закрыть</text>
-   	</btn_exit>
-
-    </actors_note_start>
+	<name x="274.67" y="279" width="474.67" height="34"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">Блокнот</text></name>
+	<text1 x="-2837.33" y="0" width="13.33" height="10"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Разделы:</text></text1>
+	<btn_1 x="274.67" y="351" width="474.67" height="28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="14">1. Личные заметки</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_1>
+	<btn_2 x="274.67" y="381" width="474.67" height="28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="14">2. Найденные записки</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_2>
+	<btn_3 x="274.67" y="411" width="474.67" height="28" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="14">3. Советы</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_3>
+	<btn_4 x="-2837.33" y="0" width="13.33" height="10" stretch="1"><texture>surv_row</texture><text font="ui_font_surv_small" align="l" vert_align="c" x="14">Тайники</text><text_color><e r="214" g="209" b="196"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="110" g="106" b="98"/></text_color></btn_4>
+	<btn_exit x="549.33" y="453" width="200" height="34" stretch="1"><texture>surv_msg_btn</texture><text font="ui_font_surv_btn_s" align="c" vert_align="c">ЗАКРЫТЬ</text><text_color><e r="165" g="160" b="148"/><h r="201" g="168" b="76"/><t r="201" g="168" b="76"/><d r="100" g="100" b="100"/></text_color></btn_exit>
+</actors_note_start>
