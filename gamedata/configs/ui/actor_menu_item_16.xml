@@ -125,8 +125,8 @@
 		<cap_ammo_used_type x="104" y="100" width="40" height="8">
 			<text font="ui_font_surv_small" align="l" r="190" g="184" b="170"/>
 		</cap_ammo_used_type>
-	    <static_ammo_type1 x="12" y="117" width="80" height="40" />
-	    <static_ammo_type2 x="84" y="117" width="80" height="40" />
+	    <static_ammo_type1 x="12" y="127" width="80" height="40" />
+	    <static_ammo_type2 x="84" y="127" width="80" height="40" />
 	</wpn_params>
 
 #include "ui\af_params_16.xml"

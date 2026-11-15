@@ -59,6 +59,7 @@ condition_queue_shot_dec	= 0.0012
 
 ammo_elapsed         = 30           ; obsolete
 ammo_mag_size        = 30           ; clip (magazine) size
+CartridgeInTheChamberEnabled = true	; Survivor: патрон в патроннике, при неполной перезар€дке 30+1
 fire_modes           = 1, -1
 
 ammo_class           = ammo_5.45x39_fmj, ammo_5.45x39_ap  ; name of the ltx-section of used ammo
@@ -122,7 +123,7 @@ hit_probability_gd_master  = 0.80
 slot                    = 2                ; // secondary
 animation_slot          = 2                ; type of the animation that will be used
 
-position                = -0.026, -0.175, 0.0
+position                                = -0.026,-0.175,-0.005	; Survivor: из STCoP 3.8.1, под новую модель
 orientation             = 0, 0, 0
 
 fire_point              =  0,0.218,0.656        ; position (3rd person view) for particles of fire
@@ -132,7 +133,7 @@ flame_particles         = weapons\generic_weapon05 ; particles for shooting effe
 smoke_particles         = weapons\generic_shoot_00
 grenade_flame_particles = weapons\generic_weapon01
 
-shell_point             = 0,0.216,0.174            ; position (3rd person view) for shell to throw out
+shell_point                             = 0.02,0.04,0.5	; Survivor: из STCoP 3.8.1, под новую модель
 shell_particles         = weapons\generic_shells
 
 ;-------------------------------------------------------------------------------
@@ -200,87 +201,123 @@ silencer_light_var_color= 0.05
 silencer_light_var_range= 0.5
 silencer_light_time     = 0.2
 
-snd_draw				= weapons\ak74\ak74_draw
-snd_holster				= weapons\rifle_holster
-snd_shoot				= weapons\ak74\ak74_shoot
-snd_shoot1				= weapons\ak74\ak74_shoot1
-snd_shoot2				= weapons\ak74\ak74_shoot2
-snd_shoot3				= weapons\ak74\ak74_shoot3		
-snd_empty				= weapons\ak_empty,		0.7
-snd_reload				= weapons\ak74\ak74_reload
-snd_shoot_grenade			= weapons\gp30\gp30_grenshoot
-snd_reload_grenade			= weapons\gp30\GP30_grenload,	1.0, 0.8
-snd_switch				= $no_sound
-snd_silncer_shot			= weapons\ak74\ak74_shot_sil 
-snd_bore				= $no_sound
+; Survivor: звуки из STCoP 3.8.1 (слои Ч секции в weapons_sounds_stcop.ltx)
+snd_bore                                = $no_sound
+snd_draw                                = weapons\ak\ak_draw
+snd_holster                             = weapons\rifle_holster
+snd_empty                               = weapons\ak_empty
+snd_reload                              = weapons\ak\ak_reload
+snd_reload_empty                        = weapons\ak\ak_reload_empty
+snd_reload_misfire                      = weapons\ak\ak_misfire
+snd_firemode                            = weapons\ak\ak_firemode
+snd_shoot_grenade                       = weapons\gp25\GP25_grenshoot
+snd_reload_grenade                      = weapons\gp25\GP25_grenload
+snd_switch                              = weapons\gp25\GP25_switch
+snd_shoot                               = wpn_ak74_snd_shoot
+snd_silncer_shot                        = wpn_545_snd_silenced
 
 [wpn_ak74_hud]
-zoom_hide_crosshair				= true
-attach_place_idx				= 0
-item_visual					= dynamics\weapons\wpn_ak74\wpn_ak74_hud.ogf
-
-hands_position				= -0.062,-0.12,0.11
-hands_orientation				= 0.55,2.39,0.1499993
-
-hands_position_16x9				= -0.062,-0.12,0.11
-hands_orientation_16x9			= 0.55,2.39,0.1499993
-
-item_position				= 0,0,0
-item_orientation				= 0,0,0
-
-aim_hud_offset_pos				= -0.0905,0.0315,-0.1
-aim_hud_offset_rot				= 0.036,0.009,-0.006
-	
-aim_hud_offset_pos_16x9 			= -0.0905,0.0315,-0.1
-aim_hud_offset_rot_16x9 			= 0.036,0.009,-0.006
-
-gl_hud_offset_pos				= -0.052,-0.016,0
-gl_hud_offset_rot				= -0.0625,0.0045,-0.02
-
-gl_hud_offset_pos_16x9 			= -0.052,-0.016,0
-gl_hud_offset_rot_16x9 			= -0.0625,0.0045,-0.02
-
-shell_point					= 0.0,0.064,0.19
-shell_dir					= 0.0, 1.0, 0.0
-shell_bone					= wpn_body
-
-fire_point					= 0,0.038931,0.623703
-fire_bone					= wpn_body
-fire_point2					= 0.0,-0.011,0.553
-fire_bone2					= wpn_body
-
-anm_show					= lancew_ak74_draw
-anm_hide                				= lancew_ak74_holster
-anm_idle                				= lancew_ak74_idle
-anm_idle_sprint         				= lancew_ak74_sprint
-anm_idle_moving         				= lancew_ak74_moving
-anm_shots               				= lancew_ak74_shoot, shoot
-anm_reload              				= lancew_ak74_reload, reload
-anm_idle_aim            				= lancew_ak74_idle_aim, idle_aim
-anm_bore                				= lancew_ak74_no_reload
-anm_show_w_gl           			= lancew_ak74_draw_w_gl	
-anm_hide_w_gl           				= lancew_ak74_holster_w_gl
-anm_idle_w_gl           				= lancew_ak74_idle_w_gl
-anm_shots_w_gl          				= lancew_ak74_shoot_w_gl, shoot
-anm_reload_w_gl         			= lancew_ak74_reload_w_gl, reload
-anm_idle_w_gl_aim       			= lancew_ak74_idle_aim_w_gl, idle_aim
-anm_idle_sprint_w_gl    			= lancew_ak74_sprint_w_gl
-anm_idle_moving_w_gl    			= lancew_ak74_moving_w_gl
-anm_bore_w_gl           				= lancew_ak74_no_reload_w_gl
-anm_switch_g            				= lancew_ak74_no_reload_w_gl         
-anm_switch            				= lancew_ak74_no_reload_w_gl  
-anm_show_g              				= lancew_ak74_draw_w_gl		
-anm_hide_g              				= lancew_ak74_holster_w_gl		
-anm_idle_g              				= lancew_ak74_idle_w_gl		
-anm_reload_g            				= lancew_ak74_reload_g, reload_g
-anm_idle_g_aim          				= lancew_ak74_idle_aim_w_gl		
-anm_shots_g             				= lancew_ak74_shoot_g, shoot_g
-anm_idle_sprint_g       				= lancew_ak74_sprint_w_gl		
-anm_idle_moving_g      	 		= lancew_ak74_moving_w_gl		
-anm_bore_g              				= lancew_ak74_no_reload_w_gl
-
-lean_hud_offset_pos				= 0,0,0
-lean_hud_offset_rot				= 0,0,0
+; Survivor: HUD из STCoP 3.8.1 ([wpn_ak74_hud]), без ключей IX-Ray
+zoom_hide_crosshair                     = true
+attach_place_idx                        = 0
+item_visual                             = dynamics\weapons\wpn_ak74\wpn_ak74_hud.ogf
+hands_position_16x9                     = 0.004800,-0.008400,0
+hands_orientation_16x9                  = 0,0,0
+hands_position                          = 0.004800,-0.008400,0
+hands_orientation                       = 0,0,0
+item_position                           = 0,0,0
+item_orientation                        = 0,0,0
+aim_hud_offset_pos                      = -0.063100, 0.020500, -0.080000
+aim_hud_offset_rot                      = -0.004500, 0.000000, -0.002500
+aim_hud_offset_pos_16x9                 = -0.063100, 0.020500, -0.080000
+aim_hud_offset_rot_16x9                 = -0.004500, 0.000000, -0.002500
+shell_bone                              = bolt
+shell_point                             = 0,-0.01,0
+fire_bone                               = wpn_body
+fire_bone2                              = wpn_launcher
+fire_point                              = 0,-0.006600,0.354201
+fire_point2                             = 0,-0.004400,0.139700
+disable_bore                            = true
+anm_show                                = ak74_iwp_draw
+anm_hide                                = ak74_iwp_hide
+anm_idle                                = ak74_iwp_idle
+anm_idle_moving                         = ak74_iwp_walk
+anm_idle_moving_slow                    = ak74_iwp_walk_slow
+anm_idle_moving_crouch                  = ak74_iwp_walk_slow_down
+anm_idle_moving_slow_crouch             = ak74_iwp_walk_slow_down,, 0.8
+anm_shoot                               = ak74_iwp_shoot, shoot
+anm_shoot_last                          = ak74_iwp_shoot, shoot
+anm_shoot_aim                           = ak74_iwp_aim_shoot, shoot
+anm_shoot_aim_last                      = ak74_iwp_aim_shoot, shoot
+anm_shoot_aim_scope                     = ak74_iwp_aim_shoot_scope, shoot
+anm_shoot_aim_scope_last                = ak74_iwp_aim_shoot_scope, shoot
+anm_reload                              = ak74_iwp_reload, reload
+anm_reload_empty                        = ak74_iwp_reload_empty, reload_empty
+anm_reload_jammed                       = ak74_iwp_revival, revival
+anm_idle_aim                            = ak74_iwp_idle_aim
+anm_firemode                            = ak74_iwp_firemode
+anm_show_w_gl                           = ak74_iwp_draw_w_gl
+anm_hide_w_gl                           = ak74_iwp_hide_w_gl
+anm_idle_w_gl                           = ak74_iwp_idle_w_gl
+anm_idle_moving_w_gl                    = ak74_iwp_walk_w_gl
+anm_idle_moving_slow_w_gl               = ak74_iwp_walk_slow_w_gl
+anm_idle_moving_crouch_w_gl             = ak74_iwp_walk_slow_down_w_gl
+anm_idle_moving_slow_crouch_w_gl        = ak74_iwp_walk_slow_down_w_gl,, 0.8
+anm_shoot_w_gl                          = ak74_iwp_shoot_w_gl, shoot
+anm_shoot_last_w_gl                     = ak74_iwp_shoot_w_gl, shoot
+anm_shoot_aim_w_gl                      = ak74_iwp_aim_shoot_w_gl, shoot
+anm_shoot_aim_last_w_gl                 = ak74_iwp_aim_shoot_w_gl, shoot
+anm_shoot_aim_scope_w_gl                = ak74_iwp_aim_shoot_scope_w_gl, shoot
+anm_shoot_aim_scope_last_w_gl           = ak74_iwp_aim_shoot_scope_w_gl, shoot
+anm_shoot_aim_scope_sil_w_gl            = ak74_iwp_aim_shoot_scope_w_gl, shoot
+anm_shoot_aim_scope_sil_last_w_gl       = ak74_iwp_aim_shoot_scope_w_gl, shoot
+anm_reload_w_gl                         = ak74_iwp_reload_w_gl, reload
+anm_reload_empty_w_gl                   = ak74_iwp_reload_empty_w_gl, reload_empty
+anm_reload_jammed_w_gl                  = ak74_iwp_revival_w_gl, revival
+anm_idle_aim_w_gl                       = ak74_iwp_idle_aim_w_gl
+anm_firemode_w_gl                       = ak74_iwp_firemode_w_gl
+anm_switch                              = ak74_iwp_g_off, off_g
+anm_switch_g                            = ak74_iwp_g_on, on_g
+anm_show_g                              = ak74_iwp_draw_g, idle_gl
+anm_hide_g                              = ak74_iwp_hide_g, idle_gl
+anm_idle_g                              = ak74_iwp_idle_g, idle_gl
+anm_reload_g                            = ak74_iwp_reload_g, reload_gl
+anm_idle_aim_g                          = ak74_iwp_idle_aim_g, idle_gl
+anm_shoot_g                             = ak74_iwp_shoot_g, shoot_gl
+anm_shoot_aim_g                         = ak74_iwp_shoot_g, shoot_gl
+anm_idle_sprint_g                       = ak74_iwp_sprint_g, idle_gl
+anm_idle_moving_g                       = ak74_iwp_walk_g, idle_gl
+anm_idle_moving_slow_g                  = ak74_iwp_walk_slow_g, idle_gl
+anm_idle_moving_crouch_g                = ak74_iwp_walk_slow_down_g, idle_gl
+anm_idle_moving_slow_crouch_g           = ak74_iwp_walk_slow_down_g, idle_gl, 0.8
+anm_idle_sprint_start                   = ak74_iwp_sprint_start
+anm_idle_sprint                         = ak74_iwp_sprint
+anm_idle_sprint_end                     = ak74_iwp_sprint_end
+anm_idle_sprint_start_w_gl              = ak74_iwp_sprint_w_gl_start
+anm_idle_sprint_w_gl                    = ak74_iwp_sprint_w_gl
+anm_idle_sprint_end_w_gl                = ak74_iwp_sprint_w_gl_end
+anm_idle_sprint_start_g                 = ak74_iwp_sprint_g_start, idle_gl
+anm_idle_sprint_end_g                   = ak74_iwp_sprint_g_end, idle_gl
+gl_hud_offset_pos                       = -0.020600,-0.225400,-0.015000
+gl_hud_offset_rot                       = -0.470660,0.045390,0.092000
+gl_hud_offset_pos_16x9                  = -0.020600,-0.225400,-0.015000
+gl_hud_offset_rot_16x9                  = -0.470660,0.045390,0.092000
+; Survivor: синонимы под пор€док суффиксов движка (_sil, _g/_w_gl, _aim, _jammed/_last/_empty, _N)
+anm_idle_moving_crouch_slow             = ak74_iwp_walk_slow_down,, 0.8
+anm_idle_moving_crouch_slow_w_gl        = ak74_iwp_walk_slow_down_w_gl,, 0.8
+anm_shoot_w_gl_last                     = ak74_iwp_shoot_w_gl, shoot
+anm_shoot_w_gl_aim                      = ak74_iwp_aim_shoot_w_gl, shoot
+anm_shoot_w_gl_aim_last                 = ak74_iwp_aim_shoot_w_gl, shoot
+anm_shoot_w_gl_aim_scope                = ak74_iwp_aim_shoot_scope_w_gl, shoot
+anm_shoot_w_gl_aim_scope_last           = ak74_iwp_aim_shoot_scope_w_gl, shoot
+anm_shoot_sil_w_gl_aim_scope            = ak74_iwp_aim_shoot_scope_w_gl, shoot
+anm_shoot_sil_w_gl_aim_scope_last       = ak74_iwp_aim_shoot_scope_w_gl, shoot
+anm_reload_w_gl_empty                   = ak74_iwp_reload_empty_w_gl, reload_empty
+anm_reload_w_gl_jammed                  = ak74_iwp_revival_w_gl, revival
+anm_idle_w_gl_aim                       = ak74_iwp_idle_aim_w_gl
+anm_idle_g_aim                          = ak74_iwp_idle_aim_g, idle_gl
+anm_shoot_g_aim                         = ak74_iwp_shoot_g, shoot_gl
+anm_idle_moving_crouch_slow_g           = ak74_iwp_walk_slow_down_g, idle_gl, 0.8
 
 [scope_ak74]
 scope_name 				= wpn_addon_scope
