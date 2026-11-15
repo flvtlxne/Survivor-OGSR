@@ -155,7 +155,7 @@
 			<text complex_mode="0" font="ui_font_surv_btn_s" r="214" g="209" b="196" a="0"/>
 		</static_cur_ammo>
 		<static_ammo x="812" y="700" width="190.0" height="26">
-			<text complex_mode="0" font="ui_font_surv_btn_s" r="214" g="209" b="196" align="r" vert_align="c"/>
+			<text complex_mode="0" font="ui_font_surv_btn_s" r="165" g="160" b="148" align="r" vert_align="c"/>
 		</static_ammo>
 		<static_ammo_name x="822.0" y="700" width="120.0" height="26">
 			<text complex_mode="0" font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c"/>
