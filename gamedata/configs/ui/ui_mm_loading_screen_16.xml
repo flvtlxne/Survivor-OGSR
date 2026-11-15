@@ -41,7 +41,7 @@
 	</loading_tip_number>
 
 	<!-- Survivor: the engine picks a tip from 1 to number_of_tips - 1, so this is the tip count + 1 -->
-	<loading_tip x="40" y="640" width="560" height="56" complex_mode="1" number_of_tips="46">
+	<loading_tip x="40" y="640" width="560" height="56" complex_mode="1" number_of_tips="44">
 		<text font="ui_font_surv_small" r="214" g="209" b="196" align="l"/>
 	</loading_tip>
 </w>
