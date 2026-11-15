@@ -1,0 +1,38 @@
+<w>
+	<!-- Survivor: HD item icons from SFZ Project (atlas ui_icon_equipment_sfz, used with permission). Items pick them by icon_name. -->
+	<file name="ui\ui_icon_equipment_sfz">
+		<texture id="sfz_icon_mp5" x="50" y="600" width="800" height="400" />
+		<texture id="sfz_icon_aksu" x="50" y="2550" width="800" height="400" />
+		<texture id="sfz_icon_toz34" x="50" y="1000" width="1200" height="400" />
+		<texture id="sfz_icon_pm" x="500" y="1900" width="400" height="200" />
+		<texture id="sfz_icon_fort12" x="50" y="1900" width="400" height="200" />
+		<texture id="sfz_icon_bm16" x="50" y="2400" width="600" height="200" />
+		<texture id="sfz_icon_knife" x="50" y="2150" width="400" height="200" />
+		<texture id="sfz_icon_handflash" x="1500" y="650" width="200" height="100" />
+		<texture id="sfz_icon_9x18fmj" x="1200" y="250" width="200" height="100" />
+		<texture id="sfz_icon_9x18pmm" x="1200" y="350" width="200" height="100" />
+		<texture id="sfz_icon_9x19fmj" x="1200" y="450" width="200" height="100" />
+		<texture id="sfz_icon_9x19pbp" x="1200" y="550" width="200" height="100" />
+		<texture id="sfz_icon_545fmj" x="1000" y="150" width="200" height="100" />
+		<texture id="sfz_icon_545ap" x="1000" y="250" width="200" height="100" />
+		<texture id="sfz_icon_12buck" x="1000" y="450" width="200" height="100" />
+		<texture id="sfz_icon_12slug" x="1000" y="550" width="200" height="100" />
+		<texture id="sfz_icon_bread" x="1050" y="50" width="100" height="100" />
+		<texture id="sfz_icon_sosig" x="1150" y="50" width="100" height="100" />
+		<texture id="sfz_icon_conserva" x="1250" y="50" width="100" height="100" />
+		<texture id="sfz_icon_horilka" x="1550" y="0" width="100" height="200" />
+		<texture id="sfz_icon_sralker" x="1350" y="0" width="100" height="200" />
+		<texture id="sfz_icon_medkit1" x="1900" y="50" width="100" height="100" />
+		<texture id="sfz_icon_medkit2" x="1800" y="50" width="100" height="100" />
+		<texture id="sfz_icon_medkit3" x="1700" y="50" width="100" height="100" />
+		<texture id="sfz_icon_bandage" x="2000" y="50" width="100" height="100" />
+		<texture id="sfz_icon_antirad" x="2100" y="50" width="100" height="100" />
+		<texture id="sfz_icon_echo" x="1700" y="500" width="100" height="100" />
+		<texture id="sfz_icon_bear" x="1800" y="500" width="100" height="100" />
+		<texture id="sfz_icon_fmradio" x="1500" y="450" width="100" height="200" />
+		<texture id="sfz_icon_escape_map" x="1650" y="250" width="200" height="100" />
+		<texture id="sfz_icon_pdas" x="1900" y="250" width="200" height="100" />
+		<texture id="sfz_icon_sunrise" x="2350" y="50" width="400" height="600" />
+		<texture id="sfz_icon_novice" x="3200" y="50" width="400" height="400" />
+	</file>
+</w>
