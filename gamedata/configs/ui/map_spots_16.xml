@@ -1,4 +1,4 @@
-﻿<map_spots>
+<map_spots>
 
 #include "ui\map_spots_mp.xml"
 #include "ui\map_spots_relations.xml"

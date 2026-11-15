@@ -422,7 +422,7 @@ function actor_binder:update(delta) --/ Биндер актора, РАДИ БОГА НЕ ВЕЩАЙ НИЧЕГО
 	simulation_objects.get_sim_obj_registry():update_avaliability(alife():actor())
 
 	if not self.loaded then
-		get_console():execute("dump_infos")
+		-- Survivor: get_console():execute("dump_infos") — отладочной команды в движке нет, в логе было «Unknown command»
 		self.loaded = true
 	end
 	treasure_manager.get_treasure_manager():update()

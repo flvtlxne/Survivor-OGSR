@@ -196,7 +196,7 @@
 		<text>Нажмите «Прыжок», чтобы стартовать</text>
 	</string>
 	<string id="mp_press_to_buy">
-		<text>Нажмите «$$ACTION_BUY_MENU$$» для доступа к меню покупки</text>
+		<text>Откройте меню покупки</text>
 	</string>
 	<string id="mp_press_yes2pay">
 		<text>У Вас есть %d$. Вы можете купить рождение за %d$. Нажмите «Да», чтобы заплатить</text>
@@ -406,7 +406,7 @@
 		<text>Тренировочный лагерь</text>
 	</string>
 	<string id="mp_vote_hint">
-		<text>Голосовать ЗА-[$$ACTION_VOTE_YES$$]\nГолосовать ПРОТИВ-[$$ACTION_VOTE_NO$$]\nРезультаты-[$$ACTION_VOTE$$]</text>
+		<text>Голосовать ЗА\nГолосовать ПРОТИВ\nРезультаты</text>
 	</string>
 	<string id="mp_vote_no">
 		<text>Против</text>

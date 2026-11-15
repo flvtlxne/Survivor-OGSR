@@ -12,6 +12,34 @@
 		</value>
 	</boost_health_restore>
 
+	<!-- Survivor: nodes for the new engine boosters, no item of the mod uses them; without nodes the engine logs "XML node not found" -->
+	<boost_satiety_restore x="0" y="0" width="257" height="20">
+		<caption x="0" y="0" width="257" height="20" complex_mode="0">
+			<text r="165" g="160" b="148" font="ui_font_surv_small" vert_align="c" x="22" y="0"/>
+		</caption>
+		<value x="140" y="0" width="30" height="20" magnitude="10000">
+			<text font="ui_font_surv_small" vert_align="c"/>
+		</value>
+	</boost_satiety_restore>
+
+	<boost_thirst_restore x="0" y="0" width="257" height="20">
+		<caption x="0" y="0" width="257" height="20" complex_mode="0">
+			<text r="165" g="160" b="148" font="ui_font_surv_small" vert_align="c" x="22" y="0"/>
+		</caption>
+		<value x="140" y="0" width="30" height="20" magnitude="10000">
+			<text font="ui_font_surv_small" vert_align="c"/>
+		</value>
+	</boost_thirst_restore>
+
+	<boost_alcohol_restore x="0" y="0" width="257" height="20">
+		<caption x="0" y="0" width="257" height="20" complex_mode="0">
+			<text r="165" g="160" b="148" font="ui_font_surv_small" vert_align="c" x="22" y="0"/>
+		</caption>
+		<value x="140" y="0" width="30" height="20" magnitude="10000">
+			<text font="ui_font_surv_small" vert_align="c"/>
+		</value>
+	</boost_alcohol_restore>
+
 	<boost_radiation_restore x="0" y="0" width="257" height="20">
 		<caption x="0" y="0" width="257" height="20" complex_mode="0">
 			<text r="165" g="160" b="148" font="ui_font_surv_small" vert_align="c" x="22" y="0"/>

@@ -228,6 +228,12 @@
 	<string id="ui_inv_satiety">
 		<text>Насыщение</text>
 	</string>
+	<string id="ui_inv_thirst">
+		<text>Жажда</text>
+	</string>
+	<string id="ui_inv_alcohol">
+		<text>Опьянение</text>
+	</string>
 	<string id="ui_inv_scope_rifle">
 		<text>Купить оптический прицел для винтовки (S)</text>
 	</string>
