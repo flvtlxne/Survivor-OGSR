@@ -1321,4 +1321,16 @@
 %c[green] \nTransformer:\nJ Ч менше шлейф≥в, б≥льше мерехт≥нн€ (NVIDIA рекомендуЇ K).\nK Ч трансформер 1-го покол≥нн€, за замовчуванн€м дл€ DLAA / Quality / Balanced.\nL Ч трансформер 2-го покол≥нн€, ч≥тк≥ше ≥ пов≥льн≥ше, за замовчуванн€м дл€ Ultra Performance (RTX 40+).\nM Ч трансформер 2-го покол≥нн€, €к≥сть €к у L, але швидше, за замовчуванн€м дл€ Performance (RTX 40+).
 Default сл≥дуЇ за NVIDIA / OTA драйвера.</text>
 	</string>
+	<string id="ui_mm_st_check_btn_on">
+		<text>”в≥мкнено</text>
+	</string>
+	<string id="ui_mm_st_check_btn_off">
+		<text>¬имкнено</text>
+	</string>
+	<string id="ui_mm_opt_warn_red">
+		<text>ќпц≥€ з дуже високим навантаженн€м на комп'ютер!</text>
+	</string>
+	<string id="ui_mm_opt_warn_yellow">
+		<text>ќпц≥€ з п≥двищеним навантаженн€м на комп'ютер</text>
+	</string>
 </string_table>
