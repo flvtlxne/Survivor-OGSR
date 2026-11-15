@@ -49,4 +49,7 @@
 	<string id="st_surv_upg_repair">
 		<text>ÐÅÌÎÍÒ</text>
 	</string>
+	<string id="st_surv_addons">
+		<text>%c[255,201,168,76]Îבגוסû:%c[default]</text>
+	</string>
 </string_table>
