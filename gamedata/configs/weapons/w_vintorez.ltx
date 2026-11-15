@@ -156,7 +156,7 @@ strap_bone0             = bip01_spine2
 strap_bone1             = bip01_spine1
 
 startup_ammo            = 90
-visual                  = dynamics\weapons\wpn_vintorez\wpn_vintorez.ogf
+visual                                  = dynamics\weapons\wpn_vintorez\wpn_vintorez_pso1m21.ogf	; Survivor: из STCoP 3.8.1, под новую модель
 
 light_disabled				= true
 light_color             = 0.6,0.5,0.3
@@ -214,20 +214,20 @@ snd_reload                              = weapons\val\val_reload
 snd_reload_empty                        = weapons\val\val_reload_empty
 
 [wpn_vintorez_hud]
-; Survivor: HUD из STCoP 3.8.1 ([wpn_vintorez_hud]), без ключей IX-Ray
+; Survivor: HUD из STCoP 3.8.1 ([wpn_vintorez_pso1m21_hud]), без ключей IX-Ray
 zoom_hide_crosshair                     = true
 attach_place_idx                        = 0
-item_visual                             = dynamics\weapons\wpn_vintorez\wpn_vintorez_hud.ogf
+item_visual                             = dynamics\weapons\wpn_vintorez\wpn_vintorez_pso1m21_hud.ogf
 hands_position                          = -0.001389,0.001550,0.033713
 hands_orientation                       = -0.293082,0.000000,0.000000
 hands_position_16x9                     = -0.001389,0.001550,0.033713
 hands_orientation_16x9                  = -0.293082,0.000000,0.000000
 item_position                           = 0, 0, 0
 item_orientation                        = 0, 0, 0
-aim_hud_offset_pos                      = -0.049392,0.022131,-0.065562
-aim_hud_offset_rot                      = 0.004180,-0.004039,0.000000
-aim_hud_offset_pos_16x9                 = -0.049392,0.022131,-0.065562
-aim_hud_offset_rot_16x9                 = 0.004180,-0.004039,0.000000
+aim_hud_offset_pos                      = -0.044140, 0.001050, 0.060238
+aim_hud_offset_rot                      = 0.002930, 0.008461, 0.000000
+aim_hud_offset_pos_16x9                 = -0.044140, 0.001050, 0.060238
+aim_hud_offset_rot_16x9                 = 0.002930, 0.008461, 0.000000
 shell_bone                              = zatvor
 shell_point                             = 0, 0, 0
 fire_bone                               = muzzle
@@ -246,7 +246,7 @@ anm_idle_sprint                         = vss_new_sprint, idle, 1.1
 anm_idle_sprint_start                   = vss_new_sprint_start, idle
 anm_idle_sprint_end                     = vss_new_sprint_end, idle
 anm_reload                              = vss_new_reload_retention, reload_retention
-anm_reload_empty                        = vss_new_reload_empty, reload_empty
+anm_reload_empty                        = vss_new_reload_empty_scope, reload_empty_scope
 anm_shoot                               = vss_new_shoot_hip
 anm_shoot_aim                           = vss_new_shoot
 anm_shoot_aim_scope                     = vss_shoot_scope, vss_new_shoot
