@@ -194,9 +194,35 @@ local action_descr_by_type = {
 								updated = "general_update_task"
 							 }
 
+-- Survivor: случайные задания (rnd_task_*) приходят пачкой, вместо сообщения на каждое одно общее; нападение мародеров отдельно
+local rnd_tasks_news_time = nil
+local function rnd_tasks_news(task)
+	local id = task:get_id()
+	if id == nil or string.find(id, "^rnd_task_") == nil or id == "rnd_task_marodr_atack" then
+		return false
+	end
+	local now = time_global()
+	local first = rnd_tasks_news_time == nil or now - rnd_tasks_news_time > 30000
+	rnd_tasks_news_time = now
+	if first then
+		xr_sound.set_sound_play(db.actor:id(), "pda_task")
+		local news_caption = game.translate_string("st_surv_rnd_tasks_caption")
+		local news_text = game.translate_string("st_surv_rnd_tasks_text")
+		if db.actor:is_talking() then
+			db.actor:give_talk_message2(news_caption, news_text, "ui_iconsTotal_storyline", "iconed_answer_item")
+		else
+			db.actor:give_game_news(news_caption, news_text, "ui_iconsTotal_storyline", 0, 10000)
+		end
+	end
+	return true
+end
+
 function send_task(actor, type, task)
 	if db.actor == nil then
 		return false
+	end
+	if type == "new" and rnd_tasks_news(task) then
+		return
 	end
 	local time_on_screen = 10000
 	if type == "updated" then

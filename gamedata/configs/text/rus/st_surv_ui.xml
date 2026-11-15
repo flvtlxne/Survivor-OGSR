@@ -50,6 +50,12 @@
 		<text>РЕМОНТ</text>
 	</string>
 	<string id="st_surv_addons">
-		<text>%c[255,201,168,76]Обвесы:%c[default]</text>
+		<text>%c[255,201,168,76]Обвесы:\n%c[default]</text>
+	</string>
+	<string id="st_surv_rnd_tasks_caption">
+		<text>Получены дополнительные задания.</text>
+	</string>
+	<string id="st_surv_rnd_tasks_text">
+		<text>С полным списком можно ознакомиться в ПДА.</text>
 	</string>
 </string_table>
