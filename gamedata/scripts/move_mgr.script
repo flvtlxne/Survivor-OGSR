@@ -297,6 +297,15 @@ function move_mgr:update()
 			self.keep_state_until = t + keep_state_min_time
 
 			local cur_pt = self.current_point_index
+			-- Survivor: no reachable point of the path (the engine gives -1): say once who and where, do not ask the engine for point -1
+			if cur_pt == nil or cur_pt < 0 or cur_pt >= self.patrol_walk:count() then
+				if self.unreachable_path ~= self.path_walk then
+					self.unreachable_path = self.path_walk
+					local st = db.storage[self.object:id()]
+					log1(string.format("! [move_mgr] %s [%s]: no reachable point of patrol path [%s]", self.object:name(), tostring(st and st.active_section), tostring(self.path_walk)))
+				end
+				return
+			end
 			-- self.patrol_walk здесь по идее то же самое, что вернет patrol(self.object:patrol()),
 			-- поэтому использую его для оптимизации.
 			local dist = self.object:position():distance_to(self.patrol_walk:point(cur_pt))

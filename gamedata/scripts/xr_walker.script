@@ -183,6 +183,15 @@ function set_scheme(npc, ini, scheme, section, gulag_name)
 
 	st.path_look = utils.cfg_get_string(ini, section, "path_look", npc, false, gulag_name)
 
+	-- Survivor: единственная точка kolhoz_pnt10_1_walk стоит внутри workshop_box_nopass_zone1 (сфера 4 м у ящика на рембазе),
+	-- NPC до нее не дойти и он стоит навсегда. Логика лежит в custom data уже заспавненных NPC, поэтому правка здесь, а не в ltx: так она работает и в старых сейвах
+	if st.path_walk == "kolhoz_pnt10_1_walk" then
+		st.path_walk = "kolhoz_pnt10_2_walk"
+		if st.path_look == "kolhoz_pnt10_1_look" then
+			st.path_look = "kolhoz_pnt10_2_look"
+		end
+	end
+
 	if st.path_walk == st.path_look then
 		abort("You are trying to set 'path_look' equal to 'path_walk' in section [%s] for npc [%s]", section, npc:name())
 	end
