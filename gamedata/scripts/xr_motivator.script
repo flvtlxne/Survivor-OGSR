@@ -410,19 +410,6 @@ end
 		who = npc
 	end
 	
-	if who:section() == "personal_dog" then
-		if xr_conditions.actor_wears_novice_outfit() == true then
-			--who = db.actor
-			local h = hit()
-			h.type = hit.fire_wound
-			h.power = 0.01
-			h.impulse = 0
-			h.draftsman = db.actor
-			h.direction = obj:position():sub(db.actor:position())
-			obj:hit(h)
-		end
-	end
-	
 end
 
 function motivator_binder:death_callback(victim, who)
@@ -482,15 +469,6 @@ function motivator_binder:death_callback(victim, who)
 
 	if who:section() == "karlik_friend" then
 		mod_functions.karlik_habar_random_info()
-		if xr_conditions.actor_wears_novice_outfit() == true then
-			who = db.actor
-		end
-	end
-	
-	if who:section() == "personal_dog" then
-		if xr_conditions.actor_wears_novice_outfit() == true then
-			who = db.actor
-		end
 	end
 	
 	if who == nil then

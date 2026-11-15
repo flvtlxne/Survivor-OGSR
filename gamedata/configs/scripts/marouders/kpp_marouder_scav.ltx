@@ -24,7 +24,6 @@ gather_items_enabled = false
 help_wounded_enabled = true
 corpse_detection_enabled = false
 out_restr = script_zone_blokpost
-combat_ignore_cond = {-kpp_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_kpp_item) !actor_has_item(kpp_rnd_artefact)} true
 on_signal       = arriwed|walker@1
 
 ; Шляемся по базе:
@@ -36,7 +35,6 @@ gather_items_enabled = false
 help_wounded_enabled = true
 corpse_detection_enabled = false
 out_restr = script_zone_blokpost
-combat_ignore_cond = {-kpp_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_kpp_item) !actor_has_item(kpp_rnd_artefact)} true
 on_signal       = arriwed|walker@1_1
 
 [walker@1_1]
@@ -47,7 +45,6 @@ gather_items_enabled = false
 help_wounded_enabled = true
 corpse_detection_enabled = false
 out_restr = script_zone_blokpost
-combat_ignore_cond = {-kpp_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_kpp_item) !actor_has_item(kpp_rnd_artefact)} true
 on_info = {=dist_to_actor_le(3) -kpp_marod_hit} %+kpp_marod_hit%
 on_game_timer = 800|walker@2 %=play_sound(state_maroder)%
 
@@ -59,7 +56,6 @@ gather_items_enabled = false
 help_wounded_enabled = true
 corpse_detection_enabled = false
 out_restr = script_zone_blokpost
-combat_ignore_cond = {-kpp_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_kpp_item) !actor_has_item(kpp_rnd_artefact)} true
 on_signal       = arriwed|walker@2_1
 
 [walker@2_1]
@@ -70,7 +66,6 @@ gather_items_enabled = false
 help_wounded_enabled = true
 corpse_detection_enabled = false
 out_restr = script_zone_blokpost
-combat_ignore_cond = {-kpp_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_kpp_item) !actor_has_item(kpp_rnd_artefact)} true
 on_info = {=dist_to_actor_le(3) -kpp_marod_hit} %+kpp_marod_hit%
 on_game_timer = 800|walker@3 %=play_sound(state_maroder)%
 
@@ -82,7 +77,6 @@ gather_items_enabled = false
 help_wounded_enabled = true
 corpse_detection_enabled = false
 out_restr = script_zone_blokpost
-combat_ignore_cond = {-kpp_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_kpp_item) !actor_has_item(kpp_rnd_artefact)} true
 on_signal       = arriwed|walker@3_1
 
 [walker@3_1]
@@ -93,7 +87,6 @@ gather_items_enabled = false
 help_wounded_enabled = true
 corpse_detection_enabled = false
 out_restr = script_zone_blokpost
-combat_ignore_cond = {-kpp_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_kpp_item) !actor_has_item(kpp_rnd_artefact)} true
 on_info = {=dist_to_actor_le(3) -kpp_marod_hit} %+kpp_marod_hit%
 on_game_timer = 800|walker@1 %=play_sound(state_maroder)%
 

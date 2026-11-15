@@ -22,7 +22,6 @@ invulnerable = false
 gather_items_enabled = false
 corpse_detection_enabled = false
 out_restr = script_zone_helicrash
-combat_ignore_cond = {-helicrash_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_helicrash_item) !actor_has_item(helicrash_rnd_artefact)} true
 on_signal       = arriwed|walker@1
 
 [walker@1]
@@ -32,7 +31,6 @@ def_state_moving1 = patrol
 gather_items_enabled = false
 corpse_detection_enabled = false
 out_restr = script_zone_helicrash
-combat_ignore_cond = {-helicrash_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_helicrash_item) !actor_has_item(helicrash_rnd_artefact)} true
 on_signal       = arriwed|walker@1_1
 
 [walker@1_1]
@@ -42,7 +40,6 @@ def_state_moving1 = patrol
 gather_items_enabled = false
 corpse_detection_enabled = false
 out_restr = script_zone_helicrash
-combat_ignore_cond = {-helicrash_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_helicrash_item) !actor_has_item(helicrash_rnd_artefact)} true
 on_info = {=dist_to_actor_le(3) -helicrash_marod_hit} %+helicrash_marod_hit%
 on_game_timer = 800|walker@2 %=play_sound(state_maroder)%
 
@@ -53,7 +50,6 @@ def_state_moving1 = patrol
 gather_items_enabled = false
 corpse_detection_enabled = false
 out_restr = script_zone_helicrash
-combat_ignore_cond = {-helicrash_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_helicrash_item) !actor_has_item(helicrash_rnd_artefact)} true
 on_signal       = arriwed|walker@2_1
 
 [walker@2_1]
@@ -63,7 +59,6 @@ def_state_moving1 = patrol
 gather_items_enabled = false
 corpse_detection_enabled = false
 out_restr = script_zone_helicrash
-combat_ignore_cond = {-helicrash_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_helicrash_item) !actor_has_item(helicrash_rnd_artefact)} true
 on_info = {=dist_to_actor_le(3) -helicrash_marod_hit} %+helicrash_marod_hit%
 on_game_timer = 800|walker@3 %=play_sound(state_maroder)%
 
@@ -74,7 +69,6 @@ def_state_moving1 = patrol
 gather_items_enabled = false
 corpse_detection_enabled = false
 out_restr = script_zone_helicrash
-combat_ignore_cond = {-helicrash_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_helicrash_item) !actor_has_item(helicrash_rnd_artefact)} true
 on_signal       = arriwed|walker@3_1
 
 [walker@3_1]
@@ -84,7 +78,6 @@ def_state_moving1 = patrol
 gather_items_enabled = false
 corpse_detection_enabled = false
 out_restr = script_zone_helicrash
-combat_ignore_cond = {-helicrash_marod_hit =actor_wears_novice_outfit !personal_dog_near !actor_has_item(rnd_task_helicrash_item) !actor_has_item(helicrash_rnd_artefact)} true
 on_info = {=dist_to_actor_le(3) -helicrash_marod_hit} %+helicrash_marod_hit%
 on_game_timer = 800|walker@1 %=play_sound(state_maroder)%
 
