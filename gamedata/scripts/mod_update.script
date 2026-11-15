@@ -91,6 +91,11 @@ local health_screen_effect = health_threasold + 0.25		-- уровень здоровья, при к
 if health < health_screen_effect and db.actor:dont_has_info("critical_health") and has_alife_info("stranger_talk1") then
 	level.add_pp_effector("thermal.ppe", 1084, false)
 end
+-- Survivor: краснота низкого здоровья уходит сразу, как только здоровье выше порога, а не доигрывает несколько секунд
+if health >= health_screen_effect then
+	level.set_pp_effector_factor(1084, 0)
+	level.remove_pp_effector(1084)
+end
 if db.actor:alive() and has_alife_info("stranger_talk1") and db.actor:dont_has_info("actor_set_maroder") then
 if not xr_conditions.actor_in_zone(nil,nil,{"village_trap_house_room_zone"}) 
 		and not xr_conditions.actor_in_zone(nil,nil,{"village_proval_zone"})
