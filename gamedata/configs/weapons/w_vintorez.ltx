@@ -134,17 +134,17 @@ kill_msg_width          = 78
 kill_msg_height         = 25
 
 ;---------------------------------------------------------------------------------
-position                = -0.026, -0.097, 0.0
+position                                = -0.026,-0.09,0.0	; Survivor: из STCoP 3.8.1, под новую модель
 orientation             = 0, 0, 0
 
-fire_point              = 0.000000,0.137000,0.649000
-fire_point2             = 0.0, 0.097, 0.722
+fire_point                              = 0,0.137,0.6	; Survivor: из STCoP 3.8.1, под новую модель
+fire_point2                             = 0,0.137,0.6	; Survivor: из STCoP 3.8.1, под новую модель
 
 ;flame_particles         = weapons\generic_weapon05
 smoke_particles         = weapons\generic_shoot_00
 grenade_flame_particles = weapons\generic_weapon01
 
-shell_point             = -0.020000,0.167000,0.082000
+shell_point                             = -0.02,0.167,0.082	; Survivor: из STCoP 3.8.1, под новую модель
 shell_dir               = 0.0, 0.0, 0.4
 shell_particles         = weapons\generic_shells
 
@@ -197,60 +197,89 @@ silencer_light_var_color= 0.05
 silencer_light_var_range= 0.5
 silencer_light_time     = 0.2
 
-snd_draw						= weapons\vintorez\vintorez_draw
-snd_holster					= weapons\rifle_holster
-snd_shoot						= weapons\vintorez\vintorez_shoot
-snd_shoot1					= weapons\vintorez\vintorez_shoot1
-snd_empty					= weapons\vintorez\vintorez_empty, 	0.8
-snd_reload					= weapons\vintorez\vintorez_reload
-snd_silncer_shot					= weapons\vintorez\vintorez_shoot
-snd_silncer_shot1					= weapons\vintorez\vintorez_shoot1
+CartridgeInTheChamberEnabled            = true	; Survivor: патрон в патроннике (ammo_in_chamber в STCoP)
+hud_fov                                 = 47	; Survivor: HUD FOV в градусах, как в STCoP 3.8.1 (hud_base), не зависит от fov и прицеливани€
+nearwall_target_hud_fov                 = 26	; Survivor: у стены, в градусах (доли 0.25/0.45 от базы)
+nearwall_target_aim_hud_fov             = 16	; Survivor: у стены в прицеливании (0.15/0.45 от базы)
+; Survivor: звуки из STCoP 3.8.1 (слои Ч секции в weapons_sounds_stcop.ltx)
+snd_bore                                = $no_sound
+snd_draw                                = weapons\9x39\9x39_draw
+snd_empty                               = weapons\9x39\9x39_empty, 	0.8
+snd_holster                             = weapons\9x39\9x39_holster
+snd_reload_misfire                      = weapons\9x39\9x39_misfire
+snd_firemode                            = weapons\9x39\9x39_firemode
+snd_shoot                               = wpn_val_snd_shoot
+snd_silncer_shot                        = wpn_val_snd_shoot
+snd_reload                              = weapons\val\val_reload
+snd_reload_empty                        = weapons\val\val_reload_empty
 
-[wpn_vintorez_hud]:hud_base
-zoom_hide_crosshair				= true
-attach_place_idx				= 0
-item_visual					= dynamics\weapons\wpn_vintorez\wpn_vintorez_hud.ogf
-
-hands_position				= -0.06,-0.16,0.2
-hands_orientation				= -2.1,2.0,2.0
-
-hands_position_16x9				= -0.06,-0.16,0.2
-hands_orientation_16x9			= -2.1,2.0,2.0
-
-item_position				= 0.0,0.0,-0.001
-item_orientation				= -15.646272,-3.230760,0.0
-
-aim_hud_offset_pos 				= -0.0895,0.05,-0.1
-aim_hud_offset_rot 				= 0.015,-0.047,-0.04
-
-aim_hud_offset_pos_16x9 			= -0.0895,0.05,-0.1
-aim_hud_offset_rot_16x9 			= 0.015,-0.047,-0.04
-
-shell_point					= 0.01,0.05,0.041
-shell_dir              	 			= 0.0, 1.0, 0.0
-shell_bone					= wpn_body
-
-fire_point					= 0,0.037,0.626
-fire_bone      	      			= wpn_body
-fire_point2					= -0.014000,0.010000,-0.037000
-fire_bone2					= wpn_body
-
-anm_show             				= vintorez_draw
-anm_hide             				= vintorez_holster
-anm_idle             				= vintorez_idle
-anm_idle_sprint         				= vintorez_sprint
-anm_idle_moving 				= vintorez_moving
-anm_shots               				= vintorez_shoot, shoot
-anm_reload              				= vintorez_reload, reload
-anm_idle_aim           				= vintorez_idle_aim
-anm_bore					= vintorez_bore
-
-lean_hud_offset_pos				= 0,0,0
-lean_hud_offset_rot				= 0,0,0
-
-;-----------------------------------------------------------------------------
-; ”никальные
-;-----------------------------------------------------------------------------
+[wpn_vintorez_hud]
+; Survivor: HUD из STCoP 3.8.1 ([wpn_vintorez_hud]), без ключей IX-Ray
+zoom_hide_crosshair                     = true
+attach_place_idx                        = 0
+item_visual                             = dynamics\weapons\wpn_vintorez\wpn_vintorez_hud.ogf
+hands_position                          = -0.001389,0.001550,0.033713
+hands_orientation                       = -0.293082,0.000000,0.000000
+hands_position_16x9                     = -0.001389,0.001550,0.033713
+hands_orientation_16x9                  = -0.293082,0.000000,0.000000
+item_position                           = 0, 0, 0
+item_orientation                        = 0, 0, 0
+aim_hud_offset_pos                      = -0.049392,0.022131,-0.065562
+aim_hud_offset_rot                      = 0.004180,-0.004039,0.000000
+aim_hud_offset_pos_16x9                 = -0.049392,0.022131,-0.065562
+aim_hud_offset_rot_16x9                 = 0.004180,-0.004039,0.000000
+shell_bone                              = zatvor
+shell_point                             = 0, 0, 0
+fire_bone                               = muzzle
+fire_bone2                              = muzzle
+fire_point                              = 0, 0, 0
+fire_point2                             = 0, 0, 0
+anm_hide                                = vss_new_holster, idle, 1.5
+anm_bore                                = vss_new_inspect, idle
+anm_idle                                = vss_new_idle, idle
+anm_idle_aim                            = vss_new_aim, idle
+anm_idle_moving                         = vss_new_walk, idle
+anm_idle_moving_slow                    = vss_new_walk, idle, 0.7
+anm_idle_moving_crouch                  = vss_new_walk, idle, 0.5
+anm_idle_moving_slow_crouch             = vss_new_walk, idle, 0.3
+anm_idle_sprint                         = vss_new_sprint, idle, 1.1
+anm_idle_sprint_start                   = vss_new_sprint_start, idle
+anm_idle_sprint_end                     = vss_new_sprint_end, idle
+anm_reload                              = vss_new_reload_retention, reload_retention
+anm_reload_empty                        = vss_new_reload_empty, reload_empty
+anm_shoot                               = vss_new_shoot_hip
+anm_shoot_aim                           = vss_new_shoot
+anm_shoot_aim_scope                     = vss_shoot_scope, vss_new_shoot
+anm_show                                = vss_new_draw, idle
+anm_idle_aim_start                      = vss_new_aim_start, idle
+anm_idle_aim_end                        = vss_new_aim_end, idle
+anm_firemode                            = vss_new_switch_mode, idle
+anm_reload_jammed                       = vss_new_unjam, unjam
+anm_hide_jammed                         = vss_new_holster, idle_jammed, 1.5
+anm_bore_jammed                         = vss_new_inspect, idle_jammed
+anm_bore_empty_jammed                   = vss_new_inspect, idle_jammed
+anm_idle_jammed                         = vss_new_idle, idle_jammed
+anm_idle_aim_jammed                     = vss_new_aim, idle_jammed
+anm_idle_moving_jammed                  = vss_new_walk, idle_jammed
+anm_idle_moving_slow_jammed             = vss_new_walk, idle_jammed, 0.7
+anm_idle_moving_crouch_jammed           = vss_new_walk, idle_jammed, 0.5
+anm_idle_moving_slow_crouch_jammed      = vss_new_walk, idle_jammed, 0.3
+anm_idle_sprint_jammed                  = vss_new_sprint, idle_jammed, 1.1
+anm_idle_sprint_start_jammed            = vss_new_sprint_start, idle_jammed
+anm_idle_sprint_end_jammed              = vss_new_sprint_end, idle_jammed
+anm_show_jammed                         = vss_new_draw, idle_jammed
+anm_idle_aim_start_jammed               = vss_new_aim_start, idle_jammed
+anm_idle_aim_end_jammed                 = vss_new_aim_end, idle_jammed
+anm_firemode_jammed                     = vss_new_switch_mode, idle_jammed
+anm_ammo_check                          = vss_new_magcheck, magcheck
+anm_ammo_check_empty                    = vss_new_magcheck, magcheck_empty
+anm_ammo_check_jammed                   = vss_new_magcheck, magcheck_jammed
+anm_ammo_check_empty_jammed             = vss_new_magcheck, magcheck_empty_jammed
+; Survivor: синонимы под пор€док суффиксов движка (_sil, _g/_w_gl, _aim, _jammed/_last/_empty, _N)
+anm_idle_moving_crouch_slow             = vss_new_walk, idle, 0.3
+anm_bore_jammed_last                    = vss_new_inspect, idle_jammed
+anm_idle_moving_crouch_slow_jammed      = vss_new_walk, idle_jammed, 0.3
+anm_ammo_check_jammed_last              = vss_new_magcheck, magcheck_empty_jammed
 [wpn_vintorez_nimble]:wpn_vintorez
 $spawn						= "weapons\unique\vintorez_nimble"                ; option for Level Editor
 

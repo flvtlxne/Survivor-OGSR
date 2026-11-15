@@ -99,12 +99,12 @@ hit_probability_gd_veteran	= 0.80
 hit_probability_gd_master	= 0.80
 
 ;-------------------------------------------------------------------------------
-position                   = -0.023, -0.14, 0.00 ;-0.026, -0.117, 0.0
-orientation                = 0, 30, 0      ;значение устанавливается в градусах
+position                                = -0.023,-0.128,0.082	; Survivor: из STCoP 3.8.1, под новую модель
+orientation                             = 0,36,0	; Survivor: из STCoP 3.8.1, под новую модель
 
-shell_point      = 0.0, 0.183, 0.07
-fire_point       = 0.0, 0.168, 0.755
-fire_point2      = 0.0, 0.168, 0.755
+shell_point                             = 0,0.183,0.07	; Survivor: из STCoP 3.8.1, под новую модель
+fire_point                              = 0,0.168,0.755	; Survivor: из STCoP 3.8.1, под новую модель
+fire_point2                             = 0,0.168,0.755	; Survivor: из STCoP 3.8.1, под новую модель
 
 hand_dependence = 1
 single_handed	= 0
@@ -161,76 +161,173 @@ grenade_launcher_status		= 0
 zoom_enabled				= true
 scope_zoom_factor	    	= 55
 
-snd_draw						= weapons\toz34\toz34_draw
-snd_holster					= weapons\generic_holster
-snd_shoot         					= weapons\toz34\toz34_shoot
-snd_shoot1         					= weapons\toz34\toz34_shoot1
-snd_empty					= weapons\toz34\toz34_empty
-snd_reload					= weapons\toz34\toz34_reload_lr
-snd_shoot_duplet  					= weapons\toz34\toz34_shoot
-snd_shoot_1             					= weapons\toz34\toz34_shoot
-snd_reload_1            					= weapons\toz34\toz34_reload_l
-snd_close_weapon					= weapons\spas12_close
-snd_add_cartridge					= weapons\w1300_load
-snd_open_weapon					= weapons\spas12_close
+hud_fov                                 = 47	; Survivor: HUD FOV в градусах, как в STCoP 3.8.1 (hud_base), не зависит от fov и прицеливания
+nearwall_target_hud_fov                 = 26	; Survivor: у стены, в градусах (доли 0.25/0.45 от базы)
+nearwall_target_aim_hud_fov             = 16	; Survivor: у стены в прицеливании (0.15/0.45 от базы)
+; Survivor: звуки из STCoP 3.8.1 (слои — секции в weapons_sounds_stcop.ltx)
+snd_bore                                = weapons\toz34\toz34_bore
+snd_draw                                = weapons\toz34\toz34_draw
+snd_holster                             = weapons\toz34\toz34_holster
+snd_shoot                               = wpn_toz34_snd_shoot
+snd_empty                               = weapons\toz34\toz34_empty
+snd_reload                              = weapons\toz34\toz34_reload
+snd_reload_misfire                      = weapons\toz34\toz34_misfire
+snd_reload_1                            = weapons\toz34\toz34_reload_one
 
-[wpn_toz34_hud]:hud_base
-zoom_hide_crosshair				= true
-attach_place_idx				= 0
-item_visual               				= dynamics\weapons\wpn_toz34\wpn_toz34_hud.ogf
-
-hands_position				= 0,-0.07,0.05
-hands_orientation				= 0,0,0
-
-hands_position_16x9				= 0,-0.07,0.05
-hands_orientation_16x9			= 0,0,0
-
-item_position				= 0,0,0
-item_orientation				= 0,0,0
-
-aim_hud_offset_pos				= -0.082,0.026,-0.05
-aim_hud_offset_rot				= 0.0015,-0.0001,0.0
-
-aim_hud_offset_pos_16x9			= -0.082,0.026,-0.05
-aim_hud_offset_rot_16x9			= 0.0015,-0.0001,0.0
-
-shell_point					= 0,0,0
-shell_dir                    				= 0.0, 1.0, 0.0
-shell_bone					= wpn_body
-
-fire_point					= 0,0,0
-fire_bone                     				= muzzle
-
-anm_show_0                   		 	= toz34_draw
-anm_show_1                 		   	= toz34_draw
-anm_show_2                   		 	= toz34_draw
-
-anm_hide_0		            		= toz34_holster
-anm_hide_1		            		= toz34_holster
-anm_hide_2		            		= toz34_holster
-
-anm_idle_0		            			= toz34_idle
-anm_idle_1		            			= toz34_idle
-anm_idle_2		            			= toz34_idle
-
-anm_idle_aim_0			         	= toz34_aim
-anm_idle_aim_1			         	= toz34_aim
-anm_idle_aim_2			         	= toz34_aim
-
-anm_idle_moving_0		         		= toz34_move
-anm_idle_moving_1		         		= toz34_move
-anm_idle_moving_2		         		= toz34_move
-
-anm_idle_sprint_0		       		= toz34_sprint
-anm_idle_sprint_1		         		= toz34_sprint
-anm_idle_sprint_2		         		= toz34_sprint
-
-anm_reload_1				= toz34_reload_l, reload_l
-anm_reload_2				= toz34_reload_lr, reload_lr
-
-anm_shot_1				= toz34_shoot, shoot
-anm_shot_2				= toz34_shoot, shoot
-
-anm_bore_0				= toz34_aim
-anm_bore_1				= toz34_aim
-anm_bore_2				= toz34_aim
+[wpn_toz34_hud]
+; Survivor: HUD из STCoP 3.8.1 ([wpn_toz34_hud]), без ключей IX-Ray
+zoom_hide_crosshair                     = true
+attach_place_idx                        = 0
+item_visual                             = dynamics\weapons\wpn_toz34\wpn_toz34_hud.ogf
+hands_orientation                       = 0.000000, 3.000000, 0.000000
+hands_position                          = 0.000000, -0.003000, 0.049000
+hands_orientation_16x9                  = 0.000000, 3.000000, 0.000000
+hands_position_16x9                     = 0.000000, -0.003000, 0.049000
+item_orientation                        = 0,0,0
+item_position                           = 0,0,0
+aim_hud_offset_pos                      = -0.070509, 0.036000, 0.081486
+aim_hud_offset_rot                      = 0.002371, 0.006239, 0.011580
+aim_hud_offset_pos_16x9                 = -0.070509, 0.036000, 0.081486
+aim_hud_offset_rot_16x9                 = 0.002371, 0.006239, 0.011580
+shell_bone                              = wpn_body	; Survivor: в модели нет кости gilza
+shell_point                             = 999, 999, 999
+fire_bone                               = muzzle
+fire_point                              = 0, 0, 0
+anm_hide                                = tozn_holster, idle
+anm_hide_0                              = tozn_holster, idle
+anm_hide_1                              = tozn_holster, idle
+anm_hide_2                              = tozn_holster, idle
+anm_idle                                = tozn_idle, idle
+anm_idle_0                              = tozn_idle, idle
+anm_idle_1                              = tozn_idle, idle
+anm_idle_2                              = tozn_idle, idle
+anm_idle_aim                            = tozn_idle_aim, idle
+anm_idle_aim_0                          = tozn_idle_aim, idle
+anm_idle_aim_1                          = tozn_idle_aim, idle
+anm_idle_aim_2                          = tozn_idle_aim, idle
+anm_idle_aim_start                      = tozn_idle_aim_start, idle
+anm_idle_aim_end                        = tozn_idle_aim_end, idle
+anm_idle_moving                         = tozn_walk, idle
+anm_idle_moving_0                       = tozn_walk, idle
+anm_idle_moving_1                       = tozn_walk, idle
+anm_idle_moving_2                       = tozn_walk, idle
+anm_idle_moving_slow                    = tozn_walk, idle, 0.8
+anm_idle_moving_slow_0                  = tozn_walk, idle, 0.8
+anm_idle_moving_slow_1                  = tozn_walk, idle, 0.8
+anm_idle_moving_slow_2                  = tozn_walk, idle, 0.8
+anm_idle_moving_crouch                  = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_0                = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_1                = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_2                = tozn_walk, idle, 0.6
+anm_idle_moving_slow_crouch             = tozn_walk, idle, 0.4
+anm_idle_moving_slow_crouch_0           = tozn_walk, idle, 0.4
+anm_idle_moving_slow_crouch_1           = tozn_walk, idle, 0.4
+anm_idle_moving_slow_crouch_2           = tozn_walk, idle, 0.4
+anm_idle_sprint                         = tozn_sprint, idle
+anm_idle_sprint_0                       = tozn_sprint, idle
+anm_idle_sprint_1                       = tozn_sprint, idle
+anm_idle_sprint_2                       = tozn_sprint, idle
+anm_reload_1                            = tozn_reload, reload
+anm_reload_1_jammed                     = tozn_unjam, unjam_1
+anm_reload_2                            = tozn_reload_empty, reload_empty
+anm_reload_2_jammed                     = tozn_unjam, unjam_2
+anm_reload_misfire                      = tozn_unjam, unjam
+anm_reload_jammed                       = tozn_unjam, unjam
+anm_reload_misfire_jammed               = tozn_unjam, unjam
+anm_shoot                               = tozn_shoot
+anm_shoot_aim                           = tozn_shoot_aim
+anm_show                                = tozn_draw, idle
+anm_show_0                              = tozn_draw, idle
+anm_show_1                              = tozn_draw, idle
+anm_show_2                              = tozn_draw, idle
+anm_bore                                = tozn_inspect, inspect
+anm_bore_0                              = tozn_inspect, inspect_2
+anm_bore_1                              = tozn_inspect, inspect_1
+anm_bore_2                              = tozn_inspect, inspect
+anm_idle_aim_start_jammed               = tozn_idle_aim_start, idle
+anm_idle_aim_end_jammed                 = tozn_idle_aim_end, idle
+anm_hide_jammed                         = tozn_holster, idle
+anm_hide_0_jammed                       = tozn_holster, idle
+anm_hide_1_jammed                       = tozn_holster, idle
+anm_hide_2_jammed                       = tozn_holster, idle
+anm_idle_jammed                         = tozn_idle, idle
+anm_idle_0_jammed                       = tozn_idle, idle
+anm_idle_1_jammed                       = tozn_idle, idle
+anm_idle_2_jammed                       = tozn_idle, idle
+anm_idle_aim_jammed                     = tozn_idle_aim, idle
+anm_idle_aim_0_jammed                   = tozn_idle_aim, idle
+anm_idle_aim_1_jammed                   = tozn_idle_aim, idle
+anm_idle_aim_2_jammed                   = tozn_idle_aim, idle
+anm_idle_moving_jammed                  = tozn_walk, idle, 0.75
+anm_idle_moving_0_jammed                = tozn_walk, idle
+anm_idle_moving_1_jammed                = tozn_walk, idle
+anm_idle_moving_2_jammed                = tozn_walk, idle
+anm_idle_moving_slow_jammed             = tozn_walk, idle, 0.8
+anm_idle_moving_slow_0_jammed           = tozn_walk, idle, 0.8
+anm_idle_moving_slow_1_jammed           = tozn_walk, idle, 0.8
+anm_idle_moving_slow_2_jammed           = tozn_walk, idle, 0.8
+anm_idle_moving_crouch_jammed           = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_0_jammed         = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_1_jammed         = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_2_jammed         = tozn_walk, idle, 0.6
+anm_idle_moving_slow_crouch_jammed      = tozn_walk, idle, 0.4
+anm_idle_moving_slow_crouch_0_jammed    = tozn_walk, idle, 0.4
+anm_idle_moving_slow_crouch_1_jammed    = tozn_walk, idle, 0.4
+anm_idle_moving_slow_crouch_2_jammed    = tozn_walk, idle, 0.4
+anm_idle_sprint_jammed                  = tozn_sprint, idle
+anm_idle_sprint_0_jammed                = tozn_sprint, idle
+anm_idle_sprint_1_jammed                = tozn_sprint, idle
+anm_idle_sprint_2_jammed                = tozn_sprint, idle
+anm_show_jammed                         = tozn_draw, idle
+anm_show_0_jammed                       = tozn_draw, idle
+anm_show_1_jammed                       = tozn_draw, idle
+anm_show_2_jammed                       = tozn_draw, idle
+anm_bore_jammed                         = tozn_inspect_jammed, idle
+anm_bore_0_jammed                       = tozn_inspect_jammed, idle
+anm_bore_1_jammed                       = tozn_inspect_jammed, idle
+anm_bore_2_jammed                       = tozn_inspect_jammed, idle
+anm_ammo_check                          = tozn_mag_check, mag_check
+anm_ammo_check_ammo1                    = tozn_mag_check, mag_check_1
+anm_ammo_check_ammo0                    = tozn_mag_check, mag_check_2
+anm_idle_sprint_end                     = tozn_sprint_2_walk, idle
+anm_idle_sprint_end_jammed              = tozn_sprint_2_walk, idle
+anm_idle_sprint_start                   = tozn_walk_2_sprint, idle
+anm_idle_sprint_start_jammed            = tozn_walk_2_sprint, idle
+; Survivor: синонимы под порядок суффиксов движка (_sil, _g/_w_gl, _aim, _jammed/_last/_empty, _N)
+anm_idle_moving_crouch_slow             = tozn_walk, idle, 0.4
+anm_idle_moving_crouch_slow_0           = tozn_walk, idle, 0.4
+anm_idle_moving_crouch_slow_1           = tozn_walk, idle, 0.4
+anm_idle_moving_crouch_slow_2           = tozn_walk, idle, 0.4
+anm_reload_jammed_1                     = tozn_unjam, unjam_1
+anm_reload_jammed_2                     = tozn_unjam, unjam_2
+anm_hide_jammed_0                       = tozn_holster, idle
+anm_hide_jammed_1                       = tozn_holster, idle
+anm_hide_jammed_2                       = tozn_holster, idle
+anm_idle_jammed_0                       = tozn_idle, idle
+anm_idle_jammed_1                       = tozn_idle, idle
+anm_idle_jammed_2                       = tozn_idle, idle
+anm_idle_aim_jammed_0                   = tozn_idle_aim, idle
+anm_idle_aim_jammed_1                   = tozn_idle_aim, idle
+anm_idle_aim_jammed_2                   = tozn_idle_aim, idle
+anm_idle_moving_jammed_0                = tozn_walk, idle
+anm_idle_moving_jammed_1                = tozn_walk, idle
+anm_idle_moving_jammed_2                = tozn_walk, idle
+anm_idle_moving_slow_jammed_0           = tozn_walk, idle, 0.8
+anm_idle_moving_slow_jammed_1           = tozn_walk, idle, 0.8
+anm_idle_moving_slow_jammed_2           = tozn_walk, idle, 0.8
+anm_idle_moving_crouch_jammed_0         = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_jammed_1         = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_jammed_2         = tozn_walk, idle, 0.6
+anm_idle_moving_crouch_slow_jammed      = tozn_walk, idle, 0.4
+anm_idle_moving_crouch_slow_jammed_0    = tozn_walk, idle, 0.4
+anm_idle_moving_crouch_slow_jammed_1    = tozn_walk, idle, 0.4
+anm_idle_moving_crouch_slow_jammed_2    = tozn_walk, idle, 0.4
+anm_idle_sprint_jammed_0                = tozn_sprint, idle
+anm_idle_sprint_jammed_1                = tozn_sprint, idle
+anm_idle_sprint_jammed_2                = tozn_sprint, idle
+anm_show_jammed_0                       = tozn_draw, idle
+anm_show_jammed_1                       = tozn_draw, idle
+anm_show_jammed_2                       = tozn_draw, idle
+anm_bore_jammed_0                       = tozn_inspect_jammed, idle
+anm_bore_jammed_1                       = tozn_inspect_jammed, idle
+anm_bore_jammed_2                       = tozn_inspect_jammed, idle

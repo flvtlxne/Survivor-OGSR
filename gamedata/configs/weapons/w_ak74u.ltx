@@ -133,17 +133,17 @@ kill_msg_y			= 123
 kill_msg_width		= 69
 kill_msg_height		= 30
 
-position           	= -0.026,-0.215,0        ; position (offset) and orientation of the weapon in the hands of character
+position                                = -0.026,-0.215,-0.01	; Survivor: из STCoP 3.8.1, под новую модель
 orientation         = 0,0,0                  ; (3rd person view)
 
-fire_point          =  0.0, 0.262, 0.447		; position (3rd person view) for particles of fire
-fire_point2         =  0.0, 0.262, 0.547		; position (3rd person view) for particles of fire (when shooting with secondary fire)
+fire_point                              = 0, 0.262, 0.447	; Survivor: из STCoP 3.8.1, под новую модель
+fire_point2                             = 0, 0.262, 0.547	; Survivor: из STCoP 3.8.1, под новую модель
 
 flame_particles         = weapons\generic_weapon05 ; particles for shooting effects
 smoke_particles         = weapons\generic_shoot_00
 grenade_flame_particles = weapons\generic_weapon01
 
-shell_point		 		= 0.00, 0.262, 0.189			; position (3rd person view) for shell to throw out
+shell_point                             = 0.07,0.2,0.466	; Survivor: из STCoP 3.8.1, под новую модель
 shell_particles	 		= weapons\generic_shells	; name of the particles for shells
 
 ;--STRAP PARAMETERS-----------------------------------------------------------------
@@ -187,68 +187,71 @@ silencer_light_var_color= 0.05
 silencer_light_var_range= 0.5
 silencer_light_time     = 0.2
 
-snd_draw				= weapons\aks74u\aks74u_draw
-snd_holster				= weapons\rifle_holster
-snd_shoot				= weapons\aks74u\aks74u_shoot
-snd_shoot1				= weapons\aks74u\aks74u_shoot1
-snd_shoot2				= weapons\aks74u\aks74u_shoot2
-snd_shoot3				= weapons\aks74u\aks74u_shoot3
-snd_shoot4				= weapons\aks74u\aks74u_shoot4
-snd_shoot5				= weapons\aks74u\aks74u_shoot5
-snd_reload				= weapons\aks74u\aks74u_reload
-snd_silncer_shot				= weapons\ak74\ak74_shot_sil 
-snd_bore					= $no_sound
-snd_empty				= weapons\ak_empty,	0.7
+CartridgeInTheChamberEnabled            = true	; Survivor: патрон в патроннике (ammo_in_chamber в STCoP)
+hud_fov                                 = 47	; Survivor: HUD FOV в градусах, как в STCoP 3.8.1 (hud_base), не зависит от fov и прицеливания
+nearwall_target_hud_fov                 = 26	; Survivor: у стены, в градусах (доли 0.25/0.45 от базы)
+nearwall_target_aim_hud_fov             = 16	; Survivor: у стены в прицеливании (0.15/0.45 от базы)
+; Survivor: звуки из STCoP 3.8.1 (слои — секции в weapons_sounds_stcop.ltx)
+snd_bore                                = $no_sound
+snd_draw                                = weapons\ak\ak_draw
+snd_holster                             = weapons\rifle_holster
+snd_empty                               = weapons\ak_empty
+snd_reload                              = weapons\aks74u\aks74u_reload
+snd_reload_empty                        = weapons\aks74u\aks74u_reload_empty
+snd_reload_misfire                      = weapons\ak\ak_misfire
+snd_firemode                            = weapons\ak\ak_firemode
+snd_shoot_grenade                       = weapons\gp25\GP25_grenshoot
+snd_reload_grenade                      = weapons\gp25\GP25_grenload
+snd_switch                              = weapons\gp25\GP25_switch
+snd_shoot                               = wpn_aks74u_snd_shoot
+snd_silncer_shot                        = wpn_545_snd_silenced
 
-[wpn_ak74u_hud]:hud_base
-zoom_hide_crosshair        			= true
-attach_place_idx        				= 0
-item_visual               				= dynamics\weapons\wpn_ak74u\wpn_ak74u_hud.ogf
-
-hands_position				= 0.04,-0.19,0.15
-hands_orientation				= 0,0,0
-
-hands_position_16x9				= 0.04,-0.19,0.15
-hands_orientation_16x9			= 0,0,0
-
-item_position				= 0,0,0
-item_orientation				= 0,0,0
-
-aim_hud_offset_pos 				= -0.11995,0.0289,-0.1
-aim_hud_offset_rot 				= 0,0.0005,0
-
-aim_hud_offset_pos_16x9 			= -0.11995,0.0289,-0.1
-aim_hud_offset_rot_16x9 			= 0,0.0005,0
-
-shell_point					= 0,0,0
-shell_dir               				= 0.0, 1.0, 0.0
-shell_bone              				= gilza
-
-fire_point					= 0,0,0
-fire_bone                   				= muzzle
-fire_point2                 				= 0,0,0
-fire_bone2                				= wpn_body
-
-anm_show					= aks74u_draw
-anm_hide                				= aks74u_holster
-anm_idle                				= aks74u_idle
-anm_idle_sprint         				= aks74u_sprint
-anm_idle_moving         				= aks74u_move
-anm_shots               				= aks74u_shoot, shoot
-anm_reload              				= aks74u_reload, reload
-anm_idle_aim            				= aks74u_aim
-anm_bore                				= aks74u_aim
-
-gl_hud_offset_pos               			= 0,0,0
-gl_hud_offset_rot               			= 0,0,0
-
-gl_hud_offset_pos_16x9            			= 0,0,0
-gl_hud_offset_rot_16x9            			= 0,0,0
-
-lean_hud_offset_pos        			= 0,0,0
-lean_hud_offset_rot        			= 0,0,0
-
-lean_hud_offset_pos_16x9        			= 0,0,0
-lean_hud_offset_rot_16x9        			= 0,0,0
+[wpn_ak74u_hud]
+; Survivor: HUD из STCoP 3.8.1 ([wpn_ak74u_hud]), без ключей IX-Ray
+zoom_hide_crosshair                     = true
+attach_place_idx                        = 0
+item_visual                             = dynamics\weapons\wpn_ak74u\wpn_ak74u_hud.ogf
+hands_position                          = -0.005154,-0.009177,0.108100
+hands_orientation                       = 0.872916,0.446486,0.000000
+hands_position_16x9                     = -0.005154,-0.009177,0.108100
+hands_orientation_16x9                  = 0.872916,0.446486,0.000000
+item_position                           = 0, 0, 0
+item_orientation                        = 0, 0, 0
+aim_hud_offset_pos                      = -0.067030, 0.021500, -0.082744
+aim_hud_offset_rot                      = 0.005000, 0.015700, 0
+aim_hud_offset_pos_16x9                 = -0.067030, 0.021500, -0.082744
+aim_hud_offset_rot_16x9                 = 0.005000, 0.015700, 0
+shell_bone                              = gilza
+shell_point                             = 0, 0, 0
+fire_bone                               = muzzle
+fire_bone2                              = wpn_body
+fire_point                              = 0, 0, 0
+fire_point2                             = 0, 0, 0
+anm_hide                                = asku2_holster_sedzhimol, idle
+anm_idle                                = asku2_idle_sedzhimol, idle
+anm_idle_aim                            = asku2_aim_sedzhimol, idle
+anm_idle_aim_start                      = asku2_aim_start_sedzhimol, idle
+anm_idle_aim_end                        = asku2_aim_end_sedzhimol, idle
+anm_idle_moving                         = asku2_walk_sedzhimol, idle
+anm_idle_moving_slow                    = asku2_walk_sedzhimol, idle, 0.8
+anm_idle_moving_crouch                  = asku2_walk_sedzhimol, idle, 0.6
+anm_idle_moving_slow_crouch             = asku2_walk_sedzhimol, idle, 0.4
+anm_idle_sprint                         = asku2_sprint_sedzhimol, idle
+anm_idle_sprint_start                   = asku2_sprint_start_sedzhimol, idle
+anm_idle_sprint_end                     = asku2_sprint_end_sedzhimol, idle
+anm_reload                              = asku2_reload_part_sedzhimol
+anm_reload_empty                        = asku2_reload_empty_sedzhimol
+anm_reload_jammed                       = asku2_misfire_sedzhimol
+anm_firemode                            = asku2_switch_mode_sedzhimol, idle
+anm_show                                = asku2_draw_sedzhimol, idle
+anm_shoot                               = asku2_shot_sedzhimol
+anm_shoot_aim                           = asku2_aim_shot_sedzhimol
+anm_shoot_aim_scope                     = asku2_shoot_scope, asku2_aim_shot_sedzhimol
+anm_bore                                = asku2_inspect_snag_sedzhimol, idle
+anm_bore_aim                            = asku2_aim_sedzhimol, idle
+anm_ammo_check                          = asku2_mag_check_sedzhimol, asku2_mag_check_sedzhimol
+anm_ammo_check_aim                      = asku2_aim_sedzhimol, idle
+; Survivor: синонимы под порядок суффиксов движка (_sil, _g/_w_gl, _aim, _jammed/_last/_empty, _N)
+anm_idle_moving_crouch_slow             = asku2_walk_sedzhimol, idle, 0.4
 
 
