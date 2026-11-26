@@ -1,6 +1,6 @@
 <w>
 	<background x="0" y="0" width="1024" height="768" stretch="1">
-		<texture x="240" y="0" width="1440" height="1080">ui\surv_menu_video</texture>
+		<texture x="320" y="0" width="1920" height="1440">ui\surv_menu_video</texture>
 	</background>
 
 	<shniaga_wnd x="5555" y="5555" width="270" height="380">

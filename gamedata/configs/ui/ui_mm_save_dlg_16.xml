@@ -1,7 +1,7 @@
 <w>
 	<!-- Survivor: stencil-style save dialog -->
 	<background x="0" y="0" width="1024" height="768" stretch="1">
-		<texture x="0" y="0" width="1920" height="1080">ui\surv_menu_video</texture>
+		<texture x="0" y="0" width="2560" height="1440">ui\surv_menu_video</texture>
 		<auto_static x="0" y="0" width="560" height="768" stretch="1">
 			<texture>surv_shade</texture>
 		</auto_static>
