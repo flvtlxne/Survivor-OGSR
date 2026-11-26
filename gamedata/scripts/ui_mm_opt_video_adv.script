@@ -56,14 +56,14 @@ local adv_vid_opt_params = { --имя статика, тип статика, н�
     { "steep_parallax",          "check",     0, hint_colors.yellow, "video_settings_desc_39"         },
     { "terrain_parallax",        "check",     1, hint_colors.yellow, "video_settings_desc_24"         --[[, true]]}, --на модах с ориг текстурами лучше заблокировать эту опцию но релизы двига же типа для разрабов, потому я не решил пока как быть.
 
-    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_7"  },
-    --{ "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_6"  },
-	--TODO: Доф надо переделать в новом виде, когда переделаю - раскомментирую
-    --{ "dof_reload",              "check",     0, hint_colors.green, "video_settings_desc_41"          },
-    --{ "dof_zoom",                "check",     0, hint_colors.green, "video_settings_desc_42"          },
-    --{ "dof_zoom_param",          "track",     0, hint_colors.green                                    },
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_6"  },
+    { "dof_reload",              "check",     0, hint_colors.green, "video_settings_desc_41"          },
+    { "dof_zoom",                "check",     0, hint_colors.green, "video_settings_desc_42"          },
+    { "dof_zoom_param",          "track",     0, hint_colors.green                                    },
     { "mblur",                   "check",     0, hint_colors.green , "video_settings_desc_1"          },
     { "mblur_param",             "track",     0, hint_colors.green                                    },
+
+    { "separator",               "separator", 0, false,              "ui_mm_opt_caption_adv_video_7"  },
     --Для работы настроек шлема требуется управление со скриптов, надо же как то определять на каком костюме надо маски и капли, а на каком нет.
 	--Когда надо - надо со скрипта выставить консольки r2_mask_control и соотв. r2_rain_drops_control в on, когда не надо - в off
 	--Возможно по дефолту лучше заблокировать эти опции тут, но я не решил пока как быть

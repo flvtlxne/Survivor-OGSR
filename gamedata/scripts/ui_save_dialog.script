@@ -196,14 +196,9 @@ function save_dialog:OnKeyboard(dik, keyboard_action)  --virtual function
 	local bind = dik_to_bind(dik)
 	if bind == key_bindings.kQUIT then
 		self:OnButton_cancel_clicked()
-	else
-
-	   DIK_RETURN			= 28
-
-		if dik == DIK_RETURN and keyboard_action == ui_events.WINDOW_KEY_PRESSED then
-			self:OnButton_ok_clicked()
-		end
-   end
+	elseif dik == DIK_keys.DIK_RETURN and keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+		self:OnButton_ok_clicked()
+	end
 	return true
 end
 
