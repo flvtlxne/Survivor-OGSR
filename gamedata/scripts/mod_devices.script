@@ -4199,6 +4199,8 @@ function mechanical_others:InitControls()
 	self.ind_1 = xml:InitStatic("indicator1", self)
 	self.ind_2 = xml:InitStatic("indicator2", self)
 	self.ind_3 = xml:InitStatic("indicator3", self)
+	self.ind_4 = xml:InitStatic("indicator4", self)
+	self.ind_5 = xml:InitStatic("indicator5", self)
 
 	-- кнопки
 	self.btn_1 = xml:Init3tButton("btn_1", self)
@@ -4210,12 +4212,12 @@ function mechanical_others:InitControls()
 	self.btn_3 = xml:Init3tButton("btn_3", self)
 	self:Register(self.btn_3, "btn_3")
 	self.btn_3:Enable(false)
-	--self.btn_4 = xml:Init3tButton("btn_4", self)
-	--self:Register(self.btn_4, "btn_4")
-	--self.btn_4:Enable(false)
-	--self.btn_5 = xml:Init3tButton("btn_5", self)
-	--self:Register(self.btn_5, "btn_5")
-	--self.btn_5:Enable(false)
+	self.btn_4 = xml:Init3tButton("btn_4", self)
+	self:Register(self.btn_4, "btn_4")
+	self.btn_4:Enable(false)
+	self.btn_5 = xml:Init3tButton("btn_5", self)
+	self:Register(self.btn_5, "btn_5")
+	self.btn_5:Enable(false)
 
 	-- кнопка офф
 	self:Register(xml:Init3tButton("btn_exit", self),"btn_exit")
@@ -4237,6 +4239,13 @@ function mechanical_others:refresh_buttons()
 	self.ind_1:Show(remkit)
 	self.ind_2:Show(bomb)
 	self.ind_3:Show(courier)
+	local _, armor_total = mod_craft.armor_parts()
+	local armor = armor_total >= 3
+	self.btn_4:Enable(armor)
+	self.ind_4:Show(armor)
+	local weapon = mod_craft.count("weapon_parts") >= 3
+	self.btn_5:Enable(weapon)
+	self.ind_5:Show(weapon)
 end
 
 function mechanical_others:Update()
@@ -4249,8 +4258,8 @@ function mechanical_others:InitCallBacks()
 	self:AddCallback("btn_1", ui_events.BUTTON_CLICKED,  self.btn1, self)
 	self:AddCallback("btn_2", ui_events.BUTTON_CLICKED,  self.btn2, self)
 	self:AddCallback("btn_3", ui_events.BUTTON_CLICKED,  self.btn3, self)
-	--self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
-	--self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
+	self:AddCallback("btn_4", ui_events.BUTTON_CLICKED,  self.btn4, self)
+	self:AddCallback("btn_5", ui_events.BUTTON_CLICKED,  self.btn5, self)
 	--self:AddCallback("btn_6", ui_events.BUTTON_CLICKED,  self.btn6, self)
 	--self:AddCallback("btn_7", ui_events.BUTTON_CLICKED,  self.btn7, self)
 	self:AddCallback("btn_exit", ui_events.BUTTON_CLICKED, self.on_quit, self)
@@ -4304,12 +4313,39 @@ function mechanical_others:btn3()
 	end
 end
 
+-- Survivor: an armor repair kit of three armor upgrade parts; the parts the actor has the most of go first, the rare ones stay
+-- for the upgrades
 function mechanical_others:btn4()
-
+	local parts, total = mod_craft.armor_parts()
+	if total < 3 then
+		return
+	end
+	for i = 1, 3 do
+		local best, best_n = nil, 0
+		for sect, n in pairs(parts) do
+			if n > best_n or (n == best_n and n > 0 and sect < best) then
+				best, best_n = sect, n
+			end
+		end
+		mod_craft.take(best, 1)
+		parts[best] = best_n - 1
+	end
+	start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	alife():create('armor_remkit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
 end
 
+-- Survivor: a weapon repair kit of three sets of weapon parts (they come from the disassembly of weapons)
 function mechanical_others:btn5()
-
+	if mod_craft.count("weapon_parts") < 3 then
+		return
+	end
+	mod_craft.take("weapon_parts", 3)
+	start_real_timer(3, "mod_timer_functions.mechanical_construction_timer_action")
+	soundtrack.repair_sounds()
+	alife():create('weapon_remkit', db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+	xr_effects.dec_counter(db.actor, nil, {"generator",1})
 end
 
 

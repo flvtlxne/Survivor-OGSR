@@ -5,8 +5,7 @@ active = sr_idle@1
 on_info = {=master_difficulty} sr_idle@nil
 on_actor_inside = sr_idle@3 %=lonl_house_store_think =actor_finds_something_replic +knife_finded =give_item(wpn_knife:actor) =send_tip(knife_finded_tip:default)%
 
-; Объединяем наборы деталей в ремкомплекты:
+; Survivor: the weapon repair kit is made in the workshop ("Прочее"), not assembled by itself
 [sr_idle@3]
-on_info = {+stranger_talk1 =weapon_details_collected} %=weapon_details_communicate%
 
 [sr_idle@nil]

@@ -87,3 +87,37 @@ end
 function is_workshop_part(sect)
 	return string.find(sect, "^%a+_part_?%d$") ~= nil or string.find(sect, "^car_item_") ~= nil
 end
+
+-- Survivor: the armor upgrade parts (upgr_item_*_outfN, upgr_item_*_helmN) of the actor and the base containers: section -> count, total
+function armor_parts()
+	local parts, total = {}, 0
+	local function add(sect, n)
+		if string.find(sect, "^upgr_item_.+_outf%d+$") or string.find(sect, "^upgr_item_.+_helm%d+$") then
+			parts[sect] = (parts[sect] or 0) + n
+			total = total + n
+		end
+	end
+	for i = 0, db.actor:object_count() - 1 do
+		local item = db.actor:object(i)
+		if item then
+			add(item:section(), 1)
+		end
+	end
+	for sect, ids in pairs(box_items()) do
+		add(sect, #ids)
+	end
+	return parts, total
+end
+
+-- Survivor: the number of items of the section of the actor and the base containers
+function count(sect)
+	local n = 0
+	for i = 0, db.actor:object_count() - 1 do
+		local item = db.actor:object(i)
+		if item and item:section() == sect then
+			n = n + 1
+		end
+	end
+	local ids = box_items()[sect]
+	return n + (ids and #ids or 0)
+end
