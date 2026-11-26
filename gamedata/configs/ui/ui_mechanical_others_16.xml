@@ -10,7 +10,7 @@
 		<auto_static x="12" y="48" width="500" height="18"><text font="ui_font_surv_small" r="165" g="160" b="148" align="l" vert_align="c">Прочее</text></auto_static>
 		<auto_static x="25.5" y="256" width="330" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Кейс курьера</text></auto_static>
 		<auto_static x="25.5" y="306" width="330" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Расходники для ремонта (3 набора)</text></auto_static>
-		<auto_static x="25.5" y="356" width="330" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Три любых расходника для брони (сначала те, которых больше)</text></auto_static>
+		<auto_static x="25.5" y="356" width="330" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Три любых расходника для брони</text></auto_static>
 	</table>
 	<name x="244" y="164" width="500" height="34"><text font="ui_font_surv_btn" r="201" g="168" b="76" align="l" vert_align="c">МАСТЕРСКАЯ</text></name>
 	<text1 x="244" y="234" width="536" height="44"><text font="ui_font_surv_small" r="214" g="209" b="196" align="l" vert_align="t" complex_mode="1">Сборка комплектов для ремонта транспорта, оружия, брони и прочего. Квадрат горит, когда все детали есть в рюкзаке.</text></text1>
