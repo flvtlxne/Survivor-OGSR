@@ -1,0 +1,8 @@
+<w>
+	<!-- Survivor: the badges over the cells of the upgrade parts and the weapon parts (actor_menu_item.xml, cell_item_pictogram) -->
+	<file name="ui\surv_cell_pictograms">
+		<texture id="surv_pictogram_weapon" x="0" y="0" width="64" height="64"/>
+		<texture id="surv_pictogram_outfit" x="64" y="0" width="64" height="64"/>
+		<texture id="surv_pictogram_helmet" x="128" y="0" width="64" height="64"/>
+	</file>
+</w>

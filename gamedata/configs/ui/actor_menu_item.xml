@@ -188,6 +188,9 @@
 		<texture>ui_inGame2_upgrade_on_weapon_lamp_yellow_highlighted</texture>
 	</cell_item_addons>
 
+	<!-- Survivor: a badge over the cell of an upgrade part (the kind of the items whose upgrades take it) or of a weapon part (cell_pictogram), right bottom -->
+	<cell_item_pictogram width="14" height="14" weapon="surv_pictogram_weapon" outfit="surv_pictogram_outfit" helmet="surv_pictogram_helmet"/>
+
     <condition_progess_bar x="1" y="1" width="38" height="5" horz="1" min="0" max="1" pos="1">
 	    <background x="0" y="0" width="38" height="5">
             <texture r="62" g="74" b="74">ui_inGame2_inventory_item_status_bar</texture>
