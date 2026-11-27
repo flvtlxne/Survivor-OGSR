@@ -1333,4 +1333,7 @@ Default слідує за NVIDIA / OTA драйвера.</text>
 	<string id="ui_mm_opt_warn_yellow">
 		<text>Опція з підвищеним навантаженням на комп'ютер</text>
 	</string>
+	<string id="ui_mm_minimap">
+		<text>Мінікарта</text>
+	</string>
 </string_table>

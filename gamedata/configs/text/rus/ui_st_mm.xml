@@ -1368,4 +1368,7 @@
 Default следует за NVIDIA / OTA драйвера.</text>
 	</string>
 
+	<string id="ui_mm_minimap">
+		<text>Миникарта</text>
+	</string>
 </string_table>

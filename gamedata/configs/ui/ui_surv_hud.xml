@@ -72,4 +72,15 @@
 	<compass_dist x="0" y="744" width="120" height="16">
 		<text font="ui_font_surv_small" r="214" g="209" b="196" align="c" vert_align="c"/>
 	</compass_dist>
+	<!-- PDA contacts on the compass while the minimap is off (hud_minimap 0): a mark on the line as on the
+	     minimap, the name (neutrals, friends) and the distance above it -->
+	<compass_npc x="0" y="728" width="8" height="8" stretch="1">
+		<texture>surv_mm_dot</texture>
+	</compass_npc>
+	<compass_npc_name x="0" y="713" width="110" height="14">
+		<text font="ui_font_surv_small" r="238" g="198" b="86" align="c" vert_align="c"/>
+	</compass_npc_name>
+	<compass_npc_dist x="0" y="700" width="60" height="14">
+		<text font="ui_font_surv_small" r="214" g="209" b="196" align="c" vert_align="c"/>
+	</compass_npc_dist>
 </w>

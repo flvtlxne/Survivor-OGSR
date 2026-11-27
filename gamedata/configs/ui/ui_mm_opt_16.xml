@@ -699,6 +699,14 @@
 			<options_item entry="hud_draw" group="mm_opt_gameplay"/>
 		</check_hud_draw>
 
+		<cap_minimap x="8" y="0" width="330" height="34">
+			<text font="ui_font_surv_small" r="190" g="184" b="170" align="l" vert_align="c">ui_mm_minimap</text>
+		</cap_minimap>
+		<check_minimap x="344" y="7" width="15" height="20" stretch="1">
+			<texture>ui_inGame2_checkbox</texture>
+			<options_item entry="hud_minimap" group="mm_opt_gameplay"/>
+		</check_minimap>
+
 		<cap_weapon_bobbing x="8" y="0" width="330" height="34">
 			<text font="ui_font_surv_small" r="190" g="184" b="170" align="l" vert_align="c">ui_st_weapon_bobbing</text>
 		</cap_weapon_bobbing>

@@ -9,7 +9,11 @@
               - grenade frame left of the weapon frame (knife, gun or grenade in the hands):
                 grenade in slot 4, count, key;
               - compass at the bottom centre: heading, cardinal letters, ticks and the target of
-                the active task (marker, distance, the name when the target is a person).
+                the active task (marker, distance, the name when the target is a person);
+                with the minimap off (console hud_minimap 0, option «Миникарта») also the PDA
+                contacts the minimap would show: stalkers by relation with the distance (names of
+                neutrals and friends) and bodies;
+              - with the minimap off the task title moves to the left edge.
               The parts are described in ui_surv_hud(_16).xml and hang on the custom static
               "surv_hud" (ui_custom_msgs.xml). update() runs every frame from
               module_dynamic_update.script.
@@ -48,7 +52,21 @@ local CMP_LETTERS = 3
 local CMP_CARDINAL = {[0] = "N", [90] = "E", [180] = "S", [270] = "W"}
 local C_ARROW     = 0          -- texture colours, set in build()
 local C_ARROW_HI  = 0
-local cmp_target  -- {pos = vector, name = string or nil} of the active task's target
+local cmp_target  -- {pos = vector, name = string or nil, id = number or nil} of the active task's target
+
+-- PDA contacts on the compass while the minimap is off; the rules are the minimap's (engine
+-- CPda::feel_touch_*, CRelationMapLocation::Update): stalkers within the PDA radius while a PDA is in
+-- its slot; enemies only while the actor sees them; bodies only within 3 m of height
+local CMP_NPC_MAX = 16         -- markers at once (the nearest)
+local CMP_LBL_MAX = 8          -- distance/name labels at once (the ones nearest to the centre of the line)
+local PDA_SLOT    = 8
+local PDA_R2      = (system_ini():line_exist("device_pda", "radius") and system_ini():r_float("device_pda", "radius") or 50) ^ 2
+local DEAD_DY     = 3
+local C_REL       = {friend = {120, 210, 90}, neutral = {238, 198, 86}, enemy = {235, 70, 50}, dead = {225, 222, 212}}
+local TASK_X_NO_MAP = 12       -- left edge of the task title when the minimap is off
+local minimap_on  = true
+local cmp_npcs    = {}         -- {id, kind, name} of the contacts, nearest first
+local lbl_used    = {}         -- x of the labels placed this frame
 local cmp_dist_fmt = "%d"   -- "%d m", from the string table
 local V = vector2()            -- reused for SetWndPos / SetWndSize
 
@@ -86,7 +104,12 @@ local function build(hud)
 
 	local p = ui.task_descr:GetWndPos()
 	ui.descr_pos = vector2():set(p.x, p.y)
+	ui.descr_pos0 = vector2():set(p.x, p.y)
 	ui.task_descr:Show(false)
+	p = ui.task_diamond:GetWndPos()
+	ui.diamond_pos0 = vector2():set(p.x, p.y)
+	p = ui.task_title:GetWndPos()
+	ui.title_pos0 = vector2():set(p.x, p.y)
 
 	ui.dog_w, ui.dog_h = ui.dog_bar:GetWidth(), ui.dog_bar:GetHeight()
 
@@ -108,9 +131,24 @@ local function build(hud)
 		ui.cmp_letters[i] = xml:InitStatic("compass_letter", holder)
 		ui.cmp_letters[i]:Show(false)
 	end
+	ui.cmp_npc, ui.cmp_npc_name, ui.cmp_npc_dist = {}, {}, {}
+	for i = 1, CMP_NPC_MAX do
+		ui.cmp_npc[i] = xml:InitStatic("compass_npc", holder)
+		ui.cmp_npc[i]:Show(false)
+	end
+	for i = 1, CMP_LBL_MAX do
+		ui.cmp_npc_name[i] = xml:InitStatic("compass_npc_name", holder)
+		ui.cmp_npc_dist[i] = xml:InitStatic("compass_npc_dist", holder)
+		ui.cmp_npc_name[i]:Show(false)
+		ui.cmp_npc_dist[i]:Show(false)
+	end
 	for _, name in ipairs({"compass_center", "compass_marker", "compass_name", "compass_dist"}) do
 		ui[name] = xml:InitStatic(name, holder)
 	end
+	ui.npc_w, ui.npc_y = ui.cmp_npc[1]:GetWidth(), ui.cmp_npc[1]:GetWndPos().y
+	ui.npc_name_w, ui.npc_name_y = ui.cmp_npc_name[1]:GetWidth(), ui.cmp_npc_name[1]:GetWndPos().y
+	ui.npc_dist_w, ui.npc_dist_y = ui.cmp_npc_dist[1]:GetWidth(), ui.cmp_npc_dist[1]:GetWndPos().y
+	ui.npc_lbl_gap = ui.npc_name_w * 0.55   -- a label closer than this to a placed one is not shown
 	p = ui.compass_line:GetWndPos()
 	ui.cmp_x0, ui.cmp_w, ui.cmp_y = p.x, ui.compass_line:GetWidth(), p.y
 	ui.cmp_tick_w, ui.cmp_tick_h = ui.cmp_ticks[1]:GetWidth(), ui.cmp_ticks[1]:GetHeight()
@@ -230,7 +268,7 @@ local function update_target(v)
 	end
 	local obj = level.object_by_id(id)
 	if obj then
-		cmp_target = {pos = obj:position(), name = IsStalker(obj) and obj:alive() and obj:character_name() or nil}
+		cmp_target = {pos = obj:position(), name = IsStalker(obj) and obj:alive() and obj:character_name() or nil, id = id}
 		return
 	end
 	local se = alife():object(id)
@@ -239,7 +277,55 @@ local function update_target(v)
 	end
 end
 
+local function by_dist(a, b)
+	return a.d2 < b.d2
+end
+
+local function update_contacts()
+	local n = 0
+	if not minimap_on and db.actor:item_in_slot(PDA_SLOT) then
+		local me, aid = db.actor:position(), db.actor:id()
+		for id, st in pairs(db.storage) do
+			local o = st.object
+			if o and id ~= aid and IsStalker(o) then
+				local p = o:position()
+				local d2 = p:distance_to_sqr(me)
+				if d2 <= PDA_R2 then
+					local kind
+					if not o:alive() then
+						if math.abs(p.y - me.y) < DEAD_DY then
+							kind = "dead"
+						end
+					else
+						local rel = o:relation(db.actor)
+						if rel == game_object.friend then
+							kind = "friend"
+						elseif rel == game_object.neutral then
+							kind = "neutral"
+						elseif db.actor:see(o) then
+							kind = "enemy"
+						end
+					end
+					if kind then
+						n = n + 1
+						local c = cmp_npcs[n] or {}
+						cmp_npcs[n] = c
+						c.id, c.kind, c.d2 = id, kind, d2
+						c.name = (kind == "friend" or kind == "neutral") and o:character_name() or nil
+					end
+				end
+			end
+		end
+	end
+	for i = #cmp_npcs, n + 1, -1 do
+		cmp_npcs[i] = nil
+	end
+	table.sort(cmp_npcs, by_dist)
+end
+
 local function slow_update()
+	minimap_on = get_console():get_bool("hud_minimap")
+	update_contacts()
 	local v = active_task()
 	task_title = v and game.translate_string(v.t:get_title()) or nil
 	update_target(v)
@@ -267,6 +353,13 @@ local function update_task(hud)
 	show(ui.task_diamond, tab and task_title ~= nil)
 	show(ui.task_title, tab)
 
+	if cache.task_left ~= not minimap_on then
+		cache.task_left = not minimap_on
+		local dx = minimap_on and 0 or TASK_X_NO_MAP - ui.diamond_pos0.x
+		ui.task_diamond:SetWndPos(vector2():set(ui.diamond_pos0.x + dx, ui.diamond_pos0.y))
+		ui.task_title:SetWndPos(vector2():set(ui.title_pos0.x + dx, ui.title_pos0.y))
+		ui.descr_pos:set(ui.descr_pos0.x + dx, ui.descr_pos0.y)
+	end
 	local descr = hud:GetCustomStatic("secondary_task")
 	if descr then
 		descr:wnd():SetWndPos(ui.descr_pos)
@@ -327,6 +420,83 @@ local function update_compass()
 	end
 	for i = li + 1, CMP_LETTERS do
 		show(ui.cmp_letters[i], false)
+	end
+
+	-- PDA contacts inside the field of view; labels go to the ones nearest to the centre first
+	local mi, li = 0, 0
+	if #cmp_npcs > 0 then
+		local me = db.actor:position()
+		local cand = {}
+		for i = 1, math.min(#cmp_npcs, CMP_NPC_MAX) do
+			local c = cmp_npcs[i]
+			local o = level.object_by_id(c.id)
+			if o then
+				local p = o:position()
+				local dx, dz = p.x - me.x, p.z - me.z
+				local delta = (bearing(dx, dz) - heading + 540) % 360 - 180
+				if math.abs(delta) <= half then
+					mi = mi + 1
+					local x = cx + delta / half * half_w
+					local st = ui.cmp_npc[mi]
+					st:SetWndPos(V:set(x - ui.npc_w / 2, ui.npc_y))
+					local tex = c.kind == "dead" and "surv_mm_dead" or "surv_mm_dot"
+					if cache["npc_t" .. mi] ~= tex then
+						cache["npc_t" .. mi] = tex
+						cache["npc_c" .. mi] = nil
+						st:InitTexture(tex)
+					end
+					if cache["npc_c" .. mi] ~= c.kind then
+						cache["npc_c" .. mi] = c.kind
+						local col = C_REL[c.kind]
+						st:SetTextureColor(GetARGB(255, col[1], col[2], col[3]))
+					end
+					show(st, true)
+					if c.kind ~= "dead" and not (cmp_target and cmp_target.id == c.id) then
+						cand[#cand + 1] = {x = x, ad = math.abs(delta), c = c, d = math.sqrt(dx * dx + dz * dz)}
+					end
+				end
+			end
+		end
+		table.sort(cand, function(a, b) return a.ad < b.ad end)
+		local n_used = 0
+		for _, k in ipairs(cand) do
+			if li >= CMP_LBL_MAX then
+				break
+			end
+			local free = true
+			for j = 1, n_used do
+				if math.abs(lbl_used[j] - k.x) < ui.npc_lbl_gap then
+					free = false
+					break
+				end
+			end
+			if free then
+				n_used = n_used + 1
+				lbl_used[n_used] = k.x
+				li = li + 1
+				local nm, ds = ui.cmp_npc_name[li], ui.cmp_npc_dist[li]
+				local col = C_REL[k.c.kind]
+				ds:SetWndPos(V:set(k.x - ui.npc_dist_w / 2, k.c.name and ui.npc_dist_y or ui.npc_name_y))
+				set_text("npc_d" .. li, ds, string.format(cmp_dist_fmt, math.floor(k.d + 0.5)))
+				show(ds, true)
+				if k.c.name then
+					nm:SetWndPos(V:set(k.x - ui.npc_name_w / 2, ui.npc_name_y))
+					set_text("npc_n" .. li, nm, k.c.name)
+					if cache["npc_nc" .. li] ~= k.c.kind then
+						cache["npc_nc" .. li] = k.c.kind
+						nm:SetTextColor(255, col[1], col[2], col[3])
+					end
+				end
+				show(nm, k.c.name ~= nil)
+			end
+		end
+	end
+	for i = mi + 1, CMP_NPC_MAX do
+		show(ui.cmp_npc[i], false)
+	end
+	for i = li + 1, CMP_LBL_MAX do
+		show(ui.cmp_npc_name[i], false)
+		show(ui.cmp_npc_dist[i], false)
 	end
 
 	-- the task target: on the line, or held at the end the target is behind (that arrow lights up)

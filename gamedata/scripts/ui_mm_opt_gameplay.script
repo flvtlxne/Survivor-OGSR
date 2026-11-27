@@ -20,6 +20,7 @@ local vid_opt_params = {
     { "separator",               "separator", 0, "ui_mm_opt_caption_gameplay_3" },
     { "crouch_toggle",              "check", 0 },
     { "hud_draw",           "check", 0 },
+    { "minimap",            "check", 0 },
     { "weapon_bobbing",           "check", 0 },
     { "switch_slot",           "check", 0 },
 }
