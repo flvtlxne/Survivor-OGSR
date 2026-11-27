@@ -649,6 +649,8 @@ screen_on_delay			= 0.7
 screen_off_delay		= 0.5
 thumb_rot_x				= 1
 thumb_rot_y				= -0.1
+blowout_anim_level		= 0.45	; the screen died in a surge (pda_params.x from pda_glitch.script): anm_blowout
+snd_blowout				= device\pda\pda_vibros
 
 [device_pda_hud]:hud_base
 ; the SFZ PDA scene scaled by 0.6 to the CoP hands (the model, its motions and the positions here)
@@ -686,6 +688,8 @@ anm_idle_sprint			= pda_sprint, idle
 ; zoomed in (the cursor on the screen)
 anm_idle_aim			= pda_aim_idle, idle
 anm_idle_aim_moving		= pda_aim_idle, idle
+; the screen died in a surge (blowout_anim_level): shaken and slapped
+anm_blowout				= pda_vibros, idle
 
 [dev_flash_1]:identity_immunities
 GroupControlSection	= spawn_group

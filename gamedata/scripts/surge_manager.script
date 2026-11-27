@@ -148,6 +148,7 @@ function CSurgeManager:update()
 	if(device().precache_frame > 1) then
 		return
 	end
+	pda_glitch.update(self) -- Survivor: the 3D PDA screen glitches in a surge
 	if not(self.started) then
 		local g_time = game.get_game_time()
 		if(self.time_forwarded) then

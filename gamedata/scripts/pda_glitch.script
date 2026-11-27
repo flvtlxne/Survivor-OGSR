@@ -1,0 +1,85 @@
+-- pda_glitch.script - the 3D PDA screen glitches in a surge (after Gunslinger Mod)
+-- The level of the electronics problems goes up with the surge phases, the PDA screen shader (models_pda_screen)
+-- takes it as pda_params.x (m_affects.x):
+--   0.1 - a thin band of distortion, 0.2 - a wide band, 0.3 - the diagnostics screen (ui\ui_deadpda) instead of the window,
+--   0.4 - the picture shakes, 0.5 - the screen is off (the hands shake and slap the PDA: blowout_anim_level of [device_pda]).
+-- After the surge the PDA reboots (pda_params.z - the loading screen ui\ui_pda_loadscreen), then the glitches fade out.
+-- pda_params.y - a random value of the frame for the distortion and the shaking.
+-- Called every frame from surge_manager.CSurgeManager:update.
+
+local PHASES     = {{0, 1}, {35, 2}, {100, 3}, {140, 4}, {175, 5}} -- surge second (as in surge_manager), level
+local AFTER_TIME = 15000 -- ms after the surge: the reboot (the first third), then the levels 2 and 1
+local SPEED      = 0.05  -- pda_params.x per second
+
+local cur, last_time, was_started, after_start, idle = nil, nil, false, nil, false
+local forced = nil -- test(): 1..5 - the level, 6 - the reboot
+
+local function target(sm)
+	if forced then
+		if forced == 6 then
+			return 0.3, true
+		end
+		return forced * 0.1, false
+	end
+	if sm.started then
+		local sec = math.ceil(game.get_game_time():diffSec(sm.inited_time) / level.get_time_factor())
+		local lvl = 0
+		for _, p in ipairs(PHASES) do
+			if sec >= p[1] then
+				lvl = p[2]
+			end
+		end
+		return lvl * 0.1, false
+	end
+	if after_start then
+		local t = time_global() - after_start
+		if t < AFTER_TIME / 3 then
+			return 0.3, true
+		elseif t < AFTER_TIME * 2 / 3 then
+			return 0.2, false
+		elseif t < AFTER_TIME then
+			return 0.1, false
+		end
+		after_start = nil
+	end
+	return 0, false
+end
+
+function update(sm)
+	local now = time_global()
+	if was_started and not sm.started then
+		after_start = now
+	end
+	was_started = sm.started
+
+	local x, reboot = target(sm)
+	if cur == nil then
+		cur = x -- a loaded game: at once
+	else
+		local step = SPEED * math.max(now - (last_time or now), 0) / 1000
+		if cur < x then
+			cur = math.min(cur + step, x)
+		elseif cur > x then
+			cur = math.max(cur - step, x)
+		end
+	end
+	last_time = now
+
+	if cur <= 0 and not reboot then
+		if not idle then
+			set_pda_params(vector():set(0, 0, 0))
+			idle = true
+		end
+		return
+	end
+	idle = false
+	set_pda_params(vector():set(cur, math.random(), reboot and 1 or 0))
+end
+
+-- for a check without a surge: each call steps the level 1..5, then the reboot, then back to the surge manager
+function test()
+	forced = (forced or 0) + 1
+	if forced > 6 then
+		forced = nil
+	end
+end
