@@ -1,0 +1,18 @@
+{
+  "imageUrl": "https://raw.githubusercontent.com/I-AmDead/Mods_list/main/Mods/Survivor.png",
+  "screenshots": [],
+  "locales": {
+    "en": {
+      "name": "Survivor OGSR",
+      "description": "The game tells the story of a military engineer who ends up in the Exclusion Zone by chance and is now eager to get beyond the perimeter."
+    },
+    "ru": {
+      "name": "Survivor OGSR",
+      "description": "Сюжет игры рассказывает историю о военном инженере, который оказался в Зоне отчуждения при случайных обстоятельствах, и теперь желает скорее выбраться за периметр."
+    },
+    "uk": {
+      "name": "Survivor OGSR",
+      "description": "Сюжет гри розповідає історію військового інженера, який за випадкових обставин опинився в Зоні відчуження й тепер прагне якнайшвидше вибратися за периметр."
+    }
+  }
+}
