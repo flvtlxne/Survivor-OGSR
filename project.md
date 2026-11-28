@@ -1,27 +1,22 @@
-::: hero
-![Survivor OGSR](https://raw.githubusercontent.com/I-AmDead/Mods_list/main/Mods/Survivor.png)
-:::
+# Выживший. Побег из Зоны - OGSR {.text-center}
 
-p=.
-# Выживший. Побег из Зоны - OGSR
-
----
+<p align="center"><img src="https://raw.githubusercontent.com/I-AmDead/Mods_list/main/Mods/Survivor.png" alt="Обложка Survivor OGSR" style="width: 100%; max-width: 760px;"></p>
 
 ::: buttons
 [GitHub](https://github.com/flvtlxne/Survivor-OGSR) [Discord OGSR](https://discord.com/servers/ogsr-508530704674455562)
 :::
 
-::: metadata
-Оригинальный мод: «Выживший. Побег из Зоны» 1.2.2
-Порт: flvtlxne
-Платформа: OGSR Engine
-Первый релиз порта: 1 ноября 2026 года
-:::
+---
+
+<span style="color: #f0a25b;">**Оригинальный мод**</span> · «Выживший. Побег из Зоны» 1.2.2  
+<span style="color: #f0a25b;">**Порт**</span> · flvtlxne  
+<span style="color: #f0a25b;">**Платформа**</span> · OGSR Engine  
+<span style="color: #f0a25b;">**Первый релиз порта**</span> · 1 ноября 2026 года
 
 Военный инженер оказался в Зоне отчуждения при случайных обстоятельствах и теперь хочет поскорее выбраться за периметр. Порт мода на движок OGSR с исправлениями оригинальных ошибок, новым интерфейсом и доработками геймплея.
 
-::: spoiler
-Основные изменения
+<details>
+<summary>Основные изменения</summary>
 
 - Мод перенесен на OGSR Engine, игра ставится и обновляется через лаунчер.
 - Мысли героя показываются внизу экрана вместо роликов, при переходах - короткое затемнение.
@@ -31,10 +26,12 @@ p=.
 - Достижения с бонусами, прогресс достижений в КПК.
 - Мастерская берет материалы из ящиков базы, можно разобрать все оружие разом.
 - Блокнот на отдельной клавише, тексты вычитаны.
-:::
 
-::: spoiler
-Благодарности
+</details>
+
+<details>
+<summary>Благодарности</summary>
 
 Команде OGSR Engine, SFZ team (шрифты и стиль интерфейса), PRXPHET (основа лаунчера) и автору оригинального мода.
-:::
+
+</details>
